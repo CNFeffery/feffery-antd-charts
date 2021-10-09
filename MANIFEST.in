@@ -1,0 +1,11 @@
+include feffery_antd_charts/feffery_antd_charts.min.js
+include feffery_antd_charts/feffery_antd_charts.min.js.map
+include feffery_antd_charts/async-*.js
+include feffery_antd_charts/async-*.js.map
+include feffery_antd_charts/*-shared.js
+include feffery_antd_charts/*-shared.js.map
+include feffery_antd_charts/metadata.json
+include feffery_antd_charts/package-info.json
+include README.md
+include LICENSE
+include package.json
