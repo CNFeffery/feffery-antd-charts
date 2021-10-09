@@ -1,7 +1,7 @@
 {
-  "src/lib/components/FefferyAntdCharts.react.js": {
-    "description": "ExampleComponent is an example component.\r\nIt takes a property, `label`, and\r\ndisplays it.\r\nIt renders an input with the property `value`\r\nwhich is editable by the user.",
-    "displayName": "FefferyAntdCharts",
+  "src/lib/components/AntdLine.react.js": {
+    "description": "",
+    "displayName": "AntdLine",
     "methods": [],
     "props": {
       "id": {
@@ -9,21 +9,447 @@
           "name": "string"
         },
         "required": false,
-        "description": "The ID used to identify this component in Dash callbacks."
+        "description": ""
       },
-      "label": {
-        "type": {
-          "name": "string"
-        },
-        "required": true,
-        "description": "A label that will be printed when this component is rendered."
-      },
-      "value": {
+      "className": {
         "type": {
           "name": "string"
         },
         "required": false,
-        "description": "The value displayed in the input."
+        "description": ""
+      },
+      "style": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": ""
+      },
+      "data": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "object"
+          }
+        },
+        "required": true,
+        "description": ""
+      },
+      "xField": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": ""
+      },
+      "yField": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": ""
+      },
+      "seriesField": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "smooth": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "stepType": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "connectNulls": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "isStack": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "color": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "string"
+            },
+            {
+              "name": "arrayOf",
+              "value": {
+                "name": "string"
+              }
+            },
+            {
+              "name": "exact",
+              "value": {
+                "func": {
+                  "name": "string",
+                  "required": false
+                }
+              }
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "lineStyle": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "string"
+            },
+            {
+              "name": "exact",
+              "value": {
+                "lineWidth": {
+                  "name": "number",
+                  "required": false
+                },
+                "lineDash": {
+                  "name": "arrayOf",
+                  "value": {
+                    "name": "number"
+                  },
+                  "required": false
+                },
+                "lineOpacity": {
+                  "name": "number",
+                  "required": false
+                },
+                "shadowColor": {
+                  "name": "string",
+                  "required": false
+                },
+                "shadowBlur": {
+                  "name": "number",
+                  "required": false
+                },
+                "shadowOffsetX": {
+                  "name": "number",
+                  "required": false
+                },
+                "shadowOffsetY": {
+                  "name": "number",
+                  "required": false
+                },
+                "cursor": {
+                  "name": "string",
+                  "required": false
+                }
+              }
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "point": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "color": {
+              "name": "union",
+              "value": [
+                {
+                  "name": "string"
+                },
+                {
+                  "name": "arrayOf",
+                  "value": {
+                    "name": "string"
+                  }
+                },
+                {
+                  "name": "exact",
+                  "value": {
+                    "func": {
+                      "name": "string",
+                      "required": false
+                    }
+                  }
+                }
+              ],
+              "required": false
+            },
+            "shape": {
+              "name": "union",
+              "value": [
+                {
+                  "name": "string"
+                },
+                {
+                  "name": "exact",
+                  "value": {
+                    "func": {
+                      "name": "string",
+                      "required": false
+                    }
+                  }
+                }
+              ],
+              "required": false
+            },
+            "size": {
+              "name": "union",
+              "value": [
+                {
+                  "name": "number"
+                },
+                {
+                  "name": "exact",
+                  "value": {
+                    "func": {
+                      "name": "string",
+                      "required": false
+                    }
+                  }
+                }
+              ],
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "width": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "height": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "autoFit": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "padding": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "number"
+            },
+            {
+              "name": "arrayOf",
+              "value": {
+                "name": "number"
+              }
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "renderer": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "locale": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "legend": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "exact",
+              "value": {
+                "position": {
+                  "name": "string",
+                  "required": false
+                },
+                "layout": {
+                  "name": "string",
+                  "required": false
+                },
+                "offsetX": {
+                  "name": "number",
+                  "required": false
+                },
+                "offsetY": {
+                  "name": "number",
+                  "required": false
+                },
+                "background": {
+                  "name": "exact",
+                  "value": {
+                    "padding": {
+                      "name": "union",
+                      "value": [
+                        {
+                          "name": "number"
+                        },
+                        {
+                          "name": "arrayOf",
+                          "value": {
+                            "name": "number"
+                          }
+                        }
+                      ],
+                      "required": false
+                    }
+                  },
+                  "required": false
+                },
+                "flipPage": {
+                  "name": "bool",
+                  "required": false
+                },
+                "maxWidth": {
+                  "name": "number",
+                  "required": false
+                },
+                "maxHeight": {
+                  "name": "number",
+                  "required": false
+                },
+                "reversed": {
+                  "name": "bool",
+                  "required": false
+                },
+                "itemHeight": {
+                  "name": "number",
+                  "required": false
+                },
+                "itemWidth": {
+                  "name": "number",
+                  "required": false
+                },
+                "itemName": {
+                  "name": "exact",
+                  "value": {
+                    "spacing": {
+                      "name": "number",
+                      "required": false
+                    }
+                  },
+                  "required": false
+                },
+                "itemValue": {
+                  "name": "exact",
+                  "value": {
+                    "alignRight": {
+                      "name": "bool",
+                      "required": false
+                    }
+                  },
+                  "required": false
+                },
+                "itemSpacing": {
+                  "name": "number",
+                  "required": false
+                },
+                "selected": {
+                  "name": "object",
+                  "required": false
+                }
+              }
+            },
+            {
+              "name": "bool"
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "tooltip": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "fields": {
+              "name": "arrayOf",
+              "value": {
+                "name": "string"
+              },
+              "required": false
+            },
+            "follow": {
+              "name": "bool",
+              "required": false
+            },
+            "enterable": {
+              "name": "bool",
+              "required": false
+            },
+            "showTitle": {
+              "name": "bool",
+              "required": false
+            },
+            "title": {
+              "name": "string",
+              "required": false
+            },
+            "position": {
+              "name": "string",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "loading_state": {
+        "type": {
+          "name": "shape",
+          "value": {
+            "is_loading": {
+              "name": "bool",
+              "description": "Determines if the component is loading or not",
+              "required": false
+            },
+            "prop_name": {
+              "name": "string",
+              "description": "Holds which property is loading",
+              "required": false
+            },
+            "component_name": {
+              "name": "string",
+              "description": "Holds the name of the component that is loading",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
       },
       "setProps": {
         "type": {

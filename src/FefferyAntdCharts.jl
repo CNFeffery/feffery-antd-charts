@@ -5,7 +5,7 @@ using Dash
 const resources_path = realpath(joinpath( @__DIR__, "..", "deps"))
 const version = "0.0.1"
 
-include("jl/''_fefferyantdcharts.jl")
+include("jl/''_antdline.jl")
 
 function __init__()
     DashBase.register_package(
