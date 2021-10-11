@@ -116,43 +116,13 @@
           "name": "union",
           "value": [
             {
-              "name": "string"
+              "name": "custom",
+              "raw": "lineBaseStyle"
             },
             {
               "name": "exact",
               "value": {
-                "lineWidth": {
-                  "name": "number",
-                  "required": false
-                },
-                "lineDash": {
-                  "name": "arrayOf",
-                  "value": {
-                    "name": "number"
-                  },
-                  "required": false
-                },
-                "lineOpacity": {
-                  "name": "number",
-                  "required": false
-                },
-                "shadowColor": {
-                  "name": "string",
-                  "required": false
-                },
-                "shadowBlur": {
-                  "name": "number",
-                  "required": false
-                },
-                "shadowOffsetX": {
-                  "name": "number",
-                  "required": false
-                },
-                "shadowOffsetY": {
-                  "name": "number",
-                  "required": false
-                },
-                "cursor": {
+                "func": {
                   "name": "string",
                   "required": false
                 }
@@ -210,45 +180,83 @@
               "required": false
             },
             "style": {
+              "name": "union",
+              "value": [
+                {
+                  "name": "custom",
+                  "raw": "pointBaseStyle"
+                },
+                {
+                  "name": "exact",
+                  "value": {
+                    "func": {
+                      "name": "string",
+                      "required": false
+                    }
+                  }
+                }
+              ],
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "xAxis": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "top": {
+              "name": "bool",
+              "required": false
+            },
+            "position": {
+              "name": "string",
+              "required": false
+            },
+            "title": {
               "name": "exact",
               "value": {
-                "func": {
+                "text": {
                   "name": "string",
                   "required": false
                 },
-                "r": {
-                  "name": "number",
+                "style": {
+                  "name": "custom",
+                  "raw": "textBaseStyle",
                   "required": false
-                },
-                "fill": {
+                }
+              },
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "yAxis": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "top": {
+              "name": "bool",
+              "required": false
+            },
+            "position": {
+              "name": "string",
+              "required": false
+            },
+            "title": {
+              "name": "exact",
+              "value": {
+                "text": {
                   "name": "string",
                   "required": false
                 },
-                "fillOpacity": {
-                  "name": "number",
-                  "required": false
-                },
-                "stroke": {
-                  "name": "string",
-                  "required": false
-                },
-                "lineWidth": {
-                  "name": "number",
-                  "required": false
-                },
-                "lineDash": {
-                  "name": "arrayOf",
-                  "value": {
-                    "name": "number"
-                  },
-                  "required": false
-                },
-                "strokeOpacity": {
-                  "name": "number",
-                  "required": false
-                },
-                "cursor": {
-                  "name": "string",
+                "style": {
+                  "name": "custom",
+                  "raw": "textBaseStyle",
                   "required": false
                 }
               },

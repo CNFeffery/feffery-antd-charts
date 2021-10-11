@@ -28,7 +28,6 @@ app.layout = html.Div(
                 yField='y',
                 smooth=True,
                 seriesField='series',
-                # stepType='hv',
                 color={
                     'func': '''
                 (ref) => {
@@ -39,17 +38,45 @@ app.layout = html.Div(
                 }
                 '''
                 },
-                lineStyle='''(ref) => {
+                lineStyle={
+                    'func': '''(ref) => {
                         if (ref.series === '系列一'){
                             return {
-                                lineDash: [10, 5]
+                                lineDash: [10, 5, 1, 20]
                             };
                         }
                         return {
                             lineDash: [20, 5]
                         };
-                    }''',
-                padding=[80, 80, 80, 120],
+                    }'''
+                },
+                padding=[80, 80, 80, 150],
+                xAxis={
+                    'title': {
+                        'text': 'x轴测试',
+                        'style': {
+                            'fontSize': 40,
+                            'fontFamily': 'KaiTi',
+                            'fontWeight': 'bold',
+                            'fill': 'red',
+                            'fillOpacity': 0.4,
+                            'shadowColor': 'black',
+                            'shadowOffsetX': 10,
+                            'shadowOffsetY': 10,
+                            'shadowBlur': 4,
+                            'cursor': 'pointer'
+                        }
+                    },
+                    'position': 'bottom'
+                },
+                yAxis={
+                    'title': {
+                        'text': 'y轴测试',
+                        'style': {
+                            'fontSize': 18
+                        }
+                    }
+                },
                 legend={
                     'position': 'left',
                     'layout': 'vertical'

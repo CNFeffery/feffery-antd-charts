@@ -41,16 +41,9 @@ Those elements have the following types:
   - `alignRight` (Bool; optional)
   - `itemSpacing` (Real; optional)
   - `selected` (Dict; optional) | Bool
-- `lineStyle` (optional): . lineStyle has the following type: String | lists containing elements 'lineWidth', 'lineDash', 'lineOpacity', 'shadowColor', 'shadowBlur', 'shadowOffsetX', 'shadowOffsetY', 'cursor'.
+- `lineStyle` (optional): . lineStyle has the following type: lists containing elements 'func'.
 Those elements have the following types:
-  - `lineWidth` (Real; optional)
-  - `lineDash` (Array of Reals; optional)
-  - `lineOpacity` (Real; optional)
-  - `shadowColor` (String; optional)
-  - `shadowBlur` (Real; optional)
-  - `shadowOffsetX` (Real; optional)
-  - `shadowOffsetY` (Real; optional)
-  - `cursor` (String; optional)
+  - `func` (String; optional)
 - `loading_state` (optional): . loading_state has the following type: lists containing elements 'is_loading', 'prop_name', 'component_name'.
 Those elements have the following types:
   - `is_loading` (Bool; optional): Determines if the component is loading or not
@@ -66,17 +59,9 @@ Those elements have the following types:
   - `shape` (optional): . shape has the following type: String | lists containing elements 'func'.
 Those elements have the following types:
   - `func` (String; optional)
-  - `style` (optional): . style has the following type: lists containing elements 'func', 'r', 'fill', 'fillOpacity', 'stroke', 'lineWidth', 'lineDash', 'strokeOpacity', 'cursor'.
+  - `style` (optional): . style has the following type: lists containing elements 'func'.
 Those elements have the following types:
   - `func` (String; optional)
-  - `r` (Real; optional)
-  - `fill` (String; optional)
-  - `fillOpacity` (Real; optional)
-  - `stroke` (String; optional)
-  - `lineWidth` (Real; optional)
-  - `lineDash` (Array of Reals; optional)
-  - `strokeOpacity` (Real; optional)
-  - `cursor` (String; optional)
 - `renderer` (String; optional)
 - `seriesField` (String; optional)
 - `smooth` (Bool; optional)
@@ -91,11 +76,27 @@ Those elements have the following types:
   - `title` (String; optional)
   - `position` (String; optional)
 - `width` (Real; optional)
+- `xAxis` (optional): . xAxis has the following type: lists containing elements 'top', 'position', 'title'.
+Those elements have the following types:
+  - `top` (Bool; optional)
+  - `position` (String; optional)
+  - `title` (optional): . title has the following type: lists containing elements 'text', 'style'.
+Those elements have the following types:
+  - `text` (String; optional)
+  - `style` (optional)
 - `xField` (String; required)
+- `yAxis` (optional): . yAxis has the following type: lists containing elements 'top', 'position', 'title'.
+Those elements have the following types:
+  - `top` (Bool; optional)
+  - `position` (String; optional)
+  - `title` (optional): . title has the following type: lists containing elements 'text', 'style'.
+Those elements have the following types:
+  - `text` (String; optional)
+  - `style` (optional)
 - `yField` (String; required)
 """
 function ''_antdline(; kwargs...)
-        available_props = Symbol[:id, :autoFit, :className, :color, :connectNulls, :data, :height, :isStack, :legend, :lineStyle, :loading_state, :locale, :padding, :point, :renderer, :seriesField, :smooth, :stepType, :style, :tooltip, :width, :xField, :yField]
+        available_props = Symbol[:id, :autoFit, :className, :color, :connectNulls, :data, :height, :isStack, :legend, :lineStyle, :loading_state, :locale, :padding, :point, :renderer, :seriesField, :smooth, :stepType, :style, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
         wild_props = Symbol[]
         return Component("''_antdline", "AntdLine", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

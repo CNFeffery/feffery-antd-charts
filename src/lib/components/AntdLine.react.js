@@ -1,6 +1,7 @@
 import { Line } from '@ant-design/charts';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { pointBaseStyle, lineBaseStyle, textBaseStyle } from './BasePropTypes.react';
 
 // 定义折线图组件AntdLine，部分API参数参考https://charts.ant.design/zh-CN/demos/line
 export default class AntdLine extends Component {
@@ -21,7 +22,8 @@ export default class AntdLine extends Component {
             color,
             lineStyle,
             point,
-            state,
+            xAxis,
+            yAxis,
             width,
             height,
             autoFit,
@@ -58,7 +60,7 @@ export default class AntdLine extends Component {
         }
 
         if (lineStyle) {
-            config.lineStyle = typeof lineStyle === typeof '' ? eval(lineStyle) : lineStyle
+            config.lineStyle = lineStyle?.func ? eval(lineStyle?.func) : lineStyle
         }
 
         if (point) {
@@ -71,20 +73,13 @@ export default class AntdLine extends Component {
             }
         }
 
-        config.state = {
-            // 设置 active 激活状态的样式
-            default: {
-                animate: { duration: 500, easing: 'easeLinear' },
-                style: {
-                    lineWidth: 2,
-                    stroke: '#000',
-                },
-            },
+        if (xAxis) {
+            config.xAxis = xAxis
         }
 
-        // if (state) {
-        //     config.state = state
-        // }
+        if (yAxis) {
+            config.yAxis = yAxis
+        }
 
         if (legend) {
             config.legend = legend
@@ -163,31 +158,10 @@ AntdLine.propTypes = {
     //     return { opacity: 0.5 };
     // }
     lineStyle: PropTypes.oneOfType([
-        PropTypes.string,
+        lineBaseStyle,
         PropTypes.exact({
-            // 设置图形描边的宽度
-            lineWidth: PropTypes.number,
-
-            // 设置描边的虚线配置，第一个值为虚线每个分段的长度，第二个值为分段间隔的距离。lineDash 设为[0,0]的效果为没有描边
-            lineDash: PropTypes.arrayOf(PropTypes.number),
-
-            // 设置描边的透明度
-            lineOpacity: PropTypes.number,
-
-            // 设置图形阴影颜色
-            shadowColor: PropTypes.string,
-
-            // 设置图形阴影的高斯模糊系数
-            shadowBlur: PropTypes.number,
-
-            // 设置阴影距图形的水平距离
-            shadowOffsetX: PropTypes.number,
-
-            // 设置阴影距图形的垂直距离
-            shadowOffsetY: PropTypes.number,
-
-            // 设置鼠标样式，同 css 的鼠标样式，默认 'default'
-            cursor: PropTypes.string
+            // 回调模式
+            func: PropTypes.string
         })
     ]),
 
@@ -214,33 +188,48 @@ AntdLine.propTypes = {
         ]),
 
         // 设置折点通用style属性，支持对象传入，当对象中具有func属性时，会视作func回调模式处理
-        style: PropTypes.exact({
-            // 对应回调模式
-            func: PropTypes.string,
+        style: PropTypes.oneOfType([
+            pointBaseStyle,
+            PropTypes.exact({
+                // 回调模式
+                func: PropTypes.string
+            })
+        ])
+    }),
 
-            // 设置折点半径像素大小
-            r: PropTypes.number,
+    // 设置x坐标轴相关属性
+    xAxis: PropTypes.exact({
+        // 默认false，设置是否将对应坐标轴渲染于画布顶层，从而避免部分图表坐标轴被图形遮挡
+        top: PropTypes.bool,
 
-            // 设置折点填充色
-            fill: PropTypes.string,
+        // 适用于*直角坐标系*，设置坐标轴方位，可选的有'top'、'bottom'、'left'、'right'
+        position: PropTypes.string,
 
-            // 设置折点填充色透明度
-            fillOpacity: PropTypes.number,
+        // 设置坐标轴标题
+        title: PropTypes.exact({
+            // 设置标题文字内容
+            text: PropTypes.string,
 
-            // 设置折点描边色彩
-            stroke: PropTypes.string,
+            // 设置标题文字样式属性
+            style: textBaseStyle
+        })
+    }),
 
-            // 设置折点描边像素宽度
-            lineWidth: PropTypes.number,
+    // 设置y坐标轴相关属性
+    yAxis: PropTypes.exact({
+        // 默认false，设置是否将对应坐标轴渲染于画布顶层，从而避免部分图表坐标轴被图形遮挡
+        top: PropTypes.bool,
 
-            // 设置折点描边线型
-            lineDash: PropTypes.arrayOf(PropTypes.number),
+        // 适用于*直角坐标系*，设置坐标轴的位置，可选的有'top'、'bottom'、'left'、'right'
+        position: PropTypes.string,
 
-            // 设置折点描边透明度
-            strokeOpacity: PropTypes.number,
+        // 设置坐标轴标题
+        title: PropTypes.exact({
+            // 设置标题文字内容
+            text: PropTypes.string,
 
-            // 设置鼠标悬浮数据点上时的样式
-            cursor: PropTypes.string
+            // 设置标题文字样式属性
+            style: textBaseStyle
         })
     }),
 
