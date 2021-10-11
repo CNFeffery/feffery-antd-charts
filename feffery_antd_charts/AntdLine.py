@@ -130,11 +130,27 @@ Keyword arguments:
 
         - func (string; optional)
 
-    - size (dict; optional)
+    - style (dict; optional)
 
-        `size` is a number | dict with keys:
+        `style` is a dict with keys:
+
+        - cursor (string; optional)
+
+        - fill (string; optional)
+
+        - fillOpacity (number; optional)
 
         - func (string; optional)
+
+        - lineDash (list of numbers; optional)
+
+        - lineWidth (number; optional)
+
+        - r (number; optional)
+
+        - stroke (string; optional)
+
+        - strokeOpacity (number; optional)
 
 - renderer (string; optional)
 

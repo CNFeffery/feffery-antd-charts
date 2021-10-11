@@ -21,6 +21,7 @@ export default class AntdLine extends Component {
             color,
             lineStyle,
             point,
+            state,
             width,
             height,
             autoFit,
@@ -66,9 +67,24 @@ export default class AntdLine extends Component {
 
                 shape: point?.shape?.func ? eval(point?.shape?.func) : point?.shape,
 
-                size: point?.size?.func ? eval(point?.size?.func) : point?.size
+                style: point?.style?.func ? eval(point?.style?.func) : point?.style
             }
         }
+
+        config.state = {
+            // 设置 active 激活状态的样式
+            default: {
+                animate: { duration: 500, easing: 'easeLinear' },
+                style: {
+                    lineWidth: 2,
+                    stroke: '#000',
+                },
+            },
+        }
+
+        // if (state) {
+        //     config.state = state
+        // }
 
         if (legend) {
             config.legend = legend
@@ -197,13 +213,35 @@ AntdLine.propTypes = {
             })
         ]),
 
-        // 设置折点尺寸像素大小，支持单数值或对象传入func定义js函数体，函数格式同lineStyle
-        size: PropTypes.oneOfType([
-            PropTypes.number,
-            PropTypes.exact({
-                func: PropTypes.string
-            })
-        ])
+        // 设置折点通用style属性，支持对象传入，当对象中具有func属性时，会视作func回调模式处理
+        style: PropTypes.exact({
+            // 对应回调模式
+            func: PropTypes.string,
+
+            // 设置折点半径像素大小
+            r: PropTypes.number,
+
+            // 设置折点填充色
+            fill: PropTypes.string,
+
+            // 设置折点填充色透明度
+            fillOpacity: PropTypes.number,
+
+            // 设置折点描边色彩
+            stroke: PropTypes.string,
+
+            // 设置折点描边像素宽度
+            lineWidth: PropTypes.number,
+
+            // 设置折点描边线型
+            lineDash: PropTypes.arrayOf(PropTypes.number),
+
+            // 设置折点描边透明度
+            strokeOpacity: PropTypes.number,
+
+            // 设置鼠标悬浮数据点上时的样式
+            cursor: PropTypes.string
+        })
     }),
 
     // 定义图表容器像素宽度，默认为400

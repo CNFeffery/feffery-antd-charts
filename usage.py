@@ -39,28 +39,17 @@ app.layout = html.Div(
                 }
                 '''
                 },
-                lineStyle={
-                    'lineWidth': 3,
-                    'lineDash': [20, 5],
-                    'lineOpacity': 0.4,
-                    'shadowColor': 'rgba(0, 0, 0, 0.4)',
-                    'shadowBlur': 20,
-                    'shadowOffsetX': 5,
-                    'shadowOffsetY': 5
-                },
-                padding=[80, 80, 80, 120],
-                point={
-                    'color': {
-                        'func': '''
-                        (ref) => {
-                            if (ref.series === '系列一'){
-                                return 'yellow'
-                            }
-                            return 'green'
+                lineStyle='''(ref) => {
+                        if (ref.series === '系列一'){
+                            return {
+                                lineDash: [10, 5]
+                            };
                         }
-                        '''
-                    }
-                },
+                        return {
+                            lineDash: [20, 5]
+                        };
+                    }''',
+                padding=[80, 80, 80, 120],
                 legend={
                     'position': 'left',
                     'layout': 'vertical'

@@ -209,22 +209,49 @@
               ],
               "required": false
             },
-            "size": {
-              "name": "union",
-              "value": [
-                {
-                  "name": "number"
+            "style": {
+              "name": "exact",
+              "value": {
+                "func": {
+                  "name": "string",
+                  "required": false
                 },
-                {
-                  "name": "exact",
+                "r": {
+                  "name": "number",
+                  "required": false
+                },
+                "fill": {
+                  "name": "string",
+                  "required": false
+                },
+                "fillOpacity": {
+                  "name": "number",
+                  "required": false
+                },
+                "stroke": {
+                  "name": "string",
+                  "required": false
+                },
+                "lineWidth": {
+                  "name": "number",
+                  "required": false
+                },
+                "lineDash": {
+                  "name": "arrayOf",
                   "value": {
-                    "func": {
-                      "name": "string",
-                      "required": false
-                    }
-                  }
+                    "name": "number"
+                  },
+                  "required": false
+                },
+                "strokeOpacity": {
+                  "name": "number",
+                  "required": false
+                },
+                "cursor": {
+                  "name": "string",
+                  "required": false
                 }
-              ],
+              },
               "required": false
             }
           }

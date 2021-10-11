@@ -58,7 +58,7 @@ Those elements have the following types:
   - `component_name` (String; optional): Holds the name of the component that is loading
 - `locale` (String; optional)
 - `padding` (Real | Array of Reals; optional)
-- `point` (optional): . point has the following type: lists containing elements 'color', 'shape', 'size'.
+- `point` (optional): . point has the following type: lists containing elements 'color', 'shape', 'style'.
 Those elements have the following types:
   - `color` (optional): . color has the following type: String | Array of Strings | lists containing elements 'func'.
 Those elements have the following types:
@@ -66,9 +66,17 @@ Those elements have the following types:
   - `shape` (optional): . shape has the following type: String | lists containing elements 'func'.
 Those elements have the following types:
   - `func` (String; optional)
-  - `size` (optional): . size has the following type: Real | lists containing elements 'func'.
+  - `style` (optional): . style has the following type: lists containing elements 'func', 'r', 'fill', 'fillOpacity', 'stroke', 'lineWidth', 'lineDash', 'strokeOpacity', 'cursor'.
 Those elements have the following types:
   - `func` (String; optional)
+  - `r` (Real; optional)
+  - `fill` (String; optional)
+  - `fillOpacity` (Real; optional)
+  - `stroke` (String; optional)
+  - `lineWidth` (Real; optional)
+  - `lineDash` (Array of Reals; optional)
+  - `strokeOpacity` (Real; optional)
+  - `cursor` (String; optional)
 - `renderer` (String; optional)
 - `seriesField` (String; optional)
 - `smooth` (Bool; optional)
