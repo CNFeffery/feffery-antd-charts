@@ -1,0 +1,71 @@
+# AUTO GENERATED FILE - DO NOT EDIT
+
+export ''_antdarea
+
+"""
+    ''_antdarea(;kwargs...)
+
+An AntdArea component.
+
+Keyword arguments:
+- `id` (String; optional)
+- `annotations` (optional)
+- `areaStyle` (optional): . areaStyle has the following type: lists containing elements 'func'.
+Those elements have the following types:
+  - `func` (String; optional)
+- `autoFit` (Bool; optional)
+- `className` (String; optional)
+- `color` (optional): . color has the following type: String | Array of Strings | lists containing elements 'func'.
+Those elements have the following types:
+  - `func` (String; optional)
+- `data` (Array of Dicts; required)
+- `height` (Real; optional)
+- `isPercent` (Bool; optional)
+- `isStack` (Bool; optional)
+- `label` (optional)
+- `legend` (optional)
+- `line` (optional): . line has the following type: lists containing elements 'color', 'style'.
+Those elements have the following types:
+  - `color` (optional): . color has the following type: String | Array of Strings | lists containing elements 'func'.
+Those elements have the following types:
+  - `func` (String; optional)
+  - `style` (optional): . style has the following type: lists containing elements 'func'.
+Those elements have the following types:
+  - `func` (String; optional)
+- `loading_state` (optional): . loading_state has the following type: lists containing elements 'is_loading', 'prop_name', 'component_name'.
+Those elements have the following types:
+  - `is_loading` (Bool; optional): Determines if the component is loading or not
+  - `prop_name` (String; optional): Holds which property is loading
+  - `component_name` (String; optional): Holds the name of the component that is loading
+- `locale` (String; optional)
+- `padding` (Real | Array of Reals | String; optional)
+- `point` (optional): . point has the following type: lists containing elements 'color', 'shape', 'style'.
+Those elements have the following types:
+  - `color` (optional): . color has the following type: String | Array of Strings | lists containing elements 'func'.
+Those elements have the following types:
+  - `func` (String; optional)
+  - `shape` (optional): . shape has the following type: String | lists containing elements 'func'.
+Those elements have the following types:
+  - `func` (String; optional)
+  - `style` (optional): . style has the following type: lists containing elements 'func'.
+Those elements have the following types:
+  - `func` (String; optional)
+- `renderer` (String; optional)
+- `seriesField` (String; optional)
+- `slider` (optional)
+- `smooth` (Bool; optional)
+- `startOnZero` (Bool; optional)
+- `style` (Dict; optional)
+- `tooltip` (optional)
+- `width` (Real; optional)
+- `xAxis` (optional)
+- `xField` (String; required)
+- `yAxis` (optional)
+- `yField` (String; required)
+"""
+function ''_antdarea(; kwargs...)
+        available_props = Symbol[:id, :annotations, :areaStyle, :autoFit, :className, :color, :data, :height, :isPercent, :isStack, :label, :legend, :line, :loading_state, :locale, :padding, :point, :renderer, :seriesField, :slider, :smooth, :startOnZero, :style, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
+        wild_props = Symbol[]
+        return Component("''_antdarea", "AntdArea", "feffery_antd_charts", available_props, wild_props; kwargs...)
+end
+

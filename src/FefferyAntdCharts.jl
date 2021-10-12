@@ -5,6 +5,8 @@ using Dash
 const resources_path = realpath(joinpath( @__DIR__, "..", "deps"))
 const version = "0.0.1rc1"
 
+include("jl/''_antdarea.jl")
+include("jl/''_antdbar.jl")
 include("jl/''_antdline.jl")
 
 function __init__()

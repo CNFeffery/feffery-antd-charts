@@ -1,19 +1,20 @@
-import { Line } from '@ant-design/charts';
+import { Bar } from '@ant-design/charts';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
-    pointBaseStyle,
-    lineBaseStyle,
     axisBasePropTypes,
     legendBasePropTypes,
     labelBasePropTypes,
     tooltipBasePropTypes,
     annotationsBasePropTypes,
-    sliderBasePropTypes
+    scrollbarBasePropTypes,
+    baseStyle,
+    areaBaseStyle,
+    textBaseStyle
 } from './BasePropTypes.react';
 
-// 定义折线图组件AntdLine，部分API参数参考https://charts.ant.design/zh-CN/demos/line
-export default class AntdLine extends Component {
+// 定义条形图组件AntdBar，部分API参数参考https://charts.ant.design/zh-CN/demos/bar
+export default class AntdBar extends Component {
     render() {
         // 取得必要属性或参数
         let {
@@ -24,13 +25,22 @@ export default class AntdLine extends Component {
             xField,
             yField,
             seriesField,
-            smooth,
-            stepType,
-            connectNulls,
             isStack,
+            isGroup,
+            isRange,
+            isPercent,
             color,
-            lineStyle,
-            point,
+            intervalPadding,
+            dodgePadding,
+            minBarWidth,
+            maxBarWidth,
+            barStyle,
+            barBackground,
+            barWidthRatio,
+            marginRatio,
+            scrollbar,
+            conversionTag,
+            connectedArea,
             xAxis,
             yAxis,
             width,
@@ -43,7 +53,6 @@ export default class AntdLine extends Component {
             label,
             tooltip,
             annotations,
-            slider,
             setProps
         } = this.props;
 
@@ -54,10 +63,19 @@ export default class AntdLine extends Component {
             xField: xField,
             yField: yField,
             seriesField: seriesField,
-            smooth: smooth,
-            stepType: stepType,
-            connectNulls: connectNulls,
             isStack: isStack,
+            isGroup: isGroup,
+            isRange: isRange,
+            isPercent: isPercent,
+            intervalPadding: intervalPadding,
+            dodgePadding: dodgePadding,
+            minBarWidth: minBarWidth,
+            maxBarWidth: maxBarWidth,
+            barBackground: barBackground,
+            barWidthRatio: barWidthRatio,
+            marginRatio: marginRatio,
+            scrollbar: scrollbar,
+            connectedArea: connectedArea,
             width: width,
             height: height,
             autoFit: autoFit,
@@ -67,22 +85,20 @@ export default class AntdLine extends Component {
         };
 
         // 进阶参数
+        if (conversionTag) {
+            config.conversionTag = conversionTag
+
+            if (config.conversionTag?.text?.formatter?.func) {
+                config.conversionTag.text.formatter = eval(config.conversionTag.text.formatter.func)
+            }
+        }
+
         if (color) {
             config.color = color?.func ? eval(color?.func) : color
         }
 
-        if (lineStyle) {
-            config.lineStyle = lineStyle?.func ? eval(lineStyle?.func) : lineStyle
-        }
-
-        if (point) {
-            config.point = {
-                color: point?.color?.func ? eval(point?.color?.func) : point?.color,
-
-                shape: point?.shape?.func ? eval(point?.shape?.func) : point?.shape,
-
-                style: point?.style?.func ? eval(point?.style?.func) : point?.style
-            }
+        if (barStyle) {
+            config.barStyle = barStyle?.func ? eval(barStyle?.func) : barStyle
         }
 
         if (xAxis) {
@@ -126,15 +142,7 @@ export default class AntdLine extends Component {
             config.annotations = annotations
         }
 
-        if (slider) {
-            config.slider = slider
-
-            if (config.slider?.formatter?.func) {
-                config.slider.formatter = eval(config.slider.formatter.func)
-            }
-        }
-
-        return <Line id={id}
+        return <Bar id={id}
             className={className}
             style={style}
             {...config} />;
@@ -142,7 +150,7 @@ export default class AntdLine extends Component {
 }
 
 // 定义参数或属性
-AntdLine.propTypes = {
+AntdBar.propTypes = {
     // 部件id
     id: PropTypes.string,
 
@@ -164,18 +172,17 @@ AntdLine.propTypes = {
     // 定义作为分组依据的字段名
     seriesField: PropTypes.string,
 
-    // 设置是否以平滑曲线方式渲染折线，默认为false
-    smooth: PropTypes.bool,
-
-    // 对应阶梯折线图类型的阶梯曲折方式，可选的有'hv'、'vh'、'hvh'及'vhv'
-    // 其中'h'表示horizontal，'v'表示vertical，譬如`vh`就代表先竖直方向再水平方向
-    stepType: PropTypes.string,
-
-    // 设置针对折线图中缺失值的绘制策略，true表示连接，false表示断开，默认为true
-    connectNulls: PropTypes.bool,
-
-    // 在存在seriesField分组字段时，用于设置是否将折线堆叠起来，默认为false
+    // 在存在seriesField分组字段时，用于设置是否堆叠条形图
     isStack: PropTypes.bool,
+
+    // 在存在seriesField分组字段时，用于设置是否分组条形图
+    isGroup: PropTypes.bool,
+
+    // 在xField的值格式为[number, number]时，用于设置是否区间条形图
+    isRange: PropTypes.bool,
+
+    // 在isStack=true时生效，用于设置是否百分比条形图
+    isPercent: PropTypes.bool,
 
     // 用于手动设置调色方案，接受css中合法的所有颜色值，当传入单个字符串时，所有折线沿用此颜色值
     // 当传入数组时，会视作调色盘方案对seriesField区分的不同系列进行着色
@@ -195,54 +202,84 @@ AntdLine.propTypes = {
         })
     ]),
 
-    // 用于设置折线样式，常规方式下接受对象用于设置全局折线样式
-    // 亦可传入字符串对应的js函数体，实现针对不同seriesField返回不同样式，例如
-    // (ref) => {
-    //     if (ref.seriesField === 'a'){
-    //         return {
-    //             lineDash: [4, 4],
-    //             opacity: 1,
-    //           };
-    //     }
-    //     return { opacity: 0.5 };
-    // }
-    lineStyle: PropTypes.oneOfType([
-        lineBaseStyle,
+    // 设置分组条形图组间像素间隔宽度
+    intervalPadding: PropTypes.number,
+
+    // 设置分组条形图组内像素间隔宽度
+    dodgePadding: PropTypes.number,
+
+    // 设置条形图的最小像素宽度，默认会自适应
+    minBarWidth: PropTypes.number,
+
+    // 设置条形图的最大像素宽度，默认会自适应
+    maxBarWidth: PropTypes.number,
+
+    // 设置柱体的样式
+    barStyle: PropTypes.oneOfType([
+        baseStyle,
         PropTypes.exact({
             // 回调模式
             func: PropTypes.string
         })
     ]),
 
+    // 设置柱状图背景样式
+    barBackground: PropTypes.exact({
+        // 具体样式
+        style: areaBaseStyle
+    }),
 
-    // 用于设置折线图折点的样式
-    point: PropTypes.exact({
-        // 设置折点颜色，支持单字符串、字符串数组以及对象传入func定义js函数体，函数格式同lineStyle
-        color: PropTypes.oneOfType([
-            PropTypes.string,
-            PropTypes.arrayOf(PropTypes.string),
+    // 设置条形图宽度占比，0~1之间
+    barWidthRatio: PropTypes.number,
+
+    // 设置分组条形图中条形之间的间距，0~1之间
+    marginRatio: PropTypes.number,
+
+    // 设置条形图滚动条样式
+    scrollbar: scrollbarBasePropTypes,
+
+    // 设置转化标签相关属性
+    conversionTag: PropTypes.exact({
+        // 设置转化率标签像素尺寸大小
+        size: PropTypes.number,
+
+        // 设置转化率标签与柱体之间的像素间距
+        spacing: PropTypes.number,
+
+        // 设置组件与坐标轴之间的距离
+        offset: PropTypes.number,
+
+        // 配置转化率组件箭头样式，false时不显示箭头
+        arrow: PropTypes.oneOfType([
+            PropTypes.bool,
             PropTypes.exact({
-                func: PropTypes.string
+                // 设置箭头尺寸
+                headSize: PropTypes.number
             })
         ]),
 
-        // 设置折点形状，支持单字符串或对象传入func定义js函数体，函数格式同lineStyle
-        // 单字符时可选的样式有'circle'、'square'、'line'、'diamond'、'triangle'、'triangle-down'、'hexagon'、
-        // 'bowtie'、'cross'、'tick'、'plus'及'hyphen'
-        shape: PropTypes.oneOfType([
-            PropTypes.string,
+        // 配置转化率组件文本信息，false时不显示文本
+        text: PropTypes.oneOfType([
+            PropTypes.bool,
             PropTypes.exact({
-                func: PropTypes.string
-            })
-        ]),
+                // 自定义转化率计算函数
+                formatter: PropTypes.exact({
+                    // 回调模式
+                    func: PropTypes.string
+                }),
 
-        // 设置折点通用style属性，支持对象传入，当对象中具有func属性时，会视作func回调模式处理
-        style: PropTypes.oneOfType([
-            pointBaseStyle,
-            PropTypes.exact({
-                // 回调模式
-                func: PropTypes.string
+                // 自定义转化率文字样式
+                style: textBaseStyle
             })
+        ])
+    }),
+
+    // 设置联通对比区域相关参数
+    connectedArea: PropTypes.exact({
+        // 设置触发方式，false表示不触发，可选的有'hover'、'click'
+        trigger: PropTypes.oneOfType([
+            PropTypes.bool,
+            PropTypes.string
         ])
     }),
 
@@ -286,9 +323,6 @@ AntdLine.propTypes = {
     // 配置标注相关参数
     annotations: annotationsBasePropTypes,
 
-    // 配置缩略轴相关参数
-    slider: sliderBasePropTypes,
-
     loading_state: PropTypes.shape({
         /**
          * Determines if the component is loading or not
@@ -312,5 +346,5 @@ AntdLine.propTypes = {
 };
 
 // 设置默认参数
-AntdLine.defaultProps = {
+AntdBar.defaultProps = {
 }

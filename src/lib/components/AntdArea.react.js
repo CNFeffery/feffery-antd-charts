@@ -1,9 +1,10 @@
-import { Line } from '@ant-design/charts';
+import { Area } from '@ant-design/charts';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
     pointBaseStyle,
     lineBaseStyle,
+    areaBaseStyle,
     axisBasePropTypes,
     legendBasePropTypes,
     labelBasePropTypes,
@@ -12,8 +13,8 @@ import {
     sliderBasePropTypes
 } from './BasePropTypes.react';
 
-// 定义折线图组件AntdLine，部分API参数参考https://charts.ant.design/zh-CN/demos/line
-export default class AntdLine extends Component {
+// 定义面积图组件AntdArea，部分API参数参考https://charts.ant.design/zh-CN/demos/area
+export default class AntdArea extends Component {
     render() {
         // 取得必要属性或参数
         let {
@@ -25,11 +26,12 @@ export default class AntdLine extends Component {
             yField,
             seriesField,
             smooth,
-            stepType,
-            connectNulls,
+            isPercent,
+            startOnZero,
             isStack,
             color,
-            lineStyle,
+            areaStyle,
+            line,
             point,
             xAxis,
             yAxis,
@@ -47,7 +49,6 @@ export default class AntdLine extends Component {
             setProps
         } = this.props;
 
-
         let config = {
             data: data,
             padding: padding,
@@ -55,8 +56,8 @@ export default class AntdLine extends Component {
             yField: yField,
             seriesField: seriesField,
             smooth: smooth,
-            stepType: stepType,
-            connectNulls: connectNulls,
+            isPercent: isPercent,
+            startOnZero: startOnZero,
             isStack: isStack,
             width: width,
             height: height,
@@ -66,13 +67,22 @@ export default class AntdLine extends Component {
             locale: locale
         };
 
+
         // 进阶参数
         if (color) {
             config.color = color?.func ? eval(color?.func) : color
         }
 
-        if (lineStyle) {
-            config.lineStyle = lineStyle?.func ? eval(lineStyle?.func) : lineStyle
+        if (areaStyle) {
+            config.areaStyle = areaStyle?.func ? eval(areaStyle.func) : areaStyle
+        }
+
+        if (line) {
+            config.line = line
+
+            config.line.color = config?.line?.color?.func ? eval(config.line.color.func) : config.line.color
+
+            config.line.style = config?.line?.style?.func ? eval(config.line.style.func) : config.line.style
         }
 
         if (point) {
@@ -134,7 +144,7 @@ export default class AntdLine extends Component {
             }
         }
 
-        return <Line id={id}
+        return <Area id={id}
             className={className}
             style={style}
             {...config} />;
@@ -142,7 +152,7 @@ export default class AntdLine extends Component {
 }
 
 // 定义参数或属性
-AntdLine.propTypes = {
+AntdArea.propTypes = {
     // 部件id
     id: PropTypes.string,
 
@@ -167,15 +177,23 @@ AntdLine.propTypes = {
     // 设置是否以平滑曲线方式渲染折线，默认为false
     smooth: PropTypes.bool,
 
-    // 对应阶梯折线图类型的阶梯曲折方式，可选的有'hv'、'vh'、'hvh'及'vhv'
-    // 其中'h'表示horizontal，'v'表示vertical，譬如`vh`就代表先竖直方向再水平方向
-    stepType: PropTypes.string,
-
-    // 设置针对折线图中缺失值的绘制策略，true表示连接，false表示断开，默认为true
-    connectNulls: PropTypes.bool,
+    // 设置是否开启百分比面积图，百分比时会自动激活isStack=true
+    isPercent: PropTypes.bool,
 
     // 在存在seriesField分组字段时，用于设置是否将折线堆叠起来，默认为false
     isStack: PropTypes.bool,
+
+    // 设置面积图是否从0基准线开始填充，使用时需要配合isStack=false
+    startOnZero: PropTypes.bool,
+
+    // 设置面积图形样式
+    areaStyle: PropTypes.oneOfType([
+        areaBaseStyle,
+        PropTypes.exact({
+            // 回调模式
+            func: PropTypes.string
+        })
+    ]),
 
     // 用于手动设置调色方案，接受css中合法的所有颜色值，当传入单个字符串时，所有折线沿用此颜色值
     // 当传入数组时，会视作调色盘方案对seriesField区分的不同系列进行着色
@@ -206,16 +224,28 @@ AntdLine.propTypes = {
     //     }
     //     return { opacity: 0.5 };
     // }
-    lineStyle: PropTypes.oneOfType([
-        lineBaseStyle,
-        PropTypes.exact({
-            // 回调模式
-            func: PropTypes.string
-        })
-    ]),
+    line: PropTypes.exact({
+        // 设置面积图中折线的样式
+        color: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.arrayOf(PropTypes.string),
+            PropTypes.exact({
+                // 回调模式
+                func: PropTypes.string
+            })
+        ]),
 
+        // 设置面积图中的线样式
+        style: PropTypes.oneOfType([
+            lineBaseStyle,
+            PropTypes.exact({
+                // 回调模式
+                func: PropTypes.string
+            })
+        ])
+    }),
 
-    // 用于设置折线图折点的样式
+    // 用于设置面积图折线折点的样式
     point: PropTypes.exact({
         // 设置折点颜色，支持单字符串、字符串数组以及对象传入func定义js函数体，函数格式同lineStyle
         color: PropTypes.oneOfType([
@@ -312,5 +342,5 @@ AntdLine.propTypes = {
 };
 
 // 设置默认参数
-AntdLine.defaultProps = {
+AntdArea.defaultProps = {
 }

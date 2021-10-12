@@ -1,0 +1,78 @@
+# AUTO GENERATED FILE - DO NOT EDIT
+
+export ''_antdbar
+
+"""
+    ''_antdbar(;kwargs...)
+
+An AntdBar component.
+
+Keyword arguments:
+- `id` (String; optional)
+- `annotations` (optional)
+- `autoFit` (Bool; optional)
+- `barBackground` (optional): . barBackground has the following type: lists containing elements 'style'.
+Those elements have the following types:
+  - `style` (optional)
+- `barStyle` (optional): . barStyle has the following type: lists containing elements 'func'.
+Those elements have the following types:
+  - `func` (String; optional)
+- `barWidthRatio` (Real; optional)
+- `className` (String; optional)
+- `color` (optional): . color has the following type: String | Array of Strings | lists containing elements 'func'.
+Those elements have the following types:
+  - `func` (String; optional)
+- `connectedArea` (optional): . connectedArea has the following type: lists containing elements 'trigger'.
+Those elements have the following types:
+  - `trigger` (Bool | String; optional)
+- `conversionTag` (optional): . conversionTag has the following type: lists containing elements 'size', 'spacing', 'offset', 'arrow', 'text'.
+Those elements have the following types:
+  - `size` (Real; optional)
+  - `spacing` (Real; optional)
+  - `offset` (Real; optional)
+  - `arrow` (optional): . arrow has the following type: Bool | lists containing elements 'headSize'.
+Those elements have the following types:
+  - `headSize` (Real; optional)
+  - `text` (optional): . text has the following type: Bool | lists containing elements 'formatter', 'style'.
+Those elements have the following types:
+  - `formatter` (optional): . formatter has the following type: lists containing elements 'func'.
+Those elements have the following types:
+  - `func` (String; optional)
+  - `style` (optional)
+- `data` (Array of Dicts; required)
+- `dodgePadding` (Real; optional)
+- `height` (Real; optional)
+- `intervalPadding` (Real; optional)
+- `isGroup` (Bool; optional)
+- `isPercent` (Bool; optional)
+- `isRange` (Bool; optional)
+- `isStack` (Bool; optional)
+- `label` (optional)
+- `legend` (optional)
+- `loading_state` (optional): . loading_state has the following type: lists containing elements 'is_loading', 'prop_name', 'component_name'.
+Those elements have the following types:
+  - `is_loading` (Bool; optional): Determines if the component is loading or not
+  - `prop_name` (String; optional): Holds which property is loading
+  - `component_name` (String; optional): Holds the name of the component that is loading
+- `locale` (String; optional)
+- `marginRatio` (Real; optional)
+- `maxBarWidth` (Real; optional)
+- `minBarWidth` (Real; optional)
+- `padding` (Real | Array of Reals | String; optional)
+- `renderer` (String; optional)
+- `scrollbar` (optional)
+- `seriesField` (String; optional)
+- `style` (Dict; optional)
+- `tooltip` (optional)
+- `width` (Real; optional)
+- `xAxis` (optional)
+- `xField` (String; required)
+- `yAxis` (optional)
+- `yField` (String; required)
+"""
+function ''_antdbar(; kwargs...)
+        available_props = Symbol[:id, :annotations, :autoFit, :barBackground, :barStyle, :barWidthRatio, :className, :color, :connectedArea, :conversionTag, :data, :dodgePadding, :height, :intervalPadding, :isGroup, :isPercent, :isRange, :isStack, :label, :legend, :loading_state, :locale, :marginRatio, :maxBarWidth, :minBarWidth, :padding, :renderer, :scrollbar, :seriesField, :style, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
+        wild_props = Symbol[]
+        return Component("''_antdbar", "AntdBar", "feffery_antd_charts", available_props, wild_props; kwargs...)
+end
+

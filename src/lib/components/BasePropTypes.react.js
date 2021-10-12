@@ -7,6 +7,9 @@ import PropTypes from 'prop-types';
 // 定义全局通用style参数模板
 const baseStyle = PropTypes.exact({
 
+    // 设置点半径像素大小
+    r: PropTypes.number,
+
     // 设置文字内容的当前对齐方式，可选的有'start'、'center'、'end'、'left'、'right'
     textAlign: PropTypes.string,
 
@@ -122,6 +125,25 @@ const lineBaseStyle = PropTypes.exact({
     shadowOffsetY: PropTypes.number,
 
     // 设置鼠标悬浮线上时的css样式
+    cursor: PropTypes.string
+})
+
+// 定义面style参数模板
+const areaBaseStyle = PropTypes.exact({
+    fill: PropTypes.string,
+
+    fillOpacity: PropTypes.number,
+
+    opacity: PropTypes.number,
+
+    shadowColor: PropTypes.string,
+
+    shadowBlur: PropTypes.number,
+
+    shadowOffsetX: PropTypes.number,
+
+    shadowOffsetY: PropTypes.number,
+
     cursor: PropTypes.string
 })
 
@@ -651,6 +673,42 @@ const annotationsBasePropTypes = PropTypes.arrayOf(
 )
 
 
+// 定义滚动条通用PropTypes模板
+const scrollbarBasePropTypes = PropTypes.exact({
+    // 设置滚动条类型，可选的有'horizontal'、'vertical'，默认'horizontal'
+    type: PropTypes.string,
+
+    // 设置滚动条像素宽度，仅在type='vertical'时生效
+    width: PropTypes.number,
+
+    // 设置滚动条高度，仅在type='horizontal'时生效
+    height: PropTypes.number,
+
+    // 设置滚动条布局padding
+    padding: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.arrayOf(PropTypes.number)
+    ]),
+
+    // 对应水平滚动条，为X轴每个分类字段的宽度；对于垂直滚动条，为X轴每个分类字段的高度
+    categorySize: PropTypes.number,
+
+    // 设置滚动条样式
+    style: PropTypes.exact({
+        // 设置滚动条滑道颜色
+        trackColor: PropTypes.string,
+
+        // 设置滚动条滑块颜色
+        thumbColor: PropTypes.string,
+
+        // 设置滚动条滑块高亮颜色
+        thumbHighlightColor: PropTypes.string,
+
+        // 设置滚动条圆角样式，可选的有'butt'、'round'、'square'
+        lineCap: PropTypes.string
+    })
+})
+
 // 定义缩略轴通用PropTypes模板
 const sliderBasePropTypes = PropTypes.exact({
     // 设置默认起始位置，0到1之间，表示百分比范围
@@ -736,11 +794,13 @@ export {
     baseStyle,
     pointBaseStyle,
     lineBaseStyle,
+    areaBaseStyle,
     textBaseStyle,
     axisBasePropTypes,
     legendBasePropTypes,
     labelBasePropTypes,
     tooltipBasePropTypes,
     annotationsBasePropTypes,
+    scrollbarBasePropTypes,
     sliderBasePropTypes
 };
