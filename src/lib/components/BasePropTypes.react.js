@@ -6,6 +6,31 @@ import PropTypes from 'prop-types';
 
 // 定义全局通用style参数模板
 const baseStyle = PropTypes.exact({
+
+    // 设置文字内容的当前对齐方式，可选的有'start'、'center'、'end'、'left'、'right'
+    textAlign: PropTypes.string,
+
+    // 设置在绘制文本时使用的当前文本基线, 可选的有'top', 'hanging', 'middle', 'alphabetic', 'ideographic', 'bottom'
+    textBaseline: PropTypes.string,
+
+    // 设置字体样式，可选的有'normal', 'italic', 'oblique'
+    fontStyle: PropTypes.string,
+
+    // 设置字体像素行高
+    lineHeight: PropTypes.number,
+
+    // 设置文字像素大小
+    fontSize: PropTypes.number,
+
+    // 设置文字字体
+    fontFamily: PropTypes.string,
+
+    // 设置文字粗细水平
+    fontWeight: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number
+    ]),
+
     fill: PropTypes.string,
 
     fillOpacity: PropTypes.number,
@@ -211,14 +236,6 @@ const axisBasePropTypes = PropTypes.exact({
         // 设置文本旋转角度
         rotate: PropTypes.number,
 
-        // 设置文本连接线的样式属性，false表示不展示
-        labelLine: PropTypes.oneOfType([
-            PropTypes.bool,
-            PropTypes.exact({
-                style: lineBaseStyle
-            })
-        ]),
-
         // 只对极坐标下的文本生效，表示文本是否按照角度进行放射状显示，true表示开启，false表示关闭
         labelEmit: PropTypes.bool,
 
@@ -318,7 +335,7 @@ const legendBasePropTypes = PropTypes.oneOfType([
         // 设置图例标题
         title: PropTypes.exact({
             // 设置图例标题内容
-            title: PropTypes.string,
+            text: PropTypes.string,
 
             // 设置图例与图例项之间的像素距离
             spacing: PropTypes.number,
@@ -372,7 +389,7 @@ const legendBasePropTypes = PropTypes.oneOfType([
 
         // 设置图例数值的相关格式
         itemValue: PropTypes.exact({
-            // 设施是否右对齐，默认为false，仅当设置图例项宽度时生效
+            // 设置是否右对齐，默认为false，仅当设置图例项宽度时生效
             alignRight: PropTypes.bool
         }),
 
@@ -452,14 +469,6 @@ const labelBasePropTypes = PropTypes.exact({
     // 设置文本旋转角度
     rotate: PropTypes.number,
 
-    // 设置文本连接线的样式属性，false表示不展示
-    labelLine: PropTypes.oneOfType([
-        PropTypes.bool,
-        PropTypes.exact({
-            style: lineBaseStyle
-        })
-    ]),
-
     // 只对极坐标下的文本生效，表示文本是否按照角度进行放射状显示，true表示开启，false表示关闭
     labelEmit: PropTypes.bool,
 
@@ -510,9 +519,6 @@ const tooltipBasePropTypes = PropTypes.exact({
     // 设置tooltip marker的样式
     marker: pointBaseStyle,
 
-    // 设置是否展示tooltip内容框，默认为false
-    showContent: PropTypes.bool,
-
     // 精细化设置各个dom部分的css样式
     // 格式为：
     /** Tooltip 内容框的 css 样式定义 */
@@ -559,7 +565,10 @@ const annotationsBasePropTypes = PropTypes.arrayOf(
         //      2、关键字：'min'、'max'、'median'、'start'、'end' 分别代表数据的最大值、最小值、中间值以及坐标系区间的起始和结束； 
         //      3、x, y 都是百分比的形式，如 30%，在绘图区域定位(即坐标系内)。 1 和 2 两种类型的数据可以混用，但是使用百分比形式时 x 和 y 必须都是百分比形式。
         // 第三种，回调函数，可以动态得确定辅助元素的位置，应用于数据动态更新，辅助元素的位置根据数据变化的场景。
-        position: PropTypes.object,
+        position: PropTypes.oneOfType([
+            PropTypes.object,
+            PropTypes.array
+        ]),
 
         // 设置是否将标注绘制到canvas顶层，默认为false，即最底层
         top: PropTypes.bool,
@@ -644,10 +653,10 @@ const annotationsBasePropTypes = PropTypes.arrayOf(
 
 // 定义缩略轴通用PropTypes模板
 const sliderBasePropTypes = PropTypes.exact({
-    // 设置默认起始位置
+    // 设置默认起始位置，0到1之间，表示百分比范围
     start: PropTypes.number,
 
-    // 设置默认结束位置
+    // 设置默认结束位置，0到1之间，表示百分比范围
     end: PropTypes.number,
 
     // 设置缩略轴高度

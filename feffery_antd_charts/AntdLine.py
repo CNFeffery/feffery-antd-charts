@@ -11,6 +11,8 @@ Keyword arguments:
 
 - id (string; optional)
 
+- annotations (optional)
+
 - autoFit (boolean; optional)
 
 - className (string; optional)
@@ -29,51 +31,9 @@ Keyword arguments:
 
 - isStack (boolean; optional)
 
-- legend (dict; optional)
+- label (optional)
 
-    `legend` is a dict with keys:
-
-    - background (dict; optional)
-
-        `background` is a dict with keys:
-
-        - padding (number | list of numbers; optional)
-
-    - flipPage (boolean; optional)
-
-    - itemHeight (number; optional)
-
-    - itemName (dict; optional)
-
-        `itemName` is a dict with keys:
-
-        - spacing (number; optional)
-
-    - itemSpacing (number; optional)
-
-    - itemValue (dict; optional)
-
-        `itemValue` is a dict with keys:
-
-        - alignRight (boolean; optional)
-
-    - itemWidth (number; optional)
-
-    - layout (string; optional)
-
-    - maxHeight (number; optional)
-
-    - maxWidth (number; optional)
-
-    - offsetX (number; optional)
-
-    - offsetY (number; optional)
-
-    - position (string; optional)
-
-    - reversed (boolean; optional)
-
-    - selected (dict; optional) | boolean
+- legend (optional)
 
 - lineStyle (dict; optional)
 
@@ -96,7 +56,7 @@ Keyword arguments:
 
 - locale (string; optional)
 
-- padding (number | list of numbers; optional)
+- padding (number | list of numbers | string; optional)
 
 - point (dict; optional)
 
@@ -126,72 +86,32 @@ Keyword arguments:
 
 - seriesField (string; optional)
 
+- slider (optional)
+
 - smooth (boolean; optional)
 
 - stepType (string; optional)
 
 - style (dict; optional)
 
-- tooltip (dict; optional)
-
-    `tooltip` is a dict with keys:
-
-    - enterable (boolean; optional)
-
-    - fields (list of strings; optional)
-
-    - follow (boolean; optional)
-
-    - position (string; optional)
-
-    - showTitle (boolean; optional)
-
-    - title (string; optional)
+- tooltip (optional)
 
 - width (number; optional)
 
-- xAxis (dict; optional)
-
-    `xAxis` is a dict with keys:
-
-    - position (string; optional)
-
-    - title (dict; optional)
-
-        `title` is a dict with keys:
-
-        - style (optional)
-
-        - text (string; optional)
-
-    - top (boolean; optional)
+- xAxis (optional)
 
 - xField (string; required)
 
-- yAxis (dict; optional)
-
-    `yAxis` is a dict with keys:
-
-    - position (string; optional)
-
-    - title (dict; optional)
-
-        `title` is a dict with keys:
-
-        - style (optional)
-
-        - text (string; optional)
-
-    - top (boolean; optional)
+- yAxis (optional)
 
 - yField (string; required)"""
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, xField=Component.REQUIRED, yField=Component.REQUIRED, seriesField=Component.UNDEFINED, smooth=Component.UNDEFINED, stepType=Component.UNDEFINED, connectNulls=Component.UNDEFINED, isStack=Component.UNDEFINED, color=Component.UNDEFINED, lineStyle=Component.UNDEFINED, point=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, legend=Component.UNDEFINED, tooltip=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'autoFit', 'className', 'color', 'connectNulls', 'data', 'height', 'isStack', 'legend', 'lineStyle', 'loading_state', 'locale', 'padding', 'point', 'renderer', 'seriesField', 'smooth', 'stepType', 'style', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
+    def __init__(self, id=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, xField=Component.REQUIRED, yField=Component.REQUIRED, seriesField=Component.UNDEFINED, smooth=Component.UNDEFINED, stepType=Component.UNDEFINED, connectNulls=Component.UNDEFINED, isStack=Component.UNDEFINED, color=Component.UNDEFINED, lineStyle=Component.UNDEFINED, point=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, slider=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'annotations', 'autoFit', 'className', 'color', 'connectNulls', 'data', 'height', 'isStack', 'label', 'legend', 'lineStyle', 'loading_state', 'locale', 'padding', 'point', 'renderer', 'seriesField', 'slider', 'smooth', 'stepType', 'style', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
         self._type = 'AntdLine'
         self._namespace = 'feffery_antd_charts'
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'autoFit', 'className', 'color', 'connectNulls', 'data', 'height', 'isStack', 'legend', 'lineStyle', 'loading_state', 'locale', 'padding', 'point', 'renderer', 'seriesField', 'smooth', 'stepType', 'style', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
+        self.available_properties = ['id', 'annotations', 'autoFit', 'className', 'color', 'connectNulls', 'data', 'height', 'isStack', 'label', 'legend', 'lineStyle', 'loading_state', 'locale', 'padding', 'point', 'renderer', 'seriesField', 'slider', 'smooth', 'stepType', 'style', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

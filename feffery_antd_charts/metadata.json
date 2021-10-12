@@ -205,64 +205,16 @@
       },
       "xAxis": {
         "type": {
-          "name": "exact",
-          "value": {
-            "top": {
-              "name": "bool",
-              "required": false
-            },
-            "position": {
-              "name": "string",
-              "required": false
-            },
-            "title": {
-              "name": "exact",
-              "value": {
-                "text": {
-                  "name": "string",
-                  "required": false
-                },
-                "style": {
-                  "name": "custom",
-                  "raw": "textBaseStyle",
-                  "required": false
-                }
-              },
-              "required": false
-            }
-          }
+          "name": "custom",
+          "raw": "axisBasePropTypes"
         },
         "required": false,
         "description": ""
       },
       "yAxis": {
         "type": {
-          "name": "exact",
-          "value": {
-            "top": {
-              "name": "bool",
-              "required": false
-            },
-            "position": {
-              "name": "string",
-              "required": false
-            },
-            "title": {
-              "name": "exact",
-              "value": {
-                "text": {
-                  "name": "string",
-                  "required": false
-                },
-                "style": {
-                  "name": "custom",
-                  "raw": "textBaseStyle",
-                  "required": false
-                }
-              },
-              "required": false
-            }
-          }
+          "name": "custom",
+          "raw": "axisBasePropTypes"
         },
         "required": false,
         "description": ""
@@ -300,6 +252,9 @@
               "value": {
                 "name": "number"
               }
+            },
+            {
+              "name": "string"
             }
           ]
         },
@@ -322,142 +277,40 @@
       },
       "legend": {
         "type": {
-          "name": "union",
-          "value": [
-            {
-              "name": "exact",
-              "value": {
-                "position": {
-                  "name": "string",
-                  "required": false
-                },
-                "layout": {
-                  "name": "string",
-                  "required": false
-                },
-                "offsetX": {
-                  "name": "number",
-                  "required": false
-                },
-                "offsetY": {
-                  "name": "number",
-                  "required": false
-                },
-                "background": {
-                  "name": "exact",
-                  "value": {
-                    "padding": {
-                      "name": "union",
-                      "value": [
-                        {
-                          "name": "number"
-                        },
-                        {
-                          "name": "arrayOf",
-                          "value": {
-                            "name": "number"
-                          }
-                        }
-                      ],
-                      "required": false
-                    }
-                  },
-                  "required": false
-                },
-                "flipPage": {
-                  "name": "bool",
-                  "required": false
-                },
-                "maxWidth": {
-                  "name": "number",
-                  "required": false
-                },
-                "maxHeight": {
-                  "name": "number",
-                  "required": false
-                },
-                "reversed": {
-                  "name": "bool",
-                  "required": false
-                },
-                "itemHeight": {
-                  "name": "number",
-                  "required": false
-                },
-                "itemWidth": {
-                  "name": "number",
-                  "required": false
-                },
-                "itemName": {
-                  "name": "exact",
-                  "value": {
-                    "spacing": {
-                      "name": "number",
-                      "required": false
-                    }
-                  },
-                  "required": false
-                },
-                "itemValue": {
-                  "name": "exact",
-                  "value": {
-                    "alignRight": {
-                      "name": "bool",
-                      "required": false
-                    }
-                  },
-                  "required": false
-                },
-                "itemSpacing": {
-                  "name": "number",
-                  "required": false
-                },
-                "selected": {
-                  "name": "object",
-                  "required": false
-                }
-              }
-            },
-            {
-              "name": "bool"
-            }
-          ]
+          "name": "custom",
+          "raw": "legendBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "label": {
+        "type": {
+          "name": "custom",
+          "raw": "labelBasePropTypes"
         },
         "required": false,
         "description": ""
       },
       "tooltip": {
         "type": {
-          "name": "exact",
-          "value": {
-            "fields": {
-              "name": "arrayOf",
-              "value": {
-                "name": "string"
-              },
-              "required": false
-            },
-            "follow": {
-              "name": "bool",
-              "required": false
-            },
-            "enterable": {
-              "name": "bool",
-              "required": false
-            },
-            "showTitle": {
-              "name": "bool",
-              "required": false
-            },
-            "title": {
-              "name": "string",
-              "required": false
-            },
-            "position": {
-              "name": "string",
-              "required": false
-            }
-          }
+          "name": "custom",
+          "raw": "tooltipBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "annotations": {
+        "type": {
+          "name": "custom",
+          "raw": "annotationsBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "slider": {
+        "type": {
+          "name": "custom",
+          "raw": "sliderBasePropTypes"
         },
         "required": false,
         "description": ""

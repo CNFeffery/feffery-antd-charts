@@ -1,7 +1,16 @@
 import { Line } from '@ant-design/charts';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { pointBaseStyle, lineBaseStyle, textBaseStyle } from './BasePropTypes.react';
+import {
+    pointBaseStyle,
+    lineBaseStyle,
+    axisBasePropTypes,
+    legendBasePropTypes,
+    labelBasePropTypes,
+    tooltipBasePropTypes,
+    annotationsBasePropTypes,
+    sliderBasePropTypes
+} from './BasePropTypes.react';
 
 // 定义折线图组件AntdLine，部分API参数参考https://charts.ant.design/zh-CN/demos/line
 export default class AntdLine extends Component {
@@ -31,6 +40,10 @@ export default class AntdLine extends Component {
             renderer,
             locale,
             legend,
+            label,
+            tooltip,
+            annotations,
+            slider,
             setProps
         } = this.props;
 
@@ -75,14 +88,51 @@ export default class AntdLine extends Component {
 
         if (xAxis) {
             config.xAxis = xAxis
+            if (config.xAxis?.label?.formatter?.func) {
+                config.xAxis.label.formatter = eval(config.xAxis.label.formatter.func)
+            }
         }
 
         if (yAxis) {
             config.yAxis = yAxis
+            if (config.yAxis?.label?.formatter?.func) {
+                config.yAxis.label.formatter = eval(config.yAxis.label.formatter.func)
+            }
         }
 
         if (legend) {
             config.legend = legend
+        }
+
+        if (label) {
+            config.label = label
+            if (config.label?.formatter?.func) {
+                config.label.formatter = eval(config.label.formatter.func)
+            }
+        }
+
+        if (tooltip) {
+            config.tooltip = tooltip
+
+            if (config.tooltip?.formatter?.func) {
+                config.tooltip.formatter = eval(config.tooltip.formatter.func)
+            }
+
+            if (config.tooltip?.customItems?.func) {
+                config.tooltip.customItems = eval(config.tooltip.customItems.func)
+            }
+        }
+
+        if (annotations) {
+            config.annotations = annotations
+        }
+
+        if (slider) {
+            config.slider = slider
+
+            if (config.slider?.formatter?.func) {
+                config.slider.formatter = eval(config.slider.formatter.func)
+            }
         }
 
         return <Line id={id}
@@ -136,11 +186,11 @@ AntdLine.propTypes = {
         PropTypes.arrayOf(PropTypes.string),
         PropTypes.exact({
             // 传入字符串形式的js函数体源码，例如
-            // (type) => {
-            //     if (type === 'a'){
+            // (ref) => {
+            //     if (ref.series === '系列一'){
             //         return 'red'
             //     }
-            //     return 'yellow'
+            //     return 'blue'
             // }
             func: PropTypes.string
         })
@@ -198,40 +248,10 @@ AntdLine.propTypes = {
     }),
 
     // 设置x坐标轴相关属性
-    xAxis: PropTypes.exact({
-        // 默认false，设置是否将对应坐标轴渲染于画布顶层，从而避免部分图表坐标轴被图形遮挡
-        top: PropTypes.bool,
-
-        // 适用于*直角坐标系*，设置坐标轴方位，可选的有'top'、'bottom'、'left'、'right'
-        position: PropTypes.string,
-
-        // 设置坐标轴标题
-        title: PropTypes.exact({
-            // 设置标题文字内容
-            text: PropTypes.string,
-
-            // 设置标题文字样式属性
-            style: textBaseStyle
-        })
-    }),
+    xAxis: axisBasePropTypes,
 
     // 设置y坐标轴相关属性
-    yAxis: PropTypes.exact({
-        // 默认false，设置是否将对应坐标轴渲染于画布顶层，从而避免部分图表坐标轴被图形遮挡
-        top: PropTypes.bool,
-
-        // 适用于*直角坐标系*，设置坐标轴的位置，可选的有'top'、'bottom'、'left'、'right'
-        position: PropTypes.string,
-
-        // 设置坐标轴标题
-        title: PropTypes.exact({
-            // 设置标题文字内容
-            text: PropTypes.string,
-
-            // 设置标题文字样式属性
-            style: textBaseStyle
-        })
-    }),
+    yAxis: axisBasePropTypes,
 
     // 定义图表容器像素宽度，默认为400
     width: PropTypes.number,
@@ -245,7 +265,8 @@ AntdLine.propTypes = {
     // 定义图表四个方向的空白间距值，可以为单个数字譬如16，也可以为四个数字构成的数组，按顺序代表上-右-下-左分别的像素间距
     padding: PropTypes.oneOfType([
         PropTypes.number,
-        PropTypes.arrayOf(PropTypes.number)
+        PropTypes.arrayOf(PropTypes.number),
+        PropTypes.string
     ]),
 
     // 设置图表渲染方式为'canvas'或'svg'模式，默认为'canvas'
@@ -255,98 +276,19 @@ AntdLine.propTypes = {
     locale: PropTypes.string,
 
     // 配置图例相关参数
-    legend: PropTypes.oneOfType([
-        PropTypes.exact({
-            // 设置图例位置，可选的有'top'、'top-left'、'top-right'、'left'、'left-top'、
-            // 'left-bottom'、'right'、'right-top'、'right-bottom'、'bottom'、'bottom-left'及'bottom-right'
-            position: PropTypes.string,
+    legend: legendBasePropTypes,
 
-            // 设置图例布局方式，可选的有'horizontal'及'vertical'
-            layout: PropTypes.string,
-
-            // 设置图例整体在x方向上的偏移
-            offsetX: PropTypes.number,
-
-            // 设置图例整体在y方向上的偏移
-            offsetY: PropTypes.number,
-
-            // 配置背景框
-            background: PropTypes.exact({
-                // 设置背景框内部留白宽度
-                padding: PropTypes.oneOfType([
-                    PropTypes.number,
-                    PropTypes.arrayOf(PropTypes.number)
-                ])
-            }),
-
-            // 在图例元素较多时设置是否分页
-            flipPage: PropTypes.bool,
-
-            // 设置图例项最大宽度值，当layout设置为'horizontal'且图例项宽度总和超出maxWidth时
-            // 会强制激活flipPage: true进行分页展示
-            maxWidth: PropTypes.number,
-
-            // 设置图例项最大高度值，当layout设置为'vertical'且图例项高度总和超出maxHeight时
-            // 会强制激活flipPage: true进行分页展示
-            maxHeight: PropTypes.number,
-
-            // 设置是否以逆序方式展示图例项
-            reversed: PropTypes.bool,
-
-            // 设置图例的高度，默认为null
-            itemHeight: PropTypes.number,
-
-            // 设置图例的宽度，默认为null
-            itemWidth: PropTypes.number,
-
-            // 设置图例文本的相关格式
-            itemName: PropTypes.exact({
-                // 设置图例项marker同后面name的间距
-                spacing: PropTypes.number
-            }),
-
-            // 设置图例数值的相关格式
-            itemValue: PropTypes.exact({
-                // 设施是否右对齐，默认为false，仅当设置图例项宽度时生效
-                alignRight: PropTypes.bool
-            }),
-
-            // 设置图例项水平方向的间距
-            itemSpacing: PropTypes.number,
-
-            // 用于自定义图例的高亮状态，譬如：
-            // selected: {
-            //     '分类一': true,
-            //     '分类二': false,
-            //     '分类三': false,
-            // }
-            selected: PropTypes.object
-        }),
-        // 设置为false时会关闭图例显示
-        PropTypes.bool
-    ]),
+    // 配置文字标签相关参数
+    label: labelBasePropTypes,
 
     // 设置tooltip相关参数
-    tooltip: PropTypes.exact({
-        // 设置tooltip中要展示的字段
-        fields: PropTypes.arrayOf(PropTypes.string),
+    tooltip: tooltipBasePropTypes,
 
-        // 设置tooltip内容是否跟随鼠标移动，默认为true
-        follow: PropTypes.bool,
+    // 配置标注相关参数
+    annotations: annotationsBasePropTypes,
 
-        // 设置tooltip是否允许鼠标划入，默认为false
-        enterable: PropTypes.bool,
-
-        // 设置是否展示tooltip的标题，默认为false
-        showTitle: PropTypes.bool,
-
-        // 设置tooltip的标题内容，可传入字段名从而显示对应数据点的对应字段信息，若传入的字段名不存在
-        // 则会直接显示原始的title内容
-        title: PropTypes.string,
-
-        // 设置tooltip相对于数据点的展示方位，可选的有'top'、'bottom'、'left'及'right'
-        position: PropTypes.string
-    }),
+    // 配置缩略轴相关参数
+    slider: sliderBasePropTypes,
 
     loading_state: PropTypes.shape({
         /**

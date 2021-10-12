@@ -9,6 +9,7 @@ An AntdLine component.
 
 Keyword arguments:
 - `id` (String; optional)
+- `annotations` (optional)
 - `autoFit` (Bool; optional)
 - `className` (String; optional)
 - `color` (optional): . color has the following type: String | Array of Strings | lists containing elements 'func'.
@@ -18,29 +19,8 @@ Those elements have the following types:
 - `data` (Array of Dicts; required)
 - `height` (Real; optional)
 - `isStack` (Bool; optional)
-- `legend` (optional): . legend has the following type: lists containing elements 'position', 'layout', 'offsetX', 'offsetY', 'background', 'flipPage', 'maxWidth', 'maxHeight', 'reversed', 'itemHeight', 'itemWidth', 'itemName', 'itemValue', 'itemSpacing', 'selected'.
-Those elements have the following types:
-  - `position` (String; optional)
-  - `layout` (String; optional)
-  - `offsetX` (Real; optional)
-  - `offsetY` (Real; optional)
-  - `background` (optional): . background has the following type: lists containing elements 'padding'.
-Those elements have the following types:
-  - `padding` (Real | Array of Reals; optional)
-  - `flipPage` (Bool; optional)
-  - `maxWidth` (Real; optional)
-  - `maxHeight` (Real; optional)
-  - `reversed` (Bool; optional)
-  - `itemHeight` (Real; optional)
-  - `itemWidth` (Real; optional)
-  - `itemName` (optional): . itemName has the following type: lists containing elements 'spacing'.
-Those elements have the following types:
-  - `spacing` (Real; optional)
-  - `itemValue` (optional): . itemValue has the following type: lists containing elements 'alignRight'.
-Those elements have the following types:
-  - `alignRight` (Bool; optional)
-  - `itemSpacing` (Real; optional)
-  - `selected` (Dict; optional) | Bool
+- `label` (optional)
+- `legend` (optional)
 - `lineStyle` (optional): . lineStyle has the following type: lists containing elements 'func'.
 Those elements have the following types:
   - `func` (String; optional)
@@ -50,7 +30,7 @@ Those elements have the following types:
   - `prop_name` (String; optional): Holds which property is loading
   - `component_name` (String; optional): Holds the name of the component that is loading
 - `locale` (String; optional)
-- `padding` (Real | Array of Reals; optional)
+- `padding` (Real | Array of Reals | String; optional)
 - `point` (optional): . point has the following type: lists containing elements 'color', 'shape', 'style'.
 Those elements have the following types:
   - `color` (optional): . color has the following type: String | Array of Strings | lists containing elements 'func'.
@@ -64,39 +44,19 @@ Those elements have the following types:
   - `func` (String; optional)
 - `renderer` (String; optional)
 - `seriesField` (String; optional)
+- `slider` (optional)
 - `smooth` (Bool; optional)
 - `stepType` (String; optional)
 - `style` (Dict; optional)
-- `tooltip` (optional): . tooltip has the following type: lists containing elements 'fields', 'follow', 'enterable', 'showTitle', 'title', 'position'.
-Those elements have the following types:
-  - `fields` (Array of Strings; optional)
-  - `follow` (Bool; optional)
-  - `enterable` (Bool; optional)
-  - `showTitle` (Bool; optional)
-  - `title` (String; optional)
-  - `position` (String; optional)
+- `tooltip` (optional)
 - `width` (Real; optional)
-- `xAxis` (optional): . xAxis has the following type: lists containing elements 'top', 'position', 'title'.
-Those elements have the following types:
-  - `top` (Bool; optional)
-  - `position` (String; optional)
-  - `title` (optional): . title has the following type: lists containing elements 'text', 'style'.
-Those elements have the following types:
-  - `text` (String; optional)
-  - `style` (optional)
+- `xAxis` (optional)
 - `xField` (String; required)
-- `yAxis` (optional): . yAxis has the following type: lists containing elements 'top', 'position', 'title'.
-Those elements have the following types:
-  - `top` (Bool; optional)
-  - `position` (String; optional)
-  - `title` (optional): . title has the following type: lists containing elements 'text', 'style'.
-Those elements have the following types:
-  - `text` (String; optional)
-  - `style` (optional)
+- `yAxis` (optional)
 - `yField` (String; required)
 """
 function ''_antdline(; kwargs...)
-        available_props = Symbol[:id, :autoFit, :className, :color, :connectNulls, :data, :height, :isStack, :legend, :lineStyle, :loading_state, :locale, :padding, :point, :renderer, :seriesField, :smooth, :stepType, :style, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
+        available_props = Symbol[:id, :annotations, :autoFit, :className, :color, :connectNulls, :data, :height, :isStack, :label, :legend, :lineStyle, :loading_state, :locale, :padding, :point, :renderer, :seriesField, :slider, :smooth, :stepType, :style, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
         wild_props = Symbol[]
         return Component("''_antdline", "AntdLine", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end
