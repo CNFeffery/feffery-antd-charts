@@ -77,6 +77,8 @@ Keyword arguments:
 
 - dodgePadding (number; optional)
 
+- groupField (string; optional)
+
 - height (number; optional)
 
 - intervalPadding (number; optional)
@@ -136,12 +138,12 @@ Keyword arguments:
 
 - yField (string; required)"""
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, xField=Component.REQUIRED, yField=Component.REQUIRED, seriesField=Component.UNDEFINED, isStack=Component.UNDEFINED, isGroup=Component.UNDEFINED, isRange=Component.UNDEFINED, isPercent=Component.UNDEFINED, color=Component.UNDEFINED, intervalPadding=Component.UNDEFINED, dodgePadding=Component.UNDEFINED, minBarWidth=Component.UNDEFINED, maxBarWidth=Component.UNDEFINED, barStyle=Component.UNDEFINED, barBackground=Component.UNDEFINED, barWidthRatio=Component.UNDEFINED, marginRatio=Component.UNDEFINED, scrollbar=Component.UNDEFINED, conversionTag=Component.UNDEFINED, connectedArea=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'annotations', 'autoFit', 'barBackground', 'barStyle', 'barWidthRatio', 'className', 'color', 'connectedArea', 'conversionTag', 'data', 'dodgePadding', 'height', 'intervalPadding', 'isGroup', 'isPercent', 'isRange', 'isStack', 'label', 'legend', 'loading_state', 'locale', 'marginRatio', 'maxBarWidth', 'minBarWidth', 'padding', 'renderer', 'scrollbar', 'seriesField', 'style', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
+    def __init__(self, id=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, xField=Component.REQUIRED, yField=Component.REQUIRED, seriesField=Component.UNDEFINED, groupField=Component.UNDEFINED, isStack=Component.UNDEFINED, isGroup=Component.UNDEFINED, isRange=Component.UNDEFINED, isPercent=Component.UNDEFINED, color=Component.UNDEFINED, intervalPadding=Component.UNDEFINED, dodgePadding=Component.UNDEFINED, minBarWidth=Component.UNDEFINED, maxBarWidth=Component.UNDEFINED, barStyle=Component.UNDEFINED, barBackground=Component.UNDEFINED, barWidthRatio=Component.UNDEFINED, marginRatio=Component.UNDEFINED, scrollbar=Component.UNDEFINED, conversionTag=Component.UNDEFINED, connectedArea=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'annotations', 'autoFit', 'barBackground', 'barStyle', 'barWidthRatio', 'className', 'color', 'connectedArea', 'conversionTag', 'data', 'dodgePadding', 'groupField', 'height', 'intervalPadding', 'isGroup', 'isPercent', 'isRange', 'isStack', 'label', 'legend', 'loading_state', 'locale', 'marginRatio', 'maxBarWidth', 'minBarWidth', 'padding', 'renderer', 'scrollbar', 'seriesField', 'style', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
         self._type = 'AntdBar'
         self._namespace = 'feffery_antd_charts'
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'annotations', 'autoFit', 'barBackground', 'barStyle', 'barWidthRatio', 'className', 'color', 'connectedArea', 'conversionTag', 'data', 'dodgePadding', 'height', 'intervalPadding', 'isGroup', 'isPercent', 'isRange', 'isStack', 'label', 'legend', 'loading_state', 'locale', 'marginRatio', 'maxBarWidth', 'minBarWidth', 'padding', 'renderer', 'scrollbar', 'seriesField', 'style', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
+        self.available_properties = ['id', 'annotations', 'autoFit', 'barBackground', 'barStyle', 'barWidthRatio', 'className', 'color', 'connectedArea', 'conversionTag', 'data', 'dodgePadding', 'groupField', 'height', 'intervalPadding', 'isGroup', 'isPercent', 'isRange', 'isStack', 'label', 'legend', 'loading_state', 'locale', 'marginRatio', 'maxBarWidth', 'minBarWidth', 'padding', 'renderer', 'scrollbar', 'seriesField', 'style', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

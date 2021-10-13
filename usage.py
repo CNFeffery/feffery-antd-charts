@@ -425,56 +425,41 @@ app.layout = html.Div(
         html.H3('AntdBar 条形图示例'),
         html.Div(
             fact.AntdBar(
-                data=demjson.decode('''[
-    {
-      type: '分类一',
-      values: [76, 100],
-    },
-    {
-      type: '分类二',
-      values: [56, 108],
-    },
-    {
-      type: '分类三',
-      values: [38, 129],
-    },
-    {
-      type: '分类四',
-      values: [58, 155],
-    },
-    {
-      type: '分类五',
-      values: [45, 120],
-    },
-    {
-      type: '分类六',
-      values: [23, 99],
-    },
-    {
-      type: '分类七',
-      values: [18, 56],
-    },
-    {
-      type: '分类八',
-      values: [18, 34],
-    },
-  ]'''),
-                xField='values',
-                yField='type',
-                isRange=True,
-                label={
-                    'position': 'middle',
-                    'formatter': {
-                        'func': '''
-                        (item) => {
-                            return item.value.toFixed(4)
-                        }'''
-                    }
-                },
+                data=requests.get(
+                    'https://gw.alipayobjects.com/os/antfincdn/mor%26R5yBI9/stack-group-column.json').json(),
+                xField='order_amt',
+                yField='product_type',
+                isGroup=True,
+                isStack=True,
+                seriesField='product_sub_type',
+                groupField='sex',
                 barBackground={
                     'style': {
                         'fill': 'rgba(0,0,0,0.1)'
                     }
+                }
+            ),
+            style={
+                'width': '1000px',
+                'height': '600px',
+                'padding': '30 0 0 0'
+            }
+        ),
+        html.H3('AntdColumn 柱状图示例'),
+        html.Div(
+            fact.AntdColumn(
+                data=requests.get(
+                    'https://gw.alipayobjects.com/os/antfincdn/8elHX%26irfq/stack-column-data.json').json(),
+                xField='year',
+                yField='value',
+                seriesField='type',
+                isStack=True,
+                label={
+                    'position': 'middle'
+                },
+                columnStyle={
+                    'radius': 5,
+                    'cursor': 'pointer'
                 }
             ),
             style={

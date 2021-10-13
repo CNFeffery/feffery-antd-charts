@@ -1,27 +1,27 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-export ''_antdbar
+export ''_antdcolumn
 
 """
-    ''_antdbar(;kwargs...)
+    ''_antdcolumn(;kwargs...)
 
-An AntdBar component.
+An AntdColumn component.
 
 Keyword arguments:
 - `id` (String; optional)
 - `annotations` (optional)
 - `autoFit` (Bool; optional)
-- `barBackground` (optional): . barBackground has the following type: lists containing elements 'style'.
-Those elements have the following types:
-  - `style` (optional)
-- `barStyle` (optional): . barStyle has the following type: lists containing elements 'func'.
-Those elements have the following types:
-  - `func` (String; optional)
-- `barWidthRatio` (Real; optional)
 - `className` (String; optional)
 - `color` (optional): . color has the following type: String | Array of Strings | lists containing elements 'func'.
 Those elements have the following types:
   - `func` (String; optional)
+- `columnBackground` (optional): . columnBackground has the following type: lists containing elements 'style'.
+Those elements have the following types:
+  - `style` (optional)
+- `columnStyle` (optional): . columnStyle has the following type: lists containing elements 'func'.
+Those elements have the following types:
+  - `func` (String; optional)
+- `columnWidthRatio` (Real; optional)
 - `connectedArea` (optional): . connectedArea has the following type: lists containing elements 'trigger'.
 Those elements have the following types:
   - `trigger` (Bool | String; optional)
@@ -57,12 +57,13 @@ Those elements have the following types:
   - `component_name` (String; optional): Holds the name of the component that is loading
 - `locale` (String; optional)
 - `marginRatio` (Real; optional)
-- `maxBarWidth` (Real; optional)
-- `minBarWidth` (Real; optional)
+- `maxColumnWidth` (Real; optional)
+- `minColumnWidth` (Real; optional)
 - `padding` (Real | Array of Reals | String; optional)
 - `renderer` (String; optional)
 - `scrollbar` (optional)
 - `seriesField` (String; optional)
+- `slider` (optional)
 - `style` (Dict; optional)
 - `tooltip` (optional)
 - `width` (Real; optional)
@@ -71,9 +72,9 @@ Those elements have the following types:
 - `yAxis` (optional)
 - `yField` (String; required)
 """
-function ''_antdbar(; kwargs...)
-        available_props = Symbol[:id, :annotations, :autoFit, :barBackground, :barStyle, :barWidthRatio, :className, :color, :connectedArea, :conversionTag, :data, :dodgePadding, :groupField, :height, :intervalPadding, :isGroup, :isPercent, :isRange, :isStack, :label, :legend, :loading_state, :locale, :marginRatio, :maxBarWidth, :minBarWidth, :padding, :renderer, :scrollbar, :seriesField, :style, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
+function ''_antdcolumn(; kwargs...)
+        available_props = Symbol[:id, :annotations, :autoFit, :className, :color, :columnBackground, :columnStyle, :columnWidthRatio, :connectedArea, :conversionTag, :data, :dodgePadding, :groupField, :height, :intervalPadding, :isGroup, :isPercent, :isRange, :isStack, :label, :legend, :loading_state, :locale, :marginRatio, :maxColumnWidth, :minColumnWidth, :padding, :renderer, :scrollbar, :seriesField, :slider, :style, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
         wild_props = Symbol[]
-        return Component("''_antdbar", "AntdBar", "feffery_antd_charts", available_props, wild_props; kwargs...)
+        return Component("''_antdcolumn", "AntdColumn", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end
 

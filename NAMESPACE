@@ -2,4 +2,5 @@
 
 export(''AntdArea)
 export(''AntdBar)
+export(''AntdColumn)
 export(''AntdLine)

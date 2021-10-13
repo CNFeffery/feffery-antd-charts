@@ -1,4 +1,4 @@
-import { Bar } from '@ant-design/charts';
+import { Column } from '@ant-design/charts';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -8,13 +8,14 @@ import {
     tooltipBasePropTypes,
     annotationsBasePropTypes,
     scrollbarBasePropTypes,
+    sliderBasePropTypes,
     baseStyle,
     areaBaseStyle,
     textBaseStyle
 } from './BasePropTypes.react';
 
-// 定义条形图组件AntdBar，部分API参数参考https://charts.ant.design/zh-CN/demos/bar
-export default class AntdBar extends Component {
+// 定义柱状图AntdColumn，部分API参数参考https://charts.ant.design/zh-CN/demos/column
+export default class AntdColumn extends Component {
     render() {
         // 取得必要属性或参数
         let {
@@ -33,11 +34,11 @@ export default class AntdBar extends Component {
             color,
             intervalPadding,
             dodgePadding,
-            minBarWidth,
-            maxBarWidth,
-            barStyle,
-            barBackground,
-            barWidthRatio,
+            minColumnWidth,
+            maxColumnWidth,
+            columnStyle,
+            columnBackground,
+            columnWidthRatio,
             marginRatio,
             scrollbar,
             conversionTag,
@@ -54,6 +55,7 @@ export default class AntdBar extends Component {
             label,
             tooltip,
             annotations,
+            slider,
             setProps
         } = this.props;
 
@@ -71,10 +73,10 @@ export default class AntdBar extends Component {
             isPercent: isPercent,
             intervalPadding: intervalPadding,
             dodgePadding: dodgePadding,
-            minBarWidth: minBarWidth,
-            maxBarWidth: maxBarWidth,
-            barBackground: barBackground,
-            barWidthRatio: barWidthRatio,
+            minColumnWidth: minColumnWidth,
+            maxColumnWidth: maxColumnWidth,
+            columnBackground: columnBackground,
+            columnWidthRatio: columnWidthRatio,
             marginRatio: marginRatio,
             scrollbar: scrollbar,
             connectedArea: connectedArea,
@@ -99,8 +101,8 @@ export default class AntdBar extends Component {
             config.color = color?.func ? eval(color?.func) : color
         }
 
-        if (barStyle) {
-            config.barStyle = barStyle?.func ? eval(barStyle?.func) : barStyle
+        if (columnStyle) {
+            config.columnStyle = columnStyle?.func ? eval(columnStyle?.func) : columnStyle
         }
 
         if (xAxis) {
@@ -144,7 +146,15 @@ export default class AntdBar extends Component {
             config.annotations = annotations
         }
 
-        return <Bar id={id}
+        if (slider) {
+            config.slider = slider
+
+            if (config.slider?.formatter?.func) {
+                config.slider.formatter = eval(config.slider.formatter.func)
+            }
+        }
+
+        return <Column id={id}
             className={className}
             style={style}
             {...config} />;
@@ -152,7 +162,7 @@ export default class AntdBar extends Component {
 }
 
 // 定义参数或属性
-AntdBar.propTypes = {
+AntdColumn.propTypes = {
     // 部件id
     id: PropTypes.string,
 
@@ -174,7 +184,7 @@ AntdBar.propTypes = {
     // 定义作为分组依据的字段名
     seriesField: PropTypes.string,
 
-    // 用于在堆叠分组条形图中指定分组字段，此时seriesField指定的字段会作为每个组内堆叠的分层依据
+    // 用于在堆叠分组柱状图中指定分组字段，此时seriesField指定的字段会作为每个组内堆叠的分层依据
     groupField: PropTypes.string,
 
     // 在存在seriesField分组字段时，用于设置是否堆叠条形图
@@ -207,20 +217,23 @@ AntdBar.propTypes = {
         })
     ]),
 
+    // 配置缩略轴相关参数
+    slider: sliderBasePropTypes,
+
     // 设置分组条形图组间像素间隔宽度
     intervalPadding: PropTypes.number,
 
     // 设置分组条形图组内像素间隔宽度
     dodgePadding: PropTypes.number,
 
-    // 设置条形图的最小像素宽度，默认会自适应
-    minBarWidth: PropTypes.number,
+    // 设置柱状图的最小像素宽度
+    minColumnWidth: PropTypes.number,
 
-    // 设置条形图的最大像素宽度，默认会自适应
-    maxBarWidth: PropTypes.number,
+    // 设置柱状图的最大像素宽度
+    maxColumnWidth: PropTypes.number,
 
     // 设置柱体的样式
-    barStyle: PropTypes.oneOfType([
+    columnStyle: PropTypes.oneOfType([
         baseStyle,
         PropTypes.exact({
             // 回调模式
@@ -229,15 +242,15 @@ AntdBar.propTypes = {
     ]),
 
     // 设置柱状图背景样式
-    barBackground: PropTypes.exact({
+    columnBackground: PropTypes.exact({
         // 具体样式
         style: areaBaseStyle
     }),
 
-    // 设置条形图宽度占比，0~1之间
-    barWidthRatio: PropTypes.number,
+    // 设置柱状图宽度占比，0~1之间
+    columnWidthRatio: PropTypes.number,
 
-    // 设置分组条形图中条形之间的间距，0~1之间
+    // 设置分组柱状图中条形之间的间距，0~1之间
     marginRatio: PropTypes.number,
 
     // 设置条形图滚动条样式
@@ -351,5 +364,5 @@ AntdBar.propTypes = {
 };
 
 // 设置默认参数
-AntdBar.defaultProps = {
+AntdColumn.defaultProps = {
 }

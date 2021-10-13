@@ -7,6 +7,13 @@ import PropTypes from 'prop-types';
 // 定义全局通用style参数模板
 const baseStyle = PropTypes.exact({
 
+    // 定义矩形圆角像素程度，number或[number, number, number, number]
+    radius: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.arrayOf(PropTypes.number)
+    ]),
+
+
     // 设置点半径像素大小
     r: PropTypes.number,
 
