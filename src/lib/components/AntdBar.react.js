@@ -2,6 +2,7 @@ import { Bar } from '@ant-design/charts';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
+    metaBasePropTypes,
     axisBasePropTypes,
     legendBasePropTypes,
     labelBasePropTypes,
@@ -22,6 +23,7 @@ export default class AntdBar extends Component {
             className,
             style,
             data,
+            meta,
             xField,
             yField,
             seriesField,
@@ -48,6 +50,7 @@ export default class AntdBar extends Component {
             height,
             autoFit,
             padding,
+            appendPadding,
             renderer,
             locale,
             legend,
@@ -57,10 +60,23 @@ export default class AntdBar extends Component {
             setProps
         } = this.props;
 
+        // 预处理元信息
+        if (meta) {
+            for (let i in Object.keys(meta)) {
+
+                if (meta[Object.keys(meta)[i]].formatter) {
+                    meta[Object.keys(meta)[i]].formatter = meta[Object.keys(meta)[i]]?.formatter?.func
+                        ? eval(meta[Object.keys(meta)[i]]?.formatter?.func) : meta[Object.keys(meta)[i]]?.formatter
+                }
+            }
+        }
+
 
         let config = {
             data: data,
+            meta: meta,
             padding: padding,
+            appendPadding: appendPadding,
             xField: xField,
             yField: yField,
             seriesField: seriesField,
@@ -164,6 +180,9 @@ AntdBar.propTypes = {
 
     // 定义绘图所需数据，必须参数
     data: PropTypes.arrayOf(PropTypes.object).isRequired,
+
+    // 定义字段预处理元信息
+    meta: metaBasePropTypes,
 
     // 定义作为x轴的字段名
     xField: PropTypes.string.isRequired,
@@ -305,6 +324,13 @@ AntdBar.propTypes = {
 
     // 定义图表四个方向的空白间距值，可以为单个数字譬如16，也可以为四个数字构成的数组，按顺序代表上-右-下-左分别的像素间距
     padding: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.arrayOf(PropTypes.number),
+        PropTypes.string
+    ]),
+
+    // 定义在padding基础上额外的像素填充间距
+    appendPadding: PropTypes.oneOfType([
         PropTypes.number,
         PropTypes.arrayOf(PropTypes.number),
         PropTypes.string

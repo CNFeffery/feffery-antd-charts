@@ -10,6 +10,7 @@ An AntdArea component.
 Keyword arguments:
 - `id` (String; optional)
 - `annotations` (optional)
+- `appendPadding` (Real | Array of Reals | String; optional)
 - `areaStyle` (optional): . areaStyle has the following type: lists containing elements 'func'.
 Those elements have the following types:
   - `func` (String; optional)
@@ -38,6 +39,7 @@ Those elements have the following types:
   - `prop_name` (String; optional): Holds which property is loading
   - `component_name` (String; optional): Holds the name of the component that is loading
 - `locale` (String; optional)
+- `meta` (optional)
 - `padding` (Real | Array of Reals | String; optional)
 - `point` (optional): . point has the following type: lists containing elements 'color', 'shape', 'style'.
 Those elements have the following types:
@@ -64,7 +66,7 @@ Those elements have the following types:
 - `yField` (String; required)
 """
 function ''_antdarea(; kwargs...)
-        available_props = Symbol[:id, :annotations, :areaStyle, :autoFit, :className, :color, :data, :height, :isPercent, :isStack, :label, :legend, :line, :loading_state, :locale, :padding, :point, :renderer, :seriesField, :slider, :smooth, :startOnZero, :style, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
+        available_props = Symbol[:id, :annotations, :appendPadding, :areaStyle, :autoFit, :className, :color, :data, :height, :isPercent, :isStack, :label, :legend, :line, :loading_state, :locale, :meta, :padding, :point, :renderer, :seriesField, :slider, :smooth, :startOnZero, :style, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
         wild_props = Symbol[]
         return Component("''_antdarea", "AntdArea", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

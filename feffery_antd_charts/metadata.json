@@ -35,6 +35,14 @@
         "required": true,
         "description": ""
       },
+      "meta": {
+        "type": {
+          "name": "custom",
+          "raw": "metaBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
       "xField": {
         "type": {
           "name": "string"
@@ -313,6 +321,27 @@
         "required": false,
         "description": ""
       },
+      "appendPadding": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "number"
+            },
+            {
+              "name": "arrayOf",
+              "value": {
+                "name": "number"
+              }
+            },
+            {
+              "name": "string"
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
       "renderer": {
         "type": {
           "name": "string"
@@ -434,6 +463,14 @@
           }
         },
         "required": true,
+        "description": ""
+      },
+      "meta": {
+        "type": {
+          "name": "custom",
+          "raw": "metaBasePropTypes"
+        },
+        "required": false,
         "description": ""
       },
       "xField": {
@@ -752,6 +789,27 @@
         "required": false,
         "description": ""
       },
+      "appendPadding": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "number"
+            },
+            {
+              "name": "arrayOf",
+              "value": {
+                "name": "number"
+              }
+            },
+            {
+              "name": "string"
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
       "renderer": {
         "type": {
           "name": "string"
@@ -865,6 +923,14 @@
           }
         },
         "required": true,
+        "description": ""
+      },
+      "meta": {
+        "type": {
+          "name": "custom",
+          "raw": "metaBasePropTypes"
+        },
+        "required": false,
         "description": ""
       },
       "xField": {
@@ -1191,6 +1257,27 @@
         "required": false,
         "description": ""
       },
+      "appendPadding": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "number"
+            },
+            {
+              "name": "arrayOf",
+              "value": {
+                "name": "number"
+              }
+            },
+            {
+              "name": "string"
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
       "renderer": {
         "type": {
           "name": "string"
@@ -1304,6 +1391,14 @@
           }
         },
         "required": true,
+        "description": ""
+      },
+      "meta": {
+        "type": {
+          "name": "custom",
+          "raw": "metaBasePropTypes"
+        },
+        "required": false,
         "description": ""
       },
       "xField": {
@@ -1532,6 +1627,27 @@
         "required": false,
         "description": ""
       },
+      "appendPadding": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "number"
+            },
+            {
+              "name": "arrayOf",
+              "value": {
+                "name": "number"
+              }
+            },
+            {
+              "name": "string"
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
       "renderer": {
         "type": {
           "name": "string"
@@ -1582,6 +1698,862 @@
         "type": {
           "name": "custom",
           "raw": "sliderBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "loading_state": {
+        "type": {
+          "name": "shape",
+          "value": {
+            "is_loading": {
+              "name": "bool",
+              "description": "Determines if the component is loading or not",
+              "required": false
+            },
+            "prop_name": {
+              "name": "string",
+              "description": "Holds which property is loading",
+              "required": false
+            },
+            "component_name": {
+              "name": "string",
+              "description": "Holds the name of the component that is loading",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "setProps": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Dash-assigned callback that should be called to report property changes\r\nto Dash, to make them available for callbacks."
+      }
+    }
+  },
+  "src/lib/components/AntdPie.react.js": {
+    "description": "",
+    "displayName": "AntdPie",
+    "methods": [],
+    "props": {
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "style": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": ""
+      },
+      "data": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "object"
+          }
+        },
+        "required": true,
+        "description": ""
+      },
+      "meta": {
+        "type": {
+          "name": "custom",
+          "raw": "metaBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "angleField": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "colorField": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "radius": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "innerRadius": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "startAngle": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "endAngle": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "color": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "string"
+            },
+            {
+              "name": "arrayOf",
+              "value": {
+                "name": "string"
+              }
+            },
+            {
+              "name": "exact",
+              "value": {
+                "func": {
+                  "name": "string",
+                  "required": false
+                }
+              }
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "statistic": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "title": {
+              "name": "union",
+              "value": [
+                {
+                  "name": "bool"
+                },
+                {
+                  "name": "exact",
+                  "value": {
+                    "style": {
+                      "name": "object",
+                      "required": false
+                    },
+                    "content": {
+                      "name": "string",
+                      "required": false
+                    },
+                    "formatter": {
+                      "name": "exact",
+                      "value": {
+                        "func": {
+                          "name": "string",
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "rotate": {
+                      "name": "number",
+                      "required": false
+                    },
+                    "offsetX": {
+                      "name": "number",
+                      "required": false
+                    },
+                    "offsetY": {
+                      "name": "number",
+                      "required": false
+                    }
+                  }
+                }
+              ],
+              "required": false
+            },
+            "content": {
+              "name": "union",
+              "value": [
+                {
+                  "name": "bool"
+                },
+                {
+                  "name": "exact",
+                  "value": {
+                    "style": {
+                      "name": "object",
+                      "required": false
+                    },
+                    "content": {
+                      "name": "string",
+                      "required": false
+                    },
+                    "formatter": {
+                      "name": "exact",
+                      "value": {
+                        "func": {
+                          "name": "string",
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "rotate": {
+                      "name": "number",
+                      "required": false
+                    },
+                    "offsetX": {
+                      "name": "number",
+                      "required": false
+                    },
+                    "offsetY": {
+                      "name": "number",
+                      "required": false
+                    }
+                  }
+                }
+              ],
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "pieStyle": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "custom",
+              "raw": "baseStyle"
+            },
+            {
+              "name": "exact",
+              "value": {
+                "func": {
+                  "name": "string",
+                  "required": false
+                }
+              }
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "width": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "height": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "autoFit": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "padding": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "number"
+            },
+            {
+              "name": "arrayOf",
+              "value": {
+                "name": "number"
+              }
+            },
+            {
+              "name": "string"
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "appendPadding": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "number"
+            },
+            {
+              "name": "arrayOf",
+              "value": {
+                "name": "number"
+              }
+            },
+            {
+              "name": "string"
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "renderer": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "locale": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "legend": {
+        "type": {
+          "name": "custom",
+          "raw": "legendBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "label": {
+        "type": {
+          "name": "custom",
+          "raw": "labelBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "tooltip": {
+        "type": {
+          "name": "custom",
+          "raw": "tooltipBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "annotations": {
+        "type": {
+          "name": "custom",
+          "raw": "annotationsBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "loading_state": {
+        "type": {
+          "name": "shape",
+          "value": {
+            "is_loading": {
+              "name": "bool",
+              "description": "Determines if the component is loading or not",
+              "required": false
+            },
+            "prop_name": {
+              "name": "string",
+              "description": "Holds which property is loading",
+              "required": false
+            },
+            "component_name": {
+              "name": "string",
+              "description": "Holds the name of the component that is loading",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "setProps": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Dash-assigned callback that should be called to report property changes\r\nto Dash, to make them available for callbacks."
+      }
+    }
+  },
+  "src/lib/components/AntdScatter.react.js": {
+    "description": "",
+    "displayName": "AntdScatter",
+    "methods": [],
+    "props": {
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "style": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": ""
+      },
+      "data": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "object"
+          }
+        },
+        "required": true,
+        "description": ""
+      },
+      "meta": {
+        "type": {
+          "name": "custom",
+          "raw": "metaBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "xField": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": ""
+      },
+      "yField": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": ""
+      },
+      "colorField": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "sizeField": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "shapeField": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "color": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "string"
+            },
+            {
+              "name": "arrayOf",
+              "value": {
+                "name": "string"
+              }
+            },
+            {
+              "name": "exact",
+              "value": {
+                "func": {
+                  "name": "string",
+                  "required": false
+                }
+              }
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "size": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "number"
+            },
+            {
+              "name": "arrayOf",
+              "value": {
+                "name": "number"
+              }
+            },
+            {
+              "name": "exact",
+              "value": {
+                "func": {
+                  "name": "string",
+                  "required": false
+                }
+              }
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "shape": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "string"
+            },
+            {
+              "name": "arrayOf",
+              "value": {
+                "name": "string"
+              }
+            },
+            {
+              "name": "exact",
+              "value": {
+                "func": {
+                  "name": "string",
+                  "required": false
+                }
+              }
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "pointStyle": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "custom",
+              "raw": "pointBaseStyle"
+            },
+            {
+              "name": "exact",
+              "value": {
+                "func": {
+                  "name": "string",
+                  "required": false
+                }
+              }
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "shapeLegend": {
+        "type": {
+          "name": "custom",
+          "raw": "legendBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "sizeLegend": {
+        "type": {
+          "name": "custom",
+          "raw": "legendBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "quadrant": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "xBaseline": {
+              "name": "number",
+              "required": false
+            },
+            "yBaseline": {
+              "name": "number",
+              "required": false
+            },
+            "lineStyle": {
+              "name": "custom",
+              "raw": "lineBaseStyle",
+              "required": false
+            },
+            "regionStyle": {
+              "name": "union",
+              "value": [
+                {
+                  "name": "custom",
+                  "raw": "baseStyle"
+                },
+                {
+                  "name": "arrayOf",
+                  "value": {
+                    "name": "custom",
+                    "raw": "baseStyle"
+                  }
+                }
+              ],
+              "required": false
+            },
+            "labels": {
+              "name": "arrayOf",
+              "value": {
+                "name": "exact",
+                "value": {
+                  "content": {
+                    "name": "string",
+                    "required": false
+                  },
+                  "position": {
+                    "name": "arrayOf",
+                    "value": {
+                      "name": "number"
+                    },
+                    "required": false
+                  },
+                  "style": {
+                    "name": "custom",
+                    "raw": "textBaseStyle",
+                    "required": false
+                  }
+                }
+              },
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "regressionLine": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "type": {
+              "name": "enum",
+              "value": [
+                {
+                  "value": "'exp'",
+                  "computed": false
+                },
+                {
+                  "value": "'linear'",
+                  "computed": false
+                },
+                {
+                  "value": "'loess'",
+                  "computed": false
+                },
+                {
+                  "value": "'log'",
+                  "computed": false
+                },
+                {
+                  "value": "'poly'",
+                  "computed": false
+                },
+                {
+                  "value": "'pow'",
+                  "computed": false
+                },
+                {
+                  "value": "'quad'",
+                  "computed": false
+                }
+              ],
+              "required": false
+            },
+            "style": {
+              "name": "custom",
+              "raw": "lineBaseStyle",
+              "required": false
+            },
+            "algorithm": {
+              "name": "exact",
+              "value": {
+                "func": {
+                  "name": "string",
+                  "required": false
+                }
+              },
+              "required": false
+            },
+            "top": {
+              "name": "bool",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "xAxis": {
+        "type": {
+          "name": "custom",
+          "raw": "axisBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "yAxis": {
+        "type": {
+          "name": "custom",
+          "raw": "axisBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "width": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "height": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "autoFit": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "padding": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "number"
+            },
+            {
+              "name": "arrayOf",
+              "value": {
+                "name": "number"
+              }
+            },
+            {
+              "name": "string"
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "appendPadding": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "number"
+            },
+            {
+              "name": "arrayOf",
+              "value": {
+                "name": "number"
+              }
+            },
+            {
+              "name": "string"
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "renderer": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "locale": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "legend": {
+        "type": {
+          "name": "custom",
+          "raw": "legendBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "label": {
+        "type": {
+          "name": "custom",
+          "raw": "labelBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "tooltip": {
+        "type": {
+          "name": "custom",
+          "raw": "tooltipBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "annotations": {
+        "type": {
+          "name": "custom",
+          "raw": "annotationsBasePropTypes"
         },
         "required": false,
         "description": ""

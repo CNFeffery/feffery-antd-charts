@@ -1,22 +1,22 @@
-import { Column } from '@ant-design/charts';
+import { Scatter } from '@ant-design/charts';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
+    pointBaseStyle,
+    lineBaseStyle,
     metaBasePropTypes,
     axisBasePropTypes,
     legendBasePropTypes,
     labelBasePropTypes,
     tooltipBasePropTypes,
     annotationsBasePropTypes,
-    scrollbarBasePropTypes,
     sliderBasePropTypes,
     baseStyle,
-    areaBaseStyle,
     textBaseStyle
 } from './BasePropTypes.react';
 
-// 定义柱状图AntdColumn，部分API参数参考https://charts.ant.design/zh-CN/demos/column
-export default class AntdColumn extends Component {
+// 定义散点气泡图组件AntdScatter，部分API参数参考https://charts.ant.design/zh-CN/demos/scatter
+export default class AntdScatter extends Component {
     render() {
         // 取得必要属性或参数
         let {
@@ -27,24 +27,17 @@ export default class AntdColumn extends Component {
             meta,
             xField,
             yField,
-            seriesField,
-            groupField,
-            isStack,
-            isGroup,
-            isRange,
-            isPercent,
+            colorField,
+            sizeField,
+            shapeField,
+            size,
+            shape,
             color,
-            intervalPadding,
-            dodgePadding,
-            minColumnWidth,
-            maxColumnWidth,
-            columnStyle,
-            columnBackground,
-            columnWidthRatio,
-            marginRatio,
-            scrollbar,
-            conversionTag,
-            connectedArea,
+            pointStyle,
+            shapeLegend,
+            sizeLegend,
+            quadrant,
+            regressionLine,
             xAxis,
             yAxis,
             width,
@@ -58,7 +51,6 @@ export default class AntdColumn extends Component {
             label,
             tooltip,
             annotations,
-            slider,
             setProps
         } = this.props;
 
@@ -73,28 +65,20 @@ export default class AntdColumn extends Component {
             }
         }
 
+
         let config = {
             data: data,
             meta: meta,
             padding: padding,
-            appendPadding,
+            appendPadding: appendPadding,
             xField: xField,
             yField: yField,
-            seriesField: seriesField,
-            groupField: groupField,
-            isStack: isStack,
-            isGroup: isGroup,
-            isRange: isRange,
-            isPercent: isPercent,
-            intervalPadding: intervalPadding,
-            dodgePadding: dodgePadding,
-            minColumnWidth: minColumnWidth,
-            maxColumnWidth: maxColumnWidth,
-            columnBackground: columnBackground,
-            columnWidthRatio: columnWidthRatio,
-            marginRatio: marginRatio,
-            scrollbar: scrollbar,
-            connectedArea: connectedArea,
+            colorField: colorField,
+            sizeField: sizeField,
+            shapeField: shapeField,
+            shapeLegend: shapeLegend,
+            sizeLegend: sizeLegend,
+            quadrant: quadrant,
             width: width,
             height: height,
             autoFit: autoFit,
@@ -104,20 +88,20 @@ export default class AntdColumn extends Component {
         };
 
         // 进阶参数
-        if (conversionTag) {
-            config.conversionTag = conversionTag
-
-            if (config.conversionTag?.text?.formatter?.func) {
-                config.conversionTag.text.formatter = eval(config.conversionTag.text.formatter.func)
-            }
-        }
-
         if (color) {
             config.color = color?.func ? eval(color?.func) : color
         }
 
-        if (columnStyle) {
-            config.columnStyle = columnStyle?.func ? eval(columnStyle?.func) : columnStyle
+        if (size) {
+            config.size = size?.func ? eval(size?.func) : size
+        }
+
+        if (shape) {
+            config.shape = shape?.func ? eval(shape?.func) : shape
+        }
+
+        if (pointStyle) {
+            config.pointStyle = pointStyle?.func ? eval(pointStyle?.func) : pointStyle
         }
 
         if (xAxis) {
@@ -161,15 +145,14 @@ export default class AntdColumn extends Component {
             config.annotations = annotations
         }
 
-        if (slider) {
-            config.slider = slider
+        if (regressionLine) {
+            config.regressionLine = regressionLine
 
-            if (config.slider?.formatter?.func) {
-                config.slider.formatter = eval(config.slider.formatter.func)
-            }
+            config.regressionLine.algorithm = regressionLine?.algorithm?.func
+                ? eval(regressionLine.algorithm.func) : regressionLine.algorithm
         }
 
-        return <Column id={id}
+        return <Scatter id={id}
             className={className}
             style={style}
             {...config} />;
@@ -177,7 +160,7 @@ export default class AntdColumn extends Component {
 }
 
 // 定义参数或属性
-AntdColumn.propTypes = {
+AntdScatter.propTypes = {
     // 部件id
     id: PropTypes.string,
 
@@ -199,23 +182,14 @@ AntdColumn.propTypes = {
     // 定义作为y轴的字段名
     yField: PropTypes.string.isRequired,
 
-    // 定义作为分组依据的字段名
-    seriesField: PropTypes.string,
+    // 定义作为色彩映射依据的字段
+    colorField: PropTypes.string,
 
-    // 用于在堆叠分组柱状图中指定分组字段，此时seriesField指定的字段会作为每个组内堆叠的分层依据
-    groupField: PropTypes.string,
+    // 定义作为尺寸映射依据的字段
+    sizeField: PropTypes.string,
 
-    // 在存在seriesField分组字段时，用于设置是否堆叠条形图
-    isStack: PropTypes.bool,
-
-    // 在存在seriesField分组字段时，用于设置是否分组条形图
-    isGroup: PropTypes.bool,
-
-    // 在xField的值格式为[number, number]时，用于设置是否区间条形图
-    isRange: PropTypes.bool,
-
-    // 在isStack=true时生效，用于设置是否百分比条形图
-    isPercent: PropTypes.bool,
+    // 定义作为形状映射依据的字段
+    shapeField: PropTypes.string,
 
     // 用于手动设置调色方案，接受css中合法的所有颜色值，当传入单个字符串时，所有折线沿用此颜色值
     // 当传入数组时，会视作调色盘方案对seriesField区分的不同系列进行着色
@@ -235,88 +209,90 @@ AntdColumn.propTypes = {
         })
     ]),
 
-    // 配置缩略轴相关参数
-    slider: sliderBasePropTypes,
-
-    // 设置分组条形图组间像素间隔宽度
-    intervalPadding: PropTypes.number,
-
-    // 设置分组条形图组内像素间隔宽度
-    dodgePadding: PropTypes.number,
-
-    // 设置柱状图的最小像素宽度
-    minColumnWidth: PropTypes.number,
-
-    // 设置柱状图的最大像素宽度
-    maxColumnWidth: PropTypes.number,
-
-    // 设置柱体的样式
-    columnStyle: PropTypes.oneOfType([
-        baseStyle,
+    // 用于设置散点像素尺寸大小
+    size: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.arrayOf(PropTypes.number),
         PropTypes.exact({
             // 回调模式
             func: PropTypes.string
         })
     ]),
 
-    // 设置柱状图背景样式
-    columnBackground: PropTypes.exact({
-        // 具体样式
-        style: areaBaseStyle
-    }),
+    // 用于设置形状相关参数
+    shape: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.arrayOf(PropTypes.string),
+        PropTypes.exact({
+            // 回调模式
+            func: PropTypes.string
+        })
+    ]),
 
-    // 设置柱状图宽度占比，0~1之间
-    columnWidthRatio: PropTypes.number,
+    // 设置散点样式
+    pointStyle: PropTypes.oneOfType([
+        pointBaseStyle,
+        PropTypes.exact({
+            // 回调模式
+            func: PropTypes.string
+        })
+    ]),
 
-    // 设置分组柱状图中条形之间的间距，0~1之间
-    marginRatio: PropTypes.number,
+    // 当shapeField已设置时，且legend、shapeLegend均不为false时，则会渲染针对shape的图例
+    shapeLegend: legendBasePropTypes,
 
-    // 设置条形图滚动条样式
-    scrollbar: scrollbarBasePropTypes,
+    // 设置后会渲染散点尺寸相关的图例
+    sizeLegend: legendBasePropTypes,
 
-    // 设置转化标签相关属性
-    conversionTag: PropTypes.exact({
-        // 设置转化率标签像素尺寸大小
-        size: PropTypes.number,
+    // 设置四象限图组件相关参数
+    quadrant: PropTypes.exact({
+        // 设置x轴上的基准分割线位置，默认为0
+        xBaseline: PropTypes.number,
 
-        // 设置转化率标签与柱体之间的像素间距
-        spacing: PropTypes.number,
+        // 设置y轴上的基准分割线位置，默认为0
+        yBaseline: PropTypes.number,
 
-        // 设置组件与坐标轴之间的距离
-        offset: PropTypes.number,
+        // 配置分割线样式
+        lineStyle: lineBaseStyle,
 
-        // 配置转化率组件箭头样式，false时不显示箭头
-        arrow: PropTypes.oneOfType([
-            PropTypes.bool,
-            PropTypes.exact({
-                // 设置箭头尺寸
-                headSize: PropTypes.number
-            })
+        // 配置四个象限的样式，单对象输入时全局设置，
+        // 亦可按照上右下左的顺序分别传入四个对象构成的数组来分别设置四个象限的样式
+        regionStyle: PropTypes.oneOfType([
+            baseStyle,
+            PropTypes.arrayOf(baseStyle)
         ]),
 
-        // 配置转化率组件文本信息，false时不显示文本
-        text: PropTypes.oneOfType([
-            PropTypes.bool,
+        // 分别设置四个象限的文字标注信息及其样式
+        labels: PropTypes.arrayOf(
             PropTypes.exact({
-                // 自定义转化率计算函数
-                formatter: PropTypes.exact({
-                    // 回调模式
-                    func: PropTypes.string
-                }),
+                // 设置标注内容
+                content: PropTypes.string,
 
-                // 自定义转化率文字样式
+                // 设置标注坐标位置，格式：[x坐标, y坐标]
+                position: PropTypes.arrayOf(PropTypes.number),
+
+                // 设置标注文字样式
                 style: textBaseStyle
             })
-        ])
+        )
     }),
 
-    // 设置联通对比区域相关参数
-    connectedArea: PropTypes.exact({
-        // 设置触发方式，false表示不触发，可选的有'hover'、'click'
-        trigger: PropTypes.oneOfType([
-            PropTypes.bool,
-            PropTypes.string
-        ])
+    // 设置回归线相关参数
+    regressionLine: PropTypes.exact({
+        // 设置回归线类型，可选的有'exp'、'linear'、'loess'、'log'、'poly'、'pow'、'quad'
+        type: PropTypes.oneOf(['exp', 'linear', 'loess', 'log', 'poly', 'pow', 'quad']),
+
+        // 设置回归线样式
+        style: lineBaseStyle,
+
+        // 自定义映射算法，优先级高于type
+        algorithm: PropTypes.exact({
+            // 回调模式
+            func: PropTypes.string
+        }),
+
+        // 设置是否置于图层顶层显示
+        top: PropTypes.bool
     }),
 
     // 设置x坐标轴相关属性
@@ -389,5 +365,5 @@ AntdColumn.propTypes = {
 };
 
 // 设置默认参数
-AntdColumn.defaultProps = {
+AntdScatter.defaultProps = {
 }

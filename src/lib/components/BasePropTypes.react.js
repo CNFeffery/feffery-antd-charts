@@ -215,6 +215,27 @@ const textBaseStyle = PropTypes.exact({
     cursor: PropTypes.string
 })
 
+
+// 定义全局化配置图表数据元信息PropTypes模板
+const metaBasePropTypes = PropTypes.objectOf(
+    PropTypes.exact({
+        // 设置字段别名
+        alias: PropTypes.string,
+
+        // 设置特殊的字段信息格式化处理回调
+        formatter: PropTypes.exact({
+            // 回调模式
+            func: PropTypes.string
+        }),
+
+        // 枚举该字段下所有值
+        values: PropTypes.arrayOf(PropTypes.string),
+
+        // 设置该字段的数据映射区间，默认为[0, 1]
+        range: PropTypes.arrayOf(PropTypes.number)
+    })
+)
+
 // 定义坐标轴通用PropTypes模板
 const axisBasePropTypes = PropTypes.exact({
     // 默认false，设置是否将对应坐标轴渲染于画布顶层，从而避免部分图表坐标轴被图形遮挡
@@ -480,8 +501,15 @@ const legendBasePropTypes = PropTypes.oneOfType([
 
 // 定义label通用PropTypes模板
 const labelBasePropTypes = PropTypes.exact({
-    // 设置label的偏移量
-    offset: PropTypes.number,
+
+    // 声明特殊的label类型，典型如饼图label支持'inner'、'outer'、'spider'
+    type: PropTypes.string,
+
+    // 设置label的偏移量，像素或百分比字符串
+    offset: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string
+    ]),
 
     // 设置label相对于数据点在水平方向上的偏移距离
     offsetX: PropTypes.number,
@@ -503,6 +531,9 @@ const labelBasePropTypes = PropTypes.exact({
 
     // 设置当前文字标签相对于数据点的位置，可选的有'top'、'bottom'、'middle'、'left'、'right'
     position: PropTypes.string,
+
+    // 简易格式化文本标签的方式
+    content: PropTypes.string,
 
     // 设置文字标签的格式化显示回调函数
     formatter: PropTypes.exact({
@@ -803,6 +834,7 @@ export {
     lineBaseStyle,
     areaBaseStyle,
     textBaseStyle,
+    metaBasePropTypes,
     axisBasePropTypes,
     legendBasePropTypes,
     labelBasePropTypes,

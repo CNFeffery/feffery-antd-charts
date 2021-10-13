@@ -13,6 +13,8 @@ Keyword arguments:
 
 - annotations (optional)
 
+- appendPadding (number | list of numbers | string; optional)
+
 - areaStyle (dict; optional)
 
     `areaStyle` is a dict with keys:
@@ -74,6 +76,8 @@ Keyword arguments:
 
 - locale (string; optional)
 
+- meta (optional)
+
 - padding (number | list of numbers | string; optional)
 
 - point (dict; optional)
@@ -124,12 +128,12 @@ Keyword arguments:
 
 - yField (string; required)"""
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, xField=Component.REQUIRED, yField=Component.REQUIRED, seriesField=Component.UNDEFINED, smooth=Component.UNDEFINED, isPercent=Component.UNDEFINED, isStack=Component.UNDEFINED, startOnZero=Component.UNDEFINED, areaStyle=Component.UNDEFINED, color=Component.UNDEFINED, line=Component.UNDEFINED, point=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, slider=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'annotations', 'areaStyle', 'autoFit', 'className', 'color', 'data', 'height', 'isPercent', 'isStack', 'label', 'legend', 'line', 'loading_state', 'locale', 'padding', 'point', 'renderer', 'seriesField', 'slider', 'smooth', 'startOnZero', 'style', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
+    def __init__(self, id=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, xField=Component.REQUIRED, yField=Component.REQUIRED, seriesField=Component.UNDEFINED, smooth=Component.UNDEFINED, isPercent=Component.UNDEFINED, isStack=Component.UNDEFINED, startOnZero=Component.UNDEFINED, areaStyle=Component.UNDEFINED, color=Component.UNDEFINED, line=Component.UNDEFINED, point=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, slider=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'annotations', 'appendPadding', 'areaStyle', 'autoFit', 'className', 'color', 'data', 'height', 'isPercent', 'isStack', 'label', 'legend', 'line', 'loading_state', 'locale', 'meta', 'padding', 'point', 'renderer', 'seriesField', 'slider', 'smooth', 'startOnZero', 'style', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
         self._type = 'AntdArea'
         self._namespace = 'feffery_antd_charts'
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'annotations', 'areaStyle', 'autoFit', 'className', 'color', 'data', 'height', 'isPercent', 'isStack', 'label', 'legend', 'line', 'loading_state', 'locale', 'padding', 'point', 'renderer', 'seriesField', 'slider', 'smooth', 'startOnZero', 'style', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
+        self.available_properties = ['id', 'annotations', 'appendPadding', 'areaStyle', 'autoFit', 'className', 'color', 'data', 'height', 'isPercent', 'isStack', 'label', 'legend', 'line', 'loading_state', 'locale', 'meta', 'padding', 'point', 'renderer', 'seriesField', 'slider', 'smooth', 'startOnZero', 'style', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

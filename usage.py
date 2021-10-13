@@ -467,6 +467,316 @@ app.layout = html.Div(
                 'height': '600px',
                 'padding': '30 0 0 0'
             }
+        ),
+        html.H3('AntdPie 饼图示例'),
+        html.Div(
+            fact.AntdPie(
+                data=demjson.decode('''[
+    {
+      type: '分类一',
+      value: 27,
+    },
+    {
+      type: '分类二',
+      value: 25,
+    },
+    {
+      type: '分类三',
+      value: 18,
+    },
+    {
+      type: '分类四',
+      value: 15,
+    },
+    {
+      type: '分类五',
+      value: 10,
+    },
+    {
+      type: '其他',
+      value: 5,
+    },
+  ]'''),
+                angleField='value',
+                colorField='type',
+                padding='auto',
+                radius=0.9,
+                innerRadius=0.6,
+                pieStyle={
+                    'lineWidth': 2
+                },
+                label={
+                    'type': 'inner',
+                    'content': '{value}',
+                    'autoRotate': False,
+                    'style': {
+                        'fontSize': 16
+                    }
+                },
+                statistic={
+                    'title': {
+                        'content': '总计'
+                    },
+                    'content': {
+                        'rotate': math.pi,
+                        'content': '9999',
+                        'style': {
+                            'color': 'red',
+                            'fontSize': '50px'
+                        }
+                    }
+                }
+            ),
+            style={
+                'width': '1000px',
+                'height': '600px',
+                'padding': '30 0 0 0'
+            }
+        ),
+        html.H3('AntdScatter 散点气泡图示例'),
+        html.Div(
+            fact.AntdScatter(
+                data=demjson.decode('''[
+    {
+      city: '上海',
+      搜索UV: 1.5,
+      端DAU: 6,
+      搜索DAU渗透率: 3,
+    },
+    {
+      city: '台北',
+      搜索UV: 2,
+      端DAU: 5,
+      搜索DAU渗透率: 13,
+    },
+    {
+      city: '北京',
+      搜索UV: 7,
+      端DAU: 3.6,
+      搜索DAU渗透率: 16,
+    },
+    {
+      city: '济南',
+      搜索UV: 5,
+      端DAU: 5,
+      搜索DAU渗透率: 16,
+    },
+    {
+      city: '青岛',
+      搜索UV: 2,
+      端DAU: 1,
+      搜索DAU渗透率: 19,
+    },
+    {
+      city: '杭州',
+      搜索UV: 7,
+      端DAU: 2,
+      搜索DAU渗透率: 90,
+    },
+    {
+      city: '广东',
+      搜索UV: 7.4,
+      端DAU: 1.5,
+      搜索DAU渗透率: 30,
+    },
+    {
+      city: '无锡',
+      搜索UV: 1,
+      端DAU: 1,
+      搜索DAU渗透率: 34,
+    },
+    {
+      city: '重庆',
+      搜索UV: 7,
+      端DAU: 5,
+      搜索DAU渗透率: 46,
+    },
+    {
+      city: '成都',
+      搜索UV: 3.4,
+      端DAU: 2.3,
+      搜索DAU渗透率: 49,
+    },
+    {
+      city: '哈尔滨',
+      搜索UV: 0.5,
+      端DAU: 6.5,
+      搜索DAU渗透率: 51,
+    },
+    {
+      city: '内蒙古',
+      搜索UV: 2.5,
+      端DAU: 5,
+      搜索DAU渗透率: 51,
+    },
+    {
+      city: '云南',
+      搜索UV: 1,
+      端DAU: 5,
+      搜索DAU渗透率: 53,
+    },
+    {
+      city: '河北',
+      搜索UV: 6,
+      端DAU: 5,
+      搜索DAU渗透率: 57,
+    },
+    {
+      city: '陕西',
+      搜索UV: 2,
+      端DAU: 3,
+      搜索DAU渗透率: 57,
+    },
+    {
+      city: '苏州',
+      搜索UV: 3,
+      端DAU: 4.6,
+      搜索DAU渗透率: 65,
+    },
+    {
+      city: '四川',
+      搜索UV: 6,
+      端DAU: 7,
+      搜索DAU渗透率: 68,
+    },
+    {
+      city: '贵阳',
+      搜索UV: 5,
+      端DAU: 3.4,
+      搜索DAU渗透率: 68,
+    },
+    {
+      city: '台湾',
+      搜索UV: 5,
+      端DAU: 2,
+      搜索DAU渗透率: 69,
+    },
+    {
+      city: '哈尔滨',
+      搜索UV: 2,
+      端DAU: 7,
+      搜索DAU渗透率: 78,
+    },
+    {
+      city: '天津',
+      搜索UV: 4.4,
+      端DAU: 5,
+      搜索DAU渗透率: 45,
+    },
+    {
+      city: '长沙',
+      搜索UV: 3.4,
+      端DAU: 7,
+      搜索DAU渗透率: 29,
+    },
+    {
+      city: '沧州',
+      搜索UV: 3,
+      端DAU: 1,
+      搜索DAU渗透率: 94,
+    },
+    {
+      city: '宁波',
+      搜索UV: 6,
+      端DAU: 3,
+      搜索DAU渗透率: 99,
+    },
+  ]'''),
+                xField='搜索UV',
+                yField='端DAU',
+                appendPadding=16,
+                sizeField='搜索DAU渗透率',
+                size=[12, 30],
+                shape='circle',
+                pointStyle={
+                    'fill': '#D6E3FD',
+                    'fillOpacity': 0.6,
+                    'stroke': '#6d9bf9'
+                },
+                label={
+                    'formatter': {
+                        'func': '''
+                        (item) => {
+                            return item.city
+                        }'''
+                    },
+                    'offsetY': 12,
+                    'style': {
+                        'fontSize': 12,
+                        'fill': 'rgba(0,0,0,0.85)'
+                    }
+                },
+                yAxis={
+                    'min': 0
+                },
+                annotations=[
+                    {
+                        'type': 'text',
+                        'position': [4, 8],
+                        'content': '搜索DAU渗透率',
+                        'offsetY': -8,
+                        'style': {
+                            'fontSize': 12,
+                            'textAlign': 'center'
+                        }
+                    }
+                ],
+                quadrant={
+                    'xBaseline': 4,
+                    'yBaseline': 4,
+                    'lineStyle': {
+                        'lineDash': [4, 2],
+                        'lineWidth': 2
+                    },
+                    'regionStyle': demjson.decode('''[
+        {
+          fill: '#5bd8a6',
+          fillOpacity: 0.1,
+        },
+        {
+          fill: '#667796',
+          fillOpacity: 0.1,
+        },
+        { fill: '#fff' },
+        {
+          fill: '#f7664e',
+          fillOpacity: 0.1,
+        },
+      ]'''),
+                    'labels': demjson.decode('''[
+        {
+          content: '热门市场',
+          position: [7.2, 7],
+          style: {
+            fill: 'rgba(0,0,0, 0.85)',
+            textAlign: 'start',
+          },
+        },
+        {
+          content: '潜力市场',
+          position: [0.2, 7],
+          style: {
+            fill: 'rgba(0,0,0, 0.85)',
+            textAlign: 'start',
+          },
+        },
+        { content: '' },
+        {
+          content: '提频市场',
+          position: [7.2, 1],
+          style: {
+            fill: 'rgba(0,0,0, 0.85)',
+            textAlign: 'start',
+          },
+        },
+      ]''')
+                }
+            ),
+            style={
+                'width': '1000px',
+                'height': '600px',
+                'padding': '30 0 0 0'
+            }
         )
     ],
     style={

@@ -9,6 +9,8 @@ include("jl/''_antdarea.jl")
 include("jl/''_antdbar.jl")
 include("jl/''_antdcolumn.jl")
 include("jl/''_antdline.jl")
+include("jl/''_antdpie.jl")
+include("jl/''_antdscatter.jl")
 
 function __init__()
     DashBase.register_package(

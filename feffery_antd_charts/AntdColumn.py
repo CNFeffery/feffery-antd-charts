@@ -13,6 +13,8 @@ Keyword arguments:
 
 - annotations (optional)
 
+- appendPadding (number | list of numbers | string; optional)
+
 - autoFit (boolean; optional)
 
 - className (string; optional)
@@ -114,6 +116,8 @@ Keyword arguments:
 
 - maxColumnWidth (number; optional)
 
+- meta (optional)
+
 - minColumnWidth (number; optional)
 
 - padding (number | list of numbers | string; optional)
@@ -140,12 +144,12 @@ Keyword arguments:
 
 - yField (string; required)"""
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, xField=Component.REQUIRED, yField=Component.REQUIRED, seriesField=Component.UNDEFINED, groupField=Component.UNDEFINED, isStack=Component.UNDEFINED, isGroup=Component.UNDEFINED, isRange=Component.UNDEFINED, isPercent=Component.UNDEFINED, color=Component.UNDEFINED, slider=Component.UNDEFINED, intervalPadding=Component.UNDEFINED, dodgePadding=Component.UNDEFINED, minColumnWidth=Component.UNDEFINED, maxColumnWidth=Component.UNDEFINED, columnStyle=Component.UNDEFINED, columnBackground=Component.UNDEFINED, columnWidthRatio=Component.UNDEFINED, marginRatio=Component.UNDEFINED, scrollbar=Component.UNDEFINED, conversionTag=Component.UNDEFINED, connectedArea=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'annotations', 'autoFit', 'className', 'color', 'columnBackground', 'columnStyle', 'columnWidthRatio', 'connectedArea', 'conversionTag', 'data', 'dodgePadding', 'groupField', 'height', 'intervalPadding', 'isGroup', 'isPercent', 'isRange', 'isStack', 'label', 'legend', 'loading_state', 'locale', 'marginRatio', 'maxColumnWidth', 'minColumnWidth', 'padding', 'renderer', 'scrollbar', 'seriesField', 'slider', 'style', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
+    def __init__(self, id=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, xField=Component.REQUIRED, yField=Component.REQUIRED, seriesField=Component.UNDEFINED, groupField=Component.UNDEFINED, isStack=Component.UNDEFINED, isGroup=Component.UNDEFINED, isRange=Component.UNDEFINED, isPercent=Component.UNDEFINED, color=Component.UNDEFINED, slider=Component.UNDEFINED, intervalPadding=Component.UNDEFINED, dodgePadding=Component.UNDEFINED, minColumnWidth=Component.UNDEFINED, maxColumnWidth=Component.UNDEFINED, columnStyle=Component.UNDEFINED, columnBackground=Component.UNDEFINED, columnWidthRatio=Component.UNDEFINED, marginRatio=Component.UNDEFINED, scrollbar=Component.UNDEFINED, conversionTag=Component.UNDEFINED, connectedArea=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'annotations', 'appendPadding', 'autoFit', 'className', 'color', 'columnBackground', 'columnStyle', 'columnWidthRatio', 'connectedArea', 'conversionTag', 'data', 'dodgePadding', 'groupField', 'height', 'intervalPadding', 'isGroup', 'isPercent', 'isRange', 'isStack', 'label', 'legend', 'loading_state', 'locale', 'marginRatio', 'maxColumnWidth', 'meta', 'minColumnWidth', 'padding', 'renderer', 'scrollbar', 'seriesField', 'slider', 'style', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
         self._type = 'AntdColumn'
         self._namespace = 'feffery_antd_charts'
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'annotations', 'autoFit', 'className', 'color', 'columnBackground', 'columnStyle', 'columnWidthRatio', 'connectedArea', 'conversionTag', 'data', 'dodgePadding', 'groupField', 'height', 'intervalPadding', 'isGroup', 'isPercent', 'isRange', 'isStack', 'label', 'legend', 'loading_state', 'locale', 'marginRatio', 'maxColumnWidth', 'minColumnWidth', 'padding', 'renderer', 'scrollbar', 'seriesField', 'slider', 'style', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
+        self.available_properties = ['id', 'annotations', 'appendPadding', 'autoFit', 'className', 'color', 'columnBackground', 'columnStyle', 'columnWidthRatio', 'connectedArea', 'conversionTag', 'data', 'dodgePadding', 'groupField', 'height', 'intervalPadding', 'isGroup', 'isPercent', 'isRange', 'isStack', 'label', 'legend', 'loading_state', 'locale', 'marginRatio', 'maxColumnWidth', 'meta', 'minColumnWidth', 'padding', 'renderer', 'scrollbar', 'seriesField', 'slider', 'style', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()
