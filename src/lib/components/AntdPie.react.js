@@ -101,6 +101,16 @@ export default class AntdPie extends Component {
 
         if (legend) {
             config.legend = legend
+
+            if (config.legend.itemName) {
+                config.legend.itemName.formatter = config.legend.itemName?.formatter?.func
+                    ? eval(config.legend.itemName.formatter.func) : config.legend.itemName.formatter
+            }
+
+            if (config.legend.itemValue) {
+                config.legend.itemValue.formatter = config.legend.itemValue?.formatter?.func
+                    ? eval(config.legend.itemValue.formatter.func) : config.legend.itemValue.formatter
+            }
         }
 
         if (label) {

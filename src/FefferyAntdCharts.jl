@@ -11,6 +11,7 @@ include("jl/''_antdcolumn.jl")
 include("jl/''_antdline.jl")
 include("jl/''_antdpie.jl")
 include("jl/''_antdscatter.jl")
+include("jl/''_antdstock.jl")
 
 function __init__()
     DashBase.register_package(

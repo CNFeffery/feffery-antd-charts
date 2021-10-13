@@ -5,6 +5,7 @@ import AntdBar from "./components/AntdBar.react";
 import AntdColumn from "./components/AntdColumn.react";
 import AntdPie from "./components/AntdPie.react";
 import AntdScatter from "./components/AntdScatter.react";
+import AntdStock from "./components/AntdStock.react";
 
 export {
     AntdLine,
@@ -12,5 +13,6 @@ export {
     AntdBar,
     AntdColumn,
     AntdPie,
-    AntdScatter
+    AntdScatter,
+    AntdStock
 };

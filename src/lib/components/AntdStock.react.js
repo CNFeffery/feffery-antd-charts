@@ -1,21 +1,19 @@
-import { Area } from '@ant-design/charts';
+import { Stock } from '@ant-design/charts';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
-    pointBaseStyle,
-    lineBaseStyle,
-    areaBaseStyle,
     metaBasePropTypes,
     axisBasePropTypes,
     legendBasePropTypes,
     labelBasePropTypes,
     tooltipBasePropTypes,
     annotationsBasePropTypes,
-    sliderBasePropTypes
+    sliderBasePropTypes,
+    baseStyle
 } from './BasePropTypes.react';
 
-// 定义面积图组件AntdArea，部分API参数参考https://charts.ant.design/zh-CN/demos/area
-export default class AntdArea extends Component {
+// 定义股票图组件AntdStock，部分API参数参考https://charts.ant.design/demos/stock/
+export default class AntdStock extends Component {
     render() {
         // 取得必要属性或参数
         let {
@@ -26,15 +24,9 @@ export default class AntdArea extends Component {
             meta,
             xField,
             yField,
-            seriesField,
-            smooth,
-            isPercent,
-            startOnZero,
-            isStack,
-            color,
-            areaStyle,
-            line,
-            point,
+            risingFill,
+            fallingFill,
+            stockStyle,
             xAxis,
             yAxis,
             width,
@@ -70,11 +62,8 @@ export default class AntdArea extends Component {
             appendPadding: appendPadding,
             xField: xField,
             yField: yField,
-            seriesField: seriesField,
-            smooth: smooth,
-            isPercent: isPercent,
-            startOnZero: startOnZero,
-            isStack: isStack,
+            risingFill: risingFill,
+            fallingFill: fallingFill,
             width: width,
             height: height,
             autoFit: autoFit,
@@ -83,32 +72,9 @@ export default class AntdArea extends Component {
             locale: locale
         };
 
-
         // 进阶参数
-        if (color) {
-            config.color = color?.func ? eval(color?.func) : color
-        }
-
-        if (areaStyle) {
-            config.areaStyle = areaStyle?.func ? eval(areaStyle.func) : areaStyle
-        }
-
-        if (line) {
-            config.line = line
-
-            config.line.color = config?.line?.color?.func ? eval(config.line.color.func) : config.line.color
-
-            config.line.style = config?.line?.style?.func ? eval(config.line.style.func) : config.line.style
-        }
-
-        if (point) {
-            config.point = {
-                color: point?.color?.func ? eval(point?.color?.func) : point?.color,
-
-                shape: point?.shape?.func ? eval(point?.shape?.func) : point?.shape,
-
-                style: point?.style?.func ? eval(point?.style?.func) : point?.style
-            }
+        if (stockStyle) {
+            config.stockStyle = stockStyle?.func ? eval(stockStyle?.func) : stockStyle
         }
 
         if (xAxis) {
@@ -146,18 +112,6 @@ export default class AntdArea extends Component {
             }
         }
 
-        if (tooltip) {
-            config.tooltip = tooltip
-
-            if (config.tooltip?.formatter?.func) {
-                config.tooltip.formatter = eval(config.tooltip.formatter.func)
-            }
-
-            if (config.tooltip?.customItems?.func) {
-                config.tooltip.customItems = eval(config.tooltip.customItems.func)
-            }
-        }
-
         if (annotations) {
             config.annotations = annotations
         }
@@ -170,15 +124,84 @@ export default class AntdArea extends Component {
             }
         }
 
-        return <Area id={id}
+        if (tooltip) {
+            config.tooltip = tooltip
+
+            if (config.tooltip?.formatter?.func) {
+                config.tooltip.formatter = eval(config.tooltip.formatter.func)
+            }
+
+            if (config.tooltip?.customItems?.func) {
+                config.tooltip.customItems = eval(config.tooltip.customItems.func)
+            }
+
+            tooltip.crosshairs = {
+                line: {
+                    style: {
+                        lineWidth: 0.5,
+                        stroke: 'rgba(0,0,0,0.25)',
+                    },
+                },
+                text: function text(type, defaultContent, items) {
+                    var textContent;
+                    if (type === 'x') {
+                        var item = items[0];
+                        textContent = item ? item.title : defaultContent;
+                    } else {
+                        textContent = ''.concat(defaultContent.toFixed(2));
+                    }
+                    return {
+                        position: type === 'y' ? 'start' : 'end',
+                        content: textContent,
+                        style: { fill: '#dfdfdf' },
+                    };
+                },
+                textBackground: {
+                    padding: [4, 8],
+                    style: { fill: '#363636' },
+                },
+            }
+        } else {
+            config.tooltip = {
+                crosshairs: {
+                    line: {
+                        style: {
+                            lineWidth: 0.5,
+                            stroke: 'rgba(0,0,0,0.25)',
+                        },
+                    },
+                    text: function text(type, defaultContent, items) {
+                        var textContent;
+                        if (type === 'x') {
+                            var item = items[0];
+                            textContent = item ? item.title : defaultContent;
+                        } else {
+                            textContent = ''.concat(defaultContent.toFixed(2));
+                        }
+                        return {
+                            position: type === 'y' ? 'start' : 'end',
+                            content: textContent,
+                            style: { fill: '#dfdfdf' },
+                        };
+                    },
+                    textBackground: {
+                        padding: [4, 8],
+                        style: { fill: '#363636' },
+                    },
+                }
+            }
+        }
+
+        return <Stock id={id}
             className={className}
             style={style}
             {...config} />;
+
     }
 }
 
 // 定义参数或属性
-AntdArea.propTypes = {
+AntdStock.propTypes = {
     // 部件id
     id: PropTypes.string,
 
@@ -197,113 +220,23 @@ AntdArea.propTypes = {
     // 定义作为x轴的字段名
     xField: PropTypes.string.isRequired,
 
-    // 定义作为y轴的字段名
-    yField: PropTypes.string.isRequired,
+    // 定义作为y轴的字段名，格式为对应[开盘价字段, 收盘价字段, 最高价字段, 最低价字段]
+    yField: PropTypes.arrayOf(PropTypes.string).isRequired,
 
-    // 定义作为分组依据的字段名
-    seriesField: PropTypes.string,
+    // 配置股票图上涨状态颜色，默认为#ef5350
+    risingFill: PropTypes.string,
 
-    // 设置是否以平滑曲线方式渲染折线，默认为false
-    smooth: PropTypes.bool,
+    // 配置股票图下跌状态颜色，默认为#26a69a
+    fallingFill: PropTypes.string,
 
-    // 设置是否开启百分比面积图，百分比时会自动激活isStack=true
-    isPercent: PropTypes.bool,
-
-    // 在存在seriesField分组字段时，用于设置是否将折线堆叠起来，默认为false
-    isStack: PropTypes.bool,
-
-    // 设置面积图是否从0基准线开始填充，使用时需要配合isStack=false
-    startOnZero: PropTypes.bool,
-
-    // 设置面积图形样式
-    areaStyle: PropTypes.oneOfType([
-        areaBaseStyle,
+    // 用于设置股票图图形样式
+    stockStyle: PropTypes.oneOfType([
+        baseStyle,
         PropTypes.exact({
             // 回调模式
             func: PropTypes.string
         })
     ]),
-
-    // 用于手动设置调色方案，接受css中合法的所有颜色值，当传入单个字符串时，所有折线沿用此颜色值
-    // 当传入数组时，会视作调色盘方案对seriesField区分的不同系列进行着色
-    // 当传入对象时，会解析出其'func'属性对应的字符串，解析为函数，以支持更为自由的seriesField->色彩映射
-    color: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.arrayOf(PropTypes.string),
-        PropTypes.exact({
-            // 传入字符串形式的js函数体源码，例如
-            // (ref) => {
-            //     if (ref.series === '系列一'){
-            //         return 'red'
-            //     }
-            //     return 'blue'
-            // }
-            func: PropTypes.string
-        })
-    ]),
-
-    // 用于设置折线样式，常规方式下接受对象用于设置全局折线样式
-    // 亦可传入字符串对应的js函数体，实现针对不同seriesField返回不同样式，例如
-    // (ref) => {
-    //     if (ref.seriesField === 'a'){
-    //         return {
-    //             lineDash: [4, 4],
-    //             opacity: 1,
-    //           };
-    //     }
-    //     return { opacity: 0.5 };
-    // }
-    line: PropTypes.exact({
-        // 设置面积图中折线的样式
-        color: PropTypes.oneOfType([
-            PropTypes.string,
-            PropTypes.arrayOf(PropTypes.string),
-            PropTypes.exact({
-                // 回调模式
-                func: PropTypes.string
-            })
-        ]),
-
-        // 设置面积图中的线样式
-        style: PropTypes.oneOfType([
-            lineBaseStyle,
-            PropTypes.exact({
-                // 回调模式
-                func: PropTypes.string
-            })
-        ])
-    }),
-
-    // 用于设置面积图折线折点的样式
-    point: PropTypes.exact({
-        // 设置折点颜色，支持单字符串、字符串数组以及对象传入func定义js函数体，函数格式同lineStyle
-        color: PropTypes.oneOfType([
-            PropTypes.string,
-            PropTypes.arrayOf(PropTypes.string),
-            PropTypes.exact({
-                func: PropTypes.string
-            })
-        ]),
-
-        // 设置折点形状，支持单字符串或对象传入func定义js函数体，函数格式同lineStyle
-        // 单字符时可选的样式有'circle'、'square'、'line'、'diamond'、'triangle'、'triangle-down'、'hexagon'、
-        // 'bowtie'、'cross'、'tick'、'plus'及'hyphen'
-        shape: PropTypes.oneOfType([
-            PropTypes.string,
-            PropTypes.exact({
-                func: PropTypes.string
-            })
-        ]),
-
-        // 设置折点通用style属性，支持对象传入，当对象中具有func属性时，会视作func回调模式处理
-        style: PropTypes.oneOfType([
-            pointBaseStyle,
-            PropTypes.exact({
-                // 回调模式
-                func: PropTypes.string
-            })
-        ])
-    }),
 
     // 设置x坐标轴相关属性
     xAxis: axisBasePropTypes,
@@ -378,5 +311,7 @@ AntdArea.propTypes = {
 };
 
 // 设置默认参数
-AntdArea.defaultProps = {
+AntdStock.defaultProps = {
+    risingFill: '#ef5350',
+    fallingFill: '#26a69a'
 }

@@ -223,10 +223,13 @@ const metaBasePropTypes = PropTypes.objectOf(
         alias: PropTypes.string,
 
         // 设置特殊的字段信息格式化处理回调
-        formatter: PropTypes.exact({
-            // 回调模式
-            func: PropTypes.string
-        }),
+        formatter: PropTypes.oneOfType([
+            PropTypes.exact({
+                // 回调模式
+                func: PropTypes.string
+            }),
+            PropTypes.any
+        ]),
 
         // 枚举该字段下所有值
         values: PropTypes.arrayOf(PropTypes.string),
@@ -293,10 +296,13 @@ const axisBasePropTypes = PropTypes.exact({
         position: PropTypes.string,
 
         // 设置文字标签的格式化显示回调函数
-        formatter: PropTypes.exact({
-            // 回调模式
-            func: PropTypes.string
-        }),
+        formatter: PropTypes.oneOfType([
+            PropTypes.exact({
+                // 回调模式
+                func: PropTypes.string
+            }),
+            PropTypes.any
+        ]),
 
         // 设置是否自动隐藏，默认为false
         autoHide: PropTypes.bool
@@ -434,13 +440,37 @@ const legendBasePropTypes = PropTypes.oneOfType([
         // 设置图例文本的相关格式
         itemName: PropTypes.exact({
             // 设置图例项marker同后面name的间距
-            spacing: PropTypes.number
+            spacing: PropTypes.number,
+
+            // 设置文本样式
+            style: textBaseStyle,
+
+            // 回调设置文字内容
+            formatter: PropTypes.oneOfType([
+                PropTypes.exact({
+                    // 回调模式
+                    func: PropTypes.string,
+                }),
+                PropTypes.any
+            ])
         }),
 
         // 设置图例数值的相关格式
         itemValue: PropTypes.exact({
             // 设置是否右对齐，默认为false，仅当设置图例项宽度时生效
-            alignRight: PropTypes.bool
+            alignRight: PropTypes.bool,
+
+            // 设置文本样式
+            style: textBaseStyle,
+
+            // 回调设置文字内容
+            formatter: PropTypes.oneOfType([
+                PropTypes.exact({
+                    // 回调模式
+                    func: PropTypes.string,
+                }),
+                PropTypes.any
+            ])
         }),
 
         // 设置图例项水平方向的间距
@@ -536,10 +566,13 @@ const labelBasePropTypes = PropTypes.exact({
     content: PropTypes.string,
 
     // 设置文字标签的格式化显示回调函数
-    formatter: PropTypes.exact({
-        // 回调模式
-        func: PropTypes.string
-    }),
+    formatter: PropTypes.oneOfType([
+        PropTypes.exact({
+            // 回调模式
+            func: PropTypes.string
+        }),
+        PropTypes.any
+    ]),
 
     // 设置是否自动隐藏，默认为false
     autoHide: PropTypes.bool
@@ -552,10 +585,13 @@ const tooltipBasePropTypes = PropTypes.exact({
     fields: PropTypes.arrayOf(PropTypes.string),
 
     // 设置tooltip显示的回调函数
-    formatter: PropTypes.exact({
-        // 回调模式
-        func: PropTypes.string
-    }),
+    formatter: PropTypes.oneOfType([
+        PropTypes.exact({
+            // 回调模式
+            func: PropTypes.string
+        }),
+        PropTypes.any
+    ]),
 
     // 设置tooltip内容是否跟随鼠标移动，默认为true
     follow: PropTypes.bool,
@@ -605,10 +641,13 @@ const tooltipBasePropTypes = PropTypes.exact({
     showNil: PropTypes.bool,
 
     // 设置是否在tooltip渲染之前对最终的items进行预处理
-    customItems: PropTypes.exact({
-        // 回调模式
-        func: PropTypes.string
-    })
+    customItems: PropTypes.oneOfType([
+        PropTypes.exact({
+            // 回调模式
+            func: PropTypes.string
+        }),
+        PropTypes.any
+    ])
 })
 
 
@@ -822,10 +861,13 @@ const sliderBasePropTypes = PropTypes.exact({
     maxLimit: PropTypes.number,
 
     // 设置滑块文本格式化函数
-    formatter: PropTypes.exact({
-        // 回调模式
-        func: PropTypes.string
-    })
+    formatter: PropTypes.oneOfType([
+        PropTypes.exact({
+            // 回调模式
+            func: PropTypes.string
+        }),
+        PropTypes.any
+    ])
 })
 
 export {

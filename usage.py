@@ -777,6 +777,42 @@ app.layout = html.Div(
                 'height': '600px',
                 'padding': '30 0 0 0'
             }
+        ),
+        html.H3('AntdStock 股票图示例'),
+        html.Div(
+            fact.AntdStock(
+                data=requests.get(
+                    'https://gw.alipayobjects.com/os/antfincdn/qtQ9nYfYJe/stock-data.json'
+                ).json(),
+                # 指定日期字段
+                xField='trade_date',
+                # 指定开盘价字段, 收盘价字段, 最高价字段, 最低价字段
+                yField=['open', 'close', 'high', 'low'],
+                # 为个原始字段赋别名
+                meta={
+                    'vol': {'alias': '成交量'},
+                    'open': {'alias': '开盘价'},
+                    'close': {'alias': '收盘价'},
+                    'high': {'alias': '最高价'},
+                    'low': {'alias': '最低价'}
+                },
+                slider={}, # 开启缩略轴
+                legend={
+                    'itemName': {
+                        'formatter': {
+                            'func': '''
+                            (name) => {
+                                return name === 'up' ? '上涨' : '下跌'
+                            }'''
+                        }
+                    }
+                }
+            ),
+            style={
+                'width': '1000px',
+                'height': '600px',
+                'padding': '30 0 0 0'
+            }
         )
     ],
     style={
