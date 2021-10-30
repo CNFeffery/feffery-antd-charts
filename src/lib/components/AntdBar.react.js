@@ -152,6 +152,8 @@ export default class AntdBar extends Component {
             if (config.label?.formatter?.func) {
                 config.label.formatter = eval(config.label.formatter.func)
             }
+        } else {
+            config.label = label
         }
 
         if (tooltip) {
@@ -169,8 +171,6 @@ export default class AntdBar extends Component {
         if (annotations) {
             config.annotations = annotations
         }
-
-        console.log(config.label)
 
         return <Bar id={id}
             className={className}
