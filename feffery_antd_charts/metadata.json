@@ -712,21 +712,29 @@
       },
       "connectedArea": {
         "type": {
-          "name": "exact",
-          "value": {
-            "trigger": {
-              "name": "union",
-              "value": [
-                {
-                  "name": "bool"
-                },
-                {
-                  "name": "string"
+          "name": "union",
+          "value": [
+            {
+              "name": "exact",
+              "value": {
+                "trigger": {
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "bool"
+                    },
+                    {
+                      "name": "string"
+                    }
+                  ],
+                  "required": false
                 }
-              ],
-              "required": false
+              }
+            },
+            {
+              "name": "bool"
             }
-          }
+          ]
         },
         "required": false,
         "description": ""
@@ -1180,21 +1188,29 @@
       },
       "connectedArea": {
         "type": {
-          "name": "exact",
-          "value": {
-            "trigger": {
-              "name": "union",
-              "value": [
-                {
-                  "name": "bool"
-                },
-                {
-                  "name": "string"
+          "name": "union",
+          "value": [
+            {
+              "name": "exact",
+              "value": {
+                "trigger": {
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "bool"
+                    },
+                    {
+                      "name": "string"
+                    }
+                  ],
+                  "required": false
                 }
-              ],
-              "required": false
+              }
+            },
+            {
+              "name": "bool"
             }
-          }
+          ]
         },
         "required": false,
         "description": ""

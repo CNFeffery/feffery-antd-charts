@@ -25,7 +25,7 @@ Those elements have the following types:
 - `columnWidthRatio` (Real; optional)
 - `connectedArea` (optional): . connectedArea has the following type: lists containing elements 'trigger'.
 Those elements have the following types:
-  - `trigger` (Bool | String; optional)
+  - `trigger` (Bool | String; optional) | Bool
 - `conversionTag` (optional): . conversionTag has the following type: lists containing elements 'size', 'spacing', 'offset', 'arrow', 'text'.
 Those elements have the following types:
   - `size` (Real; optional)

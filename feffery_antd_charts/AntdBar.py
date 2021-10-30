@@ -43,7 +43,7 @@ Keyword arguments:
 
     `connectedArea` is a dict with keys:
 
-    - trigger (boolean | string; optional)
+    - trigger (boolean | string; optional) | boolean
 
 - conversionTag (dict; optional)
 

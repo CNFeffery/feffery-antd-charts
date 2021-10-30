@@ -321,13 +321,16 @@ AntdColumn.propTypes = {
     }),
 
     // 设置联通对比区域相关参数
-    connectedArea: PropTypes.exact({
-        // 设置触发方式，false表示不触发，可选的有'hover'、'click'
-        trigger: PropTypes.oneOfType([
-            PropTypes.bool,
-            PropTypes.string
-        ])
-    }),
+    connectedArea: PropTypes.oneOfType([
+        PropTypes.exact({
+            // 设置触发方式，false表示不触发，可选的有'hover'、'click'
+            trigger: PropTypes.oneOfType([
+                PropTypes.bool,
+                PropTypes.string
+            ])
+        }),
+        PropTypes.bool
+    ]),
 
     // 设置x坐标轴相关属性
     xAxis: axisBasePropTypes,

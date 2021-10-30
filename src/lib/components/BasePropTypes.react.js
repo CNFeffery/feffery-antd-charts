@@ -530,53 +530,56 @@ const legendBasePropTypes = PropTypes.oneOfType([
 ])
 
 // 定义label通用PropTypes模板
-const labelBasePropTypes = PropTypes.exact({
+const labelBasePropTypes = PropTypes.oneOfType([
+    PropTypes.exact({
 
-    // 声明特殊的label类型，典型如饼图label支持'inner'、'outer'、'spider'
-    type: PropTypes.string,
+        // 声明特殊的label类型，典型如饼图label支持'inner'、'outer'、'spider'
+        type: PropTypes.string,
 
-    // 设置label的偏移量，像素或百分比字符串
-    offset: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.string
-    ]),
+        // 设置label的偏移量，像素或百分比字符串
+        offset: PropTypes.oneOfType([
+            PropTypes.number,
+            PropTypes.string
+        ]),
 
-    // 设置label相对于数据点在水平方向上的偏移距离
-    offsetX: PropTypes.number,
+        // 设置label相对于数据点在水平方向上的偏移距离
+        offsetX: PropTypes.number,
 
-    // 设置label相对于数据点在竖直方向上的偏移距离
-    offsetY: PropTypes.number,
+        // 设置label相对于数据点在竖直方向上的偏移距离
+        offsetY: PropTypes.number,
 
-    // 设置label文本样式
-    style: textBaseStyle,
+        // 设置label文本样式
+        style: textBaseStyle,
 
-    // 设置是否自动旋转，默认为true
-    autoRotate: PropTypes.bool,
+        // 设置是否自动旋转，默认为true
+        autoRotate: PropTypes.bool,
 
-    // 设置文本旋转角度
-    rotate: PropTypes.number,
+        // 设置文本旋转角度
+        rotate: PropTypes.number,
 
-    // 只对极坐标下的文本生效，表示文本是否按照角度进行放射状显示，true表示开启，false表示关闭
-    labelEmit: PropTypes.bool,
+        // 只对极坐标下的文本生效，表示文本是否按照角度进行放射状显示，true表示开启，false表示关闭
+        labelEmit: PropTypes.bool,
 
-    // 设置当前文字标签相对于数据点的位置，可选的有'top'、'bottom'、'middle'、'left'、'right'
-    position: PropTypes.string,
+        // 设置当前文字标签相对于数据点的位置，可选的有'top'、'bottom'、'middle'、'left'、'right'
+        position: PropTypes.string,
 
-    // 简易格式化文本标签的方式
-    content: PropTypes.string,
+        // 简易格式化文本标签的方式
+        content: PropTypes.string,
 
-    // 设置文字标签的格式化显示回调函数
-    formatter: PropTypes.oneOfType([
-        PropTypes.exact({
-            // 回调模式
-            func: PropTypes.string
-        }),
-        PropTypes.any
-    ]),
+        // 设置文字标签的格式化显示回调函数
+        formatter: PropTypes.oneOfType([
+            PropTypes.exact({
+                // 回调模式
+                func: PropTypes.string
+            }),
+            PropTypes.any
+        ]),
 
-    // 设置是否自动隐藏，默认为false
-    autoHide: PropTypes.bool
-})
+        // 设置是否自动隐藏，默认为false
+        autoHide: PropTypes.bool
+    }),
+    PropTypes.bool
+])
 
 // 定义tooltip通用PropTypes模板
 const tooltipBasePropTypes = PropTypes.exact({
