@@ -170,6 +170,8 @@ export default class AntdBar extends Component {
             config.annotations = annotations
         }
 
+        console.log(config.label)
+
         return <Bar id={id}
             className={className}
             style={style}
