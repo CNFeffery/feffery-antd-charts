@@ -107,9 +107,13 @@ export default class AntdColumn extends Component {
         if (conversionTag) {
             config.conversionTag = conversionTag
 
-            if (config.conversionTag?.text?.formatter?.func) {
-                config.conversionTag.text.formatter = eval(config.conversionTag.text.formatter.func)
+            if (conversionTag?.text?.formatter?.func) {
+                config.conversionTag.text.formatter = eval(conversionTag.text.formatter.func)
             }
+        } else if (conversionTag === false){
+            config.conversionTag = false
+        } else {
+            delete config.conversionTag
         }
 
         if (color) {

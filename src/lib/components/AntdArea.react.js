@@ -87,35 +87,56 @@ export default class AntdArea extends Component {
         // 进阶参数
         if (color) {
             config.color = color?.func ? eval(color?.func) : color
+        } else if (color === false) {
+            config.color = false
+        } else {
+            delete config.color
         }
 
         if (areaStyle) {
             config.areaStyle = areaStyle?.func ? eval(areaStyle.func) : areaStyle
+        } else if (areaStyle === false) {
+            config.areaStyle = false
+        } else {
+            delete config.areaStyle
         }
 
         if (line) {
             config.line = line
 
-            config.line.color = config?.line?.color?.func ? eval(config.line.color.func) : config.line.color
+            config.line.color = line?.color?.func ? eval(line.color.func) : line.color
 
-            config.line.style = config?.line?.style?.func ? eval(config.line.style.func) : config.line.style
+            config.line.style = line?.style?.func ? eval(line.style.func) : line.style
+        } else if (line === false) {
+            config.line = false
+        } else {
+            delete config.line
         }
+
 
         if (point) {
             config.point = {
-                color: point?.color?.func ? eval(point?.color?.func) : point?.color,
+                color: point?.color?.func ? eval(point?.color?.func) : point.color,
 
-                shape: point?.shape?.func ? eval(point?.shape?.func) : point?.shape,
+                shape: point?.shape?.func ? eval(point?.shape?.func) : point.shape,
 
-                style: point?.style?.func ? eval(point?.style?.func) : point?.style
+                style: point?.style?.func ? eval(point?.style?.func) : point.style
             }
+        } else if (point === false) {
+            config.point = false
+        } else {
+            delete config.point
         }
 
         if (xAxis) {
             config.xAxis = xAxis
             if (config.xAxis?.label?.formatter?.func) {
-                config.xAxis.label.formatter = eval(config.xAxis.label.formatter.func)
+                config.xAxis.label.formatter = eval(xAxis.label.formatter.func)
             }
+        } else if (xAxis === false) {
+            config.xAxis = false
+        } else {
+            delete config.xAxis
         }
 
         if (yAxis) {
@@ -123,51 +144,75 @@ export default class AntdArea extends Component {
             if (config.yAxis?.label?.formatter?.func) {
                 config.yAxis.label.formatter = eval(config.yAxis.label.formatter.func)
             }
+        } else if (yAxis === false) {
+            config.yAxis = false
+        } else {
+            delete config.yAxis
         }
 
         if (legend) {
             config.legend = legend
 
-            if (config.legend.itemName) {
-                config.legend.itemName.formatter = config.legend.itemName?.formatter?.func
-                    ? eval(config.legend.itemName.formatter.func) : config.legend.itemName.formatter
+            if (legend.itemName) {
+                config.legend.itemName.formatter = legend.itemName?.formatter?.func
+                    ? eval(legend.itemName.formatter.func) : legend.itemName.formatter
             }
 
             if (config.legend.itemValue) {
-                config.legend.itemValue.formatter = config.legend.itemValue?.formatter?.func
-                    ? eval(config.legend.itemValue.formatter.func) : config.legend.itemValue.formatter
+                config.legend.itemValue.formatter = legend.itemValue?.formatter?.func
+                    ? eval(legend.itemValue.formatter.func) : legend.itemValue.formatter
             }
+        } else if (legend === false) {
+            config.legend = false
+        } else {
+            delete config.legend
         }
 
         if (label) {
             config.label = label
-            if (config.label?.formatter?.func) {
-                config.label.formatter = eval(config.label.formatter.func)
+            if (label?.formatter?.func) {
+                config.label.formatter = eval(label.formatter.func)
             }
+        } else if (label === false) {
+            config.label = false
+        } else {
+            delete config.label
         }
 
         if (tooltip) {
             config.tooltip = tooltip
 
-            if (config.tooltip?.formatter?.func) {
-                config.tooltip.formatter = eval(config.tooltip.formatter.func)
+            if (tooltip?.formatter?.func) {
+                config.tooltip.formatter = eval(tooltip.formatter.func)
             }
 
-            if (config.tooltip?.customItems?.func) {
-                config.tooltip.customItems = eval(config.tooltip.customItems.func)
+            if (tooltip?.customItems?.func) {
+                config.tooltip.customItems = eval(tooltip.customItems.func)
             }
+        } else if (tooltip === false) {
+            config.tooltip = false
+        } else {
+            delete config.tooltip
         }
 
         if (annotations) {
             config.annotations = annotations
+        } else if (annotations === false) {
+            config.annotations = false
+        } else {
+            delete config.annotations
         }
 
         if (slider) {
             config.slider = slider
 
-            if (config.slider?.formatter?.func) {
-                config.slider.formatter = eval(config.slider.formatter.func)
+            if (slider?.formatter?.func) {
+                config.slider.formatter = eval(slider.formatter.func)
             }
+        } else if (slider === false) {
+            config.slider = false
+        } else {
+            delete config.slider
         }
 
         return <Area id={id}

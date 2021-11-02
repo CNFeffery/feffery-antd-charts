@@ -106,70 +106,104 @@ export default class AntdBar extends Component {
         if (conversionTag) {
             config.conversionTag = conversionTag
 
-            if (config.conversionTag?.text?.formatter?.func) {
-                config.conversionTag.text.formatter = eval(config.conversionTag.text.formatter.func)
+            if (conversionTag?.text?.formatter?.func) {
+                config.conversionTag.text.formatter = eval(conversionTag.text.formatter.func)
             }
+        } else if (conversionTag === false) {
+            config.conversionTag = false
+        } else {
+            delete config.conversionTag
         }
 
         if (color) {
             config.color = color?.func ? eval(color?.func) : color
+        } else if (color === false) {
+            config.color = false
+        } else {
+            delete config.color
         }
 
         if (barStyle) {
             config.barStyle = barStyle?.func ? eval(barStyle?.func) : barStyle
+        } else if (barStyle === false) {
+            config.barStyle = false
+        } else {
+            delete config.barStyle
         }
 
         if (xAxis) {
             config.xAxis = xAxis
             if (config.xAxis?.label?.formatter?.func) {
-                config.xAxis.label.formatter = eval(config.xAxis.label.formatter.func)
+                config.xAxis.label.formatter = eval(xAxis.label.formatter.func)
             }
+        } else if (xAxis === false) {
+            config.xAxis = false
+        } else {
+            delete config.xAxis
         }
 
         if (yAxis) {
             config.yAxis = yAxis
             if (config.yAxis?.label?.formatter?.func) {
-                config.yAxis.label.formatter = eval(config.yAxis.label.formatter.func)
+                config.yAxis.label.formatter = eval(yAxis.label.formatter.func)
             }
+        } else if (yAxis === false) {
+            config.yAxis = false
+        } else {
+            delete config.yAxis
         }
 
         if (legend) {
             config.legend = legend
 
-            if (config.legend.itemName) {
-                config.legend.itemName.formatter = config.legend.itemName?.formatter?.func
-                    ? eval(config.legend.itemName.formatter.func) : config.legend.itemName.formatter
+            if (legend.itemName) {
+                config.legend.itemName.formatter = legend.itemName?.formatter?.func
+                    ? eval(legend.itemName.formatter.func) : legend.itemName.formatter
             }
 
-            if (config.legend.itemValue) {
-                config.legend.itemValue.formatter = config.legend.itemValue?.formatter?.func
-                    ? eval(config.legend.itemValue.formatter.func) : config.legend.itemValue.formatter
+            if (legend.itemValue) {
+                config.legend.itemValue.formatter = legend.itemValue?.formatter?.func
+                    ? eval(legend.itemValue.formatter.func) : legend.itemValue.formatter
             }
+        } else if (legend === false) {
+            config.legend = false
+        } else {
+            delete config.legend
         }
 
         if (label) {
             config.label = label
-            if (config.label?.formatter?.func) {
-                config.label.formatter = eval(config.label.formatter.func)
+            if (label?.formatter?.func) {
+                config.label.formatter = eval(label.formatter.func)
             }
+        } else if (label === false) {
+            config.label = false
         } else {
-            config.label = label
+            delete config.label
         }
 
         if (tooltip) {
             config.tooltip = tooltip
 
-            if (config.tooltip?.formatter?.func) {
-                config.tooltip.formatter = eval(config.tooltip.formatter.func)
+            if (tooltip?.formatter?.func) {
+                config.tooltip.formatter = eval(tooltip.formatter.func)
             }
 
-            if (config.tooltip?.customItems?.func) {
-                config.tooltip.customItems = eval(config.tooltip.customItems.func)
+            if (tooltip?.customItems?.func) {
+                config.tooltip.customItems = eval(tooltip.customItems.func)
             }
+        } else if (tooltip === false) {
+            config.tooltip = false
+        } else {
+            delete config.tooltip
         }
 
         if (annotations) {
             config.annotations = annotations
+        } else if (annotations === false) {
+            config.annotations = false
+        } else {
+            delete config.annotations
         }
 
         return <Bar id={id}
