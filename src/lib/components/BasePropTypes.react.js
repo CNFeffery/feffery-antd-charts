@@ -331,8 +331,9 @@ const metaBasePropTypes = PropTypes.objectOf(
 )
 
 // 定义坐标轴通用PropTypes模板
-const axisBasePropTypes = PropTypes.oneOf([
-    false,
+// 参考文档：https://antv-g2plot.gitee.io/zh/docs/api/components/axis
+const axisBasePropTypes = PropTypes.oneOfType([
+    PropTypes.oneOf([false]),
     PropTypes.exact({
         // 默认false，设置是否将对应坐标轴渲染于画布顶层，从而避免部分图表坐标轴被图形遮挡
         top: PropTypes.bool,
@@ -472,8 +473,9 @@ const axisBasePropTypes = PropTypes.oneOf([
 
 
 // 定义legend通用PropTypes模板，设置为false表示关闭legend
-const legendBasePropTypes = PropTypes.oneOf([
-    false,
+// 参考文档：https://antv-g2plot.gitee.io/zh/docs/api/components/legend
+const legendBasePropTypes = PropTypes.oneOfType([
+    PropTypes.oneOf([false]),
     PropTypes.exact({
         // 设置图例位置，可选的有'top'、'top-left'、'top-right'、'left'、'left-top'、
         // 'left-bottom'、'right'、'right-top'、'right-bottom'、'bottom'、'bottom-left'及'bottom-right'
@@ -624,8 +626,9 @@ const legendBasePropTypes = PropTypes.oneOf([
 ])
 
 // 定义label通用PropTypes模板
-const labelBasePropTypes = PropTypes.oneOf([
-    false,
+// 参考文档：https://antv-g2plot.gitee.io/zh/docs/api/components/label
+const labelBasePropTypes = PropTypes.oneOfType([
+    PropTypes.oneOf([false]),
     PropTypes.exact({
 
         // 声明特殊的label类型，典型如饼图label支持'inner'、'outer'、'spider'
@@ -658,6 +661,14 @@ const labelBasePropTypes = PropTypes.oneOf([
         // 设置当前文字标签相对于数据点的位置，可选的有'top'、'bottom'、'middle'、'left'、'right'
         position: PropTypes.string,
 
+        // 设置文本布局类型
+        layout: PropTypes.arrayOf(
+            PropTypes.exact({
+                // 指定具体类型
+                type: PropTypes.string
+            })
+        ),
+
         // 简易格式化文本标签的方式
         content: PropTypes.string,
 
@@ -676,8 +687,9 @@ const labelBasePropTypes = PropTypes.oneOf([
 ])
 
 // 定义tooltip通用PropTypes模板
-const tooltipBasePropTypes = PropTypes.oneOf([
-    false,
+// 参考文档：https://antv-g2plot.gitee.io/zh/docs/api/components/tooltip
+const tooltipBasePropTypes = PropTypes.oneOfType([
+    PropTypes.oneOf([false]),
     PropTypes.exact({
         // 设置需要在tooltip中显示的字段，不同的图表有不同的默认字段列表
         // 可配合formatter做进一步配置
@@ -752,11 +764,13 @@ const tooltipBasePropTypes = PropTypes.oneOf([
 
 
 // 定义手动标注通用PropTypes模板
-const annotationsBasePropTypes = PropTypes.oneOf([
-    false,
+// 参考文档：https://antv-g2plot.gitee.io/zh/docs/api/components/annotations
+const annotationsBasePropTypes = PropTypes.oneOfType([
+    PropTypes.oneOf([false]),
     PropTypes.arrayOf(
         PropTypes.exact({
             // 设置标注类型，可选的有text | line | image | region | dataMarker | dataRegion | regionFilter | shape | html
+            // 详细文档参考https://antv-g2plot.gitee.io/zh/docs/api/components/annotations
             type: PropTypes.string.isRequired,
 
             // 设置标注位置，具体说明如下：
@@ -854,8 +868,9 @@ const annotationsBasePropTypes = PropTypes.oneOf([
 
 
 // 定义滚动条通用PropTypes模板
-const scrollbarBasePropTypes = PropTypes.oneOf([
-    false,
+// 参考文档：https://antv-g2plot.gitee.io/zh/docs/api/components/scrollbar
+const scrollbarBasePropTypes = PropTypes.oneOfType([
+    PropTypes.oneOf([false]),
     PropTypes.exact({
         // 设置滚动条类型，可选的有'horizontal'、'vertical'，默认'horizontal'
         type: PropTypes.string,
@@ -893,8 +908,9 @@ const scrollbarBasePropTypes = PropTypes.oneOf([
 ])
 
 // 定义缩略轴通用PropTypes模板
-const sliderBasePropTypes = PropTypes.oneOf([
-    false,
+// 参考文档：https://antv-g2plot.gitee.io/zh/docs/api/components/slider
+const sliderBasePropTypes = PropTypes.oneOfType([
+    PropTypes.oneOf([false]),
     PropTypes.exact({
         // 设置默认起始位置，0到1之间，表示百分比范围
         start: PropTypes.number,

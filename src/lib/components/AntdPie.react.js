@@ -77,10 +77,18 @@ export default class AntdPie extends Component {
 
         if (color) {
             config.color = color?.func ? eval(color?.func) : color
+        } else if (color === false) {
+            config.color = false
+        } else {
+            delete config.color
         }
 
         if (pieStyle) {
             config.pieStyle = pieStyle?.func ? eval(pieStyle?.func) : pieStyle
+        } else if (pieStyle === false) {
+            config.pieStyle = false
+        } else {
+            delete config.pieStyle
         }
 
         if (statistic) {
@@ -97,43 +105,63 @@ export default class AntdPie extends Component {
                 config.statistic.content.formatter = statistic.content?.formatter?.func
                     ? eval(statistic.content.formatter.func) : statistic.content.formatter
             }
+        } else if (statistic === false) {
+            config.statistic = false
+        } else {
+            delete config.statistic
         }
 
         if (legend) {
             config.legend = legend
 
-            if (config.legend.itemName) {
-                config.legend.itemName.formatter = config.legend.itemName?.formatter?.func
-                    ? eval(config.legend.itemName.formatter.func) : config.legend.itemName.formatter
+            if (legend.itemName) {
+                config.legend.itemName.formatter = legend.itemName?.formatter?.func
+                    ? eval(legend.itemName.formatter.func) : legend.itemName.formatter
             }
 
-            if (config.legend.itemValue) {
-                config.legend.itemValue.formatter = config.legend.itemValue?.formatter?.func
-                    ? eval(config.legend.itemValue.formatter.func) : config.legend.itemValue.formatter
+            if (legend.itemValue) {
+                config.legend.itemValue.formatter = legend.itemValue?.formatter?.func
+                    ? eval(legend.itemValue.formatter.func) : legend.itemValue.formatter
             }
+        } else if (legend === false) {
+            config.legend = false
+        } else {
+            delete config.legend
         }
 
         if (label) {
             config.label = label
-            if (config.label?.formatter?.func) {
-                config.label.formatter = eval(config.label.formatter.func)
+            if (label?.formatter?.func) {
+                config.label.formatter = eval(label.formatter.func)
             }
+        } else if (label === false) {
+            config.label = false
+        } else {
+            delete config.label
         }
 
         if (tooltip) {
             config.tooltip = tooltip
 
-            if (config.tooltip?.formatter?.func) {
-                config.tooltip.formatter = eval(config.tooltip.formatter.func)
+            if (tooltip?.formatter?.func) {
+                config.tooltip.formatter = eval(tooltip.formatter.func)
             }
 
-            if (config.tooltip?.customItems?.func) {
-                config.tooltip.customItems = eval(config.tooltip.customItems.func)
+            if (tooltip?.customItems?.func) {
+                config.tooltip.customItems = eval(tooltip.customItems.func)
             }
+        } else if (tooltip === false) {
+            config.tooltip = false
+        } else {
+            delete config.tooltip
         }
 
         if (annotations) {
             config.annotations = annotations
+        } else if (annotations === false) {
+            config.annotations = false
+        } else {
+            delete config.annotations
         }
 
         return <Pie id={id}

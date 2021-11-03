@@ -44,7 +44,7 @@ app.layout = html.Div(
                 smooth=True,
                 isStack=False,
                 color={
-                    'func': '''
+                            'func': '''
                     (ref) => {
                         if (ref.series === '系列1') {
                             return '#eccc68'
@@ -98,11 +98,11 @@ app.layout = html.Div(
                 xAxis={
                     'title': {
                         'text': 'x轴测试',
-                        'position': 'center',
-                        'style': {
-                            'fontSize': 18,
-                            'fontFamily': 'SimHei'
-                        }
+                                'position': 'center',
+                                'style': {
+                                    'fontSize': 18,
+                                    'fontFamily': 'SimHei'
+                                }
                     },
                     'label': {
                         'rotate': 3 * math.pi / 2,
@@ -142,10 +142,10 @@ app.layout = html.Div(
                 yAxis={
                     'title': {
                         'text': 'y轴测试',
-                        'style': {
-                            'fontSize': 18,
-                            'fontFamily': 'SimHei'
-                        }
+                                'style': {
+                                    'fontSize': 18,
+                                    'fontFamily': 'SimHei'
+                                }
                     },
                     'label': {
                         'style': {
@@ -171,10 +171,10 @@ app.layout = html.Div(
                     'offsetX': -10,
                     'itemHeight': 20,
                     'title': {
-                        'text': '图例标题测试',
-                        'style': {
-                            'fontSize': 16
-                        }
+                                'text': '图例标题测试',
+                                'style': {
+                                    'fontSize': 16
+                                }
                     },
                     'selected': {
                         '系列1': False
@@ -184,7 +184,7 @@ app.layout = html.Div(
                     'offset': 20,
                     'position': 'top',
                     'formatter': {
-                        'func': '''
+                                'func': '''
                         (item) => {
                             if (item.x % 5 === 0){
                                 return item.y + '万'
@@ -224,25 +224,25 @@ app.layout = html.Div(
                 annotations=[
                     {
                         'type': 'region',
-                        'start': ['0%', '0%'],
-                        'end': ['20%', '7.5%'],
-                        'top': True,
-                        'style': {
-                            'fill': '#1890ff',
-                            'fillOpacity': 1,
-                            'opacity': 0.6,
-                        },
+                                'start': ['0%', '0%'],
+                                'end': ['20%', '7.5%'],
+                                'top': True,
+                                'style': {
+                                    'fill': '#1890ff',
+                                    'fillOpacity': 1,
+                                    'opacity': 0.6,
+                                },
                     },
                     {
                         'type': 'text',
-                        'position': ['10%', '3.5%'],
-                        'content': '各财年营收情况',
-                        'style': {
-                            'fill': '#fff',
-                            'fontSize': 18,
-                            'textAlign': 'center',
-                            'textBaseline': 'middle'
-                        },
+                                'position': ['10%', '3.5%'],
+                                'content': '各财年营收情况',
+                                'style': {
+                                    'fill': '#fff',
+                                    'fontSize': 18,
+                                    'textAlign': 'center',
+                                    'textBaseline': 'middle'
+                                },
                     }
                 ],
                 padding='auto',
@@ -796,7 +796,7 @@ app.layout = html.Div(
                     'high': {'alias': '最高价'},
                     'low': {'alias': '最低价'}
                 },
-                slider={}, # 开启缩略轴
+                slider={},  # 开启缩略轴
                 legend={
                     'itemName': {
                         'formatter': {

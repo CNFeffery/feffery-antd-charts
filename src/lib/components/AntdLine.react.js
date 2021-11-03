@@ -61,7 +61,6 @@ export default class AntdLine extends Component {
             }
         }
 
-
         let config = {
             data: data,
             meta: meta,
@@ -85,10 +84,18 @@ export default class AntdLine extends Component {
         // 进阶参数
         if (color) {
             config.color = color?.func ? eval(color?.func) : color
+        } else if (color === false) {
+            config.color = false
+        } else {
+            delete config.color
         }
 
         if (lineStyle) {
             config.lineStyle = lineStyle?.func ? eval(lineStyle?.func) : lineStyle
+        } else if (lineStyle === false) {
+            config.lineStyle = false
+        } else {
+            delete config.lineStyle
         }
 
         if (point) {
@@ -99,65 +106,98 @@ export default class AntdLine extends Component {
 
                 style: point?.style?.func ? eval(point?.style?.func) : point?.style
             }
+        } else if (point === false) {
+            config.point = false
+        } else {
+            delete config.point
         }
 
         if (xAxis) {
             config.xAxis = xAxis
-            if (config.xAxis?.label?.formatter?.func) {
-                config.xAxis.label.formatter = eval(config.xAxis.label.formatter.func)
+            if (xAxis?.label?.formatter?.func) {
+                config.xAxis.label.formatter = eval(xAxis.label.formatter.func)
             }
+        } else if (xAxis === false) {
+            config.yAxis = false
+        } else {
+            delete config.yAxis
         }
 
         if (yAxis) {
             config.yAxis = yAxis
-            if (config.yAxis?.label?.formatter?.func) {
-                config.yAxis.label.formatter = eval(config.yAxis.label.formatter.func)
+            if (yAxis?.label?.formatter?.func) {
+                config.yAxis.label.formatter = eval(yAxis.label.formatter.func)
             }
+        } else if (yAxis === false) {
+            config.yAxis = false
+        } else {
+            delete config.yAxis
         }
 
-        if (legend) {
+        if (typeof legend == "undefined" || JSON.stringify(legend) == "{}") {
+            config.legend = undefined;
+        } else if (legend === false) {
+
+            config.legend = false
+        } else if (legend) {
             config.legend = legend
 
-            if (config.legend.itemName) {
-                config.legend.itemName.formatter = config.legend.itemName?.formatter?.func
-                    ? eval(config.legend.itemName.formatter.func) : config.legend.itemName.formatter
+            if (legend.itemName) {
+                config.legend.itemName.formatter = legend.itemName?.formatter?.func
+                    ? eval(legend.itemName.formatter.func) : legend.itemName.formatter
             }
 
-            if (config.legend.itemValue) {
-                config.legend.itemValue.formatter = config.legend.itemValue?.formatter?.func
-                    ? eval(config.legend.itemValue.formatter.func) : config.legend.itemValue.formatter
+            if (legend.itemValue) {
+                config.legend.itemValue.formatter = legend.itemValue?.formatter?.func
+                    ? eval(legend.itemValue.formatter.func) : legend.itemValue.formatter
             }
         }
 
         if (label) {
             config.label = label
-            if (config.label?.formatter?.func) {
-                config.label.formatter = eval(config.label.formatter.func)
+            if (label?.formatter?.func) {
+                config.label.formatter = eval(label.formatter.func)
             }
+        } else if (label === false) {
+            config.label = false
+        } else {
+            delete config.label
         }
 
         if (tooltip) {
             config.tooltip = tooltip
 
-            if (config.tooltip?.formatter?.func) {
-                config.tooltip.formatter = eval(config.tooltip.formatter.func)
+            if (tooltip?.formatter?.func) {
+                config.tooltip.formatter = eval(tooltip.formatter.func)
             }
 
-            if (config.tooltip?.customItems?.func) {
-                config.tooltip.customItems = eval(config.tooltip.customItems.func)
+            if (tooltip?.customItems?.func) {
+                config.tooltip.customItems = eval(tooltip.customItems.func)
             }
+        } else if (tooltip === false) {
+            config.tooltip = false
+        } else {
+            delete config.tooltip
         }
 
         if (annotations) {
             config.annotations = annotations
+        } else if (annotations === false) {
+            config.annotations = false
+        } else {
+            delete config.annotations
         }
 
         if (slider) {
             config.slider = slider
 
-            if (config.slider?.formatter?.func) {
-                config.slider.formatter = eval(config.slider.formatter.func)
+            if (slider?.formatter?.func) {
+                config.slider.formatter = eval(slider.formatter.func)
             }
+        } else if (slider === false) {
+            config.slider = false
+        } else {
+            delete config.slider
         }
 
         return <Line id={id}
