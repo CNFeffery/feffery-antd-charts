@@ -1,22 +1,20 @@
-import { Column } from '@ant-design/charts';
+import { Radar } from '@ant-design/charts';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
+    pointBaseStyle,
+    lineBaseStyle,
+    areaBaseStyle,
     metaBasePropTypes,
     axisBasePropTypes,
     legendBasePropTypes,
     labelBasePropTypes,
     tooltipBasePropTypes,
-    annotationsBasePropTypes,
-    scrollbarBasePropTypes,
-    sliderBasePropTypes,
-    baseStyle,
-    areaBaseStyle,
-    textBaseStyle
+    annotationsBasePropTypes
 } from './BasePropTypes.react';
 
-// 定义柱状图AntdColumn，部分API参数参考https://charts.ant.design/zh-CN/demos/column
-export default class AntdColumn extends Component {
+// 定义雷达图组件AntdRadar，部分API参数参考https://charts.ant.design/zh-CN/demos/radar
+export default class AntdRadar extends Component {
     render() {
         // 取得必要属性或参数
         let {
@@ -28,23 +26,14 @@ export default class AntdColumn extends Component {
             xField,
             yField,
             seriesField,
-            groupField,
-            isStack,
-            isGroup,
-            isRange,
-            isPercent,
+            smooth,
+            radius,
+            startAngle,
+            endAngle,
             color,
-            intervalPadding,
-            dodgePadding,
-            minColumnWidth,
-            maxColumnWidth,
-            columnStyle,
-            columnBackground,
-            columnWidthRatio,
-            marginRatio,
-            scrollbar,
-            conversionTag,
-            connectedArea,
+            lineStyle,
+            point,
+            area,
             xAxis,
             yAxis,
             width,
@@ -58,7 +47,6 @@ export default class AntdColumn extends Component {
             label,
             tooltip,
             annotations,
-            slider,
             setProps
         } = this.props;
 
@@ -77,24 +65,14 @@ export default class AntdColumn extends Component {
             data: data,
             meta: meta,
             padding: padding,
-            appendPadding,
+            appendPadding: appendPadding,
             xField: xField,
             yField: yField,
             seriesField: seriesField,
-            groupField: groupField,
-            isStack: isStack,
-            isGroup: isGroup,
-            isRange: isRange,
-            isPercent: isPercent,
-            intervalPadding: intervalPadding,
-            dodgePadding: dodgePadding,
-            minColumnWidth: minColumnWidth,
-            maxColumnWidth: maxColumnWidth,
-            columnBackground: columnBackground,
-            columnWidthRatio: columnWidthRatio,
-            marginRatio: marginRatio,
-            scrollbar: scrollbar,
-            connectedArea: connectedArea,
+            smooth: smooth,
+            radius: radius,
+            startAngle: startAngle,
+            endAngle: endAngle,
             width: width,
             height: height,
             autoFit: autoFit,
@@ -104,18 +82,6 @@ export default class AntdColumn extends Component {
         };
 
         // 进阶参数
-        if (typeof conversionTag == "undefined" || JSON.stringify(conversionTag) == "{}") {
-            config.conversionTag = undefined
-        } else if (conversionTag === false) {
-            config.conversionTag = false
-        } else if (conversionTag) {
-            config.conversionTag = conversionTag
-
-            if (conversionTag?.text?.formatter?.func) {
-                config.conversionTag.text.formatter = eval(conversionTag.text.formatter.func)
-            }
-        }
-
         if (typeof color == "undefined" || JSON.stringify(color) == "{}") {
             config.color = undefined
         } else if (color === false) {
@@ -124,12 +90,45 @@ export default class AntdColumn extends Component {
             config.color = color?.func ? eval(color?.func) : color
         }
 
-        if (typeof columnStyle == "undefined" || JSON.stringify(columnStyle) == "{}") {
-            config.columnStyle = undefined
-        } else if (columnStyle === false) {
-            config.columnStyle = false
-        } else if (columnStyle) {
-            config.columnStyle = columnStyle?.func ? eval(columnStyle?.func) : columnStyle
+
+        if (typeof lineStyle == "undefined" || JSON.stringify(lineStyle) == "{}") {
+            config.lineStyle = undefined
+        } else if (lineStyle === false) {
+            config.lineStyle = false
+        } else if (lineStyle) {
+            config.lineStyle = lineStyle?.func ? eval(lineStyle?.func) : lineStyle
+        }
+
+
+        if (typeof point == "undefined" || JSON.stringify(point) == "{}") {
+            config.point = undefined
+        } else if (point === false) {
+            config.point = false
+        } else if (point) {
+            config.point = {
+                color: point?.color?.func ? eval(point?.color?.func) : point.color,
+
+                shape: point?.shape?.func ? eval(point?.shape?.func) : point.shape,
+
+                style: point?.style?.func ? eval(point?.style?.func) : point.style
+            }
+        }
+
+        if (typeof area == "undefined" || JSON.stringify(area) == "{}") {
+            config.area = undefined
+        } else if (area === false) {
+            config.area = false
+        } else if (area) {
+            config.area = {
+
+                color: area?.color?.func ? eval(area?.color?.func) : area.color,
+
+                style: area?.style?.func ? eval(area?.style?.func) : area.style
+            }
+
+            if (area.smooth) {
+                config.area.smooth = area.smooth
+            }
         }
 
         if (typeof xAxis == "undefined" || JSON.stringify(xAxis) == "{}") {
@@ -138,7 +137,7 @@ export default class AntdColumn extends Component {
             config.xAxis = false
         } else if (xAxis) {
             config.xAxis = xAxis
-            if (xAxis?.label?.formatter?.func) {
+            if (config.xAxis?.label?.formatter?.func) {
                 config.xAxis.label.formatter = eval(xAxis.label.formatter.func)
             }
         }
@@ -149,8 +148,8 @@ export default class AntdColumn extends Component {
             config.yAxis = false
         } else if (yAxis) {
             config.yAxis = yAxis
-            if (yAxis?.label?.formatter?.func) {
-                config.yAxis.label.formatter = eval(yAxis.label.formatter.func)
+            if (config.yAxis?.label?.formatter?.func) {
+                config.yAxis.label.formatter = eval(config.yAxis.label.formatter.func)
             }
         }
 
@@ -166,16 +165,14 @@ export default class AntdColumn extends Component {
                     ? eval(legend.itemName.formatter.func) : legend.itemName.formatter
             }
 
-            if (legend.itemValue) {
+            if (config.legend.itemValue) {
                 config.legend.itemValue.formatter = legend.itemValue?.formatter?.func
                     ? eval(legend.itemValue.formatter.func) : legend.itemValue.formatter
             }
         }
 
-        if (typeof label == "undefined") {
+        if (typeof label == "undefined" || JSON.stringify(label) == "{}") {
             config.label = undefined
-        } else if (JSON.stringify(label) == "{}") {
-            config.label = {}
         } else if (label === false) {
             config.label = false
         } else if (label) {
@@ -191,11 +188,9 @@ export default class AntdColumn extends Component {
             config.tooltip = false
         } else if (tooltip) {
             config.tooltip = tooltip
-
             if (tooltip?.formatter?.func) {
                 config.tooltip.formatter = eval(tooltip.formatter.func)
             }
-
             if (tooltip?.customItems?.func) {
                 config.tooltip.customItems = eval(tooltip.customItems.func)
             }
@@ -209,19 +204,7 @@ export default class AntdColumn extends Component {
             config.annotations = annotations
         }
 
-        if (typeof slider == "undefined" || JSON.stringify(slider) == "{}") {
-            config.slider = undefined
-        } else if (slider === false) {
-            config.slider = false
-        } else if (slider) {
-            config.slider = slider
-
-            if (slider?.formatter?.func) {
-                config.slider.formatter = eval(slider.formatter.func)
-            }
-        }
-
-        return <Column id={id}
+        return <Radar id={id}
             className={className}
             style={style}
             {...config} />;
@@ -229,7 +212,7 @@ export default class AntdColumn extends Component {
 }
 
 // 定义参数或属性
-AntdColumn.propTypes = {
+AntdRadar.propTypes = {
     // 部件id
     id: PropTypes.string,
 
@@ -245,29 +228,26 @@ AntdColumn.propTypes = {
     // 定义字段预处理元信息
     meta: metaBasePropTypes,
 
-    // 定义作为x轴的字段名
+    // 定义作为角度的字段名
     xField: PropTypes.string.isRequired,
 
-    // 定义作为y轴的字段名
+    // 定义作为半径的字段名
     yField: PropTypes.string.isRequired,
 
-    // 定义作为分组依据的字段名
+    // 定义作为分组依据的字段名，不同的组会通过颜色进行区分并上下重叠
     seriesField: PropTypes.string,
 
-    // 用于在堆叠分组柱状图中指定分组字段，此时seriesField指定的字段会作为每个组内堆叠的分层依据
-    groupField: PropTypes.string,
+    // 设置是否以平滑曲线方式渲染弧线，默认为false
+    smooth: PropTypes.bool,
 
-    // 在存在seriesField分组字段时，用于设置是否堆叠条形图
-    isStack: PropTypes.bool,
+    // 设置雷达图的半径，原点为绘图区域中心，取值在0~1之间，1代表撑满绘图区域
+    radius: PropTypes.number,
 
-    // 在存在seriesField分组字段时，用于设置是否分组条形图
-    isGroup: PropTypes.bool,
+    // 设置起始角度，弧度制，默认为0
+    startAngle: PropTypes.number,
 
-    // 在xField的值格式为[number, number]时，用于设置是否区间条形图
-    isRange: PropTypes.bool,
-
-    // 在isStack=true时生效，用于设置是否百分比条形图
-    isPercent: PropTypes.bool,
+    // 设置结束角度，弧度制，默认为pi
+    endAngle: PropTypes.number,
 
     // 用于手动设置调色方案，接受css中合法的所有颜色值，当传入单个字符串时，所有折线沿用此颜色值
     // 当传入数组时，会视作调色盘方案对seriesField区分的不同系列进行着色
@@ -287,92 +267,87 @@ AntdColumn.propTypes = {
         })
     ]),
 
-    // 配置缩略轴相关参数
-    slider: sliderBasePropTypes,
 
-    // 设置分组条形图组间像素间隔宽度
-    intervalPadding: PropTypes.number,
-
-    // 设置分组条形图组内像素间隔宽度
-    dodgePadding: PropTypes.number,
-
-    // 设置柱状图的最小像素宽度
-    minColumnWidth: PropTypes.number,
-
-    // 设置柱状图的最大像素宽度
-    maxColumnWidth: PropTypes.number,
-
-    // 设置柱体的样式
-    columnStyle: PropTypes.oneOfType([
-        baseStyle,
+    // 用于设置折线样式，常规方式下接受对象用于设置全局折线样式
+    // 亦可传入字符串对应的js函数体，实现针对不同seriesField返回不同样式，例如
+    // (ref) => {
+    //     if (ref.seriesField === 'a'){
+    //         return {
+    //             lineDash: [4, 4],
+    //             opacity: 1,
+    //           };
+    //     }
+    //     return { opacity: 0.5 };
+    // }
+    lineStyle: PropTypes.oneOfType([
+        lineBaseStyle,
         PropTypes.exact({
             // 回调模式
             func: PropTypes.string
         })
     ]),
 
-    // 设置柱状图背景样式
-    columnBackground: PropTypes.exact({
-        // 具体样式
-        style: areaBaseStyle
-    }),
-
-    // 设置柱状图宽度占比，0~1之间
-    columnWidthRatio: PropTypes.number,
-
-    // 设置分组柱状图中条形之间的间距，0~1之间
-    marginRatio: PropTypes.number,
-
-    // 设置条形图滚动条样式
-    scrollbar: scrollbarBasePropTypes,
-
-    // 设置转化标签相关属性
-    conversionTag: PropTypes.exact({
-        // 设置转化率标签像素尺寸大小
-        size: PropTypes.number,
-
-        // 设置转化率标签与柱体之间的像素间距
-        spacing: PropTypes.number,
-
-        // 设置组件与坐标轴之间的距离
-        offset: PropTypes.number,
-
-        // 配置转化率组件箭头样式，false时不显示箭头
-        arrow: PropTypes.oneOfType([
-            PropTypes.bool,
+    // 用于设置面积图折线折点的样式
+    point: PropTypes.exact({
+        // 设置折点颜色，支持单字符串、字符串数组以及对象传入func定义js函数体，函数格式同lineStyle
+        color: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.arrayOf(PropTypes.string),
             PropTypes.exact({
-                // 设置箭头尺寸
-                headSize: PropTypes.number
+                func: PropTypes.string
             })
         ]),
 
-        // 配置转化率组件文本信息，false时不显示文本
-        text: PropTypes.oneOfType([
-            PropTypes.bool,
+        // 设置折点形状，支持单字符串或对象传入func定义js函数体，函数格式同lineStyle
+        // 单字符时可选的样式有'circle'、'square'、'line'、'diamond'、'triangle'、'triangle-down'、'hexagon'、
+        // 'bowtie'、'cross'、'tick'、'plus'及'hyphen'
+        shape: PropTypes.oneOfType([
+            PropTypes.string,
             PropTypes.exact({
-                // 自定义转化率计算函数
-                formatter: PropTypes.exact({
-                    // 回调模式
-                    func: PropTypes.string
-                }),
+                func: PropTypes.string
+            })
+        ]),
 
-                // 自定义转化率文字样式
-                style: textBaseStyle
+        // 设置折点通用style属性，支持对象传入，当对象中具有func属性时，会视作func回调模式处理
+        style: PropTypes.oneOfType([
+            pointBaseStyle,
+            PropTypes.exact({
+                // 回调模式
+                func: PropTypes.string
             })
         ])
     }),
 
-    // 设置联通对比区域相关参数
-    connectedArea: PropTypes.oneOfType([
-        PropTypes.exact({
-            // 设置触发方式，false表示不触发，可选的有'hover'、'click'
-            trigger: PropTypes.oneOfType([
-                PropTypes.bool,
-                PropTypes.string
-            ])
-        }),
-        PropTypes.bool
-    ]),
+    // 配置雷达图上的面积填充相关样式，可回调
+    area: PropTypes.exact({
+        // 配置是否平滑折线
+        smooth: PropTypes.bool,
+
+        // 配置填充面积颜色
+        color: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.arrayOf(PropTypes.string),
+            PropTypes.exact({
+                // 传入字符串形式的js函数体源码，例如
+                // (ref) => {
+                //     if (ref.series === '系列一'){
+                //         return 'red'
+                //     }
+                //     return 'blue'
+                // }
+                func: PropTypes.string
+            })
+        ]),
+
+        // 配置填充面积详细样式
+        style: PropTypes.oneOfType([
+            areaBaseStyle,
+            PropTypes.exact({
+                // 回调模式
+                func: PropTypes.string
+            })
+        ])
+    }),
 
     // 设置x坐标轴相关属性
     xAxis: axisBasePropTypes,
@@ -444,5 +419,5 @@ AntdColumn.propTypes = {
 };
 
 // 设置默认参数
-AntdColumn.defaultProps = {
+AntdRadar.defaultProps = {
 }

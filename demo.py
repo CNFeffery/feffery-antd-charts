@@ -50,8 +50,39 @@ app.layout = html.Div(
                                     checkedChildren='开启图例',
                                     unCheckedChildren='关闭图例',
                                     checked=True
+                                ),
+                                fac.AntdSwitch(
+                                    id='fact-line-xAxis-switch',
+                                    checkedChildren='开启xAxis',
+                                    unCheckedChildren='关闭xAxis',
+                                    checked=True
+                                ),
+                                fac.AntdSwitch(
+                                    id='fact-line-yAxis-switch',
+                                    checkedChildren='开启yAxis',
+                                    unCheckedChildren='关闭yAxis',
+                                    checked=True
+                                ),
+                                fac.AntdSwitch(
+                                    id='fact-line-label-switch',
+                                    checkedChildren='开启label',
+                                    unCheckedChildren='关闭label',
+                                    checked=True
+                                ),
+                                fac.AntdSwitch(
+                                    id='fact-line-tooltip-switch',
+                                    checkedChildren='开启tooltip',
+                                    unCheckedChildren='关闭tooltip',
+                                    checked=True
+                                ),
+                                fac.AntdSwitch(
+                                    id='fact-line-slider-switch',
+                                    checkedChildren='开启slider',
+                                    unCheckedChildren='关闭slider',
+                                    checked=True
                                 )
-                            ]
+                            ],
+                            direction='vertical'
                         )
                     ],
                     span=8,
@@ -66,6 +97,7 @@ app.layout = html.Div(
                         xField='x',
                         yField='y',
                         seriesField='series',
+                        slider={},
                         padding='auto',
                         appendPadding=40,
                         renderer='svg'
@@ -87,14 +119,33 @@ app.layout = html.Div(
 
 
 @app.callback(
-    [Output('fact-line', 'legend')],
-    [Input('fact-line-legend-switch', 'checked')],
-    prevent_initial_call=True,
+    [Output('fact-line', 'legend'),
+     Output('fact-line', 'xAxis'),
+     Output('fact-line', 'yAxis'),
+     Output('fact-line', 'label'),
+     Output('fact-line', 'tooltip'),
+     Output('fact-line', 'slider')],
+    [Input('fact-line-legend-switch', 'checked'),
+     Input('fact-line-xAxis-switch', 'checked'),
+     Input('fact-line-yAxis-switch', 'checked'),
+     Input('fact-line-label-switch', 'checked'),
+     Input('fact-line-tooltip-switch', 'checked'),
+     Input('fact-line-slider-switch', 'checked')]
 )
-def fact_line_callback(legend_checked):
+def fact_line_callback(legend_checked,
+                       xAxis_checked,
+                       yAxis_checked,
+                       label_checked,
+                       tooltip_checked,
+                       slider_checked):
 
     return [
-        {} if legend_checked else False
+        {} if legend_checked else False,
+        {} if xAxis_checked else False,
+        {} if yAxis_checked else False,
+        {} if label_checked else False,
+        {} if tooltip_checked else False,
+        {} if slider_checked else False
     ]
 
 

@@ -10,6 +10,7 @@ include("jl/''_antdbar.jl")
 include("jl/''_antdcolumn.jl")
 include("jl/''_antdline.jl")
 include("jl/''_antdpie.jl")
+include("jl/''_antdradar.jl")
 include("jl/''_antdscatter.jl")
 include("jl/''_antdstock.jl")
 

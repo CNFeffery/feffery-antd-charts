@@ -73,37 +73,41 @@ export default class AntdStock extends Component {
         };
 
         // 进阶参数
-        if (stockStyle) {
-            config.stockStyle = stockStyle?.func ? eval(stockStyle?.func) : stockStyle
+        if (typeof stockStyle == "undefined" || JSON.stringify(stockStyle) == "{}") {
+            config.stockStyle = undefined
         } else if (stockStyle === false) {
             config.stockStyle = false
-        } else {
-            delete config.stockStyle
+        } else if (stockStyle) {
+            config.stockStyle = stockStyle?.func ? eval(stockStyle?.func) : stockStyle
         }
 
-        if (xAxis) {
+        if (typeof xAxis == "undefined" || JSON.stringify(xAxis) == "{}") {
+            config.xAxis = undefined
+        } else if (xAxis === false) {
+            config.xAxis = false
+        } else if (xAxis) {
             config.xAxis = xAxis
             if (xAxis?.label?.formatter?.func) {
                 config.xAxis.label.formatter = eval(xAxis.label.formatter.func)
             }
-        } else if (xAxis === false) {
-            config.xAxis = false
-        } else {
-            delete config.xAxis
         }
 
-        if (yAxis) {
+        if (typeof yAxis == "undefined" || JSON.stringify(yAxis) == "{}") {
+            config.yAxis = undefined
+        } else if (yAxis === false) {
+            config.yAxis = false
+        } else if (yAxis) {
             config.yAxis = yAxis
             if (yAxis?.label?.formatter?.func) {
                 config.yAxis.label.formatter = eval(yAxis.label.formatter.func)
             }
-        } else if (yAxis === false) {
-            config.yAxis = false
-        } else {
-            delete config.yAxis
         }
 
-        if (legend) {
+        if (typeof legend == "undefined" || JSON.stringify(legend) == "{}") {
+            config.legend = undefined
+        } else if (legend === false) {
+            config.legend = false
+        } else if (legend) {
             config.legend = legend
 
             if (legend.itemName) {
@@ -115,44 +119,74 @@ export default class AntdStock extends Component {
                 config.legend.itemValue.formatter = legend.itemValue?.formatter?.func
                     ? eval(legend.itemValue.formatter.func) : legend.itemValue.formatter
             }
-        } else if (legend === false) {
-            config.legend = false
-        } else {
-            delete config.legend
         }
 
-        if (label) {
+        if (typeof label == "undefined") {
+            config.label = undefined
+        } else if (JSON.stringify(label) == "{}") {
+            config.label = {}
+        } else if (label === false) {
+            config.label = false
+        } else if (label) {
             config.label = label
             if (label?.formatter?.func) {
                 config.label.formatter = eval(label.formatter.func)
             }
-        } else if (label === false) {
-            config.label = false
-        } else {
-            delete config.label
         }
 
-        if (annotations) {
-            config.annotations = annotations
+        if (typeof annotations == "undefined" || JSON.stringify(annotations) == "{}") {
+            config.annotations = undefined
         } else if (annotations === false) {
             config.annotations = false
-        } else {
-            delete config.annotations
+        } else if (annotations) {
+            config.annotations = annotations
         }
 
-        if (slider) {
+        if (typeof slider == "undefined" || JSON.stringify(slider) == "{}") {
+            config.slider = undefined
+        } else if (slider === false) {
+            config.slider = false
+        } else if (slider) {
             config.slider = slider
 
             if (slider?.formatter?.func) {
                 config.slider.formatter = eval(slider.formatter.func)
             }
-        } else if (slider === false) {
-            config.slider = false
-        } else {
-            delete config.slider
         }
 
-        if (tooltip) {
+        if (typeof tooltip == "undefined" || JSON.stringify(tooltip) == "{}") {
+
+            config.tooltip = {
+                crosshairs: {
+                    line: {
+                        style: {
+                            lineWidth: 0.5,
+                            stroke: 'rgba(0,0,0,0.25)',
+                        },
+                    },
+                    text: function text(type, defaultContent, items) {
+                        var textContent;
+                        if (type === 'x') {
+                            var item = items[0];
+                            textContent = item ? item.title : defaultContent;
+                        } else {
+                            textContent = ''.concat(defaultContent.toFixed(2));
+                        }
+                        return {
+                            position: type === 'y' ? 'start' : 'end',
+                            content: textContent,
+                            style: { fill: '#dfdfdf' },
+                        };
+                    },
+                    textBackground: {
+                        padding: [4, 8],
+                        style: { fill: '#363636' },
+                    }
+                }
+            }
+        } else if (tooltip === false) {
+            config.tooltip = false
+        } else if (tooltip) {
             config.tooltip = tooltip
 
             if (tooltip?.formatter?.func) {
@@ -188,37 +222,6 @@ export default class AntdStock extends Component {
                     padding: [4, 8],
                     style: { fill: '#363636' },
                 },
-            }
-        } else if (tooltip === false) {
-            config.tooltip = false
-        } else {
-            config.tooltip = {
-                crosshairs: {
-                    line: {
-                        style: {
-                            lineWidth: 0.5,
-                            stroke: 'rgba(0,0,0,0.25)',
-                        },
-                    },
-                    text: function text(type, defaultContent, items) {
-                        var textContent;
-                        if (type === 'x') {
-                            var item = items[0];
-                            textContent = item ? item.title : defaultContent;
-                        } else {
-                            textContent = ''.concat(defaultContent.toFixed(2));
-                        }
-                        return {
-                            position: type === 'y' ? 'start' : 'end',
-                            content: textContent,
-                            style: { fill: '#dfdfdf' },
-                        };
-                    },
-                    textBackground: {
-                        padding: [4, 8],
-                        style: { fill: '#363636' },
-                    },
-                }
             }
         }
 

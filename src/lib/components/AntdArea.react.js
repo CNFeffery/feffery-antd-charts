@@ -85,36 +85,38 @@ export default class AntdArea extends Component {
 
 
         // 进阶参数
-        if (color) {
-            config.color = color?.func ? eval(color?.func) : color
+        if (typeof color == "undefined" || JSON.stringify(color) == "{}") {
+            config.color = undefined
         } else if (color === false) {
             config.color = false
-        } else {
-            delete config.color
+        } else if (color) {
+            config.color = color?.func ? eval(color?.func) : color
         }
 
-        if (areaStyle) {
-            config.areaStyle = areaStyle?.func ? eval(areaStyle.func) : areaStyle
+        if (typeof areaStyle == "undefined" || JSON.stringify(areaStyle) == "{}") {
+            config.areaStyle = undefined
         } else if (areaStyle === false) {
             config.areaStyle = false
-        } else {
-            delete config.areaStyle
+        } else if (areaStyle) {
+            config.areaStyle = areaStyle?.func ? eval(areaStyle.func) : areaStyle
         }
 
-        if (line) {
-            config.line = line
-
-            config.line.color = line?.color?.func ? eval(line.color.func) : line.color
-
-            config.line.style = line?.style?.func ? eval(line.style.func) : line.style
+        if (typeof line == "undefined" || JSON.stringify(line) == "{}") {
+            config.line = undefined
         } else if (line === false) {
             config.line = false
-        } else {
-            delete config.line
+        } else if (line) {
+            config.line = line
+            config.line.color = line?.color?.func ? eval(line.color.func) : line.color
+            config.line.style = line?.style?.func ? eval(line.style.func) : line.style
         }
 
 
-        if (point) {
+        if (typeof point == "undefined" || JSON.stringify(point) == "{}") {
+            config.point = undefined
+        } else if (point === false) {
+            config.point = false
+        } else if (point) {
             config.point = {
                 color: point?.color?.func ? eval(point?.color?.func) : point.color,
 
@@ -122,35 +124,35 @@ export default class AntdArea extends Component {
 
                 style: point?.style?.func ? eval(point?.style?.func) : point.style
             }
-        } else if (point === false) {
-            config.point = false
-        } else {
-            delete config.point
         }
 
-        if (xAxis) {
+        if (typeof xAxis == "undefined" || JSON.stringify(xAxis) == "{}") {
+            config.xAxis = undefined
+        } else if (xAxis === false) {
+            config.xAxis = false
+        } else if (xAxis) {
             config.xAxis = xAxis
             if (config.xAxis?.label?.formatter?.func) {
                 config.xAxis.label.formatter = eval(xAxis.label.formatter.func)
             }
-        } else if (xAxis === false) {
-            config.xAxis = false
-        } else {
-            delete config.xAxis
         }
 
-        if (yAxis) {
+        if (typeof yAxis == "undefined" || JSON.stringify(yAxis) == "{}") {
+            config.yAxis = undefined
+        } else if (yAxis === false) {
+            config.yAxis = false
+        } else if (yAxis) {
             config.yAxis = yAxis
             if (config.yAxis?.label?.formatter?.func) {
                 config.yAxis.label.formatter = eval(config.yAxis.label.formatter.func)
             }
-        } else if (yAxis === false) {
-            config.yAxis = false
-        } else {
-            delete config.yAxis
         }
 
-        if (legend) {
+        if (typeof legend == "undefined" || JSON.stringify(legend) == "{}") {
+            config.legend = undefined
+        } else if (legend === false) {
+            config.legend = false
+        } else if (legend) {
             config.legend = legend
 
             if (legend.itemName) {
@@ -162,57 +164,51 @@ export default class AntdArea extends Component {
                 config.legend.itemValue.formatter = legend.itemValue?.formatter?.func
                     ? eval(legend.itemValue.formatter.func) : legend.itemValue.formatter
             }
-        } else if (legend === false) {
-            config.legend = false
-        } else {
-            delete config.legend
         }
 
-        if (label) {
+        if (typeof label == "undefined" || JSON.stringify(label) == "{}") {
+            config.label = undefined
+        } else if (label === false) {
+            config.label = false
+        } else if (label) {
             config.label = label
             if (label?.formatter?.func) {
                 config.label.formatter = eval(label.formatter.func)
             }
-        } else if (label === false) {
-            config.label = false
-        } else {
-            delete config.label
         }
 
-        if (tooltip) {
+        if (typeof tooltip == "undefined" || JSON.stringify(tooltip) == "{}") {
+            config.tooltip = undefined
+        } else if (tooltip === false) {
+            config.tooltip = false
+        } else if (tooltip) {
             config.tooltip = tooltip
-
             if (tooltip?.formatter?.func) {
                 config.tooltip.formatter = eval(tooltip.formatter.func)
             }
-
             if (tooltip?.customItems?.func) {
                 config.tooltip.customItems = eval(tooltip.customItems.func)
             }
-        } else if (tooltip === false) {
-            config.tooltip = false
-        } else {
-            delete config.tooltip
         }
 
-        if (annotations) {
-            config.annotations = annotations
+        if (typeof annotations == "undefined" || JSON.stringify(annotations) == "{}") {
+            config.annotations = undefined
         } else if (annotations === false) {
             config.annotations = false
-        } else {
-            delete config.annotations
+        } else if (annotations) {
+            config.annotations = annotations
         }
 
-        if (slider) {
+        if (typeof slider == "undefined" || JSON.stringify(slider) == "{}") {
+            config.slider = undefined
+        } else if (slider === false) {
+            config.slider = false
+        } else if (slider) {
             config.slider = slider
 
             if (slider?.formatter?.func) {
                 config.slider.formatter = eval(slider.formatter.func)
             }
-        } else if (slider === false) {
-            config.slider = false
-        } else {
-            delete config.slider
         }
 
         return <Area id={id}

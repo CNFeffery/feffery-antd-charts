@@ -82,23 +82,27 @@ export default class AntdLine extends Component {
         };
 
         // 进阶参数
-        if (color) {
-            config.color = color?.func ? eval(color?.func) : color
+        if (typeof color == "undefined" || JSON.stringify(color) == "{}") {
+            config.color = undefined
         } else if (color === false) {
             config.color = false
-        } else {
-            delete config.color
+        } else if (color) {
+            config.color = color?.func ? eval(color?.func) : color
         }
 
-        if (lineStyle) {
-            config.lineStyle = lineStyle?.func ? eval(lineStyle?.func) : lineStyle
+        if (typeof lineStyle == "undefined" || JSON.stringify(lineStyle) == "{}") {
+            config.lineStyle = undefined
         } else if (lineStyle === false) {
             config.lineStyle = false
-        } else {
-            delete config.lineStyle
+        } else if (lineStyle) {
+            config.lineStyle = lineStyle?.func ? eval(lineStyle?.func) : lineStyle
         }
 
-        if (point) {
+        if (typeof point == "undefined" || JSON.stringify(point) == "{}") {
+            config.point = undefined
+        } else if (point === false) {
+            config.point = false
+        } else if (point) {
             config.point = {
                 color: point?.color?.func ? eval(point?.color?.func) : point?.color,
 
@@ -106,42 +110,36 @@ export default class AntdLine extends Component {
 
                 style: point?.style?.func ? eval(point?.style?.func) : point?.style
             }
-        } else if (point === false) {
-            config.point = false
-        } else {
-            delete config.point
         }
 
-        if (xAxis) {
+        if (typeof xAxis == "undefined" || JSON.stringify(xAxis) == "{}") {
+            config.xAxis = undefined
+        } else if (xAxis === false) {
+            config.xAxis = false
+        } else if (xAxis) {
             config.xAxis = xAxis
             if (xAxis?.label?.formatter?.func) {
                 config.xAxis.label.formatter = eval(xAxis.label.formatter.func)
             }
-        } else if (xAxis === false) {
-            config.yAxis = false
-        } else {
-            delete config.yAxis
         }
 
-        if (yAxis) {
+        if (typeof yAxis == "undefined" || JSON.stringify(yAxis) == "{}") {
+            config.yAxis = undefined
+        } else if (yAxis === false) {
+            config.yAxis = false
+        } else if (yAxis) {
             config.yAxis = yAxis
             if (yAxis?.label?.formatter?.func) {
                 config.yAxis.label.formatter = eval(yAxis.label.formatter.func)
             }
-        } else if (yAxis === false) {
-            config.yAxis = false
-        } else {
-            delete config.yAxis
         }
 
         if (typeof legend == "undefined" || JSON.stringify(legend) == "{}") {
             config.legend = undefined;
         } else if (legend === false) {
-
             config.legend = false
         } else if (legend) {
             config.legend = legend
-
             if (legend.itemName) {
                 config.legend.itemName.formatter = legend.itemName?.formatter?.func
                     ? eval(legend.itemName.formatter.func) : legend.itemName.formatter
@@ -153,18 +151,25 @@ export default class AntdLine extends Component {
             }
         }
 
-        if (label) {
+        if (typeof label == "undefined") {
+            config.label = undefined
+        } else if (JSON.stringify(label) == "{}") {
+            config.label = {}
+        }
+        else if (label === false) {
+            config.label = false
+        } else if (label) {
             config.label = label
             if (label?.formatter?.func) {
                 config.label.formatter = eval(label.formatter.func)
             }
-        } else if (label === false) {
-            config.label = false
-        } else {
-            delete config.label
         }
 
-        if (tooltip) {
+        if (typeof tooltip == "undefined" || JSON.stringify(tooltip) == "{}") {
+            config.tooltip = undefined
+        } else if (tooltip === false) {
+            config.tooltip = false
+        } else if (tooltip) {
             config.tooltip = tooltip
 
             if (tooltip?.formatter?.func) {
@@ -174,30 +179,30 @@ export default class AntdLine extends Component {
             if (tooltip?.customItems?.func) {
                 config.tooltip.customItems = eval(tooltip.customItems.func)
             }
-        } else if (tooltip === false) {
-            config.tooltip = false
-        } else {
-            delete config.tooltip
         }
 
-        if (annotations) {
-            config.annotations = annotations
+        if (typeof annotations == "undefined" || JSON.stringify(annotations) == "{}") {
+            config.annotations = undefined
         } else if (annotations === false) {
             config.annotations = false
-        } else {
-            delete config.annotations
+        } else if (annotations) {
+            config.annotations = annotations
         }
 
-        if (slider) {
-            config.slider = slider
-
-            if (slider?.formatter?.func) {
-                config.slider.formatter = eval(slider.formatter.func)
+        if (typeof slider == "undefined") {
+            config.slider = undefined
+        } else if (JSON.stringify(slider) == "{}") {
+            config.slider = {
+                start: 0,
+                end: 1
             }
         } else if (slider === false) {
             config.slider = false
-        } else {
-            delete config.slider
+        } else if (slider) {
+            config.slider = slider
+            if (slider?.formatter?.func) {
+                config.slider.formatter = eval(slider.formatter.func)
+            }
         }
 
         return <Line id={id}

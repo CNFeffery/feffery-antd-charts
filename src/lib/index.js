@@ -6,6 +6,7 @@ import AntdColumn from "./components/AntdColumn.react";
 import AntdPie from "./components/AntdPie.react";
 import AntdScatter from "./components/AntdScatter.react";
 import AntdStock from "./components/AntdStock.react";
+import AntdRadar from "./components/AntdRadar.react";
 
 export {
     AntdLine,
@@ -14,5 +15,6 @@ export {
     AntdColumn,
     AntdPie,
     AntdScatter,
-    AntdStock
+    AntdStock,
+    AntdRadar
 };

@@ -103,57 +103,60 @@ export default class AntdBar extends Component {
         };
 
         // 进阶参数
-        if (conversionTag) {
+        if (typeof conversionTag == "undefined" || JSON.stringify(conversionTag) == "{}") {
+            config.conversionTag = undefined
+        } else if (conversionTag === false) {
+            config.conversionTag = false
+        } else if (conversionTag) {
             config.conversionTag = conversionTag
-
             if (conversionTag?.text?.formatter?.func) {
                 config.conversionTag.text.formatter = eval(conversionTag.text.formatter.func)
             }
-        } else if (conversionTag === false) {
-            config.conversionTag = false
-        } else {
-            delete config.conversionTag
         }
 
-        if (color) {
-            config.color = color?.func ? eval(color?.func) : color
+        if (typeof color == "undefined" || JSON.stringify(color) == "{}") {
+            config.color = undefined
         } else if (color === false) {
             config.color = false
-        } else {
-            delete config.color
+        } else if (color) {
+            config.color = color?.func ? eval(color?.func) : color
         }
 
-        if (barStyle) {
-            config.barStyle = barStyle?.func ? eval(barStyle?.func) : barStyle
+        if (typeof barStyle == "undefined" || JSON.stringify(barStyle) == "{}") {
+            config.barStyle = undefined
         } else if (barStyle === false) {
             config.barStyle = false
-        } else {
-            delete config.barStyle
+        } else if (barStyle) {
+            config.barStyle = barStyle?.func ? eval(barStyle?.func) : barStyle
         }
 
-        if (xAxis) {
+        if (typeof xAxis == "undefined" || JSON.stringify(xAxis) == "{}") {
+            config.xAxis = undefined
+        } else if (xAxis === false) {
+            config.xAxis = false
+        } else if (xAxis) {
             config.xAxis = xAxis
             if (config.xAxis?.label?.formatter?.func) {
                 config.xAxis.label.formatter = eval(xAxis.label.formatter.func)
             }
-        } else if (xAxis === false) {
-            config.xAxis = false
-        } else {
-            delete config.xAxis
         }
 
-        if (yAxis) {
+        if (typeof yAxis == "undefined" || JSON.stringify(yAxis) == "{}") {
+            config.yAxis = undefined
+        } else if (yAxis === false) {
+            config.yAxis = false
+        } else if (yAxis) {
             config.yAxis = yAxis
             if (config.yAxis?.label?.formatter?.func) {
                 config.yAxis.label.formatter = eval(yAxis.label.formatter.func)
             }
-        } else if (yAxis === false) {
-            config.yAxis = false
-        } else {
-            delete config.yAxis
         }
 
-        if (legend) {
+        if (typeof legend == "undefined" || JSON.stringify(legend) == "{}") {
+            config.legend = undefined
+        } else if (legend === false) {
+            config.legend = false
+        } else if (legend) {
             config.legend = legend
 
             if (legend.itemName) {
@@ -165,24 +168,26 @@ export default class AntdBar extends Component {
                 config.legend.itemValue.formatter = legend.itemValue?.formatter?.func
                     ? eval(legend.itemValue.formatter.func) : legend.itemValue.formatter
             }
-        } else if (legend === false) {
-            config.legend = false
-        } else {
-            delete config.legend
         }
 
-        if (label) {
+        if (typeof label == "undefined") {
+            config.label = undefined
+        } else if (JSON.stringify(label) == "{}") {
+            config.label = {}
+        } else if (label === false) {
+            config.label = false
+        } else if (label) {
             config.label = label
             if (label?.formatter?.func) {
                 config.label.formatter = eval(label.formatter.func)
             }
-        } else if (label === false) {
-            config.label = false
-        } else {
-            delete config.label
         }
 
-        if (tooltip) {
+        if (typeof tooltip == "undefined" || JSON.stringify(tooltip) == "{}") {
+            config.tooltip = undefined
+        } else if (tooltip === false) {
+            config.tooltip = false
+        } else if (tooltip) {
             config.tooltip = tooltip
 
             if (tooltip?.formatter?.func) {
@@ -192,18 +197,14 @@ export default class AntdBar extends Component {
             if (tooltip?.customItems?.func) {
                 config.tooltip.customItems = eval(tooltip.customItems.func)
             }
-        } else if (tooltip === false) {
-            config.tooltip = false
-        } else {
-            delete config.tooltip
         }
 
-        if (annotations) {
-            config.annotations = annotations
+        if (typeof annotations == "undefined" || JSON.stringify(annotations) == "{}") {
+            config.annotations = undefined
         } else if (annotations === false) {
             config.annotations = false
-        } else {
-            delete config.annotations
+        } else if (annotations) {
+            config.annotations = annotations
         }
 
         return <Bar id={id}

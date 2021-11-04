@@ -86,61 +86,65 @@ export default class AntdScatter extends Component {
         };
 
         // 进阶参数
-        if (color) {
-            config.color = color?.func ? eval(color?.func) : color
+        if (typeof color == "undefined" || JSON.stringify(color) == "{}") {
+            config.color = undefined
         } else if (color === false) {
             config.color = false
-        } else {
-            delete config.color
+        } else if (color) {
+            config.color = color?.func ? eval(color?.func) : color
         }
 
-        if (size) {
-            config.size = size?.func ? eval(size?.func) : size
+        if (typeof size == "undefined" || JSON.stringify(size) == "{}") {
+            config.size = undefined
         } else if (size === false) {
             config.size = false
-        } else {
-            delete config.size
+        } else if (size) {
+            config.size = size?.func ? eval(size?.func) : size
         }
 
-        if (shape) {
-            config.shape = shape?.func ? eval(shape?.func) : shape
+        if (typeof shape == "undefined" || JSON.stringify(shape) == "{}") {
+            config.shape = undefined
         } else if (shape === false) {
             config.shape = false
-        } else {
-            delete config.shape
+        } else if (shape) {
+            config.shape = shape?.func ? eval(shape?.func) : shape
         }
 
-        if (pointStyle) {
-            config.pointStyle = pointStyle?.func ? eval(pointStyle?.func) : pointStyle
+        if (typeof pointStyle == "undefined" || JSON.stringify(pointStyle) == "{}") {
+            config.pointStyle = undefined
         } else if (pointStyle === false) {
             config.pointStyle = false
-        } else {
-            delete config.pointStyle
+        } else if (pointStyle) {
+            config.pointStyle = pointStyle?.func ? eval(pointStyle?.func) : pointStyle
         }
 
-        if (xAxis) {
+        if (typeof xAxis == "undefined" || JSON.stringify(xAxis) == "{}") {
+            config.xAxis = undefined
+        } else if (xAxis === false) {
+            config.xAxis = false
+        } else if (xAxis) {
             config.xAxis = xAxis
             if (xAxis?.label?.formatter?.func) {
                 config.xAxis.label.formatter = eval(xAxis.label.formatter.func)
             }
-        } else if (xAxis === false) {
-            config.xAxis = false
-        } else {
-            delete config.xAxis
         }
 
-        if (yAxis) {
+        if (typeof yAxis == "undefined" || JSON.stringify(yAxis) == "{}") {
+            config.yAxis = undefined
+        } else if (yAxis === false) {
+            config.yAxis = false
+        } else if (yAxis) {
             config.yAxis = yAxis
             if (yAxis?.label?.formatter?.func) {
                 config.yAxis.label.formatter = eval(yAxis.label.formatter.func)
             }
-        } else if (yAxis === false) {
-            config.yAxis = false
-        } else {
-            delete config.yAxis
         }
 
-        if (legend) {
+        if (typeof legend == "undefined" || JSON.stringify(legend) == "{}") {
+            config.legend = undefined
+        } else if (legend === false) {
+            config.legend = false
+        } else if (legend) {
             config.legend = legend
 
             if (legend.itemName) {
@@ -152,24 +156,26 @@ export default class AntdScatter extends Component {
                 config.legend.itemValue.formatter = legend.itemValue?.formatter?.func
                     ? eval(legend.itemValue.formatter.func) : legend.itemValue.formatter
             }
-        } else if (legend === false) {
-            config.legend = false
-        } else {
-            delete config.legend
         }
 
-        if (label) {
+        if (typeof label == "undefined") {
+            config.label = undefined
+        } else if (JSON.stringify(label) == "{}") {
+            config.label = {}
+        } else if (label === false) {
+            config.label = false
+        } else if (label) {
             config.label = label
             if (label?.formatter?.func) {
                 config.label.formatter = eval(label.formatter.func)
             }
-        } else if (label === false) {
-            config.label = false
-        } else {
-            delete config.label
         }
 
-        if (tooltip) {
+        if (typeof tooltip == "undefined" || JSON.stringify(tooltip) == "{}") {
+            config.tooltip = undefined
+        } else if (tooltip === false) {
+            config.tooltip = false
+        } else if (tooltip) {
             config.tooltip = tooltip
 
             if (tooltip?.formatter?.func) {
@@ -179,29 +185,25 @@ export default class AntdScatter extends Component {
             if (tooltip?.customItems?.func) {
                 config.tooltip.customItems = eval(tooltip.customItems.func)
             }
-        } else if (tooltip === false) {
-            config.tooltip = false
-        } else {
-            delete config.tooltip
         }
 
-        if (annotations) {
-            config.annotations = annotations
+        if (typeof annotations == "undefined" || JSON.stringify(annotations) == "{}") {
+            config.annotations = undefined
         } else if (annotations === false) {
             config.annotations = false
-        } else {
-            delete config.annotations
+        } else if (tooltip) {
+            config.annotations = annotations
         }
 
-        if (regressionLine) {
+        if (typeof regressionLine == "undefined" || JSON.stringify(regressionLine) == "{}") {
+            config.regressionLine = undefined
+        } else if (regressionLine === false) {
+            config.regressionLine = false
+        } else if (regressionLine) {
             config.regressionLine = regressionLine
 
             config.regressionLine.algorithm = regressionLine?.algorithm?.func
                 ? eval(regressionLine.algorithm.func) : regressionLine.algorithm
-        } else if (regressionLine === false) {
-            config.regressionLine = false
-        } else {
-            delete config.regressionLine
         }
 
         return <Scatter id={id}

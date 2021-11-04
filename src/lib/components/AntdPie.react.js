@@ -75,23 +75,27 @@ export default class AntdPie extends Component {
 
         // 进阶参数
 
-        if (color) {
-            config.color = color?.func ? eval(color?.func) : color
+        if (typeof color == "undefined" || JSON.stringify(color) == "{}") {
+            config.color = undefined
         } else if (color === false) {
             config.color = false
-        } else {
-            delete config.color
+        } else if (color) {
+            config.color = color?.func ? eval(color?.func) : color
         }
 
-        if (pieStyle) {
-            config.pieStyle = pieStyle?.func ? eval(pieStyle?.func) : pieStyle
+        if (typeof pieStyle == "undefined" || JSON.stringify(pieStyle) == "{}") {
+            config.pieStyle = undefined
         } else if (pieStyle === false) {
             config.pieStyle = false
-        } else {
-            delete config.pieStyle
+        } else if (pieStyle) {
+            config.pieStyle = pieStyle?.func ? eval(pieStyle?.func) : pieStyle
         }
 
-        if (statistic) {
+        if (typeof statistic == "undefined" || JSON.stringify(statistic) == "{}") {
+            config.statistic = undefined
+        } else if (statistic === false) {
+            config.statistic = false
+        } else if (statistic) {
             config.statistic = statistic
 
             if (statistic.title) {
@@ -105,13 +109,13 @@ export default class AntdPie extends Component {
                 config.statistic.content.formatter = statistic.content?.formatter?.func
                     ? eval(statistic.content.formatter.func) : statistic.content.formatter
             }
-        } else if (statistic === false) {
-            config.statistic = false
-        } else {
-            delete config.statistic
         }
 
-        if (legend) {
+        if (typeof legend == "undefined" || JSON.stringify(legend) == "{}") {
+            config.legend = undefined
+        } else if (legend === false) {
+            config.legend = false
+        } else if (legend) {
             config.legend = legend
 
             if (legend.itemName) {
@@ -123,24 +127,26 @@ export default class AntdPie extends Component {
                 config.legend.itemValue.formatter = legend.itemValue?.formatter?.func
                     ? eval(legend.itemValue.formatter.func) : legend.itemValue.formatter
             }
-        } else if (legend === false) {
-            config.legend = false
-        } else {
-            delete config.legend
         }
 
-        if (label) {
+        if (typeof label == "undefined") {
+            config.label = undefined
+        } else if (JSON.stringify(label) == "{}") {
+            config.label = {}
+        } else if (label === false) {
+            config.label = false
+        } else if (label) {
             config.label = label
             if (label?.formatter?.func) {
                 config.label.formatter = eval(label.formatter.func)
             }
-        } else if (label === false) {
-            config.label = false
-        } else {
-            delete config.label
         }
 
-        if (tooltip) {
+        if (typeof tooltip == "undefined" || JSON.stringify(tooltip) == "{}") {
+            config.tooltip = undefined
+        } else if (tooltip === false) {
+            config.tooltip = false
+        } else if (tooltip) {
             config.tooltip = tooltip
 
             if (tooltip?.formatter?.func) {
@@ -150,18 +156,14 @@ export default class AntdPie extends Component {
             if (tooltip?.customItems?.func) {
                 config.tooltip.customItems = eval(tooltip.customItems.func)
             }
-        } else if (tooltip === false) {
-            config.tooltip = false
-        } else {
-            delete config.tooltip
         }
 
-        if (annotations) {
-            config.annotations = annotations
+        if (typeof tooltip == "undefined" || JSON.stringify(tooltip) == "{}") {
+            config.annotations = undefined
         } else if (annotations === false) {
             config.annotations = false
-        } else {
-            delete config.annotations
+        } else if (annotations) {
+            config.annotations = annotations
         }
 
         return <Pie id={id}

@@ -3,6 +3,7 @@ from .AntdBar import AntdBar
 from .AntdColumn import AntdColumn
 from .AntdLine import AntdLine
 from .AntdPie import AntdPie
+from .AntdRadar import AntdRadar
 from .AntdScatter import AntdScatter
 from .AntdStock import AntdStock
 
@@ -12,6 +13,7 @@ __all__ = [
     "AntdColumn",
     "AntdLine",
     "AntdPie",
+    "AntdRadar",
     "AntdScatter",
     "AntdStock"
 ]
