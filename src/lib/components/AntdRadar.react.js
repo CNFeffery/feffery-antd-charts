@@ -100,8 +100,10 @@ export default class AntdRadar extends Component {
         }
 
 
-        if (typeof point == "undefined" || JSON.stringify(point) == "{}") {
+        if (typeof point == "undefined") {
             config.point = undefined
+        } else if (JSON.stringify(point) == "{}") {
+            config.point = {}
         } else if (point === false) {
             config.point = false
         } else if (point) {
@@ -114,8 +116,10 @@ export default class AntdRadar extends Component {
             }
         }
 
-        if (typeof area == "undefined" || JSON.stringify(area) == "{}") {
+        if (typeof area == "undefined") {
             config.area = undefined
+        } else if (JSON.stringify(area) == "{}") {
+            config.area = {}
         } else if (area === false) {
             config.area = false
         } else if (area) {
@@ -203,6 +207,18 @@ export default class AntdRadar extends Component {
         } else if (annotations) {
             config.annotations = annotations
         }
+
+        // 构造待移除属性名数组
+        let beDeletedAttrArray = [];
+
+        for (let i in Object.keys(config)) {
+            if (typeof config[Object.keys(config)[i]] == "undefined") {
+                beDeletedAttrArray.push(Object.keys(config)[i])
+            }
+        }
+
+        // 删除所有未定义属性
+        beDeletedAttrArray.map(attr => { delete config[attr] })
 
         return <Radar id={id}
             className={className}

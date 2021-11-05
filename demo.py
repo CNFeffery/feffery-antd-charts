@@ -34,6 +34,25 @@ data = [
 ]
 
 
+radar_data = [
+    {'name': 'G2', 'star': 10178},
+    {'name': 'G6', 'star': 7077},
+    {'name': 'F2', 'star': 7345},
+    {'name': 'L7', 'star': 2029},
+    {'name': 'X6', 'star': 298},
+    {'name': 'AVA', 'star': 806},
+]
+
+radar_data = [
+    {
+        **item,
+        **{
+            'star': round(math.log(item['star']), 2)
+        }
+    }
+    for item in radar_data
+]
+
 # 构建前端内容
 app.layout = html.Div(
     [
@@ -110,7 +129,31 @@ app.layout = html.Div(
             }
         ),
 
-        fac.AntdDivider()
+        fac.AntdDivider(),
+
+
+        fact.AntdRadar(
+            data=radar_data,
+            xField='name',
+            yField='star',
+            # xAxis={
+            #     'line': None,
+            #     'tickLine': None,
+            # },
+            # yAxis={
+            #     'label': False,
+            #     'grid': {
+            #         'alternateColor': 'rgba(0, 0, 0, 0.04)',
+            #     },
+            # },
+            # meta={
+            #     'star': {
+            #         'alias': '分数'
+            #     },
+            # },
+            point={},
+            area={}
+        )
     ],
     style={
         'padding': '100px 100px 100px 100px'

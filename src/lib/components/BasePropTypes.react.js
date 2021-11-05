@@ -363,44 +363,47 @@ const axisBasePropTypes = PropTypes.oneOfType([
         }),
 
         // 设置坐标轴文本标签
-        label: PropTypes.exact({
+        label: PropTypes.oneOfType([
+            PropTypes.oneOf([false]),
+            PropTypes.exact({
 
-            // 设置label的偏移量
-            offset: PropTypes.number,
+                // 设置label的偏移量
+                offset: PropTypes.number,
 
-            // 设置label相对于数据点在水平方向的偏移像素距离
-            offsetX: PropTypes.number,
+                // 设置label相对于数据点在水平方向的偏移像素距离
+                offsetX: PropTypes.number,
 
-            // 设置label相对于数据点在竖直方向的偏移像素距离
-            offsetY: PropTypes.number,
+                // 设置label相对于数据点在竖直方向的偏移像素距离
+                offsetY: PropTypes.number,
 
-            // 设置label标题文字样式属性
-            style: textBaseStyle,
+                // 设置label标题文字样式属性
+                style: textBaseStyle,
 
-            // 设置是否自动旋转
-            autoRotate: PropTypes.bool,
+                // 设置是否自动旋转
+                autoRotate: PropTypes.bool,
 
-            // 设置文本旋转角度
-            rotate: PropTypes.number,
+                // 设置文本旋转角度
+                rotate: PropTypes.number,
 
-            // 只对极坐标下的文本生效，表示文本是否按照角度进行放射状显示，true表示开启，false表示关闭
-            labelEmit: PropTypes.bool,
+                // 只对极坐标下的文本生效，表示文本是否按照角度进行放射状显示，true表示开启，false表示关闭
+                labelEmit: PropTypes.bool,
 
-            // 设置当前文字标签相对于数据点的位置，可选的有'top'、'bottom'、'middle'、'left'、'right'
-            position: PropTypes.string,
+                // 设置当前文字标签相对于数据点的位置，可选的有'top'、'bottom'、'middle'、'left'、'right'
+                position: PropTypes.string,
 
-            // 设置文字标签的格式化显示回调函数
-            formatter: PropTypes.oneOfType([
-                PropTypes.exact({
-                    // 回调模式
-                    func: PropTypes.string
-                }),
-                PropTypes.any
-            ]),
+                // 设置文字标签的格式化显示回调函数
+                formatter: PropTypes.oneOfType([
+                    PropTypes.exact({
+                        // 回调模式
+                        func: PropTypes.string
+                    }),
+                    PropTypes.any
+                ]),
 
-            // 设置是否自动隐藏，默认为false
-            autoHide: PropTypes.bool
-        }),
+                // 设置是否自动隐藏，默认为false
+                autoHide: PropTypes.bool
+            })
+        ]),
 
         // 设置坐标轴线样式
         line: PropTypes.exact({
