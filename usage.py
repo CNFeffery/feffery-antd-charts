@@ -1,8 +1,10 @@
 import feffery_antd_charts as fact
 import requests
+from dash.dependencies import Input, Output
 import demjson
 from dash import html
 import math
+import json
 import dash
 
 
@@ -34,9 +36,13 @@ data = [
 
 app.layout = html.Div(
     [
+        html.Pre(
+            id='evt-output'
+        ),
         html.H3('AntdLine 折线图示例'),
         html.Div(
             fact.AntdLine(
+                id='line-demo',
                 data=data,
                 xField='x',
                 yField='y',
@@ -824,6 +830,14 @@ app.layout = html.Div(
     }
 )
 
+
+@app.callback(
+    Output('evt-output', 'children'),
+    Input('line-demo', 'evt')
+)
+def demo(evt):
+
+    return json.dumps(evt, indent=4)
 
 if __name__ == '__main__':
     app.run_server(debug=True, port=8008)

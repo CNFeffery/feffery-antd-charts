@@ -1378,6 +1378,13 @@
     "displayName": "AntdLine",
     "methods": [],
     "props": {
+      "evt": {
+        "type": {
+          "name": "any"
+        },
+        "required": false,
+        "description": ""
+      },
       "id": {
         "type": {
           "name": "string"

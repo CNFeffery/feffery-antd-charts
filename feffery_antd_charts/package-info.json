@@ -1,6 +1,6 @@
 {
   "name": "feffery_antd_charts",
-  "version": "0.0.1rc3",
+  "version": "0.0.1-rc3",
   "description": "Best implementation of Ant Design Charts in Plotly Dash.",
   "repository": {
     "type": "git",
@@ -13,8 +13,6 @@
   "main": "build/index.js",
   "scripts": {
     "start": "webpack-serve --config ./webpack.serve.config.js --open",
-    "validate-init": "python _validate_init.py",
-    "prepublishOnly": "npm run validate-init",
     "build:js": "webpack --mode production",
     "build:backends": "dash-generate-components ./src/lib/components feffery_antd_charts -p package-info.json --r-prefix '' --jl-prefix ''",
     "build:backends-activated": "(. venv/bin/activate || venv\\scripts\\activate && npm run build:py_and_r)",
@@ -25,6 +23,7 @@
   "license": "MIT",
   "dependencies": {
     "@ant-design/charts": "^1.2.14",
+    "antd": "^4.18.8",
     "ramda": "^0.26.1"
   },
   "devDependencies": {
@@ -32,8 +31,6 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.5.4",
     "@babel/preset-env": "^7.5.4",
     "@babel/preset-react": "^7.0.0",
-    "@plotly/dash-component-plugins": "^1.2.0",
-    "@plotly/webpack-dash-dynamic-import": "^1.2.0",
     "babel-eslint": "^10.0.2",
     "babel-loader": "^8.0.6",
     "copyfiles": "^2.1.1",
@@ -49,10 +46,19 @@
     "react-dom": "^16.8.6",
     "style-loader": "^0.23.1",
     "styled-jsx": "^3.2.1",
-    "terser-webpack-plugin": "^2.3.0",
-    "webpack": "4.36.1",
-    "webpack-cli": "3.3.6",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.36.1",
+    "webpack-cli": "^3.3.6",
     "webpack-serve": "3.1.0"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-react",
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      "@babel/plugin-transform-react-jsx"
+    ]
   },
   "engines": {
     "node": ">=8.11.0",

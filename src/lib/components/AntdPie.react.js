@@ -68,7 +68,6 @@ export default class AntdPie extends Component {
             width: width,
             height: height,
             autoFit: autoFit,
-            padding: padding,
             renderer: renderer,
             locale: locale
         };

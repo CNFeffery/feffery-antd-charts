@@ -15,6 +15,17 @@ import {
 
 // 定义折线图组件AntdLine，部分API参数参考https://charts.ant.design/zh-CN/demos/line
 export default class AntdLine extends Component {
+
+    shouldComponentUpdate(nextProps) {
+        console.log({ nextProps })
+        console.log(this.props)
+
+        if (!nextProps.evt || nextProps.evt?.timestamp === this.props.evt?.timestamp) {
+            return true
+        }
+        return false;
+    }
+
     render() {
         // 取得必要属性或参数
         let {
@@ -208,12 +219,29 @@ export default class AntdLine extends Component {
         return <Line id={id}
             className={className}
             style={style}
+            onReady={(plot) => {
+                plot.on('plot:click', (evt) => {
+                    console.log({ evt })
+                    setProps({
+                        evt: {
+                            timestamp: (new Date()).valueOf(),
+                            evt: {
+                                x: evt.x,
+                                y: evt.y
+                            }
+                        }
+                    })
+                });
+            }}
             {...config} />;
     }
 }
 
 // 定义参数或属性
 AntdLine.propTypes = {
+
+    evt: PropTypes.any,
+
     // 部件id
     id: PropTypes.string,
 
