@@ -3070,7 +3070,18 @@
         "type": {
           "name": "arrayOf",
           "value": {
-            "name": "object"
+            "name": "objectOf",
+            "value": {
+              "name": "union",
+              "value": [
+                {
+                  "name": "string"
+                },
+                {
+                  "name": "number"
+                }
+              ]
+            }
           }
         },
         "required": true,
@@ -3196,7 +3207,13 @@
               }
             },
             {
-              "name": "string"
+              "name": "enum",
+              "value": [
+                {
+                  "value": "'auto'",
+                  "computed": false
+                }
+              ]
             }
           ]
         },
@@ -3217,7 +3234,13 @@
               }
             },
             {
-              "name": "string"
+              "name": "enum",
+              "value": [
+                {
+                  "value": "'auto'",
+                  "computed": false
+                }
+              ]
             }
           ]
         },
@@ -3226,14 +3249,34 @@
       },
       "renderer": {
         "type": {
-          "name": "string"
+          "name": "enum",
+          "value": [
+            {
+              "value": "'canvas'",
+              "computed": false
+            },
+            {
+              "value": "'svg'",
+              "computed": false
+            }
+          ]
         },
         "required": false,
         "description": ""
       },
       "locale": {
         "type": {
-          "name": "string"
+          "name": "enum",
+          "value": [
+            {
+              "value": "'zh-CN'",
+              "computed": false
+            },
+            {
+              "value": "'en-US'",
+              "computed": false
+            }
+          ]
         },
         "required": false,
         "description": ""

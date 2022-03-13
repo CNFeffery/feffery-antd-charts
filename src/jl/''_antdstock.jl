@@ -10,10 +10,10 @@ An AntdStock component.
 Keyword arguments:
 - `id` (String; optional)
 - `annotations` (optional)
-- `appendPadding` (Real | Array of Reals | String; optional)
+- `appendPadding` (Real | Array of Reals | a value equal to: 'auto'; optional)
 - `autoFit` (Bool; optional)
 - `className` (String; optional)
-- `data` (Array of Dicts; required)
+- `data` (Array of Dict with Strings as keys and values of type String | Reals; required)
 - `fallingFill` (String; optional)
 - `height` (Real; optional)
 - `label` (optional)
@@ -23,10 +23,10 @@ Those elements have the following types:
   - `is_loading` (Bool; optional): Determines if the component is loading or not
   - `prop_name` (String; optional): Holds which property is loading
   - `component_name` (String; optional): Holds the name of the component that is loading
-- `locale` (String; optional)
+- `locale` (a value equal to: 'zh-CN', 'en-US'; optional)
 - `meta` (optional)
-- `padding` (Real | Array of Reals | String; optional)
-- `renderer` (String; optional)
+- `padding` (Real | Array of Reals | a value equal to: 'auto'; optional)
+- `renderer` (a value equal to: 'canvas', 'svg'; optional)
 - `risingFill` (String; optional)
 - `slider` (optional)
 - `stockStyle` (optional): . stockStyle has the following type: lists containing elements 'func'.

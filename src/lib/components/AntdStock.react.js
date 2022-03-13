@@ -1,6 +1,12 @@
+/* eslint-disable no-magic-numbers */
+/* eslint-disable no-undefined */
+/* eslint-disable no-eval */
+/* eslint-disable no-unused-vars */
+/* eslint-disable prefer-const */
 import { Stock } from '@ant-design/charts';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { isUndefined, omitBy } from 'lodash'
 import {
     metaBasePropTypes,
     axisBasePropTypes,
@@ -12,7 +18,7 @@ import {
     baseStyle
 } from './BasePropTypes.react';
 
-// 定义股票图组件AntdStock，部分API参数参考https://charts.ant.design/demos/stock/
+// 定义股票图组件AntdStock，部分API参数参考https://charts.ant.design/zh/examples/gallery
 export default class AntdStock extends Component {
     render() {
         // 取得必要属性或参数
@@ -44,13 +50,13 @@ export default class AntdStock extends Component {
             setProps
         } = this.props;
 
+
         // 预处理元信息
         if (meta) {
             for (let i in Object.keys(meta)) {
 
-                if (meta[Object.keys(meta)[i]].formatter) {
-                    meta[Object.keys(meta)[i]].formatter = meta[Object.keys(meta)[i]]?.formatter?.func
-                        ? eval(meta[Object.keys(meta)[i]]?.formatter?.func) : meta[Object.keys(meta)[i]]?.formatter
+                if (meta[Object.keys(meta)[i]]?.formatter?.func) {
+                    meta[Object.keys(meta)[i]].formatter = eval(meta[Object.keys(meta)[i]]?.formatter?.func)
                 }
             }
         }
@@ -67,126 +73,63 @@ export default class AntdStock extends Component {
             width: width,
             height: height,
             autoFit: autoFit,
-            padding: padding,
             renderer: renderer,
             locale: locale
         };
 
         // 进阶参数
-        if (typeof stockStyle == "undefined" || JSON.stringify(stockStyle) == "{}") {
-            config.stockStyle = undefined
-        } else if (stockStyle === false) {
-            config.stockStyle = false
-        } else if (stockStyle) {
-            config.stockStyle = stockStyle?.func ? eval(stockStyle?.func) : stockStyle
+        if (stockStyle) {
+            if (stockStyle?.func) {
+                config.stockStyle = eval(stockStyle?.func)
+            } else {
+                config.stockStyle = stockStyle
+            }
         }
 
-        if (typeof xAxis == "undefined" || JSON.stringify(xAxis) == "{}") {
-            config.xAxis = undefined
-        } else if (xAxis === false) {
-            config.xAxis = false
-        } else if (xAxis) {
+        if (xAxis) {
             config.xAxis = xAxis
             if (xAxis?.label?.formatter?.func) {
                 config.xAxis.label.formatter = eval(xAxis.label.formatter.func)
             }
         }
 
-        if (typeof yAxis == "undefined" || JSON.stringify(yAxis) == "{}") {
-            config.yAxis = undefined
-        } else if (yAxis === false) {
-            config.yAxis = false
-        } else if (yAxis) {
+        if (yAxis) {
             config.yAxis = yAxis
             if (yAxis?.label?.formatter?.func) {
                 config.yAxis.label.formatter = eval(yAxis.label.formatter.func)
             }
         }
 
-        if (typeof legend == "undefined" || JSON.stringify(legend) == "{}") {
-            config.legend = undefined
-        } else if (legend === false) {
-            config.legend = false
-        } else if (legend) {
+        if (legend) {
             config.legend = legend
-
-            if (legend.itemName) {
-                config.legend.itemName.formatter = legend.itemName?.formatter?.func
-                    ? eval(legend.itemName.formatter.func) : legend.itemName.formatter
+            if (legend?.itemName?.formatter?.func) {
+                config.legend.itemName.formatter = eval(legend.itemName.formatter.func)
             }
 
-            if (legend.itemValue) {
-                config.legend.itemValue.formatter = legend.itemValue?.formatter?.func
-                    ? eval(legend.itemValue.formatter.func) : legend.itemValue.formatter
+            if (legend?.itemValue?.formatter?.func) {
+                config.legend.itemValue.formatter = eval(legend.itemValue.formatter.func)
             }
         }
 
-        if (typeof label == "undefined") {
-            config.label = undefined
-        } else if (JSON.stringify(label) == "{}") {
-            config.label = {}
-        } else if (label === false) {
-            config.label = false
-        } else if (label) {
+        if (label) {
             config.label = label
             if (label?.formatter?.func) {
                 config.label.formatter = eval(label.formatter.func)
             }
         }
 
-        if (typeof annotations == "undefined" || JSON.stringify(annotations) == "{}") {
-            config.annotations = undefined
-        } else if (annotations === false) {
-            config.annotations = false
-        } else if (annotations) {
+        if (annotations) {
             config.annotations = annotations
         }
 
-        if (typeof slider == "undefined" || JSON.stringify(slider) == "{}") {
-            config.slider = undefined
-        } else if (slider === false) {
-            config.slider = false
-        } else if (slider) {
+        if (slider) {
             config.slider = slider
-
             if (slider?.formatter?.func) {
                 config.slider.formatter = eval(slider.formatter.func)
             }
         }
 
-        if (typeof tooltip == "undefined" || JSON.stringify(tooltip) == "{}") {
-
-            config.tooltip = {
-                crosshairs: {
-                    line: {
-                        style: {
-                            lineWidth: 0.5,
-                            stroke: 'rgba(0,0,0,0.25)',
-                        },
-                    },
-                    text: function text(type, defaultContent, items) {
-                        var textContent;
-                        if (type === 'x') {
-                            var item = items[0];
-                            textContent = item ? item.title : defaultContent;
-                        } else {
-                            textContent = ''.concat(defaultContent.toFixed(2));
-                        }
-                        return {
-                            position: type === 'y' ? 'start' : 'end',
-                            content: textContent,
-                            style: { fill: '#dfdfdf' },
-                        };
-                    },
-                    textBackground: {
-                        padding: [4, 8],
-                        style: { fill: '#363636' },
-                    }
-                }
-            }
-        } else if (tooltip === false) {
-            config.tooltip = false
-        } else if (tooltip) {
+        if (tooltip) {
             config.tooltip = tooltip
 
             if (tooltip?.formatter?.func) {
@@ -197,17 +140,20 @@ export default class AntdStock extends Component {
                 config.tooltip.customItems = eval(tooltip.customItems.func)
             }
 
-            tooltip.crosshairs = {
+        }
+
+        config.tooltip = {
+            crosshairs: {
                 line: {
                     style: {
                         lineWidth: 0.5,
                         stroke: 'rgba(0,0,0,0.25)',
                     },
                 },
-                text: function text(type, defaultContent, items) {
-                    var textContent;
+                text: (type, defaultContent, items) => {
+                    let textContent;
                     if (type === 'x') {
-                        var item = items[0];
+                        let item = items[0];
                         textContent = item ? item.title : defaultContent;
                     } else {
                         textContent = ''.concat(defaultContent.toFixed(2));
@@ -221,9 +167,11 @@ export default class AntdStock extends Component {
                 textBackground: {
                     padding: [4, 8],
                     style: { fill: '#363636' },
-                },
+                }
             }
         }
+
+        config = omitBy(config, isUndefined)
 
         return <Stock id={id}
             className={className}
@@ -245,7 +193,14 @@ AntdStock.propTypes = {
     style: PropTypes.object,
 
     // 定义绘图所需数据，必须参数
-    data: PropTypes.arrayOf(PropTypes.object).isRequired,
+    data: PropTypes.arrayOf(
+        PropTypes.objectOf(
+            PropTypes.oneOfType([
+                PropTypes.string,
+                PropTypes.number
+            ])
+        )
+    ).isRequired,
 
     // 定义字段预处理元信息
     meta: metaBasePropTypes,
@@ -290,21 +245,21 @@ AntdStock.propTypes = {
     padding: PropTypes.oneOfType([
         PropTypes.number,
         PropTypes.arrayOf(PropTypes.number),
-        PropTypes.string
+        PropTypes.oneOf(['auto'])
     ]),
 
     // 定义在padding基础上额外的像素填充间距
     appendPadding: PropTypes.oneOfType([
         PropTypes.number,
         PropTypes.arrayOf(PropTypes.number),
-        PropTypes.string
+        PropTypes.oneOf(['auto'])
     ]),
 
     // 设置图表渲染方式为'canvas'或'svg'模式，默认为'canvas'
-    renderer: PropTypes.string,
+    renderer: PropTypes.oneOf(['canvas', 'svg']),
 
     // 设置语言，可选的有'zh-CN'与'en-US'
-    locale: PropTypes.string,
+    locale: PropTypes.oneOf(['zh-CN', 'en-US']),
 
     // 配置图例相关参数
     legend: legendBasePropTypes,
