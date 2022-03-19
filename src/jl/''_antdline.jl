@@ -18,7 +18,6 @@ Those elements have the following types:
   - `func` (String; optional)
 - `connectNulls` (Bool; optional)
 - `data` (Array of Dicts; required)
-- `evt` (Bool | Real | String | Dict | Array; optional)
 - `height` (Real; optional)
 - `isStack` (Bool; optional)
 - `label` (optional)
@@ -45,6 +44,10 @@ Those elements have the following types:
   - `style` (optional): . style has the following type: lists containing elements 'func'.
 Those elements have the following types:
   - `func` (String; optional)
+- `recentlyPlotClickRecord` (optional): . recentlyPlotClickRecord has the following type: lists containing elements 'timestamp', 'data'.
+Those elements have the following types:
+  - `timestamp` (Real; optional)
+  - `data` (Array of Dicts; optional)
 - `renderer` (String; optional)
 - `seriesField` (String; optional)
 - `slider` (optional)
@@ -59,7 +62,7 @@ Those elements have the following types:
 - `yField` (String; required)
 """
 function ''_antdline(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :color, :connectNulls, :data, :evt, :height, :isStack, :label, :legend, :lineStyle, :loading_state, :locale, :meta, :padding, :point, :renderer, :seriesField, :slider, :smooth, :stepType, :style, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
+        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :color, :connectNulls, :data, :height, :isStack, :label, :legend, :lineStyle, :loading_state, :locale, :meta, :padding, :point, :recentlyPlotClickRecord, :renderer, :seriesField, :slider, :smooth, :stepType, :style, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
         wild_props = Symbol[]
         return Component("''_antdline", "AntdLine", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

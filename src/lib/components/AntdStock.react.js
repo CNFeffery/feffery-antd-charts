@@ -47,102 +47,106 @@ export default class AntdStock extends Component {
             tooltip,
             annotations,
             slider,
+            loading_state,
             setProps
         } = this.props;
 
+        // 初始化config参数对象，每次渲染前的参数解析变动只在config中生效
+        let config = {};
 
         // 预处理元信息
         if (meta) {
+            config.meta = meta;
             for (let i in Object.keys(meta)) {
-
+                // 若meta中当前字段属性下的formatter具有自定义函数func属性
                 if (meta[Object.keys(meta)[i]]?.formatter?.func) {
-                    meta[Object.keys(meta)[i]].formatter = eval(meta[Object.keys(meta)[i]]?.formatter?.func)
+                    config.meta[Object.keys(meta)[i]].formatter = eval(meta[Object.keys(meta)[i]].formatter.func)
                 }
             }
         }
 
-        let config = {
-            data: data,
-            meta: meta,
-            padding: padding,
-            appendPadding: appendPadding,
-            xField: xField,
-            yField: yField,
-            risingFill: risingFill,
-            fallingFill: fallingFill,
-            width: width,
-            height: height,
-            autoFit: autoFit,
-            renderer: renderer,
-            locale: locale
+
+        // 刷新基础参数
+        config = {
+            ...config,
+            data,
+            padding,
+            appendPadding,
+            xField,
+            yField,
+            risingFill,
+            fallingFill,
+            width,
+            height,
+            autoFit,
+            renderer,
+            locale
         };
 
         // 进阶参数
-        if (stockStyle) {
-            if (stockStyle?.func) {
-                config.stockStyle = eval(stockStyle?.func)
-            } else {
-                config.stockStyle = stockStyle
-            }
+        // 股票图图形样式
+        config.stockStyle = stockStyle
+        // 若stockStyle具有自定义函数func属性
+        if (stockStyle?.func) {
+            config.stockStyle = eval(stockStyle.func)
         }
 
-        if (xAxis) {
-            config.xAxis = xAxis
-            if (xAxis?.label?.formatter?.func) {
-                config.xAxis.label.formatter = eval(xAxis.label.formatter.func)
-            }
+        // x轴样式
+        config.xAxis = xAxis
+        // 若xAxis.label.formatter具有自定义函数func属性
+        if (xAxis?.label?.formatter?.func) {
+            config.xAxis.label.formatter = eval(xAxis.label.formatter.func)
         }
 
-        if (yAxis) {
-            config.yAxis = yAxis
-            if (yAxis?.label?.formatter?.func) {
-                config.yAxis.label.formatter = eval(yAxis.label.formatter.func)
-            }
+        // y轴样式
+        config.yAxis = yAxis
+        // 若yAxis.label.formatter具有自定义函数func属性
+        if (yAxis?.label?.formatter?.func) {
+            config.yAxis.label.formatter = eval(yAxis.label.formatter.func)
         }
 
-        if (legend) {
-            config.legend = legend
-            if (legend?.itemName?.formatter?.func) {
-                config.legend.itemName.formatter = eval(legend.itemName.formatter.func)
-            }
-
-            if (legend?.itemValue?.formatter?.func) {
-                config.legend.itemValue.formatter = eval(legend.itemValue.formatter.func)
-            }
+        // 图例样式
+        config.legend = legend
+        // 若legend.itemName.formatter具有自定义函数func属性
+        if (legend?.itemName?.formatter?.func) {
+            config.legend.itemName.formatter = eval(legend.itemName.formatter.func)
+        }
+        // 若legend.itemValue.formatter具有自定义函数func属性
+        if (legend?.itemValue?.formatter?.func) {
+            config.legend.itemValue.formatter = eval(legend.itemValue.formatter.func)
         }
 
-        if (label) {
-            config.label = label
-            if (label?.formatter?.func) {
-                config.label.formatter = eval(label.formatter.func)
-            }
+        // 数据标签
+        config.label = label
+        // 若label.formatter具有自定义函数func属性
+        if (label?.formatter?.func) {
+            config.label.formatter = eval(label.formatter.func)
         }
 
-        if (annotations) {
-            config.annotations = annotations
+        // 标注
+        config.annotations = annotations
+
+        // 缩略轴
+        config.slider = slider
+        // 若slider.formatter具有自定义函数func属性
+        if (slider?.formatter?.func) {
+            config.slider.formatter = eval(slider.formatter.func)
         }
 
-        if (slider) {
-            config.slider = slider
-            if (slider?.formatter?.func) {
-                config.slider.formatter = eval(slider.formatter.func)
-            }
+        // 悬浮提示
+        config.tooltip = tooltip
+        // 若tooltip.formatter具有自定义函数func属性
+        if (tooltip?.formatter?.func) {
+            config.tooltip.formatter = eval(tooltip.formatter.func)
+        }
+        // 若tooltip.customItems具有自定义函数func属性
+        if (tooltip?.customItems?.func) {
+            config.tooltip.customItems = eval(tooltip.customItems.func)
         }
 
-        if (tooltip) {
-            config.tooltip = tooltip
-
-            if (tooltip?.formatter?.func) {
-                config.tooltip.formatter = eval(tooltip.formatter.func)
-            }
-
-            if (tooltip?.customItems?.func) {
-                config.tooltip.customItems = eval(tooltip.customItems.func)
-            }
-
-        }
-
+        // 补充指示器
         config.tooltip = {
+            ...config.tooltip,
             crosshairs: {
                 line: {
                     style: {
@@ -171,11 +175,15 @@ export default class AntdStock extends Component {
             }
         }
 
+        // 利用lodash移除所有值为undefined的属性
         config = omitBy(config, isUndefined)
 
         return <Stock id={id}
             className={className}
             style={style}
+            data-dash-is-loading={
+                (loading_state && loading_state.is_loading) || undefined
+            }
             {...config} />;
 
     }

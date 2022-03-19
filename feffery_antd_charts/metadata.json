@@ -1378,9 +1378,22 @@
     "displayName": "AntdLine",
     "methods": [],
     "props": {
-      "evt": {
+      "recentlyPlotClickRecord": {
         "type": {
-          "name": "any"
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "arrayOf",
+              "value": {
+                "name": "object"
+              },
+              "required": false
+            }
+          }
         },
         "required": false,
         "description": ""

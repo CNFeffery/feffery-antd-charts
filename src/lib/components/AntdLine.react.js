@@ -1,6 +1,9 @@
+/* eslint-disable no-eval */
+/* eslint-disable prefer-const */
 import { Line } from '@ant-design/charts';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { isUndefined, omitBy, transform, isEqual, isObject, intersection } from 'lodash'
 import {
     pointBaseStyle,
     lineBaseStyle,
@@ -13,17 +16,34 @@ import {
     sliderBasePropTypes
 } from './BasePropTypes.react';
 
+const difference = (object, base) => {
+    const changes = (object, base) => {
+        return transform(object, function (result, value, key) {
+            if (!isEqual(value, base[key])) {
+                result[key] = (isObject(value) && isObject(base[key])) ? changes(value, base[key]) : value;
+            }
+        });
+    }
+    return changes(object, base);
+}
+
+// 定义不触发重绘的参数数组
+const preventUpdateProps = ['recentlyPointClickRecord', 'recentlyTooltipChangeRecord'];
+
 // 定义折线图组件AntdLine，部分API参数参考https://charts.ant.design/zh-CN/demos/line
 export default class AntdLine extends Component {
 
     shouldComponentUpdate(nextProps) {
-        console.log({ nextProps })
-        console.log(this.props)
 
-        if (!nextProps.evt || nextProps.evt?.timestamp === this.props.evt?.timestamp) {
-            return true
+        let changedPreventUpdateProps = intersection(
+            Object.keys(difference(this.props, nextProps)),
+            preventUpdateProps
+        )
+
+        if (changedPreventUpdateProps) {
+            return false;
         }
-        return false;
+        return true;
     }
 
     render() {
@@ -58,179 +78,155 @@ export default class AntdLine extends Component {
             tooltip,
             annotations,
             slider,
+            // recentlyTooltipChangeRecord,
             setProps
         } = this.props;
 
+        // 初始化config参数对象，每次渲染前的参数解析变动只在config中生效
+        let config = {};
+
         // 预处理元信息
         if (meta) {
+            config.meta = meta;
             for (let i in Object.keys(meta)) {
-
-                if (meta[Object.keys(meta)[i]].formatter) {
-                    meta[Object.keys(meta)[i]].formatter = meta[Object.keys(meta)[i]]?.formatter?.func
-                        ? eval(meta[Object.keys(meta)[i]]?.formatter?.func) : meta[Object.keys(meta)[i]]?.formatter
+                // 若meta中当前字段属性下的formatter具有自定义函数func属性
+                if (meta[Object.keys(meta)[i]]?.formatter?.func) {
+                    config.meta[Object.keys(meta)[i]].formatter = eval(meta[Object.keys(meta)[i]].formatter.func)
                 }
             }
         }
 
-        let config = {
-            data: data,
-            meta: meta,
-            padding: padding,
-            appendPadding: appendPadding,
-            xField: xField,
-            yField: yField,
-            seriesField: seriesField,
-            smooth: smooth,
-            stepType: stepType,
-            connectNulls: connectNulls,
-            isStack: isStack,
-            width: width,
-            height: height,
-            autoFit: autoFit,
-            padding: padding,
-            renderer: renderer,
-            locale: locale
-        };
+
+        // 刷新基础参数
+        config = {
+            ...config,
+            data,
+            meta,
+            padding,
+            appendPadding,
+            xField,
+            yField,
+            seriesField,
+            smooth,
+            stepType,
+            connectNulls,
+            isStack,
+            width,
+            height,
+            autoFit,
+            renderer,
+            locale
+        }
 
         // 进阶参数
-        if (typeof color == "undefined" || JSON.stringify(color) == "{}") {
-            config.color = undefined
-        } else if (color === false) {
-            config.color = false
-        } else if (color) {
-            config.color = color?.func ? eval(color?.func) : color
+        // 色彩样式
+        config.color = color
+        // 若color具有自定义函数func属性
+        if (color?.func) {
+            config.color = eval(color.func)
         }
 
-        if (typeof lineStyle == "undefined" || JSON.stringify(lineStyle) == "{}") {
-            config.lineStyle = undefined
-        } else if (lineStyle === false) {
-            config.lineStyle = false
-        } else if (lineStyle) {
-            config.lineStyle = lineStyle?.func ? eval(lineStyle?.func) : lineStyle
+        // 折线样式
+        config.lineStyle = lineStyle
+        // 若lineStyle具有自定义函数func属性
+        if (lineStyle?.func) {
+            config.lineStyle = eval(lineStyle.func)
         }
 
-        if (typeof point == "undefined" || JSON.stringify(point) == "{}") {
-            config.point = undefined
-        } else if (point === false) {
-            config.point = false
-        } else if (point) {
-            config.point = {
-                color: point?.color?.func ? eval(point?.color?.func) : point?.color,
-
-                shape: point?.shape?.func ? eval(point?.shape?.func) : point?.shape,
-
-                style: point?.style?.func ? eval(point?.style?.func) : point?.style
-            }
+        // 折点样式
+        config.point = point
+        // 若point.color具有自定义函数func属性
+        if (point?.color?.func) {
+            config.color = eval(point.color.func)
+        }
+        // 若point.shape具有自定义函数func属性
+        if (point?.shape?.func) {
+            config.shape = eval(point.shape.func)
+        }
+        // 若point.style具有自定义函数func属性
+        if (point?.style?.func) {
+            config.style = eval(point.style.func)
         }
 
-        if (typeof xAxis == "undefined" || JSON.stringify(xAxis) == "{}") {
-            config.xAxis = undefined
-        } else if (xAxis === false) {
-            config.xAxis = false
-        } else if (xAxis) {
-            config.xAxis = xAxis
-            if (xAxis?.label?.formatter?.func) {
-                config.xAxis.label.formatter = eval(xAxis.label.formatter.func)
-            }
+        // x轴样式
+        config.xAxis = xAxis
+        // 若xAxis.label.formatter具有自定义函数func属性
+        if (xAxis?.label?.formatter?.func) {
+            config.xAxis.label.formatter = eval(xAxis.label.formatter.func)
         }
 
-        if (typeof yAxis == "undefined" || JSON.stringify(yAxis) == "{}") {
-            config.yAxis = undefined
-        } else if (yAxis === false) {
-            config.yAxis = false
-        } else if (yAxis) {
-            config.yAxis = yAxis
-            if (yAxis?.label?.formatter?.func) {
-                config.yAxis.label.formatter = eval(yAxis.label.formatter.func)
-            }
+        // y轴样式
+        config.yAxis = yAxis
+        // 若yAxis.label.formatter具有自定义函数func属性
+        if (yAxis?.label?.formatter?.func) {
+            config.yAxis.label.formatter = eval(yAxis.label.formatter.func)
         }
 
-        if (typeof legend == "undefined" || JSON.stringify(legend) == "{}") {
-            config.legend = undefined;
-        } else if (legend === false) {
-            config.legend = false
-        } else if (legend) {
-            config.legend = legend
-            if (legend.itemName) {
-                config.legend.itemName.formatter = legend.itemName?.formatter?.func
-                    ? eval(legend.itemName.formatter.func) : legend.itemName.formatter
-            }
-
-            if (legend.itemValue) {
-                config.legend.itemValue.formatter = legend.itemValue?.formatter?.func
-                    ? eval(legend.itemValue.formatter.func) : legend.itemValue.formatter
-            }
+        // 图例样式
+        config.legend = legend
+        // 若legend.itemName.formatter具有自定义函数func属性
+        if (legend?.itemName?.formatter?.func) {
+            config.legend.itemName.formatter = eval(legend.itemName.formatter.func)
+        }
+        // 若legend.itemValue.formatter具有自定义函数func属性
+        if (legend?.itemValue?.formatter?.func) {
+            config.legend.itemValue.formatter = eval(legend.itemValue.formatter.func)
         }
 
-        if (typeof label == "undefined") {
-            config.label = undefined
-        } else if (JSON.stringify(label) == "{}") {
-            config.label = {}
-        }
-        else if (label === false) {
-            config.label = false
-        } else if (label) {
-            config.label = label
-            if (label?.formatter?.func) {
-                config.label.formatter = eval(label.formatter.func)
-            }
+        // 数据标签
+        config.label = label
+        // 若label.formatter具有自定义函数func属性
+        if (label?.formatter?.func) {
+            config.label.formatter = eval(label.formatter.func)
         }
 
-        if (typeof tooltip == "undefined" || JSON.stringify(tooltip) == "{}") {
-            config.tooltip = undefined
-        } else if (tooltip === false) {
-            config.tooltip = false
-        } else if (tooltip) {
-            config.tooltip = tooltip
-
-            if (tooltip?.formatter?.func) {
-                config.tooltip.formatter = eval(tooltip.formatter.func)
-            }
-
-            if (tooltip?.customItems?.func) {
-                config.tooltip.customItems = eval(tooltip.customItems.func)
-            }
+        // 悬浮提示
+        config.tooltip = tooltip
+        // 若tooltip.formatter具有自定义函数func属性
+        if (tooltip?.formatter?.func) {
+            config.tooltip.formatter = eval(tooltip.formatter.func)
+        }
+        // 若tooltip.customItems具有自定义函数func属性
+        if (tooltip?.customItems?.func) {
+            config.tooltip.customItems = eval(tooltip.customItems.func)
         }
 
-        if (typeof annotations == "undefined" || JSON.stringify(annotations) == "{}") {
-            config.annotations = undefined
-        } else if (annotations === false) {
-            config.annotations = false
-        } else if (annotations) {
-            config.annotations = annotations
+        // 标注
+        config.annotations = annotations
+
+        // 缩略轴
+        config.slider = slider
+        // 若slider.formatter具有自定义函数func属性
+        if (slider?.formatter?.func) {
+            config.slider.formatter = eval(slider.formatter.func)
         }
 
-        if (typeof slider == "undefined") {
-            config.slider = undefined
-        } else if (JSON.stringify(slider) == "{}") {
-            config.slider = {
-                start: 0,
-                end: 1
-            }
-        } else if (slider === false) {
-            config.slider = false
-        } else if (slider) {
-            config.slider = slider
-            if (slider?.formatter?.func) {
-                config.slider.formatter = eval(slider.formatter.func)
-            }
-        }
+        // 利用lodash移除所有值为undefined的属性
+        config = omitBy(config, isUndefined)
 
         return <Line id={id}
             className={className}
             style={style}
+            // 绑定常用事件
             onReady={(plot) => {
-                plot.on('plot:click', (evt) => {
-                    console.log({ evt })
+                let recentlyTooltipChangeRecord;
+                // 图形元素点击事件
+                plot.on('plot:click', () => {
+                    // 利用tooltip-change携带的数据更新recentlyPointClickRecord
                     setProps({
-                        evt: {
-                            timestamp: (new Date()).valueOf(),
-                            evt: {
-                                x: evt.x,
-                                y: evt.y
-                            }
-                        }
+                        timestamp: (new Date()).valueOf(),
+                        recentlyPlotClickRecord: recentlyTooltipChangeRecord
                     })
+                });
+
+                // 辅助的tooltip渲染事件
+                plot.on('tooltip:change', (e) => {
+
+                    // 更新recentlyTooltipChangeRecord
+                    recentlyTooltipChangeRecord = {
+                        timestamp: (new Date()).valueOf(),
+                        data: e.data.items.map(item => item.data)
+                    }
                 });
             }}
             {...config} />;
@@ -240,7 +236,15 @@ export default class AntdLine extends Component {
 // 定义参数或属性
 AntdLine.propTypes = {
 
-    evt: PropTypes.any,
+    // 常用事件监听参数
+    // 图形元素点击事件
+    recentlyPlotClickRecord: PropTypes.exact({
+        // 事件触发的时间戳信息
+        timestamp: PropTypes.number,
+
+        // 对应的数据点信息
+        data: PropTypes.arrayOf(PropTypes.object)
+    }),
 
     // 部件id
     id: PropTypes.string,
@@ -360,7 +364,7 @@ AntdLine.propTypes = {
     // 定义图表容器像素高度，默认为400
     height: PropTypes.number,
 
-    // 设置图表是否自适应容器宽高，当设置为true时，width与height参数将失效，默认为true
+    // 设置图表是否自适应容器宽高，当设置为true时，width与height参数将失效，默认为false
     autoFit: PropTypes.bool,
 
     // 定义图表四个方向的空白间距值，可以为单个数字譬如16，也可以为四个数字构成的数组，按顺序代表上-右-下-左分别的像素间距
