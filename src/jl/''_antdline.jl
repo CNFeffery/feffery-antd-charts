@@ -44,7 +44,11 @@ Those elements have the following types:
   - `style` (optional): . style has the following type: lists containing elements 'func'.
 Those elements have the following types:
   - `func` (String; optional)
-- `recentlyPlotClickRecord` (optional): . recentlyPlotClickRecord has the following type: lists containing elements 'timestamp', 'data'.
+- `recentlyPointClickRecord` (optional): . recentlyPointClickRecord has the following type: lists containing elements 'timestamp', 'data'.
+Those elements have the following types:
+  - `timestamp` (Real; optional)
+  - `data` (Dict; optional)
+- `recentlyTooltipChangeRecord` (optional): . recentlyTooltipChangeRecord has the following type: lists containing elements 'timestamp', 'data'.
 Those elements have the following types:
   - `timestamp` (Real; optional)
   - `data` (Array of Dicts; optional)
@@ -62,7 +66,7 @@ Those elements have the following types:
 - `yField` (String; required)
 """
 function ''_antdline(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :color, :connectNulls, :data, :height, :isStack, :label, :legend, :lineStyle, :loading_state, :locale, :meta, :padding, :point, :recentlyPlotClickRecord, :renderer, :seriesField, :slider, :smooth, :stepType, :style, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
+        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :color, :connectNulls, :data, :height, :isStack, :label, :legend, :lineStyle, :loading_state, :locale, :meta, :padding, :point, :recentlyPointClickRecord, :recentlyTooltipChangeRecord, :renderer, :seriesField, :slider, :smooth, :stepType, :style, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
         wild_props = Symbol[]
         return Component("''_antdline", "AntdLine", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

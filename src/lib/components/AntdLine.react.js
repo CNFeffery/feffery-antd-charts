@@ -3,7 +3,7 @@
 import { Line } from '@ant-design/charts';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { isUndefined, omitBy, transform, isEqual, isObject, intersection } from 'lodash'
+import { isUndefined, omitBy, transform, isEqual, isObject, intersection, cloneDeep } from 'lodash'
 import {
     pointBaseStyle,
     lineBaseStyle,
@@ -28,7 +28,7 @@ const difference = (object, base) => {
 }
 
 // 定义不触发重绘的参数数组
-const preventUpdateProps = ['recentlyPointClickRecord', 'recentlyTooltipChangeRecord'];
+const preventUpdateProps = ['recentlyTooltipChangeRecord', 'recentlyPointClickRecord'];
 
 // 定义折线图组件AntdLine，部分API参数参考https://charts.ant.design/zh-CN/demos/line
 export default class AntdLine extends Component {
@@ -48,7 +48,7 @@ export default class AntdLine extends Component {
 
     render() {
         // 取得必要属性或参数
-        let {
+        const {
             id,
             className,
             style,
@@ -78,7 +78,6 @@ export default class AntdLine extends Component {
             tooltip,
             annotations,
             slider,
-            // recentlyTooltipChangeRecord,
             setProps
         } = this.props;
 
@@ -87,7 +86,7 @@ export default class AntdLine extends Component {
 
         // 预处理元信息
         if (meta) {
-            config.meta = meta;
+            config.meta = cloneDeep(meta);
             for (let i in Object.keys(meta)) {
                 // 若meta中当前字段属性下的formatter具有自定义函数func属性
                 if (meta[Object.keys(meta)[i]]?.formatter?.func) {
@@ -120,50 +119,50 @@ export default class AntdLine extends Component {
 
         // 进阶参数
         // 色彩样式
-        config.color = color
+        config.color = cloneDeep(color)
         // 若color具有自定义函数func属性
         if (color?.func) {
             config.color = eval(color.func)
         }
 
         // 折线样式
-        config.lineStyle = lineStyle
+        config.lineStyle = cloneDeep(lineStyle)
         // 若lineStyle具有自定义函数func属性
         if (lineStyle?.func) {
             config.lineStyle = eval(lineStyle.func)
         }
 
         // 折点样式
-        config.point = point
+        config.point = cloneDeep(point)
         // 若point.color具有自定义函数func属性
         if (point?.color?.func) {
-            config.color = eval(point.color.func)
+            config.point.color = eval(point.color.func)
         }
         // 若point.shape具有自定义函数func属性
         if (point?.shape?.func) {
-            config.shape = eval(point.shape.func)
+            config.point.shape = eval(point.shape.func)
         }
         // 若point.style具有自定义函数func属性
         if (point?.style?.func) {
-            config.style = eval(point.style.func)
+            config.point.style = eval(point.style.func)
         }
 
         // x轴样式
-        config.xAxis = xAxis
+        config.xAxis = cloneDeep(xAxis)
         // 若xAxis.label.formatter具有自定义函数func属性
         if (xAxis?.label?.formatter?.func) {
             config.xAxis.label.formatter = eval(xAxis.label.formatter.func)
         }
 
         // y轴样式
-        config.yAxis = yAxis
+        config.yAxis = cloneDeep(yAxis)
         // 若yAxis.label.formatter具有自定义函数func属性
         if (yAxis?.label?.formatter?.func) {
             config.yAxis.label.formatter = eval(yAxis.label.formatter.func)
         }
 
         // 图例样式
-        config.legend = legend
+        config.legend = cloneDeep(legend)
         // 若legend.itemName.formatter具有自定义函数func属性
         if (legend?.itemName?.formatter?.func) {
             config.legend.itemName.formatter = eval(legend.itemName.formatter.func)
@@ -174,14 +173,14 @@ export default class AntdLine extends Component {
         }
 
         // 数据标签
-        config.label = label
+        config.label = cloneDeep(label)
         // 若label.formatter具有自定义函数func属性
         if (label?.formatter?.func) {
             config.label.formatter = eval(label.formatter.func)
         }
 
         // 悬浮提示
-        config.tooltip = tooltip
+        config.tooltip = cloneDeep(tooltip)
         // 若tooltip.formatter具有自定义函数func属性
         if (tooltip?.formatter?.func) {
             config.tooltip.formatter = eval(tooltip.formatter.func)
@@ -192,10 +191,10 @@ export default class AntdLine extends Component {
         }
 
         // 标注
-        config.annotations = annotations
+        config.annotations = cloneDeep(annotations)
 
         // 缩略轴
-        config.slider = slider
+        config.slider = cloneDeep(slider)
         // 若slider.formatter具有自定义函数func属性
         if (slider?.formatter?.func) {
             config.slider.formatter = eval(slider.formatter.func)
@@ -209,16 +208,8 @@ export default class AntdLine extends Component {
             style={style}
             // 绑定常用事件
             onReady={(plot) => {
-                let recentlyTooltipChangeRecord;
-                // 图形元素点击事件
-                plot.on('plot:click', () => {
-                    // 利用tooltip-change携带的数据更新recentlyPointClickRecord
-                    setProps({
-                        timestamp: (new Date()).valueOf(),
-                        recentlyPlotClickRecord: recentlyTooltipChangeRecord
-                    })
-                });
 
+                let recentlyTooltipChangeRecord;
                 // 辅助的tooltip渲染事件
                 plot.on('tooltip:change', (e) => {
 
@@ -226,6 +217,30 @@ export default class AntdLine extends Component {
                     recentlyTooltipChangeRecord = {
                         timestamp: (new Date()).valueOf(),
                         data: e.data.items.map(item => item.data)
+                    }
+                    setProps({
+                        recentlyTooltipChangeRecord: recentlyTooltipChangeRecord
+                    })
+                });
+
+                plot.on('element:click', (e) => {
+
+                    // 当本次点击事件由折线上的固有折点触发时
+                    if (Array.isArray(e.data.data)) {
+                        setProps({
+                            recentlyPointClickRecord: {
+                                timestamp: (new Date()).valueOf(),
+                                data: recentlyTooltipChangeRecord.data.filter(item => item[seriesField] === e.data.data[0][seriesField])[0]
+                            }
+                        })
+                    }
+                    else {
+                        setProps({
+                            recentlyPointClickRecord: {
+                                timestamp: (new Date()).valueOf(),
+                                data: e.data.data
+                            }
+                        })
                     }
                 });
             }}
@@ -238,12 +253,21 @@ AntdLine.propTypes = {
 
     // 常用事件监听参数
     // 图形元素点击事件
-    recentlyPlotClickRecord: PropTypes.exact({
+    recentlyTooltipChangeRecord: PropTypes.exact({
         // 事件触发的时间戳信息
         timestamp: PropTypes.number,
 
         // 对应的数据点信息
         data: PropTypes.arrayOf(PropTypes.object)
+    }),
+
+    // 单独折线点击事件
+    recentlyPointClickRecord: PropTypes.exact({
+        // 事件触发的时间戳信息
+        timestamp: PropTypes.number,
+
+        // 对应的数据点信息
+        data: PropTypes.object
     }),
 
     // 部件id

@@ -43,190 +43,23 @@ app.layout = html.Div(
                         html.Div(
                             fact.AntdLine(
                                 id='antd-line-demo',
-                                data=data,
-                                xField='x',
-                                yField='y',
-                                seriesField='series',
-                                smooth=True,
-                                isStack=False,
-                                color={
-                                    'func': '''
-                            (ref) => {
-                                if (ref.series === '系列1') {
-                                    return '#eccc68'
-                                } else if (ref.series == '系列2') {
-                                    return '#ff7f50'
-                                }
-                                return '#ff6b81'
-                            }
-                            '''
-                                },
-                                lineStyle={
-                                    'func': '''
-                            (ref) => {
-                                if (ref.series === '系列1') {
-                                    return {
-                                        lineDash: [5, 5],
-                                        cursor: 'pointer'
-                                    }
-                                } else if (ref.series == '系列2') {
-                                    return {
-                                        lineDash: [10, 5],
-                                        cursor: 'pointer'
-                                    }
-                                }
-                                return {
-                                    lineDash: [0, 0],
-                                    cursor: 'pointer'
-                                }
-                            }'''
-                                },
-                                point={
-                                    'shape': {
-                                        'func': '''
-                            (ref) => {
-                                if (ref.series === '系列1') {
-                                    return 'circle'
-                                } else if (ref.series == '系列2') {
-                                    return 'diamond'
-                                }
-                                return 'square'
-                            }'''
-                                    },
-                                    'style': {
-                                        'r': 4,
-                                        'lineWidth': 1,
-                                        'fillOpacity': 1,
-                                        'cursor': 'pointer'
-                                    },
-                                    'color': ['#eccc68', '#ff7f50', '#ff6b81']
-                                },
-                                xAxis={
-                                    'title': {
-                                        'text': 'x轴测试',
-                                        'position': 'center',
-                                        'style': {
-                                                'fontSize': 18,
-                                                'fontFamily': 'SimHei'
-                                        }
-                                    },
-                                    'label': {
-                                        'rotate': 3 * math.pi / 2,
-                                        'offsetX': -8,
-                                        'offsetY': -8,
-                                        'style': {
-                                            'fontFamily': 'Times New Roman',
-                                            'fontSize': 16
-                                        },
-                                        'formatter': {
-                                            'func': '''
-                                    (value) => {
-                                        return value < 10 ? `0${value}` : value
-                                    }'''
-                                        }
-                                    },
-                                    'line': {
-                                        'style': {
-                                            'opacity': 0
-                                        }
-                                    },
-                                    'grid': {
-                                        'line': {
-                                            'style': {
-                                                'stroke': 'black',
-                                                'lineDash': [5, 5]
-                                            }
-                                        },
-                                        'alternateColor': '#f1f2f6',
-                                        'alignTick': False
-                                    },
-                                    'tickLine': {
-                                        'length': 5
-                                    },
-                                    'tickInterval': 5
-                                },
-                                yAxis={
-                                    'title': {
-                                        'text': 'y轴测试',
-                                        'style': {
-                                                'fontSize': 18,
-                                                'fontFamily': 'SimHei'
-                                        }
-                                    },
-                                    'label': {
-                                        'style': {
-                                            'fontFamily': 'Times New Roman',
-                                            'fontSize': 16
-                                        }
-                                    },
-                                    'line': {
-                                        'style': {
-                                            'opacity': 0
-                                        }
-                                    },
-                                    'grid': {
-                                        'alignTick': False
-                                    },
-                                    'tickLine': {
-                                        'length': 5
-                                    },
-                                    'tickInterval': 20000
-                                },
-                                legend={
-                                    'position': 'right',
-                                    'offsetX': -10,
-                                    'itemHeight': 20,
-                                    'title': {
-                                        'text': '图例标题测试',
-                                        'style': {
-                                                'fontSize': 16
-                                        }
-                                    },
-                                    'selected': {
-                                        '系列1': False
-                                    }
-                                },
-                                label={
-                                    'offset': 20,
-                                    'position': 'top',
-                                    'formatter': {
-                                        'func': '''
-                                (item) => {
-                                    if (item.x % 5 === 0){
-                                        return item.y + '万'
-                                    }
-                                }'''
-                                    }
-                                },
-                                tooltip={
-                                    'formatter': {
-                                        'func': '''
-                                (item) => {
-                                    return {
-                                        name: `${item.series}于第${item.x}财年营收`,
-                                        value: `${item.y / 10000}亿元`
-                                    }
-                                }'''
-                                    },
-                                    'enterable': True,
-                                    'showTitle': True,
-                                    'title': '营收情况',
-                                    'marker': {
-                                        'r': 5
-                                    },
-                                    'domStyles': {
-                                        'g2-tooltip-title': {
-                                            'font-size': '18px'
-                                        },
-                                        'g2-tooltip': {
-                                            'background-color': 'rgba(255, 255, 255, 0.8)'
-                                        }
-                                    }
-                                },
-                                slider={
-                                    'start': 0,
-                                    'end': 1
-                                },
+                                data=requests.get(
+                                    'https://gw.alipayobjects.com/os/bmw-prod/55424a73-7cb8-4f79-b60d-3ab627ac5698.json').json(),
+                                xField='year',
+                                yField='value',
+                                seriesField='category',
+                                color=[
+                                    '#5B8FF9',
+                                    '#5AD8A6',
+                                    '#5D7092',
+                                    '#F6BD16',
+                                    '#E8684A',
+                                    '#6DC8EC',
+                                    '#9270CA',
+                                    '#FF9D4D',
+                                    '#269A99',
+                                    '#FF99C3',
+                                ],
                                 annotations=[
                                     {
                                         'type': 'region',
@@ -251,32 +84,49 @@ app.layout = html.Div(
                                         },
                                     }
                                 ],
-                                padding='auto',
-                                renderer='svg',
+                                point={
+                                    'shape': {
+                                        'func': """( {category} ) => {return {category} === 'Gas fuel' ? 'square' : 'circle';}"""
+                                    },
+                                    'style': {
+                                        'func': '''
+                                                                        ( {year} ) => {
+                                        return {
+                                          r: Number(year) % 4 ? 0 : 5, // 4 个数据示一个点标记
+                                        };
+                                      }
+                                                                        '''
+                                    }
+                                }
                             ),
                             style={
                                 'height': '100%',
-                                'width': '800px',
+                                # 'width': '800px',
                                 'padding': '25px'
                             }
                         ),
                         style={
-                            'flex': 'none',
+                            'flex': '2',
                             'height': '100%'
                         }
                     ),
 
                     html.Div(
-                        html.Pre(id='antd-line-output'),
+                        [
+                            html.Pre(id='antd-line-output1',
+                                     style={'height': '50%'}),
+                            html.Pre(id='antd-line-output2',
+                                     style={'height': '50%'})
+                        ],
                         style={
-                            'flex': 'auto',
+                            'flex': '1',
                             'height': '100%'
                         }
                     )
                 ],
                 style={
                     'display': 'flex',
-                    'height': '600px',
+                    'height': '1000px',
                     'border': '1px dashed grey',
                     'padding': '25px'
                 }
@@ -319,24 +169,36 @@ app.layout = html.Div(
             #     }
             # )
         ]
-    ),
-    style={
-        'padding': '100px'
-    }
+    )
 )
 
 
 @app.callback(
-    Output('antd-line-output', 'children'),
-    Input('antd-line-demo', 'recentlyPlotClickRecord')
+    Output('antd-line-output1', 'children'),
+    Input('antd-line-demo', 'recentlyPointClickRecord')
 )
-def antd_line_callback_demo(recentlyPlotClickRecord):
+def antd_line_callback_demo1(recentlyPointClickRecord):
 
-    print(recentlyPlotClickRecord)
+    print(recentlyPointClickRecord)
 
-    if recentlyPlotClickRecord:
+    if recentlyPointClickRecord:
 
-        return json.dumps(recentlyPlotClickRecord, indent=4, ensure_ascii=False)
+        return json.dumps(recentlyPointClickRecord, indent=4, ensure_ascii=False)
+
+    return 'None'
+
+
+@app.callback(
+    Output('antd-line-output2', 'children'),
+    Input('antd-line-demo', 'recentlyTooltipChangeRecord')
+)
+def antd_line_callback_demo2(recentlyTooltipChangeRecord):
+
+    print(recentlyTooltipChangeRecord)
+
+    if recentlyTooltipChangeRecord:
+
+        return json.dumps(recentlyTooltipChangeRecord, indent=4, ensure_ascii=False)
 
     return 'None'
 

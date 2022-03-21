@@ -1378,7 +1378,7 @@
     "displayName": "AntdLine",
     "methods": [],
     "props": {
-      "recentlyPlotClickRecord": {
+      "recentlyTooltipChangeRecord": {
         "type": {
           "name": "exact",
           "value": {
@@ -1391,6 +1391,23 @@
               "value": {
                 "name": "object"
               },
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyPointClickRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "object",
               "required": false
             }
           }
