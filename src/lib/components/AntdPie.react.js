@@ -1,6 +1,8 @@
+/* eslint-disable no-eval */
 import { Pie } from '@ant-design/charts';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { isUndefined, omitBy, transform, isEqual, isObject, intersection, cloneDeep } from 'lodash'
 import {
     metaBasePropTypes,
     legendBasePropTypes,
@@ -14,7 +16,7 @@ import {
 export default class AntdPie extends Component {
     render() {
         // 取得必要属性或参数
-        let {
+        const {
             id,
             className,
             style,
@@ -39,131 +41,98 @@ export default class AntdPie extends Component {
             legend,
             label,
             tooltip,
-            annotations,
-            setProps
+            annotations
         } = this.props;
+
+        // 初始化config参数对象，每次渲染前的参数解析变动只在config中生效
+        let config = {};
 
         // 预处理元信息
         if (meta) {
+            config.meta = cloneDeep(meta);
             for (let i in Object.keys(meta)) {
-
-                if (meta[Object.keys(meta)[i]].formatter) {
-                    meta[Object.keys(meta)[i]].formatter = meta[Object.keys(meta)[i]]?.formatter?.func
-                        ? eval(meta[Object.keys(meta)[i]]?.formatter?.func) : meta[Object.keys(meta)[i]]?.formatter
+                // 若meta中当前字段属性下的formatter具有自定义函数func属性
+                if (meta[Object.keys(meta)[i]]?.formatter?.func) {
+                    config.meta[Object.keys(meta)[i]].formatter = eval(meta[Object.keys(meta)[i]].formatter.func)
                 }
             }
         }
 
-        let config = {
-            data: data,
-            meta: meta,
-            padding: padding,
-            appendPadding: appendPadding,
-            angleField: angleField,
-            colorField: colorField,
-            radius: radius,
-            innerRadius: innerRadius,
-            startAngle: startAngle,
-            endAngle: endAngle,
-            width: width,
-            height: height,
-            autoFit: autoFit,
-            renderer: renderer,
-            locale: locale
+        // 刷新基础参数
+        config = {
+            data,
+            meta,
+            padding,
+            appendPadding,
+            angleField,
+            colorField,
+            radius,
+            innerRadius,
+            startAngle,
+            endAngle,
+            width,
+            height,
+            autoFit,
+            renderer,
+            locale
         };
 
         // 进阶参数
-
-        if (typeof color == "undefined" || JSON.stringify(color) == "{}") {
-            config.color = undefined
-        } else if (color === false) {
-            config.color = false
-        } else if (color) {
-            config.color = color?.func ? eval(color?.func) : color
+        // 色彩样式
+        config.color = cloneDeep(color)
+        // 若color具有自定义函数func属性
+        if (color?.func) {
+            config.color = eval(color.func)
         }
 
-        if (typeof pieStyle == "undefined" || JSON.stringify(pieStyle) == "{}") {
-            config.pieStyle = undefined
-        } else if (pieStyle === false) {
-            config.pieStyle = false
-        } else if (pieStyle) {
-            config.pieStyle = pieStyle?.func ? eval(pieStyle?.func) : pieStyle
+        // 扇形样式
+        config.pieStyle = cloneDeep(pieStyle)
+        // 若pieStyle具有自定义函数func属性
+        if (pieStyle?.func) {
+            config.pieStyle = eval(pieStyle.func)
         }
 
-        if (typeof statistic == "undefined" || JSON.stringify(statistic) == "{}") {
-            config.statistic = undefined
-        } else if (statistic === false) {
-            config.statistic = false
-        } else if (statistic) {
-            config.statistic = statistic
-
-            if (statistic.title) {
-
-                config.statistic.title.formatter = statistic.title?.formatter?.func
-                    ? eval(statistic.title.formatter.func) : statistic.title.formatter
-            }
-
-            if (statistic.content) {
-
-                config.statistic.content.formatter = statistic.content?.formatter?.func
-                    ? eval(statistic.content.formatter.func) : statistic.content.formatter
-            }
+        // 统计值样式
+        config.statistic = cloneDeep(statistic)
+        if (statistic?.title?.formatter?.func) {
+            config.title.formatter = eval(statistic.title.formatter.func)
+        }
+        if (statistic?.content?.formatter?.func) {
+            config.content.formatter = eval(statistic.content.formatter.func)
         }
 
-        if (typeof legend == "undefined" || JSON.stringify(legend) == "{}") {
-            config.legend = undefined
-        } else if (legend === false) {
-            config.legend = false
-        } else if (legend) {
-            config.legend = legend
-
-            if (legend.itemName) {
-                config.legend.itemName.formatter = legend.itemName?.formatter?.func
-                    ? eval(legend.itemName.formatter.func) : legend.itemName.formatter
-            }
-
-            if (legend.itemValue) {
-                config.legend.itemValue.formatter = legend.itemValue?.formatter?.func
-                    ? eval(legend.itemValue.formatter.func) : legend.itemValue.formatter
-            }
+        // 图例样式
+        config.legend = cloneDeep(legend)
+        if (legend?.itemName?.formatter?.func) {
+            config.legend.itemName.formatter = eval(legend.itemName.formatter.func)
+        }
+        if (legend?.itemValue?.formatter?.func) {
+            config.legend.itemValue.formatter = eval(legend.itemValue.formatter.func)
         }
 
-        if (typeof label == "undefined") {
-            config.label = undefined
-        } else if (JSON.stringify(label) == "{}") {
-            config.label = {}
-        } else if (label === false) {
-            config.label = false
-        } else if (label) {
-            config.label = label
-            if (label?.formatter?.func) {
-                config.label.formatter = eval(label.formatter.func)
-            }
+        // 数据标签
+        config.label = cloneDeep(label)
+        // 若label.formatter具有自定义函数func属性
+        if (label?.formatter?.func) {
+            config.label.formatter = eval(label.formatter.func)
         }
 
-        if (typeof tooltip == "undefined" || JSON.stringify(tooltip) == "{}") {
-            config.tooltip = undefined
-        } else if (tooltip === false) {
-            config.tooltip = false
-        } else if (tooltip) {
-            config.tooltip = tooltip
-
-            if (tooltip?.formatter?.func) {
-                config.tooltip.formatter = eval(tooltip.formatter.func)
-            }
-
-            if (tooltip?.customItems?.func) {
-                config.tooltip.customItems = eval(tooltip.customItems.func)
-            }
+        // 悬浮提示
+        config.tooltip = cloneDeep(tooltip)
+        // 若tooltip.formatter具有自定义函数func属性
+        if (tooltip?.formatter?.func) {
+            config.tooltip.formatter = eval(tooltip.formatter.func)
+        }
+        // 若tooltip.customItems具有自定义函数func属性
+        if (tooltip?.customItems?.func) {
+            config.tooltip.customItems = eval(tooltip.customItems.func)
         }
 
-        if (typeof tooltip == "undefined" || JSON.stringify(tooltip) == "{}") {
-            config.annotations = undefined
-        } else if (annotations === false) {
-            config.annotations = false
-        } else if (annotations) {
-            config.annotations = annotations
-        }
+        // 标注
+        config.annotations = cloneDeep(annotations)
+
+        // 利用lodash移除所有值为undefined的属性
+        config = omitBy(config, isUndefined)
 
         return <Pie id={id}
             className={className}

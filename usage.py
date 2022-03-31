@@ -132,6 +132,79 @@ app.layout = html.Div(
                 }
             ),
 
+            html.Div(
+                [
+                    html.Div(
+                        html.Div(
+                            fact.AntdPie(
+                                data=[
+                                    {
+                                        'type': '分类一',
+                                        'value': 27,
+                                    },
+                                    {
+                                        'type': '分类二',
+                                        'value': 25,
+                                    },
+                                    {
+                                        'type': '分类三',
+                                        'value': 18,
+                                    },
+                                    {
+                                        'type': '分类四',
+                                        'value': 15,
+                                    },
+                                    {
+                                        'type': '分类五',
+                                        'value': 10,
+                                    },
+                                    {
+                                        'type': '其他',
+                                        'value': 5,
+                                    },
+                                ],
+                                angleField='value',
+                                colorField='type',
+                                radius=0.9,
+                                label={
+                                    'type': 'inner',
+                                    'offset': '-30%',
+                                    'style': {
+                                        'fontSize': 36,
+                                        'textAlign': 'center'
+                                    },
+                                    'formatter': {
+                                        'func': '({ percent }) => `${(percent * 100).toFixed(0)}%`'
+                                    }
+                                }
+                            ),
+                            style={
+                                'height': '100%',
+                                # 'width': '800px',
+                                'padding': '25px'
+                            }
+                        ),
+                        style={
+                            'flex': '2',
+                            'height': '100%'
+                        }
+                    ),
+
+                    html.Div(
+                        style={
+                            'flex': '1',
+                            'height': '100%'
+                        }
+                    )
+                ],
+                style={
+                    'display': 'flex',
+                    'height': '1000px',
+                    'border': '1px dashed grey',
+                    'padding': '25px'
+                }
+            ),
+
             # html.H3('AntdStock 股票图示例', id='AntdStock-demo'),
             # html.Div(
             #     fact.AntdStock(
