@@ -28,20 +28,48 @@ const difference = (object, base) => {
 }
 
 // 定义不触发重绘的参数数组
-const preventUpdateProps = ['recentlyTooltipChangeRecord', 'recentlyPointClickRecord'];
+const preventUpdateProps = ['loading_state', 'recentlyTooltipChangeRecord', 'recentlyPointClickRecord'];
 
 // 定义折线图组件AntdLine，部分API参数参考https://charts.ant.design/zh-CN/demos/line
 export default class AntdLine extends Component {
 
+    constructor(props) {
+        super(props);
+        this.chartRef = React.createRef();
+    }
+
     shouldComponentUpdate(nextProps) {
 
+        // 计算发生变化的参数名
+        const changedProps = Object.keys(difference(this.props, nextProps))
+
+        // 若无变化的props，则不触发重绘
+        if (changedProps.length === 0) {
+            return false;
+        }
+
+        // 计算发生变化的参数名与需要阻止重绘的参数名数组的交集
         let changedPreventUpdateProps = intersection(
-            Object.keys(difference(this.props, nextProps)),
+            changedProps,
             preventUpdateProps
         )
 
-        if (changedPreventUpdateProps) {
+        // 若有交集，则不触发重绘
+        if (changedPreventUpdateProps.length !== 0) {
             return false;
+        } else {
+            // 取得plot实例
+            const chart = this.chartRef.current.getChart()
+            // 检查data参数是否发生更新
+            if (changedProps.indexOf('data') !== -1) {
+                // 动态调整数据
+                chart.changeData(nextProps.data)
+                return false;
+            } else {
+                chart.update({
+                    ...nextProps
+                })
+            }
         }
         return true;
     }
@@ -206,6 +234,7 @@ export default class AntdLine extends Component {
         return <Line id={id}
             className={className}
             style={style}
+            ref={this.chartRef}
             // 绑定常用事件
             onReady={(plot) => {
 
@@ -388,7 +417,7 @@ AntdLine.propTypes = {
     // 定义图表容器像素高度，默认为400
     height: PropTypes.number,
 
-    // 设置图表是否自适应容器宽高，当设置为true时，width与height参数将失效，默认为false
+    // 设置图表是否自适应容器宽高，当设置为true时，width与height参数将失效，默认为true
     autoFit: PropTypes.bool,
 
     // 定义图表四个方向的空白间距值，可以为单个数字譬如16，也可以为四个数字构成的数组，按顺序代表上-右-下-左分别的像素间距

@@ -5,13 +5,59 @@ import demjson3
 from dash import html
 import math
 import json
+import random
 import dash
 
 
 app = dash.Dash(__name__)
 
 
-data = [
+@app.callback(
+    Output('antd-line-demo', 'data'),
+    Input('antd-line-demo-button-update-data', 'n_clicks'),
+    prevent_initial_call=True
+)
+def antd_line_update_data(n_clicks):
+
+    return [
+        {
+            'x': str(i),
+            'y': 10000 + 5000 * i + random.randint(0, 10000),
+            'series': '系列1'
+        }
+        for i in range(0, 50)
+    ]+[
+        {
+            'x': str(i),
+            'y': 10000 + i ** 2 + random.randint(0, 10000),
+            'series': '系列2'
+        }
+        for i in range(0, 50)
+    ]+[
+        {
+            'x': str(i),
+            'y': 10000 + i ** 3 + random.randint(0, 10000),
+            'series': '系列3'
+        }
+        for i in range(0, 50)
+    ]
+
+
+@app.callback(
+    Output('antd-line-demo', 'point'),
+    Input('antd-line-demo-button-update-other-params', 'n_clicks'),
+    prevent_initial_call=True
+)
+def antd_line_update_other_params(n_clicks):
+
+    return {
+        'style': {
+            'func': f'(item) => {{ return {{ r: Number(item.x) % {random.randint(1, 5)} ? 0 : 5 }}; }}'
+        }
+    }
+
+
+init_line_data = [
     {
         'x': str(i),
         'y': 10000 + 5000 * i,
@@ -39,15 +85,22 @@ app.layout = html.Div(
         [
             html.Div(
                 [
+                    html.Button(
+                        'data更新测试', id='antd-line-demo-button-update-data'),
+                    html.Button(
+                        '其他参数更新测试', id='antd-line-demo-button-update-other-params'),
+                ]
+            ),
+            html.Div(
+                [
                     html.Div(
                         html.Div(
                             fact.AntdLine(
                                 id='antd-line-demo',
-                                data=requests.get(
-                                    'https://gw.alipayobjects.com/os/bmw-prod/55424a73-7cb8-4f79-b60d-3ab627ac5698.json').json(),
-                                xField='year',
-                                yField='value',
-                                seriesField='category',
+                                data=init_line_data,
+                                xField='x',
+                                yField='y',
+                                seriesField='series',
                                 color=[
                                     '#5B8FF9',
                                     '#5AD8A6',
@@ -85,23 +138,13 @@ app.layout = html.Div(
                                     }
                                 ],
                                 point={
-                                    'shape': {
-                                        'func': """( {category} ) => {return {category} === 'Gas fuel' ? 'square' : 'circle';}"""
-                                    },
                                     'style': {
-                                        'func': '''
-                                                                        ( {year} ) => {
-                                        return {
-                                          r: Number(year) % 4 ? 0 : 5, // 4 个数据示一个点标记
-                                        };
-                                      }
-                                                                        '''
+                                        'func': '(item) => { return { r: Number(item.x) % 4 ? 0 : 5 }; }'
                                     }
                                 }
                             ),
                             style={
                                 'height': '100%',
-                                # 'width': '800px',
                                 'padding': '25px'
                             }
                         ),
@@ -114,7 +157,15 @@ app.layout = html.Div(
                     html.Div(
                         [
                             html.Pre(id='antd-line-output1',
-                                     style={'height': '50%'}),
+                                     style={'height': '50%'})
+                        ],
+                        style={
+                            'flex': '1',
+                            'height': '100%'
+                        }
+                    ),
+                    html.Div(
+                        [
                             html.Pre(id='antd-line-output2',
                                      style={'height': '50%'})
                         ],
@@ -126,7 +177,7 @@ app.layout = html.Div(
                 ],
                 style={
                     'display': 'flex',
-                    'height': '1000px',
+                    'height': '500px',
                     'border': '1px dashed grey',
                     'padding': '25px'
                 }
@@ -199,7 +250,7 @@ app.layout = html.Div(
                 ],
                 style={
                     'display': 'flex',
-                    'height': '1000px',
+                    'height': '700px',
                     'border': '1px dashed grey',
                     'padding': '25px'
                 }
@@ -237,7 +288,7 @@ app.layout = html.Div(
             #     ),
             #     style={
             #         'width': '1000px',
-            #         'height': '600px',
+            #         'height': '700px',
             #         'padding': '30 0 0 0'
             #     }
             # )
@@ -266,8 +317,6 @@ def antd_line_callback_demo1(recentlyPointClickRecord):
     Input('antd-line-demo', 'recentlyTooltipChangeRecord')
 )
 def antd_line_callback_demo2(recentlyTooltipChangeRecord):
-
-    print(recentlyTooltipChangeRecord)
 
     if recentlyTooltipChangeRecord:
 
