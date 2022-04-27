@@ -83,7 +83,47 @@ init_line_data = [
 app.layout = html.Div(
     html.Div(
         [
-            fact.AntdSunburst(),
+
+            html.Div(
+                fact.AntdChord(
+                    data=json.load(open('./samples-data/AntdChord-demo-pop-flow.json',
+                                        encoding='utf-8')),
+                    sourceField='source',
+                    targetField='target',
+                    weightField='value'
+                ),
+                style={
+                    'height': '600px'
+                }
+            ),
+
+            html.Div(
+                fact.AntdSunburst(
+                    data=json.load(open('./samples-data/AntdSunburst-demo-hierarchy.json',
+                                        encoding='utf-8')),
+                    label={
+                        'layout': [
+                            {
+                                'type': 'limit-in-shape',
+                            }
+                        ]
+                    },
+                    hierarchyConfig={
+                        'field': 'sum'
+                    },
+                    radius=1,
+                    innerRadius=0.2,
+                    drilldown={
+                        'breadCrumb': {
+                            'rootText': '起始节点',
+                            'dividerText': '->'
+                        }
+                    }
+                ),
+                style={
+                    'height': '600px'
+                }
+            ),
 
 
             html.Div(

@@ -3,25 +3,21 @@
 /* eslint-disable no-else-return */
 /* eslint-disable no-eval */
 /* eslint-disable prefer-const */
-import { Sunburst } from '@ant-design/plots';
+import { Chord } from '@ant-design/plots';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { isUndefined, omitBy, intersection, cloneDeep } from 'lodash';
 import {
-    textBaseStyle,
-    areaBaseStyle,
     metaBasePropTypes,
-    labelBasePropTypes,
-    tooltipBasePropTypes,
-    annotationsBasePropTypes
+    areaBaseStyle
 } from './BasePropTypes.react';
 import { difference } from './utils';
 
 // 定义不触发重绘的参数数组
 const preventUpdateProps = ['loading_state'];
 
-// 定义旭日图组件AntdSunburst，部分API参数参考https://charts.ant.design/zh/examples/more-plots/sunburst#basic
-export default class AntdSunburst extends Component {
+// 定义和弦图组件AntdChord，部分API参数参考https://charts.ant.design/zh/examples/relation-plots/chord#chord-population
+export default class AntdChord extends Component {
 
     constructor(props) {
         super(props);
@@ -72,8 +68,9 @@ export default class AntdSunburst extends Component {
             style,
             data,
             meta,
-            colorField,
-            rawFields,
+            sourceField,
+            targetField,
+            weightField,
             width,
             height,
             autoFit,
@@ -81,16 +78,10 @@ export default class AntdSunburst extends Component {
             appendPadding,
             renderer,
             locale,
-            hierarchyConfig,
-            drilldown,
-            radius,
-            innerRadius,
-            color,
-            sunburstStyle,
-            reflect,
-            label,
-            tooltip,
-            annotations,
+            nodeStyle,
+            edgeStyle,
+            nodeWidthRatio,
+            nodePaddingRatio,
             setProps,
             loading_state
         } = this.props;
@@ -113,8 +104,9 @@ export default class AntdSunburst extends Component {
         config = {
             ...config,
             data,
-            colorField,
-            rawFields,
+            sourceField,
+            targetField,
+            weightField,
             width,
             height,
             autoFit,
@@ -122,55 +114,29 @@ export default class AntdSunburst extends Component {
             appendPadding,
             renderer,
             locale,
-            radius,
-            innerRadius,
-            drilldown,
-            reflect: reflect ? 'y' : undefined,
+            nodeWidthRatio,
+            nodePaddingRatio
         }
 
         // 进阶参数
-        // 色彩样式
-        config.color = cloneDeep(color)
-        // 若color具有自定义函数func属性
-        if (color?.func) {
-            config.color = eval(color.func)
+        // 和弦图节点样式
+        config.nodeStyle = cloneDeep(nodeStyle)
+        // 若nodeStyle具有自定义函数func属性
+        if (nodeStyle?.func) {
+            config.nodeStyle = eval(nodeStyle.func)
         }
 
-        // 层次布局配置参数
-        config.hierarchyConfig = cloneDeep(hierarchyConfig)
-
-        // 色彩样式
-        config.sunburstStyle = cloneDeep(sunburstStyle)
-        // 若sunburstStyle具有自定义函数func属性
-        if (sunburstStyle?.func) {
-            config.sunburstStyle = eval(sunburstStyle.func)
+        // 和弦图边样式
+        config.edgeStyle = cloneDeep(edgeStyle)
+        // 若edgeStyle具有自定义函数func属性
+        if (edgeStyle?.func) {
+            config.edgeStyle = eval(edgeStyle.func)
         }
-
-        // 数据标签
-        config.label = cloneDeep(label)
-        // 若label.formatter具有自定义函数func属性
-        if (label?.formatter?.func) {
-            config.label.formatter = eval(label.formatter.func)
-        }
-
-        // 悬浮提示
-        config.tooltip = cloneDeep(tooltip)
-        // 若tooltip.formatter具有自定义函数func属性
-        if (tooltip?.formatter?.func) {
-            config.tooltip.formatter = eval(tooltip.formatter.func)
-        }
-        // 若tooltip.customItems具有自定义函数func属性
-        if (tooltip?.customItems?.func) {
-            config.tooltip.customItems = eval(tooltip.customItems.func)
-        }
-
-        // 标注
-        config.annotations = cloneDeep(annotations)
 
         // 利用lodash移除所有值为undefined的属性
         config = omitBy(config, isUndefined)
 
-        return <Sunburst
+        return <Chord
             id={id}
             className={className}
             style={style}
@@ -183,7 +149,7 @@ export default class AntdSunburst extends Component {
 }
 
 // 定义参数或属性
-AntdSunburst.propTypes = {
+AntdChord.propTypes = {
     // 部件id
     id: PropTypes.string,
 
@@ -193,17 +159,20 @@ AntdSunburst.propTypes = {
     // 自定义css字典
     style: PropTypes.object,
 
-    // 定义绘图所需数据，必须参数
-    data: PropTypes.object.isRequired,
+    // 设置和弦图绘图所需数据
+    data: PropTypes.arrayOf(PropTypes.object),
 
     // 定义字段预处理元信息
     meta: metaBasePropTypes,
 
-    // 定义色彩区分所依据的字段，默认为祖先节点的name字段
-    colorField: PropTypes.string,
+    // 设置作为和弦图来源节点的字段
+    sourceField: PropTypes.string,
 
-    // 定义额外的原始字段名数组，可在tooltip等回调函数中用于取得辅助用数据
-    rawFields: PropTypes.arrayOf(PropTypes.string),
+    // 设置作为和弦图目标节点的字段
+    targetField: PropTypes.string,
+
+    // 设置节点与边的权重字段，该数值越大，节点与边越大
+    weightField: PropTypes.string,
 
     // 定义图表容器像素宽度，默认为400
     width: PropTypes.number,
@@ -233,90 +202,29 @@ AntdSunburst.propTypes = {
     // 设置语言，可选的有'zh-CN'与'en-US'
     locale: PropTypes.oneOf(['zh-CN', 'en-US']),
 
-    // 图形样式类参数
-
-    // 层级布局配置参数
-    hierarchyConfig: PropTypes.exact({
-        // 数据节点权重映射字段，默认为'value'
-        field: PropTypes.string,
-
-        // 设置是否忽略父节点实际权重，默认为true
-        ignoreParentValue: PropTypes.bool
-    }),
-
-    // 配置下钻相关参数
-    drilldown: PropTypes.exact({
-        // 设置是否允许下钻交互，默认为true
-        enabled: PropTypes.bool,
-
-        // 配置层级面包屑相关参数
-        breadCrumb: PropTypes.exact({
-            // 设置根节点文案，默认：'Root'，中文默认：'根节点'
-            rootText: PropTypes.string,
-
-            // 设置面包屑分割文字，默认为'/'
-            dividerText: PropTypes.string,
-
-            // 设置面包屑字体样式
-            textStyle: textBaseStyle,
-
-            // 设置激活状态下的字体样式
-            activeTextStyle: textBaseStyle,
-
-            // 设置下钻层级面包屑的方位，可选的有'top-left'、'bottom-left'
-            // 默认为'top-left'
-            position: PropTypes.oneOf(['top-left', 'bottom-left'])
-        })
-    }),
-
-    // 设置半径比例，取值应在0到1之间，默认为0.85
-    radius: PropTypes.number,
-
-    // 设置内径比例，取值应在0到1之间，默认为0
-    innerRadius: PropTypes.number,
-
-    // 用于手动设置调色方案，接受css中合法的所有颜色值，当传入单个字符串时，所有折线沿用此颜色值
-    // 当传入数组时，会视作调色盘方案对seriesField区分的不同系列进行着色
-    // 当传入对象时，会解析出其'func'属性对应的字符串，解析为函数，以支持更为自由的seriesField->色彩映射
-    color: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.arrayOf(PropTypes.string),
-        PropTypes.exact({
-            // 传入字符串形式的js函数体源码，例如
-            // (ref) => {
-            //     if (ref.series === '系列一'){
-            //         return 'red'
-            //     }
-            //     return 'blue'
-            // }
-            func: PropTypes.string
-        })
-    ]),
-
-    // // 设置图形的贴图样式
-    // pattern: PropTypes.object,
-
-    // 设置填充区域样式，其中透明度默认随着层级增加会逐渐减少填充透明度，可通过sunburstStyle
-    // 自定义func回调来自主控制样式
-    sunburstStyle: PropTypes.oneOfType([
+    // 配置和弦图节点样式
+    nodeStyle: PropTypes.oneOfType([
         areaBaseStyle,
         PropTypes.exact({
-            // 回调模式
+            // 回调函数
             func: PropTypes.string
         })
     ]),
 
-    // 设置是否进行径向反转，默认为false，当设置为true后旭日图将会以从外向内的方式进行层次的递进
-    reflect: PropTypes.bool,
+    // 配置和弦图边样式
+    edgeStyle: PropTypes.oneOfType([
+        areaBaseStyle,
+        PropTypes.exact({
+            // 回调函数
+            func: PropTypes.string
+        })
+    ]),
 
-    // 配置文字标签相关参数
-    label: labelBasePropTypes,
+    // 设置和弦图节点宽度比例，取值在0到1之间，以画布宽度为参考，默认为0.05
+    nodeWidthRatio: PropTypes.number,
 
-    // 设置tooltip相关参数
-    tooltip: tooltipBasePropTypes,
-
-    // 配置标注相关参数
-    annotations: annotationsBasePropTypes,
+    // 设置和弦图节点之间的间距比例，取值在0到1之间，以画布宽度为参考，默认为0.1
+    nodePaddingRatio: PropTypes.number,
 
     loading_state: PropTypes.shape({
         /**
@@ -341,6 +249,5 @@ AntdSunburst.propTypes = {
 };
 
 // 设置默认参数
-AntdSunburst.defaultProps = {
-    reflect: false
+AntdChord.defaultProps = {
 }

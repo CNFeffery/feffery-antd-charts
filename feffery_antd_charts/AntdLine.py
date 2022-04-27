@@ -13,7 +13,7 @@ Keyword arguments:
 
 - annotations (optional)
 
-- appendPadding (number | list of numbers | string; optional)
+- appendPadding (number | list of numbers; optional)
 
 - autoFit (boolean; optional)
 
@@ -56,11 +56,11 @@ Keyword arguments:
     - prop_name (string; optional):
         Holds which property is loading.
 
-- locale (string; optional)
+- locale (a value equal to: 'zh-CN', 'en-US'; optional)
 
 - meta (optional)
 
-- padding (number | list of numbers | string; optional)
+- padding (number | list of numbers | a value equal to: 'auto'; optional)
 
 - point (dict; optional)
 
@@ -102,7 +102,7 @@ Keyword arguments:
 
     - timestamp (number; optional)
 
-- renderer (string; optional)
+- renderer (a value equal to: 'canvas', 'svg'; optional)
 
 - seriesField (string; optional)
 

@@ -10,7 +10,7 @@ An AntdLine component.
 Keyword arguments:
 - `id` (String; optional)
 - `annotations` (optional)
-- `appendPadding` (Real | Array of Reals | String; optional)
+- `appendPadding` (Real | Array of Reals; optional)
 - `autoFit` (Bool; optional)
 - `className` (String; optional)
 - `color` (optional): . color has the following type: String | Array of Strings | lists containing elements 'func'.
@@ -30,9 +30,9 @@ Those elements have the following types:
   - `is_loading` (Bool; optional): Determines if the component is loading or not
   - `prop_name` (String; optional): Holds which property is loading
   - `component_name` (String; optional): Holds the name of the component that is loading
-- `locale` (String; optional)
+- `locale` (a value equal to: 'zh-CN', 'en-US'; optional)
 - `meta` (optional)
-- `padding` (Real | Array of Reals | String; optional)
+- `padding` (Real | Array of Reals | a value equal to: 'auto'; optional)
 - `point` (optional): . point has the following type: lists containing elements 'color', 'shape', 'style'.
 Those elements have the following types:
   - `color` (optional): . color has the following type: String | Array of Strings | lists containing elements 'func'.
@@ -52,7 +52,7 @@ Those elements have the following types:
 Those elements have the following types:
   - `timestamp` (Real; optional)
   - `data` (Array of Dicts; optional)
-- `renderer` (String; optional)
+- `renderer` (a value equal to: 'canvas', 'svg'; optional)
 - `seriesField` (String; optional)
 - `slider` (optional)
 - `smooth` (Bool; optional)

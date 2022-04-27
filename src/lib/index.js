@@ -7,6 +7,7 @@ import AntdScatter from "./components/AntdScatter.react";
 import AntdStock from "./components/AntdStock.react";
 import AntdRadar from "./components/AntdRadar.react";
 import AntdSunburst from "./components/AntdSunburst.react";
+import AntdChord from "./components/AntdChord.react";
 
 export {
     AntdLine,
@@ -17,5 +18,6 @@ export {
     AntdScatter,
     AntdStock,
     AntdRadar,
-    AntdSunburst
+    AntdSunburst,
+    AntdChord
 };

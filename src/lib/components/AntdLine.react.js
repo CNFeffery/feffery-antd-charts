@@ -116,7 +116,6 @@ export default class AntdLine extends Component {
             }
         }
 
-
         // 刷新基础参数
         config = {
             ...config,
@@ -399,21 +398,20 @@ AntdLine.propTypes = {
     padding: PropTypes.oneOfType([
         PropTypes.number,
         PropTypes.arrayOf(PropTypes.number),
-        PropTypes.string
+        PropTypes.oneOf(['auto'])
     ]),
 
     // 定义在padding基础上额外的像素填充间距
     appendPadding: PropTypes.oneOfType([
         PropTypes.number,
-        PropTypes.arrayOf(PropTypes.number),
-        PropTypes.string
+        PropTypes.arrayOf(PropTypes.number)
     ]),
 
     // 设置图表渲染方式为'canvas'或'svg'模式，默认为'canvas'
-    renderer: PropTypes.string,
+    renderer: PropTypes.oneOf(['canvas', 'svg']),
 
     // 设置语言，可选的有'zh-CN'与'en-US'
-    locale: PropTypes.string,
+    locale: PropTypes.oneOf(['zh-CN', 'en-US']),
 
     // 配置图例相关参数
     legend: legendBasePropTypes,

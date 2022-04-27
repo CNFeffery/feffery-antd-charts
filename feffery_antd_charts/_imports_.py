@@ -1,5 +1,6 @@
 from .AntdArea import AntdArea
 from .AntdBar import AntdBar
+from .AntdChord import AntdChord
 from .AntdColumn import AntdColumn
 from .AntdLine import AntdLine
 from .AntdPie import AntdPie
@@ -11,6 +12,7 @@ from .AntdSunburst import AntdSunburst
 __all__ = [
     "AntdArea",
     "AntdBar",
+    "AntdChord",
     "AntdColumn",
     "AntdLine",
     "AntdPie",

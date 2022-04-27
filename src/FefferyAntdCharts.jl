@@ -7,6 +7,7 @@ const version = "0.0.1-rc4"
 
 include("jl/''_antdarea.jl")
 include("jl/''_antdbar.jl")
+include("jl/''_antdchord.jl")
 include("jl/''_antdcolumn.jl")
 include("jl/''_antdline.jl")
 include("jl/''_antdpie.jl")
