@@ -83,6 +83,9 @@ init_line_data = [
 app.layout = html.Div(
     html.Div(
         [
+            fact.AntdSunburst(),
+
+
             html.Div(
                 [
                     html.Button(

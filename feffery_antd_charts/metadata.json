@@ -1378,43 +1378,6 @@
     "displayName": "AntdLine",
     "methods": [],
     "props": {
-      "recentlyTooltipChangeRecord": {
-        "type": {
-          "name": "exact",
-          "value": {
-            "timestamp": {
-              "name": "number",
-              "required": false
-            },
-            "data": {
-              "name": "arrayOf",
-              "value": {
-                "name": "object"
-              },
-              "required": false
-            }
-          }
-        },
-        "required": false,
-        "description": ""
-      },
-      "recentlyPointClickRecord": {
-        "type": {
-          "name": "exact",
-          "value": {
-            "timestamp": {
-              "name": "number",
-              "required": false
-            },
-            "data": {
-              "name": "object",
-              "required": false
-            }
-          }
-        },
-        "required": false,
-        "description": ""
-      },
       "id": {
         "type": {
           "name": "string"
@@ -1751,6 +1714,43 @@
         "type": {
           "name": "custom",
           "raw": "sliderBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyTooltipChangeRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "arrayOf",
+              "value": {
+                "name": "object"
+              },
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyPointClickRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "object",
+              "required": false
+            }
+          }
         },
         "required": false,
         "description": ""
@@ -3347,6 +3347,65 @@
         "type": {
           "name": "custom",
           "raw": "sliderBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "loading_state": {
+        "type": {
+          "name": "shape",
+          "value": {
+            "is_loading": {
+              "name": "bool",
+              "description": "Determines if the component is loading or not",
+              "required": false
+            },
+            "prop_name": {
+              "name": "string",
+              "description": "Holds which property is loading",
+              "required": false
+            },
+            "component_name": {
+              "name": "string",
+              "description": "Holds the name of the component that is loading",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "setProps": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Dash-assigned callback that should be called to report property changes\r\nto Dash, to make them available for callbacks."
+      }
+    }
+  },
+  "src/lib/components/AntdSunburst.react.js": {
+    "description": "",
+    "displayName": "AntdSunburst",
+    "methods": [],
+    "props": {
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "style": {
+        "type": {
+          "name": "object"
         },
         "required": false,
         "description": ""

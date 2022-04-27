@@ -1,8 +1,11 @@
+/* eslint-disable no-undefined */
+/* eslint-disable prefer-const */
+/* eslint-disable no-else-return */
 /* eslint-disable no-eval */
-import { Pie } from '@ant-design/charts';
+import { Pie } from '@ant-design/plots';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { isUndefined, omitBy, transform, isEqual, isObject, intersection, cloneDeep } from 'lodash'
+import { isUndefined, omitBy, intersection, cloneDeep } from 'lodash';
 import {
     metaBasePropTypes,
     legendBasePropTypes,
@@ -11,9 +14,55 @@ import {
     annotationsBasePropTypes,
     baseStyle
 } from './BasePropTypes.react';
+import { difference } from './utils';
+
+// 定义不触发重绘的参数数组
+const preventUpdateProps = ['loading_state'];
 
 // 定义饼图组件AntdPie，部分API参数参考https://charts.ant.design/zh-CN/demos/pie
 export default class AntdPie extends Component {
+
+    constructor(props) {
+        super(props);
+        this.chartRef = React.createRef();
+    }
+
+    shouldComponentUpdate(nextProps) {
+
+        // 计算发生变化的参数名
+        const changedProps = Object.keys(difference(this.props, nextProps))
+
+        // 若无变化的props，则不触发重绘
+        if (changedProps.length === 0) {
+            return false;
+        }
+
+        // 计算发生变化的参数名与需要阻止重绘的参数名数组的交集
+        let changedPreventUpdateProps = intersection(
+            changedProps,
+            preventUpdateProps
+        )
+
+        // 若有交集，则不触发重绘
+        if (changedPreventUpdateProps.length !== 0) {
+            return false;
+        } else {
+            // 取得plot实例
+            const chart = this.chartRef.current.getChart()
+            // 检查data参数是否发生更新
+            if (changedProps.indexOf('data') !== -1) {
+                // 动态调整数据
+                chart.changeData(nextProps.data)
+                return false;
+            } else {
+                chart.update({
+                    ...nextProps
+                })
+            }
+        }
+        return true;
+    }
+
     render() {
         // 取得必要属性或参数
         const {
@@ -41,7 +90,8 @@ export default class AntdPie extends Component {
             legend,
             label,
             tooltip,
-            annotations
+            annotations,
+            loading_state
         } = this.props;
 
         // 初始化config参数对象，每次渲染前的参数解析变动只在config中生效
@@ -60,8 +110,8 @@ export default class AntdPie extends Component {
 
         // 刷新基础参数
         config = {
+            ...config,
             data,
-            meta,
             padding,
             appendPadding,
             angleField,
@@ -137,6 +187,10 @@ export default class AntdPie extends Component {
         return <Pie id={id}
             className={className}
             style={style}
+            data-dash-is-loading={
+                (loading_state && loading_state.is_loading) || undefined
+            }
+            ref={this.chartRef}
             {...config} />;
     }
 }

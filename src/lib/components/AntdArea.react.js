@@ -1,6 +1,11 @@
-import { Area } from '@ant-design/charts';
+/* eslint-disable prefer-const */
+/* eslint-disable no-undefined */
+/* eslint-disable no-eval */
+/* eslint-disable no-else-return */
+import { Area } from '@ant-design/plots';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { isUndefined, omitBy, intersection, cloneDeep } from 'lodash';
 import {
     pointBaseStyle,
     lineBaseStyle,
@@ -13,12 +18,58 @@ import {
     annotationsBasePropTypes,
     sliderBasePropTypes
 } from './BasePropTypes.react';
+import { difference } from './utils';
+
+// 定义不触发重绘的参数数组
+const preventUpdateProps = ['loading_state'];
 
 // 定义面积图组件AntdArea，部分API参数参考https://charts.ant.design/zh-CN/demos/area
 export default class AntdArea extends Component {
+
+    constructor(props) {
+        super(props);
+        this.chartRef = React.createRef();
+    }
+
+    shouldComponentUpdate(nextProps) {
+
+        // 计算发生变化的参数名
+        const changedProps = Object.keys(difference(this.props, nextProps))
+
+        // 若无变化的props，则不触发重绘
+        if (changedProps.length === 0) {
+            return false;
+        }
+
+        // 计算发生变化的参数名与需要阻止重绘的参数名数组的交集
+        let changedPreventUpdateProps = intersection(
+            changedProps,
+            preventUpdateProps
+        )
+
+        // 若有交集，则不触发重绘
+        if (changedPreventUpdateProps.length !== 0) {
+            return false;
+        } else {
+            // 取得plot实例
+            const chart = this.chartRef.current.getChart()
+            // 检查data参数是否发生更新
+            if (changedProps.indexOf('data') !== -1) {
+                // 动态调整数据
+                chart.changeData(nextProps.data)
+                return false;
+            } else {
+                chart.update({
+                    ...nextProps
+                })
+            }
+        }
+        return true;
+    }
+
     render() {
         // 取得必要属性或参数
-        let {
+        const {
             id,
             className,
             style,
@@ -49,171 +100,154 @@ export default class AntdArea extends Component {
             tooltip,
             annotations,
             slider,
-            setProps
+            setProps,
+            loading_state
         } = this.props;
+
+        // 初始化config参数对象，每次渲染前的参数解析变动只在config中生效
+        let config = {};
 
         // 预处理元信息
         if (meta) {
+            config.meta = cloneDeep(meta);
             for (let i in Object.keys(meta)) {
-
-                if (meta[Object.keys(meta)[i]].formatter) {
-                    meta[Object.keys(meta)[i]].formatter = meta[Object.keys(meta)[i]]?.formatter?.func
-                        ? eval(meta[Object.keys(meta)[i]]?.formatter?.func) : meta[Object.keys(meta)[i]]?.formatter
+                // 若meta中当前字段属性下的formatter具有自定义函数func属性
+                if (meta[Object.keys(meta)[i]]?.formatter?.func) {
+                    config.meta[Object.keys(meta)[i]].formatter = eval(meta[Object.keys(meta)[i]].formatter.func)
                 }
             }
         }
 
-        let config = {
-            data: data,
-            meta: meta,
-            padding: padding,
-            appendPadding: appendPadding,
-            xField: xField,
-            yField: yField,
-            seriesField: seriesField,
-            smooth: smooth,
-            isPercent: isPercent,
-            startOnZero: startOnZero,
-            isStack: isStack,
-            width: width,
-            height: height,
-            autoFit: autoFit,
-            padding: padding,
-            renderer: renderer,
-            locale: locale
-        };
-
+        // 刷新基础参数
+        config = {
+            ...config,
+            data,
+            meta,
+            padding,
+            appendPadding,
+            xField,
+            yField,
+            seriesField,
+            smooth,
+            isPercent,
+            startOnZero,
+            isStack,
+            width,
+            height,
+            autoFit,
+            renderer,
+            locale
+        }
 
         // 进阶参数
-        if (typeof color == "undefined" || JSON.stringify(color) == "{}") {
-            config.color = undefined
-        } else if (color === false) {
-            config.color = false
-        } else if (color) {
-            config.color = color?.func ? eval(color?.func) : color
+        // 色彩样式
+        config.color = cloneDeep(color)
+        // 若color具有自定义函数func属性
+        if (color?.func) {
+            config.color = eval(color.func)
         }
 
-        if (typeof areaStyle == "undefined" || JSON.stringify(areaStyle) == "{}") {
-            config.areaStyle = undefined
-        } else if (areaStyle === false) {
-            config.areaStyle = false
-        } else if (areaStyle) {
-            config.areaStyle = areaStyle?.func ? eval(areaStyle.func) : areaStyle
+        // 面积填充样式
+        config.areaStyle = cloneDeep(areaStyle)
+        // 若areaStyle具有自定义函数func属性
+        if (areaStyle?.func) {
+            config.areaStyle = eval(areaStyle.func)
         }
 
-        if (typeof line == "undefined" || JSON.stringify(line) == "{}") {
-            config.line = undefined
-        } else if (line === false) {
-            config.line = false
-        } else if (line) {
-            config.line = line
-            config.line.color = line?.color?.func ? eval(line.color.func) : line.color
-            config.line.style = line?.style?.func ? eval(line.style.func) : line.style
+        // 折线样式
+        config.line = cloneDeep(line)
+        // 若line.color具有自定义函数func属性
+        if (line?.color?.func) {
+            config.line.color = eval(line.color.func)
+        }
+        // 若line.style具有自定义函数func属性
+        if (line?.style?.func) {
+            config.line.style = eval(line.style.func)
         }
 
 
-        if (typeof point == "undefined" || JSON.stringify(point) == "{}") {
-            config.point = undefined
-        } else if (point === false) {
-            config.point = false
-        } else if (point) {
-            config.point = {
-                color: point?.color?.func ? eval(point?.color?.func) : point.color,
-
-                shape: point?.shape?.func ? eval(point?.shape?.func) : point.shape,
-
-                style: point?.style?.func ? eval(point?.style?.func) : point.style
-            }
+        // 折点样式
+        config.point = cloneDeep(point)
+        // 若point.color具有自定义函数func属性
+        if (point?.color?.func) {
+            config.point.color = eval(point.color.func)
+        }
+        // 若point.shape具有自定义函数func属性
+        if (point?.shape?.func) {
+            config.point.shape = eval(point.shape.func)
+        }
+        // 若point.style具有自定义函数func属性
+        if (point?.style?.func) {
+            config.point.style = eval(point.style.func)
         }
 
-        if (typeof xAxis == "undefined" || JSON.stringify(xAxis) == "{}") {
-            config.xAxis = undefined
-        } else if (xAxis === false) {
-            config.xAxis = false
-        } else if (xAxis) {
-            config.xAxis = xAxis
-            if (config.xAxis?.label?.formatter?.func) {
-                config.xAxis.label.formatter = eval(xAxis.label.formatter.func)
-            }
+
+        // x轴样式
+        config.xAxis = cloneDeep(xAxis)
+        // 若xAxis.label.formatter具有自定义函数func属性
+        if (xAxis?.label?.formatter?.func) {
+            config.xAxis.label.formatter = eval(xAxis.label.formatter.func)
         }
 
-        if (typeof yAxis == "undefined" || JSON.stringify(yAxis) == "{}") {
-            config.yAxis = undefined
-        } else if (yAxis === false) {
-            config.yAxis = false
-        } else if (yAxis) {
-            config.yAxis = yAxis
-            if (config.yAxis?.label?.formatter?.func) {
-                config.yAxis.label.formatter = eval(config.yAxis.label.formatter.func)
-            }
+        // y轴样式
+        config.yAxis = cloneDeep(yAxis)
+        // 若yAxis.label.formatter具有自定义函数func属性
+        if (yAxis?.label?.formatter?.func) {
+            config.yAxis.label.formatter = eval(yAxis.label.formatter.func)
         }
 
-        if (typeof legend == "undefined" || JSON.stringify(legend) == "{}") {
-            config.legend = undefined
-        } else if (legend === false) {
-            config.legend = false
-        } else if (legend) {
-            config.legend = legend
 
-            if (legend.itemName) {
-                config.legend.itemName.formatter = legend.itemName?.formatter?.func
-                    ? eval(legend.itemName.formatter.func) : legend.itemName.formatter
-            }
-
-            if (config.legend.itemValue) {
-                config.legend.itemValue.formatter = legend.itemValue?.formatter?.func
-                    ? eval(legend.itemValue.formatter.func) : legend.itemValue.formatter
-            }
+        // 图例样式
+        config.legend = cloneDeep(legend)
+        // 若legend.itemName.formatter具有自定义函数func属性
+        if (legend?.itemName?.formatter?.func) {
+            config.legend.itemName.formatter = eval(legend.itemName.formatter.func)
+        }
+        // 若legend.itemValue.formatter具有自定义函数func属性
+        if (legend?.itemValue?.formatter?.func) {
+            config.legend.itemValue.formatter = eval(legend.itemValue.formatter.func)
         }
 
-        if (typeof label == "undefined" || JSON.stringify(label) == "{}") {
-            config.label = undefined
-        } else if (label === false) {
-            config.label = false
-        } else if (label) {
-            config.label = label
-            if (label?.formatter?.func) {
-                config.label.formatter = eval(label.formatter.func)
-            }
+
+
+        // 数据标签
+        config.label = cloneDeep(label)
+        // 若label.formatter具有自定义函数func属性
+        if (label?.formatter?.func) {
+            config.label.formatter = eval(label.formatter.func)
         }
 
-        if (typeof tooltip == "undefined" || JSON.stringify(tooltip) == "{}") {
-            config.tooltip = undefined
-        } else if (tooltip === false) {
-            config.tooltip = false
-        } else if (tooltip) {
-            config.tooltip = tooltip
-            if (tooltip?.formatter?.func) {
-                config.tooltip.formatter = eval(tooltip.formatter.func)
-            }
-            if (tooltip?.customItems?.func) {
-                config.tooltip.customItems = eval(tooltip.customItems.func)
-            }
+
+        // 悬浮提示
+        config.tooltip = cloneDeep(tooltip)
+        // 若tooltip.formatter具有自定义函数func属性
+        if (tooltip?.formatter?.func) {
+            config.tooltip.formatter = eval(tooltip.formatter.func)
+        }
+        // 若tooltip.customItems具有自定义函数func属性
+        if (tooltip?.customItems?.func) {
+            config.tooltip.customItems = eval(tooltip.customItems.func)
         }
 
-        if (typeof annotations == "undefined" || JSON.stringify(annotations) == "{}") {
-            config.annotations = undefined
-        } else if (annotations === false) {
-            config.annotations = false
-        } else if (annotations) {
-            config.annotations = annotations
+        // 标注
+        config.annotations = cloneDeep(annotations)
+
+        // 缩略轴
+        config.slider = cloneDeep(slider)
+        // 若slider.formatter具有自定义函数func属性
+        if (slider?.formatter?.func) {
+            config.slider.formatter = eval(slider.formatter.func)
         }
 
-        if (typeof slider == "undefined" || JSON.stringify(slider) == "{}") {
-            config.slider = undefined
-        } else if (slider === false) {
-            config.slider = false
-        } else if (slider) {
-            config.slider = slider
-
-            if (slider?.formatter?.func) {
-                config.slider.formatter = eval(slider.formatter.func)
-            }
-        }
+        // 利用lodash移除所有值为undefined的属性
+        config = omitBy(config, isUndefined)
 
         return <Area id={id}
             className={className}
             style={style}
+            data-dash-is-loading={
+                (loading_state && loading_state.is_loading) || undefined
+            }
             {...config} />;
     }
 }

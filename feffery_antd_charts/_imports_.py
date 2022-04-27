@@ -6,6 +6,7 @@ from .AntdPie import AntdPie
 from .AntdRadar import AntdRadar
 from .AntdScatter import AntdScatter
 from .AntdStock import AntdStock
+from .AntdSunburst import AntdSunburst
 
 __all__ = [
     "AntdArea",
@@ -15,5 +16,6 @@ __all__ = [
     "AntdPie",
     "AntdRadar",
     "AntdScatter",
-    "AntdStock"
+    "AntdStock",
+    "AntdSunburst"
 ]

@@ -1,9 +1,11 @@
-/* eslint-disable no-eval */
 /* eslint-disable prefer-const */
-import { Line } from '@ant-design/charts';
+/* eslint-disable no-undefined */
+/* eslint-disable no-else-return */
+/* eslint-disable no-eval */
+import { Line } from '@ant-design/plots';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { isUndefined, omitBy, transform, isEqual, isObject, intersection, cloneDeep } from 'lodash'
+import { isUndefined, omitBy, intersection, cloneDeep } from 'lodash';
 import {
     pointBaseStyle,
     lineBaseStyle,
@@ -15,17 +17,7 @@ import {
     annotationsBasePropTypes,
     sliderBasePropTypes
 } from './BasePropTypes.react';
-
-const difference = (object, base) => {
-    const changes = (object, base) => {
-        return transform(object, function (result, value, key) {
-            if (!isEqual(value, base[key])) {
-                result[key] = (isObject(value) && isObject(base[key])) ? changes(value, base[key]) : value;
-            }
-        });
-    }
-    return changes(object, base);
-}
+import { difference } from './utils';
 
 // 定义不触发重绘的参数数组
 const preventUpdateProps = ['loading_state', 'recentlyTooltipChangeRecord', 'recentlyPointClickRecord'];
@@ -106,7 +98,8 @@ export default class AntdLine extends Component {
             tooltip,
             annotations,
             slider,
-            setProps
+            setProps,
+            loading_state
         } = this.props;
 
         // 初始化config参数对象，每次渲染前的参数解析变动只在config中生效
@@ -128,7 +121,6 @@ export default class AntdLine extends Component {
         config = {
             ...config,
             data,
-            meta,
             padding,
             appendPadding,
             xField,
@@ -143,7 +135,7 @@ export default class AntdLine extends Component {
             autoFit,
             renderer,
             locale
-        }
+        };
 
         // 进阶参数
         // 色彩样式
@@ -234,6 +226,9 @@ export default class AntdLine extends Component {
         return <Line id={id}
             className={className}
             style={style}
+            data-dash-is-loading={
+                (loading_state && loading_state.is_loading) || undefined
+            }
             ref={this.chartRef}
             // 绑定常用事件
             onReady={(plot) => {
@@ -279,26 +274,6 @@ export default class AntdLine extends Component {
 
 // 定义参数或属性
 AntdLine.propTypes = {
-
-    // 常用事件监听参数
-    // 图形元素点击事件
-    recentlyTooltipChangeRecord: PropTypes.exact({
-        // 事件触发的时间戳信息
-        timestamp: PropTypes.number,
-
-        // 对应的数据点信息
-        data: PropTypes.arrayOf(PropTypes.object)
-    }),
-
-    // 单独折线点击事件
-    recentlyPointClickRecord: PropTypes.exact({
-        // 事件触发的时间戳信息
-        timestamp: PropTypes.number,
-
-        // 对应的数据点信息
-        data: PropTypes.object
-    }),
-
     // 部件id
     id: PropTypes.string,
 
@@ -454,6 +429,25 @@ AntdLine.propTypes = {
 
     // 配置缩略轴相关参数
     slider: sliderBasePropTypes,
+
+    // 常用事件监听参数
+    // 图形元素点击事件
+    recentlyTooltipChangeRecord: PropTypes.exact({
+        // 事件触发的时间戳信息
+        timestamp: PropTypes.number,
+
+        // 对应的数据点信息
+        data: PropTypes.arrayOf(PropTypes.object)
+    }),
+
+    // 单独折线点击事件
+    recentlyPointClickRecord: PropTypes.exact({
+        // 事件触发的时间戳信息
+        timestamp: PropTypes.number,
+
+        // 对应的数据点信息
+        data: PropTypes.object
+    }),
 
     loading_state: PropTypes.shape({
         /**

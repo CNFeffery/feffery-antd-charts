@@ -487,6 +487,9 @@ const legendBasePropTypes = PropTypes.oneOfType([
         // 设置图例布局方式，可选的有'horizontal'及'vertical'
         layout: PropTypes.string,
 
+        // 设置是否启用图例交互指示器，默认为true
+        radio: PropTypes.bool,
+
         // 设置图例标题
         title: PropTypes.exact({
             // 设置图例标题内容

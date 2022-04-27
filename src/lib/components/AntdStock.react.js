@@ -1,12 +1,12 @@
+/* eslint-disable no-else-return */
 /* eslint-disable no-magic-numbers */
 /* eslint-disable no-undefined */
 /* eslint-disable no-eval */
-/* eslint-disable no-unused-vars */
 /* eslint-disable prefer-const */
 import { Stock } from '@ant-design/charts';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { isUndefined, omitBy } from 'lodash'
+import { isUndefined, omitBy, intersection, cloneDeep } from 'lodash';
 import {
     metaBasePropTypes,
     axisBasePropTypes,
@@ -17,12 +17,58 @@ import {
     sliderBasePropTypes,
     baseStyle
 } from './BasePropTypes.react';
+import { difference } from './utils';
+
+// 定义不触发重绘的参数数组
+const preventUpdateProps = ['loading_state'];
 
 // 定义股票图组件AntdStock，部分API参数参考https://charts.ant.design/zh/examples/gallery
 export default class AntdStock extends Component {
+
+    constructor(props) {
+        super(props);
+        this.chartRef = React.createRef();
+    }
+
+    shouldComponentUpdate(nextProps) {
+
+        // 计算发生变化的参数名
+        const changedProps = Object.keys(difference(this.props, nextProps))
+
+        // 若无变化的props，则不触发重绘
+        if (changedProps.length === 0) {
+            return false;
+        }
+
+        // 计算发生变化的参数名与需要阻止重绘的参数名数组的交集
+        let changedPreventUpdateProps = intersection(
+            changedProps,
+            preventUpdateProps
+        )
+
+        // 若有交集，则不触发重绘
+        if (changedPreventUpdateProps.length !== 0) {
+            return false;
+        } else {
+            // 取得plot实例
+            const chart = this.chartRef.current.getChart()
+            // 检查data参数是否发生更新
+            if (changedProps.indexOf('data') !== -1) {
+                // 动态调整数据
+                chart.changeData(nextProps.data)
+                return false;
+            } else {
+                chart.update({
+                    ...nextProps
+                })
+            }
+        }
+        return true;
+    }
+
     render() {
         // 取得必要属性或参数
-        let {
+        const {
             id,
             className,
             style,
@@ -56,7 +102,7 @@ export default class AntdStock extends Component {
 
         // 预处理元信息
         if (meta) {
-            config.meta = meta;
+            config.meta = cloneDeep(meta);
             for (let i in Object.keys(meta)) {
                 // 若meta中当前字段属性下的formatter具有自定义函数func属性
                 if (meta[Object.keys(meta)[i]]?.formatter?.func) {
@@ -184,6 +230,7 @@ export default class AntdStock extends Component {
             data-dash-is-loading={
                 (loading_state && loading_state.is_loading) || undefined
             }
+            ref={this.chartRef}
             {...config} />;
 
     }
