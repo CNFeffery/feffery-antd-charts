@@ -9,6 +9,13 @@ import AntdRadar from "./components/AntdRadar.react";
 import AntdSunburst from "./components/AntdSunburst.react";
 import AntdChord from "./components/AntdChord.react";
 
+// 屏蔽所有warning信息
+window.console = (function () {
+    var c = {};
+    c.warn = function () { };
+    return c;
+})();
+
 export {
     AntdLine,
     AntdArea,
