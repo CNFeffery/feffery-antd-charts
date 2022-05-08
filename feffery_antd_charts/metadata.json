@@ -4019,5 +4019,344 @@
         "description": "Dash-assigned callback that should be called to report property changes\r\nto Dash, to make them available for callbacks."
       }
     }
+  },
+  "src/lib/components/AntdWordCloud.react.js": {
+    "description": "",
+    "displayName": "AntdWordCloud",
+    "methods": [],
+    "props": {
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "style": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": ""
+      },
+      "data": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "object"
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "meta": {
+        "type": {
+          "name": "custom",
+          "raw": "metaBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "wordField": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": ""
+      },
+      "weightField": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": ""
+      },
+      "colorField": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "spiral": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "'archimedean'",
+              "computed": false
+            },
+            {
+              "value": "'rectangular'",
+              "computed": false
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "placementStrategy": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "func": {
+              "name": "string",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "width": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "height": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "autoFit": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "padding": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "number"
+            },
+            {
+              "name": "arrayOf",
+              "value": {
+                "name": "number"
+              }
+            },
+            {
+              "name": "enum",
+              "value": [
+                {
+                  "value": "'auto'",
+                  "computed": false
+                }
+              ]
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "appendPadding": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "number"
+            },
+            {
+              "name": "arrayOf",
+              "value": {
+                "name": "number"
+              }
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "renderer": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "'canvas'",
+              "computed": false
+            },
+            {
+              "value": "'svg'",
+              "computed": false
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "locale": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "'zh-CN'",
+              "computed": false
+            },
+            {
+              "value": "'en-US'",
+              "computed": false
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "wordStyle": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "fontFamily": {
+              "name": "string",
+              "required": false
+            },
+            "fontWeight": {
+              "name": "string",
+              "required": false
+            },
+            "padding": {
+              "name": "number",
+              "required": false
+            },
+            "fontSize": {
+              "name": "arrayOf",
+              "value": {
+                "name": "number"
+              },
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "imageMask": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "color": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "string"
+            },
+            {
+              "name": "arrayOf",
+              "value": {
+                "name": "string"
+              }
+            },
+            {
+              "name": "exact",
+              "value": {
+                "func": {
+                  "name": "string",
+                  "required": false
+                }
+              }
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "legend": {
+        "type": {
+          "name": "custom",
+          "raw": "legendBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "label": {
+        "type": {
+          "name": "custom",
+          "raw": "labelBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "tooltip": {
+        "type": {
+          "name": "custom",
+          "raw": "tooltipBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "annotations": {
+        "type": {
+          "name": "custom",
+          "raw": "annotationsBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyWordClickRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "object",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "loading_state": {
+        "type": {
+          "name": "shape",
+          "value": {
+            "is_loading": {
+              "name": "bool",
+              "description": "Determines if the component is loading or not",
+              "required": false
+            },
+            "prop_name": {
+              "name": "string",
+              "description": "Holds which property is loading",
+              "required": false
+            },
+            "component_name": {
+              "name": "string",
+              "description": "Holds the name of the component that is loading",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "setProps": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Dash-assigned callback that should be called to report property changes\r\nto Dash, to make them available for callbacks."
+      }
+    }
   }
 }

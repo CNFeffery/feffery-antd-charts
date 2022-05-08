@@ -85,6 +85,25 @@ app.layout = html.Div(
         [
 
             html.Div(
+                fact.AntdWordCloud(
+                    data=json.load(open('./samples-data/AntdWordCloud-demo-douban.json',
+                                        encoding='utf-8')),
+                    wordField='title',
+                    weightField='rate',
+                    colorField='tag',
+                    # legend={},
+                    wordStyle={
+                        'fontFamily': 'SimHei',
+                        'fontSize': [12, 20],
+                    },
+                    imageMask='https://gw.alipayobjects.com/zos/antfincdn/Qw7Xbn76kM/53176454-747c-4f0a-a9e5-936aa66a0082.png'
+                ),
+                style={
+                    'height': '600px'
+                }
+            ),
+
+            html.Div(
                 fact.AntdChord(
                     data=json.load(open('./samples-data/AntdChord-demo-pop-flow.json',
                                         encoding='utf-8')),

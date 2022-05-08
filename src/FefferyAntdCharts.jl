@@ -15,6 +15,7 @@ include("jl/''_antdradar.jl")
 include("jl/''_antdscatter.jl")
 include("jl/''_antdstock.jl")
 include("jl/''_antdsunburst.jl")
+include("jl/''_antdwordcloud.jl")
 
 function __init__()
     DashBase.register_package(

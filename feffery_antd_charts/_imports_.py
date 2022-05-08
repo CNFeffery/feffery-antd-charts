@@ -8,6 +8,7 @@ from .AntdRadar import AntdRadar
 from .AntdScatter import AntdScatter
 from .AntdStock import AntdStock
 from .AntdSunburst import AntdSunburst
+from .AntdWordCloud import AntdWordCloud
 
 __all__ = [
     "AntdArea",
@@ -19,5 +20,6 @@ __all__ = [
     "AntdRadar",
     "AntdScatter",
     "AntdStock",
-    "AntdSunburst"
+    "AntdSunburst",
+    "AntdWordCloud"
 ]

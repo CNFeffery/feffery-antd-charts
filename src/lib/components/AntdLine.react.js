@@ -347,7 +347,6 @@ AntdLine.propTypes = {
         })
     ]),
 
-
     // 用于设置折线图折点的样式
     point: PropTypes.exact({
         // 设置折点颜色，支持单字符串、字符串数组以及对象传入func定义js函数体，函数格式同lineStyle
