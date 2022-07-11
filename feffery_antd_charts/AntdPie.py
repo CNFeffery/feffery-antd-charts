@@ -123,17 +123,19 @@ Keyword arguments:
 - tooltip (optional)
 
 - width (number; optional)"""
+    _children_props = []
+    _base_nodes = ['children']
+    _namespace = 'feffery_antd_charts'
+    _type = 'AntdPie'
     @_explicitize_args
     def __init__(self, id=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, angleField=Component.UNDEFINED, colorField=Component.UNDEFINED, radius=Component.UNDEFINED, innerRadius=Component.UNDEFINED, startAngle=Component.UNDEFINED, endAngle=Component.UNDEFINED, color=Component.UNDEFINED, statistic=Component.UNDEFINED, pieStyle=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
         self._prop_names = ['id', 'angleField', 'annotations', 'appendPadding', 'autoFit', 'className', 'color', 'colorField', 'data', 'endAngle', 'height', 'innerRadius', 'label', 'legend', 'loading_state', 'locale', 'meta', 'padding', 'pieStyle', 'radius', 'renderer', 'startAngle', 'statistic', 'style', 'tooltip', 'width']
-        self._type = 'AntdPie'
-        self._namespace = 'feffery_antd_charts'
         self._valid_wildcard_attributes =            []
         self.available_properties = ['id', 'angleField', 'annotations', 'appendPadding', 'autoFit', 'className', 'color', 'colorField', 'data', 'endAngle', 'height', 'innerRadius', 'label', 'legend', 'loading_state', 'locale', 'meta', 'padding', 'pieStyle', 'radius', 'renderer', 'startAngle', 'statistic', 'style', 'tooltip', 'width']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()
-        _locals.update(kwargs)  # For wildcard attrs
+        _locals.update(kwargs)  # For wildcard attrs and excess named props
         args = {k: _locals[k] for k in _explicit_args if k != 'children'}
         for k in ['data']:
             if k not in args:

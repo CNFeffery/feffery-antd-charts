@@ -101,17 +101,19 @@ Keyword arguments:
 - tooltip (optional)
 
 - width (number; optional)"""
+    _children_props = []
+    _base_nodes = ['children']
+    _namespace = 'feffery_antd_charts'
+    _type = 'AntdSunburst'
     @_explicitize_args
     def __init__(self, id=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, colorField=Component.UNDEFINED, rawFields=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, hierarchyConfig=Component.UNDEFINED, drilldown=Component.UNDEFINED, radius=Component.UNDEFINED, innerRadius=Component.UNDEFINED, color=Component.UNDEFINED, sunburstStyle=Component.UNDEFINED, reflect=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
         self._prop_names = ['id', 'annotations', 'appendPadding', 'autoFit', 'className', 'color', 'colorField', 'data', 'drilldown', 'height', 'hierarchyConfig', 'innerRadius', 'label', 'loading_state', 'locale', 'meta', 'padding', 'radius', 'rawFields', 'reflect', 'renderer', 'style', 'sunburstStyle', 'tooltip', 'width']
-        self._type = 'AntdSunburst'
-        self._namespace = 'feffery_antd_charts'
         self._valid_wildcard_attributes =            []
         self.available_properties = ['id', 'annotations', 'appendPadding', 'autoFit', 'className', 'color', 'colorField', 'data', 'drilldown', 'height', 'hierarchyConfig', 'innerRadius', 'label', 'loading_state', 'locale', 'meta', 'padding', 'radius', 'rawFields', 'reflect', 'renderer', 'style', 'sunburstStyle', 'tooltip', 'width']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()
-        _locals.update(kwargs)  # For wildcard attrs
+        _locals.update(kwargs)  # For wildcard attrs and excess named props
         args = {k: _locals[k] for k in _explicit_args if k != 'children'}
         for k in ['data']:
             if k not in args:

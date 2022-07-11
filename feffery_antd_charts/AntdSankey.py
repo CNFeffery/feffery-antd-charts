@@ -3,8 +3,8 @@
 from dash.development.base_component import Component, _explicitize_args
 
 
-class AntdChord(Component):
-    """An AntdChord component.
+class AntdSankey(Component):
+    """An AntdSankey component.
 
 
 Keyword arguments:
@@ -16,6 +16,12 @@ Keyword arguments:
 - autoFit (boolean; optional)
 
 - className (string; optional)
+
+- color (dict; optional)
+
+    `color` is a string | list of strings | dict with keys:
+
+    - func (string; optional)
 
 - data (list of dicts; optional)
 
@@ -44,6 +50,10 @@ Keyword arguments:
 
 - meta (optional)
 
+- nodeAlign (a value equal to: 'left', 'right', 'center', 'justify'; optional)
+
+- nodeDraggable (boolean; optional)
+
 - nodePaddingRatio (number; optional)
 
 - nodeStyle (dict; optional)
@@ -55,6 +65,8 @@ Keyword arguments:
 - nodeWidthRatio (number; optional)
 
 - padding (number | list of numbers | a value equal to: 'auto'; optional)
+
+- rawFields (list of strings; optional)
 
 - renderer (a value equal to: 'canvas', 'svg'; optional)
 
@@ -70,12 +82,12 @@ Keyword arguments:
     _children_props = []
     _base_nodes = ['children']
     _namespace = 'feffery_antd_charts'
-    _type = 'AntdChord'
+    _type = 'AntdSankey'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.UNDEFINED, meta=Component.UNDEFINED, sourceField=Component.UNDEFINED, targetField=Component.UNDEFINED, weightField=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, nodeStyle=Component.UNDEFINED, edgeStyle=Component.UNDEFINED, nodeWidthRatio=Component.UNDEFINED, nodePaddingRatio=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'appendPadding', 'autoFit', 'className', 'data', 'edgeStyle', 'height', 'loading_state', 'locale', 'meta', 'nodePaddingRatio', 'nodeStyle', 'nodeWidthRatio', 'padding', 'renderer', 'sourceField', 'style', 'targetField', 'weightField', 'width']
+    def __init__(self, id=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.UNDEFINED, meta=Component.UNDEFINED, sourceField=Component.UNDEFINED, targetField=Component.UNDEFINED, weightField=Component.UNDEFINED, rawFields=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, nodeStyle=Component.UNDEFINED, edgeStyle=Component.UNDEFINED, color=Component.UNDEFINED, nodeWidthRatio=Component.UNDEFINED, nodePaddingRatio=Component.UNDEFINED, nodeAlign=Component.UNDEFINED, nodeDraggable=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'appendPadding', 'autoFit', 'className', 'color', 'data', 'edgeStyle', 'height', 'loading_state', 'locale', 'meta', 'nodeAlign', 'nodeDraggable', 'nodePaddingRatio', 'nodeStyle', 'nodeWidthRatio', 'padding', 'rawFields', 'renderer', 'sourceField', 'style', 'targetField', 'weightField', 'width']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'appendPadding', 'autoFit', 'className', 'data', 'edgeStyle', 'height', 'loading_state', 'locale', 'meta', 'nodePaddingRatio', 'nodeStyle', 'nodeWidthRatio', 'padding', 'renderer', 'sourceField', 'style', 'targetField', 'weightField', 'width']
+        self.available_properties = ['id', 'appendPadding', 'autoFit', 'className', 'color', 'data', 'edgeStyle', 'height', 'loading_state', 'locale', 'meta', 'nodeAlign', 'nodeDraggable', 'nodePaddingRatio', 'nodeStyle', 'nodeWidthRatio', 'padding', 'rawFields', 'renderer', 'sourceField', 'style', 'targetField', 'weightField', 'width']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()
@@ -85,4 +97,4 @@ Keyword arguments:
             if k not in args:
                 raise TypeError(
                     'Required argument `' + k + '` was not specified.')
-        super(AntdChord, self).__init__(**args)
+        super(AntdSankey, self).__init__(**args)

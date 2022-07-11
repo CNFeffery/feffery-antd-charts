@@ -85,6 +85,23 @@ app.layout = html.Div(
         [
 
             html.Div(
+                fact.AntdSankey(
+                    data=json.load(open('./samples-data/AntdSankey-alipay.json',
+                                        encoding='utf-8')),
+                    sourceField='source',
+                    targetField='target',
+                    weightField='value',
+                    nodeWidthRatio=0.008,
+                    nodePaddingRatio=0.03,
+                    nodeDraggable=True
+                ),
+                style={
+                    'height': '600px',
+                    'padding': '25px'
+                }
+            ),
+
+            html.Div(
                 fact.AntdWordCloud(
                     data=json.load(open('./samples-data/AntdWordCloud-demo-douban.json',
                                         encoding='utf-8')),

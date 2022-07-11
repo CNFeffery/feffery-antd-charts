@@ -125,17 +125,19 @@ Keyword arguments:
 - yAxis (optional)
 
 - yField (string; required)"""
+    _children_props = []
+    _base_nodes = ['children']
+    _namespace = 'feffery_antd_charts'
+    _type = 'AntdLine'
     @_explicitize_args
     def __init__(self, id=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, xField=Component.REQUIRED, yField=Component.REQUIRED, seriesField=Component.UNDEFINED, smooth=Component.UNDEFINED, stepType=Component.UNDEFINED, connectNulls=Component.UNDEFINED, isStack=Component.UNDEFINED, color=Component.UNDEFINED, lineStyle=Component.UNDEFINED, point=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, slider=Component.UNDEFINED, recentlyTooltipChangeRecord=Component.UNDEFINED, recentlyPointClickRecord=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
         self._prop_names = ['id', 'annotations', 'appendPadding', 'autoFit', 'className', 'color', 'connectNulls', 'data', 'height', 'isStack', 'label', 'legend', 'lineStyle', 'loading_state', 'locale', 'meta', 'padding', 'point', 'recentlyPointClickRecord', 'recentlyTooltipChangeRecord', 'renderer', 'seriesField', 'slider', 'smooth', 'stepType', 'style', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
-        self._type = 'AntdLine'
-        self._namespace = 'feffery_antd_charts'
         self._valid_wildcard_attributes =            []
         self.available_properties = ['id', 'annotations', 'appendPadding', 'autoFit', 'className', 'color', 'connectNulls', 'data', 'height', 'isStack', 'label', 'legend', 'lineStyle', 'loading_state', 'locale', 'meta', 'padding', 'point', 'recentlyPointClickRecord', 'recentlyTooltipChangeRecord', 'renderer', 'seriesField', 'slider', 'smooth', 'stepType', 'style', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()
-        _locals.update(kwargs)  # For wildcard attrs
+        _locals.update(kwargs)  # For wildcard attrs and excess named props
         args = {k: _locals[k] for k in _explicit_args if k != 'children'}
         for k in ['data', 'xField', 'yField']:
             if k not in args:

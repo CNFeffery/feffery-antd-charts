@@ -9,6 +9,7 @@ import AntdRadar from "./components/AntdRadar.react";
 import AntdSunburst from "./components/AntdSunburst.react";
 import AntdChord from "./components/AntdChord.react";
 import AntdWordCloud from "./components/AntdWordCloud.react";
+import AntdSankey from "./components/AntdSankey.react";
 
 export {
     AntdLine,
@@ -21,5 +22,6 @@ export {
     AntdRadar,
     AntdSunburst,
     AntdChord,
-    AntdWordCloud
+    AntdWordCloud,
+    AntdSankey
 };
