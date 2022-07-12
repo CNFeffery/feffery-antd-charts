@@ -326,7 +326,10 @@ const metaBasePropTypes = PropTypes.objectOf(
         values: PropTypes.arrayOf(PropTypes.string),
 
         // 设置该字段的数据映射区间，默认为[0, 1]
-        range: PropTypes.arrayOf(PropTypes.number)
+        range: PropTypes.arrayOf(PropTypes.number),
+
+        // 指定字段类型
+        type: PropTypes.string
     })
 )
 
