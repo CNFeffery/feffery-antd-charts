@@ -51,10 +51,6 @@ export default class AntdChord extends Component {
                 // 动态调整数据
                 chart.changeData(nextProps.data)
                 return false;
-            } else {
-                chart.update({
-                    ...nextProps
-                })
             }
         }
         return true;
