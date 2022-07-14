@@ -33,6 +33,8 @@ Keyword arguments:
 
 - height (number; optional)
 
+- key (string; optional)
+
 - loading_state (dict; optional)
 
     `loading_state` is a dict with keys:
@@ -84,10 +86,10 @@ Keyword arguments:
     _namespace = 'feffery_antd_charts'
     _type = 'AntdSankey'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.UNDEFINED, meta=Component.UNDEFINED, sourceField=Component.UNDEFINED, targetField=Component.UNDEFINED, weightField=Component.UNDEFINED, rawFields=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, nodeStyle=Component.UNDEFINED, edgeStyle=Component.UNDEFINED, color=Component.UNDEFINED, nodeWidthRatio=Component.UNDEFINED, nodePaddingRatio=Component.UNDEFINED, nodeAlign=Component.UNDEFINED, nodeDraggable=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'appendPadding', 'autoFit', 'className', 'color', 'data', 'edgeStyle', 'height', 'loading_state', 'locale', 'meta', 'nodeAlign', 'nodeDraggable', 'nodePaddingRatio', 'nodeStyle', 'nodeWidthRatio', 'padding', 'rawFields', 'renderer', 'sourceField', 'style', 'targetField', 'weightField', 'width']
+    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.UNDEFINED, meta=Component.UNDEFINED, sourceField=Component.UNDEFINED, targetField=Component.UNDEFINED, weightField=Component.UNDEFINED, rawFields=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, nodeStyle=Component.UNDEFINED, edgeStyle=Component.UNDEFINED, color=Component.UNDEFINED, nodeWidthRatio=Component.UNDEFINED, nodePaddingRatio=Component.UNDEFINED, nodeAlign=Component.UNDEFINED, nodeDraggable=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'appendPadding', 'autoFit', 'className', 'color', 'data', 'edgeStyle', 'height', 'key', 'loading_state', 'locale', 'meta', 'nodeAlign', 'nodeDraggable', 'nodePaddingRatio', 'nodeStyle', 'nodeWidthRatio', 'padding', 'rawFields', 'renderer', 'sourceField', 'style', 'targetField', 'weightField', 'width']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'appendPadding', 'autoFit', 'className', 'color', 'data', 'edgeStyle', 'height', 'loading_state', 'locale', 'meta', 'nodeAlign', 'nodeDraggable', 'nodePaddingRatio', 'nodeStyle', 'nodeWidthRatio', 'padding', 'rawFields', 'renderer', 'sourceField', 'style', 'targetField', 'weightField', 'width']
+        self.available_properties = ['id', 'appendPadding', 'autoFit', 'className', 'color', 'data', 'edgeStyle', 'height', 'key', 'loading_state', 'locale', 'meta', 'nodeAlign', 'nodeDraggable', 'nodePaddingRatio', 'nodeStyle', 'nodeWidthRatio', 'padding', 'rawFields', 'renderer', 'sourceField', 'style', 'targetField', 'weightField', 'width']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

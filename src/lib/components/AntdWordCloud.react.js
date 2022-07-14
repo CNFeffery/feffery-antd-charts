@@ -49,8 +49,8 @@ export default class AntdWordCloud extends Component {
         } else {
             // 取得plot实例
             const chart = this.chartRef.current.getChart()
-            // 检查data参数是否发生更新
-            if (changedProps.indexOf('data') !== -1) {
+            // 检查是否仅有data参数发生更新
+            if (changedProps.indexOf('data') !== -1 && changedProps.length === 1) {
                 // 动态调整数据
                 chart.changeData(nextProps.data)
                 return false;
@@ -67,6 +67,7 @@ export default class AntdWordCloud extends Component {
         // 取得必要属性或参数
         const {
             id,
+            key,
             className,
             style,
             data,
@@ -179,6 +180,7 @@ export default class AntdWordCloud extends Component {
 
         return <WordCloud
             id={id}
+            key={key}
             className={className}
             style={style}
             data-dash-is-loading={
@@ -206,6 +208,9 @@ export default class AntdWordCloud extends Component {
 AntdWordCloud.propTypes = {
     // 部件id
     id: PropTypes.string,
+
+    // 辅助强制刷新
+    key: PropTypes.string,
 
     // css类名
     className: PropTypes.string,

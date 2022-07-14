@@ -20,6 +20,7 @@ Those elements have the following types:
 - `data` (Array of Dicts; optional)
 - `height` (Real; optional)
 - `imageMask` (String; optional)
+- `key` (String; optional)
 - `label` (optional)
 - `legend` (optional)
 - `loading_state` (optional): . loading_state has the following type: lists containing elements 'is_loading', 'prop_name', 'component_name'.
@@ -52,7 +53,7 @@ Those elements have the following types:
   - `fontSize` (Array of Reals; optional)
 """
 function ''_antdwordcloud(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :height, :imageMask, :label, :legend, :loading_state, :locale, :meta, :padding, :placementStrategy, :recentlyWordClickRecord, :renderer, :spiral, :style, :tooltip, :weightField, :width, :wordField, :wordStyle]
+        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :height, :imageMask, :key, :label, :legend, :loading_state, :locale, :meta, :padding, :placementStrategy, :recentlyWordClickRecord, :renderer, :spiral, :style, :tooltip, :weightField, :width, :wordField, :wordStyle]
         wild_props = Symbol[]
         return Component("''_antdwordcloud", "AntdWordCloud", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

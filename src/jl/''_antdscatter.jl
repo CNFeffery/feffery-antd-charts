@@ -19,6 +19,7 @@ Those elements have the following types:
 - `colorField` (String; optional)
 - `data` (Array of Dicts; required)
 - `height` (Real; optional)
+- `key` (String; optional)
 - `label` (optional)
 - `legend` (optional)
 - `loading_state` (optional): . loading_state has the following type: lists containing elements 'is_loading', 'prop_name', 'component_name'.
@@ -71,7 +72,7 @@ Those elements have the following types:
 - `yField` (String; required)
 """
 function ''_antdscatter(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :height, :label, :legend, :loading_state, :locale, :meta, :padding, :pointStyle, :quadrant, :regressionLine, :renderer, :shape, :shapeField, :shapeLegend, :size, :sizeField, :sizeLegend, :style, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
+        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :height, :key, :label, :legend, :loading_state, :locale, :meta, :padding, :pointStyle, :quadrant, :regressionLine, :renderer, :shape, :shapeField, :shapeLegend, :size, :sizeField, :sizeLegend, :style, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
         wild_props = Symbol[]
         return Component("''_antdscatter", "AntdScatter", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

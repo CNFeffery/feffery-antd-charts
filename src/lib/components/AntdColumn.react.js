@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable prefer-const */
 /* eslint-disable no-undefined */
 /* eslint-disable no-else-return */
@@ -54,8 +55,8 @@ export default class AntdColumn extends Component {
         } else {
             // 取得plot实例
             const chart = this.chartRef.current.getChart()
-            // 检查data参数是否发生更新
-            if (changedProps.indexOf('data') !== -1) {
+            // 检查是否仅有data参数发生更新
+            if (changedProps.indexOf('data') !== -1 && changedProps.length === 1) {
                 // 动态调整数据
                 chart.changeData(nextProps.data)
                 return false;
@@ -72,6 +73,7 @@ export default class AntdColumn extends Component {
         // 取得必要属性或参数
         const {
             id,
+            key,
             className,
             style,
             data,
@@ -238,6 +240,7 @@ export default class AntdColumn extends Component {
         config = omitBy(config, isUndefined)
 
         return <Column id={id}
+            key={key}
             className={className}
             style={style}
             data-dash-is-loading={
@@ -252,6 +255,9 @@ export default class AntdColumn extends Component {
 AntdColumn.propTypes = {
     // 部件id
     id: PropTypes.string,
+
+    // 辅助强制刷新
+    key: PropTypes.string,
 
     // css类名
     className: PropTypes.string,

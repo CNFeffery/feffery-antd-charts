@@ -16,6 +16,7 @@ Keyword arguments:
 - `data` (Array of Dict with Strings as keys and values of type String | Reals; required)
 - `fallingFill` (String; optional)
 - `height` (Real; optional)
+- `key` (String; optional)
 - `label` (optional)
 - `legend` (optional)
 - `loading_state` (optional): . loading_state has the following type: lists containing elements 'is_loading', 'prop_name', 'component_name'.
@@ -41,7 +42,7 @@ Those elements have the following types:
 - `yField` (Array of Strings; required)
 """
 function ''_antdstock(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :data, :fallingFill, :height, :label, :legend, :loading_state, :locale, :meta, :padding, :renderer, :risingFill, :slider, :stockStyle, :style, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
+        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :data, :fallingFill, :height, :key, :label, :legend, :loading_state, :locale, :meta, :padding, :renderer, :risingFill, :slider, :stockStyle, :style, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
         wild_props = Symbol[]
         return Component("''_antdstock", "AntdStock", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

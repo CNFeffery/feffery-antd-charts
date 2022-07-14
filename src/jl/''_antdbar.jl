@@ -49,6 +49,7 @@ Those elements have the following types:
 - `isPercent` (Bool; optional)
 - `isRange` (Bool; optional)
 - `isStack` (Bool; optional)
+- `key` (String; optional)
 - `label` (optional)
 - `legend` (optional)
 - `loading_state` (optional): . loading_state has the following type: lists containing elements 'is_loading', 'prop_name', 'component_name'.
@@ -74,7 +75,7 @@ Those elements have the following types:
 - `yField` (String; required)
 """
 function ''_antdbar(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :barBackground, :barStyle, :barWidthRatio, :className, :color, :connectedArea, :conversionTag, :data, :dodgePadding, :groupField, :height, :intervalPadding, :isGroup, :isPercent, :isRange, :isStack, :label, :legend, :loading_state, :locale, :marginRatio, :maxBarWidth, :meta, :minBarWidth, :padding, :renderer, :scrollbar, :seriesField, :style, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
+        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :barBackground, :barStyle, :barWidthRatio, :className, :color, :connectedArea, :conversionTag, :data, :dodgePadding, :groupField, :height, :intervalPadding, :isGroup, :isPercent, :isRange, :isStack, :key, :label, :legend, :loading_state, :locale, :marginRatio, :maxBarWidth, :meta, :minBarWidth, :padding, :renderer, :scrollbar, :seriesField, :style, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
         wild_props = Symbol[]
         return Component("''_antdbar", "AntdBar", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

@@ -22,6 +22,7 @@ Those elements have the following types:
 - `endAngle` (Real; optional)
 - `height` (Real; optional)
 - `innerRadius` (Real; optional)
+- `key` (String; optional)
 - `label` (optional)
 - `legend` (optional)
 - `loading_state` (optional): . loading_state has the following type: lists containing elements 'is_loading', 'prop_name', 'component_name'.
@@ -65,7 +66,7 @@ Those elements have the following types:
 - `width` (Real; optional)
 """
 function ''_antdpie(; kwargs...)
-        available_props = Symbol[:id, :angleField, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :endAngle, :height, :innerRadius, :label, :legend, :loading_state, :locale, :meta, :padding, :pieStyle, :radius, :renderer, :startAngle, :statistic, :style, :tooltip, :width]
+        available_props = Symbol[:id, :angleField, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :endAngle, :height, :innerRadius, :key, :label, :legend, :loading_state, :locale, :meta, :padding, :pieStyle, :radius, :renderer, :startAngle, :statistic, :style, :tooltip, :width]
         wild_props = Symbol[]
         return Component("''_antdpie", "AntdPie", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end
