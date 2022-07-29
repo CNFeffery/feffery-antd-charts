@@ -341,6 +341,9 @@ const axisBasePropTypes = PropTypes.oneOfType([
         // 默认false，设置是否将对应坐标轴渲染于画布顶层，从而避免部分图表坐标轴被图形遮挡
         top: PropTypes.bool,
 
+        // 设置坐标轴绘图范围，譬如[0, 1]代表撑满
+        range: PropTypes.arrayOf(PropTypes.number),
+
         // 适用于*直角坐标系*，设置坐标轴方位，可选的有'top'、'bottom'、'left'、'right'
         position: PropTypes.string,
 
