@@ -16,6 +16,7 @@ Keyword arguments:
 Those elements have the following types:
   - `func` (String; optional)
 - `data` (Array of Dicts; optional)
+- `downloadTrigger` (String; optional)
 - `edgeStyle` (optional): . edgeStyle has the following type: lists containing elements 'func'.
 Those elements have the following types:
   - `func` (String; optional)
@@ -45,7 +46,7 @@ Those elements have the following types:
 - `width` (Real; optional)
 """
 function ''_antdsankey(; kwargs...)
-        available_props = Symbol[:id, :appendPadding, :autoFit, :className, :color, :data, :edgeStyle, :height, :key, :loading_state, :locale, :meta, :nodeAlign, :nodeDraggable, :nodePaddingRatio, :nodeStyle, :nodeWidthRatio, :padding, :rawFields, :renderer, :sourceField, :style, :targetField, :weightField, :width]
+        available_props = Symbol[:id, :appendPadding, :autoFit, :className, :color, :data, :downloadTrigger, :edgeStyle, :height, :key, :loading_state, :locale, :meta, :nodeAlign, :nodeDraggable, :nodePaddingRatio, :nodeStyle, :nodeWidthRatio, :padding, :rawFields, :renderer, :sourceField, :style, :targetField, :weightField, :width]
         wild_props = Symbol[]
         return Component("''_antdsankey", "AntdSankey", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

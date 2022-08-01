@@ -52,6 +52,12 @@ export default class AntdSankey extends Component {
                 chart.changeData(nextProps.data)
                 return false;
             }
+            // 检查是否仅有downloadTrigger参数发生更新
+            if (changedProps.indexOf('downloadTrigger') !== -1 && changedProps.length === 1) {
+                // 导出当前图表为png格式文件
+                chart.downloadImage()
+                return false;
+            }
         }
         return true;
     }
@@ -264,6 +270,9 @@ AntdSankey.propTypes = {
 
     // 设置桑基图中的节点是否可拖拽调整位置，默认为false
     nodeDraggable: PropTypes.bool,
+
+    // 用于在回调中传入uuid、ulid之类的唯一标识，来主动下载当前图表为png格式图片
+    downloadTrigger: PropTypes.string,
 
     loading_state: PropTypes.shape({
         /**

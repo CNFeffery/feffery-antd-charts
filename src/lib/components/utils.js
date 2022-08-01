@@ -11,5 +11,4 @@ const difference = (object, base) => {
     return changes(object, base);
 }
 
-
 export { difference };

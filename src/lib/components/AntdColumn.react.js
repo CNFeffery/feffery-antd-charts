@@ -61,6 +61,12 @@ export default class AntdColumn extends Component {
                 chart.changeData(nextProps.data)
                 return false;
             }
+            // 检查是否仅有downloadTrigger参数发生更新
+            if (changedProps.indexOf('downloadTrigger') !== -1 && changedProps.length === 1) {
+                // 导出当前图表为png格式文件
+                chart.downloadImage()
+                return false;
+            }
         }
         return true;
     }
@@ -442,6 +448,9 @@ AntdColumn.propTypes = {
 
     // 配置标注相关参数
     annotations: annotationsBasePropTypes,
+
+    // 用于在回调中传入uuid、ulid之类的唯一标识，来主动下载当前图表为png格式图片
+    downloadTrigger: PropTypes.string,
 
     loading_state: PropTypes.shape({
         /**

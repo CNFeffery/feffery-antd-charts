@@ -52,6 +52,12 @@ export default class AntdChord extends Component {
                 chart.changeData(nextProps.data)
                 return false;
             }
+            // 检查是否仅有downloadTrigger参数发生更新
+            if (changedProps.indexOf('downloadTrigger') !== -1 && changedProps.length === 1) {
+                // 导出当前图表为png格式文件
+                chart.downloadImage()
+                return false;
+            }
         }
         return true;
     }
@@ -226,6 +232,9 @@ AntdChord.propTypes = {
 
     // 设置和弦图节点之间的间距比例，取值在0到1之间，以画布宽度为参考，默认为0.1
     nodePaddingRatio: PropTypes.number,
+
+    // 用于在回调中传入uuid、ulid之类的唯一标识，来主动下载当前图表为png格式图片
+    downloadTrigger: PropTypes.string,
 
     loading_state: PropTypes.shape({
         /**

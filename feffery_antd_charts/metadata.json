@@ -403,6 +403,13 @@
         "required": false,
         "description": ""
       },
+      "downloadTrigger": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
       "loading_state": {
         "type": {
           "name": "shape",
@@ -878,6 +885,13 @@
         "required": false,
         "description": ""
       },
+      "downloadTrigger": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
       "loading_state": {
         "type": {
           "name": "shape",
@@ -1137,6 +1151,13 @@
       "nodePaddingRatio": {
         "type": {
           "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "downloadTrigger": {
+        "type": {
+          "name": "string"
         },
         "required": false,
         "description": ""
@@ -1624,6 +1645,13 @@
         "required": false,
         "description": ""
       },
+      "downloadTrigger": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
       "loading_state": {
         "type": {
           "name": "shape",
@@ -2069,6 +2097,13 @@
         "required": false,
         "description": ""
       },
+      "downloadTrigger": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
       "loading_state": {
         "type": {
           "name": "shape",
@@ -2446,6 +2481,13 @@
         "type": {
           "name": "custom",
           "raw": "annotationsBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "downloadTrigger": {
+        "type": {
+          "name": "string"
         },
         "required": false,
         "description": ""
@@ -2883,6 +2925,13 @@
         "required": false,
         "description": ""
       },
+      "downloadTrigger": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
       "loading_state": {
         "type": {
           "name": "shape",
@@ -3211,6 +3260,13 @@
       "nodeDraggable": {
         "type": {
           "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "downloadTrigger": {
+        "type": {
+          "name": "string"
         },
         "required": false,
         "description": ""
@@ -3704,6 +3760,13 @@
         "required": false,
         "description": ""
       },
+      "downloadTrigger": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
       "loading_state": {
         "type": {
           "name": "shape",
@@ -4021,6 +4084,13 @@
         "type": {
           "name": "custom",
           "raw": "sliderBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "downloadTrigger": {
+        "type": {
+          "name": "string"
         },
         "required": false,
         "description": ""
@@ -4389,6 +4459,13 @@
         "required": false,
         "description": ""
       },
+      "downloadTrigger": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
       "loading_state": {
         "type": {
           "name": "shape",
@@ -4731,6 +4808,13 @@
               "required": false
             }
           }
+        },
+        "required": false,
+        "description": ""
+      },
+      "downloadTrigger": {
+        "type": {
+          "name": "string"
         },
         "required": false,
         "description": ""

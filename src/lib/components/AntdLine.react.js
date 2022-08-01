@@ -20,7 +20,11 @@ import {
 import { difference } from './utils';
 
 // 定义不触发重绘的参数数组
-const preventUpdateProps = ['loading_state', 'recentlyTooltipChangeRecord', 'recentlyPointClickRecord'];
+const preventUpdateProps = [
+    'loading_state',
+    'recentlyTooltipChangeRecord',
+    'recentlyPointClickRecord'
+];
 
 // 定义折线图组件AntdLine，部分API参数参考https://charts.ant.design/zh-CN/demos/line
 export default class AntdLine extends Component {
@@ -56,6 +60,12 @@ export default class AntdLine extends Component {
             if (changedProps.indexOf('data') !== -1 && changedProps.length === 1) {
                 // 动态调整数据
                 chart.changeData(nextProps.data)
+                return false;
+            }
+            // 检查是否仅有downloadTrigger参数发生更新
+            if (changedProps.indexOf('downloadTrigger') !== -1 && changedProps.length === 1) {
+                // 导出当前图表为png格式文件
+                chart.downloadImage()
                 return false;
             }
         }
@@ -446,6 +456,9 @@ AntdLine.propTypes = {
         // 对应的数据点信息
         data: PropTypes.object
     }),
+
+    // 用于在回调中传入uuid、ulid之类的唯一标识，来主动下载当前图表为png格式图片
+    downloadTrigger: PropTypes.string,
 
     loading_state: PropTypes.shape({
         /**

@@ -18,6 +18,7 @@ Those elements have the following types:
   - `func` (String; optional)
 - `colorField` (String; optional)
 - `data` (Array of Dicts; required)
+- `downloadTrigger` (String; optional)
 - `height` (Real; optional)
 - `key` (String; optional)
 - `label` (optional)
@@ -72,7 +73,7 @@ Those elements have the following types:
 - `yField` (String; required)
 """
 function ''_antdscatter(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :height, :key, :label, :legend, :loading_state, :locale, :meta, :padding, :pointStyle, :quadrant, :regressionLine, :renderer, :shape, :shapeField, :shapeLegend, :size, :sizeField, :sizeLegend, :style, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
+        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :downloadTrigger, :height, :key, :label, :legend, :loading_state, :locale, :meta, :padding, :pointStyle, :quadrant, :regressionLine, :renderer, :shape, :shapeField, :shapeLegend, :size, :sizeField, :sizeLegend, :style, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
         wild_props = Symbol[]
         return Component("''_antdscatter", "AntdScatter", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

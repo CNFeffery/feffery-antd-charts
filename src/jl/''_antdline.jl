@@ -18,6 +18,7 @@ Those elements have the following types:
   - `func` (String; optional)
 - `connectNulls` (Bool; optional)
 - `data` (Array of Dicts; required)
+- `downloadTrigger` (String; optional)
 - `height` (Real; optional)
 - `isStack` (Bool; optional)
 - `key` (String; optional)
@@ -67,7 +68,7 @@ Those elements have the following types:
 - `yField` (String; required)
 """
 function ''_antdline(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :color, :connectNulls, :data, :height, :isStack, :key, :label, :legend, :lineStyle, :loading_state, :locale, :meta, :padding, :point, :recentlyPointClickRecord, :recentlyTooltipChangeRecord, :renderer, :seriesField, :slider, :smooth, :stepType, :style, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
+        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :color, :connectNulls, :data, :downloadTrigger, :height, :isStack, :key, :label, :legend, :lineStyle, :loading_state, :locale, :meta, :padding, :point, :recentlyPointClickRecord, :recentlyTooltipChangeRecord, :renderer, :seriesField, :slider, :smooth, :stepType, :style, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
         wild_props = Symbol[]
         return Component("''_antdline", "AntdLine", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

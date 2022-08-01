@@ -1,6 +1,7 @@
+import uuid
 import feffery_antd_charts as fact
 import requests
-from dash.dependencies import Input, Output
+from dash.dependencies import Input, Output, State
 import demjson3
 from dash import html
 import math
@@ -174,54 +175,60 @@ app.layout = html.Div(
                 [
                     html.Div(
                         html.Div(
-                            fact.AntdLine(
-                                id='antd-line-demo',
-                                data=init_line_data,
-                                xField='x',
-                                yField='y',
-                                seriesField='series',
-                                color=[
-                                    '#5B8FF9',
-                                    '#5AD8A6',
-                                    '#5D7092',
-                                    '#F6BD16',
-                                    '#E8684A',
-                                    '#6DC8EC',
-                                    '#9270CA',
-                                    '#FF9D4D',
-                                    '#269A99',
-                                    '#FF99C3',
-                                ],
-                                annotations=[
-                                    {
-                                        'type': 'region',
-                                        'start': ['0%', '0%'],
-                                        'end': ['20%', '7.5%'],
-                                        'top': True,
-                                        'style': {
-                                            'fill': '#1890ff',
-                                            'fillOpacity': 1,
-                                            'opacity': 0.6,
+                            [
+                                html.Button(
+                                    '刷新base64',
+                                    id='antd-line-refresh-base64'
+                                ),
+                                fact.AntdLine(
+                                    id='antd-line-demo',
+                                    data=init_line_data,
+                                    xField='x',
+                                    yField='y',
+                                    seriesField='series',
+                                    color=[
+                                        '#5B8FF9',
+                                        '#5AD8A6',
+                                        '#5D7092',
+                                        '#F6BD16',
+                                        '#E8684A',
+                                        '#6DC8EC',
+                                        '#9270CA',
+                                        '#FF9D4D',
+                                        '#269A99',
+                                        '#FF99C3',
+                                    ],
+                                    annotations=[
+                                        {
+                                            'type': 'region',
+                                            'start': ['0%', '0%'],
+                                            'end': ['20%', '7.5%'],
+                                            'top': True,
+                                            'style': {
+                                                'fill': '#1890ff',
+                                                'fillOpacity': 1,
+                                                'opacity': 0.6,
+                                            },
                                         },
-                                    },
-                                    {
-                                        'type': 'text',
-                                        'position': ['10%', '3.5%'],
-                                        'content': 'AntdLine示例',
-                                        'style': {
+                                        {
+                                            'type': 'text',
+                                            'position': ['10%', '3.5%'],
+                                            'content': 'AntdLine示例',
+                                            'style': {
                                                 'fill': '#fff',
                                                 'fontSize': 18,
                                                 'textAlign': 'center',
                                                 'textBaseline': 'middle'
-                                        },
+                                            },
+                                        }
+                                    ],
+                                    point={
+                                        'style': {
+                                            'func': '(item) => { return { r: Number(item.x) % 4 ? 0 : 5 }; }'
+                                        }
                                     }
-                                ],
-                                point={
-                                    'style': {
-                                        'func': '(item) => { return { r: Number(item.x) % 4 ? 0 : 5 }; }'
-                                    }
-                                }
-                            ),
+                                )
+                            ],
                             style={
                                 'height': '100%',
                                 'padding': '25px'
@@ -402,6 +409,21 @@ def antd_line_callback_demo2(recentlyTooltipChangeRecord):
         return json.dumps(recentlyTooltipChangeRecord, indent=4, ensure_ascii=False)
 
     return 'None'
+
+
+@app.callback(
+    Output('antd-line-demo', 'stringForBase64'),
+    Input('antd-line-refresh-base64', 'n_clicks'),
+    State('antd-line-demo', 'base64')
+)
+def refresh_line_base64(n_clicks, base64):
+
+    if n_clicks:
+        print('='*100)
+        print(base64)
+        return str(uuid.uuid4())
+
+    return dash.no_update
 
 
 if __name__ == '__main__':

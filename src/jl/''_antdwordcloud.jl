@@ -18,6 +18,7 @@ Those elements have the following types:
   - `func` (String; optional)
 - `colorField` (String; optional)
 - `data` (Array of Dicts; optional)
+- `downloadTrigger` (String; optional)
 - `height` (Real; optional)
 - `imageMask` (String; optional)
 - `key` (String; optional)
@@ -53,7 +54,7 @@ Those elements have the following types:
   - `fontSize` (Array of Reals; optional)
 """
 function ''_antdwordcloud(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :height, :imageMask, :key, :label, :legend, :loading_state, :locale, :meta, :padding, :placementStrategy, :recentlyWordClickRecord, :renderer, :spiral, :style, :tooltip, :weightField, :width, :wordField, :wordStyle]
+        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :downloadTrigger, :height, :imageMask, :key, :label, :legend, :loading_state, :locale, :meta, :padding, :placementStrategy, :recentlyWordClickRecord, :renderer, :spiral, :style, :tooltip, :weightField, :width, :wordField, :wordStyle]
         wild_props = Symbol[]
         return Component("''_antdwordcloud", "AntdWordCloud", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

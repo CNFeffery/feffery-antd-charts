@@ -26,6 +26,7 @@ Those elements have the following types:
 Those elements have the following types:
   - `func` (String; optional)
 - `data` (Array of Dicts; required)
+- `downloadTrigger` (String; optional)
 - `endAngle` (Real; optional)
 - `height` (Real; optional)
 - `key` (String; optional)
@@ -67,7 +68,7 @@ Those elements have the following types:
 - `yField` (String; required)
 """
 function ''_antdradar(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :area, :autoFit, :className, :color, :data, :endAngle, :height, :key, :label, :legend, :lineStyle, :loading_state, :locale, :meta, :padding, :point, :radius, :renderer, :seriesField, :smooth, :startAngle, :style, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
+        available_props = Symbol[:id, :annotations, :appendPadding, :area, :autoFit, :className, :color, :data, :downloadTrigger, :endAngle, :height, :key, :label, :legend, :lineStyle, :loading_state, :locale, :meta, :padding, :point, :radius, :renderer, :seriesField, :smooth, :startAngle, :style, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
         wild_props = Symbol[]
         return Component("''_antdradar", "AntdRadar", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

@@ -18,6 +18,7 @@ Those elements have the following types:
   - `func` (String; optional)
 - `colorField` (String; optional)
 - `data` (Dict; required)
+- `downloadTrigger` (String; optional)
 - `drilldown` (optional): . drilldown has the following type: lists containing elements 'enabled', 'breadCrumb'.
 Those elements have the following types:
   - `enabled` (Bool; optional)
@@ -56,7 +57,7 @@ Those elements have the following types:
 - `width` (Real; optional)
 """
 function ''_antdsunburst(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :drilldown, :height, :hierarchyConfig, :innerRadius, :key, :label, :loading_state, :locale, :meta, :padding, :radius, :rawFields, :reflect, :renderer, :style, :sunburstStyle, :tooltip, :width]
+        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :downloadTrigger, :drilldown, :height, :hierarchyConfig, :innerRadius, :key, :label, :loading_state, :locale, :meta, :padding, :radius, :rawFields, :reflect, :renderer, :style, :sunburstStyle, :tooltip, :width]
         wild_props = Symbol[]
         return Component("''_antdsunburst", "AntdSunburst", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

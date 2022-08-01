@@ -20,6 +20,7 @@ Those elements have the following types:
 Those elements have the following types:
   - `func` (String; optional)
 - `data` (Array of Dicts; required)
+- `downloadTrigger` (String; optional)
 - `height` (Real; optional)
 - `isPercent` (Bool; optional)
 - `isStack` (Bool; optional)
@@ -67,7 +68,7 @@ Those elements have the following types:
 - `yField` (String; required)
 """
 function ''_antdarea(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :areaStyle, :autoFit, :className, :color, :data, :height, :isPercent, :isStack, :key, :label, :legend, :line, :loading_state, :locale, :meta, :padding, :point, :renderer, :seriesField, :slider, :smooth, :startOnZero, :style, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
+        available_props = Symbol[:id, :annotations, :appendPadding, :areaStyle, :autoFit, :className, :color, :data, :downloadTrigger, :height, :isPercent, :isStack, :key, :label, :legend, :line, :loading_state, :locale, :meta, :padding, :point, :renderer, :seriesField, :slider, :smooth, :startOnZero, :style, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
         wild_props = Symbol[]
         return Component("''_antdarea", "AntdArea", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end
