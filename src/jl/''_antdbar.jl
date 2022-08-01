@@ -68,6 +68,7 @@ Those elements have the following types:
 - `scrollbar` (optional)
 - `seriesField` (String; optional)
 - `style` (Dict; optional)
+- `theme` (optional)
 - `tooltip` (optional)
 - `width` (Real; optional)
 - `xAxis` (optional)
@@ -76,7 +77,7 @@ Those elements have the following types:
 - `yField` (String; required)
 """
 function ''_antdbar(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :barBackground, :barStyle, :barWidthRatio, :className, :color, :connectedArea, :conversionTag, :data, :dodgePadding, :downloadTrigger, :groupField, :height, :intervalPadding, :isGroup, :isPercent, :isRange, :isStack, :key, :label, :legend, :loading_state, :locale, :marginRatio, :maxBarWidth, :meta, :minBarWidth, :padding, :renderer, :scrollbar, :seriesField, :style, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
+        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :barBackground, :barStyle, :barWidthRatio, :className, :color, :connectedArea, :conversionTag, :data, :dodgePadding, :downloadTrigger, :groupField, :height, :intervalPadding, :isGroup, :isPercent, :isRange, :isStack, :key, :label, :legend, :loading_state, :locale, :marginRatio, :maxBarWidth, :meta, :minBarWidth, :padding, :renderer, :scrollbar, :seriesField, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
         wild_props = Symbol[]
         return Component("''_antdbar", "AntdBar", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

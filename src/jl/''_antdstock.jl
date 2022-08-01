@@ -35,6 +35,7 @@ Those elements have the following types:
 Those elements have the following types:
   - `func` (String; optional)
 - `style` (Dict; optional)
+- `theme` (optional)
 - `tooltip` (optional)
 - `width` (Real; optional)
 - `xAxis` (optional)
@@ -43,7 +44,7 @@ Those elements have the following types:
 - `yField` (Array of Strings; required)
 """
 function ''_antdstock(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :data, :downloadTrigger, :fallingFill, :height, :key, :label, :legend, :loading_state, :locale, :meta, :padding, :renderer, :risingFill, :slider, :stockStyle, :style, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
+        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :data, :downloadTrigger, :fallingFill, :height, :key, :label, :legend, :loading_state, :locale, :meta, :padding, :renderer, :risingFill, :slider, :stockStyle, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
         wild_props = Symbol[]
         return Component("''_antdstock", "AntdStock", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

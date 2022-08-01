@@ -63,11 +63,12 @@ Those elements have the following types:
   - `offsetX` (Real; optional)
   - `offsetY` (Real; optional)
 - `style` (Dict; optional)
+- `theme` (optional)
 - `tooltip` (optional)
 - `width` (Real; optional)
 """
 function ''_antdpie(; kwargs...)
-        available_props = Symbol[:id, :angleField, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :downloadTrigger, :endAngle, :height, :innerRadius, :key, :label, :legend, :loading_state, :locale, :meta, :padding, :pieStyle, :radius, :renderer, :startAngle, :statistic, :style, :tooltip, :width]
+        available_props = Symbol[:id, :angleField, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :downloadTrigger, :endAngle, :height, :innerRadius, :key, :label, :legend, :loading_state, :locale, :meta, :padding, :pieStyle, :radius, :renderer, :startAngle, :statistic, :style, :theme, :tooltip, :width]
         wild_props = Symbol[]
         return Component("''_antdpie", "AntdPie", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

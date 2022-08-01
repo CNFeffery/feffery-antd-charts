@@ -412,15 +412,13 @@ def antd_line_callback_demo2(recentlyTooltipChangeRecord):
 
 
 @app.callback(
-    Output('antd-line-demo', 'stringForBase64'),
-    Input('antd-line-refresh-base64', 'n_clicks'),
-    State('antd-line-demo', 'base64')
+    Output('antd-line-demo', 'downloadTrigger'),
+    Input('antd-line-refresh-base64', 'n_clicks')
 )
-def refresh_line_base64(n_clicks, base64):
+def refresh_line_base64(n_clicks):
 
     if n_clicks:
         print('='*100)
-        print(base64)
         return str(uuid.uuid4())
 
     return dash.no_update

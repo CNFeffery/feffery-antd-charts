@@ -42,11 +42,12 @@ Those elements have the following types:
 - `sourceField` (String; optional)
 - `style` (Dict; optional)
 - `targetField` (String; optional)
+- `theme` (optional)
 - `weightField` (String; optional)
 - `width` (Real; optional)
 """
 function ''_antdsankey(; kwargs...)
-        available_props = Symbol[:id, :appendPadding, :autoFit, :className, :color, :data, :downloadTrigger, :edgeStyle, :height, :key, :loading_state, :locale, :meta, :nodeAlign, :nodeDraggable, :nodePaddingRatio, :nodeStyle, :nodeWidthRatio, :padding, :rawFields, :renderer, :sourceField, :style, :targetField, :weightField, :width]
+        available_props = Symbol[:id, :appendPadding, :autoFit, :className, :color, :data, :downloadTrigger, :edgeStyle, :height, :key, :loading_state, :locale, :meta, :nodeAlign, :nodeDraggable, :nodePaddingRatio, :nodeStyle, :nodeWidthRatio, :padding, :rawFields, :renderer, :sourceField, :style, :targetField, :theme, :weightField, :width]
         wild_props = Symbol[]
         return Component("''_antdsankey", "AntdSankey", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

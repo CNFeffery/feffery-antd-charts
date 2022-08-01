@@ -12,7 +12,8 @@ import {
     labelBasePropTypes,
     tooltipBasePropTypes,
     annotationsBasePropTypes,
-    baseStyle
+    baseStyle,
+    themeBasePropTypes
 } from './BasePropTypes.react';
 import { difference } from './utils';
 
@@ -94,6 +95,7 @@ export default class AntdPie extends Component {
             label,
             tooltip,
             annotations,
+            theme,
             loading_state
         } = this.props;
 
@@ -127,6 +129,7 @@ export default class AntdPie extends Component {
             height,
             autoFit,
             renderer,
+            theme,
             locale
         };
 
@@ -364,6 +367,9 @@ AntdPie.propTypes = {
 
     // 用于在回调中传入uuid、ulid之类的唯一标识，来主动下载当前图表为png格式图片
     downloadTrigger: PropTypes.string,
+
+    // 主题配置
+    theme: themeBasePropTypes,
 
     loading_state: PropTypes.shape({
         /**

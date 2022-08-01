@@ -9,7 +9,8 @@ import PropTypes from 'prop-types';
 import { isUndefined, omitBy, intersection, cloneDeep } from 'lodash';
 import {
     metaBasePropTypes,
-    areaBaseStyle
+    areaBaseStyle,
+    themeBasePropTypes
 } from './BasePropTypes.react';
 import { difference } from './utils';
 
@@ -85,6 +86,7 @@ export default class AntdChord extends Component {
             edgeStyle,
             nodeWidthRatio,
             nodePaddingRatio,
+            theme,
             setProps,
             loading_state
         } = this.props;
@@ -118,7 +120,8 @@ export default class AntdChord extends Component {
             renderer,
             locale,
             nodeWidthRatio,
-            nodePaddingRatio
+            nodePaddingRatio,
+            theme
         }
 
         // 进阶参数
@@ -235,6 +238,9 @@ AntdChord.propTypes = {
 
     // 用于在回调中传入uuid、ulid之类的唯一标识，来主动下载当前图表为png格式图片
     downloadTrigger: PropTypes.string,
+
+    // 主题配置
+    theme: themeBasePropTypes,
 
     loading_state: PropTypes.shape({
         /**

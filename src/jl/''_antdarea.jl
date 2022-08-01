@@ -60,6 +60,7 @@ Those elements have the following types:
 - `smooth` (Bool; optional)
 - `startOnZero` (Bool; optional)
 - `style` (Dict; optional)
+- `theme` (optional)
 - `tooltip` (optional)
 - `width` (Real; optional)
 - `xAxis` (optional)
@@ -68,7 +69,7 @@ Those elements have the following types:
 - `yField` (String; required)
 """
 function ''_antdarea(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :areaStyle, :autoFit, :className, :color, :data, :downloadTrigger, :height, :isPercent, :isStack, :key, :label, :legend, :line, :loading_state, :locale, :meta, :padding, :point, :renderer, :seriesField, :slider, :smooth, :startOnZero, :style, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
+        available_props = Symbol[:id, :annotations, :appendPadding, :areaStyle, :autoFit, :className, :color, :data, :downloadTrigger, :height, :isPercent, :isStack, :key, :label, :legend, :line, :loading_state, :locale, :meta, :padding, :point, :renderer, :seriesField, :slider, :smooth, :startOnZero, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
         wild_props = Symbol[]
         return Component("''_antdarea", "AntdArea", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

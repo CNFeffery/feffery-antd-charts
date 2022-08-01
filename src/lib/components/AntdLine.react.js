@@ -15,7 +15,8 @@ import {
     labelBasePropTypes,
     tooltipBasePropTypes,
     annotationsBasePropTypes,
-    sliderBasePropTypes
+    sliderBasePropTypes,
+    themeBasePropTypes
 } from './BasePropTypes.react';
 import { difference } from './utils';
 
@@ -65,6 +66,7 @@ export default class AntdLine extends Component {
             // 检查是否仅有downloadTrigger参数发生更新
             if (changedProps.indexOf('downloadTrigger') !== -1 && changedProps.length === 1) {
                 // 导出当前图表为png格式文件
+                console.log(chart)
                 chart.downloadImage()
                 return false;
             }
@@ -105,6 +107,7 @@ export default class AntdLine extends Component {
             tooltip,
             annotations,
             slider,
+            theme,
             setProps,
             loading_state
         } = this.props;
@@ -140,6 +143,7 @@ export default class AntdLine extends Component {
             height,
             autoFit,
             renderer,
+            theme,
             locale
         };
 
@@ -459,6 +463,9 @@ AntdLine.propTypes = {
 
     // 用于在回调中传入uuid、ulid之类的唯一标识，来主动下载当前图表为png格式图片
     downloadTrigger: PropTypes.string,
+
+    // 主题配置
+    theme: themeBasePropTypes,
 
     loading_state: PropTypes.shape({
         /**

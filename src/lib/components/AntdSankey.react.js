@@ -9,7 +9,8 @@ import PropTypes from 'prop-types';
 import { isUndefined, omitBy, intersection, cloneDeep } from 'lodash';
 import {
     metaBasePropTypes,
-    areaBaseStyle
+    areaBaseStyle,
+    themeBasePropTypes
 } from './BasePropTypes.react';
 import { difference } from './utils';
 
@@ -89,6 +90,7 @@ export default class AntdSankey extends Component {
             nodePaddingRatio,
             nodeAlign,
             nodeDraggable,
+            theme,
             setProps,
             loading_state
         } = this.props;
@@ -125,7 +127,8 @@ export default class AntdSankey extends Component {
             nodeWidthRatio,
             nodePaddingRatio,
             nodeAlign,
-            nodeDraggable
+            nodeDraggable,
+            theme
         }
 
         // 进阶参数
@@ -273,6 +276,9 @@ AntdSankey.propTypes = {
 
     // 用于在回调中传入uuid、ulid之类的唯一标识，来主动下载当前图表为png格式图片
     downloadTrigger: PropTypes.string,
+
+    // 主题配置
+    theme: themeBasePropTypes,
 
     loading_state: PropTypes.shape({
         /**

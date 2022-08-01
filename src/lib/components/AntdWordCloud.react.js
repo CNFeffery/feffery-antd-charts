@@ -12,7 +12,8 @@ import {
     legendBasePropTypes,
     labelBasePropTypes,
     tooltipBasePropTypes,
-    annotationsBasePropTypes
+    annotationsBasePropTypes,
+    themeBasePropTypes
 } from './BasePropTypes.react';
 import { difference } from './utils';
 
@@ -93,6 +94,7 @@ export default class AntdWordCloud extends Component {
             label,
             tooltip,
             annotations,
+            theme,
             setProps,
             loading_state
         } = this.props;
@@ -126,6 +128,7 @@ export default class AntdWordCloud extends Component {
             appendPadding,
             renderer,
             locale,
+            theme,
             imageMask
         }
 
@@ -325,6 +328,9 @@ AntdWordCloud.propTypes = {
 
     // 用于在回调中传入uuid、ulid之类的唯一标识，来主动下载当前图表为png格式图片
     downloadTrigger: PropTypes.string,
+
+    // 主题配置
+    theme: themeBasePropTypes,
 
     loading_state: PropTypes.shape({
         /**

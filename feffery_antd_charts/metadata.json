@@ -410,6 +410,14 @@
         "required": false,
         "description": ""
       },
+      "theme": {
+        "type": {
+          "name": "custom",
+          "raw": "themeBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
       "loading_state": {
         "type": {
           "name": "shape",
@@ -892,6 +900,14 @@
         "required": false,
         "description": ""
       },
+      "theme": {
+        "type": {
+          "name": "custom",
+          "raw": "themeBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
       "loading_state": {
         "type": {
           "name": "shape",
@@ -1158,6 +1174,14 @@
       "downloadTrigger": {
         "type": {
           "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "theme": {
+        "type": {
+          "name": "custom",
+          "raw": "themeBasePropTypes"
         },
         "required": false,
         "description": ""
@@ -1652,6 +1676,14 @@
         "required": false,
         "description": ""
       },
+      "theme": {
+        "type": {
+          "name": "custom",
+          "raw": "themeBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
       "loading_state": {
         "type": {
           "name": "shape",
@@ -2104,6 +2136,14 @@
         "required": false,
         "description": ""
       },
+      "theme": {
+        "type": {
+          "name": "custom",
+          "raw": "themeBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
       "loading_state": {
         "type": {
           "name": "shape",
@@ -2488,6 +2528,14 @@
       "downloadTrigger": {
         "type": {
           "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "theme": {
+        "type": {
+          "name": "custom",
+          "raw": "themeBasePropTypes"
         },
         "required": false,
         "description": ""
@@ -2932,6 +2980,14 @@
         "required": false,
         "description": ""
       },
+      "theme": {
+        "type": {
+          "name": "custom",
+          "raw": "themeBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
       "loading_state": {
         "type": {
           "name": "shape",
@@ -3267,6 +3323,14 @@
       "downloadTrigger": {
         "type": {
           "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "theme": {
+        "type": {
+          "name": "custom",
+          "raw": "themeBasePropTypes"
         },
         "required": false,
         "description": ""
@@ -3767,6 +3831,14 @@
         "required": false,
         "description": ""
       },
+      "theme": {
+        "type": {
+          "name": "custom",
+          "raw": "themeBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
       "loading_state": {
         "type": {
           "name": "shape",
@@ -4091,6 +4163,14 @@
       "downloadTrigger": {
         "type": {
           "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "theme": {
+        "type": {
+          "name": "custom",
+          "raw": "themeBasePropTypes"
         },
         "required": false,
         "description": ""
@@ -4466,6 +4546,14 @@
         "required": false,
         "description": ""
       },
+      "theme": {
+        "type": {
+          "name": "custom",
+          "raw": "themeBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
       "loading_state": {
         "type": {
           "name": "shape",
@@ -4815,6 +4903,14 @@
       "downloadTrigger": {
         "type": {
           "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "theme": {
+        "type": {
+          "name": "custom",
+          "raw": "themeBasePropTypes"
         },
         "required": false,
         "description": ""

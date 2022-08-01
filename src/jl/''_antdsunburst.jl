@@ -53,11 +53,12 @@ Those elements have the following types:
 - `sunburstStyle` (optional): . sunburstStyle has the following type: lists containing elements 'func'.
 Those elements have the following types:
   - `func` (String; optional)
+- `theme` (optional)
 - `tooltip` (optional)
 - `width` (Real; optional)
 """
 function ''_antdsunburst(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :downloadTrigger, :drilldown, :height, :hierarchyConfig, :innerRadius, :key, :label, :loading_state, :locale, :meta, :padding, :radius, :rawFields, :reflect, :renderer, :style, :sunburstStyle, :tooltip, :width]
+        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :downloadTrigger, :drilldown, :height, :hierarchyConfig, :innerRadius, :key, :label, :loading_state, :locale, :meta, :padding, :radius, :rawFields, :reflect, :renderer, :style, :sunburstStyle, :theme, :tooltip, :width]
         wild_props = Symbol[]
         return Component("''_antdsunburst", "AntdSunburst", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end
