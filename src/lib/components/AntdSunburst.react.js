@@ -358,5 +358,6 @@ AntdSunburst.propTypes = {
 
 // 设置默认参数
 AntdSunburst.defaultProps = {
-    reflect: false
+    reflect: false,
+    downloadTrigger: 'download-trigger'
 }

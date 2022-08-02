@@ -470,4 +470,5 @@ AntdBar.propTypes = {
 
 // 设置默认参数
 AntdBar.defaultProps = {
+    downloadTrigger: 'download-trigger'
 }

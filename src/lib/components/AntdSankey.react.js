@@ -304,4 +304,5 @@ AntdSankey.propTypes = {
 
 // 设置默认参数
 AntdSankey.defaultProps = {
+    downloadTrigger: 'download-trigger'
 }

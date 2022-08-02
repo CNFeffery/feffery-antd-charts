@@ -471,4 +471,5 @@ AntdArea.propTypes = {
 
 // 设置默认参数
 AntdArea.defaultProps = {
+    downloadTrigger: 'download-trigger'
 }

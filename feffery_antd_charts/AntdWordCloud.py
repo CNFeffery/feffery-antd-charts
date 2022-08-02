@@ -29,7 +29,7 @@ Keyword arguments:
 
 - data (list of dicts; optional)
 
-- downloadTrigger (string; optional)
+- downloadTrigger (string; default 'download-trigger')
 
 - height (number; optional)
 

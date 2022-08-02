@@ -460,4 +460,5 @@ AntdScatter.propTypes = {
 
 // 设置默认参数
 AntdScatter.defaultProps = {
+    downloadTrigger: 'download-trigger'
 }

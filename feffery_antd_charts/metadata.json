@@ -408,7 +408,11 @@
           "name": "string"
         },
         "required": false,
-        "description": ""
+        "description": "",
+        "defaultValue": {
+          "value": "'download-trigger'",
+          "computed": false
+        }
       },
       "theme": {
         "type": {
@@ -898,7 +902,11 @@
           "name": "string"
         },
         "required": false,
-        "description": ""
+        "description": "",
+        "defaultValue": {
+          "value": "'download-trigger'",
+          "computed": false
+        }
       },
       "theme": {
         "type": {
@@ -1176,7 +1184,11 @@
           "name": "string"
         },
         "required": false,
-        "description": ""
+        "description": "",
+        "defaultValue": {
+          "value": "'download-trigger'",
+          "computed": false
+        }
       },
       "theme": {
         "type": {
@@ -1674,7 +1686,11 @@
           "name": "string"
         },
         "required": false,
-        "description": ""
+        "description": "",
+        "defaultValue": {
+          "value": "'download-trigger'",
+          "computed": false
+        }
       },
       "theme": {
         "type": {
@@ -2134,7 +2150,11 @@
           "name": "string"
         },
         "required": false,
-        "description": ""
+        "description": "",
+        "defaultValue": {
+          "value": "'download-trigger'",
+          "computed": false
+        }
       },
       "theme": {
         "type": {
@@ -2530,7 +2550,11 @@
           "name": "string"
         },
         "required": false,
-        "description": ""
+        "description": "",
+        "defaultValue": {
+          "value": "'download-trigger'",
+          "computed": false
+        }
       },
       "theme": {
         "type": {
@@ -2978,7 +3002,11 @@
           "name": "string"
         },
         "required": false,
-        "description": ""
+        "description": "",
+        "defaultValue": {
+          "value": "'download-trigger'",
+          "computed": false
+        }
       },
       "theme": {
         "type": {
@@ -3325,7 +3353,11 @@
           "name": "string"
         },
         "required": false,
-        "description": ""
+        "description": "",
+        "defaultValue": {
+          "value": "'download-trigger'",
+          "computed": false
+        }
       },
       "theme": {
         "type": {
@@ -3829,7 +3861,11 @@
           "name": "string"
         },
         "required": false,
-        "description": ""
+        "description": "",
+        "defaultValue": {
+          "value": "'download-trigger'",
+          "computed": false
+        }
       },
       "theme": {
         "type": {
@@ -4165,7 +4201,11 @@
           "name": "string"
         },
         "required": false,
-        "description": ""
+        "description": "",
+        "defaultValue": {
+          "value": "'download-trigger'",
+          "computed": false
+        }
       },
       "theme": {
         "type": {
@@ -4544,7 +4584,11 @@
           "name": "string"
         },
         "required": false,
-        "description": ""
+        "description": "",
+        "defaultValue": {
+          "value": "'download-trigger'",
+          "computed": false
+        }
       },
       "theme": {
         "type": {
@@ -4905,7 +4949,11 @@
           "name": "string"
         },
         "required": false,
-        "description": ""
+        "description": "",
+        "defaultValue": {
+          "value": "'download-trigger'",
+          "computed": false
+        }
       },
       "theme": {
         "type": {

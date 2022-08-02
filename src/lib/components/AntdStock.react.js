@@ -373,5 +373,6 @@ AntdStock.propTypes = {
 // 设置默认参数
 AntdStock.defaultProps = {
     risingFill: '#ef5350',
-    fallingFill: '#26a69a'
+    fallingFill: '#26a69a',
+    downloadTrigger: 'download-trigger'
 }

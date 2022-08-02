@@ -356,4 +356,5 @@ AntdWordCloud.propTypes = {
 
 // 设置默认参数
 AntdWordCloud.defaultProps = {
+    downloadTrigger: 'download-trigger'
 }

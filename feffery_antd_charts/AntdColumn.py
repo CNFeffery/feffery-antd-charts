@@ -79,7 +79,7 @@ Keyword arguments:
 
 - dodgePadding (number; optional)
 
-- downloadTrigger (string; optional)
+- downloadTrigger (string; default 'download-trigger')
 
 - groupField (string; optional)
 

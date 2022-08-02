@@ -21,7 +21,7 @@ Keyword arguments:
 
 - data (list of dicts with strings as keys and values of type string | number; required)
 
-- downloadTrigger (string; optional)
+- downloadTrigger (string; default 'download-trigger')
 
 - fallingFill (string; default '#26a69a')
 

@@ -466,4 +466,5 @@ AntdRadar.propTypes = {
 
 // 设置默认参数
 AntdRadar.defaultProps = {
+    downloadTrigger: 'download-trigger'
 }

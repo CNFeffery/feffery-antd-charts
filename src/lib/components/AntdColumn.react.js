@@ -482,4 +482,5 @@ AntdColumn.propTypes = {
 
 // 设置默认参数
 AntdColumn.defaultProps = {
+    downloadTrigger: 'download-trigger'
 }

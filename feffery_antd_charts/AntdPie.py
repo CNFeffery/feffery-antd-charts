@@ -31,7 +31,7 @@ Keyword arguments:
 
 - data (list of dicts; required)
 
-- downloadTrigger (string; optional)
+- downloadTrigger (string; default 'download-trigger')
 
 - endAngle (number; optional)
 

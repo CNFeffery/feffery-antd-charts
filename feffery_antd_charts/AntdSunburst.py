@@ -29,7 +29,7 @@ Keyword arguments:
 
 - data (dict; required)
 
-- downloadTrigger (string; optional)
+- downloadTrigger (string; default 'download-trigger')
 
 - drilldown (dict; optional)
 
