@@ -1,196 +1,275 @@
+import uuid
 import dash
-import math
-import demjson
-import requests
 from dash import html
-import feffery_antd_components as fac
 import feffery_antd_charts as fact
 from dash.dependencies import Input, Output, State
 
+demo_data = [
+    {
+        "timePeriod": "2006 Q3",
+        "value": 1
+    },
+    {
+        "timePeriod": "2006 Q4",
+        "value": 1.08
+    },
+    {
+        "timePeriod": "2007 Q1",
+        "value": 1.17
+    },
+    {
+        "timePeriod": "2007 Q2",
+        "value": 1.26
+    },
+    {
+        "timePeriod": "2007 Q3",
+        "value": 1.34
+    },
+    {
+        "timePeriod": "2007 Q4",
+        "value": 1.41
+    },
+    {
+        "timePeriod": "2008 Q1",
+        "value": 1.52
+    },
+    {
+        "timePeriod": "2008 Q2",
+        "value": 1.67
+    },
+    {
+        "timePeriod": "2008 Q3",
+        "value": 1.84
+    },
+    {
+        "timePeriod": "2008 Q4",
+        "value": 2.07
+    },
+    {
+        "timePeriod": "2009 Q1",
+        "value": 2.39
+    },
+    {
+        "timePeriod": "2009 Q2",
+        "value": 2.71
+    },
+    {
+        "timePeriod": "2009 Q3",
+        "value": 3.03
+    },
+    {
+        "timePeriod": "2009 Q4",
+        "value": 3.33
+    },
+    {
+        "timePeriod": "2010 Q1",
+        "value": 3.5
+    },
+    {
+        "timePeriod": "2010 Q2",
+        "value": 3.37
+    },
+    {
+        "timePeriod": "2010 Q3",
+        "value": 3.15
+    },
+    {
+        "timePeriod": "2010 Q4",
+        "value": 3.01
+    },
+    {
+        "timePeriod": "2011 Q1",
+        "value": 2.8
+    },
+    {
+        "timePeriod": "2011 Q2",
+        "value": 2.8
+    },
+    {
+        "timePeriod": "2011 Q3",
+        "value": 2.84
+    },
+    {
+        "timePeriod": "2011 Q4",
+        "value": 2.75
+    },
+    {
+        "timePeriod": "2012 Q1",
+        "value": 2.64
+    },
+    {
+        "timePeriod": "2012 Q2",
+        "value": 2.55
+    },
+    {
+        "timePeriod": "2012 Q3",
+        "value": 2.46
+    },
+    {
+        "timePeriod": "2012 Q4",
+        "value": 2.45
+    },
+    {
+        "timePeriod": "2013 Q1",
+        "value": 2.57
+    },
+    {
+        "timePeriod": "2013 Q2",
+        "value": 2.68
+    },
+    {
+        "timePeriod": "2013 Q3",
+        "value": 2.8
+    },
+    {
+        "timePeriod": "2013 Q4",
+        "value": 2.89
+    },
+    {
+        "timePeriod": "2014 Q1",
+        "value": 2.85
+    },
+    {
+        "timePeriod": "2014 Q2",
+        "value": 2.73
+    },
+    {
+        "timePeriod": "2014 Q3",
+        "value": 2.54
+    },
+    {
+        "timePeriod": "2014 Q4",
+        "value": 2.32
+    },
+    {
+        "timePeriod": "2015 Q1",
+        "value": 2.25
+    },
+    {
+        "timePeriod": "2015 Q2",
+        "value": 2.33
+    },
+    {
+        "timePeriod": "2015 Q3",
+        "value": 2.53
+    },
+    {
+        "timePeriod": "2015 Q4",
+        "value": 2.74
+    },
+    {
+        "timePeriod": "2016 Q1",
+        "value": 2.76
+    },
+    {
+        "timePeriod": "2016 Q2",
+        "value": 2.61
+    },
+    {
+        "timePeriod": "2016 Q3",
+        "value": 2.35
+    },
+    {
+        "timePeriod": "2016 Q4",
+        "value": 2.11
+    },
+    {
+        "timePeriod": "2017 Q1",
+        "value": 2.08
+    },
+    {
+        "timePeriod": "2017 Q2",
+        "value": 2.2
+    },
+    {
+        "timePeriod": "2017 Q3",
+        "value": 2.38
+    },
+    {
+        "timePeriod": "2017 Q4",
+        "value": 2.59
+    },
+    {
+        "timePeriod": "2018 Q1",
+        "value": 2.63
+    },
+    {
+        "timePeriod": "2018 Q2",
+        "value": 2.67
+    },
+    {
+        "timePeriod": "2018 Q3",
+        "value": 2.64
+    },
+    {
+        "timePeriod": "2018 Q4",
+        "value": 2.5
+    },
+    {
+        "timePeriod": "2019 Q1",
+        "value": 2.31
+    },
+    {
+        "timePeriod": "2019 Q2",
+        "value": 2.04
+    },
+    {
+        "timePeriod": "2019 Q3",
+        "value": 1.83
+    },
+    {
+        "timePeriod": "2019 Q4",
+        "value": 1.71
+    },
+    {
+        "timePeriod": "2020 Q1",
+        "value": 1.65
+    },
+    {
+        "timePeriod": "2020 Q2",
+        "value": 1.59
+    },
+    {
+        "timePeriod": "2020 Q3",
+        "value": 1.58
+    }
+]
+
+
 app = dash.Dash(__name__)
 
-# 构建示例数据
-data = [
-    {
-        'x': str(i),
-        'y': 10000 + 5000 * i,
-        'series': '系列1'
-    }
-    for i in range(0, 50)
-]+[
-    {
-        'x': str(i),
-        'y': 10000 + i ** 2,
-        'series': '系列2'
-    }
-    for i in range(0, 50)
-]+[
-    {
-        'x': str(i),
-        'y': 10000 + i ** 3,
-        'series': '系列3'
-    }
-    for i in range(0, 50)
-]
-
-
-radar_data = [
-    {'name': 'G2', 'star': 10178},
-    {'name': 'G6', 'star': 7077},
-    {'name': 'F2', 'star': 7345},
-    {'name': 'L7', 'star': 2029},
-    {'name': 'X6', 'star': 298},
-    {'name': 'AVA', 'star': 806},
-]
-
-radar_data = [
-    {
-        **item,
-        **{
-            'star': round(math.log(item['star']), 2)
-        }
-    }
-    for item in radar_data
-]
-
-# 构建前端内容
 app.layout = html.Div(
     [
-        fac.AntdTitle('折线图参数测试', level=2),
-
-        fac.AntdRow(
-            [
-                fac.AntdCol(
-                    [
-                        fac.AntdSpace(
-                            [
-                                fac.AntdSwitch(
-                                    id='fact-line-legend-switch',
-                                    checkedChildren='开启图例',
-                                    unCheckedChildren='关闭图例',
-                                    checked=True
-                                ),
-                                fac.AntdSwitch(
-                                    id='fact-line-xAxis-switch',
-                                    checkedChildren='开启xAxis',
-                                    unCheckedChildren='关闭xAxis',
-                                    checked=True
-                                ),
-                                fac.AntdSwitch(
-                                    id='fact-line-yAxis-switch',
-                                    checkedChildren='开启yAxis',
-                                    unCheckedChildren='关闭yAxis',
-                                    checked=True
-                                ),
-                                fac.AntdSwitch(
-                                    id='fact-line-label-switch',
-                                    checkedChildren='开启label',
-                                    unCheckedChildren='关闭label',
-                                    checked=True
-                                ),
-                                fac.AntdSwitch(
-                                    id='fact-line-tooltip-switch',
-                                    checkedChildren='开启tooltip',
-                                    unCheckedChildren='关闭tooltip',
-                                    checked=True
-                                ),
-                                fac.AntdSwitch(
-                                    id='fact-line-slider-switch',
-                                    checkedChildren='开启slider',
-                                    unCheckedChildren='关闭slider',
-                                    checked=True
-                                )
-                            ],
-                            direction='vertical'
-                        )
-                    ],
-                    span=8,
-                    style={
-                        'borderRight': '1px solid rgba(213, 213, 213, 0.8)'
-                    }
-                ),
-                fac.AntdCol(
-                    fact.AntdLine(
-                        id='fact-line',
-                        data=data,
-                        xField='x',
-                        yField='y',
-                        seriesField='series',
-                        slider={},
-                        padding='auto',
-                        appendPadding=40,
-                        renderer='svg'
-                    ),
-                    span=16
-                )
-            ],
-            style={
-                'height': '800px'
-            }
+        html.Button(
+            '下载图表',
+            id='download'
         ),
 
-        fac.AntdDivider(),
-
-
-        fact.AntdRadar(
-            data=radar_data,
-            xField='name',
-            yField='star',
-            # xAxis={
-            #     'line': None,
-            #     'tickLine': None,
-            # },
-            # yAxis={
-            #     'label': False,
-            #     'grid': {
-            #         'alternateColor': 'rgba(0, 0, 0, 0.04)',
-            #     },
-            # },
-            # meta={
-            #     'star': {
-            #         'alias': '分数'
-            #     },
-            # },
-            point={},
-            area={}
+        fact.AntdArea(
+            id='chart-demo',
+            data=demo_data,
+            xField='timePeriod',
+            yField='value'
         )
     ],
     style={
-        'padding': '100px 100px 100px 100px'
+        'width': '800px',
+        'margin': '0 auto'
     }
 )
 
 
 @app.callback(
-    [Output('fact-line', 'legend'),
-     Output('fact-line', 'xAxis'),
-     Output('fact-line', 'yAxis'),
-     Output('fact-line', 'label'),
-     Output('fact-line', 'tooltip'),
-     Output('fact-line', 'slider')],
-    [Input('fact-line-legend-switch', 'checked'),
-     Input('fact-line-xAxis-switch', 'checked'),
-     Input('fact-line-yAxis-switch', 'checked'),
-     Input('fact-line-label-switch', 'checked'),
-     Input('fact-line-tooltip-switch', 'checked'),
-     Input('fact-line-slider-switch', 'checked')]
+    Output('chart-demo', 'downloadTrigger'),
+    Input('download', 'n_clicks')
 )
-def fact_line_callback(legend_checked,
-                       xAxis_checked,
-                       yAxis_checked,
-                       label_checked,
-                       tooltip_checked,
-                       slider_checked):
+def download_demo(n_clicks):
 
-    return [
-        {} if legend_checked else False,
-        {} if xAxis_checked else False,
-        {} if yAxis_checked else False,
-        {} if label_checked else False,
-        {} if tooltip_checked else False,
-        {} if slider_checked else False
-    ]
+    if n_clicks:
+        return str(uuid.uuid4())
+
+    return dash.no_update
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run(debug=True)

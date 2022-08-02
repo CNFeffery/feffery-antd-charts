@@ -253,6 +253,7 @@ export default class AntdArea extends Component {
             key={key}
             className={className}
             style={style}
+            ref={this.chartRef}
             data-dash-is-loading={
                 (loading_state && loading_state.is_loading) || undefined
             }

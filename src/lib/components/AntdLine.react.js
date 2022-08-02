@@ -66,7 +66,6 @@ export default class AntdLine extends Component {
             // 检查是否仅有downloadTrigger参数发生更新
             if (changedProps.indexOf('downloadTrigger') !== -1 && changedProps.length === 1) {
                 // 导出当前图表为png格式文件
-                console.log(chart)
                 chart.downloadImage()
                 return false;
             }
