@@ -17,7 +17,7 @@ Keyword arguments:
 Those elements have the following types:
   - `func` (String; optional)
 - `colorField` (String; required)
-- `data` (Array of Dicts; optional)
+- `data` (Dict; optional)
 - `downloadTrigger` (String; optional)
 - `height` (Real; optional)
 - `key` (String; optional)

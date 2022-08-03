@@ -84,6 +84,39 @@ init_line_data = [
 app.layout = html.Div(
     html.Div(
         [
+
+            html.Div(
+                fact.AntdTreemap(
+                    data={
+                        'name': 'root',
+                        'children': [
+                            {
+                                'name': '分类 1',
+                                'value': 560,
+                            },
+                            {
+                                'name': '分类 2',
+                                'value': 500,
+                            },
+                            {
+                                'name': '分类 3',
+                                'value': 150,
+                            },
+                            {
+                                'name': '分类 4',
+                                'value': 140,
+                            }
+                        ]
+                    },
+                    colorField='name'
+                ),
+                style={
+                    'height': '600px',
+                    'padding': '25px'
+                }
+            ),
+
+
             html.Div(
                 fact.AntdRose(
                     data=[

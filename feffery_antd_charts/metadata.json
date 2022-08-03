@@ -5006,10 +5006,7 @@
       },
       "data": {
         "type": {
-          "name": "arrayOf",
-          "value": {
-            "name": "object"
-          }
+          "name": "object"
         },
         "required": false,
         "description": ""

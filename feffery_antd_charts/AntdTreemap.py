@@ -27,7 +27,7 @@ Keyword arguments:
 
 - colorField (string; required)
 
-- data (list of dicts; optional)
+- data (dict; optional)
 
 - downloadTrigger (string; default 'download-trigger')
 

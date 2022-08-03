@@ -203,7 +203,7 @@ AntdTreemap.propTypes = {
     style: PropTypes.object,
 
     // 设置矩形树图绘图所需数据
-    data: PropTypes.arrayOf(PropTypes.object),
+    data: PropTypes.object,
 
     // 定义字段预处理元信息
     meta: metaBasePropTypes,
