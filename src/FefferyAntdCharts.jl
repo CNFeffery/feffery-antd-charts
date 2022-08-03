@@ -17,6 +17,7 @@ include("jl/''_antdsankey.jl")
 include("jl/''_antdscatter.jl")
 include("jl/''_antdstock.jl")
 include("jl/''_antdsunburst.jl")
+include("jl/''_antdtreemap.jl")
 include("jl/''_antdwordcloud.jl")
 
 function __init__()

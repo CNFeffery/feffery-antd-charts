@@ -11,6 +11,7 @@ import AntdChord from "./components/AntdChord.react";
 import AntdWordCloud from "./components/AntdWordCloud.react";
 import AntdSankey from "./components/AntdSankey.react";
 import AntdRose from "./components/AntdRose.react";
+import AntdTreemap from "./components/AntdTreemap.react";
 
 export {
     AntdLine,
@@ -25,5 +26,6 @@ export {
     AntdChord,
     AntdWordCloud,
     AntdSankey,
-    AntdRose
+    AntdRose,
+    AntdTreemap
 };
