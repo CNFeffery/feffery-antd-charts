@@ -10,6 +10,7 @@ import AntdSunburst from "./components/AntdSunburst.react";
 import AntdChord from "./components/AntdChord.react";
 import AntdWordCloud from "./components/AntdWordCloud.react";
 import AntdSankey from "./components/AntdSankey.react";
+import AntdRose from "./components/AntdRose.react";
 
 export {
     AntdLine,
@@ -23,5 +24,6 @@ export {
     AntdSunburst,
     AntdChord,
     AntdWordCloud,
-    AntdSankey
+    AntdSankey,
+    AntdRose
 };
