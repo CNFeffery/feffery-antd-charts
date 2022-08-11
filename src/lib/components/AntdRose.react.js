@@ -94,6 +94,7 @@ export default class AntdRose extends Component {
             appendPadding,
             renderer,
             locale,
+            limitInPlot,
             xAxis,
             yAxis,
             legend,
@@ -138,7 +139,8 @@ export default class AntdRose extends Component {
             autoFit,
             renderer,
             theme,
-            locale
+            locale,
+            limitInPlot
         };
 
         // 进阶参数
@@ -317,6 +319,9 @@ AntdRose.propTypes = {
 
     // 设置语言，可选的有'zh-CN'与'en-US'
     locale: PropTypes.string,
+
+    // 设置是否对超出绘图区域的几何元素进行裁剪
+    limitInPlot: PropTypes.bool,
 
     // 设置x坐标轴相关属性
     xAxis: axisBasePropTypes,

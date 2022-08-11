@@ -39,6 +39,8 @@ Keyword arguments:
 
 - legend (optional)
 
+- limitInPlot (boolean; optional)
+
 - loading_state (dict; optional)
 
     `loading_state` is a dict with keys:
@@ -144,10 +146,10 @@ Keyword arguments:
     _namespace = 'feffery_antd_charts'
     _type = 'AntdScatter'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, xField=Component.REQUIRED, yField=Component.REQUIRED, colorField=Component.UNDEFINED, sizeField=Component.UNDEFINED, shapeField=Component.UNDEFINED, color=Component.UNDEFINED, size=Component.UNDEFINED, shape=Component.UNDEFINED, pointStyle=Component.UNDEFINED, shapeLegend=Component.UNDEFINED, sizeLegend=Component.UNDEFINED, quadrant=Component.UNDEFINED, regressionLine=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'annotations', 'appendPadding', 'autoFit', 'className', 'color', 'colorField', 'data', 'downloadTrigger', 'height', 'key', 'label', 'legend', 'loading_state', 'locale', 'meta', 'padding', 'pointStyle', 'quadrant', 'regressionLine', 'renderer', 'shape', 'shapeField', 'shapeLegend', 'size', 'sizeField', 'sizeLegend', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
+    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, xField=Component.REQUIRED, yField=Component.REQUIRED, colorField=Component.UNDEFINED, sizeField=Component.UNDEFINED, shapeField=Component.UNDEFINED, color=Component.UNDEFINED, size=Component.UNDEFINED, shape=Component.UNDEFINED, pointStyle=Component.UNDEFINED, shapeLegend=Component.UNDEFINED, sizeLegend=Component.UNDEFINED, quadrant=Component.UNDEFINED, regressionLine=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'annotations', 'appendPadding', 'autoFit', 'className', 'color', 'colorField', 'data', 'downloadTrigger', 'height', 'key', 'label', 'legend', 'limitInPlot', 'loading_state', 'locale', 'meta', 'padding', 'pointStyle', 'quadrant', 'regressionLine', 'renderer', 'shape', 'shapeField', 'shapeLegend', 'size', 'sizeField', 'sizeLegend', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'annotations', 'appendPadding', 'autoFit', 'className', 'color', 'colorField', 'data', 'downloadTrigger', 'height', 'key', 'label', 'legend', 'loading_state', 'locale', 'meta', 'padding', 'pointStyle', 'quadrant', 'regressionLine', 'renderer', 'shape', 'shapeField', 'shapeLegend', 'size', 'sizeField', 'sizeLegend', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
+        self.available_properties = ['id', 'annotations', 'appendPadding', 'autoFit', 'className', 'color', 'colorField', 'data', 'downloadTrigger', 'height', 'key', 'label', 'legend', 'limitInPlot', 'loading_state', 'locale', 'meta', 'padding', 'pointStyle', 'quadrant', 'regressionLine', 'renderer', 'shape', 'shapeField', 'shapeLegend', 'size', 'sizeField', 'sizeLegend', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

@@ -87,6 +87,7 @@ export default class AntdWordCloud extends Component {
             appendPadding,
             renderer,
             locale,
+            limitInPlot,
             wordStyle,
             imageMask,
             color,
@@ -128,6 +129,7 @@ export default class AntdWordCloud extends Component {
             appendPadding,
             renderer,
             locale,
+            limitInPlot,
             theme,
             imageMask
         }
@@ -275,6 +277,9 @@ AntdWordCloud.propTypes = {
 
     // 设置语言，可选的有'zh-CN'与'en-US'
     locale: PropTypes.oneOf(['zh-CN', 'en-US']),
+
+    // 设置是否对超出绘图区域的几何元素进行裁剪
+    limitInPlot: PropTypes.bool,
 
     // 配置词云图文字样式
     wordStyle: PropTypes.exact({

@@ -363,6 +363,13 @@
         "required": false,
         "description": ""
       },
+      "limitInPlot": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
       "legend": {
         "type": {
           "name": "custom",
@@ -865,6 +872,13 @@
         "required": false,
         "description": ""
       },
+      "limitInPlot": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
       "legend": {
         "type": {
           "name": "custom",
@@ -1117,6 +1131,13 @@
               "computed": false
             }
           ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "limitInPlot": {
+        "type": {
+          "name": "bool"
         },
         "required": false,
         "description": ""
@@ -1649,6 +1670,13 @@
         "required": false,
         "description": ""
       },
+      "limitInPlot": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
       "legend": {
         "type": {
           "name": "custom",
@@ -2064,6 +2092,13 @@
               "computed": false
             }
           ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "limitInPlot": {
+        "type": {
+          "name": "bool"
         },
         "required": false,
         "description": ""
@@ -2509,6 +2544,13 @@
       "locale": {
         "type": {
           "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "limitInPlot": {
+        "type": {
+          "name": "bool"
         },
         "required": false,
         "description": ""
@@ -2965,6 +3007,13 @@
         "required": false,
         "description": ""
       },
+      "limitInPlot": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
       "legend": {
         "type": {
           "name": "custom",
@@ -3289,6 +3338,13 @@
         "required": false,
         "description": ""
       },
+      "limitInPlot": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
       "xAxis": {
         "type": {
           "name": "custom",
@@ -3567,6 +3623,13 @@
               "computed": false
             }
           ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "limitInPlot": {
+        "type": {
+          "name": "bool"
         },
         "required": false,
         "description": ""
@@ -4164,6 +4227,13 @@
         "required": false,
         "description": ""
       },
+      "limitInPlot": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
       "legend": {
         "type": {
           "name": "custom",
@@ -4496,6 +4566,13 @@
         "required": false,
         "description": ""
       },
+      "limitInPlot": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
       "legend": {
         "type": {
           "name": "custom",
@@ -4749,6 +4826,13 @@
               "computed": false
             }
           ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "limitInPlot": {
+        "type": {
+          "name": "bool"
         },
         "required": false,
         "description": ""
@@ -5136,6 +5220,13 @@
         "required": false,
         "description": ""
       },
+      "limitInPlot": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
       "rectStyle": {
         "type": {
           "name": "union",
@@ -5467,6 +5558,13 @@
               "computed": false
             }
           ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "limitInPlot": {
+        "type": {
+          "name": "bool"
         },
         "required": false,
         "description": ""

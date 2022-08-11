@@ -85,6 +85,7 @@ export default class AntdTreemap extends Component {
             appendPadding,
             renderer,
             locale,
+            limitInPlot,
             rectStyle,
             color,
             legend,
@@ -123,6 +124,7 @@ export default class AntdTreemap extends Component {
             appendPadding,
             renderer,
             locale,
+            limitInPlot,
             theme
         }
 
@@ -241,6 +243,9 @@ AntdTreemap.propTypes = {
 
     // 设置语言，可选的有'zh-CN'与'en-US'
     locale: PropTypes.oneOf(['zh-CN', 'en-US']),
+
+    // 设置是否对超出绘图区域的几何元素进行裁剪
+    limitInPlot: PropTypes.bool,
 
     // 设置矩形的样式，其中fill会覆盖一级color参数信息
     rectStyle: PropTypes.oneOfType([

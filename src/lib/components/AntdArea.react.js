@@ -100,6 +100,7 @@ export default class AntdArea extends Component {
             appendPadding,
             renderer,
             locale,
+            limitInPlot,
             legend,
             label,
             tooltip,
@@ -143,7 +144,8 @@ export default class AntdArea extends Component {
             autoFit,
             renderer,
             theme,
-            locale
+            locale,
+            limitInPlot
         }
 
         // 进阶参数
@@ -426,6 +428,9 @@ AntdArea.propTypes = {
 
     // 设置语言，可选的有'zh-CN'与'en-US'
     locale: PropTypes.string,
+
+    // 设置是否对超出绘图区域的几何元素进行裁剪
+    limitInPlot: PropTypes.bool,
 
     // 配置图例相关参数
     legend: legendBasePropTypes,

@@ -85,6 +85,7 @@ export default class AntdSunburst extends Component {
             appendPadding,
             renderer,
             locale,
+            limitInPlot,
             hierarchyConfig,
             drilldown,
             radius,
@@ -127,6 +128,7 @@ export default class AntdSunburst extends Component {
             appendPadding,
             renderer,
             locale,
+            limitInPlot,
             radius,
             innerRadius,
             drilldown,
@@ -242,6 +244,9 @@ AntdSunburst.propTypes = {
 
     // 设置语言，可选的有'zh-CN'与'en-US'
     locale: PropTypes.oneOf(['zh-CN', 'en-US']),
+
+    // 设置是否对超出绘图区域的几何元素进行裁剪
+    limitInPlot: PropTypes.bool,
 
     // 图形样式类参数
 

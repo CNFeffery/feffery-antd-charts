@@ -20,6 +20,7 @@ Keyword arguments:
 - `key` (String; optional)
 - `label` (optional)
 - `legend` (optional)
+- `limitInPlot` (Bool; optional)
 - `loading_state` (optional): . loading_state has the following type: lists containing elements 'is_loading', 'prop_name', 'component_name'.
 Those elements have the following types:
   - `is_loading` (Bool; optional): Determines if the component is loading or not
@@ -44,7 +45,7 @@ Those elements have the following types:
 - `yField` (Array of Strings; required)
 """
 function ''_antdstock(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :data, :downloadTrigger, :fallingFill, :height, :key, :label, :legend, :loading_state, :locale, :meta, :padding, :renderer, :risingFill, :slider, :stockStyle, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
+        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :data, :downloadTrigger, :fallingFill, :height, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :meta, :padding, :renderer, :risingFill, :slider, :stockStyle, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
         wild_props = Symbol[]
         return Component("''_antdstock", "AntdStock", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

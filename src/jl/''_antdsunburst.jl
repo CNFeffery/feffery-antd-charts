@@ -37,6 +37,7 @@ Those elements have the following types:
 - `innerRadius` (Real; optional)
 - `key` (String; optional)
 - `label` (optional)
+- `limitInPlot` (Bool; optional)
 - `loading_state` (optional): . loading_state has the following type: lists containing elements 'is_loading', 'prop_name', 'component_name'.
 Those elements have the following types:
   - `is_loading` (Bool; optional): Determines if the component is loading or not
@@ -58,7 +59,7 @@ Those elements have the following types:
 - `width` (Real; optional)
 """
 function ''_antdsunburst(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :downloadTrigger, :drilldown, :height, :hierarchyConfig, :innerRadius, :key, :label, :loading_state, :locale, :meta, :padding, :radius, :rawFields, :reflect, :renderer, :style, :sunburstStyle, :theme, :tooltip, :width]
+        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :downloadTrigger, :drilldown, :height, :hierarchyConfig, :innerRadius, :key, :label, :limitInPlot, :loading_state, :locale, :meta, :padding, :radius, :rawFields, :reflect, :renderer, :style, :sunburstStyle, :theme, :tooltip, :width]
         wild_props = Symbol[]
         return Component("''_antdsunburst", "AntdSunburst", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

@@ -22,6 +22,7 @@ Those elements have the following types:
   - `func` (String; optional)
 - `height` (Real; optional)
 - `key` (String; optional)
+- `limitInPlot` (Bool; optional)
 - `loading_state` (optional): . loading_state has the following type: lists containing elements 'is_loading', 'prop_name', 'component_name'.
 Those elements have the following types:
   - `is_loading` (Bool; optional): Determines if the component is loading or not
@@ -47,7 +48,7 @@ Those elements have the following types:
 - `width` (Real; optional)
 """
 function ''_antdsankey(; kwargs...)
-        available_props = Symbol[:id, :appendPadding, :autoFit, :className, :color, :data, :downloadTrigger, :edgeStyle, :height, :key, :loading_state, :locale, :meta, :nodeAlign, :nodeDraggable, :nodePaddingRatio, :nodeStyle, :nodeWidthRatio, :padding, :rawFields, :renderer, :sourceField, :style, :targetField, :theme, :weightField, :width]
+        available_props = Symbol[:id, :appendPadding, :autoFit, :className, :color, :data, :downloadTrigger, :edgeStyle, :height, :key, :limitInPlot, :loading_state, :locale, :meta, :nodeAlign, :nodeDraggable, :nodePaddingRatio, :nodeStyle, :nodeWidthRatio, :padding, :rawFields, :renderer, :sourceField, :style, :targetField, :theme, :weightField, :width]
         wild_props = Symbol[]
         return Component("''_antdsankey", "AntdSankey", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

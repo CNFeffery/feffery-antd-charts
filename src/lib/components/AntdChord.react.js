@@ -82,6 +82,7 @@ export default class AntdChord extends Component {
             appendPadding,
             renderer,
             locale,
+            limitInPlot,
             nodeStyle,
             edgeStyle,
             nodeWidthRatio,
@@ -119,6 +120,7 @@ export default class AntdChord extends Component {
             appendPadding,
             renderer,
             locale,
+            limitInPlot,
             nodeWidthRatio,
             nodePaddingRatio,
             theme
@@ -211,6 +213,9 @@ AntdChord.propTypes = {
 
     // 设置语言，可选的有'zh-CN'与'en-US'
     locale: PropTypes.oneOf(['zh-CN', 'en-US']),
+
+    // 设置是否对超出绘图区域的几何元素进行裁剪
+    limitInPlot: PropTypes.bool,
 
     // 配置和弦图节点样式
     nodeStyle: PropTypes.oneOfType([

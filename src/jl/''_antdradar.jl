@@ -32,6 +32,7 @@ Those elements have the following types:
 - `key` (String; optional)
 - `label` (optional)
 - `legend` (optional)
+- `limitInPlot` (Bool; optional)
 - `lineStyle` (optional): . lineStyle has the following type: lists containing elements 'func'.
 Those elements have the following types:
   - `func` (String; optional)
@@ -69,7 +70,7 @@ Those elements have the following types:
 - `yField` (String; required)
 """
 function ''_antdradar(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :area, :autoFit, :className, :color, :data, :downloadTrigger, :endAngle, :height, :key, :label, :legend, :lineStyle, :loading_state, :locale, :meta, :padding, :point, :radius, :renderer, :seriesField, :smooth, :startAngle, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
+        available_props = Symbol[:id, :annotations, :appendPadding, :area, :autoFit, :className, :color, :data, :downloadTrigger, :endAngle, :height, :key, :label, :legend, :limitInPlot, :lineStyle, :loading_state, :locale, :meta, :padding, :point, :radius, :renderer, :seriesField, :smooth, :startAngle, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
         wild_props = Symbol[]
         return Component("''_antdradar", "AntdRadar", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end
