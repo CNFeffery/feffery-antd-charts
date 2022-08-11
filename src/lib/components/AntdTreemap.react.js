@@ -92,6 +92,8 @@ export default class AntdTreemap extends Component {
             label,
             tooltip,
             annotations,
+            interactions,
+            animation,
             theme,
             setProps,
             loading_state
@@ -125,6 +127,8 @@ export default class AntdTreemap extends Component {
             renderer,
             locale,
             limitInPlot,
+            interactions,
+            animation,
             theme
         }
 
@@ -286,6 +290,17 @@ AntdTreemap.propTypes = {
     // 配置标注相关参数
     annotations: annotationsBasePropTypes,
 
+    // 配置特殊交互
+    interactions: PropTypes.arrayOf(
+        PropTypes.exact({
+            // 交互类型，可选的有'treemap-drill-down'、'view-zoom'、'drag-move'
+            type: PropTypes.oneOf(['treemap-drill-down', 'view-zoom', 'drag-move']).isRequired,
+        })
+    ),
+
+    // 设置动画，默认为{}
+    animation: PropTypes.object,
+
     // 用于在回调中传入uuid、ulid之类的唯一标识，来主动下载当前图表为png格式图片
     downloadTrigger: PropTypes.string,
 
@@ -316,5 +331,6 @@ AntdTreemap.propTypes = {
 
 // 设置默认参数
 AntdTreemap.defaultProps = {
-    downloadTrigger: 'download-trigger'
+    downloadTrigger: 'download-trigger',
+    animation: {}
 }

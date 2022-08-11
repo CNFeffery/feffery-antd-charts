@@ -9,6 +9,7 @@ An AntdTreemap component.
 
 Keyword arguments:
 - `id` (String; optional)
+- `animation` (Dict; optional)
 - `annotations` (optional)
 - `appendPadding` (Real | Array of Reals; optional)
 - `autoFit` (Bool; optional)
@@ -20,6 +21,9 @@ Those elements have the following types:
 - `data` (Dict; optional)
 - `downloadTrigger` (String; optional)
 - `height` (Real; optional)
+- `interactions` (optional): . interactions has the following type: Array of lists containing elements 'type'.
+Those elements have the following types:
+  - `type` (a value equal to: 'treemap-drill-down', 'view-zoom', 'drag-move'; required)s
 - `key` (String; optional)
 - `label` (optional)
 - `legend` (optional)
@@ -43,7 +47,7 @@ Those elements have the following types:
 - `width` (Real; optional)
 """
 function ''_antdtreemap(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :downloadTrigger, :height, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :meta, :padding, :rawFields, :rectStyle, :renderer, :style, :theme, :tooltip, :width]
+        available_props = Symbol[:id, :animation, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :downloadTrigger, :height, :interactions, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :meta, :padding, :rawFields, :rectStyle, :renderer, :style, :theme, :tooltip, :width]
         wild_props = Symbol[]
         return Component("''_antdtreemap", "AntdTreemap", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

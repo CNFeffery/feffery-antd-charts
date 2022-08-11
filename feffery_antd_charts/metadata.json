@@ -5308,6 +5308,47 @@
         "required": false,
         "description": ""
       },
+      "interactions": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "exact",
+            "value": {
+              "type": {
+                "name": "enum",
+                "value": [
+                  {
+                    "value": "'treemap-drill-down'",
+                    "computed": false
+                  },
+                  {
+                    "value": "'view-zoom'",
+                    "computed": false
+                  },
+                  {
+                    "value": "'drag-move'",
+                    "computed": false
+                  }
+                ],
+                "required": true
+              }
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "animation": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "{}",
+          "computed": false
+        }
+      },
       "downloadTrigger": {
         "type": {
           "name": "string"
