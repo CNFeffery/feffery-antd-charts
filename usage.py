@@ -86,6 +86,19 @@ app.layout = html.Div(
         [
 
             html.Div(
+                fact.AntdHistogram(
+                    data=json.load(
+                        open('./samples-data/AntdHistogram-demo-basic.json')),
+                    binField='value',
+                    binWidth=2
+                ),
+                style={
+                    'height': '600px',
+                    'padding': '25px'
+                }
+            ),
+
+            html.Div(
                 fact.AntdTreemap(
                     data=(
                         requests
@@ -155,7 +168,6 @@ app.layout = html.Div(
                     'padding': '25px'
                 }
             ),
-
 
             html.Div(
                 fact.AntdRose(

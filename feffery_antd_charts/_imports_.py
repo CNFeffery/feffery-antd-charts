@@ -2,6 +2,7 @@ from .AntdArea import AntdArea
 from .AntdBar import AntdBar
 from .AntdChord import AntdChord
 from .AntdColumn import AntdColumn
+from .AntdHistogram import AntdHistogram
 from .AntdLine import AntdLine
 from .AntdPie import AntdPie
 from .AntdRadar import AntdRadar
@@ -18,6 +19,7 @@ __all__ = [
     "AntdBar",
     "AntdChord",
     "AntdColumn",
+    "AntdHistogram",
     "AntdLine",
     "AntdPie",
     "AntdRadar",

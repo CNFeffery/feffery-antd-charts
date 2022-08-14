@@ -12,6 +12,7 @@ import AntdWordCloud from "./components/AntdWordCloud.react";
 import AntdSankey from "./components/AntdSankey.react";
 import AntdRose from "./components/AntdRose.react";
 import AntdTreemap from "./components/AntdTreemap.react";
+import AntdHistogram from "./components/AntdHistogram.react";
 
 export {
     AntdLine,
@@ -27,5 +28,6 @@ export {
     AntdWordCloud,
     AntdSankey,
     AntdRose,
-    AntdTreemap
+    AntdTreemap,
+    AntdHistogram
 };
