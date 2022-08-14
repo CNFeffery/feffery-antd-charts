@@ -13,6 +13,7 @@ import AntdSankey from "./components/AntdSankey.react";
 import AntdRose from "./components/AntdRose.react";
 import AntdTreemap from "./components/AntdTreemap.react";
 import AntdHistogram from "./components/AntdHistogram.react";
+import AntdBox from "./components/AntdBox.react";
 
 export {
     AntdLine,
@@ -29,5 +30,6 @@ export {
     AntdSankey,
     AntdRose,
     AntdTreemap,
-    AntdHistogram
+    AntdHistogram,
+    AntdBox
 };

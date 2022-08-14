@@ -86,6 +86,24 @@ app.layout = html.Div(
         [
 
             html.Div(
+                fact.AntdBox(
+                    data=json.load(
+                        open('./samples-data/AntdBox-demo-basic.json')),
+                    xField='x',
+                    yField=['low', 'q1', 'median', 'q3', 'high'],
+                    boxStyle={
+                        'stroke': '#545454',
+                        'fill': '#1890FF',
+                        'fillOpacity': 0.3,
+                    }
+                ),
+                style={
+                    'height': '600px',
+                    'padding': '25px'
+                }
+            ),
+
+            html.Div(
                 fact.AntdHistogram(
                     data=json.load(
                         open('./samples-data/AntdHistogram-demo-basic.json')),

@@ -1,5 +1,6 @@
 from .AntdArea import AntdArea
 from .AntdBar import AntdBar
+from .AntdBox import AntdBox
 from .AntdChord import AntdChord
 from .AntdColumn import AntdColumn
 from .AntdHistogram import AntdHistogram
@@ -17,6 +18,7 @@ from .AntdWordCloud import AntdWordCloud
 __all__ = [
     "AntdArea",
     "AntdBar",
+    "AntdBox",
     "AntdChord",
     "AntdColumn",
     "AntdHistogram",

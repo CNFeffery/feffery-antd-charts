@@ -2,6 +2,7 @@
 
 export(''AntdArea)
 export(''AntdBar)
+export(''AntdBox)
 export(''AntdChord)
 export(''AntdColumn)
 export(''AntdHistogram)
