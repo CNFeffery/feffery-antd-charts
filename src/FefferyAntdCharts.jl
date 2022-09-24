@@ -21,6 +21,7 @@ include("jl/''_antdstock.jl")
 include("jl/''_antdsunburst.jl")
 include("jl/''_antdtreemap.jl")
 include("jl/''_antdwordcloud.jl")
+include("jl/''_antddecompositiontree.jl")
 
 function __init__()
     DashBase.register_package(

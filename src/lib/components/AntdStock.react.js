@@ -4,7 +4,7 @@
 /* eslint-disable no-undefined */
 /* eslint-disable no-eval */
 /* eslint-disable prefer-const */
-import { Stock } from '@ant-design/charts';
+import { Stock } from '@ant-design/plots';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { isUndefined, omitBy, intersection, cloneDeep } from 'lodash';

@@ -1,4 +1,8 @@
 const path = require('path');
+const TerserPlugin = require('terser-webpack-plugin');
+const webpack = require('webpack');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const WebpackDashDynamicImport = require('@plotly/webpack-dash-dynamic-import');
 const packagejson = require('./package.json');
 
 const dashLibraryName = packagejson.name.replace(/-/g, '_');
@@ -25,12 +29,12 @@ module.exports = (env, argv) => {
     }
 
     let filename = (overrides.output || {}).filename;
-    if(!filename) {
+    if (!filename) {
         const modeSuffix = mode === 'development' ? 'dev' : 'min';
         filename = `${dashLibraryName}.${modeSuffix}.js`;
     }
 
-    const entry = overrides.entry || {main: './src/lib/index.js'};
+    const entry = overrides.entry || { main: './src/lib/index.js' };
 
     const devtool = overrides.devtool || 'source-map';
 
@@ -77,5 +81,36 @@ module.exports = (env, argv) => {
                 },
             ],
         },
+        optimization: {
+            minimizer: [
+                new TerserPlugin({
+                    sourceMap: true,
+                    parallel: true,
+                    cache: './.build_cache/terser',
+                    terserOptions: {
+                        warnings: false,
+                        ie8: false
+                    }
+                }),
+                new UglifyJsPlugin(
+                    {
+                        parallel: true,
+                        uglifyOptions: {
+                            output: {
+                                comments: false,
+                            },
+                            warnings: false
+                        }
+                    }
+                )
+            ]
+        },
+        plugins: [
+            new WebpackDashDynamicImport(),
+            new webpack.SourceMapDevToolPlugin({
+                filename: '[file].map',
+                exclude: ['async-plotlyjs']
+            })
+        ]
     }
 };

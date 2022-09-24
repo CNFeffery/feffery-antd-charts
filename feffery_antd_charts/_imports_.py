@@ -14,6 +14,7 @@ from .AntdStock import AntdStock
 from .AntdSunburst import AntdSunburst
 from .AntdTreemap import AntdTreemap
 from .AntdWordCloud import AntdWordCloud
+from .AntdDecompositionTree import AntdDecompositionTree
 
 __all__ = [
     "AntdArea",
@@ -31,5 +32,6 @@ __all__ = [
     "AntdStock",
     "AntdSunburst",
     "AntdTreemap",
-    "AntdWordCloud"
+    "AntdWordCloud",
+    "AntdDecompositionTree"
 ]
