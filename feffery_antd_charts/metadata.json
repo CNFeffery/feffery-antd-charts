@@ -7202,5 +7202,740 @@
         "description": "Dash-assigned callback that should be called to report property changes\r\nto Dash, to make them available for callbacks."
       }
     }
+  },
+  "src/lib/components/graphs/AntdFundFlow.react.js": {
+    "description": "",
+    "displayName": "AntdFundFlow",
+    "methods": [],
+    "props": {
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "key": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "style": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": ""
+      },
+      "data": {
+        "type": {
+          "name": "object"
+        },
+        "required": true,
+        "description": ""
+      },
+      "width": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "height": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "autoFit": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "nodeCfg": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "type": {
+              "name": "enum",
+              "value": [
+                {
+                  "value": "'fund-card'",
+                  "computed": false
+                }
+              ],
+              "required": false
+            },
+            "size": {
+              "name": "arrayOf",
+              "value": {
+                "name": "number"
+              },
+              "required": false
+            },
+            "style": {
+              "name": "union",
+              "value": [
+                {
+                  "name": "custom",
+                  "raw": "baseStyle"
+                },
+                {
+                  "name": "exact",
+                  "value": {
+                    "func": {
+                      "name": "string",
+                      "required": false
+                    }
+                  }
+                }
+              ],
+              "required": false
+            },
+            "label": {
+              "name": "exact",
+              "value": {
+                "style": {
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "custom",
+                      "raw": "textBaseStyle"
+                    },
+                    {
+                      "name": "exact",
+                      "value": {
+                        "func": {
+                          "name": "string",
+                          "required": false
+                        }
+                      }
+                    }
+                  ],
+                  "required": false
+                }
+              },
+              "required": false
+            },
+            "anchorPoints": {
+              "name": "arrayOf",
+              "value": {
+                "name": "arrayOf",
+                "value": {
+                  "name": "number"
+                }
+              },
+              "required": false
+            },
+            "title": {
+              "name": "exact",
+              "value": {
+                "containerStyle": {
+                  "name": "custom",
+                  "raw": "baseStyle",
+                  "required": false
+                },
+                "style": {
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "custom",
+                      "raw": "textBaseStyle"
+                    },
+                    {
+                      "name": "exact",
+                      "value": {
+                        "func": {
+                          "name": "string",
+                          "required": false
+                        }
+                      }
+                    }
+                  ],
+                  "required": false
+                },
+                "autoEllipsis": {
+                  "name": "bool",
+                  "required": false
+                }
+              },
+              "required": false
+            },
+            "items": {
+              "name": "exact",
+              "value": {
+                "containerStyle": {
+                  "name": "custom",
+                  "raw": "baseStyle",
+                  "required": false
+                },
+                "style": {
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "custom",
+                      "raw": "textBaseStyle"
+                    },
+                    {
+                      "name": "exact",
+                      "value": {
+                        "func": {
+                          "name": "string",
+                          "required": false
+                        }
+                      }
+                    }
+                  ],
+                  "required": false
+                },
+                "layout": {
+                  "name": "enum",
+                  "value": [
+                    {
+                      "value": "'bundled'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'flex'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'follow'",
+                      "computed": false
+                    }
+                  ],
+                  "required": false
+                },
+                "sort": {
+                  "name": "bool",
+                  "required": false
+                },
+                "padding": {
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "number"
+                    },
+                    {
+                      "name": "arrayOf",
+                      "value": {
+                        "name": "number"
+                      }
+                    }
+                  ],
+                  "required": false
+                }
+              },
+              "required": false
+            },
+            "padding": {
+              "name": "union",
+              "value": [
+                {
+                  "name": "number"
+                },
+                {
+                  "name": "arrayOf",
+                  "value": {
+                    "name": "number"
+                  }
+                }
+              ],
+              "required": false
+            },
+            "badge": {
+              "name": "exact",
+              "value": {
+                "position": {
+                  "name": "enum",
+                  "value": [
+                    {
+                      "value": "'left'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'top'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'right'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'bottom'",
+                      "computed": false
+                    }
+                  ],
+                  "required": false
+                },
+                "size": {
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "number"
+                    },
+                    {
+                      "name": "arrayOf",
+                      "value": {
+                        "name": "number"
+                      }
+                    }
+                  ],
+                  "required": false
+                },
+                "style": {
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "custom",
+                      "raw": "baseStyle"
+                    },
+                    {
+                      "name": "exact",
+                      "value": {
+                        "func": {
+                          "name": "string",
+                          "required": false
+                        }
+                      }
+                    }
+                  ],
+                  "required": false
+                }
+              },
+              "required": false
+            },
+            "percent": {
+              "name": "exact",
+              "value": {
+                "position": {
+                  "name": "enum",
+                  "value": [
+                    {
+                      "value": "'top'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'bottom'",
+                      "computed": false
+                    }
+                  ],
+                  "required": false
+                },
+                "size": {
+                  "name": "number",
+                  "required": false
+                },
+                "style": {
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "custom",
+                      "raw": "baseStyle"
+                    },
+                    {
+                      "name": "exact",
+                      "value": {
+                        "func": {
+                          "name": "string",
+                          "required": false
+                        }
+                      }
+                    }
+                  ],
+                  "required": false
+                },
+                "backgroundStyle": {
+                  "name": "custom",
+                  "raw": "baseStyle",
+                  "required": false
+                }
+              },
+              "required": false
+            },
+            "autoWidth": {
+              "name": "bool",
+              "required": false
+            },
+            "nodeStateStyles": {
+              "name": "union",
+              "value": [
+                {
+                  "name": "objectOf",
+                  "value": {
+                    "name": "custom",
+                    "raw": "baseStyle"
+                  }
+                },
+                {
+                  "name": "bool"
+                }
+              ],
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "edgeCfg": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "type": {
+              "name": "enum",
+              "value": [
+                {
+                  "value": "'line'",
+                  "computed": false
+                },
+                {
+                  "value": "'polyline'",
+                  "computed": false
+                },
+                {
+                  "value": "'arc'",
+                  "computed": false
+                },
+                {
+                  "value": "'quadratic'",
+                  "computed": false
+                },
+                {
+                  "value": "'cubic'",
+                  "computed": false
+                },
+                {
+                  "value": "'cubic-vertical'",
+                  "computed": false
+                },
+                {
+                  "value": "'cubic-horizontal'",
+                  "computed": false
+                },
+                {
+                  "value": "'loop'",
+                  "computed": false
+                }
+              ],
+              "required": false
+            },
+            "label": {
+              "name": "exact",
+              "value": {
+                "style": {
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "custom",
+                      "raw": "textBaseStyle"
+                    },
+                    {
+                      "name": "exact",
+                      "value": {
+                        "func": {
+                          "name": "string",
+                          "required": false
+                        }
+                      }
+                    }
+                  ],
+                  "required": false
+                }
+              },
+              "required": false
+            },
+            "startArrow": {
+              "name": "exact",
+              "value": {
+                "type": {
+                  "name": "enum",
+                  "value": [
+                    {
+                      "value": "'vee'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'triangle'",
+                      "computed": false
+                    }
+                  ],
+                  "required": false
+                },
+                "d": {
+                  "name": "number",
+                  "required": false
+                },
+                "path": {
+                  "name": "string",
+                  "required": false
+                },
+                "stroke": {
+                  "name": "string",
+                  "required": false
+                },
+                "fill": {
+                  "name": "string",
+                  "required": false
+                }
+              },
+              "required": false
+            },
+            "endArrow": {
+              "name": "exact",
+              "value": {
+                "fill": {
+                  "name": "string",
+                  "required": false
+                },
+                "show": {
+                  "name": "bool",
+                  "required": false
+                }
+              },
+              "required": false
+            },
+            "edgeStateStyles": {
+              "name": "union",
+              "value": [
+                {
+                  "name": "objectOf",
+                  "value": {
+                    "name": "custom",
+                    "raw": "baseStyle"
+                  }
+                },
+                {
+                  "name": "bool"
+                }
+              ],
+              "required": false
+            },
+            "style": {
+              "name": "union",
+              "value": [
+                {
+                  "name": "custom",
+                  "raw": "baseStyle"
+                },
+                {
+                  "name": "exact",
+                  "value": {
+                    "func": {
+                      "name": "string",
+                      "required": false
+                    }
+                  }
+                }
+              ],
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "behaviors": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "enum",
+            "value": [
+              {
+                "value": "'drag-canvas'",
+                "computed": false
+              },
+              {
+                "value": "'scroll-canvas'",
+                "computed": false
+              },
+              {
+                "value": "'zoom-canvas'",
+                "computed": false
+              },
+              {
+                "value": "'drag-node'",
+                "computed": false
+              }
+            ]
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "markerCfg": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "exact",
+              "value": {
+                "show": {
+                  "name": "bool",
+                  "required": false
+                },
+                "collapsed": {
+                  "name": "bool",
+                  "required": false
+                },
+                "position": {
+                  "name": "enum",
+                  "value": [
+                    {
+                      "value": "'left'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'right'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'top'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'bottom'",
+                      "computed": false
+                    }
+                  ],
+                  "required": false
+                },
+                "style": {
+                  "name": "custom",
+                  "raw": "baseStyle",
+                  "required": false
+                }
+              }
+            },
+            {
+              "name": "exact",
+              "value": {
+                "func": {
+                  "name": "string",
+                  "required": false
+                }
+              }
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "minimapCfg": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "show": {
+              "name": "bool",
+              "required": false
+            },
+            "viewportClassName": {
+              "name": "string",
+              "required": false
+            },
+            "type": {
+              "name": "enum",
+              "value": [
+                {
+                  "value": "'default'",
+                  "computed": false
+                },
+                {
+                  "value": "'keyShape'",
+                  "computed": false
+                },
+                {
+                  "value": "'delegate'",
+                  "computed": false
+                }
+              ],
+              "required": false
+            },
+            "size": {
+              "name": "arrayOf",
+              "value": {
+                "name": "number"
+              },
+              "required": false
+            },
+            "delegateStyle": {
+              "name": "custom",
+              "raw": "baseStyle",
+              "required": false
+            },
+            "refresh": {
+              "name": "bool",
+              "required": false
+            },
+            "padding": {
+              "name": "number",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "layout": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "nodesep": {
+              "name": "number",
+              "required": false
+            },
+            "ranksep": {
+              "name": "number",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "loading_state": {
+        "type": {
+          "name": "shape",
+          "value": {
+            "is_loading": {
+              "name": "bool",
+              "description": "Determines if the component is loading or not",
+              "required": false
+            },
+            "prop_name": {
+              "name": "string",
+              "description": "Holds which property is loading",
+              "required": false
+            },
+            "component_name": {
+              "name": "string",
+              "description": "Holds the name of the component that is loading",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "setProps": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Dash-assigned callback that should be called to report property changes\r\nto Dash, to make them available for callbacks."
+      }
+    }
   }
 }

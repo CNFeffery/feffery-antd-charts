@@ -15,6 +15,7 @@ import AntdTreemap from "./components/AntdTreemap.react";
 import AntdHistogram from "./components/AntdHistogram.react";
 import AntdBox from "./components/AntdBox.react";
 import AntdDecompositionTree from "./components/graphs/AntdDecompositionTree.react";
+import AntdFundFlow from "./components/graphs/AntdFundFlow.react";
 
 export {
     AntdLine,
@@ -33,5 +34,6 @@ export {
     AntdTreemap,
     AntdHistogram,
     AntdBox,
-    AntdDecompositionTree
+    AntdDecompositionTree,
+    AntdFundFlow
 };
