@@ -12,18 +12,20 @@
 
 /man
 
-/tests
-
 /.git
 
 /_*
 
 /R
 
-.*/
+/.vscode
 
 __pycache__
 
 index.html
 
 feffery_antd_charts.min.js.map
+
+package-lock.json
+
+/.build_cache

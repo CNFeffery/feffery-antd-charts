@@ -16,6 +16,7 @@ import AntdHistogram from "./components/AntdHistogram.react";
 import AntdBox from "./components/AntdBox.react";
 import AntdDecompositionTree from "./components/graphs/AntdDecompositionTree.react";
 import AntdFundFlow from "./components/graphs/AntdFundFlow.react";
+import AntdFunnel from "./components/AntdFunnel.react";
 
 export {
     AntdLine,
@@ -35,5 +36,6 @@ export {
     AntdHistogram,
     AntdBox,
     AntdDecompositionTree,
-    AntdFundFlow
+    AntdFundFlow,
+    AntdFunnel
 };

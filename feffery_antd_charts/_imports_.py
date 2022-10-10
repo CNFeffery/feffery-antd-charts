@@ -3,6 +3,7 @@ from .AntdBar import AntdBar
 from .AntdBox import AntdBox
 from .AntdChord import AntdChord
 from .AntdColumn import AntdColumn
+from .AntdFunnel import AntdFunnel
 from .AntdHistogram import AntdHistogram
 from .AntdLine import AntdLine
 from .AntdPie import AntdPie
@@ -23,6 +24,7 @@ __all__ = [
     "AntdBox",
     "AntdChord",
     "AntdColumn",
+    "AntdFunnel",
     "AntdHistogram",
     "AntdLine",
     "AntdPie",
