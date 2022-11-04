@@ -2,7 +2,7 @@
 /* eslint-disable no-undefined */
 /* eslint-disable no-else-return */
 /* eslint-disable no-eval */
-import { Line } from '@ant-design/plots';
+import { TinyLine } from '@ant-design/plots';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { isUndefined, omitBy, intersection, cloneDeep } from 'lodash';
@@ -11,24 +11,19 @@ import {
     lineBaseStyle,
     metaBasePropTypes,
     axisBasePropTypes,
-    legendBasePropTypes,
-    labelBasePropTypes,
     tooltipBasePropTypes,
     annotationsBasePropTypes,
-    sliderBasePropTypes,
     themeBasePropTypes
 } from './BasePropTypes.react';
 import { difference } from './utils';
 
 // 定义不触发重绘的参数数组
 const preventUpdateProps = [
-    'loading_state',
-    'recentlyTooltipChangeRecord',
-    'recentlyPointClickRecord'
+    'loading_state'
 ];
 
-// 定义折线图组件AntdLine，部分API参数参考https://charts.ant.design/zh-CN/demos/line
-export default class AntdLine extends Component {
+// 定义迷你折线图组件AntdTinyLine，部分API参数参考https://charts.ant.design/zh/examples/tiny/tiny-line#basic-line
+export default class AntdTinyLine extends Component {
 
     constructor(props) {
         super(props);
@@ -82,13 +77,8 @@ export default class AntdLine extends Component {
             style,
             data,
             meta,
-            xField,
-            yField,
-            seriesField,
             smooth,
-            stepType,
             connectNulls,
-            isStack,
             color,
             lineStyle,
             point,
@@ -102,13 +92,9 @@ export default class AntdLine extends Component {
             renderer,
             locale,
             limitInPlot,
-            legend,
-            label,
             tooltip,
             annotations,
-            slider,
             theme,
-            setProps,
             loading_state
         } = this.props;
 
@@ -132,13 +118,8 @@ export default class AntdLine extends Component {
             data,
             padding,
             appendPadding,
-            xField,
-            yField,
-            seriesField,
             smooth,
-            stepType,
             connectNulls,
-            isStack,
             width,
             height,
             autoFit,
@@ -192,24 +173,6 @@ export default class AntdLine extends Component {
             config.yAxis.label.formatter = eval(yAxis.label.formatter.func)
         }
 
-        // 图例样式
-        config.legend = cloneDeep(legend)
-        // 若legend.itemName.formatter具有自定义函数func属性
-        if (legend?.itemName?.formatter?.func) {
-            config.legend.itemName.formatter = eval(legend.itemName.formatter.func)
-        }
-        // 若legend.itemValue.formatter具有自定义函数func属性
-        if (legend?.itemValue?.formatter?.func) {
-            config.legend.itemValue.formatter = eval(legend.itemValue.formatter.func)
-        }
-
-        // 数据标签
-        config.label = cloneDeep(label)
-        // 若label.formatter具有自定义函数func属性
-        if (label?.formatter?.func) {
-            config.label.formatter = eval(label.formatter.func)
-        }
-
         // 悬浮提示
         config.tooltip = cloneDeep(tooltip)
         // 若tooltip.formatter具有自定义函数func属性
@@ -224,17 +187,10 @@ export default class AntdLine extends Component {
         // 标注
         config.annotations = cloneDeep(annotations)
 
-        // 缩略轴
-        config.slider = cloneDeep(slider)
-        // 若slider.formatter具有自定义函数func属性
-        if (slider?.formatter?.func) {
-            config.slider.formatter = eval(slider.formatter.func)
-        }
-
         // 利用lodash移除所有值为undefined的属性
         config = omitBy(config, isUndefined)
 
-        return <Line id={id}
+        return <TinyLine id={id}
             key={key}
             className={className}
             style={style}
@@ -242,50 +198,12 @@ export default class AntdLine extends Component {
                 (loading_state && loading_state.is_loading) || undefined
             }
             ref={this.chartRef}
-            // 绑定常用事件
-            onReady={(plot) => {
-
-                let recentlyTooltipChangeRecord;
-                // 辅助的tooltip渲染事件
-                plot.on('tooltip:change', (e) => {
-
-                    // 更新recentlyTooltipChangeRecord
-                    recentlyTooltipChangeRecord = {
-                        timestamp: (new Date()).valueOf(),
-                        data: e.data.items.map(item => item.data)
-                    }
-                    setProps({
-                        recentlyTooltipChangeRecord: recentlyTooltipChangeRecord
-                    })
-                });
-
-                plot.on('element:click', (e) => {
-
-                    // 当本次点击事件由折线上的固有折点触发时
-                    if (Array.isArray(e.data.data)) {
-                        setProps({
-                            recentlyPointClickRecord: {
-                                timestamp: (new Date()).valueOf(),
-                                data: recentlyTooltipChangeRecord.data.filter(item => item[seriesField] === e.data.data[0][seriesField])[0]
-                            }
-                        })
-                    }
-                    else {
-                        setProps({
-                            recentlyPointClickRecord: {
-                                timestamp: (new Date()).valueOf(),
-                                data: e.data.data
-                            }
-                        })
-                    }
-                });
-            }}
             {...config} />;
     }
 }
 
 // 定义参数或属性
-AntdLine.propTypes = {
+AntdTinyLine.propTypes = {
     // 部件id
     id: PropTypes.string,
 
@@ -299,32 +217,16 @@ AntdLine.propTypes = {
     style: PropTypes.object,
 
     // 定义绘图所需数据，必须参数
-    data: PropTypes.arrayOf(PropTypes.object).isRequired,
+    data: PropTypes.arrayOf(PropTypes.number).isRequired,
 
     // 定义字段预处理元信息
     meta: metaBasePropTypes,
 
-    // 定义作为x轴的字段名
-    xField: PropTypes.string.isRequired,
-
-    // 定义作为y轴的字段名
-    yField: PropTypes.string.isRequired,
-
-    // 定义作为分组依据的字段名
-    seriesField: PropTypes.string,
-
     // 设置是否以平滑曲线方式渲染折线，默认为false
     smooth: PropTypes.bool,
 
-    // 对应阶梯折线图类型的阶梯曲折方式，可选的有'hv'、'vh'、'hvh'及'vhv'
-    // 其中'h'表示horizontal，'v'表示vertical，譬如`vh`就代表先竖直方向再水平方向
-    stepType: PropTypes.string,
-
     // 设置针对折线图中缺失值的绘制策略，true表示连接，false表示断开，默认为true
     connectNulls: PropTypes.bool,
-
-    // 在存在seriesField分组字段时，用于设置是否将折线堆叠起来，默认为false
-    isStack: PropTypes.bool,
 
     // 用于手动设置调色方案，接受css中合法的所有颜色值，当传入单个字符串时，所有折线沿用此颜色值
     // 当传入数组时，会视作调色盘方案对seriesField区分的不同系列进行着色
@@ -431,39 +333,11 @@ AntdLine.propTypes = {
     // 设置是否对超出绘图区域的几何元素进行裁剪
     limitInPlot: PropTypes.bool,
 
-    // 配置图例相关参数
-    legend: legendBasePropTypes,
-
-    // 配置文字标签相关参数
-    label: labelBasePropTypes,
-
     // 设置tooltip相关参数
     tooltip: tooltipBasePropTypes,
 
     // 配置标注相关参数
     annotations: annotationsBasePropTypes,
-
-    // 配置缩略轴相关参数
-    slider: sliderBasePropTypes,
-
-    // 常用事件监听参数
-    // tooltip显示事件
-    recentlyTooltipChangeRecord: PropTypes.exact({
-        // 事件触发的时间戳信息
-        timestamp: PropTypes.number,
-
-        // 对应的数据点信息
-        data: PropTypes.arrayOf(PropTypes.object)
-    }),
-
-    // 单独折线点击事件
-    recentlyPointClickRecord: PropTypes.exact({
-        // 事件触发的时间戳信息
-        timestamp: PropTypes.number,
-
-        // 对应的数据点信息
-        data: PropTypes.object
-    }),
 
     // 用于在回调中传入uuid、ulid之类的唯一标识，来主动下载当前图表为png格式图片
     downloadTrigger: PropTypes.string,
@@ -494,6 +368,6 @@ AntdLine.propTypes = {
 };
 
 // 设置默认参数
-AntdLine.defaultProps = {
+AntdTinyLine.defaultProps = {
     downloadTrigger: 'download-trigger'
 }
