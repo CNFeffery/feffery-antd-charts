@@ -24,7 +24,7 @@ import {
 import { difference } from './utils';
 
 // 定义不触发重绘的参数数组
-const preventUpdateProps = ['loading_state'];
+const preventUpdateProps = ['recentlyBarClickRecord', 'loading_state'];
 
 // 定义柱状图AntdColumn，部分API参数参考https://charts.ant.design/zh-CN/demos/column
 export default class AntdColumn extends Component {
@@ -254,6 +254,18 @@ export default class AntdColumn extends Component {
                 (loading_state && loading_state.is_loading) || undefined
             }
             ref={this.chartRef}
+            // 绑定常用事件
+            onReady={(plot) => {
+                plot.on('element:click', (e) => {
+                    // 当有柱体区域被点击时
+                    setProps({
+                        recentlyBarClickRecord: {
+                            timestamp: (new Date()).valueOf(),
+                            data: e.data.data
+                        }
+                    })
+                });
+            }}
             {...config} />;
     }
 }
@@ -462,6 +474,15 @@ AntdColumn.propTypes = {
 
     // 主题配置
     theme: themeBasePropTypes,
+
+    // 柱体点击事件
+    recentlyBarClickRecord: PropTypes.exact({
+        // 事件触发的时间戳信息
+        timestamp: PropTypes.number,
+
+        // 对应的数据点信息
+        data: PropTypes.object
+    }),
 
     loading_state: PropTypes.shape({
         /**

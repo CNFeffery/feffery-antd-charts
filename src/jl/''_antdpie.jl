@@ -39,6 +39,10 @@ Those elements have the following types:
 Those elements have the following types:
   - `func` (String; optional)
 - `radius` (Real; optional)
+- `recentlySectorClickRecord` (optional): . recentlySectorClickRecord has the following type: lists containing elements 'timestamp', 'data'.
+Those elements have the following types:
+  - `timestamp` (Real; optional)
+  - `data` (Dict; optional)
 - `renderer` (String; optional)
 - `startAngle` (Real; optional)
 - `statistic` (optional): . statistic has the following type: lists containing elements 'title', 'content'.
@@ -69,7 +73,7 @@ Those elements have the following types:
 - `width` (Real; optional)
 """
 function ''_antdpie(; kwargs...)
-        available_props = Symbol[:id, :angleField, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :downloadTrigger, :endAngle, :height, :innerRadius, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :meta, :padding, :pieStyle, :radius, :renderer, :startAngle, :statistic, :style, :theme, :tooltip, :width]
+        available_props = Symbol[:id, :angleField, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :downloadTrigger, :endAngle, :height, :innerRadius, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :meta, :padding, :pieStyle, :radius, :recentlySectorClickRecord, :renderer, :startAngle, :statistic, :style, :theme, :tooltip, :width]
         wild_props = Symbol[]
         return Component("''_antdpie", "AntdPie", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

@@ -2065,6 +2065,23 @@
         "required": false,
         "description": ""
       },
+      "recentlyBarClickRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "object",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
       "loading_state": {
         "type": {
           "name": "shape",
@@ -3633,6 +3650,23 @@
         "type": {
           "name": "custom",
           "raw": "themeBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlySectorClickRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "object",
+              "required": false
+            }
+          }
         },
         "required": false,
         "description": ""

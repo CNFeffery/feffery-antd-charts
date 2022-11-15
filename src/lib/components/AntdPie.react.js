@@ -18,7 +18,7 @@ import {
 import { difference } from './utils';
 
 // 定义不触发重绘的参数数组
-const preventUpdateProps = ['loading_state'];
+const preventUpdateProps = ['recentlySectorClickRecord', 'loading_state'];
 
 // 定义饼图组件AntdPie，部分API参数参考https://charts.ant.design/zh-CN/demos/pie
 export default class AntdPie extends Component {
@@ -97,7 +97,8 @@ export default class AntdPie extends Component {
             tooltip,
             annotations,
             theme,
-            loading_state
+            loading_state,
+            setProps
         } = this.props;
 
         // 初始化config参数对象，每次渲染前的参数解析变动只在config中生效
@@ -200,6 +201,18 @@ export default class AntdPie extends Component {
                 (loading_state && loading_state.is_loading) || undefined
             }
             ref={this.chartRef}
+            // 绑定常用事件
+            onReady={(plot) => {
+                plot.on('element:click', (e) => {
+                    // 当有扇区被点击时
+                    setProps({
+                        recentlySectorClickRecord: {
+                            timestamp: (new Date()).valueOf(),
+                            data: e.data.data
+                        }
+                    })
+                });
+            }}
             {...config} />;
     }
 }
@@ -375,6 +388,15 @@ AntdPie.propTypes = {
 
     // 主题配置
     theme: themeBasePropTypes,
+
+    // 扇区点击事件
+    recentlySectorClickRecord: PropTypes.exact({
+        // 事件触发的时间戳信息
+        timestamp: PropTypes.number,
+
+        // 对应的数据点信息
+        data: PropTypes.object
+    }),
 
     loading_state: PropTypes.shape({
         /**
