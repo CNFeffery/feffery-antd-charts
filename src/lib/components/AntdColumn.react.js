@@ -175,7 +175,6 @@ export default class AntdColumn extends Component {
             config.conversionTag.text.formatter = eval(conversionTag.text.formatter.func)
         }
 
-
         // 色彩样式
         config.color = cloneDeep(color)
         // 若color具有自定义函数func属性
@@ -188,7 +187,6 @@ export default class AntdColumn extends Component {
         if (columnStyle?.func) {
             config.columnStyle = eval(columnStyle.func)
         }
-
 
         // x轴样式
         config.xAxis = cloneDeep(xAxis)
@@ -293,7 +291,7 @@ AntdColumn.propTypes = {
     // 定义作为x轴的字段名
     xField: PropTypes.string.isRequired,
 
-    // 定义作为y轴的字段名
+    // 定义作为y轴的字段名，格式为[左轴对应y轴字段, 右轴对应y轴字段]
     yField: PropTypes.string.isRequired,
 
     // 定义作为分组依据的字段名

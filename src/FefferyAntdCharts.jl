@@ -3,13 +3,14 @@ module FefferyAntdCharts
 using Dash
 
 const resources_path = realpath(joinpath( @__DIR__, "..", "deps"))
-const version = "0.0.1-rc11"
+const version = "0.0.1-rc12"
 
 include("jl/''_antdarea.jl")
 include("jl/''_antdbar.jl")
 include("jl/''_antdbox.jl")
 include("jl/''_antdchord.jl")
 include("jl/''_antdcolumn.jl")
+include("jl/''_antddualaxes.jl")
 include("jl/''_antdfunnel.jl")
 include("jl/''_antdhistogram.jl")
 include("jl/''_antdline.jl")
@@ -35,14 +36,14 @@ function __init__()
             [
                 DashBase.Resource(
     relative_package_path = "feffery_antd_charts.min.js",
-    external_url = "https://unpkg.com/feffery_antd_charts@0.0.1-rc11/feffery_antd_charts/feffery_antd_charts.min.js",
+    external_url = "https://unpkg.com/feffery_antd_charts@0.0.1-rc12/feffery_antd_charts/feffery_antd_charts.min.js",
     dynamic = nothing,
     async = nothing,
     type = :js
 ),
 DashBase.Resource(
     relative_package_path = "feffery_antd_charts.min.js.map",
-    external_url = "https://unpkg.com/feffery_antd_charts@0.0.1-rc11/feffery_antd_charts/feffery_antd_charts.min.js.map",
+    external_url = "https://unpkg.com/feffery_antd_charts@0.0.1-rc12/feffery_antd_charts/feffery_antd_charts.min.js.map",
     dynamic = true,
     async = nothing,
     type = :js

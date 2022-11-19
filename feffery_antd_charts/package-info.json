@@ -1,15 +1,15 @@
 {
     "name": "feffery_antd_charts",
-    "version": "0.0.1-rc11",
+    "version": "0.0.1-rc12",
     "description": "Best implementation of Ant Design Charts in Plotly Dash.",
     "repository": {
         "type": "git",
-        "url": "git://github.com/https://github.com/CNFeffery/feffery-antd-charts.git"
+        "url": "https://github.com/CNFeffery/feffery-antd-charts.git"
     },
     "bugs": {
-        "url": "https://github.com/https://github.com/CNFeffery/feffery-antd-charts/issues"
+        "url": "https://github.com/CNFeffery/feffery-antd-charts/issues"
     },
-    "homepage": "https://github.com/https://github.com/CNFeffery/feffery-antd-charts",
+    "homepage": "https://github.com/CNFeffery/feffery-antd-charts",
     "main": "build/index.js",
     "scripts": {
         "start": "webpack-serve --config ./webpack.serve.config.js --open",
