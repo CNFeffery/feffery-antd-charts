@@ -328,8 +328,20 @@ const metaBasePropTypes = PropTypes.objectOf(
         // 设置该字段的数据映射区间，默认为[0, 1]
         range: PropTypes.arrayOf(PropTypes.number),
 
-        // 指定字段类型
-        type: PropTypes.string
+        // 指定字段度量类型，可选的有：
+        // cat: 分类度量
+        // timeCat: 时间分类度量
+        // linear: 线性度量
+        // time: 连续的时间度量
+        // log: 对数度量
+        // pow: 幂数度量
+        // quantize: 分段度量，用户可以指定不均匀的分段
+        // quantile: 等分度量，根据数据的分布自动计算分段
+        // identity: 常量度量
+        type: PropTypes.oneOf([
+            'cat', 'timeCat', 'linear', 'linear', 'time', 'log',
+            'pow', 'quantize', 'quantile', 'identity'
+        ])
     })
 )
 
