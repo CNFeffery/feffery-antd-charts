@@ -105,7 +105,17 @@ app.layout = html.Div(
                         'geometry': 'line',
                         'color': '#5AD8A6'
                     }
-                ]
+                ],
+                tooltip={
+                    'customItems': {
+                        'func': '''(e) => {
+                            for (let i = 0;i < e.length;i++) {
+                              e[i].value = `${e[i].value}测试`
+                            }
+                            return e
+                          }'''
+                    }
+                }
             ),
             style={
                 'height': '400px'

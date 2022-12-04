@@ -383,6 +383,22 @@ AntdPie.propTypes = {
     // 配置标注相关参数
     annotations: annotationsBasePropTypes,
 
+    // 配置交互相关功能
+    interactions: PropTypes.arrayOf(PropTypes.exact({
+        // 交互项类型，可选的有：
+        type: PropTypes.oneOf([
+            'element-active',
+            'element-selected',
+            'element-single-selected',
+            'element-highlight',
+            'element-highlight-by-color',
+            'element-highlight-by-x',
+            'legend-highlight',
+            'axis-label-highlight',
+            'pie-statistic-active'
+        ])
+    })),
+
     // 用于在回调中传入uuid、ulid之类的唯一标识，来主动下载当前图表为png格式图片
     downloadTrigger: PropTypes.string,
 

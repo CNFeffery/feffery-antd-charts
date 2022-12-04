@@ -4154,6 +4154,60 @@
         "required": false,
         "description": ""
       },
+      "interactions": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "exact",
+            "value": {
+              "type": {
+                "name": "enum",
+                "value": [
+                  {
+                    "value": "'element-active'",
+                    "computed": false
+                  },
+                  {
+                    "value": "'element-selected'",
+                    "computed": false
+                  },
+                  {
+                    "value": "'element-single-selected'",
+                    "computed": false
+                  },
+                  {
+                    "value": "'element-highlight'",
+                    "computed": false
+                  },
+                  {
+                    "value": "'element-highlight-by-color'",
+                    "computed": false
+                  },
+                  {
+                    "value": "'element-highlight-by-x'",
+                    "computed": false
+                  },
+                  {
+                    "value": "'legend-highlight'",
+                    "computed": false
+                  },
+                  {
+                    "value": "'axis-label-highlight'",
+                    "computed": false
+                  },
+                  {
+                    "value": "'pie-statistic-active'",
+                    "computed": false
+                  }
+                ],
+                "required": false
+              }
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
       "downloadTrigger": {
         "type": {
           "name": "string"

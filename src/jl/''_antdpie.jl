@@ -23,6 +23,9 @@ Those elements have the following types:
 - `endAngle` (Real; optional)
 - `height` (Real; optional)
 - `innerRadius` (Real; optional)
+- `interactions` (optional): . interactions has the following type: Array of lists containing elements 'type'.
+Those elements have the following types:
+  - `type` (a value equal to: 'element-active', 'element-selected', 'element-single-selected', 'element-highlight', 'element-highlight-by-color', 'element-highlight-by-x', 'legend-highlight', 'axis-label-highlight', 'pie-statistic-active'; optional)s
 - `key` (String; optional)
 - `label` (optional)
 - `legend` (optional)
@@ -73,7 +76,7 @@ Those elements have the following types:
 - `width` (Real; optional)
 """
 function ''_antdpie(; kwargs...)
-        available_props = Symbol[:id, :angleField, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :downloadTrigger, :endAngle, :height, :innerRadius, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :meta, :padding, :pieStyle, :radius, :recentlySectorClickRecord, :renderer, :startAngle, :statistic, :style, :theme, :tooltip, :width]
+        available_props = Symbol[:id, :angleField, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :downloadTrigger, :endAngle, :height, :innerRadius, :interactions, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :meta, :padding, :pieStyle, :radius, :recentlySectorClickRecord, :renderer, :startAngle, :statistic, :style, :theme, :tooltip, :width]
         wild_props = Symbol[]
         return Component("''_antdpie", "AntdPie", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end
