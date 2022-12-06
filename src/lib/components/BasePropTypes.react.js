@@ -432,7 +432,10 @@ const axisBasePropTypes = PropTypes.oneOfType([
         grid: PropTypes.exact({
             // 设置线要素样式
             line: PropTypes.exact({
-                style: lineBaseStyle
+                // 线要素样式
+                style: lineBaseStyle,
+                // 类型，可选的有'line'、'circle'
+                type: PropTypes.oneOf(['line', 'circle'])
             }),
 
             // 设置两个栅格线之间的填充色
@@ -442,7 +445,10 @@ const axisBasePropTypes = PropTypes.oneOfType([
             ]),
 
             // 设置网格线是否与刻度线对齐，若设置为false，则会显示在两个刻度线之间
-            alignTick: PropTypes.bool
+            alignTick: PropTypes.bool,
+
+            // 设置对于circle是否关闭grid
+            closed: PropTypes.bool
         }),
 
         // 设置坐标轴刻度线
