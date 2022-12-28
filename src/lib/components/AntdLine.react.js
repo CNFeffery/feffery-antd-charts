@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable prefer-const */
 /* eslint-disable no-undefined */
 /* eslint-disable no-else-return */
@@ -24,7 +25,8 @@ import { difference } from './utils';
 const preventUpdateProps = [
     'loading_state',
     'recentlyTooltipChangeRecord',
-    'recentlyPointClickRecord'
+    'recentlyPointClickRecord',
+    'recentlyLegendInfo'
 ];
 
 // 定义折线图组件AntdLine，部分API参数参考https://charts.ant.design/zh-CN/demos/line
@@ -279,6 +281,21 @@ export default class AntdLine extends Component {
                         })
                     }
                 });
+
+                plot.on('legend-item:click', (e) => {
+                    let component = e.target.get('delegateObject').component;
+                    setProps({
+                        recentlyLegendInfo: {
+                            triggerItemName: e.target.attrs.text,
+                            items: component.cfg.items.map(
+                                item => {
+                                    let { marker, showRadio, ...other } = item;
+                                    return other
+                                }
+                            )
+                        }
+                    })
+                });
             }}
             {...config} />;
     }
@@ -463,6 +480,16 @@ AntdLine.propTypes = {
 
         // 对应的数据点信息
         data: PropTypes.object
+    }),
+
+    // 监听图例事件
+    recentlyLegendInfo: PropTypes.exact({
+        // 记录当前点击的图例项内容
+        triggerItemName: PropTypes.any,
+        // 记录当前各图例项信息
+        items: PropTypes.arrayOf(
+            PropTypes.object
+        )
     }),
 
     // 用于在回调中传入uuid、ulid之类的唯一标识，来主动下载当前图表为png格式图片
