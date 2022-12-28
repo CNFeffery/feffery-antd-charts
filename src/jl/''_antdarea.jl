@@ -55,6 +55,18 @@ Those elements have the following types:
   - `style` (optional): . style has the following type: lists containing elements 'func'.
 Those elements have the following types:
   - `func` (String; optional)
+- `recentlyLegendInfo` (optional): . recentlyLegendInfo has the following type: lists containing elements 'triggerItemName', 'items'.
+Those elements have the following types:
+  - `triggerItemName` (Bool | Real | String | Dict | Array; optional)
+  - `items` (Array of Dicts; optional)
+- `recentlyPointClickRecord` (optional): . recentlyPointClickRecord has the following type: lists containing elements 'timestamp', 'data'.
+Those elements have the following types:
+  - `timestamp` (Real; optional)
+  - `data` (Dict; optional)
+- `recentlyTooltipChangeRecord` (optional): . recentlyTooltipChangeRecord has the following type: lists containing elements 'timestamp', 'data'.
+Those elements have the following types:
+  - `timestamp` (Real; optional)
+  - `data` (Array of Dicts; optional)
 - `renderer` (String; optional)
 - `seriesField` (String; optional)
 - `slider` (optional)
@@ -70,7 +82,7 @@ Those elements have the following types:
 - `yField` (String; required)
 """
 function ''_antdarea(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :areaStyle, :autoFit, :className, :color, :data, :downloadTrigger, :height, :isPercent, :isStack, :key, :label, :legend, :limitInPlot, :line, :loading_state, :locale, :meta, :padding, :point, :renderer, :seriesField, :slider, :smooth, :startOnZero, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
+        available_props = Symbol[:id, :annotations, :appendPadding, :areaStyle, :autoFit, :className, :color, :data, :downloadTrigger, :height, :isPercent, :isStack, :key, :label, :legend, :limitInPlot, :line, :loading_state, :locale, :meta, :padding, :point, :recentlyLegendInfo, :recentlyPointClickRecord, :recentlyTooltipChangeRecord, :renderer, :seriesField, :slider, :smooth, :startOnZero, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
         wild_props = Symbol[]
         return Component("''_antdarea", "AntdArea", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end
