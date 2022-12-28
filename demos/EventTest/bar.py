@@ -11,33 +11,37 @@ if True:
 app = dash.Dash(__name__)
 
 mock_data = [
-    *[
-        {
-            'x': i,
-            'y': np.random.rand(),
-            'series': 'a'
-        }
-        for i in range(25)
-    ],
-    *[
-        {
-            'x': i,
-            'y': np.random.rand(),
-            'series': 'b'
-        }
-        for i in range(25)
-    ]
+    {
+        'year': '1951 年',
+        'value': 38,
+    },
+    {
+        'year': '1952 年',
+        'value': 52,
+    },
+    {
+        'year': '1956 年',
+        'value': 61,
+    },
+    {
+        'year': '1957 年',
+        'value': 145,
+    },
+    {
+        'year': '1958 年',
+        'value': 48,
+    },
 ]
 
 app.layout = html.Div(
     [
         html.Div(
-            fact.AntdArea(
-                id='area-demo',
+            fact.AntdBar(
+                id='bar-demo',
                 data=mock_data,
-                xField='x',
-                yField='y',
-                seriesField='series'
+                xField='value',
+                yField='year',
+                seriesField='year'
             ),
             style={
                 'height': '400px'
@@ -55,18 +59,18 @@ app.layout = html.Div(
 
 @app.callback(
     Output('output', 'children'),
-    [Input('area-demo', 'recentlyTooltipChangeRecord'),
-     Input('area-demo', 'recentlyPointClickRecord'),
-     Input('area-demo', 'recentlyLegendInfo')]
+    [Input('bar-demo', 'recentlyTooltipChangeRecord'),
+     Input('bar-demo', 'recentlyBarClickRecord'),
+     Input('bar-demo', 'recentlyLegendInfo')]
 )
 def demo(recentlyTooltipChangeRecord,
-         recentlyPointClickRecord,
+         recentlyBarClickRecord,
          recentlyLegendInfo):
 
     return json.dumps(
         dict(
             recentlyTooltipChangeRecord=recentlyTooltipChangeRecord,
-            recentlyPointClickRecord=recentlyPointClickRecord,
+            recentlyBarClickRecord=recentlyBarClickRecord,
             recentlyLegendInfo=recentlyLegendInfo
         ),
         indent=4,

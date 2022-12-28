@@ -65,6 +65,18 @@ Those elements have the following types:
 - `meta` (optional)
 - `minBarWidth` (Real; optional)
 - `padding` (Real | Array of Reals | String; optional)
+- `recentlyBarClickRecord` (optional): . recentlyBarClickRecord has the following type: lists containing elements 'timestamp', 'data'.
+Those elements have the following types:
+  - `timestamp` (Real; optional)
+  - `data` (Dict; optional)
+- `recentlyLegendInfo` (optional): . recentlyLegendInfo has the following type: lists containing elements 'triggerItemName', 'items'.
+Those elements have the following types:
+  - `triggerItemName` (Bool | Real | String | Dict | Array; optional)
+  - `items` (Array of Dicts; optional)
+- `recentlyTooltipChangeRecord` (optional): . recentlyTooltipChangeRecord has the following type: lists containing elements 'timestamp', 'data'.
+Those elements have the following types:
+  - `timestamp` (Real; optional)
+  - `data` (Array of Dicts; optional)
 - `renderer` (String; optional)
 - `scrollbar` (optional)
 - `seriesField` (String; optional)
@@ -78,7 +90,7 @@ Those elements have the following types:
 - `yField` (String; required)
 """
 function ''_antdbar(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :barBackground, :barStyle, :barWidthRatio, :className, :color, :connectedArea, :conversionTag, :data, :dodgePadding, :downloadTrigger, :groupField, :height, :intervalPadding, :isGroup, :isPercent, :isRange, :isStack, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :marginRatio, :maxBarWidth, :meta, :minBarWidth, :padding, :renderer, :scrollbar, :seriesField, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
+        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :barBackground, :barStyle, :barWidthRatio, :className, :color, :connectedArea, :conversionTag, :data, :dodgePadding, :downloadTrigger, :groupField, :height, :intervalPadding, :isGroup, :isPercent, :isRange, :isStack, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :marginRatio, :maxBarWidth, :meta, :minBarWidth, :padding, :recentlyBarClickRecord, :recentlyLegendInfo, :recentlyTooltipChangeRecord, :renderer, :scrollbar, :seriesField, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
         wild_props = Symbol[]
         return Component("''_antdbar", "AntdBar", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

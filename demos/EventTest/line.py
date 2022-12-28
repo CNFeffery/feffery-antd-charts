@@ -69,7 +69,8 @@ def demo(recentlyTooltipChangeRecord,
             recentlyPointClickRecord=recentlyPointClickRecord,
             recentlyLegendInfo=recentlyLegendInfo
         ),
-        indent=4
+        indent=4,
+        ensure_ascii=False
     )
 
 
