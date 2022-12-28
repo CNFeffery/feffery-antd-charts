@@ -69,6 +69,18 @@ Those elements have the following types:
 Those elements have the following types:
   - `timestamp` (Real; optional)
   - `data` (Dict; optional)
+- `recentlyColumnClickRecord` (optional): . recentlyColumnClickRecord has the following type: lists containing elements 'timestamp', 'data'.
+Those elements have the following types:
+  - `timestamp` (Real; optional)
+  - `data` (Dict; optional)
+- `recentlyLegendInfo` (optional): . recentlyLegendInfo has the following type: lists containing elements 'triggerItemName', 'items'.
+Those elements have the following types:
+  - `triggerItemName` (Bool | Real | String | Dict | Array; optional)
+  - `items` (Array of Dicts; optional)
+- `recentlyTooltipChangeRecord` (optional): . recentlyTooltipChangeRecord has the following type: lists containing elements 'timestamp', 'data'.
+Those elements have the following types:
+  - `timestamp` (Real; optional)
+  - `data` (Array of Dicts; optional)
 - `renderer` (String; optional)
 - `scrollbar` (optional)
 - `seriesField` (String; optional)
@@ -83,7 +95,7 @@ Those elements have the following types:
 - `yField` (String; required)
 """
 function ''_antdcolumn(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :color, :columnBackground, :columnStyle, :columnWidthRatio, :connectedArea, :conversionTag, :data, :dodgePadding, :downloadTrigger, :groupField, :height, :intervalPadding, :isGroup, :isPercent, :isRange, :isStack, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :marginRatio, :maxColumnWidth, :meta, :minColumnWidth, :padding, :recentlyBarClickRecord, :renderer, :scrollbar, :seriesField, :slider, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
+        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :color, :columnBackground, :columnStyle, :columnWidthRatio, :connectedArea, :conversionTag, :data, :dodgePadding, :downloadTrigger, :groupField, :height, :intervalPadding, :isGroup, :isPercent, :isRange, :isStack, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :marginRatio, :maxColumnWidth, :meta, :minColumnWidth, :padding, :recentlyBarClickRecord, :recentlyColumnClickRecord, :recentlyLegendInfo, :recentlyTooltipChangeRecord, :renderer, :scrollbar, :seriesField, :slider, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
         wild_props = Symbol[]
         return Component("''_antdcolumn", "AntdColumn", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end
