@@ -39,6 +39,18 @@ Those elements have the following types:
 Those elements have the following types:
   - `func` (String; optional)
 - `padding` (Real | Array of Reals | String; optional)
+- `recentlyBoxClickRecord` (optional): . recentlyBoxClickRecord has the following type: lists containing elements 'timestamp', 'data'.
+Those elements have the following types:
+  - `timestamp` (Real; optional)
+  - `data` (Dict; optional)
+- `recentlyLegendInfo` (optional): . recentlyLegendInfo has the following type: lists containing elements 'triggerItemName', 'items'.
+Those elements have the following types:
+  - `triggerItemName` (Bool | Real | String | Dict | Array; optional)
+  - `items` (Array of Dicts; optional)
+- `recentlyTooltipChangeRecord` (optional): . recentlyTooltipChangeRecord has the following type: lists containing elements 'timestamp', 'data'.
+Those elements have the following types:
+  - `timestamp` (Real; optional)
+  - `data` (Array of Dicts; optional)
 - `renderer` (String; optional)
 - `style` (Dict; optional)
 - `theme` (optional)
@@ -47,10 +59,10 @@ Those elements have the following types:
 - `xAxis` (optional)
 - `xField` (String; required)
 - `yAxis` (optional)
-- `yField` (Array of Strings; required)
+- `yField` (Array of Strings | String; required)
 """
 function ''_antdbox(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :boxStyle, :className, :color, :data, :downloadTrigger, :groupField, :height, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :meta, :outliersField, :outliersStyle, :padding, :renderer, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
+        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :boxStyle, :className, :color, :data, :downloadTrigger, :groupField, :height, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :meta, :outliersField, :outliersStyle, :padding, :recentlyBoxClickRecord, :recentlyLegendInfo, :recentlyTooltipChangeRecord, :renderer, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
         wild_props = Symbol[]
         return Component("''_antdbox", "AntdBox", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end
