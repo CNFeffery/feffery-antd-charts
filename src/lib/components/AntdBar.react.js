@@ -138,7 +138,6 @@ export default class AntdBar extends Component {
             }
         }
 
-
         config = {
             ...config,
             data,
@@ -269,23 +268,12 @@ export default class AntdBar extends Component {
 
                 plot.on('element:click', (e) => {
 
-                    // 当本次点击事件由折线上的固有折点触发时
-                    if (Array.isArray(e.data.data)) {
-                        setProps({
-                            recentlyBarClickRecord: {
-                                timestamp: (new Date()).valueOf(),
-                                data: recentlyTooltipChangeRecord.data.filter(item => item[seriesField] === e.data.data[0][seriesField])[0]
-                            }
-                        })
-                    }
-                    else {
-                        setProps({
-                            recentlyBarClickRecord: {
-                                timestamp: (new Date()).valueOf(),
-                                data: e.data.data
-                            }
-                        })
-                    }
+                    setProps({
+                        recentlyBarClickRecord: {
+                            timestamp: (new Date()).valueOf(),
+                            data: e.data.data
+                        }
+                    })
                 });
 
                 plot.on('legend-item:click', (e) => {
