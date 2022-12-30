@@ -39,6 +39,14 @@ Those elements have the following types:
 - `nodeWidthRatio` (Real; optional)
 - `padding` (Real | Array of Reals | a value equal to: 'auto'; optional)
 - `rawFields` (Array of Strings; optional)
+- `recentlyAreaClickRecord` (optional): . recentlyAreaClickRecord has the following type: lists containing elements 'timestamp', 'data'.
+Those elements have the following types:
+  - `timestamp` (Real; optional)
+  - `data` (Dict; optional)
+- `recentlyTooltipChangeRecord` (optional): . recentlyTooltipChangeRecord has the following type: lists containing elements 'timestamp', 'data'.
+Those elements have the following types:
+  - `timestamp` (Real; optional)
+  - `data` (Array of Dicts; optional)
 - `renderer` (a value equal to: 'canvas', 'svg'; optional)
 - `sourceField` (String; optional)
 - `style` (Dict; optional)
@@ -48,7 +56,7 @@ Those elements have the following types:
 - `width` (Real; optional)
 """
 function ''_antdsankey(; kwargs...)
-        available_props = Symbol[:id, :appendPadding, :autoFit, :className, :color, :data, :downloadTrigger, :edgeStyle, :height, :key, :limitInPlot, :loading_state, :locale, :meta, :nodeAlign, :nodeDraggable, :nodePaddingRatio, :nodeStyle, :nodeWidthRatio, :padding, :rawFields, :renderer, :sourceField, :style, :targetField, :theme, :weightField, :width]
+        available_props = Symbol[:id, :appendPadding, :autoFit, :className, :color, :data, :downloadTrigger, :edgeStyle, :height, :key, :limitInPlot, :loading_state, :locale, :meta, :nodeAlign, :nodeDraggable, :nodePaddingRatio, :nodeStyle, :nodeWidthRatio, :padding, :rawFields, :recentlyAreaClickRecord, :recentlyTooltipChangeRecord, :renderer, :sourceField, :style, :targetField, :theme, :weightField, :width]
         wild_props = Symbol[]
         return Component("''_antdsankey", "AntdSankey", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

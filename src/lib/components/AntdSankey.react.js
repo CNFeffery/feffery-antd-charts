@@ -15,7 +15,11 @@ import {
 import { difference } from './utils';
 
 // 定义不触发重绘的参数数组
-const preventUpdateProps = ['loading_state'];
+const preventUpdateProps = [
+    'loading_state',
+    'recentlyTooltipChangeRecord',
+    'recentlyAreaClickRecord'
+];
 
 // 定义桑基图组件AntdSankey，部分API参数参考https://charts.ant.design/zh/examples/relation-plots/sankey#alipay
 export default class AntdSankey extends Component {
@@ -167,6 +171,36 @@ export default class AntdSankey extends Component {
                 (loading_state && loading_state.is_loading) || undefined
             }
             ref={this.chartRef}
+            // 绑定常用事件
+            onReady={(plot) => {
+
+                let recentlyTooltipChangeRecord;
+                // 辅助的tooltip渲染事件
+                plot.on('tooltip:change', (e) => {
+
+                    // 更新recentlyTooltipChangeRecord
+                    recentlyTooltipChangeRecord = {
+                        timestamp: (new Date()).valueOf(),
+                        data: e.data.items.map(item => {
+                            const { x, y, ...other } = item.data;
+                            return other;
+                        })
+                    }
+                    setProps({
+                        recentlyTooltipChangeRecord: recentlyTooltipChangeRecord
+                    })
+                });
+
+                plot.on('element:click', (e) => {
+                    const { x, y, ...other } = e.data.data;
+                    setProps({
+                        recentlyAreaClickRecord: {
+                            timestamp: (new Date()).valueOf(),
+                            data: other
+                        }
+                    })
+                });
+            }}
             {...config} />;
     }
 }
@@ -278,6 +312,25 @@ AntdSankey.propTypes = {
 
     // 设置桑基图中的节点是否可拖拽调整位置，默认为false
     nodeDraggable: PropTypes.bool,
+
+    // 常用事件监听参数
+    // tooltip显示事件
+    recentlyTooltipChangeRecord: PropTypes.exact({
+        // 事件触发的时间戳信息
+        timestamp: PropTypes.number,
+
+        // 对应的数据点信息
+        data: PropTypes.arrayOf(PropTypes.object)
+    }),
+
+    // 单独区域点击事件
+    recentlyAreaClickRecord: PropTypes.exact({
+        // 事件触发的时间戳信息
+        timestamp: PropTypes.number,
+
+        // 对应的数据点信息
+        data: PropTypes.object
+    }),
 
     // 用于在回调中传入uuid、ulid之类的唯一标识，来主动下载当前图表为png格式图片
     downloadTrigger: PropTypes.string,
