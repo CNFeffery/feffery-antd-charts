@@ -3,7 +3,6 @@ if True:
     sys.path.append('../..')
     import dash
     import json
-    import numpy as np
     from dash import html
     import feffery_antd_charts as fact
     from dash.dependencies import Input, Output

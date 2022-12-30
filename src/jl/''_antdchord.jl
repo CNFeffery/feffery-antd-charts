@@ -33,6 +33,14 @@ Those elements have the following types:
   - `func` (String; optional)
 - `nodeWidthRatio` (Real; optional)
 - `padding` (Real | Array of Reals | a value equal to: 'auto'; optional)
+- `recentlyAreaClickRecord` (optional): . recentlyAreaClickRecord has the following type: lists containing elements 'timestamp', 'data'.
+Those elements have the following types:
+  - `timestamp` (Real; optional)
+  - `data` (Dict; optional)
+- `recentlyTooltipChangeRecord` (optional): . recentlyTooltipChangeRecord has the following type: lists containing elements 'timestamp', 'data'.
+Those elements have the following types:
+  - `timestamp` (Real; optional)
+  - `data` (Array of Dicts; optional)
 - `renderer` (a value equal to: 'canvas', 'svg'; optional)
 - `sourceField` (String; optional)
 - `style` (Dict; optional)
@@ -42,7 +50,7 @@ Those elements have the following types:
 - `width` (Real; optional)
 """
 function ''_antdchord(; kwargs...)
-        available_props = Symbol[:id, :appendPadding, :autoFit, :className, :data, :downloadTrigger, :edgeStyle, :height, :key, :limitInPlot, :loading_state, :locale, :meta, :nodePaddingRatio, :nodeStyle, :nodeWidthRatio, :padding, :renderer, :sourceField, :style, :targetField, :theme, :weightField, :width]
+        available_props = Symbol[:id, :appendPadding, :autoFit, :className, :data, :downloadTrigger, :edgeStyle, :height, :key, :limitInPlot, :loading_state, :locale, :meta, :nodePaddingRatio, :nodeStyle, :nodeWidthRatio, :padding, :recentlyAreaClickRecord, :recentlyTooltipChangeRecord, :renderer, :sourceField, :style, :targetField, :theme, :weightField, :width]
         wild_props = Symbol[]
         return Component("''_antdchord", "AntdChord", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end
