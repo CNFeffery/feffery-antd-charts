@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undefined */
 /* eslint-disable prefer-const */
 /* eslint-disable no-else-return */
@@ -19,7 +20,12 @@ import {
 import { difference } from './utils';
 
 // 定义不触发重绘的参数数组
-const preventUpdateProps = ['loading_state'];
+const preventUpdateProps = [
+    'loading_state',
+    'recentlyTooltipChangeRecord',
+    'recentlyAreaClickRecord',
+    'recentlyLegendInfo'
+];
 
 // 定义风玫瑰图组件AntdRose，部分API参数参考https://charts.ant.design/zh/examples/rose/basic#basic
 export default class AntdRose extends Component {
@@ -102,6 +108,7 @@ export default class AntdRose extends Component {
             tooltip,
             annotations,
             theme,
+            setProps,
             loading_state
         } = this.props;
 
@@ -213,6 +220,48 @@ export default class AntdRose extends Component {
                 (loading_state && loading_state.is_loading) || undefined
             }
             ref={this.chartRef}
+            // 绑定常用事件
+            onReady={(plot) => {
+
+                let recentlyTooltipChangeRecord;
+                // 辅助的tooltip渲染事件
+                plot.on('tooltip:change', (e) => {
+
+                    // 更新recentlyTooltipChangeRecord
+                    recentlyTooltipChangeRecord = {
+                        timestamp: (new Date()).valueOf(),
+                        data: e.data.items.map(item => item.data)
+                    }
+                    setProps({
+                        recentlyTooltipChangeRecord: recentlyTooltipChangeRecord
+                    })
+                });
+
+                plot.on('element:click', (e) => {
+
+                    setProps({
+                        recentlyAreaClickRecord: {
+                            timestamp: (new Date()).valueOf(),
+                            data: e.data.data
+                        }
+                    })
+                });
+
+                plot.on('legend-item:click', (e) => {
+                    let component = e.target.get('delegateObject').component;
+                    setProps({
+                        recentlyLegendInfo: {
+                            triggerItemName: e.target.attrs.text,
+                            items: component.cfg.items.map(
+                                item => {
+                                    let { marker, showRadio, ...other } = item;
+                                    return other
+                                }
+                            )
+                        }
+                    })
+                });
+            }}
             {...config} />;
     }
 }
@@ -340,6 +389,35 @@ AntdRose.propTypes = {
 
     // 配置标注相关参数
     annotations: annotationsBasePropTypes,
+
+    // 常用事件监听参数
+    // tooltip显示事件
+    recentlyTooltipChangeRecord: PropTypes.exact({
+        // 事件触发的时间戳信息
+        timestamp: PropTypes.number,
+
+        // 对应的数据点信息
+        data: PropTypes.arrayOf(PropTypes.object)
+    }),
+
+    // 单独area点击事件
+    recentlyAreaClickRecord: PropTypes.exact({
+        // 事件触发的时间戳信息
+        timestamp: PropTypes.number,
+
+        // 对应的数据点信息
+        data: PropTypes.any
+    }),
+
+    // 监听图例事件
+    recentlyLegendInfo: PropTypes.exact({
+        // 记录当前点击的图例项内容
+        triggerItemName: PropTypes.any,
+        // 记录当前各图例项信息
+        items: PropTypes.arrayOf(
+            PropTypes.object
+        )
+    }),
 
     // 用于在回调中传入uuid、ulid之类的唯一标识，来主动下载当前图表为png格式图片
     downloadTrigger: PropTypes.string,
