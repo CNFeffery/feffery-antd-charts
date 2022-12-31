@@ -42,10 +42,18 @@ Those elements have the following types:
 Those elements have the following types:
   - `func` (String; optional)
 - `radius` (Real; optional)
+- `recentlyLegendInfo` (optional): . recentlyLegendInfo has the following type: lists containing elements 'triggerItemName', 'items'.
+Those elements have the following types:
+  - `triggerItemName` (Bool | Real | String | Dict | Array; optional)
+  - `items` (Array of Dicts; optional)
 - `recentlySectorClickRecord` (optional): . recentlySectorClickRecord has the following type: lists containing elements 'timestamp', 'data'.
 Those elements have the following types:
   - `timestamp` (Real; optional)
   - `data` (Dict; optional)
+- `recentlyTooltipChangeRecord` (optional): . recentlyTooltipChangeRecord has the following type: lists containing elements 'timestamp', 'data'.
+Those elements have the following types:
+  - `timestamp` (Real; optional)
+  - `data` (Array of Dicts; optional)
 - `renderer` (String; optional)
 - `startAngle` (Real; optional)
 - `statistic` (optional): . statistic has the following type: lists containing elements 'title', 'content'.
@@ -76,7 +84,7 @@ Those elements have the following types:
 - `width` (Real; optional)
 """
 function ''_antdpie(; kwargs...)
-        available_props = Symbol[:id, :angleField, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :downloadTrigger, :endAngle, :height, :innerRadius, :interactions, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :meta, :padding, :pieStyle, :radius, :recentlySectorClickRecord, :renderer, :startAngle, :statistic, :style, :theme, :tooltip, :width]
+        available_props = Symbol[:id, :angleField, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :downloadTrigger, :endAngle, :height, :innerRadius, :interactions, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :meta, :padding, :pieStyle, :radius, :recentlyLegendInfo, :recentlySectorClickRecord, :recentlyTooltipChangeRecord, :renderer, :startAngle, :statistic, :style, :theme, :tooltip, :width]
         wild_props = Symbol[]
         return Component("''_antdpie", "AntdPie", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

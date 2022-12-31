@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undefined */
 /* eslint-disable prefer-const */
 /* eslint-disable no-else-return */
@@ -18,7 +19,12 @@ import {
 import { difference } from './utils';
 
 // 定义不触发重绘的参数数组
-const preventUpdateProps = ['recentlySectorClickRecord', 'loading_state'];
+const preventUpdateProps = [
+    'loading_state',
+    'recentlyTooltipChangeRecord',
+    'recentlySectorClickRecord',
+    'recentlyLegendInfo'
+];
 
 // 定义饼图组件AntdPie，部分API参数参考https://charts.ant.design/zh-CN/demos/pie
 export default class AntdPie extends Component {
@@ -203,12 +209,42 @@ export default class AntdPie extends Component {
             ref={this.chartRef}
             // 绑定常用事件
             onReady={(plot) => {
+
+                let recentlyTooltipChangeRecord;
+                // 辅助的tooltip渲染事件
+                plot.on('tooltip:change', (e) => {
+
+                    // 更新recentlyTooltipChangeRecord
+                    recentlyTooltipChangeRecord = {
+                        timestamp: (new Date()).valueOf(),
+                        data: e.data.items.map(item => item.data)
+                    }
+                    setProps({
+                        recentlyTooltipChangeRecord: recentlyTooltipChangeRecord
+                    })
+                });
+
                 plot.on('element:click', (e) => {
                     // 当有扇区被点击时
                     setProps({
                         recentlySectorClickRecord: {
                             timestamp: (new Date()).valueOf(),
                             data: e.data.data
+                        }
+                    })
+                });
+
+                plot.on('legend-item:click', (e) => {
+                    let component = e.target.get('delegateObject').component;
+                    setProps({
+                        recentlyLegendInfo: {
+                            triggerItemName: e.target.attrs.text,
+                            items: component.cfg.items.map(
+                                item => {
+                                    let { marker, showRadio, ...other } = item;
+                                    return other
+                                }
+                            )
                         }
                     })
                 });
@@ -405,6 +441,16 @@ AntdPie.propTypes = {
     // 主题配置
     theme: themeBasePropTypes,
 
+    // 常用事件监听参数
+    // tooltip显示事件
+    recentlyTooltipChangeRecord: PropTypes.exact({
+        // 事件触发的时间戳信息
+        timestamp: PropTypes.number,
+
+        // 对应的数据点信息
+        data: PropTypes.arrayOf(PropTypes.object)
+    }),
+
     // 扇区点击事件
     recentlySectorClickRecord: PropTypes.exact({
         // 事件触发的时间戳信息
@@ -412,6 +458,16 @@ AntdPie.propTypes = {
 
         // 对应的数据点信息
         data: PropTypes.object
+    }),
+
+    // 监听图例事件
+    recentlyLegendInfo: PropTypes.exact({
+        // 记录当前点击的图例项内容
+        triggerItemName: PropTypes.any,
+        // 记录当前各图例项信息
+        items: PropTypes.arrayOf(
+            PropTypes.object
+        )
     }),
 
     loading_state: PropTypes.shape({
