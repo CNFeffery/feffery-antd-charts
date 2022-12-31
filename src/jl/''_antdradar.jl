@@ -56,6 +56,18 @@ Those elements have the following types:
 Those elements have the following types:
   - `func` (String; optional)
 - `radius` (Real; optional)
+- `recentlyAreaClickRecord` (optional): . recentlyAreaClickRecord has the following type: lists containing elements 'timestamp', 'data'.
+Those elements have the following types:
+  - `timestamp` (Real; optional)
+  - `data` (Bool | Real | String | Dict | Array; optional)
+- `recentlyLegendInfo` (optional): . recentlyLegendInfo has the following type: lists containing elements 'triggerItemName', 'items'.
+Those elements have the following types:
+  - `triggerItemName` (Bool | Real | String | Dict | Array; optional)
+  - `items` (Array of Dicts; optional)
+- `recentlyTooltipChangeRecord` (optional): . recentlyTooltipChangeRecord has the following type: lists containing elements 'timestamp', 'data'.
+Those elements have the following types:
+  - `timestamp` (Real; optional)
+  - `data` (Array of Dicts; optional)
 - `renderer` (String; optional)
 - `seriesField` (String; optional)
 - `smooth` (Bool; optional)
@@ -70,7 +82,7 @@ Those elements have the following types:
 - `yField` (String; required)
 """
 function ''_antdradar(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :area, :autoFit, :className, :color, :data, :downloadTrigger, :endAngle, :height, :key, :label, :legend, :limitInPlot, :lineStyle, :loading_state, :locale, :meta, :padding, :point, :radius, :renderer, :seriesField, :smooth, :startAngle, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
+        available_props = Symbol[:id, :annotations, :appendPadding, :area, :autoFit, :className, :color, :data, :downloadTrigger, :endAngle, :height, :key, :label, :legend, :limitInPlot, :lineStyle, :loading_state, :locale, :meta, :padding, :point, :radius, :recentlyAreaClickRecord, :recentlyLegendInfo, :recentlyTooltipChangeRecord, :renderer, :seriesField, :smooth, :startAngle, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
         wild_props = Symbol[]
         return Component("''_antdradar", "AntdRadar", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

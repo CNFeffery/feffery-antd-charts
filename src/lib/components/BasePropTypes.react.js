@@ -341,7 +341,13 @@ const metaBasePropTypes = PropTypes.objectOf(
         type: PropTypes.oneOf([
             'cat', 'timeCat', 'linear', 'linear', 'time', 'log',
             'pow', 'quantize', 'quantile', 'identity'
-        ])
+        ]),
+
+        // 定义域下限
+        min: PropTypes.number,
+
+        // 定义域上限
+        max: PropTypes.number
     })
 )
 
