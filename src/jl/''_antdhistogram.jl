@@ -37,6 +37,18 @@ Those elements have the following types:
 - `locale` (String; optional)
 - `meta` (optional)
 - `padding` (Real | Array of Reals | String; optional)
+- `recentlyAreaClickRecord` (optional): . recentlyAreaClickRecord has the following type: lists containing elements 'timestamp', 'data'.
+Those elements have the following types:
+  - `timestamp` (Real; optional)
+  - `data` (Dict; optional)
+- `recentlyLegendInfo` (optional): . recentlyLegendInfo has the following type: lists containing elements 'triggerItemName', 'items'.
+Those elements have the following types:
+  - `triggerItemName` (Bool | Real | String | Dict | Array; optional)
+  - `items` (Array of Dicts; optional)
+- `recentlyTooltipChangeRecord` (optional): . recentlyTooltipChangeRecord has the following type: lists containing elements 'timestamp', 'data'.
+Those elements have the following types:
+  - `timestamp` (Real; optional)
+  - `data` (Array of Dicts; optional)
 - `renderer` (String; optional)
 - `stackField` (String; optional)
 - `style` (Dict; optional)
@@ -47,7 +59,7 @@ Those elements have the following types:
 - `yAxis` (optional)
 """
 function ''_antdhistogram(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :binField, :binNumber, :binWidth, :className, :color, :columnStyle, :data, :downloadTrigger, :height, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :meta, :padding, :renderer, :stackField, :style, :theme, :tooltip, :width, :xAxis, :yAxis]
+        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :binField, :binNumber, :binWidth, :className, :color, :columnStyle, :data, :downloadTrigger, :height, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :meta, :padding, :recentlyAreaClickRecord, :recentlyLegendInfo, :recentlyTooltipChangeRecord, :renderer, :stackField, :style, :theme, :tooltip, :width, :xAxis, :yAxis]
         wild_props = Symbol[]
         return Component("''_antdhistogram", "AntdHistogram", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end
