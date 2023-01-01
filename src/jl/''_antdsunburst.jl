@@ -48,6 +48,14 @@ Those elements have the following types:
 - `padding` (Real | Array of Reals | a value equal to: 'auto'; optional)
 - `radius` (Real; optional)
 - `rawFields` (Array of Strings; optional)
+- `recentlyAreaClickRecord` (optional): . recentlyAreaClickRecord has the following type: lists containing elements 'timestamp', 'data'.
+Those elements have the following types:
+  - `timestamp` (Real; optional)
+  - `data` (Bool | Real | String | Dict | Array; optional)
+- `recentlyTooltipChangeRecord` (optional): . recentlyTooltipChangeRecord has the following type: lists containing elements 'timestamp', 'data'.
+Those elements have the following types:
+  - `timestamp` (Real; optional)
+  - `data` (Bool | Real | String | Dict | Array; optional)
 - `reflect` (Bool; optional)
 - `renderer` (a value equal to: 'canvas', 'svg'; optional)
 - `style` (Dict; optional)
@@ -59,7 +67,7 @@ Those elements have the following types:
 - `width` (Real; optional)
 """
 function ''_antdsunburst(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :downloadTrigger, :drilldown, :height, :hierarchyConfig, :innerRadius, :key, :label, :limitInPlot, :loading_state, :locale, :meta, :padding, :radius, :rawFields, :reflect, :renderer, :style, :sunburstStyle, :theme, :tooltip, :width]
+        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :downloadTrigger, :drilldown, :height, :hierarchyConfig, :innerRadius, :key, :label, :limitInPlot, :loading_state, :locale, :meta, :padding, :radius, :rawFields, :recentlyAreaClickRecord, :recentlyTooltipChangeRecord, :reflect, :renderer, :style, :sunburstStyle, :theme, :tooltip, :width]
         wild_props = Symbol[]
         return Component("''_antdsunburst", "AntdSunburst", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end
