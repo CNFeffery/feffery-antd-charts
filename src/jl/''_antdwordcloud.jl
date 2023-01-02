@@ -36,6 +36,15 @@ Those elements have the following types:
 - `placementStrategy` (optional): . placementStrategy has the following type: lists containing elements 'func'.
 Those elements have the following types:
   - `func` (String; optional)
+- `randomState` (Real; optional)
+- `recentlyLegendInfo` (optional): . recentlyLegendInfo has the following type: lists containing elements 'triggerItemName', 'items'.
+Those elements have the following types:
+  - `triggerItemName` (Bool | Real | String | Dict | Array; optional)
+  - `items` (Array of Dicts; optional)
+- `recentlyTooltipChangeRecord` (optional): . recentlyTooltipChangeRecord has the following type: lists containing elements 'timestamp', 'data'.
+Those elements have the following types:
+  - `timestamp` (Real; optional)
+  - `data` (Array of Dicts; optional)
 - `recentlyWordClickRecord` (optional): . recentlyWordClickRecord has the following type: lists containing elements 'timestamp', 'data'.
 Those elements have the following types:
   - `timestamp` (Real; optional)
@@ -48,15 +57,16 @@ Those elements have the following types:
 - `weightField` (String; required)
 - `width` (Real; optional)
 - `wordField` (String; required)
-- `wordStyle` (optional): . wordStyle has the following type: lists containing elements 'fontFamily', 'fontWeight', 'padding', 'fontSize'.
+- `wordStyle` (optional): . wordStyle has the following type: lists containing elements 'fontFamily', 'fontWeight', 'padding', 'fontSize', 'rotation'.
 Those elements have the following types:
   - `fontFamily` (String; optional)
   - `fontWeight` (String; optional)
   - `padding` (Real; optional)
   - `fontSize` (Array of Reals; optional)
+  - `rotation` (Real; optional)
 """
 function ''_antdwordcloud(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :downloadTrigger, :height, :imageMask, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :meta, :padding, :placementStrategy, :recentlyWordClickRecord, :renderer, :spiral, :style, :theme, :tooltip, :weightField, :width, :wordField, :wordStyle]
+        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :downloadTrigger, :height, :imageMask, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :meta, :padding, :placementStrategy, :randomState, :recentlyLegendInfo, :recentlyTooltipChangeRecord, :recentlyWordClickRecord, :renderer, :spiral, :style, :theme, :tooltip, :weightField, :width, :wordField, :wordStyle]
         wild_props = Symbol[]
         return Component("''_antdwordcloud", "AntdWordCloud", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end
