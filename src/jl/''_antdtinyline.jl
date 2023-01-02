@@ -44,6 +44,10 @@ Those elements have the following types:
   - `style` (optional): . style has the following type: lists containing elements 'func'.
 Those elements have the following types:
   - `func` (String; optional)
+- `recentlyTooltipChangeRecord` (optional): . recentlyTooltipChangeRecord has the following type: lists containing elements 'timestamp', 'data'.
+Those elements have the following types:
+  - `timestamp` (Real; optional)
+  - `data` (Array of Dicts; optional)
 - `renderer` (a value equal to: 'canvas', 'svg'; optional)
 - `smooth` (Bool; optional)
 - `style` (Dict; optional)
@@ -54,7 +58,7 @@ Those elements have the following types:
 - `yAxis` (optional)
 """
 function ''_antdtinyline(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :color, :connectNulls, :data, :downloadTrigger, :height, :key, :limitInPlot, :lineStyle, :loading_state, :locale, :meta, :padding, :point, :renderer, :smooth, :style, :theme, :tooltip, :width, :xAxis, :yAxis]
+        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :color, :connectNulls, :data, :downloadTrigger, :height, :key, :limitInPlot, :lineStyle, :loading_state, :locale, :meta, :padding, :point, :recentlyTooltipChangeRecord, :renderer, :smooth, :style, :theme, :tooltip, :width, :xAxis, :yAxis]
         wild_props = Symbol[]
         return Component("''_antdtinyline", "AntdTinyLine", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end
