@@ -37,6 +37,18 @@ Those elements have the following types:
 - `meta` (optional)
 - `padding` (Real | Array of Reals | a value equal to: 'auto'; optional)
 - `rawFields` (Array of Strings; optional)
+- `recentlyAreaClickRecord` (optional): . recentlyAreaClickRecord has the following type: lists containing elements 'timestamp', 'data'.
+Those elements have the following types:
+  - `timestamp` (Real; optional)
+  - `data` (Dict; optional)
+- `recentlyLegendInfo` (optional): . recentlyLegendInfo has the following type: lists containing elements 'triggerItemName', 'items'.
+Those elements have the following types:
+  - `triggerItemName` (Bool | Real | String | Dict | Array; optional)
+  - `items` (Array of Dicts; optional)
+- `recentlyTooltipChangeRecord` (optional): . recentlyTooltipChangeRecord has the following type: lists containing elements 'timestamp', 'data'.
+Those elements have the following types:
+  - `timestamp` (Real; optional)
+  - `data` (Array of Dicts; optional)
 - `rectStyle` (optional): . rectStyle has the following type: lists containing elements 'func'.
 Those elements have the following types:
   - `func` (String; optional)
@@ -47,7 +59,7 @@ Those elements have the following types:
 - `width` (Real; optional)
 """
 function ''_antdtreemap(; kwargs...)
-        available_props = Symbol[:id, :animation, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :downloadTrigger, :height, :interactions, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :meta, :padding, :rawFields, :rectStyle, :renderer, :style, :theme, :tooltip, :width]
+        available_props = Symbol[:id, :animation, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :downloadTrigger, :height, :interactions, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :meta, :padding, :rawFields, :recentlyAreaClickRecord, :recentlyLegendInfo, :recentlyTooltipChangeRecord, :rectStyle, :renderer, :style, :theme, :tooltip, :width]
         wild_props = Symbol[]
         return Component("''_antdtreemap", "AntdTreemap", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end
