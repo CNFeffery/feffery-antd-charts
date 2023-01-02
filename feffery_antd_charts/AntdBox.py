@@ -74,6 +74,30 @@ Keyword arguments:
 
 - padding (number | list of numbers | string; optional)
 
+- recentlyBoxClickRecord (dict; optional)
+
+    `recentlyBoxClickRecord` is a dict with keys:
+
+    - data (dict; optional)
+
+    - timestamp (number; optional)
+
+- recentlyLegendInfo (dict; optional)
+
+    `recentlyLegendInfo` is a dict with keys:
+
+    - items (list of dicts; optional)
+
+    - triggerItemName (boolean | number | string | dict | list; optional)
+
+- recentlyTooltipChangeRecord (dict; optional)
+
+    `recentlyTooltipChangeRecord` is a dict with keys:
+
+    - data (list of dicts; optional)
+
+    - timestamp (number; optional)
+
 - renderer (string; optional)
 
 - style (dict; optional)
@@ -90,16 +114,16 @@ Keyword arguments:
 
 - yAxis (optional)
 
-- yField (list of strings; required)"""
+- yField (list of strings | string; required)"""
     _children_props = []
     _base_nodes = ['children']
     _namespace = 'feffery_antd_charts'
     _type = 'AntdBox'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, xField=Component.REQUIRED, yField=Component.REQUIRED, groupField=Component.UNDEFINED, outliersField=Component.UNDEFINED, color=Component.UNDEFINED, boxStyle=Component.UNDEFINED, outliersStyle=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'annotations', 'appendPadding', 'autoFit', 'boxStyle', 'className', 'color', 'data', 'downloadTrigger', 'groupField', 'height', 'key', 'label', 'legend', 'limitInPlot', 'loading_state', 'locale', 'meta', 'outliersField', 'outliersStyle', 'padding', 'renderer', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
+    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, xField=Component.REQUIRED, yField=Component.REQUIRED, groupField=Component.UNDEFINED, outliersField=Component.UNDEFINED, color=Component.UNDEFINED, boxStyle=Component.UNDEFINED, outliersStyle=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, recentlyTooltipChangeRecord=Component.UNDEFINED, recentlyBoxClickRecord=Component.UNDEFINED, recentlyLegendInfo=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'annotations', 'appendPadding', 'autoFit', 'boxStyle', 'className', 'color', 'data', 'downloadTrigger', 'groupField', 'height', 'key', 'label', 'legend', 'limitInPlot', 'loading_state', 'locale', 'meta', 'outliersField', 'outliersStyle', 'padding', 'recentlyBoxClickRecord', 'recentlyLegendInfo', 'recentlyTooltipChangeRecord', 'renderer', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'annotations', 'appendPadding', 'autoFit', 'boxStyle', 'className', 'color', 'data', 'downloadTrigger', 'groupField', 'height', 'key', 'label', 'legend', 'limitInPlot', 'loading_state', 'locale', 'meta', 'outliersField', 'outliersStyle', 'padding', 'renderer', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
+        self.available_properties = ['id', 'annotations', 'appendPadding', 'autoFit', 'boxStyle', 'className', 'color', 'data', 'downloadTrigger', 'groupField', 'height', 'key', 'label', 'legend', 'limitInPlot', 'loading_state', 'locale', 'meta', 'outliersField', 'outliersStyle', 'padding', 'recentlyBoxClickRecord', 'recentlyLegendInfo', 'recentlyTooltipChangeRecord', 'renderer', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

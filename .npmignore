@@ -23,3 +23,12 @@ config
 .travis.yml
 CHANGELOG.md
 README.md
+
+/.build_cache
+/build
+/demos
+/deps
+/inst
+/man
+/R
+/samples-data

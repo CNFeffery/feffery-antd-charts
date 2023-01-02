@@ -19,6 +19,7 @@ import AntdFundFlow from "./components/graphs/AntdFundFlow.react";
 import AntdFunnel from "./components/AntdFunnel.react";
 import AntdTinyLine from "./components/AntdTinyLine.react";
 import AntdDualAxes from "./components/AntdDualAxes.react";
+import AntdLiquid from "./components/AntdLiquid.react";
 
 export {
     AntdLine,
@@ -41,5 +42,6 @@ export {
     AntdFundFlow,
     AntdFunnel,
     AntdTinyLine,
-    AntdDualAxes
+    AntdDualAxes,
+    AntdLiquid
 };

@@ -83,6 +83,24 @@ init_line_data = [
 app.layout = html.Div(
     html.Div(
         [
+            html.Div(
+                fact.AntdLiquid(
+                    percent=0.25,
+                    outline={
+                        'border': 4,
+                        'distance': 8,
+                    },
+                    wave={
+                        'length': 128,
+                    },
+                    shape='circle'
+                ),
+                style={
+                    'height': '600px',
+                    'padding': '25px'
+                }
+            ),
+
             fact.AntdTinyLine(
                 data=[
                     264, 417, 438, 887, 309, 397, 550, 575, 563, 430, 525, 592, 492, 467, 513, 546, 983, 340, 539, 243, 226, 192,
@@ -239,45 +257,45 @@ app.layout = html.Div(
                 }
             ),
 
-            html.Div(
-                fact.AntdTreemap(
-                    data=(
-                        requests
-                        .get('https://gw.alipayobjects.com/os/antfincdn/k5SYI%24mOo1/treemap.json')
-                        .json()
-                    ),
-                    colorField='name',
-                    legend={
-                        'position': 'top-left',
-                    },
-                    tooltip={
-                        'formatter': {
-                            'func': '''(v) => {
-        const root = v.path[v.path.length - 1];
-        return {
-          name: v.name,
-          value: `${v.value}(总占比${((v.value / root.value) * 100).toFixed(2)}%)`,
-        };
-      }'''
-                        },
-                    },
-                    interactions=[
-                        {
-                            'type': 'treemap-drill-down',
-                        },
-                        {
-                            'type': 'view-zoom',
-                        },
-                        {
-                            'type': 'drag-move',
-                        },
-                    ],
-                ),
-                style={
-                    'height': '600px',
-                    'padding': '25px'
-                }
-            ),
+            #         html.Div(
+            #             fact.AntdTreemap(
+            #                 data=(
+            #                     requests
+            #                     .get('https://gw.alipayobjects.com/os/antfincdn/k5SYI%24mOo1/treemap.json')
+            #                     .json()
+            #                 ),
+            #                 colorField='name',
+            #                 legend={
+            #                     'position': 'top-left',
+            #                 },
+            #                 tooltip={
+            #                     'formatter': {
+            #                         'func': '''(v) => {
+            #     const root = v.path[v.path.length - 1];
+            #     return {
+            #       name: v.name,
+            #       value: `${v.value}(总占比${((v.value / root.value) * 100).toFixed(2)}%)`,
+            #     };
+            #   }'''
+            #                     },
+            #                 },
+            #                 interactions=[
+            #                     {
+            #                         'type': 'treemap-drill-down',
+            #                     },
+            #                     {
+            #                         'type': 'view-zoom',
+            #                     },
+            #                     {
+            #                         'type': 'drag-move',
+            #                     },
+            #                 ],
+            #             ),
+            #             style={
+            #                 'height': '600px',
+            #                 'padding': '25px'
+            #             }
+            #         ),
 
             html.Div(
                 fact.AntdTreemap(

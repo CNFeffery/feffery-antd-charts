@@ -98,6 +98,30 @@ Keyword arguments:
 
 - padding (number | list of numbers | string; optional)
 
+- recentlyAreaClickRecord (dict; optional)
+
+    `recentlyAreaClickRecord` is a dict with keys:
+
+    - data (dict; optional)
+
+    - timestamp (number; optional)
+
+- recentlyLegendInfo (dict; optional)
+
+    `recentlyLegendInfo` is a dict with keys:
+
+    - items (list of dicts; optional)
+
+    - triggerItemName (boolean | number | string | dict | list; optional)
+
+- recentlyTooltipChangeRecord (dict; optional)
+
+    `recentlyTooltipChangeRecord` is a dict with keys:
+
+    - data (list of dicts; optional)
+
+    - timestamp (number; optional)
+
 - renderer (string; optional)
 
 - seriesField (string; optional)
@@ -120,10 +144,10 @@ Keyword arguments:
     _namespace = 'feffery_antd_charts'
     _type = 'AntdFunnel'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, xField=Component.REQUIRED, yField=Component.REQUIRED, compareField=Component.UNDEFINED, seriesField=Component.UNDEFINED, isTransposed=Component.UNDEFINED, shape=Component.UNDEFINED, dynamicHeight=Component.UNDEFINED, maxSize=Component.UNDEFINED, minSize=Component.UNDEFINED, funnelStyle=Component.UNDEFINED, conversionTag=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'annotations', 'appendPadding', 'autoFit', 'className', 'compareField', 'conversionTag', 'data', 'downloadTrigger', 'dynamicHeight', 'funnelStyle', 'height', 'isTransposed', 'key', 'label', 'legend', 'limitInPlot', 'loading_state', 'locale', 'maxSize', 'meta', 'minSize', 'padding', 'renderer', 'seriesField', 'shape', 'style', 'theme', 'tooltip', 'width', 'xField', 'yField']
+    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, xField=Component.REQUIRED, yField=Component.REQUIRED, compareField=Component.UNDEFINED, seriesField=Component.UNDEFINED, isTransposed=Component.UNDEFINED, shape=Component.UNDEFINED, dynamicHeight=Component.UNDEFINED, maxSize=Component.UNDEFINED, minSize=Component.UNDEFINED, funnelStyle=Component.UNDEFINED, conversionTag=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, recentlyTooltipChangeRecord=Component.UNDEFINED, recentlyAreaClickRecord=Component.UNDEFINED, recentlyLegendInfo=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'annotations', 'appendPadding', 'autoFit', 'className', 'compareField', 'conversionTag', 'data', 'downloadTrigger', 'dynamicHeight', 'funnelStyle', 'height', 'isTransposed', 'key', 'label', 'legend', 'limitInPlot', 'loading_state', 'locale', 'maxSize', 'meta', 'minSize', 'padding', 'recentlyAreaClickRecord', 'recentlyLegendInfo', 'recentlyTooltipChangeRecord', 'renderer', 'seriesField', 'shape', 'style', 'theme', 'tooltip', 'width', 'xField', 'yField']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'annotations', 'appendPadding', 'autoFit', 'className', 'compareField', 'conversionTag', 'data', 'downloadTrigger', 'dynamicHeight', 'funnelStyle', 'height', 'isTransposed', 'key', 'label', 'legend', 'limitInPlot', 'loading_state', 'locale', 'maxSize', 'meta', 'minSize', 'padding', 'renderer', 'seriesField', 'shape', 'style', 'theme', 'tooltip', 'width', 'xField', 'yField']
+        self.available_properties = ['id', 'annotations', 'appendPadding', 'autoFit', 'className', 'compareField', 'conversionTag', 'data', 'downloadTrigger', 'dynamicHeight', 'funnelStyle', 'height', 'isTransposed', 'key', 'label', 'legend', 'limitInPlot', 'loading_state', 'locale', 'maxSize', 'meta', 'minSize', 'padding', 'recentlyAreaClickRecord', 'recentlyLegendInfo', 'recentlyTooltipChangeRecord', 'renderer', 'seriesField', 'shape', 'style', 'theme', 'tooltip', 'width', 'xField', 'yField']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

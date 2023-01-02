@@ -92,6 +92,22 @@ Keyword arguments:
 
 - rawFields (list of strings; optional)
 
+- recentlyAreaClickRecord (dict; optional)
+
+    `recentlyAreaClickRecord` is a dict with keys:
+
+    - data (boolean | number | string | dict | list; optional)
+
+    - timestamp (number; optional)
+
+- recentlyTooltipChangeRecord (dict; optional)
+
+    `recentlyTooltipChangeRecord` is a dict with keys:
+
+    - data (boolean | number | string | dict | list; optional)
+
+    - timestamp (number; optional)
+
 - reflect (boolean; default False)
 
 - renderer (a value equal to: 'canvas', 'svg'; optional)
@@ -114,10 +130,10 @@ Keyword arguments:
     _namespace = 'feffery_antd_charts'
     _type = 'AntdSunburst'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, colorField=Component.UNDEFINED, rawFields=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, hierarchyConfig=Component.UNDEFINED, drilldown=Component.UNDEFINED, radius=Component.UNDEFINED, innerRadius=Component.UNDEFINED, color=Component.UNDEFINED, sunburstStyle=Component.UNDEFINED, reflect=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'annotations', 'appendPadding', 'autoFit', 'className', 'color', 'colorField', 'data', 'downloadTrigger', 'drilldown', 'height', 'hierarchyConfig', 'innerRadius', 'key', 'label', 'limitInPlot', 'loading_state', 'locale', 'meta', 'padding', 'radius', 'rawFields', 'reflect', 'renderer', 'style', 'sunburstStyle', 'theme', 'tooltip', 'width']
+    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, colorField=Component.UNDEFINED, rawFields=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, hierarchyConfig=Component.UNDEFINED, drilldown=Component.UNDEFINED, radius=Component.UNDEFINED, innerRadius=Component.UNDEFINED, color=Component.UNDEFINED, sunburstStyle=Component.UNDEFINED, reflect=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, recentlyTooltipChangeRecord=Component.UNDEFINED, recentlyAreaClickRecord=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'annotations', 'appendPadding', 'autoFit', 'className', 'color', 'colorField', 'data', 'downloadTrigger', 'drilldown', 'height', 'hierarchyConfig', 'innerRadius', 'key', 'label', 'limitInPlot', 'loading_state', 'locale', 'meta', 'padding', 'radius', 'rawFields', 'recentlyAreaClickRecord', 'recentlyTooltipChangeRecord', 'reflect', 'renderer', 'style', 'sunburstStyle', 'theme', 'tooltip', 'width']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'annotations', 'appendPadding', 'autoFit', 'className', 'color', 'colorField', 'data', 'downloadTrigger', 'drilldown', 'height', 'hierarchyConfig', 'innerRadius', 'key', 'label', 'limitInPlot', 'loading_state', 'locale', 'meta', 'padding', 'radius', 'rawFields', 'reflect', 'renderer', 'style', 'sunburstStyle', 'theme', 'tooltip', 'width']
+        self.available_properties = ['id', 'annotations', 'appendPadding', 'autoFit', 'className', 'color', 'colorField', 'data', 'downloadTrigger', 'drilldown', 'height', 'hierarchyConfig', 'innerRadius', 'key', 'label', 'limitInPlot', 'loading_state', 'locale', 'meta', 'padding', 'radius', 'rawFields', 'recentlyAreaClickRecord', 'recentlyTooltipChangeRecord', 'reflect', 'renderer', 'style', 'sunburstStyle', 'theme', 'tooltip', 'width']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

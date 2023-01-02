@@ -136,6 +136,30 @@ Keyword arguments:
 
     - timestamp (number; optional)
 
+- recentlyColumnClickRecord (dict; optional)
+
+    `recentlyColumnClickRecord` is a dict with keys:
+
+    - data (dict; optional)
+
+    - timestamp (number; optional)
+
+- recentlyLegendInfo (dict; optional)
+
+    `recentlyLegendInfo` is a dict with keys:
+
+    - items (list of dicts; optional)
+
+    - triggerItemName (boolean | number | string | dict | list; optional)
+
+- recentlyTooltipChangeRecord (dict; optional)
+
+    `recentlyTooltipChangeRecord` is a dict with keys:
+
+    - data (list of dicts; optional)
+
+    - timestamp (number; optional)
+
 - renderer (string; optional)
 
 - scrollbar (optional)
@@ -164,10 +188,10 @@ Keyword arguments:
     _namespace = 'feffery_antd_charts'
     _type = 'AntdColumn'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, xField=Component.REQUIRED, yField=Component.REQUIRED, seriesField=Component.UNDEFINED, groupField=Component.UNDEFINED, isStack=Component.UNDEFINED, isGroup=Component.UNDEFINED, isRange=Component.UNDEFINED, isPercent=Component.UNDEFINED, color=Component.UNDEFINED, slider=Component.UNDEFINED, intervalPadding=Component.UNDEFINED, dodgePadding=Component.UNDEFINED, minColumnWidth=Component.UNDEFINED, maxColumnWidth=Component.UNDEFINED, columnStyle=Component.UNDEFINED, columnBackground=Component.UNDEFINED, columnWidthRatio=Component.UNDEFINED, marginRatio=Component.UNDEFINED, scrollbar=Component.UNDEFINED, conversionTag=Component.UNDEFINED, connectedArea=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, recentlyBarClickRecord=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'annotations', 'appendPadding', 'autoFit', 'className', 'color', 'columnBackground', 'columnStyle', 'columnWidthRatio', 'connectedArea', 'conversionTag', 'data', 'dodgePadding', 'downloadTrigger', 'groupField', 'height', 'intervalPadding', 'isGroup', 'isPercent', 'isRange', 'isStack', 'key', 'label', 'legend', 'limitInPlot', 'loading_state', 'locale', 'marginRatio', 'maxColumnWidth', 'meta', 'minColumnWidth', 'padding', 'recentlyBarClickRecord', 'renderer', 'scrollbar', 'seriesField', 'slider', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
+    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, xField=Component.REQUIRED, yField=Component.REQUIRED, seriesField=Component.UNDEFINED, groupField=Component.UNDEFINED, isStack=Component.UNDEFINED, isGroup=Component.UNDEFINED, isRange=Component.UNDEFINED, isPercent=Component.UNDEFINED, color=Component.UNDEFINED, slider=Component.UNDEFINED, intervalPadding=Component.UNDEFINED, dodgePadding=Component.UNDEFINED, minColumnWidth=Component.UNDEFINED, maxColumnWidth=Component.UNDEFINED, columnStyle=Component.UNDEFINED, columnBackground=Component.UNDEFINED, columnWidthRatio=Component.UNDEFINED, marginRatio=Component.UNDEFINED, scrollbar=Component.UNDEFINED, conversionTag=Component.UNDEFINED, connectedArea=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, recentlyTooltipChangeRecord=Component.UNDEFINED, recentlyColumnClickRecord=Component.UNDEFINED, recentlyLegendInfo=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, recentlyBarClickRecord=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'annotations', 'appendPadding', 'autoFit', 'className', 'color', 'columnBackground', 'columnStyle', 'columnWidthRatio', 'connectedArea', 'conversionTag', 'data', 'dodgePadding', 'downloadTrigger', 'groupField', 'height', 'intervalPadding', 'isGroup', 'isPercent', 'isRange', 'isStack', 'key', 'label', 'legend', 'limitInPlot', 'loading_state', 'locale', 'marginRatio', 'maxColumnWidth', 'meta', 'minColumnWidth', 'padding', 'recentlyBarClickRecord', 'recentlyColumnClickRecord', 'recentlyLegendInfo', 'recentlyTooltipChangeRecord', 'renderer', 'scrollbar', 'seriesField', 'slider', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'annotations', 'appendPadding', 'autoFit', 'className', 'color', 'columnBackground', 'columnStyle', 'columnWidthRatio', 'connectedArea', 'conversionTag', 'data', 'dodgePadding', 'downloadTrigger', 'groupField', 'height', 'intervalPadding', 'isGroup', 'isPercent', 'isRange', 'isStack', 'key', 'label', 'legend', 'limitInPlot', 'loading_state', 'locale', 'marginRatio', 'maxColumnWidth', 'meta', 'minColumnWidth', 'padding', 'recentlyBarClickRecord', 'renderer', 'scrollbar', 'seriesField', 'slider', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
+        self.available_properties = ['id', 'annotations', 'appendPadding', 'autoFit', 'className', 'color', 'columnBackground', 'columnStyle', 'columnWidthRatio', 'connectedArea', 'conversionTag', 'data', 'dodgePadding', 'downloadTrigger', 'groupField', 'height', 'intervalPadding', 'isGroup', 'isPercent', 'isRange', 'isStack', 'key', 'label', 'legend', 'limitInPlot', 'loading_state', 'locale', 'marginRatio', 'maxColumnWidth', 'meta', 'minColumnWidth', 'padding', 'recentlyBarClickRecord', 'recentlyColumnClickRecord', 'recentlyLegendInfo', 'recentlyTooltipChangeRecord', 'renderer', 'scrollbar', 'seriesField', 'slider', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

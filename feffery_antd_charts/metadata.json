@@ -410,6 +410,63 @@
         "required": false,
         "description": ""
       },
+      "recentlyTooltipChangeRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "arrayOf",
+              "value": {
+                "name": "object"
+              },
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyPointClickRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "object",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyLegendInfo": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "triggerItemName": {
+              "name": "any",
+              "required": false
+            },
+            "items": {
+              "name": "arrayOf",
+              "value": {
+                "name": "object"
+              },
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
       "downloadTrigger": {
         "type": {
           "name": "string"
@@ -911,6 +968,63 @@
         "required": false,
         "description": ""
       },
+      "recentlyTooltipChangeRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "arrayOf",
+              "value": {
+                "name": "object"
+              },
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyBarClickRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "object",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyLegendInfo": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "triggerItemName": {
+              "name": "any",
+              "required": false
+            },
+            "items": {
+              "name": "arrayOf",
+              "value": {
+                "name": "object"
+              },
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
       "downloadTrigger": {
         "type": {
           "name": "string"
@@ -1023,10 +1137,18 @@
       },
       "yField": {
         "type": {
-          "name": "arrayOf",
-          "value": {
-            "name": "string"
-          }
+          "name": "union",
+          "value": [
+            {
+              "name": "arrayOf",
+              "value": {
+                "name": "string"
+              }
+            },
+            {
+              "name": "string"
+            }
+          ]
         },
         "required": true,
         "description": ""
@@ -1244,6 +1366,63 @@
         "type": {
           "name": "custom",
           "raw": "annotationsBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyTooltipChangeRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "arrayOf",
+              "value": {
+                "name": "object"
+              },
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyBoxClickRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "object",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyLegendInfo": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "triggerItemName": {
+              "name": "any",
+              "required": false
+            },
+            "items": {
+              "name": "arrayOf",
+              "value": {
+                "name": "object"
+              },
+              "required": false
+            }
+          }
         },
         "required": false,
         "description": ""
@@ -1533,6 +1712,43 @@
       "nodePaddingRatio": {
         "type": {
           "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyTooltipChangeRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "arrayOf",
+              "value": {
+                "name": "object"
+              },
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyAreaClickRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "object",
+              "required": false
+            }
+          }
         },
         "required": false,
         "description": ""
@@ -2042,6 +2258,63 @@
         "type": {
           "name": "custom",
           "raw": "annotationsBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyTooltipChangeRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "arrayOf",
+              "value": {
+                "name": "object"
+              },
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyColumnClickRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "object",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyLegendInfo": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "triggerItemName": {
+              "name": "any",
+              "required": false
+            },
+            "items": {
+              "name": "arrayOf",
+              "value": {
+                "name": "object"
+              },
+              "required": false
+            }
+          }
         },
         "required": false,
         "description": ""
@@ -2964,6 +3237,63 @@
         "required": false,
         "description": ""
       },
+      "recentlyTooltipChangeRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "arrayOf",
+              "value": {
+                "name": "object"
+              },
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyAreaClickRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "object",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyLegendInfo": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "triggerItemName": {
+              "name": "any",
+              "required": false
+            },
+            "items": {
+              "name": "arrayOf",
+              "value": {
+                "name": "object"
+              },
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
       "downloadTrigger": {
         "type": {
           "name": "string"
@@ -3272,6 +3602,63 @@
         "type": {
           "name": "custom",
           "raw": "annotationsBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyTooltipChangeRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "arrayOf",
+              "value": {
+                "name": "object"
+              },
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyAreaClickRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "object",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyLegendInfo": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "triggerItemName": {
+              "name": "any",
+              "required": false
+            },
+            "items": {
+              "name": "arrayOf",
+              "value": {
+                "name": "object"
+              },
+              "required": false
+            }
+          }
         },
         "required": false,
         "description": ""
@@ -3740,6 +4127,463 @@
             },
             "data": {
               "name": "object",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyLegendInfo": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "triggerItemName": {
+              "name": "any",
+              "required": false
+            },
+            "items": {
+              "name": "arrayOf",
+              "value": {
+                "name": "object"
+              },
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "downloadTrigger": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "'download-trigger'",
+          "computed": false
+        }
+      },
+      "theme": {
+        "type": {
+          "name": "custom",
+          "raw": "themeBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "loading_state": {
+        "type": {
+          "name": "shape",
+          "value": {
+            "is_loading": {
+              "name": "bool",
+              "description": "Determines if the component is loading or not",
+              "required": false
+            },
+            "prop_name": {
+              "name": "string",
+              "description": "Holds which property is loading",
+              "required": false
+            },
+            "component_name": {
+              "name": "string",
+              "description": "Holds the name of the component that is loading",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "setProps": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Dash-assigned callback that should be called to report property changes\r\nto Dash, to make them available for callbacks."
+      }
+    }
+  },
+  "src/lib/components/AntdLiquid.react.js": {
+    "description": "",
+    "displayName": "AntdLiquid",
+    "methods": [],
+    "props": {
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "key": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "style": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": ""
+      },
+      "percent": {
+        "type": {
+          "name": "number"
+        },
+        "required": true,
+        "description": ""
+      },
+      "radius": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "0.9",
+          "computed": false
+        }
+      },
+      "width": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "height": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "autoFit": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "padding": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "number"
+            },
+            {
+              "name": "arrayOf",
+              "value": {
+                "name": "number"
+              }
+            },
+            {
+              "name": "enum",
+              "value": [
+                {
+                  "value": "'auto'",
+                  "computed": false
+                }
+              ]
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "appendPadding": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "number"
+            },
+            {
+              "name": "arrayOf",
+              "value": {
+                "name": "number"
+              }
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "renderer": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "'canvas'",
+              "computed": false
+            },
+            {
+              "value": "'svg'",
+              "computed": false
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "locale": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "'zh-CN'",
+              "computed": false
+            },
+            {
+              "value": "'en-US'",
+              "computed": false
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "limitInPlot": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "liquidStyle": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "custom",
+              "raw": "areaBaseStyle"
+            },
+            {
+              "name": "exact",
+              "value": {
+                "func": {
+                  "name": "string",
+                  "required": false
+                }
+              }
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "shape": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "'circle'",
+              "computed": false
+            },
+            {
+              "value": "'diamond'",
+              "computed": false
+            },
+            {
+              "value": "'triangle'",
+              "computed": false
+            },
+            {
+              "value": "'pin'",
+              "computed": false
+            },
+            {
+              "value": "'rect'",
+              "computed": false
+            }
+          ]
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "'circle'",
+          "computed": false
+        }
+      },
+      "color": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "string"
+            },
+            {
+              "name": "arrayOf",
+              "value": {
+                "name": "string"
+              }
+            },
+            {
+              "name": "exact",
+              "value": {
+                "func": {
+                  "name": "string",
+                  "required": false
+                }
+              }
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "outline": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "border": {
+              "name": "number",
+              "required": false
+            },
+            "distance": {
+              "name": "number",
+              "required": false
+            },
+            "style": {
+              "name": "exact",
+              "value": {
+                "stroke": {
+                  "name": "string",
+                  "required": false
+                },
+                "strokeOpacity": {
+                  "name": "number",
+                  "required": false
+                }
+              },
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "wave": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "count": {
+              "name": "number",
+              "required": false
+            },
+            "length": {
+              "name": "number",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "statistic": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "title": {
+              "name": "union",
+              "value": [
+                {
+                  "name": "bool"
+                },
+                {
+                  "name": "exact",
+                  "value": {
+                    "style": {
+                      "name": "object",
+                      "required": false
+                    },
+                    "content": {
+                      "name": "string",
+                      "required": false
+                    },
+                    "formatter": {
+                      "name": "exact",
+                      "value": {
+                        "func": {
+                          "name": "string",
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "rotate": {
+                      "name": "number",
+                      "required": false
+                    },
+                    "offsetX": {
+                      "name": "number",
+                      "required": false
+                    },
+                    "offsetY": {
+                      "name": "number",
+                      "required": false
+                    }
+                  }
+                }
+              ],
+              "required": false
+            },
+            "content": {
+              "name": "union",
+              "value": [
+                {
+                  "name": "bool"
+                },
+                {
+                  "name": "exact",
+                  "value": {
+                    "style": {
+                      "name": "object",
+                      "required": false
+                    },
+                    "content": {
+                      "name": "string",
+                      "required": false
+                    },
+                    "formatter": {
+                      "name": "exact",
+                      "value": {
+                        "func": {
+                          "name": "string",
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "rotate": {
+                      "name": "number",
+                      "required": false
+                    },
+                    "offsetX": {
+                      "name": "number",
+                      "required": false
+                    },
+                    "offsetY": {
+                      "name": "number",
+                      "required": false
+                    }
+                  }
+                }
+              ],
               "required": false
             }
           }
@@ -4227,6 +5071,26 @@
         "required": false,
         "description": ""
       },
+      "recentlyTooltipChangeRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "arrayOf",
+              "value": {
+                "name": "object"
+              },
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
       "recentlySectorClickRecord": {
         "type": {
           "name": "exact",
@@ -4237,6 +5101,26 @@
             },
             "data": {
               "name": "object",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyLegendInfo": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "triggerItemName": {
+              "name": "any",
+              "required": false
+            },
+            "items": {
+              "name": "arrayOf",
+              "value": {
+                "name": "object"
+              },
               "required": false
             }
           }
@@ -4684,6 +5568,63 @@
         "required": false,
         "description": ""
       },
+      "recentlyTooltipChangeRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "arrayOf",
+              "value": {
+                "name": "object"
+              },
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyAreaClickRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "any",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyLegendInfo": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "triggerItemName": {
+              "name": "any",
+              "required": false
+            },
+            "items": {
+              "name": "arrayOf",
+              "value": {
+                "name": "object"
+              },
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
       "downloadTrigger": {
         "type": {
           "name": "string"
@@ -5027,6 +5968,63 @@
         "type": {
           "name": "custom",
           "raw": "annotationsBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyTooltipChangeRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "arrayOf",
+              "value": {
+                "name": "object"
+              },
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyAreaClickRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "any",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyLegendInfo": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "triggerItemName": {
+              "name": "any",
+              "required": false
+            },
+            "items": {
+              "name": "arrayOf",
+              "value": {
+                "name": "object"
+              },
+              "required": false
+            }
+          }
         },
         "required": false,
         "description": ""
@@ -5385,6 +6383,43 @@
       "nodeDraggable": {
         "type": {
           "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyTooltipChangeRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "arrayOf",
+              "value": {
+                "name": "object"
+              },
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyAreaClickRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "object",
+              "required": false
+            }
+          }
         },
         "required": false,
         "description": ""
@@ -5904,6 +6939,63 @@
         "required": false,
         "description": ""
       },
+      "recentlyTooltipChangeRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "arrayOf",
+              "value": {
+                "name": "object"
+              },
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyPointClickRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "object",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyLegendInfo": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "triggerItemName": {
+              "name": "any",
+              "required": false
+            },
+            "items": {
+              "name": "arrayOf",
+              "value": {
+                "name": "object"
+              },
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
       "downloadTrigger": {
         "type": {
           "name": "string"
@@ -6247,6 +7339,63 @@
         "type": {
           "name": "custom",
           "raw": "sliderBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyTooltipChangeRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "arrayOf",
+              "value": {
+                "name": "object"
+              },
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyAreaClickRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "any",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyLegendInfo": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "triggerItemName": {
+              "name": "any",
+              "required": false
+            },
+            "items": {
+              "name": "arrayOf",
+              "value": {
+                "name": "object"
+              },
+              "required": false
+            }
+          }
         },
         "required": false,
         "description": ""
@@ -6641,6 +7790,40 @@
         "required": false,
         "description": ""
       },
+      "recentlyTooltipChangeRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "any",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyAreaClickRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "any",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
       "downloadTrigger": {
         "type": {
           "name": "string"
@@ -7016,6 +8199,26 @@
         "required": false,
         "description": ""
       },
+      "recentlyTooltipChangeRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "arrayOf",
+              "value": {
+                "name": "object"
+              },
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
       "downloadTrigger": {
         "type": {
           "name": "string"
@@ -7362,6 +8565,63 @@
           "computed": false
         }
       },
+      "recentlyTooltipChangeRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "arrayOf",
+              "value": {
+                "name": "object"
+              },
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyAreaClickRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "object",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyLegendInfo": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "triggerItemName": {
+              "name": "any",
+              "required": false
+            },
+            "items": {
+              "name": "arrayOf",
+              "value": {
+                "name": "object"
+              },
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
       "downloadTrigger": {
         "type": {
           "name": "string"
@@ -7645,6 +8905,10 @@
                 "name": "number"
               },
               "required": false
+            },
+            "rotation": {
+              "name": "number",
+              "required": false
             }
           }
         },
@@ -7654,6 +8918,13 @@
       "imageMask": {
         "type": {
           "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "randomState": {
+        "type": {
+          "name": "number"
         },
         "required": false,
         "description": ""
@@ -7717,6 +8988,26 @@
         "required": false,
         "description": ""
       },
+      "recentlyTooltipChangeRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "arrayOf",
+              "value": {
+                "name": "object"
+              },
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
       "recentlyWordClickRecord": {
         "type": {
           "name": "exact",
@@ -7727,6 +9018,26 @@
             },
             "data": {
               "name": "object",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "recentlyLegendInfo": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "triggerItemName": {
+              "name": "any",
+              "required": false
+            },
+            "items": {
+              "name": "arrayOf",
+              "value": {
+                "name": "object"
+              },
               "required": false
             }
           }

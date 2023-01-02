@@ -112,6 +112,30 @@ Keyword arguments:
 
 - radius (number; optional)
 
+- recentlyAreaClickRecord (dict; optional)
+
+    `recentlyAreaClickRecord` is a dict with keys:
+
+    - data (boolean | number | string | dict | list; optional)
+
+    - timestamp (number; optional)
+
+- recentlyLegendInfo (dict; optional)
+
+    `recentlyLegendInfo` is a dict with keys:
+
+    - items (list of dicts; optional)
+
+    - triggerItemName (boolean | number | string | dict | list; optional)
+
+- recentlyTooltipChangeRecord (dict; optional)
+
+    `recentlyTooltipChangeRecord` is a dict with keys:
+
+    - data (list of dicts; optional)
+
+    - timestamp (number; optional)
+
 - renderer (string; optional)
 
 - seriesField (string; optional)
@@ -140,10 +164,10 @@ Keyword arguments:
     _namespace = 'feffery_antd_charts'
     _type = 'AntdRadar'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, xField=Component.REQUIRED, yField=Component.REQUIRED, seriesField=Component.UNDEFINED, smooth=Component.UNDEFINED, radius=Component.UNDEFINED, startAngle=Component.UNDEFINED, endAngle=Component.UNDEFINED, color=Component.UNDEFINED, lineStyle=Component.UNDEFINED, point=Component.UNDEFINED, area=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'annotations', 'appendPadding', 'area', 'autoFit', 'className', 'color', 'data', 'downloadTrigger', 'endAngle', 'height', 'key', 'label', 'legend', 'limitInPlot', 'lineStyle', 'loading_state', 'locale', 'meta', 'padding', 'point', 'radius', 'renderer', 'seriesField', 'smooth', 'startAngle', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
+    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, xField=Component.REQUIRED, yField=Component.REQUIRED, seriesField=Component.UNDEFINED, smooth=Component.UNDEFINED, radius=Component.UNDEFINED, startAngle=Component.UNDEFINED, endAngle=Component.UNDEFINED, color=Component.UNDEFINED, lineStyle=Component.UNDEFINED, point=Component.UNDEFINED, area=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, recentlyTooltipChangeRecord=Component.UNDEFINED, recentlyAreaClickRecord=Component.UNDEFINED, recentlyLegendInfo=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'annotations', 'appendPadding', 'area', 'autoFit', 'className', 'color', 'data', 'downloadTrigger', 'endAngle', 'height', 'key', 'label', 'legend', 'limitInPlot', 'lineStyle', 'loading_state', 'locale', 'meta', 'padding', 'point', 'radius', 'recentlyAreaClickRecord', 'recentlyLegendInfo', 'recentlyTooltipChangeRecord', 'renderer', 'seriesField', 'smooth', 'startAngle', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'annotations', 'appendPadding', 'area', 'autoFit', 'className', 'color', 'data', 'downloadTrigger', 'endAngle', 'height', 'key', 'label', 'legend', 'limitInPlot', 'lineStyle', 'loading_state', 'locale', 'meta', 'padding', 'point', 'radius', 'renderer', 'seriesField', 'smooth', 'startAngle', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
+        self.available_properties = ['id', 'annotations', 'appendPadding', 'area', 'autoFit', 'className', 'color', 'data', 'downloadTrigger', 'endAngle', 'height', 'key', 'label', 'legend', 'limitInPlot', 'lineStyle', 'loading_state', 'locale', 'meta', 'padding', 'point', 'radius', 'recentlyAreaClickRecord', 'recentlyLegendInfo', 'recentlyTooltipChangeRecord', 'renderer', 'seriesField', 'smooth', 'startAngle', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

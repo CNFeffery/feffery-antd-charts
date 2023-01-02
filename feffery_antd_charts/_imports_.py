@@ -7,6 +7,7 @@ from .AntdDualAxes import AntdDualAxes
 from .AntdFunnel import AntdFunnel
 from .AntdHistogram import AntdHistogram
 from .AntdLine import AntdLine
+from .AntdLiquid import AntdLiquid
 from .AntdPie import AntdPie
 from .AntdRadar import AntdRadar
 from .AntdRose import AntdRose
@@ -30,6 +31,7 @@ __all__ = [
     "AntdFunnel",
     "AntdHistogram",
     "AntdLine",
+    "AntdLiquid",
     "AntdPie",
     "AntdRadar",
     "AntdRose",
