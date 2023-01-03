@@ -354,7 +354,7 @@ const metaBasePropTypes = PropTypes.objectOf(
 // 定义坐标轴通用PropTypes模板
 // 参考文档：https://antv-g2plot.gitee.io/zh/docs/api/components/axis
 const axisBasePropTypes = PropTypes.oneOfType([
-    PropTypes.oneOf([false]),
+    PropTypes.bool,
     PropTypes.exact({
         // 默认false，设置是否将对应坐标轴渲染于画布顶层，从而避免部分图表坐标轴被图形遮挡
         top: PropTypes.bool,
@@ -508,7 +508,7 @@ const axisBasePropTypes = PropTypes.oneOfType([
 // 定义legend通用PropTypes模板，设置为false表示关闭legend
 // 参考文档：https://antv-g2plot.gitee.io/zh/docs/api/components/legend
 const legendBasePropTypes = PropTypes.oneOfType([
-    PropTypes.oneOf([false]),
+    PropTypes.bool,
     PropTypes.exact({
         // 设置图例位置，可选的有'top'、'top-left'、'top-right'、'left'、'left-top'、
         // 'left-bottom'、'right'、'right-top'、'right-bottom'、'bottom'、'bottom-left'及'bottom-right'
@@ -657,14 +657,40 @@ const legendBasePropTypes = PropTypes.oneOfType([
 
             // 设置图例滑轨滑块的样式
             style: baseStyle
-        })
+        }),
+
+        // 设置是否启用自定义图例模式，默认为false
+        // 设置为true时需配合items属性使用
+        custom: PropTypes.bool,
+
+        // 适用于分类图例，用于自定义图例项内容
+        items: PropTypes.arrayOf(
+            PropTypes.exact({
+                // 图例名称，必填
+                name: PropTypes.string.isRequired,
+                // 图例值
+                value: PropTypes.string.isRequired,
+                // 配置图形标记
+                marker: PropTypes.exact({
+                    // 设置图例图形类型
+                    // 可选的有"circle" | "square" | "line" | "diamond" | "triangle" | "triangle-down" | "hexagon" | "bowtie" | "cross" | "tick" | "plus" | "hyphen"
+                    symbol: PropTypes.oneOf([
+                        "circle", "square", "line", "diamond", "triangle", "triangle-down", "hexagon", "bowtie", "cross", "tick", "plus", "hyphen"
+                    ]),
+                    // 设置图例图形样式
+                    style: baseStyle,
+                    // 设置当前图例name与其后图形的间距
+                    spacing: PropTypes.number
+                })
+            })
+        )
     })
 ])
 
 // 定义label通用PropTypes模板
 // 参考文档：https://antv-g2plot.gitee.io/zh/docs/api/components/label
 const labelBasePropTypes = PropTypes.oneOfType([
-    PropTypes.oneOf([false]),
+    PropTypes.bool,
     PropTypes.exact({
 
         // 声明特殊的label类型，典型如饼图label支持'inner'、'outer'、'spider'
@@ -725,7 +751,7 @@ const labelBasePropTypes = PropTypes.oneOfType([
 // 定义tooltip通用PropTypes模板
 // 参考文档：https://antv-g2plot.gitee.io/zh/docs/api/components/tooltip
 const tooltipBasePropTypes = PropTypes.oneOfType([
-    PropTypes.oneOf([false]),
+    PropTypes.bool,
     PropTypes.exact({
         // 设置需要在tooltip中显示的字段，不同的图表有不同的默认字段列表
         // 可配合formatter做进一步配置
@@ -794,7 +820,10 @@ const tooltipBasePropTypes = PropTypes.oneOfType([
                 func: PropTypes.string
             }),
             PropTypes.any
-        ])
+        ]),
+
+        // true 表示合并当前点对应的所有数据并展示，false 表示只展示离当前点最逼近的数据内容
+        shared: PropTypes.bool
     })
 ])
 

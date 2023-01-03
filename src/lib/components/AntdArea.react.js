@@ -195,7 +195,6 @@ export default class AntdArea extends Component {
             config.point.style = eval(point.style.func)
         }
 
-
         // x轴样式
         config.xAxis = cloneDeep(xAxis)
         // 若xAxis.label.formatter具有自定义函数func属性
@@ -209,7 +208,6 @@ export default class AntdArea extends Component {
         if (yAxis?.label?.formatter?.func) {
             config.yAxis.label.formatter = eval(yAxis.label.formatter.func)
         }
-
 
         // 图例样式
         config.legend = cloneDeep(legend)
