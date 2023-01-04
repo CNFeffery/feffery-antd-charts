@@ -1,10 +1,12 @@
 from .AntdArea import AntdArea
 from .AntdBar import AntdBar
 from .AntdBox import AntdBox
+from .AntdBullet import AntdBullet
 from .AntdChord import AntdChord
 from .AntdColumn import AntdColumn
 from .AntdDualAxes import AntdDualAxes
 from .AntdFunnel import AntdFunnel
+from .AntdGauge import AntdGauge
 from .AntdHistogram import AntdHistogram
 from .AntdLine import AntdLine
 from .AntdLiquid import AntdLiquid
@@ -25,10 +27,12 @@ __all__ = [
     "AntdArea",
     "AntdBar",
     "AntdBox",
+    "AntdBullet",
     "AntdChord",
     "AntdColumn",
     "AntdDualAxes",
     "AntdFunnel",
+    "AntdGauge",
     "AntdHistogram",
     "AntdLine",
     "AntdLiquid",

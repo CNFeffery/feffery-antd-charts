@@ -1,25 +1,170 @@
+/* eslint-disable no-magic-numbers */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undefined */
 /* eslint-disable no-else-return */
 /* eslint-disable no-eval */
 /* eslint-disable prefer-const */
-import { Liquid } from '@ant-design/plots';
+import { Gauge, G2 } from '@ant-design/plots';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { isUndefined, omitBy, intersection, cloneDeep } from 'lodash';
 import {
-    areaBaseStyle,
+    baseStyle,
+    textBaseStyle,
+    axisBasePropTypes,
     themeBasePropTypes
 } from './BasePropTypes.react';
 import { difference } from './utils';
+
+// 自定义指示器shape
+const { registerShape, Util } = G2;
+
+registerShape('point', 'cursor-gauge-indicator', {
+    draw(cfg, container) {
+        const { indicator, defaultColor } = cfg.customInfo;
+        const { pointer } = indicator;
+        const group = container.addGroup();
+
+        const center = this.parsePoint({
+            x: 0,
+            y: 0,
+        });
+
+        if (pointer) {
+            const { startAngle, endAngle } = Util.getAngle(cfg, this.coordinate);
+            const radius = this.coordinate.getRadius();
+            const midAngle = (startAngle + endAngle) / 2;
+            const { x: x1, y: y1 } = Util.polarToCartesian(center.x, center.y, radius / 15, midAngle + 1 / Math.PI);
+            const { x: x2, y: y2 } = Util.polarToCartesian(center.x, center.y, radius / 15, midAngle - 1 / Math.PI);
+            const { x, y } = Util.polarToCartesian(center.x, center.y, radius * 0.65, midAngle);
+            const path = [['M', center.x, center.y], ['L', x1, y1], ['L', x, y], ['L', x2, y2], ['Z']];
+
+            group.addShape('path', {
+                name: 'pointer',
+                attrs: {
+                    path,
+                    fill: defaultColor,
+                    ...pointer.style,
+                },
+            });
+        }
+
+        return group;
+    },
+});
+
+registerShape('point', 'ring-cursor-gauge-indicator', {
+    draw(cfg, container) {
+        const { indicator, defaultColor } = cfg.customInfo;
+        const { pointer, pin } = indicator;
+        const group = container.addGroup();
+
+        const center = this.parsePoint({
+            x: 0,
+            y: 0,
+        });
+
+        if (pointer) {
+            const { startAngle, endAngle } = Util.getAngle(cfg, this.coordinate);
+            const radius = this.coordinate.getRadius();
+            const midAngle = (startAngle + endAngle) / 2;
+            const { x: x1, y: y1 } = Util.polarToCartesian(center.x, center.y, radius / 15, midAngle + 1 / Math.PI);
+            const { x: x2, y: y2 } = Util.polarToCartesian(center.x, center.y, radius / 15, midAngle - 1 / Math.PI);
+            const { x, y } = Util.polarToCartesian(center.x, center.y, radius * 0.65, midAngle);
+            const { x: x0, y: y0 } = Util.polarToCartesian(center.x, center.y, radius * 0.1, midAngle + Math.PI);
+            const path = [['M', x0, y0], ['L', x1, y1], ['L', x, y], ['L', x2, y2], ['Z']];
+
+            group.addShape('path', {
+                name: 'pointer',
+                attrs: {
+                    path,
+                    fill: defaultColor,
+                    ...pointer.style,
+                },
+            });
+        }
+
+        if (pin) {
+            const pinStyle = pin.style || {};
+            const { lineWidth = 2, fill = defaultColor, stroke = defaultColor } = pinStyle;
+            const r = 6;
+            group.addShape('circle', {
+                name: 'pin-outer',
+                attrs: {
+                    x: center.x,
+                    y: center.y,
+                    ...pin.style,
+                    fill: 'transparent',
+                    r: r * 1.5,
+                    lineWidth,
+                    stroke: stroke,
+                },
+            });
+            group.addShape('circle', {
+                name: 'pin-inner',
+                attrs: {
+                    x: center.x,
+                    y: center.y,
+                    r,
+                    stroke: 'transparent',
+                    fill,
+                },
+            });
+        }
+
+        return group;
+    },
+});
+
+registerShape('point', 'simple-gauge-indicator', {
+    draw(cfg, container) {
+        const { indicator, defaultColor } = cfg.customInfo;
+        const { pointer } = indicator;
+        const group = container.addGroup()
+
+        const center = this.parsePoint({
+            x: 0,
+            y: 0,
+        });
+
+        if (pointer) {
+            const { startAngle, endAngle } = Util.getAngle(cfg, this.coordinate);
+            const radius = this.coordinate.getRadius();
+            const midAngle = (startAngle + endAngle) / 2;
+            const { x: x1, y: y1 } = Util.polarToCartesian(center.x, center.y, radius * 0.52, midAngle + Math.PI / 30);
+            const { x: x2, y: y2 } = Util.polarToCartesian(center.x, center.y, radius * 0.52, midAngle - Math.PI / 30);
+            const { x, y } = Util.polarToCartesian(center.x, center.y, radius * 0.6, midAngle);
+            const path = [['M', x1, y1], ['L', x, y], ['L', x2, y2], ['Z']];
+
+            group.addShape('path', {
+                name: 'pointer',
+                attrs: {
+                    path,
+                    fill: defaultColor,
+                    ...pointer.style,
+                },
+            });
+        }
+
+        return group;
+    },
+});
+
+// 指针名称 -> 指针id映射
+const name2indicator = new Map([
+    ['default', 'gauge-indicator'],
+    ['cursor', 'cursor-gauge-indicator'],
+    ['ring-cursor', 'ring-cursor-gauge-indicator'],
+    ['simple', 'simple-gauge-indicator'],
+])
 
 // 定义不触发重绘的参数数组
 const preventUpdateProps = [
     'loading_state'
 ];
 
-// 定义水波图组件AntdLiquid，部分API参数参考https://charts.ant.design/zh/examples/progress-plots/liquid#basic
-export default class AntdLiquid extends Component {
+// 定义仪表盘AntdGauge，部分API参数参考https://charts.ant.design/zh/examples/progress-plots/gauge#basic
+export default class AntdGauge extends Component {
 
     constructor(props) {
         super(props);
@@ -73,6 +218,9 @@ export default class AntdLiquid extends Component {
             style,
             percent,
             radius,
+            innerRadius,
+            startAngle,
+            endAngle,
             width,
             height,
             autoFit,
@@ -81,11 +229,12 @@ export default class AntdLiquid extends Component {
             renderer,
             locale,
             limitInPlot,
-            liquidStyle,
-            shape,
-            color,
-            outline,
-            wave,
+            range,
+            type,
+            meter,
+            gaugeStyle,
+            axis,
+            indicator,
             statistic,
             theme,
             setProps,
@@ -100,6 +249,9 @@ export default class AntdLiquid extends Component {
             ...config,
             percent,
             radius,
+            innerRadius,
+            startAngle,
+            endAngle,
             width,
             height,
             autoFit,
@@ -108,25 +260,30 @@ export default class AntdLiquid extends Component {
             renderer,
             locale,
             limitInPlot,
-            shape,
-            outline,
-            wave,
+            range,
+            type,
+            meter,
+            indicator,
             theme
+        }
+        // 映射指示器类型
+        if (config.indicator?.shape) {
+            config.indicator.shape = name2indicator.get(config.indicator.shape)
         }
 
         // 进阶参数
-        // 水波图样式
-        config.liquidStyle = cloneDeep(liquidStyle)
-        // 若liquidStyle具有自定义函数func属性
-        if (liquidStyle?.func) {
-            config.liquidStyle = eval(liquidStyle.func)
+        // 仪表盘样式
+        config.gaugeStyle = cloneDeep(gaugeStyle)
+        // 若gaugeStyle具有自定义函数func属性
+        if (gaugeStyle?.func) {
+            config.gaugeStyle = eval(gaugeStyle.func)
         }
 
-        // 色彩样式
-        config.color = cloneDeep(color)
-        // 若color具有自定义函数func属性
-        if (color?.func) {
-            config.color = eval(color.func)
+        // 坐标轴样式
+        config.axis = cloneDeep(axis)
+        // 若axis.label.formatter具有自定义函数func属性
+        if (axis?.label?.formatter?.func) {
+            config.axis.label.formatter = eval(axis.label.formatter.func)
         }
 
         // 统计值样式
@@ -147,7 +304,7 @@ export default class AntdLiquid extends Component {
         // 利用lodash移除所有值为undefined的属性
         config = omitBy(config, isUndefined)
 
-        return <Liquid
+        return <Gauge
             id={id}
             key={key}
             className={className}
@@ -161,7 +318,7 @@ export default class AntdLiquid extends Component {
 }
 
 // 定义参数或属性
-AntdLiquid.propTypes = {
+AntdGauge.propTypes = {
     // 部件id
     id: PropTypes.string,
 
@@ -174,11 +331,20 @@ AntdLiquid.propTypes = {
     // 自定义css字典
     style: PropTypes.object,
 
-    // 设置当前水波图百分比，必填
+    // 设置当前仪表盘百分比，必填
     percent: PropTypes.number.isRequired,
 
-    // 设置水波图相对画布的外环半径大小，取值应在0~1之间，默认为0.9
+    // 设置仪表盘相对画布的外环半径大小，取值应在0~1之间，默认为0.95
     radius: PropTypes.number,
+
+    // 设置仪表盘相对画布的内环半径大小，取值应在0~1之间，默认为0.9
+    innerRadius: PropTypes.number,
+
+    // 设置仪表盘的开始角度，弧度制，默认为(-7 / 6) * pi
+    startAngle: PropTypes.number,
+
+    // 设置仪表盘的终止角度，弧度制，默认为(1 / 6) * pi
+    endAngle: PropTypes.number,
 
     // 定义图表容器像素宽度，默认为400
     width: PropTypes.number,
@@ -211,63 +377,58 @@ AntdLiquid.propTypes = {
     // 设置是否对超出绘图区域的几何元素进行裁剪
     limitInPlot: PropTypes.bool,
 
-    // 配置水波图样式
-    liquidStyle: PropTypes.oneOfType([
-        areaBaseStyle,
+    // 设置仪表盘辅助圆弧样式
+    range: PropTypes.exact({
+        // 设置辅助圆弧显示刻度的数值数组
+        ticks: PropTypes.arrayOf(PropTypes.number),
+        // 设置辅助圆弧的背景色
+        color: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.arrayOf(PropTypes.string)
+        ]),
+        // 设置辅助圆弧的像素宽度，不设置时圆弧宽度由radius、innerRadius参数按比例控制
+        width: PropTypes.number
+    }),
+
+    // 设置仪表盘类型，可选项为'meter'
+    type: PropTypes.oneOf(['meter']),
+
+    // 当type='meter'时用于进行仪表盘样式的具体配置
+    meter: PropTypes.exact({
+        // 仪表盘总步数，默认为50
+        steps: PropTypes.number,
+        // 设置分步刻度与间距之间的宽度比例关系，默认为0.5
+        stepRatio: PropTypes.number
+    }),
+
+    // 配置仪表盘样式
+    gaugeStyle: PropTypes.oneOfType([
+        baseStyle,
         PropTypes.exact({
             // 回调函数
             func: PropTypes.string
         })
     ]),
 
-    // 设置水波图形状类型，可选的有'circle'、'diamond'、'triangle'、'pin'
-    // 'rect'，默认为'circle'
-    shape: PropTypes.oneOf([
-        'circle', 'diamond', 'triangle', 'pin', 'rect'
-    ]),
+    // 设置坐标轴相关属性
+    axis: axisBasePropTypes,
 
-    // 用于手动设置调色方案，接受css中合法的所有颜色值，当传入单个字符串时，所有折线沿用此颜色值
-    // 当传入数组时，会视作调色盘方案对seriesField区分的不同系列进行着色
-    // 当传入对象时，会解析出其'func'属性对应的字符串，解析为函数，以支持更为自由的seriesField->色彩映射
-    color: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.arrayOf(PropTypes.string),
-        PropTypes.exact({
-            // 传入字符串形式的js函数体源码，例如
-            // (ref) => {
-            //     if (ref.series === '系列一'){
-            //         return 'red'
-            //     }
-            //     return 'blue'
-            // }
-            func: PropTypes.string
-        })
-    ]),
+    // 配置仪表盘指示器样式
+    indicator: PropTypes.exact({
+        // 配置指示器指针样式
+        pointer: PropTypes.exact({
+            style: baseStyle
+        }),
+        // 配置指示器圆盘样式
+        pin: PropTypes.exact({
+            style: baseStyle
+        }),
 
-    // 配置水波图外轮廓
-    outline: PropTypes.exact({
-        // 设置水波图外轮廓像素宽度，默认为2
-        border: PropTypes.number,
-        // 设置水波图外轮廓与内部波形之间的像素间距，默认为0
-        distance: PropTypes.number,
-        // 设置水波图外轮廓样式
-        style: PropTypes.exact({
-            // 设置外轮廓填充色，默认为与color一致
-            stroke: PropTypes.string,
-            // 设置外轮廓填充透明度
-            strokeOpacity: PropTypes.number
-        })
+        // 配置指示器指针类型，可选的有'default'、'cursor'、'ring-cursor'、'simple'
+        shape: PropTypes.oneOf(['default', 'cursor', 'ring-cursor', 'simple'])
     }),
 
-    // 配置水波图的波形
-    wave: PropTypes.exact({
-        // 设置水波的数量，默认为3
-        count: PropTypes.number,
-        // 设置水波的像素波长度，默认为192
-        length: PropTypes.number
-    }),
-
-    // 配置水波图中心文本内容
+    // 配置仪表盘中心文本内容
     statistic: PropTypes.exact({
         // 配置统计内容标题，设置为false时隐藏标题
         title: PropTypes.oneOfType([
@@ -336,6 +497,7 @@ AntdLiquid.propTypes = {
                 offsetY: PropTypes.number
             })
         ]),
+        style: textBaseStyle
     }),
 
     // 用于在回调中传入uuid、ulid之类的唯一标识，来主动下载当前图表为png格式图片
@@ -367,8 +529,7 @@ AntdLiquid.propTypes = {
 };
 
 // 设置默认参数
-AntdLiquid.defaultProps = {
-    radius: 0.9,
-    shape: 'circle',
+AntdGauge.defaultProps = {
+    radius: 0.95,
     downloadTrigger: 'download-trigger'
 }

@@ -120,6 +120,12 @@ Keyword arguments:
 
         - content (string; optional)
 
+        - customHtml (dict; optional)
+
+            `customHtml` is a dict with keys:
+
+            - func (string; optional)
+
         - formatter (dict; optional)
 
             `formatter` is a dict with keys:
@@ -139,6 +145,12 @@ Keyword arguments:
         `title` is a boolean | dict with keys:
 
         - content (string; optional)
+
+        - customHtml (dict; optional)
+
+            `customHtml` is a dict with keys:
+
+            - func (string; optional)
 
         - formatter (dict; optional)
 

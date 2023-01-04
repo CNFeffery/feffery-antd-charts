@@ -1,6 +1,6 @@
 Package: fefferyAntdCharts
 Title: Best implementation of Ant Design Charts in Plotly Dash.
-Version: 0.0.1-rc14
+Version: 0.0.1-rc15
 Description: Best implementation of Ant Design Charts in Plotly Dash.
 Depends: R (>= 3.0.2)
 Imports: 

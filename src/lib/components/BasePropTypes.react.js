@@ -68,6 +68,9 @@ const baseStyle = PropTypes.exact({
 
     lineOpacity: PropTypes.number,
 
+    // 设置线末端样式，可选的有'butt'、'round'、'square'
+    lineCap: PropTypes.string,
+
     opacity: PropTypes.number,
 
     // 设置阴影填充色彩，常规单一色彩格式同css色彩

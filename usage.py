@@ -84,6 +84,16 @@ app.layout = html.Div(
     html.Div(
         [
             html.Div(
+                fact.AntdPie(
+                    
+                ),
+                style={
+                    'height': '600px',
+                    'padding': '25px'
+                }
+            ),
+
+            html.Div(
                 fact.AntdLiquid(
                     percent=0.25,
                     outline={

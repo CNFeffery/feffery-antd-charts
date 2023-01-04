@@ -1479,6 +1479,522 @@
       }
     }
   },
+  "src/lib/components/AntdBullet.react.js": {
+    "description": "",
+    "displayName": "AntdBullet",
+    "methods": [],
+    "props": {
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "key": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "style": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": ""
+      },
+      "data": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "object"
+          }
+        },
+        "required": true,
+        "description": ""
+      },
+      "meta": {
+        "type": {
+          "name": "custom",
+          "raw": "metaBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "measureField": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": ""
+      },
+      "rangeField": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": ""
+      },
+      "targetField": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": ""
+      },
+      "xField": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "xAxis": {
+        "type": {
+          "name": "custom",
+          "raw": "axisBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "yAxis": {
+        "type": {
+          "name": "custom",
+          "raw": "axisBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "width": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "height": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "autoFit": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "padding": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "number"
+            },
+            {
+              "name": "arrayOf",
+              "value": {
+                "name": "number"
+              }
+            },
+            {
+              "name": "enum",
+              "value": [
+                {
+                  "value": "'auto'",
+                  "computed": false
+                }
+              ]
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "appendPadding": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "number"
+            },
+            {
+              "name": "arrayOf",
+              "value": {
+                "name": "number"
+              }
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "renderer": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "'canvas'",
+              "computed": false
+            },
+            {
+              "value": "'svg'",
+              "computed": false
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "locale": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "'zh-CN'",
+              "computed": false
+            },
+            {
+              "value": "'en-US'",
+              "computed": false
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "limitInPlot": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "layout": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "'horizontal'",
+              "computed": false
+            },
+            {
+              "value": "'vertical'",
+              "computed": false
+            }
+          ]
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "'horizontal'",
+          "computed": false
+        }
+      },
+      "color": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "range": {
+              "name": "union",
+              "value": [
+                {
+                  "name": "string"
+                },
+                {
+                  "name": "arrayOf",
+                  "value": {
+                    "name": "string"
+                  }
+                }
+              ],
+              "required": false
+            },
+            "measure": {
+              "name": "union",
+              "value": [
+                {
+                  "name": "string"
+                },
+                {
+                  "name": "arrayOf",
+                  "value": {
+                    "name": "string"
+                  }
+                }
+              ],
+              "required": false
+            },
+            "target": {
+              "name": "union",
+              "value": [
+                {
+                  "name": "string"
+                },
+                {
+                  "name": "arrayOf",
+                  "value": {
+                    "name": "string"
+                  }
+                }
+              ],
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "size": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "range": {
+              "name": "union",
+              "value": [
+                {
+                  "name": "number"
+                },
+                {
+                  "name": "arrayOf",
+                  "value": {
+                    "name": "number"
+                  }
+                },
+                {
+                  "name": "exact",
+                  "value": {
+                    "func": {
+                      "name": "string",
+                      "required": false
+                    }
+                  }
+                }
+              ],
+              "required": false
+            },
+            "measure": {
+              "name": "union",
+              "value": [
+                {
+                  "name": "number"
+                },
+                {
+                  "name": "arrayOf",
+                  "value": {
+                    "name": "number"
+                  }
+                },
+                {
+                  "name": "exact",
+                  "value": {
+                    "func": {
+                      "name": "string",
+                      "required": false
+                    }
+                  }
+                }
+              ],
+              "required": false
+            },
+            "target": {
+              "name": "union",
+              "value": [
+                {
+                  "name": "number"
+                },
+                {
+                  "name": "arrayOf",
+                  "value": {
+                    "name": "number"
+                  }
+                },
+                {
+                  "name": "exact",
+                  "value": {
+                    "func": {
+                      "name": "string",
+                      "required": false
+                    }
+                  }
+                }
+              ],
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "bulletStyle": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "range": {
+              "name": "union",
+              "value": [
+                {
+                  "name": "custom",
+                  "raw": "areaBaseStyle"
+                },
+                {
+                  "name": "exact",
+                  "value": {
+                    "func": {
+                      "name": "string",
+                      "required": false
+                    }
+                  }
+                }
+              ],
+              "required": false
+            },
+            "measure": {
+              "name": "union",
+              "value": [
+                {
+                  "name": "custom",
+                  "raw": "areaBaseStyle"
+                },
+                {
+                  "name": "exact",
+                  "value": {
+                    "func": {
+                      "name": "string",
+                      "required": false
+                    }
+                  }
+                }
+              ],
+              "required": false
+            },
+            "target": {
+              "name": "union",
+              "value": [
+                {
+                  "name": "custom",
+                  "raw": "areaBaseStyle"
+                },
+                {
+                  "name": "exact",
+                  "value": {
+                    "func": {
+                      "name": "string",
+                      "required": false
+                    }
+                  }
+                }
+              ],
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "label": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "range": {
+              "name": "custom",
+              "raw": "labelBasePropTypes",
+              "required": false
+            },
+            "measure": {
+              "name": "custom",
+              "raw": "labelBasePropTypes",
+              "required": false
+            },
+            "target": {
+              "name": "custom",
+              "raw": "labelBasePropTypes",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "tooltip": {
+        "type": {
+          "name": "custom",
+          "raw": "tooltipBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "legend": {
+        "type": {
+          "name": "custom",
+          "raw": "legendBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "downloadTrigger": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "'download-trigger'",
+          "computed": false
+        }
+      },
+      "theme": {
+        "type": {
+          "name": "custom",
+          "raw": "themeBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "loading_state": {
+        "type": {
+          "name": "shape",
+          "value": {
+            "is_loading": {
+              "name": "bool",
+              "description": "Determines if the component is loading or not",
+              "required": false
+            },
+            "prop_name": {
+              "name": "string",
+              "description": "Holds which property is loading",
+              "required": false
+            },
+            "component_name": {
+              "name": "string",
+              "description": "Holds the name of the component that is loading",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "setProps": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Dash-assigned callback that should be called to report property changes\r\nto Dash, to make them available for callbacks."
+      }
+    }
+  },
   "src/lib/components/AntdChord.react.js": {
     "description": "",
     "displayName": "AntdChord",
@@ -3346,6 +3862,507 @@
       }
     }
   },
+  "src/lib/components/AntdGauge.react.js": {
+    "description": "",
+    "displayName": "AntdGauge",
+    "methods": [],
+    "props": {
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "key": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "style": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": ""
+      },
+      "percent": {
+        "type": {
+          "name": "number"
+        },
+        "required": true,
+        "description": ""
+      },
+      "radius": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "0.95",
+          "computed": false
+        }
+      },
+      "innerRadius": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "startAngle": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "endAngle": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "width": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "height": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "autoFit": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "padding": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "number"
+            },
+            {
+              "name": "arrayOf",
+              "value": {
+                "name": "number"
+              }
+            },
+            {
+              "name": "enum",
+              "value": [
+                {
+                  "value": "'auto'",
+                  "computed": false
+                }
+              ]
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "appendPadding": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "number"
+            },
+            {
+              "name": "arrayOf",
+              "value": {
+                "name": "number"
+              }
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "renderer": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "'canvas'",
+              "computed": false
+            },
+            {
+              "value": "'svg'",
+              "computed": false
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "locale": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "'zh-CN'",
+              "computed": false
+            },
+            {
+              "value": "'en-US'",
+              "computed": false
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "limitInPlot": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "range": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "ticks": {
+              "name": "arrayOf",
+              "value": {
+                "name": "number"
+              },
+              "required": false
+            },
+            "color": {
+              "name": "union",
+              "value": [
+                {
+                  "name": "string"
+                },
+                {
+                  "name": "arrayOf",
+                  "value": {
+                    "name": "string"
+                  }
+                }
+              ],
+              "required": false
+            },
+            "width": {
+              "name": "number",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "type": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "'meter'",
+              "computed": false
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "meter": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "steps": {
+              "name": "number",
+              "required": false
+            },
+            "stepRatio": {
+              "name": "number",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "gaugeStyle": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "custom",
+              "raw": "baseStyle"
+            },
+            {
+              "name": "exact",
+              "value": {
+                "func": {
+                  "name": "string",
+                  "required": false
+                }
+              }
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "axis": {
+        "type": {
+          "name": "custom",
+          "raw": "axisBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "indicator": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "pointer": {
+              "name": "exact",
+              "value": {
+                "style": {
+                  "name": "custom",
+                  "raw": "baseStyle",
+                  "required": false
+                }
+              },
+              "required": false
+            },
+            "pin": {
+              "name": "exact",
+              "value": {
+                "style": {
+                  "name": "custom",
+                  "raw": "baseStyle",
+                  "required": false
+                }
+              },
+              "required": false
+            },
+            "shape": {
+              "name": "enum",
+              "value": [
+                {
+                  "value": "'default'",
+                  "computed": false
+                },
+                {
+                  "value": "'cursor'",
+                  "computed": false
+                },
+                {
+                  "value": "'ring-cursor'",
+                  "computed": false
+                },
+                {
+                  "value": "'simple'",
+                  "computed": false
+                }
+              ],
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "statistic": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "title": {
+              "name": "union",
+              "value": [
+                {
+                  "name": "bool"
+                },
+                {
+                  "name": "exact",
+                  "value": {
+                    "style": {
+                      "name": "object",
+                      "required": false
+                    },
+                    "content": {
+                      "name": "string",
+                      "required": false
+                    },
+                    "formatter": {
+                      "name": "exact",
+                      "value": {
+                        "func": {
+                          "name": "string",
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "customHtml": {
+                      "name": "exact",
+                      "value": {
+                        "func": {
+                          "name": "string",
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "rotate": {
+                      "name": "number",
+                      "required": false
+                    },
+                    "offsetX": {
+                      "name": "number",
+                      "required": false
+                    },
+                    "offsetY": {
+                      "name": "number",
+                      "required": false
+                    }
+                  }
+                }
+              ],
+              "required": false
+            },
+            "content": {
+              "name": "union",
+              "value": [
+                {
+                  "name": "bool"
+                },
+                {
+                  "name": "exact",
+                  "value": {
+                    "style": {
+                      "name": "object",
+                      "required": false
+                    },
+                    "content": {
+                      "name": "string",
+                      "required": false
+                    },
+                    "formatter": {
+                      "name": "exact",
+                      "value": {
+                        "func": {
+                          "name": "string",
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "customHtml": {
+                      "name": "exact",
+                      "value": {
+                        "func": {
+                          "name": "string",
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "rotate": {
+                      "name": "number",
+                      "required": false
+                    },
+                    "offsetX": {
+                      "name": "number",
+                      "required": false
+                    },
+                    "offsetY": {
+                      "name": "number",
+                      "required": false
+                    }
+                  }
+                }
+              ],
+              "required": false
+            },
+            "style": {
+              "name": "custom",
+              "raw": "textBaseStyle",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "downloadTrigger": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "'download-trigger'",
+          "computed": false
+        }
+      },
+      "theme": {
+        "type": {
+          "name": "custom",
+          "raw": "themeBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "loading_state": {
+        "type": {
+          "name": "shape",
+          "value": {
+            "is_loading": {
+              "name": "bool",
+              "description": "Determines if the component is loading or not",
+              "required": false
+            },
+            "prop_name": {
+              "name": "string",
+              "description": "Holds which property is loading",
+              "required": false
+            },
+            "component_name": {
+              "name": "string",
+              "description": "Holds the name of the component that is loading",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "setProps": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Dash-assigned callback that should be called to report property changes\r\nto Dash, to make them available for callbacks."
+      }
+    }
+  },
   "src/lib/components/AntdHistogram.react.js": {
     "description": "",
     "displayName": "AntdHistogram",
@@ -4525,6 +5542,16 @@
                       },
                       "required": false
                     },
+                    "customHtml": {
+                      "name": "exact",
+                      "value": {
+                        "func": {
+                          "name": "string",
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
                     "rotate": {
                       "name": "number",
                       "required": false
@@ -4560,6 +5587,16 @@
                       "required": false
                     },
                     "formatter": {
+                      "name": "exact",
+                      "value": {
+                        "func": {
+                          "name": "string",
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "customHtml": {
                       "name": "exact",
                       "value": {
                         "func": {
@@ -4794,6 +5831,16 @@
                       },
                       "required": false
                     },
+                    "customHtml": {
+                      "name": "exact",
+                      "value": {
+                        "func": {
+                          "name": "string",
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
                     "rotate": {
                       "name": "number",
                       "required": false
@@ -4829,6 +5876,16 @@
                       "required": false
                     },
                     "formatter": {
+                      "name": "exact",
+                      "value": {
+                        "func": {
+                          "name": "string",
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "customHtml": {
                       "name": "exact",
                       "value": {
                         "func": {

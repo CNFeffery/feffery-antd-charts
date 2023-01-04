@@ -160,10 +160,16 @@ export default class AntdPie extends Component {
         // 统计值样式
         config.statistic = cloneDeep(statistic)
         if (statistic?.title?.formatter?.func) {
-            config.title.formatter = eval(statistic.title.formatter.func)
+            config.statistic.title.formatter = eval(statistic.title.formatter.func)
+        }
+        if (statistic?.title?.customHtml?.func) {
+            config.statistic.title.customHtml = eval(statistic.title.customHtml.func)
         }
         if (statistic?.content?.formatter?.func) {
-            config.content.formatter = eval(statistic.content.formatter.func)
+            config.statistic.content.formatter = eval(statistic.content.formatter.func)
+        }
+        if (statistic?.content?.customHtml?.func) {
+            config.statistic.content.customHtml = eval(statistic.content.customHtml.func)
         }
 
         // 图例样式
@@ -327,6 +333,13 @@ AntdPie.propTypes = {
                     func: PropTypes.string
                 }),
 
+                // 回调自定义标题文本信息，优先级最高
+                // 格式：(container, view, datum, data) => string
+                customHtml: PropTypes.exact({
+                    // 回调模式
+                    func: PropTypes.string
+                }),
+
                 // 设置标题的旋转角度
                 rotate: PropTypes.number,
 
@@ -350,6 +363,13 @@ AntdPie.propTypes = {
 
                 // 回调自定义主体信息文本信息
                 formatter: PropTypes.exact({
+                    // 回调模式
+                    func: PropTypes.string
+                }),
+
+                // 回调自定义标题文本信息，优先级最高
+                // 格式：(container, view, datum, data) => string
+                customHtml: PropTypes.exact({
                     // 回调模式
                     func: PropTypes.string
                 }),

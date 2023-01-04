@@ -58,21 +58,27 @@ Those elements have the following types:
 - `startAngle` (Real; optional)
 - `statistic` (optional): . statistic has the following type: lists containing elements 'title', 'content'.
 Those elements have the following types:
-  - `title` (optional): . title has the following type: Bool | lists containing elements 'style', 'content', 'formatter', 'rotate', 'offsetX', 'offsetY'.
+  - `title` (optional): . title has the following type: Bool | lists containing elements 'style', 'content', 'formatter', 'customHtml', 'rotate', 'offsetX', 'offsetY'.
 Those elements have the following types:
   - `style` (Dict; optional)
   - `content` (String; optional)
   - `formatter` (optional): . formatter has the following type: lists containing elements 'func'.
 Those elements have the following types:
   - `func` (String; optional)
+  - `customHtml` (optional): . customHtml has the following type: lists containing elements 'func'.
+Those elements have the following types:
+  - `func` (String; optional)
   - `rotate` (Real; optional)
   - `offsetX` (Real; optional)
   - `offsetY` (Real; optional)
-  - `content` (optional): . content has the following type: Bool | lists containing elements 'style', 'content', 'formatter', 'rotate', 'offsetX', 'offsetY'.
+  - `content` (optional): . content has the following type: Bool | lists containing elements 'style', 'content', 'formatter', 'customHtml', 'rotate', 'offsetX', 'offsetY'.
 Those elements have the following types:
   - `style` (Dict; optional)
   - `content` (String; optional)
   - `formatter` (optional): . formatter has the following type: lists containing elements 'func'.
+Those elements have the following types:
+  - `func` (String; optional)
+  - `customHtml` (optional): . customHtml has the following type: lists containing elements 'func'.
 Those elements have the following types:
   - `func` (String; optional)
   - `rotate` (Real; optional)

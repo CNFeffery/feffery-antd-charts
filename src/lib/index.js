@@ -21,6 +21,7 @@ import AntdTinyLine from "./components/AntdTinyLine.react";
 import AntdDualAxes from "./components/AntdDualAxes.react";
 import AntdLiquid from "./components/AntdLiquid.react";
 import AntdBullet from "./components/AntdBullet.react";
+import AntdGauge from "./components/AntdGauge.react";
 
 export {
     AntdLine,
@@ -45,5 +46,6 @@ export {
     AntdTinyLine,
     AntdDualAxes,
     AntdLiquid,
-    AntdBullet
+    AntdBullet,
+    AntdGauge
 };
