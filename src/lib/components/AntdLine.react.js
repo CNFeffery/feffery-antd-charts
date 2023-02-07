@@ -126,6 +126,11 @@ export default class AntdLine extends Component {
                     config.meta[Object.keys(meta)[i]].formatter = eval(meta[Object.keys(meta)[i]].formatter.func)
                 }
             }
+            // 针对xField字段的type进行特殊的默认linear处理
+            // 若尚无用户自定义参数
+            if (!config.meta[xField]?.type) {
+                config.meta[xField].type = 'linear'
+            }
         }
 
         // 刷新基础参数

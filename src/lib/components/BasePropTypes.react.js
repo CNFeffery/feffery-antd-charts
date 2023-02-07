@@ -342,7 +342,7 @@ const metaBasePropTypes = PropTypes.objectOf(
         // quantile: 等分度量，根据数据的分布自动计算分段
         // identity: 常量度量
         type: PropTypes.oneOf([
-            'cat', 'timeCat', 'linear', 'linear', 'time', 'log',
+            'cat', 'timeCat', 'linear', 'time', 'log',
             'pow', 'quantize', 'quantile', 'identity'
         ]),
 
