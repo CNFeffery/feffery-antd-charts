@@ -249,9 +249,14 @@ export default class AntdDualAxes extends Component {
 
         // y轴样式
         config.yAxis = cloneDeep(yAxis)
-        // 若yAxis.label.formatter具有自定义函数func属性
-        if (yAxis?.label?.formatter?.func) {
-            config.yAxis.label.formatter = eval(yAxis.label.formatter.func)
+        // 针对可能存在的yField字段键值对，进行特殊处理
+        for (let fieldName of yField) {
+            if (config.yAxis && config.yAxis[fieldName]) {
+                // 若yAxis[fieldName].label.formatter具有自定义函数func属性
+                if (yAxis[fieldName]?.label?.formatter?.func) {
+                    config.yAxis[fieldName].label.formatter = eval(yAxis[fieldName].label.formatter.func)
+                }
+            }
         }
 
         // 图例样式
@@ -490,10 +495,10 @@ AntdDualAxes.propTypes = {
     xAxis: axisBasePropTypes,
 
     // 设置y坐标轴相关属性
-    yAxis: axisBasePropTypes,
+    yAxis: PropTypes.objectOf(axisBasePropTypes),
 
     // 配置标注相关参数
-    annotations: annotationsBasePropTypes,
+    annotations: PropTypes.objectOf(annotationsBasePropTypes),
 
     // 配置图例相关参数
     legend: legendBasePropTypes,

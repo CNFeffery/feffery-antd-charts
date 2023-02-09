@@ -9,7 +9,7 @@ An AntdDualAxes component.
 
 Keyword arguments:
 - `id` (String; optional)
-- `annotations` (optional)
+- `annotations` (Dict with Strings as keys and values of type ; optional)
 - `appendPadding` (Real | Array of Reals; optional)
 - `autoFit` (Bool; optional)
 - `className` (String; optional)
@@ -73,7 +73,7 @@ Those elements have the following types:
 - `width` (Real; optional)
 - `xAxis` (optional)
 - `xField` (String; required)
-- `yAxis` (optional)
+- `yAxis` (Dict with Strings as keys and values of type ; optional)
 - `yField` (Array of Strings; required)
 """
 function ''_antddualaxes(; kwargs...)

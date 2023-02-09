@@ -142,6 +142,43 @@ app.layout = html.Div(
                 'height': '400px'
             }
         ),
+
+        fact.AntdDualAxes(
+            data=[[
+                {
+                    'time': f'2023-0{i}',
+                    'value': i * 100,
+                    'rank': i  # 排名倒序处理
+                }
+                for i in range(1, 6)
+            ]] * 2,
+            xField='time',
+            yField=['value', 'rank'],
+            geometryOptions=[
+                {
+                    'geometry': 'column'
+                },
+                {
+                    'geometry': 'line',
+                    'lineStyle': {
+                        'lineWidth': 2
+                    }
+                }
+            ],
+            yAxis={
+                'rank': {
+                    'label': {
+                        'formatter': {
+                            'func': '(e) => 6 - e'
+                        }
+                    }
+                }
+            },
+            style={
+                'width': '400px',
+                'height': '250px'
+            }
+        )
     ],
     style={
         'padding': '25px'

@@ -3349,16 +3349,22 @@
       },
       "yAxis": {
         "type": {
-          "name": "custom",
-          "raw": "axisBasePropTypes"
+          "name": "objectOf",
+          "value": {
+            "name": "custom",
+            "raw": "axisBasePropTypes"
+          }
         },
         "required": false,
         "description": ""
       },
       "annotations": {
         "type": {
-          "name": "custom",
-          "raw": "annotationsBasePropTypes"
+          "name": "objectOf",
+          "value": {
+            "name": "custom",
+            "raw": "annotationsBasePropTypes"
+          }
         },
         "required": false,
         "description": ""

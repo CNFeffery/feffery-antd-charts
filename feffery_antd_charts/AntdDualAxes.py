@@ -11,7 +11,7 @@ Keyword arguments:
 
 - id (string; optional)
 
-- annotations (optional)
+- annotations (dict with strings as keys and values of type ; optional)
 
 - appendPadding (number | list of numbers; optional)
 
@@ -144,7 +144,7 @@ Keyword arguments:
 
 - xField (string; required)
 
-- yAxis (optional)
+- yAxis (dict with strings as keys and values of type ; optional)
 
 - yField (list of strings; required)"""
     _children_props = []
