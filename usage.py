@@ -84,16 +84,6 @@ app.layout = html.Div(
     html.Div(
         [
             html.Div(
-                fact.AntdPie(
-                    
-                ),
-                style={
-                    'height': '600px',
-                    'padding': '25px'
-                }
-            ),
-
-            html.Div(
                 fact.AntdLiquid(
                     percent=0.25,
                     outline={
@@ -423,7 +413,12 @@ app.layout = html.Div(
                                         encoding='utf-8')),
                     sourceField='source',
                     targetField='target',
-                    weightField='value'
+                    weightField='value',
+                    label={
+                        'style': {
+                            'fontSize': 28
+                        }
+                    }
                 ),
                 style={
                     'height': '600px'

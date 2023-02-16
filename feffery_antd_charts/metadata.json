@@ -2232,6 +2232,14 @@
         "required": false,
         "description": ""
       },
+      "label": {
+        "type": {
+          "name": "custom",
+          "raw": "labelBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
       "recentlyTooltipChangeRecord": {
         "type": {
           "name": "exact",

@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import { isUndefined, omitBy, intersection, cloneDeep } from 'lodash';
 import {
     metaBasePropTypes,
+    labelBasePropTypes,
     areaBaseStyle,
     themeBasePropTypes
 } from './BasePropTypes.react';
@@ -91,6 +92,7 @@ export default class AntdChord extends Component {
             edgeStyle,
             nodeWidthRatio,
             nodePaddingRatio,
+            label,
             theme,
             setProps,
             loading_state
@@ -143,6 +145,13 @@ export default class AntdChord extends Component {
         // 若edgeStyle具有自定义函数func属性
         if (edgeStyle?.func) {
             config.edgeStyle = eval(edgeStyle.func)
+        }
+
+        // 数据标签
+        config.label = cloneDeep(label)
+        // 若label.formatter具有自定义函数func属性
+        if (label?.formatter?.func) {
+            config.label.formatter = eval(label.formatter.func)
         }
 
         // 利用lodash移除所有值为undefined的属性
@@ -274,6 +283,9 @@ AntdChord.propTypes = {
 
     // 设置和弦图节点之间的间距比例，取值在0到1之间，以画布宽度为参考，默认为0.1
     nodePaddingRatio: PropTypes.number,
+
+    // 配置文字标签相关参数
+    label: labelBasePropTypes,
 
     // 常用事件监听参数
     // tooltip显示事件
