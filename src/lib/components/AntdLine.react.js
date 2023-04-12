@@ -129,7 +129,13 @@ export default class AntdLine extends Component {
             // 针对xField字段的type进行特殊的默认linear处理
             // 若尚无用户自定义参数
             if (!config.meta[xField]?.type) {
-                config.meta[xField].type = 'linear'
+                if (config.meta[xField]) {
+                    config.meta[xField].type = 'linear'
+                } else {
+                    config.meta[xField] = {
+                        type: 'linear'
+                    }
+                }
             }
         }
 
