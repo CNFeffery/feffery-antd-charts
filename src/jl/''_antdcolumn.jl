@@ -9,6 +9,7 @@ An AntdColumn component.
 
 Keyword arguments:
 - `id` (String; optional)
+- `animation` (Dict | Bool; optional)
 - `annotations` (optional)
 - `appendPadding` (Real | Array of Reals | String; optional)
 - `autoFit` (Bool; optional)
@@ -95,7 +96,7 @@ Those elements have the following types:
 - `yField` (String; required)
 """
 function ''_antdcolumn(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :color, :columnBackground, :columnStyle, :columnWidthRatio, :connectedArea, :conversionTag, :data, :dodgePadding, :downloadTrigger, :groupField, :height, :intervalPadding, :isGroup, :isPercent, :isRange, :isStack, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :marginRatio, :maxColumnWidth, :meta, :minColumnWidth, :padding, :recentlyBarClickRecord, :recentlyColumnClickRecord, :recentlyLegendInfo, :recentlyTooltipChangeRecord, :renderer, :scrollbar, :seriesField, :slider, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
+        available_props = Symbol[:id, :animation, :annotations, :appendPadding, :autoFit, :className, :color, :columnBackground, :columnStyle, :columnWidthRatio, :connectedArea, :conversionTag, :data, :dodgePadding, :downloadTrigger, :groupField, :height, :intervalPadding, :isGroup, :isPercent, :isRange, :isStack, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :marginRatio, :maxColumnWidth, :meta, :minColumnWidth, :padding, :recentlyBarClickRecord, :recentlyColumnClickRecord, :recentlyLegendInfo, :recentlyTooltipChangeRecord, :renderer, :scrollbar, :seriesField, :slider, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
         wild_props = Symbol[]
         return Component("''_antdcolumn", "AntdColumn", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

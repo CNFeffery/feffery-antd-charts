@@ -9,6 +9,7 @@ An AntdFunnel component.
 
 Keyword arguments:
 - `id` (String; optional)
+- `animation` (Dict | Bool; optional)
 - `annotations` (optional)
 - `appendPadding` (Real | Array of Reals | String; optional)
 - `autoFit` (Bool; optional)
@@ -73,7 +74,7 @@ Those elements have the following types:
 - `yField` (String; required)
 """
 function ''_antdfunnel(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :compareField, :conversionTag, :data, :downloadTrigger, :dynamicHeight, :funnelStyle, :height, :isTransposed, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :maxSize, :meta, :minSize, :padding, :recentlyAreaClickRecord, :recentlyLegendInfo, :recentlyTooltipChangeRecord, :renderer, :seriesField, :shape, :style, :theme, :tooltip, :width, :xField, :yField]
+        available_props = Symbol[:id, :animation, :annotations, :appendPadding, :autoFit, :className, :compareField, :conversionTag, :data, :downloadTrigger, :dynamicHeight, :funnelStyle, :height, :isTransposed, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :maxSize, :meta, :minSize, :padding, :recentlyAreaClickRecord, :recentlyLegendInfo, :recentlyTooltipChangeRecord, :renderer, :seriesField, :shape, :style, :theme, :tooltip, :width, :xField, :yField]
         wild_props = Symbol[]
         return Component("''_antdfunnel", "AntdFunnel", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

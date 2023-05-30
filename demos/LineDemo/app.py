@@ -23,10 +23,12 @@ app.layout = html.Div(
             xField='日期',
             yField='排名',
             meta={
-                '日期': {
-                    # 'type': 'cat'
+                '排名': {
+                    'alias': '指数'
                 }
             },
+            label={},
+            smooth=True,
             style={
                 'height': '250px'
             }

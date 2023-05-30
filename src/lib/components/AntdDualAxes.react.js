@@ -97,6 +97,7 @@ export default class AntdDualAxes extends Component {
             yAxis,
             annotations,
             legend,
+            animation,
             theme,
             setProps,
             loading_state
@@ -283,6 +284,9 @@ export default class AntdDualAxes extends Component {
 
         // 标注
         config.annotations = cloneDeep(annotations)
+
+        // 动画
+        config.animation = cloneDeep(animation)
 
         // 利用lodash移除所有值为undefined的属性
         config = omitBy(config, isUndefined)
@@ -502,6 +506,12 @@ AntdDualAxes.propTypes = {
 
     // 配置图例相关参数
     legend: legendBasePropTypes,
+
+    // 配置动画相关参数
+    animation: PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.bool
+    ]),
 
     // 用于在回调中传入uuid、ulid之类的唯一标识，来主动下载当前图表为png格式图片
     downloadTrigger: PropTypes.string,

@@ -11,7 +11,7 @@ Keyword arguments:
 
 - id (string; optional)
 
-- animation (dict; optional)
+- animation (dict | boolean; optional)
 
 - annotations (optional)
 

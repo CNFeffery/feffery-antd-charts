@@ -101,6 +101,7 @@ export default class AntdWordCloud extends Component {
             label,
             tooltip,
             annotations,
+            animation,
             theme,
             setProps,
             loading_state
@@ -187,6 +188,9 @@ export default class AntdWordCloud extends Component {
 
         // 标注
         config.annotations = cloneDeep(annotations)
+
+        // 动画
+        config.animation = cloneDeep(animation)
 
         // 利用lodash移除所有值为undefined的属性
         config = omitBy(config, isUndefined)
@@ -362,6 +366,12 @@ AntdWordCloud.propTypes = {
 
     // 配置标注相关参数
     annotations: annotationsBasePropTypes,
+
+    // 配置动画相关参数
+    animation: PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.bool
+    ]),
 
     // 常用事件监听参数
     // tooltip显示事件

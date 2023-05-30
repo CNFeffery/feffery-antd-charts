@@ -93,6 +93,7 @@ export default class AntdChord extends Component {
             nodeWidthRatio,
             nodePaddingRatio,
             label,
+            animation,
             theme,
             setProps,
             loading_state
@@ -153,6 +154,9 @@ export default class AntdChord extends Component {
         if (label?.formatter?.func) {
             config.label.formatter = eval(label.formatter.func)
         }
+
+        // 动画
+        config.animation = cloneDeep(animation)
 
         // 利用lodash移除所有值为undefined的属性
         config = omitBy(config, isUndefined)
@@ -286,6 +290,12 @@ AntdChord.propTypes = {
 
     // 配置文字标签相关参数
     label: labelBasePropTypes,
+
+    // 配置动画相关参数
+    animation: PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.bool
+    ]),
 
     // 常用事件监听参数
     // tooltip显示事件

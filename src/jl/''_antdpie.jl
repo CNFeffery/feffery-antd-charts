@@ -10,6 +10,7 @@ An AntdPie component.
 Keyword arguments:
 - `id` (String; optional)
 - `angleField` (String; optional)
+- `animation` (Dict | Bool; optional)
 - `annotations` (optional)
 - `appendPadding` (Real | Array of Reals | String; optional)
 - `autoFit` (Bool; optional)
@@ -90,7 +91,7 @@ Those elements have the following types:
 - `width` (Real; optional)
 """
 function ''_antdpie(; kwargs...)
-        available_props = Symbol[:id, :angleField, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :downloadTrigger, :endAngle, :height, :innerRadius, :interactions, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :meta, :padding, :pieStyle, :radius, :recentlyLegendInfo, :recentlySectorClickRecord, :recentlyTooltipChangeRecord, :renderer, :startAngle, :statistic, :style, :theme, :tooltip, :width]
+        available_props = Symbol[:id, :angleField, :animation, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :downloadTrigger, :endAngle, :height, :innerRadius, :interactions, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :meta, :padding, :pieStyle, :radius, :recentlyLegendInfo, :recentlySectorClickRecord, :recentlyTooltipChangeRecord, :renderer, :startAngle, :statistic, :style, :theme, :tooltip, :width]
         wild_props = Symbol[]
         return Component("''_antdpie", "AntdPie", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

@@ -9,6 +9,7 @@ An AntdRose component.
 
 Keyword arguments:
 - `id` (String; optional)
+- `animation` (Dict | Bool; optional)
 - `annotations` (optional)
 - `appendPadding` (Real | Array of Reals | String; optional)
 - `autoFit` (Bool; optional)
@@ -64,7 +65,7 @@ Those elements have the following types:
 - `yField` (String; optional)
 """
 function ''_antdrose(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :color, :data, :downloadTrigger, :endAngle, :height, :innerRadius, :isGroup, :isStack, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :meta, :padding, :radius, :recentlyAreaClickRecord, :recentlyLegendInfo, :recentlyTooltipChangeRecord, :renderer, :sectorStyle, :seriesField, :startAngle, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
+        available_props = Symbol[:id, :animation, :annotations, :appendPadding, :autoFit, :className, :color, :data, :downloadTrigger, :endAngle, :height, :innerRadius, :isGroup, :isStack, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :meta, :padding, :radius, :recentlyAreaClickRecord, :recentlyLegendInfo, :recentlyTooltipChangeRecord, :renderer, :sectorStyle, :seriesField, :startAngle, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
         wild_props = Symbol[]
         return Component("''_antdrose", "AntdRose", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

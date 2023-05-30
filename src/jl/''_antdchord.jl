@@ -9,6 +9,7 @@ An AntdChord component.
 
 Keyword arguments:
 - `id` (String; optional)
+- `animation` (Dict | Bool; optional)
 - `appendPadding` (Real | Array of Reals; optional)
 - `autoFit` (Bool; optional)
 - `className` (String; optional)
@@ -51,7 +52,7 @@ Those elements have the following types:
 - `width` (Real; optional)
 """
 function ''_antdchord(; kwargs...)
-        available_props = Symbol[:id, :appendPadding, :autoFit, :className, :data, :downloadTrigger, :edgeStyle, :height, :key, :label, :limitInPlot, :loading_state, :locale, :meta, :nodePaddingRatio, :nodeStyle, :nodeWidthRatio, :padding, :recentlyAreaClickRecord, :recentlyTooltipChangeRecord, :renderer, :sourceField, :style, :targetField, :theme, :weightField, :width]
+        available_props = Symbol[:id, :animation, :appendPadding, :autoFit, :className, :data, :downloadTrigger, :edgeStyle, :height, :key, :label, :limitInPlot, :loading_state, :locale, :meta, :nodePaddingRatio, :nodeStyle, :nodeWidthRatio, :padding, :recentlyAreaClickRecord, :recentlyTooltipChangeRecord, :renderer, :sourceField, :style, :targetField, :theme, :weightField, :width]
         wild_props = Symbol[]
         return Component("''_antdchord", "AntdChord", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

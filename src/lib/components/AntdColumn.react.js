@@ -121,6 +121,7 @@ export default class AntdColumn extends Component {
             tooltip,
             annotations,
             slider,
+            animation,
             theme,
             setProps,
             loading_state
@@ -245,6 +246,9 @@ export default class AntdColumn extends Component {
         if (slider?.formatter?.func) {
             config.slider.formatter = eval(slider.formatter.func)
         }
+
+        // 动画
+        config.animation = cloneDeep(animation)
 
         // 利用lodash移除所有值为undefined的属性
         config = omitBy(config, isUndefined)
@@ -500,6 +504,12 @@ AntdColumn.propTypes = {
 
     // 配置标注相关参数
     annotations: annotationsBasePropTypes,
+
+    // 配置动画相关参数
+    animation: PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.bool
+    ]),
 
     // 常用事件监听参数
     // tooltip显示事件

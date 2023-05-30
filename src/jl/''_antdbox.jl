@@ -9,6 +9,7 @@ An AntdBox component.
 
 Keyword arguments:
 - `id` (String; optional)
+- `animation` (Dict | Bool; optional)
 - `annotations` (optional)
 - `appendPadding` (Real | Array of Reals | String; optional)
 - `autoFit` (Bool; optional)
@@ -62,7 +63,7 @@ Those elements have the following types:
 - `yField` (Array of Strings | String; required)
 """
 function ''_antdbox(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :boxStyle, :className, :color, :data, :downloadTrigger, :groupField, :height, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :meta, :outliersField, :outliersStyle, :padding, :recentlyBoxClickRecord, :recentlyLegendInfo, :recentlyTooltipChangeRecord, :renderer, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
+        available_props = Symbol[:id, :animation, :annotations, :appendPadding, :autoFit, :boxStyle, :className, :color, :data, :downloadTrigger, :groupField, :height, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :meta, :outliersField, :outliersStyle, :padding, :recentlyBoxClickRecord, :recentlyLegendInfo, :recentlyTooltipChangeRecord, :renderer, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
         wild_props = Symbol[]
         return Component("''_antdbox", "AntdBox", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

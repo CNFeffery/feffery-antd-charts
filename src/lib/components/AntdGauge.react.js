@@ -236,6 +236,7 @@ export default class AntdGauge extends Component {
             axis,
             indicator,
             statistic,
+            animation,
             theme,
             setProps,
             loading_state
@@ -300,6 +301,9 @@ export default class AntdGauge extends Component {
         if (statistic?.content?.customHtml?.func) {
             config.statistic.content.customHtml = eval(statistic.content.customHtml.func)
         }
+
+        // 动画
+        config.animation = cloneDeep(animation)
 
         // 利用lodash移除所有值为undefined的属性
         config = omitBy(config, isUndefined)
@@ -499,6 +503,12 @@ AntdGauge.propTypes = {
         ]),
         style: textBaseStyle
     }),
+
+    // 配置动画相关参数
+    animation: PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.bool
+    ]),
 
     // 用于在回调中传入uuid、ulid之类的唯一标识，来主动下载当前图表为png格式图片
     downloadTrigger: PropTypes.string,

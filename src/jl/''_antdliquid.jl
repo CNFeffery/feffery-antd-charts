@@ -9,6 +9,7 @@ An AntdLiquid component.
 
 Keyword arguments:
 - `id` (String; optional)
+- `animation` (Dict | Bool; optional)
 - `appendPadding` (Real | Array of Reals; optional)
 - `autoFit` (Bool; optional)
 - `className` (String; optional)
@@ -78,7 +79,7 @@ Those elements have the following types:
 - `width` (Real; optional)
 """
 function ''_antdliquid(; kwargs...)
-        available_props = Symbol[:id, :appendPadding, :autoFit, :className, :color, :downloadTrigger, :height, :key, :limitInPlot, :liquidStyle, :loading_state, :locale, :outline, :padding, :percent, :radius, :renderer, :shape, :statistic, :style, :theme, :wave, :width]
+        available_props = Symbol[:id, :animation, :appendPadding, :autoFit, :className, :color, :downloadTrigger, :height, :key, :limitInPlot, :liquidStyle, :loading_state, :locale, :outline, :padding, :percent, :radius, :renderer, :shape, :statistic, :style, :theme, :wave, :width]
         wild_props = Symbol[]
         return Component("''_antdliquid", "AntdLiquid", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

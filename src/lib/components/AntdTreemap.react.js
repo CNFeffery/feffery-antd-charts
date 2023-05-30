@@ -133,7 +133,6 @@ export default class AntdTreemap extends Component {
             locale,
             limitInPlot,
             interactions,
-            animation,
             theme
         }
 
@@ -182,6 +181,9 @@ export default class AntdTreemap extends Component {
 
         // 标注
         config.annotations = cloneDeep(annotations)
+
+        // 动画
+        config.animation = cloneDeep(animation)
 
         // 利用lodash移除所有值为undefined的属性
         config = omitBy(config, isUndefined)
@@ -346,7 +348,10 @@ AntdTreemap.propTypes = {
     ),
 
     // 设置动画，默认为{}
-    animation: PropTypes.object,
+    animation: PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.bool
+    ]),
 
     // 常用事件监听参数
     // tooltip显示事件

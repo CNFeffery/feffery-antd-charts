@@ -9,6 +9,7 @@ An AntdRadar component.
 
 Keyword arguments:
 - `id` (String; optional)
+- `animation` (Dict | Bool; optional)
 - `annotations` (optional)
 - `appendPadding` (Real | Array of Reals | String; optional)
 - `area` (optional): . area has the following type: lists containing elements 'smooth', 'color', 'style'.
@@ -82,7 +83,7 @@ Those elements have the following types:
 - `yField` (String; required)
 """
 function ''_antdradar(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :area, :autoFit, :className, :color, :data, :downloadTrigger, :endAngle, :height, :key, :label, :legend, :limitInPlot, :lineStyle, :loading_state, :locale, :meta, :padding, :point, :radius, :recentlyAreaClickRecord, :recentlyLegendInfo, :recentlyTooltipChangeRecord, :renderer, :seriesField, :smooth, :startAngle, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
+        available_props = Symbol[:id, :animation, :annotations, :appendPadding, :area, :autoFit, :className, :color, :data, :downloadTrigger, :endAngle, :height, :key, :label, :legend, :limitInPlot, :lineStyle, :loading_state, :locale, :meta, :padding, :point, :radius, :recentlyAreaClickRecord, :recentlyLegendInfo, :recentlyTooltipChangeRecord, :renderer, :seriesField, :smooth, :startAngle, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
         wild_props = Symbol[]
         return Component("''_antdradar", "AntdRadar", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

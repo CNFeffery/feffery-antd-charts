@@ -95,6 +95,7 @@ export default class AntdSankey extends Component {
             nodePaddingRatio,
             nodeAlign,
             nodeDraggable,
+            animation,
             theme,
             setProps,
             loading_state
@@ -158,6 +159,9 @@ export default class AntdSankey extends Component {
         if (color?.func) {
             config.color = eval(color.func)
         }
+
+        // 动画
+        config.animation = cloneDeep(animation)
 
         // 利用lodash移除所有值为undefined的属性
         config = omitBy(config, isUndefined)
@@ -312,6 +316,12 @@ AntdSankey.propTypes = {
 
     // 设置桑基图中的节点是否可拖拽调整位置，默认为false
     nodeDraggable: PropTypes.bool,
+
+    // 配置动画相关参数
+    animation: PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.bool
+    ]),
 
     // 常用事件监听参数
     // tooltip显示事件

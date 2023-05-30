@@ -9,6 +9,7 @@ An AntdBullet component.
 
 Keyword arguments:
 - `id` (String; optional)
+- `animation` (Dict | Bool; optional)
 - `appendPadding` (Real | Array of Reals; optional)
 - `autoFit` (Bool; optional)
 - `bulletStyle` (optional): . bulletStyle has the following type: lists containing elements 'range', 'measure', 'target'.
@@ -72,7 +73,7 @@ Those elements have the following types:
 - `yAxis` (optional)
 """
 function ''_antdbullet(; kwargs...)
-        available_props = Symbol[:id, :appendPadding, :autoFit, :bulletStyle, :className, :color, :data, :downloadTrigger, :height, :key, :label, :layout, :legend, :limitInPlot, :loading_state, :locale, :measureField, :meta, :padding, :rangeField, :renderer, :size, :style, :targetField, :theme, :tooltip, :width, :xAxis, :xField, :yAxis]
+        available_props = Symbol[:id, :animation, :appendPadding, :autoFit, :bulletStyle, :className, :color, :data, :downloadTrigger, :height, :key, :label, :layout, :legend, :limitInPlot, :loading_state, :locale, :measureField, :meta, :padding, :rangeField, :renderer, :size, :style, :targetField, :theme, :tooltip, :width, :xAxis, :xField, :yAxis]
         wild_props = Symbol[]
         return Component("''_antdbullet", "AntdBullet", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

@@ -9,6 +9,7 @@ An AntdSankey component.
 
 Keyword arguments:
 - `id` (String; optional)
+- `animation` (Dict | Bool; optional)
 - `appendPadding` (Real | Array of Reals; optional)
 - `autoFit` (Bool; optional)
 - `className` (String; optional)
@@ -56,7 +57,7 @@ Those elements have the following types:
 - `width` (Real; optional)
 """
 function ''_antdsankey(; kwargs...)
-        available_props = Symbol[:id, :appendPadding, :autoFit, :className, :color, :data, :downloadTrigger, :edgeStyle, :height, :key, :limitInPlot, :loading_state, :locale, :meta, :nodeAlign, :nodeDraggable, :nodePaddingRatio, :nodeStyle, :nodeWidthRatio, :padding, :rawFields, :recentlyAreaClickRecord, :recentlyTooltipChangeRecord, :renderer, :sourceField, :style, :targetField, :theme, :weightField, :width]
+        available_props = Symbol[:id, :animation, :appendPadding, :autoFit, :className, :color, :data, :downloadTrigger, :edgeStyle, :height, :key, :limitInPlot, :loading_state, :locale, :meta, :nodeAlign, :nodeDraggable, :nodePaddingRatio, :nodeStyle, :nodeWidthRatio, :padding, :rawFields, :recentlyAreaClickRecord, :recentlyTooltipChangeRecord, :renderer, :sourceField, :style, :targetField, :theme, :weightField, :width]
         wild_props = Symbol[]
         return Component("''_antdsankey", "AntdSankey", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

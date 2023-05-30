@@ -9,6 +9,7 @@ An AntdTinyLine component.
 
 Keyword arguments:
 - `id` (String; optional)
+- `animation` (Dict | Bool; optional)
 - `annotations` (optional)
 - `appendPadding` (Real | Array of Reals; optional)
 - `autoFit` (Bool; optional)
@@ -58,7 +59,7 @@ Those elements have the following types:
 - `yAxis` (optional)
 """
 function ''_antdtinyline(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :color, :connectNulls, :data, :downloadTrigger, :height, :key, :limitInPlot, :lineStyle, :loading_state, :locale, :meta, :padding, :point, :recentlyTooltipChangeRecord, :renderer, :smooth, :style, :theme, :tooltip, :width, :xAxis, :yAxis]
+        available_props = Symbol[:id, :animation, :annotations, :appendPadding, :autoFit, :className, :color, :connectNulls, :data, :downloadTrigger, :height, :key, :limitInPlot, :lineStyle, :loading_state, :locale, :meta, :padding, :point, :recentlyTooltipChangeRecord, :renderer, :smooth, :style, :theme, :tooltip, :width, :xAxis, :yAxis]
         wild_props = Symbol[]
         return Component("''_antdtinyline", "AntdTinyLine", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

@@ -9,6 +9,7 @@ An AntdWordCloud component.
 
 Keyword arguments:
 - `id` (String; optional)
+- `animation` (Dict | Bool; optional)
 - `annotations` (optional)
 - `appendPadding` (Real | Array of Reals; optional)
 - `autoFit` (Bool; optional)
@@ -66,7 +67,7 @@ Those elements have the following types:
   - `rotation` (Real; optional)
 """
 function ''_antdwordcloud(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :downloadTrigger, :height, :imageMask, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :meta, :padding, :placementStrategy, :randomState, :recentlyLegendInfo, :recentlyTooltipChangeRecord, :recentlyWordClickRecord, :renderer, :spiral, :style, :theme, :tooltip, :weightField, :width, :wordField, :wordStyle]
+        available_props = Symbol[:id, :animation, :annotations, :appendPadding, :autoFit, :className, :color, :colorField, :data, :downloadTrigger, :height, :imageMask, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :meta, :padding, :placementStrategy, :randomState, :recentlyLegendInfo, :recentlyTooltipChangeRecord, :recentlyWordClickRecord, :renderer, :spiral, :style, :theme, :tooltip, :weightField, :width, :wordField, :wordStyle]
         wild_props = Symbol[]
         return Component("''_antdwordcloud", "AntdWordCloud", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

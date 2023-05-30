@@ -11,6 +11,8 @@ Keyword arguments:
 
 - id (string; optional)
 
+- animation (dict | boolean; optional)
+
 - annotations (dict with strings as keys and values of type ; optional)
 
 - appendPadding (number | list of numbers; optional)
@@ -152,10 +154,10 @@ Keyword arguments:
     _namespace = 'feffery_antd_charts'
     _type = 'AntdDualAxes'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, xField=Component.REQUIRED, yField=Component.REQUIRED, geometryOptions=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, tooltip=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, annotations=Component.UNDEFINED, legend=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'annotations', 'appendPadding', 'autoFit', 'className', 'data', 'downloadTrigger', 'geometryOptions', 'height', 'key', 'legend', 'limitInPlot', 'loading_state', 'locale', 'meta', 'padding', 'renderer', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
+    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, xField=Component.REQUIRED, yField=Component.REQUIRED, geometryOptions=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, tooltip=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, annotations=Component.UNDEFINED, legend=Component.UNDEFINED, animation=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'animation', 'annotations', 'appendPadding', 'autoFit', 'className', 'data', 'downloadTrigger', 'geometryOptions', 'height', 'key', 'legend', 'limitInPlot', 'loading_state', 'locale', 'meta', 'padding', 'renderer', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'annotations', 'appendPadding', 'autoFit', 'className', 'data', 'downloadTrigger', 'geometryOptions', 'height', 'key', 'legend', 'limitInPlot', 'loading_state', 'locale', 'meta', 'padding', 'renderer', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
+        self.available_properties = ['id', 'animation', 'annotations', 'appendPadding', 'autoFit', 'className', 'data', 'downloadTrigger', 'geometryOptions', 'height', 'key', 'legend', 'limitInPlot', 'loading_state', 'locale', 'meta', 'padding', 'renderer', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

@@ -9,7 +9,7 @@ An AntdTreemap component.
 
 Keyword arguments:
 - `id` (String; optional)
-- `animation` (Dict; optional)
+- `animation` (Dict | Bool; optional)
 - `annotations` (optional)
 - `appendPadding` (Real | Array of Reals; optional)
 - `autoFit` (Bool; optional)

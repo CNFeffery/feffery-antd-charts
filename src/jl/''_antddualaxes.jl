@@ -9,6 +9,7 @@ An AntdDualAxes component.
 
 Keyword arguments:
 - `id` (String; optional)
+- `animation` (Dict | Bool; optional)
 - `annotations` (Dict with Strings as keys and values of type ; optional)
 - `appendPadding` (Real | Array of Reals; optional)
 - `autoFit` (Bool; optional)
@@ -77,7 +78,7 @@ Those elements have the following types:
 - `yField` (Array of Strings; required)
 """
 function ''_antddualaxes(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :data, :downloadTrigger, :geometryOptions, :height, :key, :legend, :limitInPlot, :loading_state, :locale, :meta, :padding, :renderer, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
+        available_props = Symbol[:id, :animation, :annotations, :appendPadding, :autoFit, :className, :data, :downloadTrigger, :geometryOptions, :height, :key, :legend, :limitInPlot, :loading_state, :locale, :meta, :padding, :renderer, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
         wild_props = Symbol[]
         return Component("''_antddualaxes", "AntdDualAxes", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

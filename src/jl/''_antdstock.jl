@@ -9,6 +9,7 @@ An AntdStock component.
 
 Keyword arguments:
 - `id` (String; optional)
+- `animation` (Dict | Bool; optional)
 - `annotations` (optional)
 - `appendPadding` (Real | Array of Reals | a value equal to: 'auto'; optional)
 - `autoFit` (Bool; optional)
@@ -57,7 +58,7 @@ Those elements have the following types:
 - `yField` (Array of Strings; required)
 """
 function ''_antdstock(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :className, :data, :downloadTrigger, :fallingFill, :height, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :meta, :padding, :recentlyAreaClickRecord, :recentlyLegendInfo, :recentlyTooltipChangeRecord, :renderer, :risingFill, :slider, :stockStyle, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
+        available_props = Symbol[:id, :animation, :annotations, :appendPadding, :autoFit, :className, :data, :downloadTrigger, :fallingFill, :height, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :meta, :padding, :recentlyAreaClickRecord, :recentlyLegendInfo, :recentlyTooltipChangeRecord, :renderer, :risingFill, :slider, :stockStyle, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
         wild_props = Symbol[]
         return Component("''_antdstock", "AntdStock", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

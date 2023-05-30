@@ -9,6 +9,7 @@ An AntdHistogram component.
 
 Keyword arguments:
 - `id` (String; optional)
+- `animation` (Dict | Bool; optional)
 - `annotations` (optional)
 - `appendPadding` (Real | Array of Reals | String; optional)
 - `autoFit` (Bool; optional)
@@ -59,7 +60,7 @@ Those elements have the following types:
 - `yAxis` (optional)
 """
 function ''_antdhistogram(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :binField, :binNumber, :binWidth, :className, :color, :columnStyle, :data, :downloadTrigger, :height, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :meta, :padding, :recentlyAreaClickRecord, :recentlyLegendInfo, :recentlyTooltipChangeRecord, :renderer, :stackField, :style, :theme, :tooltip, :width, :xAxis, :yAxis]
+        available_props = Symbol[:id, :animation, :annotations, :appendPadding, :autoFit, :binField, :binNumber, :binWidth, :className, :color, :columnStyle, :data, :downloadTrigger, :height, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :meta, :padding, :recentlyAreaClickRecord, :recentlyLegendInfo, :recentlyTooltipChangeRecord, :renderer, :stackField, :style, :theme, :tooltip, :width, :xAxis, :yAxis]
         wild_props = Symbol[]
         return Component("''_antdhistogram", "AntdHistogram", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

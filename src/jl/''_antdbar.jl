@@ -9,6 +9,7 @@ An AntdBar component.
 
 Keyword arguments:
 - `id` (String; optional)
+- `animation` (Dict | Bool; optional)
 - `annotations` (optional)
 - `appendPadding` (Real | Array of Reals | String; optional)
 - `autoFit` (Bool; optional)
@@ -90,7 +91,7 @@ Those elements have the following types:
 - `yField` (String; required)
 """
 function ''_antdbar(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :autoFit, :barBackground, :barStyle, :barWidthRatio, :className, :color, :connectedArea, :conversionTag, :data, :dodgePadding, :downloadTrigger, :groupField, :height, :intervalPadding, :isGroup, :isPercent, :isRange, :isStack, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :marginRatio, :maxBarWidth, :meta, :minBarWidth, :padding, :recentlyBarClickRecord, :recentlyLegendInfo, :recentlyTooltipChangeRecord, :renderer, :scrollbar, :seriesField, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
+        available_props = Symbol[:id, :animation, :annotations, :appendPadding, :autoFit, :barBackground, :barStyle, :barWidthRatio, :className, :color, :connectedArea, :conversionTag, :data, :dodgePadding, :downloadTrigger, :groupField, :height, :intervalPadding, :isGroup, :isPercent, :isRange, :isStack, :key, :label, :legend, :limitInPlot, :loading_state, :locale, :marginRatio, :maxBarWidth, :meta, :minBarWidth, :padding, :recentlyBarClickRecord, :recentlyLegendInfo, :recentlyTooltipChangeRecord, :renderer, :scrollbar, :seriesField, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
         wild_props = Symbol[]
         return Component("''_antdbar", "AntdBar", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

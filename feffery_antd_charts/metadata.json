@@ -410,6 +410,21 @@
         "required": false,
         "description": ""
       },
+      "animation": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "object"
+            },
+            {
+              "name": "bool"
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
       "recentlyTooltipChangeRecord": {
         "type": {
           "name": "exact",
@@ -968,6 +983,21 @@
         "required": false,
         "description": ""
       },
+      "animation": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "object"
+            },
+            {
+              "name": "bool"
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
       "recentlyTooltipChangeRecord": {
         "type": {
           "name": "exact",
@@ -1366,6 +1396,21 @@
         "type": {
           "name": "custom",
           "raw": "annotationsBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "animation": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "object"
+            },
+            {
+              "name": "bool"
+            }
+          ]
         },
         "required": false,
         "description": ""
@@ -1943,6 +1988,21 @@
         "required": false,
         "description": ""
       },
+      "animation": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "object"
+            },
+            {
+              "name": "bool"
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
       "downloadTrigger": {
         "type": {
           "name": "string"
@@ -2236,6 +2296,21 @@
         "type": {
           "name": "custom",
           "raw": "labelBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "animation": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "object"
+            },
+            {
+              "name": "bool"
+            }
+          ]
         },
         "required": false,
         "description": ""
@@ -2782,6 +2857,21 @@
         "type": {
           "name": "custom",
           "raw": "annotationsBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "animation": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "object"
+            },
+            {
+              "name": "bool"
+            }
+          ]
         },
         "required": false,
         "description": ""
@@ -3385,6 +3475,21 @@
         "required": false,
         "description": ""
       },
+      "animation": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "object"
+            },
+            {
+              "name": "bool"
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
       "downloadTrigger": {
         "type": {
           "name": "string"
@@ -3763,6 +3868,21 @@
         "type": {
           "name": "custom",
           "raw": "annotationsBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "animation": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "object"
+            },
+            {
+              "name": "bool"
+            }
+          ]
         },
         "required": false,
         "description": ""
@@ -4325,6 +4445,21 @@
         "required": false,
         "description": ""
       },
+      "animation": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "object"
+            },
+            {
+              "name": "bool"
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
       "downloadTrigger": {
         "type": {
           "name": "string"
@@ -4633,6 +4768,21 @@
         "type": {
           "name": "custom",
           "raw": "annotationsBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "animation": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "object"
+            },
+            {
+              "name": "bool"
+            }
+          ]
         },
         "required": false,
         "description": ""
@@ -5124,6 +5274,21 @@
         "type": {
           "name": "custom",
           "raw": "sliderBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "animation": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "object"
+            },
+            {
+              "name": "bool"
+            }
+          ]
         },
         "required": false,
         "description": ""
@@ -5642,6 +5807,21 @@
         "required": false,
         "description": ""
       },
+      "animation": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "object"
+            },
+            {
+              "name": "bool"
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
       "downloadTrigger": {
         "type": {
           "name": "string"
@@ -6138,6 +6318,21 @@
         "type": {
           "name": "custom",
           "raw": "themeBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "animation": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "object"
+            },
+            {
+              "name": "bool"
+            }
+          ]
         },
         "required": false,
         "description": ""
@@ -6639,6 +6834,21 @@
         "required": false,
         "description": ""
       },
+      "animation": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "object"
+            },
+            {
+              "name": "bool"
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
       "recentlyTooltipChangeRecord": {
         "type": {
           "name": "exact",
@@ -7039,6 +7249,21 @@
         "type": {
           "name": "custom",
           "raw": "annotationsBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "animation": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "object"
+            },
+            {
+              "name": "bool"
+            }
+          ]
         },
         "required": false,
         "description": ""
@@ -7454,6 +7679,21 @@
       "nodeDraggable": {
         "type": {
           "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "animation": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "object"
+            },
+            {
+              "name": "bool"
+            }
+          ]
         },
         "required": false,
         "description": ""
@@ -8010,6 +8250,21 @@
         "required": false,
         "description": ""
       },
+      "animation": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "object"
+            },
+            {
+              "name": "bool"
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
       "recentlyTooltipChangeRecord": {
         "type": {
           "name": "exact",
@@ -8410,6 +8665,21 @@
         "type": {
           "name": "custom",
           "raw": "sliderBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "animation": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "object"
+            },
+            {
+              "name": "bool"
+            }
+          ]
         },
         "required": false,
         "description": ""
@@ -8861,6 +9131,21 @@
         "required": false,
         "description": ""
       },
+      "animation": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "object"
+            },
+            {
+              "name": "bool"
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
       "recentlyTooltipChangeRecord": {
         "type": {
           "name": "exact",
@@ -9270,6 +9555,21 @@
         "required": false,
         "description": ""
       },
+      "animation": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "object"
+            },
+            {
+              "name": "bool"
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
       "recentlyTooltipChangeRecord": {
         "type": {
           "name": "exact",
@@ -9627,7 +9927,15 @@
       },
       "animation": {
         "type": {
-          "name": "object"
+          "name": "union",
+          "value": [
+            {
+              "name": "object"
+            },
+            {
+              "name": "bool"
+            }
+          ]
         },
         "required": false,
         "description": "",
@@ -10055,6 +10363,21 @@
         "type": {
           "name": "custom",
           "raw": "annotationsBasePropTypes"
+        },
+        "required": false,
+        "description": ""
+      },
+      "animation": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "object"
+            },
+            {
+              "name": "bool"
+            }
+          ]
         },
         "required": false,
         "description": ""

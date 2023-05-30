@@ -9,6 +9,7 @@ An AntdArea component.
 
 Keyword arguments:
 - `id` (String; optional)
+- `animation` (Dict | Bool; optional)
 - `annotations` (optional)
 - `appendPadding` (Real | Array of Reals | String; optional)
 - `areaStyle` (optional): . areaStyle has the following type: lists containing elements 'func'.
@@ -82,7 +83,7 @@ Those elements have the following types:
 - `yField` (String; required)
 """
 function ''_antdarea(; kwargs...)
-        available_props = Symbol[:id, :annotations, :appendPadding, :areaStyle, :autoFit, :className, :color, :data, :downloadTrigger, :height, :isPercent, :isStack, :key, :label, :legend, :limitInPlot, :line, :loading_state, :locale, :meta, :padding, :point, :recentlyLegendInfo, :recentlyPointClickRecord, :recentlyTooltipChangeRecord, :renderer, :seriesField, :slider, :smooth, :startOnZero, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
+        available_props = Symbol[:id, :animation, :annotations, :appendPadding, :areaStyle, :autoFit, :className, :color, :data, :downloadTrigger, :height, :isPercent, :isStack, :key, :label, :legend, :limitInPlot, :line, :loading_state, :locale, :meta, :padding, :point, :recentlyLegendInfo, :recentlyPointClickRecord, :recentlyTooltipChangeRecord, :renderer, :seriesField, :slider, :smooth, :startOnZero, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
         wild_props = Symbol[]
         return Component("''_antdarea", "AntdArea", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end

@@ -9,6 +9,7 @@ An AntdGauge component.
 
 Keyword arguments:
 - `id` (String; optional)
+- `animation` (Dict | Bool; optional)
 - `appendPadding` (Real | Array of Reals; optional)
 - `autoFit` (Bool; optional)
 - `axis` (optional)
@@ -86,7 +87,7 @@ Those elements have the following types:
 - `width` (Real; optional)
 """
 function ''_antdgauge(; kwargs...)
-        available_props = Symbol[:id, :appendPadding, :autoFit, :axis, :className, :downloadTrigger, :endAngle, :gaugeStyle, :height, :indicator, :innerRadius, :key, :limitInPlot, :loading_state, :locale, :meter, :padding, :percent, :radius, :range, :renderer, :startAngle, :statistic, :style, :theme, :type, :width]
+        available_props = Symbol[:id, :animation, :appendPadding, :autoFit, :axis, :className, :downloadTrigger, :endAngle, :gaugeStyle, :height, :indicator, :innerRadius, :key, :limitInPlot, :loading_state, :locale, :meter, :padding, :percent, :radius, :range, :renderer, :startAngle, :statistic, :style, :theme, :type, :width]
         wild_props = Symbol[]
         return Component("''_antdgauge", "AntdGauge", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end
