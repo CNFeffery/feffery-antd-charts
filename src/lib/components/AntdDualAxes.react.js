@@ -3,10 +3,10 @@
 /* eslint-disable no-undefined */
 /* eslint-disable no-else-return */
 /* eslint-disable no-eval */
-import { DualAxes } from '@ant-design/plots';
-import React, { Component } from 'react';
+import {DualAxes} from '@ant-design/plots';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import { isUndefined, omitBy, intersection, cloneDeep } from 'lodash';
+import {isUndefined, omitBy, intersection, cloneDeep} from 'lodash';
 import {
     baseStyle,
     pointBaseStyle,
@@ -17,27 +17,23 @@ import {
     labelBasePropTypes,
     tooltipBasePropTypes,
     annotationsBasePropTypes,
-    themeBasePropTypes
+    themeBasePropTypes,
 } from './BasePropTypes.react';
-import { difference } from './utils';
+import {difference} from './utils';
 
 // 定义不触发重绘的参数数组
-const preventUpdateProps = [
-    'loading_state'
-];
+const preventUpdateProps = ['loading_state', 'recentlyClickRecord'];
 
 // 定义双轴图组件AntdDualAxes，部分API参数参考https://charts.ant.design/zh/examples/dual-axes/dual-line#dual-line
 export default class AntdDualAxes extends Component {
-
     constructor(props) {
         super(props);
         this.chartRef = React.createRef();
     }
 
     shouldComponentUpdate(nextProps) {
-
         // 计算发生变化的参数名
-        const changedProps = Object.keys(difference(this.props, nextProps))
+        const changedProps = Object.keys(difference(this.props, nextProps));
 
         // 若无变化的props，则不触发重绘
         if (changedProps.length === 0) {
@@ -48,24 +44,30 @@ export default class AntdDualAxes extends Component {
         let changedPreventUpdateProps = intersection(
             changedProps,
             preventUpdateProps
-        )
+        );
 
         // 若有交集，则不触发重绘
         if (changedPreventUpdateProps.length !== 0) {
             return false;
         } else {
             // 取得plot实例
-            const chart = this.chartRef.current.getChart()
+            const chart = this.chartRef.current.getChart();
             // 检查是否仅有data参数发生更新
-            if (changedProps.indexOf('data') !== -1 && changedProps.length === 1) {
+            if (
+                changedProps.indexOf('data') !== -1 &&
+                changedProps.length === 1
+            ) {
                 // 动态调整数据
-                chart.changeData(nextProps.data)
+                chart.changeData(nextProps.data);
                 return false;
             }
             // 检查是否仅有downloadTrigger参数发生更新
-            if (changedProps.indexOf('downloadTrigger') !== -1 && changedProps.length === 1) {
+            if (
+                changedProps.indexOf('downloadTrigger') !== -1 &&
+                changedProps.length === 1
+            ) {
                 // 导出当前图表为png格式文件
-                chart.downloadImage()
+                chart.downloadImage();
                 return false;
             }
         }
@@ -100,7 +102,7 @@ export default class AntdDualAxes extends Component {
             animation,
             theme,
             setProps,
-            loading_state
+            loading_state,
         } = this.props;
 
         // 初始化config参数对象，每次渲染前的参数解析变动只在config中生效
@@ -112,7 +114,9 @@ export default class AntdDualAxes extends Component {
             for (let i in Object.keys(meta)) {
                 // 若meta中当前字段属性下的formatter具有自定义函数func属性
                 if (meta[Object.keys(meta)[i]]?.formatter?.func) {
-                    config.meta[Object.keys(meta)[i]].formatter = eval(meta[Object.keys(meta)[i]].formatter.func)
+                    config.meta[Object.keys(meta)[i]].formatter = eval(
+                        meta[Object.keys(meta)[i]].formatter.func
+                    );
                 }
             }
         }
@@ -132,7 +136,7 @@ export default class AntdDualAxes extends Component {
             renderer,
             locale,
             limitInPlot,
-            theme
+            theme,
         };
 
         // 初始化左右轴config参数对象，每次渲染前的参数解析变动只在config中生效
@@ -140,169 +144,198 @@ export default class AntdDualAxes extends Component {
         let configRight = {};
         // 进阶参数
         if (geometryOptions[0].geometry === 'line') {
-            configLeft = cloneDeep(geometryOptions[0])
+            configLeft = cloneDeep(geometryOptions[0]);
             // 折线样式
             // 若lineStyle具有自定义函数func属性
             if (configLeft.lineStyle?.func) {
-                configLeft.lineStyle = eval(configLeft.lineStyle.func)
+                configLeft.lineStyle = eval(configLeft.lineStyle.func);
             }
 
             // 折点样式
             // 若point.color具有自定义函数func属性
             if (configLeft.point?.color?.func) {
-                configLeft.point.color = eval(configLeft.point.color.func)
+                configLeft.point.color = eval(configLeft.point.color.func);
             }
             // 若point.shape具有自定义函数func属性
             if (configLeft.point?.shape?.func) {
-                configLeft.point.shape = eval(configLeft.point.shape.func)
+                configLeft.point.shape = eval(configLeft.point.shape.func);
             }
             // 若point.style具有自定义函数func属性
             if (configLeft.point?.style?.func) {
-                configLeft.point.style = eval(configLeft.point.style.func)
+                configLeft.point.style = eval(configLeft.point.style.func);
             }
 
             // 数据标签
             // 若label.formatter具有自定义函数func属性
             if (configLeft.label?.formatter?.func) {
-                configLeft.label.formatter = eval(configLeft.label.formatter.func)
+                configLeft.label.formatter = eval(
+                    configLeft.label.formatter.func
+                );
             }
 
             // 色彩样式
             // 若color具有自定义函数func属性
             if (configLeft.color?.func) {
-                configLeft.color = eval(configLeft.color.func)
+                configLeft.color = eval(configLeft.color.func);
             }
         } else {
-            configLeft = cloneDeep(geometryOptions[0])
+            configLeft = cloneDeep(geometryOptions[0]);
             // 若columnStyle具有自定义函数func属性
             if (configLeft.columnStyle?.func) {
-                configLeft.columnStyle = eval(configLeft.columnStyle.func)
+                configLeft.columnStyle = eval(configLeft.columnStyle.func);
             }
 
             // 若label.formatter具有自定义函数func属性
             if (configLeft.label?.formatter?.func) {
-                configLeft.label.formatter = eval(configLeft.label.formatter.func)
+                configLeft.label.formatter = eval(
+                    configLeft.label.formatter.func
+                );
             }
 
             // 若color具有自定义函数func属性
             if (configLeft.color?.func) {
-                configLeft.color = eval(configLeft.color.func)
+                configLeft.color = eval(configLeft.color.func);
             }
         }
 
         if (geometryOptions[1].geometry === 'line') {
-            configRight = cloneDeep(geometryOptions[1])
+            configRight = cloneDeep(geometryOptions[1]);
             // 折线样式
             // 若lineStyle具有自定义函数func属性
             if (configRight.lineStyle?.func) {
-                configRight.lineStyle = eval(configRight.lineStyle.func)
+                configRight.lineStyle = eval(configRight.lineStyle.func);
             }
 
             // 折点样式
             // 若point.color具有自定义函数func属性
             if (configRight.point?.color?.func) {
-                configRight.point.color = eval(configRight.point.color.func)
+                configRight.point.color = eval(configRight.point.color.func);
             }
             // 若point.shape具有自定义函数func属性
             if (configRight.point?.shape?.func) {
-                configRight.point.shape = eval(configRight.point.shape.func)
+                configRight.point.shape = eval(configRight.point.shape.func);
             }
             // 若point.style具有自定义函数func属性
             if (configRight.point?.style?.func) {
-                configRight.point.style = eval(configRight.point.style.func)
+                configRight.point.style = eval(configRight.point.style.func);
             }
 
             // 数据标签
             // 若label.formatter具有自定义函数func属性
             if (configRight.label?.formatter?.func) {
-                configRight.label.formatter = eval(configRight.label.formatter.func)
+                configRight.label.formatter = eval(
+                    configRight.label.formatter.func
+                );
             }
 
             // 色彩样式
             // 若color具有自定义函数func属性
             if (configRight.color?.func) {
-                configRight.color = eval(configRight.color.func)
+                configRight.color = eval(configRight.color.func);
             }
         } else {
-            configRight = cloneDeep(geometryOptions[1])
+            configRight = cloneDeep(geometryOptions[1]);
             // 若columnStyle具有自定义函数func属性
             if (configRight.columnStyle?.func) {
-                configRight.columnStyle = eval(configRight.columnStyle.func)
+                configRight.columnStyle = eval(configRight.columnStyle.func);
             }
 
             // 若label.formatter具有自定义函数func属性
             if (configRight.label?.formatter?.func) {
-                configRight.label.formatter = eval(configRight.label.formatter.func)
+                configRight.label.formatter = eval(
+                    configRight.label.formatter.func
+                );
             }
 
             // 若color具有自定义函数func属性
             if (configRight.color?.func) {
-                configRight.color = eval(configRight.color.func)
+                configRight.color = eval(configRight.color.func);
             }
         }
 
         // x轴样式
-        config.xAxis = cloneDeep(xAxis)
+        config.xAxis = cloneDeep(xAxis);
         // 若xAxis.label.formatter具有自定义函数func属性
         if (xAxis?.label?.formatter?.func) {
-            config.xAxis.label.formatter = eval(xAxis.label.formatter.func)
+            config.xAxis.label.formatter = eval(xAxis.label.formatter.func);
         }
 
         // y轴样式
-        config.yAxis = cloneDeep(yAxis)
+        config.yAxis = cloneDeep(yAxis);
         // 针对可能存在的yField字段键值对，进行特殊处理
         for (let fieldName of yField) {
             if (config.yAxis && config.yAxis[fieldName]) {
                 // 若yAxis[fieldName].label.formatter具有自定义函数func属性
                 if (yAxis[fieldName]?.label?.formatter?.func) {
-                    config.yAxis[fieldName].label.formatter = eval(yAxis[fieldName].label.formatter.func)
+                    config.yAxis[fieldName].label.formatter = eval(
+                        yAxis[fieldName].label.formatter.func
+                    );
                 }
             }
         }
 
         // 图例样式
-        config.legend = cloneDeep(legend)
+        config.legend = cloneDeep(legend);
         // 若legend.itemName.formatter具有自定义函数func属性
         if (legend?.itemName?.formatter?.func) {
-            config.legend.itemName.formatter = eval(legend.itemName.formatter.func)
+            config.legend.itemName.formatter = eval(
+                legend.itemName.formatter.func
+            );
         }
         // 若legend.itemValue.formatter具有自定义函数func属性
         if (legend?.itemValue?.formatter?.func) {
-            config.legend.itemValue.formatter = eval(legend.itemValue.formatter.func)
+            config.legend.itemValue.formatter = eval(
+                legend.itemValue.formatter.func
+            );
         }
 
         // 悬浮提示
-        config.tooltip = cloneDeep(tooltip)
+        config.tooltip = cloneDeep(tooltip);
         // 若tooltip.formatter具有自定义函数func属性
         if (tooltip?.formatter?.func) {
-            config.tooltip.formatter = eval(tooltip.formatter.func)
+            config.tooltip.formatter = eval(tooltip.formatter.func);
         }
         // 若tooltip.customItems具有自定义函数func属性
         if (tooltip?.customItems?.func) {
-            config.tooltip.customItems = eval(tooltip.customItems.func)
+            config.tooltip.customItems = eval(tooltip.customItems.func);
         }
 
         // 标注
-        config.annotations = cloneDeep(annotations)
+        config.annotations = cloneDeep(annotations);
 
         // 动画
-        config.animation = cloneDeep(animation)
+        config.animation = cloneDeep(animation);
 
         // 利用lodash移除所有值为undefined的属性
-        config = omitBy(config, isUndefined)
-        configLeft = omitBy(configLeft, isUndefined)
-        configRight = omitBy(configRight, isUndefined)
+        config = omitBy(config, isUndefined);
+        configLeft = omitBy(configLeft, isUndefined);
+        configRight = omitBy(configRight, isUndefined);
 
-        return <DualAxes id={id}
-            key={key}
-            className={className}
-            style={style}
-            data-dash-is-loading={
-                (loading_state && loading_state.is_loading) || undefined
-            }
-            ref={this.chartRef}
-            geometryOptions={[configLeft, configRight]}
-            {...config} />;
+        return (
+            <DualAxes
+                id={id}
+                key={key}
+                className={className}
+                style={style}
+                data-dash-is-loading={
+                    (loading_state && loading_state.is_loading) || undefined
+                }
+                ref={this.chartRef}
+                geometryOptions={[configLeft, configRight]}
+                // 绑定常用事件
+                onReady={(plot) => {
+                    plot.on('element:click', (e) => {
+                        setProps({
+                            recentlyClickRecord: {
+                                timestamp: new Date().valueOf(),
+                                data: e.data.data,
+                            },
+                        });
+                    });
+                }}
+                {...config}
+            />
+        );
     }
 }
 
@@ -321,9 +354,7 @@ AntdDualAxes.propTypes = {
     style: PropTypes.object,
 
     // 定义绘图所需数据，必须参数
-    data: PropTypes.arrayOf(
-        PropTypes.arrayOf(PropTypes.object)
-    ).isRequired,
+    data: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.object)).isRequired,
 
     // 定义字段预处理元信息
     meta: metaBasePropTypes,
@@ -363,8 +394,8 @@ AntdDualAxes.propTypes = {
                     lineBaseStyle,
                     PropTypes.exact({
                         // 回调模式
-                        func: PropTypes.string
-                    })
+                        func: PropTypes.string,
+                    }),
                 ]),
                 // 用于设置折线图折点的样式
                 point: PropTypes.exact({
@@ -373,8 +404,8 @@ AntdDualAxes.propTypes = {
                         PropTypes.string,
                         PropTypes.arrayOf(PropTypes.string),
                         PropTypes.exact({
-                            func: PropTypes.string
-                        })
+                            func: PropTypes.string,
+                        }),
                     ]),
                     // 设置折点形状，支持单字符串或对象传入func定义js函数体，函数格式同lineStyle
                     // 单字符时可选的样式有'circle'、'square'、'line'、'diamond'、'triangle'、'triangle-down'、'hexagon'、
@@ -382,17 +413,17 @@ AntdDualAxes.propTypes = {
                     shape: PropTypes.oneOfType([
                         PropTypes.string,
                         PropTypes.exact({
-                            func: PropTypes.string
-                        })
+                            func: PropTypes.string,
+                        }),
                     ]),
                     // 设置折点通用style属性，支持对象传入，当对象中具有func属性时，会视作func回调模式处理
                     style: PropTypes.oneOfType([
                         pointBaseStyle,
                         PropTypes.exact({
                             // 回调模式
-                            func: PropTypes.string
-                        })
-                    ])
+                            func: PropTypes.string,
+                        }),
+                    ]),
                 }),
                 // 配置文字标签相关参数
                 label: labelBasePropTypes,
@@ -410,9 +441,9 @@ AntdDualAxes.propTypes = {
                         //     }
                         //     return 'blue'
                         // }
-                        func: PropTypes.string
-                    })
-                ])
+                        func: PropTypes.string,
+                    }),
+                ]),
             }),
             // 柱状图专用参数
             PropTypes.exact({
@@ -435,8 +466,8 @@ AntdDualAxes.propTypes = {
                     baseStyle,
                     PropTypes.exact({
                         // 回调模式
-                        func: PropTypes.string
-                    })
+                        func: PropTypes.string,
+                    }),
                 ]),
                 // 配置文字标签相关参数
                 label: labelBasePropTypes,
@@ -454,10 +485,10 @@ AntdDualAxes.propTypes = {
                         //     }
                         //     return 'blue'
                         // }
-                        func: PropTypes.string
-                    })
-                ])
-            })
+                        func: PropTypes.string,
+                    }),
+                ]),
+            }),
         ])
     ),
 
@@ -474,13 +505,13 @@ AntdDualAxes.propTypes = {
     padding: PropTypes.oneOfType([
         PropTypes.number,
         PropTypes.arrayOf(PropTypes.number),
-        PropTypes.oneOf(['auto'])
+        PropTypes.oneOf(['auto']),
     ]),
 
     // 定义在padding基础上额外的像素填充间距
     appendPadding: PropTypes.oneOfType([
         PropTypes.number,
-        PropTypes.arrayOf(PropTypes.number)
+        PropTypes.arrayOf(PropTypes.number),
     ]),
 
     // 设置图表渲染方式为'canvas'或'svg'模式，默认为'canvas'
@@ -508,10 +539,16 @@ AntdDualAxes.propTypes = {
     legend: legendBasePropTypes,
 
     // 配置动画相关参数
-    animation: PropTypes.oneOfType([
-        PropTypes.object,
-        PropTypes.bool
-    ]),
+    animation: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+
+    // 数据项点击事件
+    recentlyClickRecord: PropTypes.exact({
+        // 事件触发的时间戳信息
+        timestamp: PropTypes.number,
+
+        // 对应的数据点信息
+        data: PropTypes.object,
+    }),
 
     // 用于在回调中传入uuid、ulid之类的唯一标识，来主动下载当前图表为png格式图片
     downloadTrigger: PropTypes.string,
@@ -531,17 +568,17 @@ AntdDualAxes.propTypes = {
         /**
          * Holds the name of the component that is loading
          */
-        component_name: PropTypes.string
+        component_name: PropTypes.string,
     }),
 
     /**
      * Dash-assigned callback that should be called to report property changes
      * to Dash, to make them available for callbacks.
      */
-    setProps: PropTypes.func
+    setProps: PropTypes.func,
 };
 
 // 设置默认参数
 AntdDualAxes.defaultProps = {
-    downloadTrigger: 'download-trigger'
-}
+    downloadTrigger: 'download-trigger',
+};

@@ -2,6 +2,7 @@ if True:
     import sys
     sys.path.append('../..')
     import dash
+    import json
     import demjson3
     from dash import html
     import feffery_antd_charts as fact
@@ -123,6 +124,7 @@ app.layout = html.Div(
         ),
         html.Div(
             fact.AntdDualAxes(
+                id='dual-axes-demo',
                 data=[demo_data2, demo_data2],
                 xField='time',
                 yField=['value', 'count'],
@@ -142,6 +144,8 @@ app.layout = html.Div(
                 'height': '400px'
             }
         ),
+
+        html.Pre(id='dual-axes-demo-output'),
 
         fact.AntdDualAxes(
             data=[[
@@ -184,6 +188,20 @@ app.layout = html.Div(
         'padding': '25px'
     }
 )
+
+
+@app.callback(
+    Output('dual-axes-demo-output', 'children'),
+    Input('dual-axes-demo', 'recentlyClickRecord'),
+    prevent_initial_call=True
+)
+def update_recentlyClickRecord(recentlyClickRecord):
+
+    return json.dumps(
+        recentlyClickRecord,
+        indent=4,
+        ensure_ascii=False
+    )
 
 
 if __name__ == '__main__':

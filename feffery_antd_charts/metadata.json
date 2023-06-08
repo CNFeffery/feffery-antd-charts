@@ -3490,6 +3490,23 @@
         "required": false,
         "description": ""
       },
+      "recentlyClickRecord": {
+        "type": {
+          "name": "exact",
+          "value": {
+            "timestamp": {
+              "name": "number",
+              "required": false
+            },
+            "data": {
+              "name": "object",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
       "downloadTrigger": {
         "type": {
           "name": "string"

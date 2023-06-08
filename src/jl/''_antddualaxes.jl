@@ -67,6 +67,10 @@ Those elements have the following types:
 - `locale` (a value equal to: 'zh-CN', 'en-US'; optional)
 - `meta` (optional)
 - `padding` (Real | Array of Reals | a value equal to: 'auto'; optional)
+- `recentlyClickRecord` (optional): . recentlyClickRecord has the following type: lists containing elements 'timestamp', 'data'.
+Those elements have the following types:
+  - `timestamp` (Real; optional)
+  - `data` (Dict; optional)
 - `renderer` (a value equal to: 'canvas', 'svg'; optional)
 - `style` (Dict; optional)
 - `theme` (optional)
@@ -78,7 +82,7 @@ Those elements have the following types:
 - `yField` (Array of Strings; required)
 """
 function ''_antddualaxes(; kwargs...)
-        available_props = Symbol[:id, :animation, :annotations, :appendPadding, :autoFit, :className, :data, :downloadTrigger, :geometryOptions, :height, :key, :legend, :limitInPlot, :loading_state, :locale, :meta, :padding, :renderer, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
+        available_props = Symbol[:id, :animation, :annotations, :appendPadding, :autoFit, :className, :data, :downloadTrigger, :geometryOptions, :height, :key, :legend, :limitInPlot, :loading_state, :locale, :meta, :padding, :recentlyClickRecord, :renderer, :style, :theme, :tooltip, :width, :xAxis, :xField, :yAxis, :yField]
         wild_props = Symbol[]
         return Component("''_antddualaxes", "AntdDualAxes", "feffery_antd_charts", available_props, wild_props; kwargs...)
 end
