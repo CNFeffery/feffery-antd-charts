@@ -4,7 +4,7 @@
 /dist
 /feffery_antd_charts/*.js
 /feffery_antd_charts/*.json
-/__pycache__
+/feffery_antd_charts/__pycache__
 /feffery_antd_charts.egg-info
 /inst
 /man
