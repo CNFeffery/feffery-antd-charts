@@ -3,10 +3,10 @@
 /* eslint-disable no-undefined */
 /* eslint-disable no-else-return */
 /* eslint-disable no-eval */
-import {DualAxes} from '@ant-design/plots';
-import React, {Component} from 'react';
+import { DualAxes } from '@ant-design/plots';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {isUndefined, omitBy, intersection, cloneDeep} from 'lodash';
+import { isUndefined, omitBy, intersection, cloneDeep } from 'lodash';
 import {
     baseStyle,
     pointBaseStyle,
@@ -17,9 +17,10 @@ import {
     labelBasePropTypes,
     tooltipBasePropTypes,
     annotationsBasePropTypes,
+    sliderBasePropTypes,
     themeBasePropTypes,
 } from './BasePropTypes.react';
-import {difference} from './utils';
+import { difference } from './utils';
 
 // 定义不触发重绘的参数数组
 const preventUpdateProps = ['loading_state', 'recentlyClickRecord'];
@@ -98,6 +99,7 @@ export default class AntdDualAxes extends Component {
             xAxis,
             yAxis,
             annotations,
+            slider,
             legend,
             animation,
             theme,
@@ -302,6 +304,13 @@ export default class AntdDualAxes extends Component {
 
         // 标注
         config.annotations = cloneDeep(annotations);
+
+        // 缩略轴
+        config.slider = cloneDeep(slider)
+        // 若slider.formatter具有自定义函数func属性
+        if (slider?.formatter?.func) {
+            config.slider.formatter = eval(slider.formatter.func)
+        }
 
         // 动画
         config.animation = cloneDeep(animation);
@@ -537,6 +546,9 @@ AntdDualAxes.propTypes = {
 
     // 配置图例相关参数
     legend: legendBasePropTypes,
+
+    // 配置缩略轴相关参数
+    slider: sliderBasePropTypes,
 
     // 配置动画相关参数
     animation: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),

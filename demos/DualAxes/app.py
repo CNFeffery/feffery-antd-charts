@@ -116,7 +116,8 @@ app.layout = html.Div(
                             return e
                           }'''
                     }
-                }
+                },
+                slider={}
             ),
             style={
                 'height': '400px'
@@ -138,7 +139,8 @@ app.layout = html.Div(
                             'lineWidth': 2
                         }
                     }
-                ]
+                ],
+                slider={}
             ),
             style={
                 'height': '400px'
