@@ -55,14 +55,18 @@ export default class AntdColumn extends Component {
             preventUpdateProps
         )
 
-        // 若有交集，则不触发重绘
-        if (changedPreventUpdateProps.length !== 0) {
+        // 若changedPreventUpdateProps中所有prop都在preventUpdateProps中，则不触发重绘
+        if (changedProps.every(key => preventUpdateProps.includes(key))) {
             return false;
         } else {
             // 取得plot实例
             const chart = this.chartRef.current.getChart()
             // 检查是否仅有data参数发生更新
-            if (changedProps.indexOf('data') !== -1 && changedProps.length === 1) {
+            // 或除去data参数后其他变化的prop都在preventUpdateProps
+            if (
+                (changedProps.includes('data') && changedProps.length === 1) ||
+                (changedProps.includes('data') && changedPreventUpdateProps.length === changedProps.length - 1)
+            ) {
                 // 动态调整数据
                 chart.changeData(nextProps.data)
                 return false;
