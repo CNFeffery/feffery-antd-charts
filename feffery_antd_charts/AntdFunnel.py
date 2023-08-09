@@ -25,33 +25,19 @@ Keyword arguments:
 
 - conversionTag (dict; optional)
 
-    `conversionTag` is a dict with keys:
+    `conversionTag` is a boolean | dict with keys:
 
-    - arrow (dict; optional)
+    - formatter (dict; optional)
 
-        `arrow` is a boolean
+        `formatter` is a dict with keys:
 
-      Or dict with keys:
+        - func (string; optional)
 
-        - headSize (number; optional)
+    - offsetX (number; optional)
 
-    - offset (number; optional)
+    - offsetY (number; optional)
 
-    - size (number; optional)
-
-    - spacing (number; optional)
-
-    - text (dict; optional)
-
-        `text` is a boolean | dict with keys:
-
-        - formatter (dict; optional)
-
-            `formatter` is a dict with keys:
-
-            - func (string; optional)
-
-        - style (optional)
+    - style (optional)
 
 - data (list of dicts; required)
 

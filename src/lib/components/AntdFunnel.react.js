@@ -155,9 +155,9 @@ export default class AntdFunnel extends Component {
 
         // 进阶参数
         config.conversionTag = cloneDeep(conversionTag)
-        // 若color具有自定义函数func属性
-        if (conversionTag?.text?.formatter?.func) {
-            config.conversionTag.text.formatter = eval(conversionTag.text.formatter.func)
+        // 若conversionTag.formatter具有自定义函数func属性
+        if (conversionTag?.formatter?.func) {
+            config.conversionTag.formatter = eval(conversionTag.formatter.func)
         }
 
         config.funnelStyle = cloneDeep(funnelStyle)
@@ -315,40 +315,25 @@ AntdFunnel.propTypes = {
     ]),
 
     // 设置转化标签相关属性
-    conversionTag: PropTypes.exact({
-        // 设置转化率标签像素尺寸大小
-        size: PropTypes.number,
+    conversionTag: PropTypes.oneOfType([
+        PropTypes.bool,
+        PropTypes.exact({
+            // 水平方向偏移量
+            offsetX: PropTypes.number,
 
-        // 设置转化率标签与柱体之间的像素间距
-        spacing: PropTypes.number,
+            // 竖直方向偏移量
+            offsetY: PropTypes.number,
 
-        // 设置组件与坐标轴之间的距离
-        offset: PropTypes.number,
+            // 文字样式
+            style: baseStyle,
 
-        // 配置转化率组件箭头样式，false时不显示箭头
-        arrow: PropTypes.oneOfType([
-            PropTypes.bool,
-            PropTypes.exact({
-                // 设置箭头尺寸
-                headSize: PropTypes.number
+            // 自定义计算转化率组件文本信息
+            formatter: PropTypes.exact({
+                // 回调模式
+                func: PropTypes.string
             })
-        ]),
-
-        // 配置转化率组件文本信息，false时不显示文本
-        text: PropTypes.oneOfType([
-            PropTypes.bool,
-            PropTypes.exact({
-                // 自定义转化率计算函数
-                formatter: PropTypes.exact({
-                    // 回调模式
-                    func: PropTypes.string
-                }),
-
-                // 自定义转化率文字样式
-                style: textBaseStyle
-            })
-        ])
-    }),
+        })
+    ]),
 
     // 定义图表容器像素宽度，默认为400
     width: PropTypes.number,

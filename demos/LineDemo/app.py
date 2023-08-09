@@ -18,20 +18,38 @@ demo_data = [{'日期': 1, '排名': 5},
 
 app.layout = html.Div(
     [
+        # fact.AntdLine(
+        #     data=demo_data,
+        #     xField='日期',
+        #     yField='排名',
+        #     meta={
+        #         '排名': {
+        #             'alias': '指数'
+        #         }
+        #     },
+        #     label={},
+        #     smooth=True,
+        #     style={
+        #         'height': '250px'
+        #     }
+        # ),
+
         fact.AntdLine(
-            data=demo_data,
-            xField='日期',
-            yField='排名',
+            data=[{'CHIP-ID': 'FH019040784', 'TM': '23:59:04', 'T': 45.3, 'H': 21}, {'CHIP-ID': 'FH019040784', 'TM': '23:59:14', 'T': 45.3, 'H': 21}, {'CHIP-ID': 'FH019040784', 'TM': '23:59:24', 'T': 45.3, 'H': 21},
+                  {'CHIP-ID': 'FH019040784', 'TM': '23:59:34', 'T': 45.6, 'H': 21}, {'CHIP-ID': 'FH019040784', 'TM': '23:59:44', 'T': 45.3, 'H': 21}, {'CHIP-ID': 'FH019040784', 'TM': '23:59:55', 'T': 45.3, 'H': 21}],
+            xField='TM',
+            yField='T',
             meta={
-                '排名': {
-                    'alias': '指数'
+                'TM': {
+                    'type': 'cat'
                 }
             },
             label={},
             smooth=True,
             style={
                 'height': '250px'
-            }
+            },
+            slider={}
         )
     ],
     style={

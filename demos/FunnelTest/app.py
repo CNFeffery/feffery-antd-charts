@@ -36,16 +36,20 @@ app = dash.Dash(__name__)
 
 app.layout = html.Div(
     [
-        html.H3('基础漏斗图'),
+        html.H3('迷你漏斗图'),
         html.Div(
             fact.AntdFunnel(
                 data=demo_data.get('demo1'),
                 xField='stage',
                 yField='number',
-                legend=False
+                legend=False,
+                label=False,
+                conversionTag=False,
+                tooltip=False
             ),
             style={
-                'height': '500px',
+                'height': 200,
+                'width': 300,
                 'border': '1px solid #dbdbda'
             }
         )

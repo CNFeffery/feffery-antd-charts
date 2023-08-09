@@ -100,11 +100,13 @@ app.layout = html.Div(
                 geometryOptions=[
                     {
                         'geometry': 'line',
-                        'color': '#5B8FF9'
+                        'color': '#5B8FF9',
+                        'smooth': True
                     },
                     {
                         'geometry': 'line',
-                        'color': '#5AD8A6'
+                        'color': '#5AD8A6',
+                        'smooth': True
                     }
                 ],
                 tooltip={
