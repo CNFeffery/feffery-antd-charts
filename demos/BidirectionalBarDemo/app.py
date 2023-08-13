@@ -5,7 +5,7 @@ if True:
     import json
     import numpy as np
     from dash import html
-    import feffery_antd_charts as fact
+    import feffery_antd_charts.alias as fact
     from dash.dependencies import Input, Output
 
 app = dash.Dash(__name__)
@@ -61,7 +61,7 @@ mock_data = [
 app.layout = html.Div(
     [
         html.Div(
-            fact.AntdBidirectionalBar(
+            fact.BidirectionalBar(
                 data=mock_data,
                 xField='country',
                 yField=['2016年耕地总面积', '2016年转基因种植面积'],
