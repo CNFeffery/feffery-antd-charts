@@ -3,12 +3,13 @@
 /* eslint-disable no-undefined */
 /* eslint-disable no-else-return */
 /* eslint-disable no-eval */
-import { Funnel } from '@ant-design/plots';
+import { BidirectionalBar } from '@ant-design/plots';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { isUndefined, omitBy, intersection, cloneDeep } from 'lodash';
 import {
     metaBasePropTypes,
+    axisBasePropTypes,
     legendBasePropTypes,
     labelBasePropTypes,
     tooltipBasePropTypes,
@@ -22,12 +23,12 @@ import { difference } from './utils';
 const preventUpdateProps = [
     'loading_state',
     'recentlyTooltipChangeRecord',
-    'recentlyAreaClickRecord',
+    'recentlyBarClickRecord',
     'recentlyLegendInfo'
 ];
 
-// 定义漏斗图组件AntdFunnel，部分API参数参考https://charts.ant.design/zh/examples/more-plots/funnel#basic
-export default class AntdFunnel extends Component {
+// 定义对称条形图组件AntdBidirectionalBar，部分API参数参考https://charts.ant.design/zh/examples/more-plots/bidirectional-bar/#basic
+export default class AntdBidirectionalBar extends Component {
 
     constructor(props) {
         super(props);
@@ -87,15 +88,10 @@ export default class AntdFunnel extends Component {
             meta,
             xField,
             yField,
-            seriesField,
-            compareField,
-            isTransposed,
-            shape,
-            dynamicHeight,
-            maxSize,
-            minSize,
-            funnelStyle,
-            conversionTag,
+            layout,
+            barStyle,
+            xAxis,
+            yAxis,
             width,
             height,
             autoFit,
@@ -136,13 +132,7 @@ export default class AntdFunnel extends Component {
             appendPadding,
             xField,
             yField,
-            compareField,
-            seriesField,
-            isTransposed,
-            shape,
-            dynamicHeight,
-            maxSize,
-            minSize,
+            layout,
             width,
             height,
             autoFit,
@@ -152,17 +142,24 @@ export default class AntdFunnel extends Component {
             limitInPlot
         };
 
-        // 进阶参数
-        config.conversionTag = cloneDeep(conversionTag)
-        // 若conversionTag.formatter具有自定义函数func属性
-        if (conversionTag?.formatter?.func) {
-            config.conversionTag.formatter = eval(conversionTag.formatter.func)
+        config.barStyle = cloneDeep(barStyle)
+        // 若barStyle具有自定义函数func属性
+        if (barStyle?.func) {
+            config.barStyle = eval(barStyle.func)
         }
 
-        config.funnelStyle = cloneDeep(funnelStyle)
-        // 若funnelStyle具有自定义函数func属性
-        if (funnelStyle?.func) {
-            config.funnelStyle = eval(funnelStyle.func)
+        // x轴样式
+        config.xAxis = cloneDeep(xAxis)
+        // 若xAxis.label.formatter具有自定义函数func属性
+        if (xAxis?.label?.formatter?.func) {
+            config.xAxis.label.formatter = eval(xAxis.label.formatter.func)
+        }
+
+        // y轴样式
+        config.yAxis = cloneDeep(yAxis)
+        // 若yAxis.label.formatter具有自定义函数func属性
+        if (yAxis?.label?.formatter?.func) {
+            config.yAxis.label.formatter = eval(yAxis.label.formatter.func)
         }
 
         // 图例样式
@@ -203,7 +200,7 @@ export default class AntdFunnel extends Component {
         // 利用lodash移除所有值为undefined的属性
         config = omitBy(config, isUndefined)
 
-        return <Funnel id={id}
+        return <BidirectionalBar id={id}
             key={key}
             className={className}
             style={style}
@@ -231,7 +228,7 @@ export default class AntdFunnel extends Component {
                 plot.on('element:click', (e) => {
 
                     setProps({
-                        recentlyAreaClickRecord: {
+                        recentlyBarClickRecord: {
                             timestamp: (new Date()).valueOf(),
                             data: e.data.data
                         }
@@ -258,7 +255,7 @@ export default class AntdFunnel extends Component {
 }
 
 // 定义参数或属性
-AntdFunnel.propTypes = {
+AntdBidirectionalBar.propTypes = {
     // 部件id
     id: PropTypes.string,
 
@@ -280,32 +277,15 @@ AntdFunnel.propTypes = {
     // 定义作为x轴的字段名
     xField: PropTypes.string.isRequired,
 
-    // 定义作为y轴的字段名
-    yField: PropTypes.string.isRequired,
+    // 定义作为y轴的字段名数组
+    yField: PropTypes.arrayOf(PropTypes.string).isRequired,
 
-    // 设置对比字段名
-    compareField: PropTypes.string,
+    // 设置对称条形图布局方向，可选的有'horizontal'、'vertical'
+    // 默认：'horizontal'
+    layout: PropTypes.oneOf(['horizontal', 'vertical']),
 
-    // 定义作为分组依据的字段名
-    seriesField: PropTypes.string,
-
-    // 设置是否转置，默认为true
-    isTransposed: PropTypes.bool,
-
-    // 设置漏斗图形状，可选的有'funnel'、'pyramid'
-    shape: PropTypes.oneOf(['funnel', 'pyramid']),
-
-    // 设置是否启用动态高度映射，默认为false
-    dynamicHeight: PropTypes.bool,
-
-    // 设置图形最大宽度，取值应在0~1之间，默认为1
-    maxSize: PropTypes.number,
-
-    // 设置图形最小宽度，取值应在0~1之间，默认为1
-    minSize: PropTypes.number,
-
-    // 设置漏斗图的样式
-    funnelStyle: PropTypes.oneOfType([
+    // 设置柱体的样式
+    barStyle: PropTypes.oneOfType([
         baseStyle,
         PropTypes.exact({
             // 回调模式
@@ -313,26 +293,11 @@ AntdFunnel.propTypes = {
         })
     ]),
 
-    // 设置转化标签相关属性
-    conversionTag: PropTypes.oneOfType([
-        PropTypes.bool,
-        PropTypes.exact({
-            // 水平方向偏移量
-            offsetX: PropTypes.number,
+    // 设置x坐标轴相关属性
+    xAxis: axisBasePropTypes,
 
-            // 竖直方向偏移量
-            offsetY: PropTypes.number,
-
-            // 文字样式
-            style: baseStyle,
-
-            // 自定义计算转化率组件文本信息
-            formatter: PropTypes.exact({
-                // 回调模式
-                func: PropTypes.string
-            })
-        })
-    ]),
+    // 设置y坐标轴相关属性
+    yAxis: axisBasePropTypes,
 
     // 定义图表容器像素宽度，默认为400
     width: PropTypes.number,
@@ -394,8 +359,8 @@ AntdFunnel.propTypes = {
         data: PropTypes.arrayOf(PropTypes.object)
     }),
 
-    // 单独area点击事件
-    recentlyAreaClickRecord: PropTypes.exact({
+    // 单独bar点击事件
+    recentlyBarClickRecord: PropTypes.exact({
         // 事件触发的时间戳信息
         timestamp: PropTypes.number,
 
@@ -442,6 +407,6 @@ AntdFunnel.propTypes = {
 };
 
 // 设置默认参数
-AntdFunnel.defaultProps = {
+AntdBidirectionalBar.defaultProps = {
     downloadTrigger: 'download-trigger'
 }

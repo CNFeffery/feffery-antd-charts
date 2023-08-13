@@ -1,5 +1,6 @@
 from .AntdArea import AntdArea
 from .AntdBar import AntdBar
+from .AntdBidirectionalBar import AntdBidirectionalBar
 from .AntdBox import AntdBox
 from .AntdBullet import AntdBullet
 from .AntdChord import AntdChord
@@ -26,6 +27,7 @@ from .AntdFundFlow import AntdFundFlow
 __all__ = [
     "AntdArea",
     "AntdBar",
+    "AntdBidirectionalBar",
     "AntdBox",
     "AntdBullet",
     "AntdChord",

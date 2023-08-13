@@ -2,6 +2,7 @@
 
 export(''AntdArea)
 export(''AntdBar)
+export(''AntdBidirectionalBar)
 export(''AntdBox)
 export(''AntdBullet)
 export(''AntdChord)

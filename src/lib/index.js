@@ -22,6 +22,7 @@ import AntdDualAxes from "./components/AntdDualAxes.react";
 import AntdLiquid from "./components/AntdLiquid.react";
 import AntdBullet from "./components/AntdBullet.react";
 import AntdGauge from "./components/AntdGauge.react";
+import AntdBidirectionalBar from "./components/AntdBidirectionalBar.react";
 
 export {
     AntdLine,
@@ -47,5 +48,6 @@ export {
     AntdDualAxes,
     AntdLiquid,
     AntdBullet,
-    AntdGauge
+    AntdGauge,
+    AntdBidirectionalBar
 };
