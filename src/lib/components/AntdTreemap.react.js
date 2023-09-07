@@ -343,14 +343,6 @@ AntdTreemap.propTypes = {
     // 配置标注相关参数
     annotations: annotationsBasePropTypes,
 
-    // 配置特殊交互
-    interactions: PropTypes.arrayOf(
-        PropTypes.exact({
-            // 交互类型，可选的有'treemap-drill-down'、'view-zoom'、'drag-move'
-            type: PropTypes.oneOf(['treemap-drill-down', 'view-zoom', 'drag-move']).isRequired,
-        })
-    ),
-
     // 设置动画，默认为{}
     animation: PropTypes.oneOfType([
         PropTypes.object,
@@ -391,6 +383,9 @@ AntdTreemap.propTypes = {
 
     // 主题配置
     theme: themeBasePropTypes,
+
+    // 交互事件配置
+    interactions: PropTypes.array,
 
     loading_state: PropTypes.shape({
         /**

@@ -104,6 +104,7 @@ export default class AntdDualAxes extends Component {
             legend,
             animation,
             theme,
+            interactions,
             setProps,
             loading_state,
         } = this.props;
@@ -140,6 +141,7 @@ export default class AntdDualAxes extends Component {
             locale,
             limitInPlot,
             theme,
+            interactions
         };
 
         // 初始化左右轴config参数对象，每次渲染前的参数解析变动只在config中生效
@@ -568,6 +570,9 @@ AntdDualAxes.propTypes = {
 
     // 主题配置
     theme: themeBasePropTypes,
+
+    // 交互事件配置
+    interactions: PropTypes.array,
 
     loading_state: PropTypes.shape({
         /**

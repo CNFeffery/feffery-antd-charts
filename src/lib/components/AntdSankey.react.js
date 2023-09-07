@@ -101,6 +101,7 @@ export default class AntdSankey extends Component {
             nodeDraggable,
             animation,
             theme,
+            interactions,
             setProps,
             loading_state
         } = this.props;
@@ -139,7 +140,8 @@ export default class AntdSankey extends Component {
             nodePaddingRatio,
             nodeAlign,
             nodeDraggable,
-            theme
+            theme,
+            interactions
         }
 
         // 进阶参数
@@ -351,6 +353,9 @@ AntdSankey.propTypes = {
 
     // 主题配置
     theme: themeBasePropTypes,
+
+    // 交互事件配置
+    interactions: PropTypes.array,
 
     loading_state: PropTypes.shape({
         /**

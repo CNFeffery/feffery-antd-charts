@@ -242,6 +242,7 @@ export default class AntdGauge extends Component {
             statistic,
             animation,
             theme,
+            interactions,
             setProps,
             loading_state
         } = this.props;
@@ -269,7 +270,8 @@ export default class AntdGauge extends Component {
             type,
             meter,
             indicator,
-            theme
+            theme,
+            interactions
         }
         // 映射指示器类型
         if (config.indicator?.shape) {
@@ -519,6 +521,9 @@ AntdGauge.propTypes = {
 
     // 主题配置
     theme: themeBasePropTypes,
+
+    // 交互事件配置
+    interactions: PropTypes.array,
 
     loading_state: PropTypes.shape({
         /**

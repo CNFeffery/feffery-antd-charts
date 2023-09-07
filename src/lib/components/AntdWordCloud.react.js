@@ -107,6 +107,7 @@ export default class AntdWordCloud extends Component {
             annotations,
             animation,
             theme,
+            interactions,
             setProps,
             loading_state
         } = this.props;
@@ -142,6 +143,7 @@ export default class AntdWordCloud extends Component {
             locale,
             limitInPlot,
             theme,
+            interactions,
             imageMask
         }
 
@@ -411,6 +413,9 @@ AntdWordCloud.propTypes = {
 
     // 主题配置
     theme: themeBasePropTypes,
+
+    // 交互事件配置
+    interactions: PropTypes.array,
 
     loading_state: PropTypes.shape({
         /**

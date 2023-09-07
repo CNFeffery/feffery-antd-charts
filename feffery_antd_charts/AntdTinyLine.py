@@ -35,6 +35,8 @@ Keyword arguments:
 
 - height (number; optional)
 
+- interactions (list; optional)
+
 - key (string; optional)
 
 - limitInPlot (boolean; optional)
@@ -116,10 +118,10 @@ Keyword arguments:
     _namespace = 'feffery_antd_charts'
     _type = 'AntdTinyLine'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, smooth=Component.UNDEFINED, connectNulls=Component.UNDEFINED, color=Component.UNDEFINED, lineStyle=Component.UNDEFINED, point=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, animation=Component.UNDEFINED, recentlyTooltipChangeRecord=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'animation', 'annotations', 'appendPadding', 'autoFit', 'className', 'color', 'connectNulls', 'data', 'downloadTrigger', 'height', 'key', 'limitInPlot', 'lineStyle', 'loading_state', 'locale', 'meta', 'padding', 'point', 'recentlyTooltipChangeRecord', 'renderer', 'smooth', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'yAxis']
+    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, smooth=Component.UNDEFINED, connectNulls=Component.UNDEFINED, color=Component.UNDEFINED, lineStyle=Component.UNDEFINED, point=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, animation=Component.UNDEFINED, recentlyTooltipChangeRecord=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, interactions=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'animation', 'annotations', 'appendPadding', 'autoFit', 'className', 'color', 'connectNulls', 'data', 'downloadTrigger', 'height', 'interactions', 'key', 'limitInPlot', 'lineStyle', 'loading_state', 'locale', 'meta', 'padding', 'point', 'recentlyTooltipChangeRecord', 'renderer', 'smooth', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'yAxis']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'animation', 'annotations', 'appendPadding', 'autoFit', 'className', 'color', 'connectNulls', 'data', 'downloadTrigger', 'height', 'key', 'limitInPlot', 'lineStyle', 'loading_state', 'locale', 'meta', 'padding', 'point', 'recentlyTooltipChangeRecord', 'renderer', 'smooth', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'yAxis']
+        self.available_properties = ['id', 'animation', 'annotations', 'appendPadding', 'autoFit', 'className', 'color', 'connectNulls', 'data', 'downloadTrigger', 'height', 'interactions', 'key', 'limitInPlot', 'lineStyle', 'loading_state', 'locale', 'meta', 'padding', 'point', 'recentlyTooltipChangeRecord', 'renderer', 'smooth', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'yAxis']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

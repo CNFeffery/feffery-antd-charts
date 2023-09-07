@@ -115,6 +115,7 @@ export default class AntdLine extends Component {
             slider,
             animation,
             theme,
+            interactions,
             setProps,
             loading_state
         } = this.props;
@@ -162,6 +163,7 @@ export default class AntdLine extends Component {
             autoFit,
             renderer,
             theme,
+            interactions,
             locale,
             limitInPlot
         };
@@ -522,6 +524,9 @@ AntdLine.propTypes = {
 
     // 主题配置
     theme: themeBasePropTypes,
+
+    // 交互事件配置
+    interactions: PropTypes.array,
 
     loading_state: PropTypes.shape({
         /**

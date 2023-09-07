@@ -127,6 +127,7 @@ export default class AntdColumn extends Component {
             slider,
             animation,
             theme,
+            interactions,
             setProps,
             loading_state
         } = this.props;
@@ -174,6 +175,7 @@ export default class AntdColumn extends Component {
             autoFit,
             renderer,
             theme,
+            interactions,
             locale,
             limitInPlot
         };
@@ -549,6 +551,9 @@ AntdColumn.propTypes = {
 
     // 主题配置
     theme: themeBasePropTypes,
+
+    // 交互事件配置
+    interactions: PropTypes.array,
 
     // 柱体点击事件
     recentlyBarClickRecord: PropTypes.exact({

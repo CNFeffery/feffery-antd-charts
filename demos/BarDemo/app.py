@@ -3,6 +3,7 @@ if True:
     sys.path.append('../..')
     import dash
     import json
+    import requests
     import numpy as np
     from dash import html
     import feffery_antd_charts as fact
@@ -55,6 +56,43 @@ app.layout = html.Div(
         ),
         html.Pre(
             id='output'
+        ),
+        html.Div(
+            fact.AntdBar(
+                data=(
+                    requests
+                    .get(
+                        'https://gw.alipayobjects.com/os/bmw-prod/be63e0a2-d2be-4c45-97fd-c00f752a66d4.json'
+                    )
+                    .json()
+                ),
+                yField='城市',
+                xField='销售额',
+                yAxis={
+                    'label': {
+                        'autoRotate': False
+                    }
+                },
+                scrollbar={
+                    'type': "vertical"
+                },
+                interactions=[
+                    {
+                        'type': "plot-mousewheel-scroll",
+                        'cfg': {
+                            'start': [
+                                {
+                                    'trigger': "plot:mousewheel",
+                                    'action': "mousewheel-scroll:scroll"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            ),
+            style={
+                'height': '400px'
+            }
         )
     ],
     style={

@@ -105,6 +105,7 @@ export default class AntdBullet extends Component {
             legend,
             animation,
             theme,
+            interactions,
             setProps,
             loading_state
         } = this.props;
@@ -141,7 +142,8 @@ export default class AntdBullet extends Component {
             limitInPlot,
             layout,
             color,
-            theme
+            theme,
+            interactions
         }
 
         // 进阶参数
@@ -424,6 +426,9 @@ AntdBullet.propTypes = {
 
     // 主题配置
     theme: themeBasePropTypes,
+
+    // 交互事件配置
+    interactions: PropTypes.array,
 
     loading_state: PropTypes.shape({
         /**
