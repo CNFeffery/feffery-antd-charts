@@ -14,6 +14,9 @@ setup(
     author=package['author'],
     packages=[package_name],
     include_package_data=True,
+    package_data={
+        'feffery_antd_charts': ['*']
+    },
     license=package['license'],
     description=package.get('description', package_name),
     install_requires=[

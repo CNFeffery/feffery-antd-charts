@@ -3,7 +3,7 @@ module FefferyAntdCharts
 using Dash
 
 const resources_path = realpath(joinpath( @__DIR__, "..", "deps"))
-const version = "0.0.1-rc24"
+const version = "0.0.1-rc25"
 
 include("jl/''_antdarea.jl")
 include("jl/''_antdbar.jl")
@@ -39,15 +39,43 @@ function __init__()
             version = version,
             [
                 DashBase.Resource(
+    relative_package_path = "async-graphs.js",
+    external_url = "https://unpkg.com/feffery_antd_charts@0.0.1-rc25/feffery_antd_charts/async-graphs.js",
+    dynamic = nothing,
+    async = :true,
+    type = :js
+),
+DashBase.Resource(
+    relative_package_path = "async-plots.js",
+    external_url = "https://unpkg.com/feffery_antd_charts@0.0.1-rc25/feffery_antd_charts/async-plots.js",
+    dynamic = nothing,
+    async = :true,
+    type = :js
+),
+DashBase.Resource(
+    relative_package_path = "async-graphs.js.map",
+    external_url = "https://unpkg.com/feffery_antd_charts@0.0.1-rc25/feffery_antd_charts/async-graphs.js.map",
+    dynamic = true,
+    async = nothing,
+    type = :js
+),
+DashBase.Resource(
+    relative_package_path = "async-plots.js.map",
+    external_url = "https://unpkg.com/feffery_antd_charts@0.0.1-rc25/feffery_antd_charts/async-plots.js.map",
+    dynamic = true,
+    async = nothing,
+    type = :js
+),
+DashBase.Resource(
     relative_package_path = "feffery_antd_charts.min.js",
-    external_url = "https://unpkg.com/feffery_antd_charts@0.0.1-rc24/feffery_antd_charts/feffery_antd_charts.min.js",
+    external_url = "https://unpkg.com/feffery_antd_charts@0.0.1-rc25/feffery_antd_charts/feffery_antd_charts.min.js",
     dynamic = nothing,
     async = nothing,
     type = :js
 ),
 DashBase.Resource(
     relative_package_path = "feffery_antd_charts.min.js.map",
-    external_url = "https://unpkg.com/feffery_antd_charts@0.0.1-rc24/feffery_antd_charts/feffery_antd_charts.min.js.map",
+    external_url = "https://unpkg.com/feffery_antd_charts@0.0.1-rc25/feffery_antd_charts/feffery_antd_charts.min.js.map",
     dynamic = true,
     async = nothing,
     type = :js

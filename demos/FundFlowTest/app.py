@@ -120,7 +120,7 @@ demo_data = dict(
 )
 
 
-app = dash.Dash(__name__)
+app = dash.Dash(__name__, compress=True)
 
 app.layout = html.Div(
     [

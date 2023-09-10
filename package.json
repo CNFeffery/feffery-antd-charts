@@ -1,6 +1,6 @@
 {
     "name": "feffery_antd_charts",
-    "version": "0.0.1-rc24",
+    "version": "0.0.1-rc25",
     "description": "Best implementation of Ant Design Charts in Plotly Dash.",
     "repository": {
         "type": "git",
@@ -48,6 +48,7 @@
         "styled-jsx": "^3.2.1",
         "uglifyjs-webpack-plugin": "^2.2.0",
         "webpack": "^4.36.1",
+        "webpack-bundle-analyzer": "^4.9.1",
         "webpack-cli": "^3.3.6",
         "webpack-serve": "3.1.0"
     },
