@@ -1064,38 +1064,41 @@ const sliderBasePropTypes = PropTypes.oneOfType([
 ])
 
 // 定义主题通用PropTypes模板
-const themeBasePropTypes = PropTypes.exact({
-    // 设置自定义主题样式表
-    styleSheet: PropTypes.exact({
-        // 设置背景色
-        backgroundColor: PropTypes.string,
-        // 设置主题色
-        brandColor: PropTypes.string,
-        // 设置分类颜色色板，分类个数小于10时使用
-        paletteQualitative10: PropTypes.arrayOf(PropTypes.string),
-        // 设置分类颜色色板，分类个数大于10时使用
-        paletteQualitative20: PropTypes.arrayOf(PropTypes.string),
-        // 设置字体
-        fontFamily: PropTypes.string
+const themeBasePropTypes = PropTypes.oneOfType([
+    PropTypes.exact({
+        // 设置自定义主题样式表
+        styleSheet: PropTypes.exact({
+            // 设置背景色
+            backgroundColor: PropTypes.string,
+            // 设置主题色
+            brandColor: PropTypes.string,
+            // 设置分类颜色色板，分类个数小于10时使用
+            paletteQualitative10: PropTypes.arrayOf(PropTypes.string),
+            // 设置分类颜色色板，分类个数大于10时使用
+            paletteQualitative20: PropTypes.arrayOf(PropTypes.string),
+            // 设置字体
+            fontFamily: PropTypes.string
+        }),
+
+        // 主题色
+        defaultColor: PropTypes.string,
+
+        // 设置四周留白
+        padding: PropTypes.oneOfType([
+            PropTypes.number,
+            PropTypes.arrayOf(
+                PropTypes.number
+            )
+        ]),
+        // 图表字体
+        fontFamily: PropTypes.string,
+        // 分类颜色色板，分类个数小于10时使用
+        colors10: PropTypes.arrayOf(PropTypes.string),
+        // 分类颜色色板，分类个数大于10时使用
+        colors20: PropTypes.arrayOf(PropTypes.string)
     }),
-
-    // 主题色
-    defaultColor: PropTypes.string,
-
-    // 设置四周留白
-    padding: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.arrayOf(
-            PropTypes.number
-        )
-    ]),
-    // 图表字体
-    fontFamily: PropTypes.string,
-    // 分类颜色色板，分类个数小于10时使用
-    colors10: PropTypes.arrayOf(PropTypes.string),
-    // 分类颜色色板，分类个数大于10时使用
-    colors20: PropTypes.arrayOf(PropTypes.string)
-})
+    PropTypes.oneOf(['default', 'dark'])
+])
 
 export {
     baseStyle,
