@@ -162,7 +162,7 @@ Keyword arguments:
 
         - rotate (number; optional)
 
-        - style (dict; optional)
+        - style (dict; optional) | boolean
 
 - style (dict; optional)
 
