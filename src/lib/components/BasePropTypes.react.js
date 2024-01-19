@@ -500,7 +500,7 @@ const axisBasePropTypes = PropTypes.oneOfType([
         maxLimit: PropTypes.number,
 
         // 设置期望的坐标轴刻度数量
-        tickCountL: PropTypes.number,
+        tickCount: PropTypes.number,
 
         // 设置坐标轴刻度间隔
         tickInterval: PropTypes.number
