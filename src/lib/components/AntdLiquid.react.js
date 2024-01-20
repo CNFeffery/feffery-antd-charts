@@ -129,75 +129,78 @@ AntdLiquid.propTypes = {
     }),
 
     // 配置水波图中心文本内容
-    statistic: PropTypes.exact({
-        // 配置统计内容标题，设置为false时隐藏标题
-        title: PropTypes.oneOfType([
-            PropTypes.bool,
-            PropTypes.exact({
-                // 配置统计文本的css样式
-                style: PropTypes.object,
+    statistic: PropTypes.oneOfType([
+        PropTypes.bool,
+        PropTypes.exact({
+            // 配置统计内容标题，设置为false时隐藏标题
+            title: PropTypes.oneOfType([
+                PropTypes.bool,
+                PropTypes.exact({
+                    // 配置统计文本的css样式
+                    style: PropTypes.object,
 
-                // 配置标题文本内容，优先级：customHtml > formatter > content
-                content: PropTypes.string,
+                    // 配置标题文本内容，优先级：customHtml > formatter > content
+                    content: PropTypes.string,
 
-                // 回调自定义标题文本信息
-                formatter: PropTypes.exact({
-                    // 回调模式
-                    func: PropTypes.string
-                }),
+                    // 回调自定义标题文本信息
+                    formatter: PropTypes.exact({
+                        // 回调模式
+                        func: PropTypes.string
+                    }),
 
-                // 回调自定义标题文本信息，优先级最高
-                // 格式：(container, view, datum, data) => string
-                customHtml: PropTypes.exact({
-                    // 回调模式
-                    func: PropTypes.string
-                }),
+                    // 回调自定义标题文本信息，优先级最高
+                    // 格式：(container, view, datum, data) => string
+                    customHtml: PropTypes.exact({
+                        // 回调模式
+                        func: PropTypes.string
+                    }),
 
-                // 设置标题的旋转角度
-                rotate: PropTypes.number,
+                    // 设置标题的旋转角度
+                    rotate: PropTypes.number,
 
-                // 设置标题的水平方向偏移像素值
-                offsetX: PropTypes.number,
+                    // 设置标题的水平方向偏移像素值
+                    offsetX: PropTypes.number,
 
-                // 设置标题的竖直方向偏移像素值
-                offsetY: PropTypes.number
-            })
-        ]),
+                    // 设置标题的竖直方向偏移像素值
+                    offsetY: PropTypes.number
+                })
+            ]),
 
-        // 配置统计内容主体信息，设置为false时隐藏标题
-        content: PropTypes.oneOfType([
-            PropTypes.bool,
-            PropTypes.exact({
-                // 配置统计文本的css样式
-                style: PropTypes.object,
+            // 配置统计内容主体信息，设置为false时隐藏标题
+            content: PropTypes.oneOfType([
+                PropTypes.bool,
+                PropTypes.exact({
+                    // 配置统计文本的css样式
+                    style: PropTypes.object,
 
-                // 配置主体信息文本内容，优先级：customHtml > formatter > content
-                content: PropTypes.string,
+                    // 配置主体信息文本内容，优先级：customHtml > formatter > content
+                    content: PropTypes.string,
 
-                // 回调自定义主体信息文本信息
-                formatter: PropTypes.exact({
-                    // 回调模式
-                    func: PropTypes.string
-                }),
+                    // 回调自定义主体信息文本信息
+                    formatter: PropTypes.exact({
+                        // 回调模式
+                        func: PropTypes.string
+                    }),
 
-                // 回调自定义标题文本信息，优先级最高
-                // 格式：(container, view, datum, data) => string
-                customHtml: PropTypes.exact({
-                    // 回调模式
-                    func: PropTypes.string
-                }),
+                    // 回调自定义标题文本信息，优先级最高
+                    // 格式：(container, view, datum, data) => string
+                    customHtml: PropTypes.exact({
+                        // 回调模式
+                        func: PropTypes.string
+                    }),
 
-                // 设置主体信息旋转角度
-                rotate: PropTypes.number,
+                    // 设置主体信息旋转角度
+                    rotate: PropTypes.number,
 
-                // 设置主体信息的水平方向偏移像素值
-                offsetX: PropTypes.number,
+                    // 设置主体信息的水平方向偏移像素值
+                    offsetX: PropTypes.number,
 
-                // 设置主体信息的竖直方向偏移像素值
-                offsetY: PropTypes.number
-            })
-        ]),
-    }),
+                    // 设置主体信息的竖直方向偏移像素值
+                    offsetY: PropTypes.number
+                })
+            ]),
+        })
+    ]),
 
     // 配置动画相关参数
     animation: PropTypes.oneOfType([

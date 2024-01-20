@@ -84,7 +84,7 @@ Keyword arguments:
 
 - statistic (dict; optional)
 
-    `statistic` is a dict with keys:
+    `statistic` is a boolean | dict with keys:
 
     - content (dict; optional)
 
