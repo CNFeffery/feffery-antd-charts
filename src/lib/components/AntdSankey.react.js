@@ -188,6 +188,7 @@ AntdSankey.propTypes = {
 
 // 设置默认参数
 AntdSankey.defaultProps = {
+    locale: 'zh-CN',
     downloadTrigger: 'download-trigger'
 }
 
