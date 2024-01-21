@@ -233,6 +233,7 @@ AntdBullet.propTypes = {
 
 // 设置默认参数
 AntdBullet.defaultProps = {
+    locale: 'zh-CN',
     layout: 'horizontal',
     downloadTrigger: 'download-trigger'
 }
