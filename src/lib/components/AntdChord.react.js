@@ -169,6 +169,7 @@ AntdChord.propTypes = {
 
 // 设置默认参数
 AntdChord.defaultProps = {
+    locale: 'zh-CN',
     downloadTrigger: 'download-trigger'
 }
 
