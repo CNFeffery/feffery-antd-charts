@@ -44,7 +44,7 @@ AntdArea.propTypes = {
     // 自定义css字典
     style: PropTypes.object,
 
-    // 定义绘图所需数据，必须参数
+    // 必填，定义绘图所需数据
     data: PropTypes.arrayOf(PropTypes.object).isRequired,
 
     // 定义字段预处理元信息
@@ -59,16 +59,17 @@ AntdArea.propTypes = {
     // 定义作为分组依据的字段名
     seriesField: PropTypes.string,
 
-    // 设置是否以平滑曲线方式渲染折线，默认为false
-    smooth: PropTypes.bool,
-
     // 设置是否开启百分比面积图，百分比时会自动激活isStack=true
     isPercent: PropTypes.bool,
+
+    // 设置是否以平滑曲线方式渲染折线，默认为false
+    smooth: PropTypes.bool,
 
     // 在存在seriesField分组字段时，用于设置是否将折线堆叠起来，默认为false
     isStack: PropTypes.bool,
 
     // 设置面积图是否从0基准线开始填充，使用时需要配合isStack=false
+    // 默认为true
     startOnZero: PropTypes.bool,
 
     // 设置面积图形样式
@@ -76,24 +77,6 @@ AntdArea.propTypes = {
         areaBaseStyle,
         PropTypes.exact({
             // 回调模式
-            func: PropTypes.string
-        })
-    ]),
-
-    // 用于手动设置调色方案，接受css中合法的所有颜色值，当传入单个字符串时，所有折线沿用此颜色值
-    // 当传入数组时，会视作调色盘方案对seriesField区分的不同系列进行着色
-    // 当传入对象时，会解析出其'func'属性对应的字符串，解析为函数，以支持更为自由的seriesField->色彩映射
-    color: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.arrayOf(PropTypes.string),
-        PropTypes.exact({
-            // 传入字符串形式的js函数体源码，例如
-            // (ref) => {
-            //     if (ref.series === '系列一'){
-            //         return 'red'
-            //     }
-            //     return 'blue'
-            // }
             func: PropTypes.string
         })
     ]),
@@ -161,6 +144,24 @@ AntdArea.propTypes = {
         ])
     }),
 
+    // 用于手动设置调色方案，接受css中合法的所有颜色值，当传入单个字符串时，所有折线沿用此颜色值
+    // 当传入数组时，会视作调色盘方案对seriesField区分的不同系列进行着色
+    // 当传入对象时，会解析出其'func'属性对应的字符串，解析为函数，以支持更为自由的seriesField->色彩映射
+    color: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.arrayOf(PropTypes.string),
+        PropTypes.exact({
+            // 传入字符串形式的js函数体源码，例如
+            // (ref) => {
+            //     if (ref.series === '系列一'){
+            //         return 'red'
+            //     }
+            //     return 'blue'
+            // }
+            func: PropTypes.string
+        })
+    ]),
+
     // 设置x坐标轴相关属性
     xAxis: axisBasePropTypes,
 
@@ -180,21 +181,20 @@ AntdArea.propTypes = {
     padding: PropTypes.oneOfType([
         PropTypes.number,
         PropTypes.arrayOf(PropTypes.number),
-        PropTypes.string
+        PropTypes.oneOf(['auto'])
     ]),
 
     // 定义在padding基础上额外的像素填充间距
     appendPadding: PropTypes.oneOfType([
         PropTypes.number,
-        PropTypes.arrayOf(PropTypes.number),
-        PropTypes.string
+        PropTypes.arrayOf(PropTypes.number)
     ]),
 
     // 设置图表渲染方式为'canvas'或'svg'模式，默认为'canvas'
-    renderer: PropTypes.string,
+    renderer: PropTypes.oneOf(['canvas', 'svg']),
 
     // 设置语言，可选的有'zh-CN'与'en-US'
-    locale: PropTypes.string,
+    locale: PropTypes.oneOf(['zh-CN', 'en-US']),
 
     // 设置是否对超出绘图区域的几何元素进行裁剪
     limitInPlot: PropTypes.bool,
@@ -282,6 +282,7 @@ AntdArea.propTypes = {
 
 // 设置默认参数
 AntdArea.defaultProps = {
+    locale: 'zh-CN',
     downloadTrigger: 'download-trigger'
 }
 
