@@ -127,10 +127,10 @@ AntdFunnel.propTypes = {
     ]),
 
     // 设置图表渲染方式为'canvas'或'svg'模式，默认为'canvas'
-    renderer: PropTypes.string,
+    renderer: PropTypes.oneOf(['canvas', 'svg']),
 
     // 设置语言，可选的有'zh-CN'与'en-US'
-    locale: PropTypes.string,
+    locale: PropTypes.oneOf(['zh-CN', 'en-US']),
 
     // 设置是否对超出绘图区域的几何元素进行裁剪
     limitInPlot: PropTypes.bool,
@@ -215,6 +215,7 @@ AntdFunnel.propTypes = {
 
 // 设置默认参数
 AntdFunnel.defaultProps = {
+    locale: 'zh-CN',
     downloadTrigger: 'download-trigger'
 }
 
