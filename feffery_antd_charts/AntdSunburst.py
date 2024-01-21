@@ -86,7 +86,7 @@ Keyword arguments:
     - prop_name (string; optional):
         Holds which property is loading.
 
-- locale (a value equal to: 'zh-CN', 'en-US'; optional)
+- locale (a value equal to: 'zh-CN', 'en-US'; default 'zh-CN')
 
 - meta (optional)
 

@@ -84,7 +84,7 @@ Keyword arguments:
     - prop_name (string; optional):
         Holds which property is loading.
 
-- locale (string; optional)
+- locale (a value equal to: 'zh-CN', 'en-US'; default 'zh-CN')
 
 - meta (optional)
 
@@ -140,7 +140,7 @@ Keyword arguments:
 
     - timestamp (number; optional)
 
-- renderer (string; optional)
+- renderer (a value equal to: 'canvas', 'svg'; optional)
 
 - seriesField (string; optional)
 

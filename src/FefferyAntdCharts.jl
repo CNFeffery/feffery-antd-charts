@@ -39,6 +39,13 @@ function __init__()
             version = version,
             [
                 DashBase.Resource(
+    relative_package_path = "async-fact-shared.js",
+    external_url = "https://unpkg.com/feffery_antd_charts@0.0.2/feffery_antd_charts/async-fact-shared.js",
+    dynamic = nothing,
+    async = :true,
+    type = :js
+),
+DashBase.Resource(
     relative_package_path = "async-graphs.js",
     external_url = "https://unpkg.com/feffery_antd_charts@0.0.2/feffery_antd_charts/async-graphs.js",
     dynamic = nothing,
@@ -50,6 +57,13 @@ DashBase.Resource(
     external_url = "https://unpkg.com/feffery_antd_charts@0.0.2/feffery_antd_charts/async-plots.js",
     dynamic = nothing,
     async = :true,
+    type = :js
+),
+DashBase.Resource(
+    relative_package_path = "async-fact-shared.js.map",
+    external_url = "https://unpkg.com/feffery_antd_charts@0.0.2/feffery_antd_charts/async-fact-shared.js.map",
+    dynamic = true,
+    async = nothing,
     type = :js
 ),
 DashBase.Resource(

@@ -15,7 +15,7 @@ Keyword arguments:
 
 - annotations (optional)
 
-- appendPadding (number | list of numbers | string; optional)
+- appendPadding (number | list of numbers; optional)
 
 - areaStyle (dict; optional)
 
@@ -84,11 +84,11 @@ Keyword arguments:
     - prop_name (string; optional):
         Holds which property is loading.
 
-- locale (string; optional)
+- locale (a value equal to: 'zh-CN', 'en-US'; default 'zh-CN')
 
 - meta (optional)
 
-- padding (number | list of numbers | string; optional)
+- padding (number | list of numbers | a value equal to: 'auto'; optional)
 
 - point (dict; optional)
 
@@ -138,7 +138,7 @@ Keyword arguments:
 
     - timestamp (number; optional)
 
-- renderer (string; optional)
+- renderer (a value equal to: 'canvas', 'svg'; optional)
 
 - seriesField (string; optional)
 
@@ -168,7 +168,7 @@ Keyword arguments:
     _namespace = 'feffery_antd_charts'
     _type = 'AntdArea'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, xField=Component.REQUIRED, yField=Component.REQUIRED, seriesField=Component.UNDEFINED, smooth=Component.UNDEFINED, isPercent=Component.UNDEFINED, isStack=Component.UNDEFINED, startOnZero=Component.UNDEFINED, areaStyle=Component.UNDEFINED, color=Component.UNDEFINED, line=Component.UNDEFINED, point=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, slider=Component.UNDEFINED, animation=Component.UNDEFINED, recentlyTooltipChangeRecord=Component.UNDEFINED, recentlyPointClickRecord=Component.UNDEFINED, recentlyLegendInfo=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, interactions=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
+    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, xField=Component.REQUIRED, yField=Component.REQUIRED, seriesField=Component.UNDEFINED, isPercent=Component.UNDEFINED, smooth=Component.UNDEFINED, isStack=Component.UNDEFINED, startOnZero=Component.UNDEFINED, areaStyle=Component.UNDEFINED, line=Component.UNDEFINED, point=Component.UNDEFINED, color=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, slider=Component.UNDEFINED, animation=Component.UNDEFINED, recentlyTooltipChangeRecord=Component.UNDEFINED, recentlyPointClickRecord=Component.UNDEFINED, recentlyLegendInfo=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, interactions=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
         self._prop_names = ['id', 'animation', 'annotations', 'appendPadding', 'areaStyle', 'autoFit', 'className', 'color', 'data', 'downloadTrigger', 'height', 'interactions', 'isPercent', 'isStack', 'key', 'label', 'legend', 'limitInPlot', 'line', 'loading_state', 'locale', 'meta', 'padding', 'point', 'recentlyLegendInfo', 'recentlyPointClickRecord', 'recentlyTooltipChangeRecord', 'renderer', 'seriesField', 'slider', 'smooth', 'startOnZero', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
         self._valid_wildcard_attributes =            []
         self.available_properties = ['id', 'animation', 'annotations', 'appendPadding', 'areaStyle', 'autoFit', 'className', 'color', 'data', 'downloadTrigger', 'height', 'interactions', 'isPercent', 'isStack', 'key', 'label', 'legend', 'limitInPlot', 'line', 'loading_state', 'locale', 'meta', 'padding', 'point', 'recentlyLegendInfo', 'recentlyPointClickRecord', 'recentlyTooltipChangeRecord', 'renderer', 'seriesField', 'slider', 'smooth', 'startOnZero', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
