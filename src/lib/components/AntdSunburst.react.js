@@ -226,6 +226,7 @@ AntdSunburst.propTypes = {
 
 // 设置默认参数
 AntdSunburst.defaultProps = {
+    locale: 'zh-CN',
     reflect: false,
     downloadTrigger: 'download-trigger'
 }
