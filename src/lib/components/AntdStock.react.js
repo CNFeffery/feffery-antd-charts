@@ -198,6 +198,7 @@ AntdStock.propTypes = {
 
 // 设置默认参数
 AntdStock.defaultProps = {
+    locale: 'zh-CN',
     risingFill: '#ef5350',
     fallingFill: '#26a69a',
     downloadTrigger: 'download-trigger'
