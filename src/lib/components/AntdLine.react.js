@@ -259,6 +259,7 @@ AntdLine.propTypes = {
 
 // 设置默认参数
 AntdLine.defaultProps = {
+    locale: 'zh-CN',
     downloadTrigger: 'download-trigger'
 }
 
