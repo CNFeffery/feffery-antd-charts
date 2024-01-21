@@ -249,6 +249,7 @@ AntdGauge.propTypes = {
 
 // 设置默认参数
 AntdGauge.defaultProps = {
+    locale: 'zh-CN',
     radius: 0.95,
     downloadTrigger: 'download-trigger'
 }
