@@ -190,6 +190,7 @@ AntdTreemap.propTypes = {
 
 // 设置默认参数
 AntdTreemap.defaultProps = {
+    locale: 'zh-CN',
     downloadTrigger: 'download-trigger',
     animation: {}
 }
