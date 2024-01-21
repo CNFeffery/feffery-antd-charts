@@ -241,6 +241,7 @@ AntdLiquid.propTypes = {
 
 // 设置默认参数
 AntdLiquid.defaultProps = {
+    locale: 'zh-CN',
     radius: 0.9,
     shape: 'circle',
     downloadTrigger: 'download-trigger'
