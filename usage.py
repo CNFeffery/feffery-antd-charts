@@ -6,7 +6,7 @@ app = dash.Dash(__name__, compress=True)
 
 app.layout = html.Div(
     [
-        fact.AntdColumn(
+        fact.AntdBar(
             data=[{'x': i, 'y': i} for i in range(10)],
             xField='x',
             yField='y',
