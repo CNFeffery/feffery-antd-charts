@@ -6,583 +6,96 @@ app = dash.Dash(__name__, compress=True)
 
 app.layout = html.Div(
     [
-        fact.AntdSunburst(
-            id='sunburst-demo',
+        fact.AntdTreemap(
+            id='treemap-demo',
             data={
-                "label": "root",
-                "children": [
+                'name': 'root',
+                'children': [
+                        {
+                            'name': '分类 1',
+                            'value': 560,
+                        },
                     {
-                        "label": "类别 1",
-                        "children": [
-                            {
-                                "label": "类别 1.1",
-                                "children": [
-                                    {
-                                        "label": "类别 1.1.1",
-                                        "children": [
-                                            {
-                                                "label": "类别 1.1.1.1",
-                                                "children": [
-                                                    {
-                                                        "label": "类别 1.1.1.1.1",
-                                                        "children": None,
-                                                        "uv": 1,
-                                                        "sum": 1,
-                                                        "count": 0
-                                                    }
-                                                ],
-                                                "uv": 0,
-                                                "sum": 1,
-                                                "count": 0
-                                            }
-                                        ],
-                                        "uv": 0,
-                                        "sum": 1,
-                                        "count": 0
-                                    }
-                                ],
-                                "uv": 0,
-                                "sum": 1,
-                                "count": 0
-                            }
-                        ],
-                        "uv": 0,
-                        "sum": 1,
-                        "count": 0
-                    },
+                            'name': '分类 2',
+                            'value': 500,
+                        },
                     {
-                        "label": "类别 2",
-                        "children": [
-                            {
-                                "label": "类别 2.1",
-                                "children": [
-                                    {
-                                        "label": "类别 2.1.1",
-                                        "children": [
-                                            {
-                                                "label": "类别 2.1.1.1",
-                                                "children": [
-                                                    {
-                                                        "label": "类别 2.1.1.1.1",
-                                                        "value": "口碑-本地生活事业部-东成西就大区-大中台-运营",
-                                                        "children": [
-                                                            {
-                                                                "label": "类别 2.1.1.1.1.1",
-                                                                "children": None,
-                                                                "uv": 1,
-                                                                "sum": 1,
-                                                                "count": 0
-                                                            },
-                                                            {
-                                                                "label": "类别 2.1.1.1.1.2",
-                                                                "children": None,
-                                                                "uv": 1,
-                                                                "sum": 1,
-                                                                "count": 0
-                                                            }
-                                                        ],
-                                                        "uv": 1,
-                                                        "sum": 3,
-                                                        "count": 0
-                                                    }
-                                                ],
-                                                "uv": 1,
-                                                "sum": 4,
-                                                "count": 0
-                                            },
-                                            {
-                                                "label": "类别 2.1.1.2",
-                                                "children": None,
-                                                "uv": 1,
-                                                "sum": 1,
-                                                "count": 0
-                                            }
-                                        ],
-                                        "uv": 0,
-                                        "sum": 5,
-                                        "count": 0
-                                    },
-                                    {
-                                        "label": "类别 2.1.2",
-                                        "children": [
-                                            {
-                                                "label": "类别 2.1.2.1",
-                                                "children": None,
-                                                "uv": 1,
-                                                "sum": 1,
-                                                "count": 0
-                                            },
-                                            {
-                                                "label": "类别 2.1.2.2",
-                                                "children": [
-                                                    {
-                                                        "label": "类别 2.1.2.2.1",
-                                                        "children": None,
-                                                        "uv": 1,
-                                                        "sum": 1,
-                                                        "count": 0
-                                                    }
-                                                ],
-                                                "uv": 0,
-                                                "sum": 1,
-                                                "count": 0
-                                            }
-                                        ],
-                                        "uv": 0,
-                                        "sum": 2,
-                                        "count": 0
-                                    },
-                                    {
-                                        "label": "类别 2.1.3",
-                                        "children": [
-                                            {
-                                                "label": "类别 2.1.3.1",
-                                                "children": None,
-                                                "uv": 1,
-                                                "sum": 1,
-                                                "count": 0
-                                            }
-                                        ],
-                                        "uv": 0,
-                                        "sum": 1,
-                                        "count": 0
-                                    },
-                                    {
-                                        "label": "类别 2.1.4",
-                                        "children": [
-                                            {
-                                                "label": "类别 2.1.4.1",
-                                                "children": None,
-                                                "uv": 2,
-                                                "sum": 2,
-                                                "count": 0
-                                            }
-                                        ],
-                                        "uv": 0,
-                                        "sum": 2,
-                                        "count": 0
-                                    },
-                                    {
-                                        "label": "类别 2.1.5",
-                                        "children": None,
-                                        "uv": 1,
-                                        "sum": 1,
-                                        "count": 0
-                                    }
-                                ],
-                                "uv": 1,
-                                "sum": 12,
-                                "count": 0
-                            },
-                            {
-                                "label": "类别 2.2",
-                                "children": [
-                                    {
-                                        "label": "类别 2.2.1",
-                                        "children": None,
-                                        "uv": 1,
-                                        "sum": 1,
-                                        "count": 0
-                                    }
-                                ],
-                                "uv": 1,
-                                "sum": 2,
-                                "count": 0
-                            },
-                            {
-                                "label": "类别 2.3",
-                                "children": None,
-                                "uv": 1,
-                                "sum": 1,
-                                "count": 0
-                            },
-                            {
-                                "label": "类别 2.4",
-                                "children": [
-                                    {
-                                        "label": "类别 2.4.1",
-                                        "children": [
-                                            {
-                                                "label": "类别 2.4.1.1",
-                                                "children": None,
-                                                "uv": 1,
-                                                "sum": 1,
-                                                "count": 0
-                                            }
-                                        ],
-                                        "uv": 0,
-                                        "sum": 1,
-                                        "count": 0
-                                    }
-                                ],
-                                "uv": 0,
-                                "sum": 1,
-                                "count": 0
-                            },
-                            {
-                                "label": "类别 2.5",
-                                "children": [
-                                    {
-                                        "label": "类别 2.5.1",
-                                        "children": None,
-                                        "uv": 3,
-                                        "sum": 3,
-                                        "count": 0
-                                    }
-                                ],
-                                "uv": 0,
-                                "sum": 3,
-                                "count": 0
-                            }
-                        ],
-                        "uv": 1,
-                        "sum": 20,
-                        "count": 0
-                    },
+                            'name': '分类 3',
+                            'value': 150,
+                        },
                     {
-                        "label": "类别 3",
-                        "children": [
-                            {
-                                "label": "类别 3.1",
-                                "children": [
-                                    {
-                                        "label": "类别 3.1.1",
-                                        "children": [
-                                            {
-                                                "label": "类别 3.1.1.1",
-                                                "children": [
-                                                    {
-                                                        "label": "类别 3.1.1.1.1",
-                                                        "children": [
-                                                            {
-                                                                "label": "类别 3.1.1.1.1.1",
-                                                                "children": None,
-                                                                "uv": 1,
-                                                                "sum": 1,
-                                                                "count": 0
-                                                            }
-                                                        ],
-                                                        "uv": 0,
-                                                        "sum": 1,
-                                                        "count": 0
-                                                    }
-                                                ],
-                                                "uv": 0,
-                                                "sum": 1,
-                                                "count": 0
-                                            },
-                                            {
-                                                "label": "类别 3.1.1.2",
-                                                "children": [
-                                                    {
-                                                        "label": "类别 3.1.1.2.1",
-                                                        "children": [
-                                                            {
-                                                                "label": "类别 3.1.1.2.1.1",
-                                                                "children": None,
-                                                                "uv": 2,
-                                                                "sum": 2,
-                                                                "count": 0
-                                                            }
-                                                        ],
-                                                        "uv": 0,
-                                                        "sum": 2,
-                                                        "count": 0
-                                                    }
-                                                ],
-                                                "uv": 1,
-                                                "sum": 3,
-                                                "count": 0
-                                            }
-                                        ],
-                                        "uv": 0,
-                                        "sum": 4,
-                                        "count": 0
-                                    },
-                                    {
-                                        "label": "类别 3.1.2",
-                                        "children": [
-                                            {
-                                                "label": "类别 3.1.2.1",
-                                                "children": None,
-                                                "uv": 3,
-                                                "sum": 3,
-                                                "count": 0
-                                            },
-                                            {
-                                                "label": "类别 3.1.2.2",
-                                                "children": [
-                                                    {
-                                                        "_id": "数据产品&运营",
-                                                        "label": "数据产品&运营",
-                                                        "value": "蚂蚁金服-平台数据技术事业群-数据平台部-数据资产平台-数据产品&运营",
-                                                        "children": None,
-                                                        "uv": 1,
-                                                        "sum": 1,
-                                                        "count": 0
-                                                    }
-                                                ],
-                                                "uv": 0,
-                                                "sum": 1,
-                                                "count": 0
-                                            }
-                                        ],
-                                        "uv": 0,
-                                        "sum": 4,
-                                        "count": 0
-                                    }
-                                ],
-                                "uv": 0,
-                                "sum": 8,
-                                "count": 0
-                            },
-                            {
-                                "label": "类别 3.2",
-                                "children": [
-                                    {
-                                        "label": "类别 3.2.1",
-                                        "children": [
-                                            {
-                                                "label": "类别 3.2.1.1",
-                                                "children": None,
-                                                "uv": 1,
-                                                "sum": 1,
-                                                "count": 0
-                                            },
-                                            {
-                                                "label": "类别 3.2.1.2",
-                                                "children": [
-                                                    {
-                                                        "label": "类别 3.2.1.2.1",
-                                                        "children": None,
-                                                        "uv": 1,
-                                                        "sum": 1,
-                                                        "count": 0
-                                                    },
-                                                    {
-                                                        "label": "类别 3.2.1.2.2",
-                                                        "children": [
-                                                            {
-                                                                "_id": "城市民生运营",
-                                                                "label": "城市民生运营",
-                                                                "value": "蚂蚁金服-支付宝事业群-商家服务及开放平台事业部-公共服务部-运营部-城市民生运营",
-                                                                "children": None,
-                                                                "uv": 1,
-                                                                "sum": 1,
-                                                                "count": 0
-                                                            }
-                                                        ],
-                                                        "uv": 0,
-                                                        "sum": 1,
-                                                        "count": 0
-                                                    }
-                                                ],
-                                                "uv": 1,
-                                                "sum": 3,
-                                                "count": 0
-                                            }
-                                        ],
-                                        "uv": 0,
-                                        "sum": 4,
-                                        "count": 0
-                                    }
-                                ],
-                                "uv": 0,
-                                "sum": 4,
-                                "count": 0
-                            },
-                            {
-                                "label": "类别 3.3",
-                                "children": [
-                                    {
-                                        "label": "类别 3.3.1",
-                                        "children": [
-                                            {
-                                                "label": "类别 3.3.1.1",
-                                                "children": None,
-                                                "uv": 1,
-                                                "sum": 1,
-                                                "count": 0
-                                            }
-                                        ],
-                                        "uv": 0,
-                                        "sum": 1,
-                                        "count": 0
-                                    }
-                                ],
-                                "uv": 1,
-                                "sum": 2,
-                                "count": 0
-                            },
-                            {
-                                "label": "类别 3.4",
-                                "children": [
-                                    {
-                                        "label": "类别 3.4.1",
-                                        "children": [
-                                            {
-                                                "label": "类别 3.4.1.1",
-                                                "children": None,
-                                                "uv": 1,
-                                                "sum": 1,
-                                                "count": 0
-                                            },
-                                            {
-                                                "label": "3.4.1.2",
-                                                "children": None,
-                                                "uv": 1,
-                                                "sum": 1,
-                                                "count": 0
-                                            }
-                                        ],
-                                        "uv": 0,
-                                        "sum": 2,
-                                        "count": 0
-                                    },
-                                    {
-                                        "label": "类别 3.4.2",
-                                        "children": None,
-                                        "uv": 1,
-                                        "sum": 1,
-                                        "count": 0
-                                    },
-                                    {
-                                        "label": "类别 3.4.3",
-                                        "children": [
-                                            {
-                                                "label": "类别 3.4.3.1",
-                                                "children": None,
-                                                "uv": 1,
-                                                "sum": 1,
-                                                "count": 0
-                                            }
-                                        ],
-                                        "uv": 0,
-                                        "sum": 1,
-                                        "count": 0
-                                    }
-                                ],
-                                "uv": 0,
-                                "sum": 4,
-                                "count": 0
-                            },
-                            {
-                                "label": "类别 3.5",
-                                "children": [
-                                    {
-                                        "label": "类别 3.5.1",
-                                        "children": [
-                                            {
-                                                "label": "类别 3.5.1.1",
-                                                "children": None,
-                                                "uv": 2,
-                                                "sum": 2,
-                                                "count": 0
-                                            }
-                                        ],
-                                        "uv": 0,
-                                        "sum": 2,
-                                        "count": 0
-                                    },
-                                    {
-                                        "label": "类别 3.5.2",
-                                        "children": [
-                                            {
-                                                "label": "类别 3.5.2.1",
-                                                "children": None,
-                                                "uv": 1,
-                                                "sum": 1,
-                                                "count": 0
-                                            }
-                                        ],
-                                        "uv": 0,
-                                        "sum": 1,
-                                        "count": 0
-                                    }
-                                ],
-                                "uv": 0,
-                                "sum": 3,
-                                "count": 0
-                            },
-                            {
-                                "label": "类别 3.6",
-                                "children": [
-                                    {
-                                        "label": "类别 3.6.1",
-                                        "children": [
-                                            {
-                                                "label": "类别 3.6.1.1",
-                                                "children": None,
-                                                "uv": 1,
-                                                "sum": 1,
-                                                "count": 0
-                                            },
-                                            {
-                                                "label": "类别 3.6.1.2",
-                                                "children": None,
-                                                "uv": 1,
-                                                "sum": 1,
-                                                "count": 0
-                                            }
-                                        ],
-                                        "uv": 0,
-                                        "sum": 2,
-                                        "count": 0
-                                    }
-                                ],
-                                "uv": 1,
-                                "sum": 3,
-                                "count": 0
-                            },
-                            {
-                                "label": "类别 3.7",
-                                "children": [
-                                    {
-                                        "label": "类别 3.7.1",
-                                        "children": [
-                                            {
-                                                "label": "类别 3.7.1.1",
-                                                "children": [
-                                                    {
-                                                        "label": "类别 3.7.1.1.1",
-                                                        "children": None,
-                                                        "uv": 1,
-                                                        "sum": 1,
-                                                        "count": 0
-                                                    }
-                                                ],
-                                                "uv": 0,
-                                                "sum": 1,
-                                                "count": 0
-                                            }
-                                        ],
-                                        "uv": 0,
-                                        "sum": 1,
-                                        "count": 0
-                                    }
-                                ],
-                                "uv": 0,
-                                "sum": 1,
-                                "count": 0
-                            }
-                        ],
-                        "uv": 0,
-                        "sum": 25,
-                        "count": 0
-                    }
-                ]
+                            'name': '分类 4',
+                            'value': 140,
+                        },
+                    {
+                            'name': '分类 5',
+                            'value': 115,
+                        },
+                    {
+                            'name': '分类 6',
+                            'value': 95,
+                        },
+                    {
+                            'name': '分类 7',
+                            'value': 90,
+                        },
+                    {
+                            'name': '分类 8',
+                            'value': 75,
+                        },
+                    {
+                            'name': '分类 9',
+                            'value': 98,
+                        },
+                    {
+                            'name': '分类 10',
+                            'value': 60,
+                        },
+                    {
+                            'name': '分类 11',
+                            'value': 45,
+                        },
+                    {
+                            'name': '分类 12',
+                            'value': 40,
+                        },
+                    {
+                            'name': '分类 13',
+                            'value': 40,
+                        },
+                    {
+                            'name': '分类 14',
+                            'value': 35,
+                        },
+                    {
+                            'name': '分类 15',
+                            'value': 40,
+                        },
+                    {
+                            'name': '分类 16',
+                            'value': 40,
+                        },
+                    {
+                            'name': '分类 17',
+                            'value': 40,
+                        },
+                    {
+                            'name': '分类 18',
+                            'value': 30,
+                        },
+                    {
+                            'name': '分类 19',
+                            'value': 28,
+                        },
+                    {
+                            'name': '分类 20',
+                            'value': 16,
+                        },
+                ],
             },
-            innerRadius=0.3,
-            hierarchyConfig={
-                'field': 'sum',
-            },
-            drilldown={
-                'breadCrumb': {
-                    'rootText': '起始',
-                },
-            },
+            colorField='name',
             pattern={
-                'type': 'square'
+                'type': 'dot'
             }
         ),
     ],
