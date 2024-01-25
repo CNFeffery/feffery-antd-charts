@@ -6,23 +6,8 @@ app = dash.Dash(__name__, compress=True)
 
 app.layout = html.Div(
     [
-        fact.AntdPie(
-            data=[
-                {
-                    'type': 'A',
-                    'value': 1
-                },
-                {
-                    'type': 'B',
-                    'value': 1
-                },
-                {
-                    'type': 'C',
-                    'value': 1
-                }
-            ],
-            angleField='value',
-            colorField='type',
+        fact.AntdLiquid(
+            percent=0.8,
             pattern={
                 'func': '''(e) => {
                     if ( e.type === 'A' ) {

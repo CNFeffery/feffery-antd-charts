@@ -89,6 +89,7 @@ export default class AntdLiquid extends Component {
             statistic,
             animation,
             theme,
+            pattern,
             interactions,
             setProps,
             loading_state
@@ -145,6 +146,13 @@ export default class AntdLiquid extends Component {
         }
         if (statistic?.content?.customHtml?.func) {
             config.statistic.content.customHtml = eval(statistic.content.customHtml.func)
+        }
+
+        // 图形填充贴图样式
+        config.pattern = cloneDeep(pattern)
+        // 若pattern具有自定义函数func属性
+        if (pattern?.func) {
+            config.pattern = eval(pattern.func)
         }
 
         // 动画
