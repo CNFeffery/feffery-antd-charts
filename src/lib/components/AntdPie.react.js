@@ -13,7 +13,8 @@ import {
     tooltipBasePropTypes,
     annotationsBasePropTypes,
     baseStyle,
-    themeBasePropTypes
+    themeBasePropTypes,
+    patternBasePropTypes
 } from './BasePropTypes.react';
 
 const LazyAntdPie = React.lazy(() => import(/* webpackChunkName: "plots" */ '../fragments/plots/AntdPie.react'));
@@ -214,6 +215,11 @@ AntdPie.propTypes = {
 
     // 主题配置
     theme: themeBasePropTypes,
+
+    /**
+     * 配置图形填充贴图样式
+     */
+    pattern: patternBasePropTypes,
 
     // 交互事件配置
     interactions: PropTypes.array,
