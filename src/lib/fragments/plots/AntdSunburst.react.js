@@ -97,6 +97,7 @@ export default class AntdSunburst extends Component {
             annotations,
             animation,
             theme,
+            pattern,
             interactions,
             setProps,
             loading_state
@@ -176,6 +177,13 @@ export default class AntdSunburst extends Component {
 
         // 标注
         config.annotations = cloneDeep(annotations)
+
+        // 图形填充贴图样式
+        config.pattern = cloneDeep(pattern)
+        // 若pattern具有自定义函数func属性
+        if (pattern?.func) {
+            config.pattern = eval(pattern.func)
+        }
 
         // 动画
         config.animation = cloneDeep(animation)
