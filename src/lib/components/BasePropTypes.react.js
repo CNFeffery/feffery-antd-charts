@@ -1100,6 +1100,89 @@ const themeBasePropTypes = PropTypes.oneOfType([
     PropTypes.oneOf(['default', 'dark'])
 ])
 
+// 定义贴图通用PropTypes模板
+const patternBasePropTypes = PropTypes.oneOfType([
+    PropTypes.exact({
+        /**
+         * 贴图类型
+         * 可选的有'dot'、'square'、'line'
+         */
+        type: PropTypes.oneOf(['dot', 'square', 'line']),
+        /**
+         * 贴图配置参数
+         */
+        cfg: PropTypes.exact({
+            // 通用配置参数
+            /**
+             * 贴图背景色
+             */
+            backgroundColor: PropTypes.string,
+            /**
+             * 贴图元素的填充色
+             */
+            fill: PropTypes.string,
+            /**
+             * 贴图元素填充透明度
+             */
+            fillOpacity: PropTypes.number,
+            /**
+             * 贴图元素描边色
+             */
+            stroke: PropTypes.string,
+            /**
+             * 贴图元素描边透明度
+             */
+            strokeOpacity: PropTypes.number,
+            /**
+             * 贴图元素描边像素宽度
+             */
+            lineWidth: PropTypes.number,
+            /**
+             * 贴图整体透明度
+             */
+            opacity: PropTypes.number,
+            /**
+             * 贴图整体旋转角度
+             */
+            rotation: PropTypes.number,
+            // dot类型专用配置项
+            /**
+             * 圆点像素大小
+             * 默认：6
+             */
+            size: PropTypes.number,
+            /**
+             * 圆点之间的像素间隔大小
+             * 默认：2
+             */
+            padding: PropTypes.number,
+            // line类型专用配置项
+            /**
+             * 线条之间的像素距离
+             * 默认：5
+             */
+            spacing: PropTypes.number,
+            // square类型专用配置项
+            /**
+             * 矩形像素大小
+             * 默认：6
+             */
+            size: PropTypes.number,
+            /**
+             * 矩形之间的像素间隔大小
+             * 默认：1
+             */
+            padding: PropTypes.number,
+            // square、dot类型专用配置项
+            /**
+             * 矩形或圆点之间是否交错
+             * 默认：true
+             */
+            isStagger: PropTypes.bool
+        })
+    })
+])
+
 export {
     baseStyle,
     pointBaseStyle,
@@ -1114,5 +1197,6 @@ export {
     annotationsBasePropTypes,
     scrollbarBasePropTypes,
     sliderBasePropTypes,
-    themeBasePropTypes
+    themeBasePropTypes,
+    patternBasePropTypes
 };
