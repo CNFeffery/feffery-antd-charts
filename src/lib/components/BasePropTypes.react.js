@@ -1104,6 +1104,12 @@ const themeBasePropTypes = PropTypes.oneOfType([
 const patternBasePropTypes = PropTypes.oneOfType([
     PropTypes.exact({
         /**
+         * 自定义js回调函数字符串
+         */
+        func: PropTypes.string
+    }),
+    PropTypes.exact({
+        /**
          * 贴图类型
          * 可选的有'dot'、'square'、'line'
          */

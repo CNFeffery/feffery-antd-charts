@@ -17,7 +17,8 @@ import {
     tooltipBasePropTypes,
     annotationsBasePropTypes,
     sliderBasePropTypes,
-    themeBasePropTypes
+    themeBasePropTypes,
+    patternBasePropTypes
 } from './BasePropTypes.react';
 
 const LazyAntdArea = React.lazy(() => import(/* webpackChunkName: "plots" */ '../fragments/plots/AntdArea.react'));
@@ -254,6 +255,11 @@ AntdArea.propTypes = {
 
     // 主题配置
     theme: themeBasePropTypes,
+
+    /**
+     * 配置图形填充贴图样式
+     */
+    pattern: patternBasePropTypes,
 
     // 交互事件配置
     interactions: PropTypes.array,

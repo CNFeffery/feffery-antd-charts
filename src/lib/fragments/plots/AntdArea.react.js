@@ -104,6 +104,7 @@ export default class AntdArea extends Component {
             slider,
             animation,
             theme,
+            pattern,
             interactions,
             setProps,
             loading_state
@@ -214,15 +215,12 @@ export default class AntdArea extends Component {
             config.legend.itemValue.formatter = eval(legend.itemValue.formatter.func)
         }
 
-
-
         // 数据标签
         config.label = cloneDeep(label)
         // 若label.formatter具有自定义函数func属性
         if (label?.formatter?.func) {
             config.label.formatter = eval(label.formatter.func)
         }
-
 
         // 悬浮提示
         config.tooltip = cloneDeep(tooltip)
@@ -243,6 +241,13 @@ export default class AntdArea extends Component {
         // 若slider.formatter具有自定义函数func属性
         if (slider?.formatter?.func) {
             config.slider.formatter = eval(slider.formatter.func)
+        }
+
+        // 图形填充贴图样式
+        config.pattern = cloneDeep(pattern)
+        // 若pattern具有自定义函数func属性
+        if (pattern?.func) {
+            config.pattern = eval(pattern.func)
         }
 
         // 动画
