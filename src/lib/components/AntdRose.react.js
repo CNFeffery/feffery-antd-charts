@@ -14,7 +14,8 @@ import {
     annotationsBasePropTypes,
     baseStyle,
     themeBasePropTypes,
-    axisBasePropTypes
+    axisBasePropTypes,
+    patternBasePropTypes
 } from './BasePropTypes.react';
 
 const LazyAntdRose = React.lazy(() => import(/* webpackChunkName: "plots" */ '../fragments/plots/AntdRose.react'));
@@ -191,6 +192,11 @@ AntdRose.propTypes = {
 
     // 主题配置
     theme: themeBasePropTypes,
+
+    /**
+     * 配置图形填充贴图样式
+     */
+    pattern: patternBasePropTypes,
 
     // 交互事件配置
     interactions: PropTypes.array,

@@ -6,174 +6,41 @@ app = dash.Dash(__name__, compress=True)
 
 app.layout = html.Div(
     [
-        fact.AntdHistogram(
-            id='histogram-demo',
+        fact.AntdRose(
+            id='rose-demo',
             data=[
                 {
-                    "value": 1.2
+                    'type': '分类一',
+                    'value': 27,
                 },
                 {
-                    "value": 3.4
+                    'type': '分类二',
+                    'value': 25,
                 },
                 {
-                    "value": 3.7
+                    'type': '分类三',
+                    'value': 18,
                 },
                 {
-                    "value": 4.3
+                    'type': '分类四',
+                    'value': 15,
                 },
                 {
-                    "value": 5.2
+                    'type': '分类五',
+                    'value': 10,
                 },
                 {
-                    "value": 5.8
+                    'type': '其他',
+                    'value': 5,
                 },
-                {
-                    "value": 6.1
-                },
-                {
-                    "value": 6.5
-                },
-                {
-                    "value": 6.8
-                },
-                {
-                    "value": 7.1
-                },
-                {
-                    "value": 7.3
-                },
-                {
-                    "value": 7.7
-                },
-                {
-                    "value": 8.3
-                },
-                {
-                    "value": 8.6
-                },
-                {
-                    "value": 8.8
-                },
-                {
-                    "value": 9.1
-                },
-                {
-                    "value": 9.2
-                },
-                {
-                    "value": 9.4
-                },
-                {
-                    "value": 9.5
-                },
-                {
-                    "value": 9.7
-                },
-                {
-                    "value": 10.5
-                },
-                {
-                    "value": 10.7
-                },
-                {
-                    "value": 10.8
-                },
-                {
-                    "value": 11
-                },
-                {
-                    "value": 11
-                },
-                {
-                    "value": 11.1
-                },
-                {
-                    "value": 11.2
-                },
-                {
-                    "value": 11.3
-                },
-                {
-                    "value": 11.4
-                },
-                {
-                    "value": 11.4
-                },
-                {
-                    "value": 11.7
-                },
-                {
-                    "value": 12
-                },
-                {
-                    "value": 12.9
-                },
-                {
-                    "value": 12.9
-                },
-                {
-                    "value": 13.3
-                },
-                {
-                    "value": 13.7
-                },
-                {
-                    "value": 13.8
-                },
-                {
-                    "value": 13.9
-                },
-                {
-                    "value": 14
-                },
-                {
-                    "value": 14.2
-                },
-                {
-                    "value": 14.5
-                },
-                {
-                    "value": 15
-                },
-                {
-                    "value": 15.2
-                },
-                {
-                    "value": 15.6
-                },
-                {
-                    "value": 16
-                },
-                {
-                    "value": 16.3
-                },
-                {
-                    "value": 17.3
-                },
-                {
-                    "value": 17.5
-                },
-                {
-                    "value": 17.9
-                },
-                {
-                    "value": 18
-                },
-                {
-                    "value": 18
-                },
-                {
-                    "value": 20.6
-                },
-                {
-                    "value": 21
-                },
-                {
-                    "value": 23.4
-                }
             ],
-            binField='value',
-            binWidth=2,
+            xField='type',
+            yField='value',
+            seriesField='type',
+            radius=0.9,
+            legend={
+                'position': 'bottom',
+            },
             pattern={
                 'type': 'square'
             }
