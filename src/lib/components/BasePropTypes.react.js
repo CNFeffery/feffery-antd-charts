@@ -313,10 +313,36 @@ const textBaseStyle = PropTypes.exact({
 // 定义全局化配置图表数据元信息PropTypes模板，其中原始字段名为属性名
 const metaBasePropTypes = PropTypes.objectOf(
     PropTypes.exact({
-        // 设置字段别名
+        /**
+         * 声明当前字段数据类型，可选的有：
+         * cat: 分类度量
+         * timeCat: 时间分类度量
+         * linear: 线性度量
+         * time: 连续的时间度量
+         * log: 对数度量
+         * pow: 幂数度量
+         * quantize: 分段度量，用户可以指定不均匀的分段
+         * quantile: 等分度量，根据数据的分布自动计算分段
+         * identity: 常量度量
+         */
+        type: PropTypes.oneOf([
+            'cat', 'timeCat', 'linear', 'time', 'log',
+            'pow', 'quantize', 'quantile', 'identity'
+        ]),
+
+        /**
+         * 设置当前字段的显示别名
+         */
         alias: PropTypes.string,
 
-        // 设置特殊的字段信息格式化处理回调
+        /**
+         * 枚举当前字段下所有值
+         */
+        values: PropTypes.arrayOf(PropTypes.any),
+
+        /**
+         * 统一设置当前字段在坐标轴、图例、tooltip中的显示格式化规则
+         */
         formatter: PropTypes.oneOfType([
             PropTypes.exact({
                 // 回调模式
@@ -325,32 +351,73 @@ const metaBasePropTypes = PropTypes.objectOf(
             PropTypes.any
         ]),
 
-        // 枚举该字段下所有值
-        values: PropTypes.arrayOf(PropTypes.string),
-
-        // 设置该字段的数据映射区间，默认为[0, 1]
+        /**
+         * 设置当前字段用于绘图的值范围
+         * 默认：[0, 1]
+         */
         range: PropTypes.arrayOf(PropTypes.number),
 
-        // 指定字段度量类型，可选的有：
-        // cat: 分类度量
-        // timeCat: 时间分类度量
-        // linear: 线性度量
-        // time: 连续的时间度量
-        // log: 对数度量
-        // pow: 幂数度量
-        // quantize: 分段度量，用户可以指定不均匀的分段
-        // quantile: 等分度量，根据数据的分布自动计算分段
-        // identity: 常量度量
-        type: PropTypes.oneOf([
-            'cat', 'timeCat', 'linear', 'time', 'log',
-            'pow', 'quantize', 'quantile', 'identity'
-        ]),
-
-        // 定义域下限
+        /**
+         * 定义当前字段值域的最小值，分类度量下无效
+         */
         min: PropTypes.number,
 
-        // 定义域上限
-        max: PropTypes.number
+        /**
+         * 定义当前字段值域的最大值，分类度量下无效
+         */
+        max: PropTypes.number,
+
+        /**
+         * 强制设置当前字段的值域最小值，会影响坐标轴刻度开始位置
+         */
+        minLimit: PropTypes.number,
+
+        /**
+         * 强制设置当前字段的值域最大值，会影响坐标轴刻度结束位置
+         */
+        maxLimit: PropTypes.number,
+
+        /**
+         * 对数度量下有效，用于定义底数
+         */
+        base: PropTypes.number,
+
+        /**
+         * 幂数度量下有效，用于定义指数
+         */
+        exponent: PropTypes.number,
+
+        /**
+         * 是否自动调整坐标轴范围
+         */
+        nice: PropTypes.bool,
+
+        /**
+         * 为当前字段手动设置坐标轴刻度值，优先级最高
+         */
+        ticks: PropTypes.arrayOf(PropTypes.any),
+
+        /**
+         * 线性度量下有效，为当前字段设置坐标轴刻度最小间隔
+         */
+        minTickInterval: PropTypes.number,
+
+        /**
+         * 为当前字段设置坐标轴刻度数量
+         * 默认：5
+         */
+        tickCount: PropTypes.number,
+
+        /**
+         * 为当前字段设置坐标轴刻度最大数量
+         * 默认：10
+         */
+        maxTickCount: PropTypes.number,
+
+        /**
+         * 连续的时间度量下有效，设置是否强制显示坐标轴刻度最后的时间刻度值
+         */
+        showLast: PropTypes.bool
     })
 )
 
