@@ -115,10 +115,10 @@ export default class AntdRose extends Component {
         // 预处理元信息
         if (meta) {
             config.meta = cloneDeep(meta);
-            for (let i in Object.keys(meta)) {
+            for (let metaKey of Object.keys(meta)) {
                 // 若meta中当前字段属性下的formatter具有自定义函数func属性
-                if (meta[Object.keys(meta)[i]]?.formatter?.func) {
-                    config.meta[Object.keys(meta)[i]].formatter = eval(meta[Object.keys(meta)[i]].formatter.func)
+                if (meta[metaKey]?.formatter?.func) {
+                    config.meta[metaKey].formatter = eval(meta[metaKey].formatter.func)
                 }
             }
         }
