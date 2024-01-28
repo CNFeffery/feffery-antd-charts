@@ -5,7 +5,7 @@
 import { TinyLine } from '@ant-design/plots';
 import React, { Component } from 'react';
 import { isUndefined, omitBy, intersection, cloneDeep } from 'lodash';
-import { difference } from '../../components/utils';
+import { difference, withTheme } from '../../components/utils';
 import { propTypes, defaultProps } from '../../components/AntdTinyLine.react';
 
 // 定义不触发重绘的参数数组
@@ -123,7 +123,12 @@ export default class AntdTinyLine extends Component {
             height,
             autoFit,
             renderer,
-            theme,
+            theme: (
+                // 融合内置主题与自定义主题
+                theme && theme.withTheme ?
+                    withTheme(theme.withTheme, theme) :
+                    theme
+            ),
             interactions,
             locale,
             limitInPlot
