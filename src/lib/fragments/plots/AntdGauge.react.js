@@ -7,7 +7,7 @@
 import { Gauge, G2 } from '@ant-design/plots';
 import React, { Component } from 'react';
 import { isUndefined, omitBy, intersection, cloneDeep } from 'lodash';
-import { difference } from '../../components/utils';
+import { difference, withTheme } from '../../components/utils';
 import { propTypes, defaultProps } from '../../components/AntdGauge.react';
 
 // 自定义指示器shape
@@ -264,7 +264,12 @@ export default class AntdGauge extends Component {
             type,
             meter,
             indicator,
-            theme,
+            theme: (
+                // 融合内置主题与自定义主题
+                theme && theme.withTheme ?
+                    withTheme(theme.withTheme, theme) :
+                    theme
+            ),
             interactions
         }
         // 映射指示器类型
