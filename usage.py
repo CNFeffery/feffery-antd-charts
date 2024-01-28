@@ -8,6 +8,7 @@ demo_data = (
     requests
     .get('https://gw.alipayobjects.com/os/bmw-prod/be63e0a2-d2be-4c45-97fd-c00f752a66d4.json')
     .json()
+    [:10]
 )
 
 app = dash.Dash(__name__, compress=True)
@@ -27,23 +28,12 @@ app.layout = html.Div(
             scrollbar={
                 'type': 'horizontal',
             },
-            theme={
-                'components': {
-                    'scrollbar': {
-                        'default': {
-                            'style': {
-                                'trackColor': 'rgba(255,255,255,0.05)',
-                                'thumbColor': 'rgba(255,255,255,0.25)',
-                            },
-                        },
-                        'hover': {
-                            'style': {
-                                'thumbColor': 'rgba(255,255,255,0.6)',
-                            },
-                        },
-                    }
-                },
-                'withTheme': 'dark'
+            animation={
+                'appear': {
+                    'animation': 'wave-in',
+                    'duration': 5000,
+                    'delay': 5000
+                }
             }
         )
     ],
