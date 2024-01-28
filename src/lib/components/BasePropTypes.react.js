@@ -1279,6 +1279,60 @@ const patternBasePropTypes = PropTypes.oneOfType([
     })
 ])
 
+// 定义动画通用PropTypes模板
+const animationExactPropTypes = PropTypes.exact({
+    /**
+     * 设置动画效果类型，可选的有'fade-in'、'fade-out'、'grow-in-x'、
+     * 'grow-in-y'、'grow-in-xy'、'scale-in-x'、'scale-in-y'、'wave-in'、
+     * 'zoom-in'、'zoom-out'、'path-in'、'position-update'
+     */
+    animation: PropTypes.oneOf([
+        'fade-in',
+        'fade-out',
+        'grow-in-x',
+        'grow-in-y',
+        'grow-in-xy',
+        'scale-in-x',
+        'scale-in-y',
+        'wave-in',
+        'zoom-in',
+        'zoom-out',
+        'path-in',
+        'position-update'
+    ]),
+    /**
+     * 设置动画持续时长，单位：毫秒
+     */
+    duration: PropTypes.number,
+    /**
+     * 设置动画延时播放时长，单位：毫秒
+     */
+    delay: PropTypes.number
+})
+
+const animationBasePropTypes = PropTypes.oneOfType([
+    // 设置为false时关闭动画
+    PropTypes.bool,
+    PropTypes.exact({
+        /**
+         * 配置图表初次加载时的入场动画
+         */
+        appear: animationExactPropTypes,
+        /**
+         * 配置图表发生更新时的入场动画
+         */
+        enter: animationExactPropTypes,
+        /**
+         * 配置仅图表数据更新时的过渡动画
+         */
+        update: animationExactPropTypes,
+        /**
+         * 配置被新数据覆盖的旧数据对应图形被销毁时的退场动画
+         */
+        leave: animationExactPropTypes
+    })
+])
+
 export {
     baseStyle,
     pointBaseStyle,
@@ -1294,5 +1348,6 @@ export {
     scrollbarBasePropTypes,
     sliderBasePropTypes,
     themeBasePropTypes,
-    patternBasePropTypes
+    patternBasePropTypes,
+    animationBasePropTypes
 };
