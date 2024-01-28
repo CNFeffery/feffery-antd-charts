@@ -1,3 +1,5 @@
+import { G2 } from '@ant-design/plots';
+import { deepMix } from '@antv/util';
 import { transform, isEqual, isObject } from 'lodash';
 
 const difference = (object, base) => {
@@ -11,4 +13,16 @@ const difference = (object, base) => {
     return changes(object, base);
 }
 
-export { difference };
+const withTheme = (theme, customTheme) => {
+    // 取得theme对应的内置主题
+    let builtInTheme = G2.getTheme(theme);
+
+    // 返回融合后的新主题
+    return deepMix(
+        {},
+        builtInTheme,
+        customTheme
+    )
+}
+
+export { difference, withTheme };

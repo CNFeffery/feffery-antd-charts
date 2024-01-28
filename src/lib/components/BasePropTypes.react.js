@@ -1180,7 +1180,12 @@ const themeBasePropTypes = PropTypes.oneOfType([
             paletteQualitative20: PropTypes.arrayOf(PropTypes.string),
             // 设置字体
             fontFamily: PropTypes.string
-        })
+        }),
+
+        /**
+         * 设置需要融合的内置主题类型，可选的有：'default'、'dark'
+         */
+        withTheme: PropTypes.oneOf(['default', 'dark'])
     }),
     PropTypes.oneOf(['default', 'dark'])
 ])

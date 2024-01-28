@@ -33,7 +33,7 @@ app.layout = html.Div(
                         'default': {
                             'style': {
                                 'trackColor': 'rgba(255,255,255,0.05)',
-                                'thumbColor': 'red',
+                                'thumbColor': 'rgba(255,255,255,0.25)',
                             },
                         },
                         'hover': {
@@ -42,12 +42,14 @@ app.layout = html.Div(
                             },
                         },
                     }
-                }
+                },
+                'withTheme': 'dark'
             }
         )
     ],
     style={
-        'padding': 50
+        'padding': 50,
+        'background': 'black'
     }
 )
 
