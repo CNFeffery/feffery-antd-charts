@@ -6,7 +6,7 @@
 import { Chord } from '@ant-design/plots';
 import React, { Component } from 'react';
 import { isUndefined, omitBy, intersection, cloneDeep } from 'lodash';
-import { difference } from '../../components/utils';
+import { difference, withTheme } from '../../components/utils';
 import { propTypes, defaultProps } from '../../components/AntdChord.react';
 
 // 定义不触发重绘的参数数组
@@ -129,7 +129,12 @@ export default class AntdChord extends Component {
             limitInPlot,
             nodeWidthRatio,
             nodePaddingRatio,
-            theme,
+            theme: (
+                // 融合内置主题与自定义主题
+                theme && theme.withTheme ?
+                    withTheme(theme.withTheme, theme) :
+                    theme
+            ),
             interactions
         }
 
