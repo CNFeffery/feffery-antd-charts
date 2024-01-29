@@ -18,6 +18,7 @@ import {
     annotationsBasePropTypes,
     sliderBasePropTypes,
     themeBasePropTypes,
+    animationBasePropTypes
 } from './BasePropTypes.react';
 
 const LazyAntdDualAxes = React.lazy(() => import(/* webpackChunkName: "plots" */ '../fragments/plots/AntdDualAxes.react'));
@@ -233,7 +234,7 @@ AntdDualAxes.propTypes = {
     slider: sliderBasePropTypes,
 
     // 配置动画相关参数
-    animation: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+    animation: animationBasePropTypes,
 
     // 数据项点击事件
     recentlyClickRecord: PropTypes.exact({
