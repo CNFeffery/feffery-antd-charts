@@ -12,7 +12,8 @@ import {
     axisBasePropTypes,
     tooltipBasePropTypes,
     annotationsBasePropTypes,
-    themeBasePropTypes
+    themeBasePropTypes,
+    animationBasePropTypes
 } from './BasePropTypes.react';
 
 const LazyAntdTinyLine = React.lazy(() => import(/* webpackChunkName: "plots" */ '../fragments/plots/AntdTinyLine.react'));
@@ -163,10 +164,7 @@ AntdTinyLine.propTypes = {
     annotations: annotationsBasePropTypes,
 
     // 配置动画相关参数
-    animation: PropTypes.oneOfType([
-        PropTypes.object,
-        PropTypes.bool
-    ]),
+    animation: animationBasePropTypes,
 
     // 常用事件监听参数
     // tooltip显示事件
