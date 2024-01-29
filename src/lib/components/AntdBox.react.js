@@ -14,7 +14,9 @@ import {
     tooltipBasePropTypes,
     annotationsBasePropTypes,
     baseStyle,
-    themeBasePropTypes
+    themeBasePropTypes,
+    AntdBidirectionalBar,
+    animationBasePropTypes
 } from './BasePropTypes.react';
 
 const LazyAntdBox = React.lazy(() => import(/* webpackChunkName: "plots" */ '../fragments/plots/AntdBox.react'));
@@ -151,10 +153,7 @@ AntdBox.propTypes = {
     annotations: annotationsBasePropTypes,
 
     // 配置动画相关参数
-    animation: PropTypes.oneOfType([
-        PropTypes.object,
-        PropTypes.bool
-    ]),
+    animation: animationBasePropTypes,
 
     // 常用事件监听参数
     // tooltip显示事件
