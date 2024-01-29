@@ -1134,24 +1134,9 @@ const sliderBasePropTypes = PropTypes.oneOfType([
 const themeBasePropTypes = PropTypes.oneOfType([
     PropTypes.exact({
         /**
-         * 设置主题色
+         * 画布背景色
          */
-        defaultColor: PropTypes.string,
-
-        /**
-         * 设置内边距
-         */
-        padding: PropTypes.oneOfType([
-            PropTypes.number,
-            PropTypes.arrayOf(
-                PropTypes.number
-            )
-        ]),
-
-        /**
-         * 设置图表字体
-         */
-        fontFamily: PropTypes.string,
+        background: PropTypes.string,
 
         /**
          * 设置分类颜色色板，分类个数小于10时使用
@@ -1172,8 +1157,6 @@ const themeBasePropTypes = PropTypes.oneOfType([
         styleSheet: PropTypes.exact({
             // 设置背景色
             backgroundColor: PropTypes.string,
-            // 设置主题色
-            brandColor: PropTypes.string,
             // 设置分类颜色色板，分类个数小于10时使用
             paletteQualitative10: PropTypes.arrayOf(PropTypes.string),
             // 设置分类颜色色板，分类个数大于10时使用

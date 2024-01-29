@@ -28,12 +28,9 @@ app.layout = html.Div(
             scrollbar={
                 'type': 'horizontal',
             },
-            animation={
-                'appear': {
-                    'animation': 'wave-in',
-                    'duration': 5000,
-                    'delay': 5000
-                }
+            theme={
+                'withTheme': 'dark',
+                'fontFamily': 'KaiTi'
             }
         )
     ],
