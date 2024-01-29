@@ -10,7 +10,8 @@ import {
     metaBasePropTypes,
     labelBasePropTypes,
     areaBaseStyle,
-    themeBasePropTypes
+    themeBasePropTypes,
+    animationBasePropTypes
 } from './BasePropTypes.react';
 
 const LazyAntdChord = React.lazy(() => import(/* webpackChunkName: "plots" */ '../fragments/plots/AntdChord.react'));
@@ -112,10 +113,7 @@ AntdChord.propTypes = {
     label: labelBasePropTypes,
 
     // 配置动画相关参数
-    animation: PropTypes.oneOfType([
-        PropTypes.object,
-        PropTypes.bool
-    ]),
+    animation: animationBasePropTypes,
 
     // 常用事件监听参数
     // tooltip显示事件
