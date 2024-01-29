@@ -14,7 +14,8 @@ import {
     tooltipBasePropTypes,
     annotationsBasePropTypes,
     themeBasePropTypes,
-    patternBasePropTypes
+    patternBasePropTypes,
+    animationBasePropTypes
 } from './BasePropTypes.react';
 
 const LazyAntdTreemap = React.lazy(() => import(/* webpackChunkName: "plots" */ '../fragments/plots/AntdTreemap.react'));
@@ -124,10 +125,7 @@ AntdTreemap.propTypes = {
     annotations: annotationsBasePropTypes,
 
     // 设置动画，默认为{}
-    animation: PropTypes.oneOfType([
-        PropTypes.object,
-        PropTypes.bool
-    ]),
+    animation: animationBasePropTypes,
 
     // 常用事件监听参数
     // tooltip显示事件
