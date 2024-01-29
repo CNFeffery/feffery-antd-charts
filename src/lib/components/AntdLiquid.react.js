@@ -9,7 +9,8 @@ import PropTypes from 'prop-types';
 import {
     areaBaseStyle,
     themeBasePropTypes,
-    patternBasePropTypes
+    patternBasePropTypes,
+    animationBasePropTypes
 } from './BasePropTypes.react';
 
 const LazyAntdLiquid = React.lazy(() => import(/* webpackChunkName: "plots" */ '../fragments/plots/AntdLiquid.react'));
@@ -204,10 +205,7 @@ AntdLiquid.propTypes = {
     ]),
 
     // 配置动画相关参数
-    animation: PropTypes.oneOfType([
-        PropTypes.object,
-        PropTypes.bool
-    ]),
+    animation: animationBasePropTypes,
 
     // 用于在回调中传入uuid、ulid之类的唯一标识，来主动下载当前图表为png格式图片
     downloadTrigger: PropTypes.string,
