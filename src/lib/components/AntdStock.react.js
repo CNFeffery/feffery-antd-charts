@@ -16,7 +16,8 @@ import {
     annotationsBasePropTypes,
     sliderBasePropTypes,
     baseStyle,
-    themeBasePropTypes
+    themeBasePropTypes,
+    animationBasePropTypes
 } from './BasePropTypes.react';
 
 const LazyAntdStock = React.lazy(() => import(/* webpackChunkName: "plots" */ '../fragments/plots/AntdStock.react'));
@@ -131,10 +132,7 @@ AntdStock.propTypes = {
     slider: sliderBasePropTypes,
 
     // 配置动画相关参数
-    animation: PropTypes.oneOfType([
-        PropTypes.object,
-        PropTypes.bool
-    ]),
+    animation: animationBasePropTypes,
 
     // 常用事件监听参数
     // tooltip显示事件
