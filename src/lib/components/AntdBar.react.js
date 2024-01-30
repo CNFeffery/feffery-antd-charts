@@ -19,7 +19,8 @@ import {
     textBaseStyle,
     themeBasePropTypes,
     patternBasePropTypes,
-    animationBasePropTypes
+    animationBasePropTypes,
+    interactionsBasePropTypes
 } from './BasePropTypes.react';
 
 const LazyAntdBar = React.lazy(() => import(/* webpackChunkName: "plots" */ '../fragments/plots/AntdBar.react'));
@@ -271,8 +272,10 @@ AntdBar.propTypes = {
      */
     pattern: patternBasePropTypes,
 
-    // 交互事件配置
-    interactions: PropTypes.array,
+    /**
+     * 交互功能项配置
+     */
+    interactions: interactionsBasePropTypes,
 
     loading_state: PropTypes.shape({
         /**
