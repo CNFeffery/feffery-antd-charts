@@ -13,7 +13,7 @@ Keyword arguments:
 
 - angleField (string; optional)
 
-- animation (dict | boolean; optional)
+- animation (optional)
 
 - annotations (optional)
 

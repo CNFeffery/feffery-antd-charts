@@ -1132,7 +1132,7 @@ const sliderBasePropTypes = PropTypes.oneOfType([
 
 // 定义主题通用PropTypes模板
 const themeBasePropTypes = PropTypes.oneOfType([
-    PropTypes.exact({
+    PropTypes.shape({
         /**
          * 画布背景色
          */
@@ -1316,6 +1316,40 @@ const animationBasePropTypes = PropTypes.oneOfType([
     })
 ])
 
+// 定义交互通用PropTypes模板
+const interactionsBasePropTypes = PropTypes.arrayOf(
+    PropTypes.exact({
+        /**
+         * 交互类型，可选的有'active-region'、'element-active'、'element-selected'、
+         * 'element-single-selected'、'element-highlight'、'element-highlight-by-x'、
+         * 'element-highlight-by-color'、'legend-filter'、'legend-visible-filter'、
+         * 'legend-active'、'legend-highlight'、'legend-highlight'、'element-list-highlight'
+         */
+        type: PropTypes.oneOf([
+            'active-region',
+            'element-active',
+            'element-selected',
+            'element-single-selected',
+            'element-highlight',
+            'element-highlight-by-x',
+            'element-highlight-by-color',
+            'legend-filter',
+            'legend-visible-filter',
+            'legend-active',
+            'legend-highlight',
+            'element-list-highlight'
+        ]),
+        /**
+         * 当前交互类型对应的配置参数
+         */
+        cfg: PropTypes.object,
+        /**
+         * 是否启用当前交互
+         */
+        enable: PropTypes.bool
+    })
+)
+
 export {
     baseStyle,
     pointBaseStyle,
@@ -1332,5 +1366,6 @@ export {
     sliderBasePropTypes,
     themeBasePropTypes,
     patternBasePropTypes,
-    animationBasePropTypes
+    animationBasePropTypes,
+    interactionsBasePropTypes
 };
