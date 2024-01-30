@@ -11,7 +11,7 @@ Keyword arguments:
 
 - id (string; optional)
 
-- animation (dict | boolean; optional)
+- animation (optional)
 
 - appendPadding (number | list of numbers; optional)
 
