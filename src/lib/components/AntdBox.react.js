@@ -15,8 +15,8 @@ import {
     annotationsBasePropTypes,
     baseStyle,
     themeBasePropTypes,
-    AntdBidirectionalBar,
-    animationBasePropTypes
+    animationBasePropTypes,
+    interactionsBasePropTypes
 } from './BasePropTypes.react';
 
 const LazyAntdBox = React.lazy(() => import(/* webpackChunkName: "plots" */ '../fragments/plots/AntdBox.react'));
@@ -190,8 +190,10 @@ AntdBox.propTypes = {
     // 主题配置
     theme: themeBasePropTypes,
 
-    // 交互事件配置
-    interactions: PropTypes.array,
+    /**
+     * 交互功能项配置
+     */
+    interactions: interactionsBasePropTypes,
 
     loading_state: PropTypes.shape({
         /**
