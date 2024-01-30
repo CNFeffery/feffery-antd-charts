@@ -15,7 +15,8 @@ import {
     baseStyle,
     themeBasePropTypes,
     patternBasePropTypes,
-    animationBasePropTypes
+    animationBasePropTypes,
+    interactionsBasePropTypes
 } from './BasePropTypes.react';
 
 const LazyAntdPie = React.lazy(() => import(/* webpackChunkName: "plots" */ '../fragments/plots/AntdPie.react'));
@@ -222,8 +223,10 @@ AntdPie.propTypes = {
      */
     pattern: patternBasePropTypes,
 
-    // 交互事件配置
-    interactions: PropTypes.array,
+    /**
+     * 交互功能项配置
+     */
+    interactions: interactionsBasePropTypes,
 
     // 配置动画相关参数
     animation: animationBasePropTypes,
