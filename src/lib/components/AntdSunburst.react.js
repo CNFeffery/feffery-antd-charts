@@ -15,7 +15,8 @@ import {
     annotationsBasePropTypes,
     themeBasePropTypes,
     patternBasePropTypes,
-    animationBasePropTypes
+    animationBasePropTypes,
+    interactionsBasePropTypes
 } from './BasePropTypes.react';
 
 const LazyAntdSunburst = React.lazy(() => import(/* webpackChunkName: "plots" */ '../fragments/plots/AntdSunburst.react'));
@@ -203,8 +204,10 @@ AntdSunburst.propTypes = {
      */
     pattern: patternBasePropTypes,
 
-    // 交互事件配置
-    interactions: PropTypes.array,
+    /**
+     * 交互功能项配置
+     */
+    interactions: interactionsBasePropTypes,
 
     loading_state: PropTypes.shape({
         /**
