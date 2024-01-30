@@ -20,7 +20,8 @@ import {
     textBaseStyle,
     themeBasePropTypes,
     patternBasePropTypes,
-    animationBasePropTypes
+    animationBasePropTypes,
+    interactionsBasePropTypes
 } from './BasePropTypes.react';
 
 const LazyAntdColumn = React.lazy(() => import(/* webpackChunkName: "plots" */ '../fragments/plots/AntdColumn.react'));
@@ -275,8 +276,10 @@ AntdColumn.propTypes = {
      */
     pattern: patternBasePropTypes,
 
-    // 交互事件配置
-    interactions: PropTypes.array,
+    /**
+     * 交互功能项配置
+     */
+    interactions: interactionsBasePropTypes,
 
     // 柱体点击事件
     recentlyBarClickRecord: PropTypes.exact({

@@ -1334,7 +1334,6 @@ const interactionsBasePropTypes = PropTypes.arrayOf(
             'element-highlight-by-x',
             'element-highlight-by-color',
             'legend-filter',
-            'legend-visible-filter',
             'legend-active',
             'legend-highlight',
             'element-list-highlight'
