@@ -17,7 +17,8 @@ import {
     sliderBasePropTypes,
     baseStyle,
     themeBasePropTypes,
-    animationBasePropTypes
+    animationBasePropTypes,
+    interactionsBasePropTypes
 } from './BasePropTypes.react';
 
 const LazyAntdStock = React.lazy(() => import(/* webpackChunkName: "plots" */ '../fragments/plots/AntdStock.react'));
@@ -169,8 +170,10 @@ AntdStock.propTypes = {
     // 主题配置
     theme: themeBasePropTypes,
 
-    // 交互事件配置
-    interactions: PropTypes.array,
+    /**
+     * 交互功能项配置
+     */
+    interactions: interactionsBasePropTypes,
 
     loading_state: PropTypes.shape({
         /**
