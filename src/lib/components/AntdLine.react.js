@@ -18,7 +18,8 @@ import {
     sliderBasePropTypes,
     themeBasePropTypes,
     animationBasePropTypes,
-    interactionsBasePropTypes
+    interactionsBasePropTypes,
+    stateBasePropTypes
 } from './BasePropTypes.react';
 
 const LazyAntdLine = React.lazy(() => import(/* webpackChunkName: "plots" */ '../fragments/plots/AntdLine.react'));
@@ -235,6 +236,11 @@ AntdLine.propTypes = {
      * 交互功能项配置
      */
     interactions: interactionsBasePropTypes,
+
+    /**
+     * 状态样式配置
+     */
+    state: stateBasePropTypes,
 
     loading_state: PropTypes.shape({
         /**

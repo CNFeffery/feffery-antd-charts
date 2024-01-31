@@ -104,6 +104,7 @@ export default class AntdLine extends Component {
             animation,
             theme,
             interactions,
+            state,
             setProps,
             loading_state
         } = this.props;
@@ -157,6 +158,7 @@ export default class AntdLine extends Component {
                     theme
             ),
             interactions,
+            state,
             locale,
             limitInPlot
         };
