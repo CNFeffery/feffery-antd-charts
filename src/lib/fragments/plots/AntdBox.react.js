@@ -100,6 +100,7 @@ export default class AntdBox extends Component {
             animation,
             theme,
             interactions,
+            state,
             setProps,
             loading_state
         } = this.props;
@@ -139,6 +140,7 @@ export default class AntdBox extends Component {
                     theme
             ),
             interactions,
+            state,
             locale,
             limitInPlot
         };
