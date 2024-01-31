@@ -104,6 +104,7 @@ export default class AntdRadar extends Component {
             animation,
             theme,
             interactions,
+            state,
             setProps,
             loading_state
         } = this.props;
@@ -146,6 +147,7 @@ export default class AntdRadar extends Component {
                     theme
             ),
             interactions,
+            state,
             locale,
             limitInPlot
         };
