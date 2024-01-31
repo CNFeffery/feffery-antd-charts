@@ -97,6 +97,7 @@ export default class AntdSankey extends Component {
             animation,
             theme,
             interactions,
+            state,
             setProps,
             loading_state
         } = this.props;
@@ -141,7 +142,8 @@ export default class AntdSankey extends Component {
                     withTheme(theme.withTheme, theme) :
                     theme
             ),
-            interactions
+            interactions,
+            state
         }
 
         // 进阶参数

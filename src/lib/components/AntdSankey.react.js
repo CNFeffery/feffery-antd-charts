@@ -11,7 +11,8 @@ import {
     areaBaseStyle,
     themeBasePropTypes,
     animationBasePropTypes,
-    interactionsBasePropTypes
+    interactionsBasePropTypes,
+    stateBasePropTypes
 } from './BasePropTypes.react';
 
 const LazyAntdSankey = React.lazy(() => import(/* webpackChunkName: "plots" */ '../fragments/plots/AntdSankey.react'));
@@ -164,6 +165,11 @@ AntdSankey.propTypes = {
      * 交互功能项配置
      */
     interactions: interactionsBasePropTypes,
+
+    /**
+     * 状态样式配置
+     */
+    state: stateBasePropTypes,
 
     loading_state: PropTypes.shape({
         /**
