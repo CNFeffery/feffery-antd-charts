@@ -100,6 +100,7 @@ export default class AntdStock extends Component {
             animation,
             theme,
             interactions,
+            state,
             loading_state,
             setProps
         } = this.props;
@@ -139,6 +140,7 @@ export default class AntdStock extends Component {
                     theme
             ),
             interactions,
+            state,
             locale,
             limitInPlot
         };
