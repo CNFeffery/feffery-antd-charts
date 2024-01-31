@@ -105,6 +105,7 @@ export default class AntdRose extends Component {
             theme,
             pattern,
             interactions,
+            state,
             setProps,
             loading_state
         } = this.props;
@@ -149,6 +150,7 @@ export default class AntdRose extends Component {
                     theme
             ),
             interactions,
+            state,
             locale,
             limitInPlot
         };
