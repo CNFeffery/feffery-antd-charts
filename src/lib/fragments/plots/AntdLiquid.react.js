@@ -91,6 +91,7 @@ export default class AntdLiquid extends Component {
             theme,
             pattern,
             interactions,
+            state,
             setProps,
             loading_state
         } = this.props;
@@ -120,7 +121,8 @@ export default class AntdLiquid extends Component {
                     withTheme(theme.withTheme, theme) :
                     theme
             ),
-            interactions
+            interactions,
+            state
         }
 
         // 进阶参数
