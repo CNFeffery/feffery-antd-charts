@@ -1363,7 +1363,7 @@ const stateBasePropTypes = PropTypes.exact({
     /**
      * 配置非激活状态
      */
-    active: PropTypes.exact({
+    inactive: PropTypes.exact({
         /**
          * 非激活状态样式
          */

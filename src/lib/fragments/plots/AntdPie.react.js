@@ -101,6 +101,7 @@ export default class AntdPie extends Component {
             theme,
             pattern,
             interactions,
+            state,
             loading_state,
             setProps
         } = this.props;
@@ -142,6 +143,7 @@ export default class AntdPie extends Component {
                     theme
             ),
             interactions,
+            state,
             locale,
             limitInPlot
         };

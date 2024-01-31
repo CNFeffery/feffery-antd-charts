@@ -107,7 +107,8 @@ Keyword arguments:
 
 - height (number; optional)
 
-- interactions (list; optional)
+- interactions (optional):
+    交互功能项配置.
 
 - key (string; optional)
 

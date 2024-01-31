@@ -7,31 +7,38 @@ app = dash.Dash(__name__, compress=True)
 
 app.layout = html.Div(
     [
-        fact.AntdColumn(
+        fact.AntdPie(
             data=[
                 {
-                    '类型': f'类型{type}',
-                    '分组': f'分组{group}',
-                    '数值': round(random.uniform(10, 50), 2)
+                    'type': f'类型{i}',
+                    'value': random.randint(0, 100)
                 }
-                for type in list('abcedf')
-                for group in range(1, 4)
+                for i in range(1, 6)
             ],
-            xField='类型',
-            yField='数值',
-            seriesField='分组',
-            isGroup=True,
-            legend={
-                'position': 'bottom'
-            },
-            columnStyle={
-                'radius': [6, 6, 0, 0]
-            },
+            colorField='type',
+            angleField='value',
             interactions=[
                 {
-                    'type': 'element-list-highlight'
+                    'type': 'element-active'
+                },
+                {
+                    'type': 'element-single-selected'
                 }
-            ]
+            ],
+            state={
+                'active': {
+                    'style': {
+                        'fillOpacity': 0.5,
+                        'lineWidth': 0
+                    }
+                },
+                'selected': {
+                    'style': {
+                        'stroke': 'red',
+                        'lineWidth': 4
+                    }
+                }
+            }
         )
     ],
     style={
