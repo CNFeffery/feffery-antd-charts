@@ -237,6 +237,7 @@ export default class AntdGauge extends Component {
             animation,
             theme,
             interactions,
+            state,
             setProps,
             loading_state
         } = this.props;
@@ -270,7 +271,8 @@ export default class AntdGauge extends Component {
                     withTheme(theme.withTheme, theme) :
                     theme
             ),
-            interactions
+            interactions,
+            state
         }
         // 映射指示器类型
         if (config.indicator?.shape) {
