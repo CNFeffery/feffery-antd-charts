@@ -20,7 +20,8 @@ import {
     themeBasePropTypes,
     patternBasePropTypes,
     animationBasePropTypes,
-    interactionsBasePropTypes
+    interactionsBasePropTypes,
+    stateBasePropTypes
 } from './BasePropTypes.react';
 
 const LazyAntdArea = React.lazy(() => import(/* webpackChunkName: "plots" */ '../fragments/plots/AntdArea.react'));
@@ -264,6 +265,11 @@ AntdArea.propTypes = {
      * 交互功能项配置
      */
     interactions: interactionsBasePropTypes,
+
+    /**
+     * 状态样式配置
+     */
+    state: stateBasePropTypes,
 
     loading_state: PropTypes.shape({
         /**
