@@ -14,7 +14,8 @@ import {
     annotationsBasePropTypes,
     themeBasePropTypes,
     animationBasePropTypes,
-    interactionsBasePropTypes
+    interactionsBasePropTypes,
+    stateBasePropTypes
 } from './BasePropTypes.react';
 
 const LazyAntdWordCloud = React.lazy(() => import(/* webpackChunkName: "plots" */ '../fragments/plots/AntdWordCloud.react'));
@@ -184,6 +185,11 @@ AntdWordCloud.propTypes = {
      * 交互功能项配置
      */
     interactions: interactionsBasePropTypes,
+
+    /**
+     * 状态样式配置
+     */
+    state: stateBasePropTypes,
 
     loading_state: PropTypes.shape({
         /**

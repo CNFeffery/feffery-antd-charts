@@ -100,6 +100,7 @@ export default class AntdWordCloud extends Component {
             animation,
             theme,
             interactions,
+            state,
             setProps,
             loading_state
         } = this.props;
@@ -141,6 +142,7 @@ export default class AntdWordCloud extends Component {
                     theme
             ),
             interactions,
+            state,
             imageMask
         }
 
