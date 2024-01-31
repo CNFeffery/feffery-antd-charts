@@ -99,6 +99,7 @@ export default class AntdSunburst extends Component {
             theme,
             pattern,
             interactions,
+            state,
             setProps,
             loading_state
         } = this.props;
@@ -141,6 +142,7 @@ export default class AntdSunburst extends Component {
                     theme
             ),
             interactions,
+            state,
             reflect: reflect ? 'y' : undefined,
         }
 
