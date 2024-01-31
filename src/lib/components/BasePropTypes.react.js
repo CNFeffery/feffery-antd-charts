@@ -1349,6 +1349,46 @@ const interactionsBasePropTypes = PropTypes.arrayOf(
     })
 )
 
+// 定义状态样式通用PropTypes模板
+const stateBasePropTypes = PropTypes.exact({
+    /**
+     * 配置激活状态
+     */
+    active: PropTypes.exact({
+        /**
+         * 激活状态样式
+         */
+        style: baseStyle
+    }),
+    /**
+     * 配置非激活状态
+     */
+    active: PropTypes.exact({
+        /**
+         * 非激活状态样式
+         */
+        style: baseStyle
+    }),
+    /**
+     * 配置选中状态
+     */
+    selected: PropTypes.exact({
+        /**
+         * 选中状态样式
+         */
+        style: baseStyle
+    }),
+    /**
+     * 默认状态
+     */
+    default: PropTypes.exact({
+        /**
+         * 默认状态样式
+         */
+        style: baseStyle
+    })
+})
+
 export {
     baseStyle,
     pointBaseStyle,
@@ -1366,5 +1406,6 @@ export {
     themeBasePropTypes,
     patternBasePropTypes,
     animationBasePropTypes,
-    interactionsBasePropTypes
+    interactionsBasePropTypes,
+    stateBasePropTypes
 };
