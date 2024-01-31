@@ -97,6 +97,7 @@ export default class AntdBullet extends Component {
             animation,
             theme,
             interactions,
+            state,
             setProps,
             loading_state
         } = this.props;
@@ -139,7 +140,8 @@ export default class AntdBullet extends Component {
                     withTheme(theme.withTheme, theme) :
                     theme
             ),
-            interactions
+            interactions,
+            state
         }
 
         // 进阶参数
