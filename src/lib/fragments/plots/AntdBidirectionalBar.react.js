@@ -97,6 +97,7 @@ export default class AntdBidirectionalBar extends Component {
             animation,
             theme,
             interactions,
+            state,
             setProps,
             loading_state
         } = this.props;
@@ -134,6 +135,7 @@ export default class AntdBidirectionalBar extends Component {
                     theme
             ),
             interactions,
+            state,
             locale,
             limitInPlot
         };
