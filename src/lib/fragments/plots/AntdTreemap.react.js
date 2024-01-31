@@ -93,6 +93,7 @@ export default class AntdTreemap extends Component {
             tooltip,
             annotations,
             interactions,
+            state,
             animation,
             theme,
             pattern,
@@ -129,6 +130,7 @@ export default class AntdTreemap extends Component {
             locale,
             limitInPlot,
             interactions,
+            state,
             theme: (
                 // 融合内置主题与自定义主题
                 theme && theme.withTheme ?
