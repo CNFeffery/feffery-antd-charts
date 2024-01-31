@@ -92,6 +92,7 @@ export default class AntdDualAxes extends Component {
             animation,
             theme,
             interactions,
+            state,
             setProps,
             loading_state,
         } = this.props;
@@ -130,7 +131,8 @@ export default class AntdDualAxes extends Component {
                     withTheme(theme.withTheme, theme) :
                     theme
             ),
-            interactions
+            interactions,
+            state
         };
 
         // 初始化左右轴config参数对象，每次渲染前的参数解析变动只在config中生效
