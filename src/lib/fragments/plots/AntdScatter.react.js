@@ -106,6 +106,7 @@ export default class AntdScatter extends Component {
             animation,
             theme,
             interactions,
+            state,
             setProps,
             loading_state
         } = this.props;
@@ -149,6 +150,7 @@ export default class AntdScatter extends Component {
                     theme
             ),
             interactions,
+            state,
             locale,
             limitInPlot
         };
