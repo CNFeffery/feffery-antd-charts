@@ -100,6 +100,7 @@ export default class AntdHistogram extends Component {
             theme,
             pattern,
             interactions,
+            state,
             setProps,
             loading_state
         } = this.props;
@@ -139,6 +140,7 @@ export default class AntdHistogram extends Component {
                     theme
             ),
             interactions,
+            state,
             locale,
             limitInPlot
         };
