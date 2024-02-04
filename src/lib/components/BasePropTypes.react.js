@@ -903,7 +903,7 @@ const tooltipBasePropTypes = PropTypes.oneOfType([
 const annotationsBasePropTypes = PropTypes.oneOfType([
     PropTypes.oneOf([false]),
     PropTypes.arrayOf(
-        PropTypes.exact({
+        PropTypes.shape({
             // 设置标注类型，可选的有text | line | image | region | dataMarker | dataRegion | regionFilter | shape | html
             // 详细文档参考https://antv-g2plot.gitee.io/zh/docs/api/components/annotations
             type: PropTypes.string.isRequired,

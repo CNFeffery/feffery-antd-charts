@@ -19,6 +19,7 @@ from .AntdSankey import AntdSankey
 from .AntdScatter import AntdScatter
 from .AntdStock import AntdStock
 from .AntdSunburst import AntdSunburst
+from .AntdTinyArea import AntdTinyArea
 from .AntdTinyLine import AntdTinyLine
 from .AntdTreemap import AntdTreemap
 from .AntdWordCloud import AntdWordCloud
@@ -47,6 +48,7 @@ __all__ = [
     "AntdScatter",
     "AntdStock",
     "AntdSunburst",
+    "AntdTinyArea",
     "AntdTinyLine",
     "AntdTreemap",
     "AntdWordCloud",

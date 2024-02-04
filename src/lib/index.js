@@ -24,6 +24,7 @@ import AntdBullet from "./components/AntdBullet.react";
 import AntdGauge from "./components/AntdGauge.react";
 import AntdBidirectionalBar from "./components/AntdBidirectionalBar.react";
 import AntdHeatmap from "./components/AntdHeatmap.react";
+import AntdTinyArea from "./components/AntdTinyArea.react";
 
 export {
     AntdLine,
@@ -51,5 +52,6 @@ export {
     AntdBullet,
     AntdGauge,
     AntdBidirectionalBar,
-    AntdHeatmap
+    AntdHeatmap,
+    AntdTinyArea
 };
