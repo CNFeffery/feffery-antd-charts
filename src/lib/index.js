@@ -23,6 +23,7 @@ import AntdLiquid from "./components/AntdLiquid.react";
 import AntdBullet from "./components/AntdBullet.react";
 import AntdGauge from "./components/AntdGauge.react";
 import AntdBidirectionalBar from "./components/AntdBidirectionalBar.react";
+import AntdHeatmap from "./components/AntdHeatmap.react";
 
 export {
     AntdLine,
@@ -49,5 +50,6 @@ export {
     AntdLiquid,
     AntdBullet,
     AntdGauge,
-    AntdBidirectionalBar
+    AntdBidirectionalBar,
+    AntdHeatmap
 };

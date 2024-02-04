@@ -8,6 +8,7 @@ from .AntdColumn import AntdColumn
 from .AntdDualAxes import AntdDualAxes
 from .AntdFunnel import AntdFunnel
 from .AntdGauge import AntdGauge
+from .AntdHeatmap import AntdHeatmap
 from .AntdHistogram import AntdHistogram
 from .AntdLine import AntdLine
 from .AntdLiquid import AntdLiquid
@@ -35,6 +36,7 @@ __all__ = [
     "AntdDualAxes",
     "AntdFunnel",
     "AntdGauge",
+    "AntdHeatmap",
     "AntdHistogram",
     "AntdLine",
     "AntdLiquid",
