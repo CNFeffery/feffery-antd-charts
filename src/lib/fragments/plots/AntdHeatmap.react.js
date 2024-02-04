@@ -13,8 +13,7 @@ import { propTypes, defaultProps } from '../../components/AntdHeatmap.react';
 const preventUpdateProps = [
     'loading_state',
     'recentlyTooltipChangeRecord',
-    'recentlyPointClickRecord',
-    'recentlyLegendInfo'
+    'recentlyGridClickRecord'
 ];
 
 // 定义热力图组件AntdHeatmap，部分API参数参考https://ant-design-charts.antgroup.com/api/plots/heatmap
@@ -252,26 +251,10 @@ export default class AntdHeatmap extends Component {
                 });
 
                 plot.on('element:click', (e) => {
-
                     setProps({
-                        recentlyPointClickRecord: {
+                        recentlyGridClickRecord: {
                             timestamp: (new Date()).valueOf(),
                             data: e.data.data
-                        }
-                    })
-                });
-
-                plot.on('legend-item:click', (e) => {
-                    let component = e.target.get('delegateObject').component;
-                    setProps({
-                        recentlyLegendInfo: {
-                            triggerItemName: e.target.attrs.text,
-                            items: component.cfg.items.map(
-                                item => {
-                                    let { marker, showRadio, ...other } = item;
-                                    return other
-                                }
-                            )
                         }
                     })
                 });
