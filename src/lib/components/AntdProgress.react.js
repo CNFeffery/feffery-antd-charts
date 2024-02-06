@@ -6,7 +6,6 @@
 import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
 import {
-    axisBasePropTypes,
     annotationsBasePropTypes,
     themeBasePropTypes,
     animationBasePropTypes,
@@ -69,12 +68,6 @@ AntdProgress.propTypes = {
             func: PropTypes.string
         })
     ]),
-
-    // 设置x坐标轴相关属性
-    xAxis: axisBasePropTypes,
-
-    // 设置y坐标轴相关属性
-    yAxis: axisBasePropTypes,
 
     // 定义图表容器像素宽度，默认为400
     width: PropTypes.number,

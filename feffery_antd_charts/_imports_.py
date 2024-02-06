@@ -15,6 +15,7 @@ from .AntdLiquid import AntdLiquid
 from .AntdPie import AntdPie
 from .AntdProgress import AntdProgress
 from .AntdRadar import AntdRadar
+from .AntdRingProgress import AntdRingProgress
 from .AntdRose import AntdRose
 from .AntdSankey import AntdSankey
 from .AntdScatter import AntdScatter
@@ -46,6 +47,7 @@ __all__ = [
     "AntdPie",
     "AntdProgress",
     "AntdRadar",
+    "AntdRingProgress",
     "AntdRose",
     "AntdSankey",
     "AntdScatter",

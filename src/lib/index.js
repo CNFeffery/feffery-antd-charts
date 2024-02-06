@@ -27,6 +27,7 @@ import AntdHeatmap from "./components/AntdHeatmap.react";
 import AntdTinyArea from "./components/AntdTinyArea.react";
 import AntdTinyColumn from "./components/AntdTinyColumn.react";
 import AntdProgress from "./components/AntdProgress.react";
+import AntdRingProgress from "./components/AntdRingProgress.react";
 
 export {
     AntdLine,
@@ -57,5 +58,6 @@ export {
     AntdHeatmap,
     AntdTinyArea,
     AntdTinyColumn,
-    AntdProgress
+    AntdProgress,
+    AntdRingProgress
 };

@@ -2,7 +2,7 @@
 /* eslint-disable no-undefined */
 /* eslint-disable no-else-return */
 /* eslint-disable no-eval */
-import { Progress } from '@ant-design/plots';
+import { RingProgress } from '@ant-design/plots';
 import React, { Component } from 'react';
 import { isUndefined, omitBy, intersection, cloneDeep } from 'lodash';
 import { difference, withTheme } from '../../components/utils';
@@ -13,8 +13,8 @@ const preventUpdateProps = [
     'loading_state'
 ];
 
-// 定义进度条图组件AntdProgress，部分API参数参考https://ant-design-charts.antgroup.com/api/plots/progress
-export default class AntdProgress extends Component {
+// 定义进度环图组件AntdRingProgress，部分API参数参考https://ant-design-charts.antgroup.com/api/plots/ring-progress
+export default class AntdRingProgress extends Component {
 
     constructor(props) {
         super(props);
@@ -71,7 +71,8 @@ export default class AntdProgress extends Component {
             className,
             style,
             percent,
-            barWidthRatio,
+            radius,
+            innerRadius,
             color,
             progressStyle,
             width,
@@ -84,6 +85,7 @@ export default class AntdProgress extends Component {
             limitInPlot,
             annotations,
             animation,
+            statistic,
             theme,
             setProps,
             loading_state
@@ -96,7 +98,8 @@ export default class AntdProgress extends Component {
         config = {
             ...config,
             percent,
-            barWidthRatio,
+            radius,
+            innerRadius,
             padding,
             appendPadding,
             width,
@@ -134,10 +137,25 @@ export default class AntdProgress extends Component {
         // 动画
         config.animation = cloneDeep(animation)
 
+        // 统计值样式
+        config.statistic = cloneDeep(statistic)
+        if (statistic?.title?.formatter?.func) {
+            config.statistic.title.formatter = eval(statistic.title.formatter.func)
+        }
+        if (statistic?.title?.customHtml?.func) {
+            config.statistic.title.customHtml = eval(statistic.title.customHtml.func)
+        }
+        if (statistic?.content?.formatter?.func) {
+            config.statistic.content.formatter = eval(statistic.content.formatter.func)
+        }
+        if (statistic?.content?.customHtml?.func) {
+            config.statistic.content.customHtml = eval(statistic.content.customHtml.func)
+        }
+
         // 利用lodash移除所有值为undefined的属性
         config = omitBy(config, isUndefined)
 
-        return <Progress id={id}
+        return <RingProgress id={id}
             key={key}
             className={className}
             style={style}
@@ -149,5 +167,5 @@ export default class AntdProgress extends Component {
     }
 }
 
-AntdProgress.defaultProps = defaultProps;
-AntdProgress.propTypes = propTypes;
+AntdRingProgress.defaultProps = defaultProps;
+AntdRingProgress.propTypes = propTypes;
