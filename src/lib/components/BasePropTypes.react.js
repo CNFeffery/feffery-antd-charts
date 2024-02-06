@@ -62,6 +62,11 @@ const baseStyle = PropTypes.exact({
     //     环形渐变：设置渐变圆对应的圆心x、y坐标及半径值，并设置不同断点处的色彩值，如'r(0.5, 0.5, 0.1) 0:#ffffff 1:#1890ff'
     stroke: PropTypes.string,
 
+    /**
+     * 描边透明度
+     */
+    strokeOpacity: PropTypes.number,
+
     lineWidth: PropTypes.number,
 
     lineDash: PropTypes.arrayOf(PropTypes.number),
@@ -762,7 +767,6 @@ const legendBasePropTypes = PropTypes.oneOfType([
 const labelBasePropTypes = PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.exact({
-
         // 声明特殊的label类型，典型如饼图label支持'inner'、'outer'、'spider'
         type: PropTypes.string,
 
@@ -814,7 +818,21 @@ const labelBasePropTypes = PropTypes.oneOfType([
         ]),
 
         // 设置是否自动隐藏，默认为false
-        autoHide: PropTypes.bool
+        autoHide: PropTypes.bool,
+
+        /**
+         * 配置文本标签背景
+         */
+        background: PropTypes.exact({
+            /**
+             * 设置文本标签背景样式
+             */
+            style: baseStyle,
+            /**
+             * 设置文本标签像素内边距
+             */
+            padding: PropTypes.number
+        })
     })
 ])
 

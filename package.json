@@ -1,6 +1,6 @@
 {
     "name": "feffery_antd_charts",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "description": "Best implementation of Ant Design Charts in Plotly Dash.",
     "repository": {
         "type": "git",

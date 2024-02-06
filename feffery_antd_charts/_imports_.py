@@ -25,6 +25,7 @@ from .AntdTinyArea import AntdTinyArea
 from .AntdTinyColumn import AntdTinyColumn
 from .AntdTinyLine import AntdTinyLine
 from .AntdTreemap import AntdTreemap
+from .AntdWaterfall import AntdWaterfall
 from .AntdWordCloud import AntdWordCloud
 from .AntdDecompositionTree import AntdDecompositionTree
 from .AntdFundFlow import AntdFundFlow
@@ -57,6 +58,7 @@ __all__ = [
     "AntdTinyColumn",
     "AntdTinyLine",
     "AntdTreemap",
+    "AntdWaterfall",
     "AntdWordCloud",
     "AntdDecompositionTree",
     "AntdFundFlow"

@@ -28,6 +28,7 @@ import AntdTinyArea from "./components/AntdTinyArea.react";
 import AntdTinyColumn from "./components/AntdTinyColumn.react";
 import AntdProgress from "./components/AntdProgress.react";
 import AntdRingProgress from "./components/AntdRingProgress.react";
+import AntdWaterfall from "./components/AntdWaterfall.react";
 
 export {
     AntdLine,
@@ -59,5 +60,6 @@ export {
     AntdTinyArea,
     AntdTinyColumn,
     AntdProgress,
-    AntdRingProgress
+    AntdRingProgress,
+    AntdWaterfall
 };
