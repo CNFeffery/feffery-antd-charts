@@ -26,6 +26,7 @@ import AntdBidirectionalBar from "./components/AntdBidirectionalBar.react";
 import AntdHeatmap from "./components/AntdHeatmap.react";
 import AntdTinyArea from "./components/AntdTinyArea.react";
 import AntdTinyColumn from "./components/AntdTinyColumn.react";
+import AntdProgress from "./components/AntdProgress.react";
 
 export {
     AntdLine,
@@ -55,5 +56,6 @@ export {
     AntdBidirectionalBar,
     AntdHeatmap,
     AntdTinyArea,
-    AntdTinyColumn
+    AntdTinyColumn,
+    AntdProgress
 };

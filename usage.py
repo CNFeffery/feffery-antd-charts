@@ -1,5 +1,4 @@
 import dash
-import requests
 from dash import html
 import feffery_antd_charts as fact
 
@@ -7,43 +6,21 @@ app = dash.Dash(__name__, compress=True)
 
 app.layout = html.Div(
     [
-        fact.AntdTinyColumn(
-            data=[274, 337, 81, 497, 666, 219, 269],
-            height=64,
-            columnWidthRatio=0.9
+        fact.AntdProgress(
+            height=50,
+            width=300,
+            autoFit=False,
+            percent=0.7,
+            color=['#5B8FF9', '#E8EDF3']
         ),
-        fact.AntdTinyColumn(
-            data=[274, 337, 81, 497, 666, 219, 269],
-            height=64,
-            pattern={
-                'type': 'line'
-            }
-        ),
-        fact.AntdTinyColumn(
-            data=[274, 337, 81, 497, 666, 219, 269],
-            height=64,
-            tooltip=False,
-            annotations=[
-                {
-                    'type': 'line',
-                    'start': ['min', 'mean'],
-                    'end': ['max', 'mean'],
-                    'text': {
-                        'content': '平均值',
-                        'offsetY': -2,
-                        'style': {
-                            'textAlign': 'left',
-                            'fontSize': 10,
-                            'fill': 'rgba(44, 53, 66, 0.45)',
-                            'textBaseline': 'bottom',
-                        },
-                    },
-                    'style': {
-                        'stroke': 'rgba(0, 0, 0, 0.25)',
-                    },
-                }
-            ]
-        ),
+        fact.AntdProgress(
+            height=50,
+            width=300,
+            autoFit=False,
+            percent=0.536,
+            barWidthRatio=0.3,
+            color=['#F4664A', '#E8EDF3']
+        )
     ],
     style={
         'padding': '50px 100px',

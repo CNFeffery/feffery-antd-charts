@@ -13,6 +13,7 @@ from .AntdHistogram import AntdHistogram
 from .AntdLine import AntdLine
 from .AntdLiquid import AntdLiquid
 from .AntdPie import AntdPie
+from .AntdProgress import AntdProgress
 from .AntdRadar import AntdRadar
 from .AntdRose import AntdRose
 from .AntdSankey import AntdSankey
@@ -43,6 +44,7 @@ __all__ = [
     "AntdLine",
     "AntdLiquid",
     "AntdPie",
+    "AntdProgress",
     "AntdRadar",
     "AntdRose",
     "AntdSankey",
