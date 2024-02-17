@@ -16,8 +16,6 @@ import {
     scrollbarBasePropTypes,
     sliderBasePropTypes,
     baseStyle,
-    areaBaseStyle,
-    textBaseStyle,
     themeBasePropTypes,
     patternBasePropTypes,
     animationBasePropTypes,
@@ -124,7 +122,7 @@ AntdColumn.propTypes = {
     // 设置柱状图背景样式
     columnBackground: PropTypes.exact({
         // 具体样式
-        style: areaBaseStyle
+        style: baseStyle
     }),
 
     // 设置柱状图宽度占比，0~1之间
@@ -167,7 +165,7 @@ AntdColumn.propTypes = {
                 }),
 
                 // 自定义转化率文字样式
-                style: textBaseStyle
+                style: baseStyle
             })
         ])
     }),
