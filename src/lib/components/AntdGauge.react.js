@@ -9,7 +9,6 @@ import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
 import {
     baseStyle,
-    textBaseStyle,
     axisBasePropTypes,
     themeBasePropTypes,
     animationBasePropTypes,
@@ -209,7 +208,7 @@ AntdGauge.propTypes = {
                     offsetY: PropTypes.number
                 })
             ]),
-            style: textBaseStyle
+            style: baseStyle
         })
     ]),
 
