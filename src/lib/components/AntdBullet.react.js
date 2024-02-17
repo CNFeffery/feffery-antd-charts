@@ -8,7 +8,7 @@ import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
 import {
     metaBasePropTypes,
-    areaBaseStyle,
+    baseStyle,
     labelBasePropTypes,
     tooltipBasePropTypes,
     axisBasePropTypes,
@@ -157,7 +157,7 @@ AntdBullet.propTypes = {
     bulletStyle: PropTypes.exact({
         // 区间背景样式，默认为{ fillOpacity: 0.5 }
         range: PropTypes.oneOfType([
-            areaBaseStyle,
+            baseStyle,
             PropTypes.exact({
                 // 回调函数
                 func: PropTypes.string
@@ -165,7 +165,7 @@ AntdBullet.propTypes = {
         ]),
         // 实际值样式
         measure: PropTypes.oneOfType([
-            areaBaseStyle,
+            baseStyle,
             PropTypes.exact({
                 // 回调函数
                 func: PropTypes.string
@@ -173,7 +173,7 @@ AntdBullet.propTypes = {
         ]),
         // 目标值样式
         target: PropTypes.oneOfType([
-            areaBaseStyle,
+            baseStyle,
             PropTypes.exact({
                 // 回调函数
                 func: PropTypes.string
