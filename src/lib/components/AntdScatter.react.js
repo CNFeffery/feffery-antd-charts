@@ -7,8 +7,6 @@
 import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
 import {
-    pointBaseStyle,
-    lineBaseStyle,
     metaBasePropTypes,
     axisBasePropTypes,
     legendBasePropTypes,
@@ -16,7 +14,6 @@ import {
     tooltipBasePropTypes,
     annotationsBasePropTypes,
     baseStyle,
-    textBaseStyle,
     themeBasePropTypes,
     animationBasePropTypes,
     interactionsBasePropTypes,
@@ -108,7 +105,7 @@ AntdScatter.propTypes = {
 
     // 设置散点样式
     pointStyle: PropTypes.oneOfType([
-        pointBaseStyle,
+        baseStyle,
         PropTypes.exact({
             // 回调模式
             func: PropTypes.string
@@ -130,7 +127,7 @@ AntdScatter.propTypes = {
         yBaseline: PropTypes.number,
 
         // 配置分割线样式
-        lineStyle: lineBaseStyle,
+        lineStyle: baseStyle,
 
         // 配置四个象限的样式，单对象输入时全局设置，
         // 亦可按照上右下左的顺序分别传入四个对象构成的数组来分别设置四个象限的样式
@@ -149,7 +146,7 @@ AntdScatter.propTypes = {
                 position: PropTypes.arrayOf(PropTypes.number),
 
                 // 设置标注文字样式
-                style: textBaseStyle
+                style: baseStyle
             })
         )
     }),
@@ -160,7 +157,7 @@ AntdScatter.propTypes = {
         type: PropTypes.oneOf(['exp', 'linear', 'loess', 'log', 'poly', 'pow', 'quad']),
 
         // 设置回归线样式
-        style: lineBaseStyle,
+        style: baseStyle,
 
         // 自定义映射算法，优先级高于type
         algorithm: PropTypes.exact({
