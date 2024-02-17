@@ -15,8 +15,6 @@ import {
     annotationsBasePropTypes,
     scrollbarBasePropTypes,
     baseStyle,
-    areaBaseStyle,
-    textBaseStyle,
     themeBasePropTypes,
     patternBasePropTypes,
     animationBasePropTypes,
@@ -120,7 +118,7 @@ AntdBar.propTypes = {
     // 设置柱状图背景样式
     barBackground: PropTypes.exact({
         // 具体样式
-        style: areaBaseStyle
+        style: baseStyle
     }),
 
     // 设置条形图宽度占比，0~1之间
@@ -163,7 +161,7 @@ AntdBar.propTypes = {
                 }),
 
                 // 自定义转化率文字样式
-                style: textBaseStyle
+                style: baseStyle
             })
         ])
     }),
