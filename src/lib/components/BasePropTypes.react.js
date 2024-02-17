@@ -4,316 +4,117 @@ import PropTypes from 'prop-types';
 // 定义基于g2及g2plot的ShapeAttrs的相关参数模板，参考：
 // https://g2.antv.vision/zh/docs/api/shape/shape-attrs
 // https://antv-g2plot.gitee.io/zh/docs/api/graphic-style
-
-// 定义全局通用style参数模板
-const baseStyle = PropTypes.exact({
-
-    // 定义矩形圆角像素程度，number或[number, number, number, number]
+// 定义通用图形样式参数模板
+const baseStyle = PropTypes.shape({
+    /**
+     * 填充色
+     */
+    fill: PropTypes.string,
+    /**
+     * 填充透明度
+     */
+    fillOpacity: PropTypes.number,
+    /**
+     * 线要素颜色
+     */
+    stroke: PropTypes.string,
+    /**
+     * 轮廓透明度
+     */
+    strokeOpacity: PropTypes.number,
+    /**
+     * 图形描边像素宽度/线要素像素宽度
+     */
+    lineWidth: PropTypes.number,
+    /**
+     * 图形描边虚线配置
+     */
+    lineDash: PropTypes.arrayOf(PropTypes.number),
+    /**
+     * 描边透明度
+     */
+    lineOpacity: PropTypes.number,
+    /**
+     * 描边末端样式
+     */
+    lineCap: PropTypes.string,
+    /**
+     * 整体透明度
+     */
+    opacity: PropTypes.number,
+    /**
+     * 阴影颜色
+     */
+    shadowColor: PropTypes.string,
+    /**
+     * 阴影模糊系数
+     */
+    shadowBlur: PropTypes.number,
+    /**
+     * 阴影水平像素偏移
+     */
+    shadowOffsetX: PropTypes.number,
+    /**
+     * 阴影竖直像素偏移
+     */
+    shadowOffsetY: PropTypes.number,
+    /**
+     * 鼠标移入图形呈现的指针样式
+     */
+    cursor: PropTypes.string,
+    /**
+     * 像素圆角
+     */
     radius: PropTypes.oneOfType([
         PropTypes.number,
         PropTypes.arrayOf(PropTypes.number)
     ]),
-
-    // 设置点半径像素大小
-    r: PropTypes.number,
-
-    // 设置文字内容的当前对齐方式，可选的有'start'、'center'、'end'、'left'、'right'
-    textAlign: PropTypes.string,
-
-    // 设置在绘制文本时使用的当前文本基线, 可选的有'top', 'hanging', 'middle', 'alphabetic', 'ideographic', 'bottom'
-    textBaseline: PropTypes.string,
-
-    // 设置字体样式，可选的有'normal', 'italic', 'oblique'
-    fontStyle: PropTypes.string,
-
-    // 设置字体像素行高
-    lineHeight: PropTypes.number,
-
-    // 设置文字像素大小
-    fontSize: PropTypes.number,
-
-    // 设置文字字体
-    fontFamily: PropTypes.string,
-
-    // 设置文字粗细水平
-    fontWeight: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number
-    ]),
-
-    // 设置填充色彩，常规单一色彩格式同css色彩
-    // 渐变色配置格式：
-    //     线性渐变：设置角度及不同断点处的色彩值，如'l(0) 0:#ffffff 0.5:#7ec2f3 1:#1890ff'
-    //     环形渐变：设置渐变圆对应的圆心x、y坐标及半径值，并设置不同断点处的色彩值，如'r(0.5, 0.5, 0.1) 0:#ffffff 1:#1890ff'
-    // 图形纹理填充方式配置格式：
-    //     格式如：'p(a)https://gw.alipayobjects.com/mdn/rms_d314dd/afts/img/A*58XjQY1tO7gAAAAAAAAAAABkARQnAQ'
-    //     其中a表示“该模式在水平和垂直方向重复”，其他可选的模式有：
-    //         x：“该模式只在水平方向重复”
-    //         y：“该模式只在垂直方向重复”
-    //         n：“该模式只显示一次（不重复）”
-    fill: PropTypes.string,
-
-    // 设置填充色透明度
-    fillOpacity: PropTypes.number,
-
-    // 设置描边色彩，常规单一色彩格式同css色彩
-    // 渐变色配置格式：
-    //     线性渐变：设置角度及不同断点处的色彩值，如'l(0) 0:#ffffff 0.5:#7ec2f3 1:#1890ff'
-    //     环形渐变：设置渐变圆对应的圆心x、y坐标及半径值，并设置不同断点处的色彩值，如'r(0.5, 0.5, 0.1) 0:#ffffff 1:#1890ff'
-    stroke: PropTypes.string,
-
     /**
-     * 描边透明度
+     * 点像素半径
      */
-    strokeOpacity: PropTypes.number,
-
-    lineWidth: PropTypes.number,
-
-    lineDash: PropTypes.arrayOf(PropTypes.number),
-
-    lineOpacity: PropTypes.number,
-
-    // 设置线末端样式，可选的有'butt'、'round'、'square'
-    lineCap: PropTypes.string,
-
-    opacity: PropTypes.number,
-
-    // 设置阴影填充色彩，常规单一色彩格式同css色彩
-    // 渐变色配置格式：
-    //     线性渐变：设置角度及不同断点处的色彩值，如'l(0) 0:#ffffff 0.5:#7ec2f3 1:#1890ff'
-    //     环形渐变：设置渐变圆对应的圆心x、y坐标及半径值，并设置不同断点处的色彩值，如'r(0.5, 0.5, 0.1) 0:#ffffff 1:#1890ff'
-    // 图形纹理填充方式配置格式：
-    //     格式如：'p(a)https://gw.alipayobjects.com/mdn/rms_d314dd/afts/img/A*58XjQY1tO7gAAAAAAAAAAABkARQnAQ'
-    //     其中a表示“该模式在水平和垂直方向重复”，其他可选的模式有：
-    //         x：“该模式只在水平方向重复”
-    //         y：“该模式只在垂直方向重复”
-    //         n：“该模式只显示一次（不重复）”
-    shadowColor: PropTypes.string,
-
-    shadowBlur: PropTypes.number,
-
-    shadowOffsetX: PropTypes.number,
-
-    shadowOffsetY: PropTypes.number,
-
-    cursor: PropTypes.string
-})
-
-
-// 定义点通用style参数模板
-const pointBaseStyle = PropTypes.exact({
-    // 设置点半径像素大小
     r: PropTypes.number,
-
-    // 设置填充色彩，常规单一色彩格式同css色彩
-    // 渐变色配置格式：
-    //     线性渐变：设置角度及不同断点处的色彩值，如'l(0) 0:#ffffff 0.5:#7ec2f3 1:#1890ff'
-    //     环形渐变：设置渐变圆对应的圆心x、y坐标及半径值，并设置不同断点处的色彩值，如'r(0.5, 0.5, 0.1) 0:#ffffff 1:#1890ff'
-    // 图形纹理填充方式配置格式：
-    //     格式如：'p(a)https://gw.alipayobjects.com/mdn/rms_d314dd/afts/img/A*58XjQY1tO7gAAAAAAAAAAABkARQnAQ'
-    //     其中a表示“该模式在水平和垂直方向重复”，其他可选的模式有：
-    //         x：“该模式只在水平方向重复”
-    //         y：“该模式只在垂直方向重复”
-    //         n：“该模式只显示一次（不重复）”
-    fill: PropTypes.string,
-
-    // 设置全局透明度
-    opacity: PropTypes.number,
-
-    // 设置点填充色透明度
-    fillOpacity: PropTypes.number,
-
-    // 设置轮廓色彩，常规单一色彩格式同css色彩
-    // 渐变色配置格式：
-    //     线性渐变：设置角度及不同断点处的色彩值，如'l(0) 0:#ffffff 0.5:#7ec2f3 1:#1890ff'
-    //     环形渐变：设置渐变圆对应的圆心x、y坐标及半径值，并设置不同断点处的色彩值，如'r(0.5, 0.5, 0.1) 0:#ffffff 1:#1890ff'
-    stroke: PropTypes.string,
-
-    // 设置点描边像素宽度
-    lineWidth: PropTypes.number,
-
-    // 设置点描边线型
-    lineDash: PropTypes.arrayOf(PropTypes.number),
-
-    // 设置点描边透明度
-    strokeOpacity: PropTypes.number,
-
-    // 设置鼠标悬浮点上时的样式
-    cursor: PropTypes.string
-})
-
-// 定义线通用style参数模版
-const lineBaseStyle = PropTypes.exact({
-
-    // 设置线条色彩，常规单一色彩格式同css色彩
-    // 渐变色配置格式：
-    //     线性渐变：设置角度及不同断点处的色彩值，如'l(0) 0:#ffffff 0.5:#7ec2f3 1:#1890ff'
-    //     环形渐变：设置渐变圆对应的圆心x、y坐标及半径值，并设置不同断点处的色彩值，如'r(0.5, 0.5, 0.1) 0:#ffffff 1:#1890ff'
-    stroke: PropTypes.string,
-
-    // 设置全局透明度
-    opacity: PropTypes.number,
-
-    // 设置线像素宽度
-    lineWidth: PropTypes.number,
-
-    // 设置线的虚线样式，可以指定一个数组。一组描述交替绘制线段和间距（坐标空间单位）长度的数字。 
-    // 如果数组元素的数量是奇数， 数组的元素会被复制并重复。例如， [5, 15, 25] 会变成 [5, 15, 25, 5, 15, 25]
-    lineDash: PropTypes.arrayOf(PropTypes.number),
-
-    // 设置线末端样式，可选的有'butt'、'round'、'square'
-    lineCap: PropTypes.string,
-
-    // 设置线的透明度
-    lineOpacity: PropTypes.number,
-
-    // 设置阴影色彩，常规单一色彩格式同css色彩
-    // 渐变色配置格式：
-    //     线性渐变：设置角度及不同断点处的色彩值，如'l(0) 0:#ffffff 0.5:#7ec2f3 1:#1890ff'
-    //     环形渐变：设置渐变圆对应的圆心x、y坐标及半径值，并设置不同断点处的色彩值，如'r(0.5, 0.5, 0.1) 0:#ffffff 1:#1890ff'
-    // 图形纹理填充方式配置格式：
-    //     格式如：'p(a)https://gw.alipayobjects.com/mdn/rms_d314dd/afts/img/A*58XjQY1tO7gAAAAAAAAAAABkARQnAQ'
-    //     其中a表示“该模式在水平和垂直方向重复”，其他可选的模式有：
-    //         x：“该模式只在水平方向重复”
-    //         y：“该模式只在垂直方向重复”
-    //         n：“该模式只显示一次（不重复）”
-    shadowColor: PropTypes.string,
-
-    // 设置线的阴影的高斯模糊系数
-    shadowBlur: PropTypes.number,
-
-    // 设置线的阴影相对线的水平偏移距离
-    shadowOffsetX: PropTypes.number,
-
-    // 设置线的阴影相对线的竖直偏移距离
-    shadowOffsetY: PropTypes.number,
-
-    // 设置鼠标悬浮线上时的css样式
-    cursor: PropTypes.string
-})
-
-// 定义面style参数模板
-const areaBaseStyle = PropTypes.exact({
-
-    // 设置填充色彩，常规单一色彩格式同css色彩
-    // 渐变色配置格式：
-    //     线性渐变：设置角度及不同断点处的色彩值，如'l(0) 0:#ffffff 0.5:#7ec2f3 1:#1890ff'
-    //     环形渐变：设置渐变圆对应的圆心x、y坐标及半径值，并设置不同断点处的色彩值，如'r(0.5, 0.5, 0.1) 0:#ffffff 1:#1890ff'
-    // 图形纹理填充方式配置格式：
-    //     格式如：'p(a)https://gw.alipayobjects.com/mdn/rms_d314dd/afts/img/A*58XjQY1tO7gAAAAAAAAAAABkARQnAQ'
-    //     其中a表示“该模式在水平和垂直方向重复”，其他可选的模式有：
-    //         x：“该模式只在水平方向重复”
-    //         y：“该模式只在垂直方向重复”
-    //         n：“该模式只显示一次（不重复）”
-    fill: PropTypes.string,
-
-    fillOpacity: PropTypes.number,
-
-    opacity: PropTypes.number,
-
-    // 设置阴影色彩，常规单一色彩格式同css色彩
-    // 渐变色配置格式：
-    //     线性渐变：设置角度及不同断点处的色彩值，如'l(0) 0:#ffffff 0.5:#7ec2f3 1:#1890ff'
-    //     环形渐变：设置渐变圆对应的圆心x、y坐标及半径值，并设置不同断点处的色彩值，如'r(0.5, 0.5, 0.1) 0:#ffffff 1:#1890ff'
-    // 图形纹理填充方式配置格式：
-    //     格式如：'p(a)https://gw.alipayobjects.com/mdn/rms_d314dd/afts/img/A*58XjQY1tO7gAAAAAAAAAAABkARQnAQ'
-    //     其中a表示“该模式在水平和垂直方向重复”，其他可选的模式有：
-    //         x：“该模式只在水平方向重复”
-    //         y：“该模式只在垂直方向重复”
-    //         n：“该模式只显示一次（不重复）”
-    shadowColor: PropTypes.string,
-
-    shadowBlur: PropTypes.number,
-
-    shadowOffsetX: PropTypes.number,
-
-    shadowOffsetY: PropTypes.number,
-
-    cursor: PropTypes.string
-})
-
-// 定义文字通用style参数模版
-const textBaseStyle = PropTypes.exact({
-
-    // 设置全局透明度
-    opacity: PropTypes.number,
-
-    // 设置文字内容的当前对齐方式，可选的有'start'、'center'、'end'、'left'、'right'
-    textAlign: PropTypes.string,
-
-    // 设置在绘制文本时使用的当前文本基线, 可选的有'top', 'hanging', 'middle', 'alphabetic', 'ideographic', 'bottom'
-    textBaseline: PropTypes.string,
-
-    // 设置字体样式，可选的有'normal', 'italic', 'oblique'
-    fontStyle: PropTypes.string,
-
-    // 设置字体像素行高
-    lineHeight: PropTypes.number,
-
-    // 设置文字像素大小
+    /**
+     * 文字字体大小
+     */
     fontSize: PropTypes.number,
-
-    // 设置文字字体
+    /**
+     * 文字字体
+     */
     fontFamily: PropTypes.string,
-
-    // 设置文字粗细水平
+    /**
+     * 文字字重
+     */
     fontWeight: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number
     ]),
-
-    // 设置文字填充色彩，常规单一色彩格式同css色彩
-    // 渐变色配置格式：
-    //     线性渐变：设置角度及不同断点处的色彩值，如'l(0) 0:#ffffff 0.5:#7ec2f3 1:#1890ff'
-    //     环形渐变：设置渐变圆对应的圆心x、y坐标及半径值，并设置不同断点处的色彩值，如'r(0.5, 0.5, 0.1) 0:#ffffff 1:#1890ff'
-    // 图形纹理填充方式配置格式：
-    //     格式如：'p(a)https://gw.alipayobjects.com/mdn/rms_d314dd/afts/img/A*58XjQY1tO7gAAAAAAAAAAABkARQnAQ'
-    //     其中a表示“该模式在水平和垂直方向重复”，其他可选的模式有：
-    //         x：“该模式只在水平方向重复”
-    //         y：“该模式只在垂直方向重复”
-    //         n：“该模式只显示一次（不重复）”
-    fill: PropTypes.string,
-
-    // 设置文字颜色透明度
-    fillOpacity: PropTypes.number,
-
-    // 设置文字轮廓色彩，常规单一色彩格式同css色彩
-    // 渐变色配置格式：
-    //     线性渐变：设置角度及不同断点处的色彩值，如'l(0) 0:#ffffff 0.5:#7ec2f3 1:#1890ff'
-    //     环形渐变：设置渐变圆对应的圆心x、y坐标及半径值，并设置不同断点处的色彩值，如'r(0.5, 0.5, 0.1) 0:#ffffff 1:#1890ff'
-    stroke: PropTypes.string,
-
-    // 设置文字轮廓像素宽度
-    lineWidth: PropTypes.number,
-
-    // 设置文字轮廓线型，格式为[分段长度, 分段间距]
-    lineDash: PropTypes.arrayOf(PropTypes.number),
-
-    // 设置阴影色彩，常规单一色彩格式同css色彩
-    // 渐变色配置格式：
-    //     线性渐变：设置角度及不同断点处的色彩值，如'l(0) 0:#ffffff 0.5:#7ec2f3 1:#1890ff'
-    //     环形渐变：设置渐变圆对应的圆心x、y坐标及半径值，并设置不同断点处的色彩值，如'r(0.5, 0.5, 0.1) 0:#ffffff 1:#1890ff'
-    // 图形纹理填充方式配置格式：
-    //     格式如：'p(a)https://gw.alipayobjects.com/mdn/rms_d314dd/afts/img/A*58XjQY1tO7gAAAAAAAAAAABkARQnAQ'
-    //     其中a表示“该模式在水平和垂直方向重复”，其他可选的模式有：
-    //         x：“该模式只在水平方向重复”
-    //         y：“该模式只在垂直方向重复”
-    //         n：“该模式只显示一次（不重复）”
-    shadowColor: PropTypes.string,
-
-    // 设置文字阴影x方向偏移距离
-    shadowOffsetX: PropTypes.number,
-
-    // 设置文字阴影y方向偏移距离
-    shadowOffsetY: PropTypes.number,
-
-    // 设置文字阴影高斯模糊系数，越大越模糊
-    shadowBlur: PropTypes.number,
-
-    // 设置文字鼠标悬浮css样式
-    cursor: PropTypes.string
+    /**
+     * 文字行高
+     */
+    lineHeight: PropTypes.number,
+    /**
+     * 文字对齐方式，可选的有'center'、'end'、'left'、'right'、'start'
+     * 默认：'start'
+     */
+    textAlign: PropTypes.oneOf([
+        'center',
+        'end',
+        'left',
+        'right',
+        'start'
+    ]),
+    /**
+     * 文字基线，可选的有'top'、'middle'、'bottom'、'alphabetic'、'hanging'
+     * 默认：'bottom'
+     */
+    textBaseline: PropTypes.oneOf([
+        'top',
+        'middle',
+        'bottom',
+        'alphabetic',
+        'hanging'
+    ])
 })
-
 
 // 定义全局化配置图表数据元信息PropTypes模板，其中原始字段名为属性名
 const metaBasePropTypes = PropTypes.objectOf(
@@ -446,7 +247,7 @@ const axisBasePropTypes = PropTypes.oneOfType([
             text: PropTypes.string,
 
             // 设置标题文字样式属性
-            style: textBaseStyle,
+            style: baseStyle,
 
             // 设置坐标轴标题的对其位置，可选的有'center'、'start'、'end'
             position: PropTypes.string,
@@ -476,7 +277,7 @@ const axisBasePropTypes = PropTypes.oneOfType([
                 offsetY: PropTypes.number,
 
                 // 设置label标题文字样式属性
-                style: textBaseStyle,
+                style: baseStyle,
 
                 // 设置是否自动旋转
                 autoRotate: PropTypes.bool,
@@ -506,7 +307,7 @@ const axisBasePropTypes = PropTypes.oneOfType([
 
         // 设置坐标轴线样式
         line: PropTypes.exact({
-            style: lineBaseStyle
+            style: baseStyle
         }),
 
         // 设置坐标轴网格线
@@ -514,7 +315,7 @@ const axisBasePropTypes = PropTypes.oneOfType([
             // 设置线要素样式
             line: PropTypes.exact({
                 // 线要素样式
-                style: lineBaseStyle,
+                style: baseStyle,
                 // 类型，可选的有'line'、'circle'
                 type: PropTypes.oneOf(['line', 'circle'])
             }),
@@ -535,7 +336,7 @@ const axisBasePropTypes = PropTypes.oneOfType([
         // 设置坐标轴刻度线
         tickLine: PropTypes.exact({
             // 设置坐标轴刻度线样式
-            style: lineBaseStyle,
+            style: baseStyle,
 
             // 设置坐标轴刻度线是否与tick对齐
             alignTick: PropTypes.bool,
@@ -547,7 +348,7 @@ const axisBasePropTypes = PropTypes.oneOfType([
         // 设置坐标轴子刻度线
         subTickLine: PropTypes.exact({
             // 设置坐标轴刻度线样式
-            style: lineBaseStyle,
+            style: baseStyle,
 
             // 设置子刻度线数量
             count: PropTypes.number,
@@ -604,7 +405,7 @@ const legendBasePropTypes = PropTypes.oneOfType([
             spacing: PropTypes.number,
 
             // 设置图例标题文字的样式
-            style: textBaseStyle
+            style: baseStyle
         }),
 
         // 设置图例整体在x方向上的偏移
@@ -650,7 +451,7 @@ const legendBasePropTypes = PropTypes.oneOfType([
             spacing: PropTypes.number,
 
             // 设置文本样式
-            style: textBaseStyle,
+            style: baseStyle,
 
             // 回调设置文字内容
             formatter: PropTypes.oneOfType([
@@ -668,7 +469,7 @@ const legendBasePropTypes = PropTypes.oneOfType([
             alignRight: PropTypes.bool,
 
             // 设置文本样式
-            style: textBaseStyle,
+            style: baseStyle,
 
             // 回调设置文字内容
             formatter: PropTypes.oneOfType([
@@ -783,7 +584,7 @@ const labelBasePropTypes = PropTypes.oneOfType([
         offsetY: PropTypes.number,
 
         // 设置label文本样式
-        style: textBaseStyle,
+        style: baseStyle,
 
         // 设置是否自动旋转，默认为true
         autoRotate: PropTypes.bool,
@@ -874,7 +675,7 @@ const tooltipBasePropTypes = PropTypes.oneOfType([
         showMarkers: PropTypes.bool,
 
         // 设置tooltip marker的样式
-        marker: pointBaseStyle,
+        marker: baseStyle,
 
         // 精细化设置各个dom部分的css样式
         // 格式为：
@@ -1089,7 +890,7 @@ const sliderBasePropTypes = PropTypes.oneOfType([
             backgroundStyle: baseStyle,
 
             // 设置line样式
-            lineStyle: lineBaseStyle,
+            lineStyle: baseStyle,
 
             // 设置area样式
             areaStyle: baseStyle
@@ -1129,7 +930,7 @@ const sliderBasePropTypes = PropTypes.oneOfType([
         }),
 
         // 设置文本样式
-        textStyle: textBaseStyle,
+        textStyle: baseStyle,
 
         // 设置允许滑动范围下限
         minLimit: PropTypes.number,
@@ -1409,10 +1210,6 @@ const stateBasePropTypes = PropTypes.exact({
 
 export {
     baseStyle,
-    pointBaseStyle,
-    lineBaseStyle,
-    areaBaseStyle,
-    textBaseStyle,
     metaBasePropTypes,
     axisBasePropTypes,
     legendBasePropTypes,
