@@ -8,7 +8,7 @@ import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
 import {
     metaBasePropTypes,
-    areaBaseStyle,
+    baseStyle,
     themeBasePropTypes,
     animationBasePropTypes,
     interactionsBasePropTypes,
@@ -90,7 +90,7 @@ AntdSankey.propTypes = {
 
     // 配置桑基图节点样式
     nodeStyle: PropTypes.oneOfType([
-        areaBaseStyle,
+        baseStyle,
         PropTypes.exact({
             // 回调函数
             func: PropTypes.string
@@ -99,7 +99,7 @@ AntdSankey.propTypes = {
 
     // 配置桑基图边样式
     edgeStyle: PropTypes.oneOfType([
-        areaBaseStyle,
+        baseStyle,
         PropTypes.exact({
             // 回调函数
             func: PropTypes.string
