@@ -6,8 +6,7 @@
 import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
 import {
-    pointBaseStyle,
-    lineBaseStyle,
+    baseStyle,
     metaBasePropTypes,
     axisBasePropTypes,
     tooltipBasePropTypes,
@@ -16,8 +15,7 @@ import {
     animationBasePropTypes,
     interactionsBasePropTypes,
     stateBasePropTypes,
-    patternBasePropTypes,
-    areaBaseStyle
+    patternBasePropTypes
 } from './BasePropTypes.react';
 
 const LazyAntdTinyArea = React.lazy(() => import(/* webpackChunkName: "plots" */ '../fragments/plots/AntdTinyArea.react'));
@@ -59,7 +57,7 @@ AntdTinyArea.propTypes = {
     /**
      * 设置面积区域样式
      */
-    areaStyle: areaBaseStyle,
+    areaStyle: baseStyle,
 
     /**
      * 配置折线样式
@@ -72,7 +70,7 @@ AntdTinyArea.propTypes = {
         /**
          * 设置折线样式
          */
-        style: lineBaseStyle
+        style: baseStyle
     }),
 
     /**
@@ -86,7 +84,7 @@ AntdTinyArea.propTypes = {
         /**
          * 设置折点样式
          */
-        style: pointBaseStyle
+        style: baseStyle
     }),
 
     // 设置x坐标轴相关属性
