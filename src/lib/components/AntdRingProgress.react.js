@@ -6,7 +6,6 @@
 import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
 import {
-    textBaseStyle,
     annotationsBasePropTypes,
     themeBasePropTypes,
     animationBasePropTypes,
@@ -181,7 +180,7 @@ AntdRingProgress.propTypes = {
                     offsetY: PropTypes.number
                 })
             ]),
-            style: textBaseStyle
+            style: baseStyle
         })
     ]),
 
