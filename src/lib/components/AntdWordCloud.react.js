@@ -98,13 +98,43 @@ AntdWordCloud.propTypes = {
     // 设置是否对超出绘图区域的几何元素进行裁剪
     limitInPlot: PropTypes.bool,
 
-    // 配置词云图文字样式
-    wordStyle: PropTypes.exact({
+    /**
+     * 配置词云图文字样式
+     */
+    wordStyle: PropTypes.shape({
+        /**
+         * 字体
+         */
         fontFamily: PropTypes.string,
-        fontWeight: PropTypes.string,
+        /**
+         * 字重
+         */
+        fontWeight: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number
+        ]),
+        /**
+         * 像素内边距
+         */
         padding: PropTypes.number,
-        fontSize: PropTypes.arrayOf(PropTypes.number),
-        rotation: PropTypes.number
+        /**
+         * 字体大小
+         */
+        fontSize: PropTypes.oneOfType([
+            PropTypes.arrayOf(PropTypes.number),
+            PropTypes.number
+        ]),
+        /**
+         * 旋转角度
+         */
+        rotation: PropTypes.oneOfType([
+            PropTypes.arrayOf(PropTypes.number),
+            PropTypes.number
+        ]),
+        /**
+         * 回调函数控制模式
+         */
+        func: PropTypes.string
     }),
 
     // 配置蒙版图片（url、base64字符串等）

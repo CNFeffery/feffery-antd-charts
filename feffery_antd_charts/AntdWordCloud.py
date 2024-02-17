@@ -118,19 +118,28 @@ Keyword arguments:
 
 - wordField (string; required)
 
-- wordStyle (dict; optional)
+- wordStyle (dict; optional):
+    配置词云图文字样式.
 
     `wordStyle` is a dict with keys:
 
-    - fontFamily (string; optional)
+    - fontFamily (string; optional):
+        字体.
 
-    - fontSize (list of numbers; optional)
+    - fontSize (list of numbers | number; optional):
+        字体大小.
 
-    - fontWeight (string; optional)
+    - fontWeight (string | number; optional):
+        字重.
 
-    - padding (number; optional)
+    - func (string; optional):
+        回调函数控制模式.
 
-    - rotation (number; optional)"""
+    - padding (number; optional):
+        像素内边距.
+
+    - rotation (list of numbers | number; optional):
+        旋转角度."""
     _children_props = []
     _base_nodes = ['children']
     _namespace = 'feffery_antd_charts'

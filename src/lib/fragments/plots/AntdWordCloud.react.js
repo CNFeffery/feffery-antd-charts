@@ -152,8 +152,12 @@ export default class AntdWordCloud extends Component {
             config.placementStrategy = eval(placementStrategy.func)
         }
 
-        // 折线样式
+        // 文字样式
         config.wordStyle = cloneDeep(wordStyle)
+        // 若wordStyle具有自定义函数func属性
+        if (wordStyle?.func) {
+            config.wordStyle = eval(wordStyle.func)
+        }
 
         // 色彩样式
         config.color = cloneDeep(color)
