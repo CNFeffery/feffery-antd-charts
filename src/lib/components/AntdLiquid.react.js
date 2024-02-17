@@ -7,7 +7,7 @@
 import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
 import {
-    areaBaseStyle,
+    baseStyle,
     themeBasePropTypes,
     patternBasePropTypes,
     animationBasePropTypes,
@@ -78,7 +78,7 @@ AntdLiquid.propTypes = {
 
     // 配置水波图样式
     liquidStyle: PropTypes.oneOfType([
-        areaBaseStyle,
+        baseStyle,
         PropTypes.exact({
             // 回调函数
             func: PropTypes.string
