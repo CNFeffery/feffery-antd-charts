@@ -7,8 +7,7 @@
 import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
 import {
-    textBaseStyle,
-    areaBaseStyle,
+    baseStyle,
     metaBasePropTypes,
     labelBasePropTypes,
     tooltipBasePropTypes,
@@ -112,10 +111,10 @@ AntdSunburst.propTypes = {
             dividerText: PropTypes.string,
 
             // 设置面包屑字体样式
-            textStyle: textBaseStyle,
+            textStyle: baseStyle,
 
             // 设置激活状态下的字体样式
-            activeTextStyle: textBaseStyle,
+            activeTextStyle: baseStyle,
 
             // 设置下钻层级面包屑的方位，可选的有'top-left'、'bottom-left'
             // 默认为'top-left'
@@ -153,7 +152,7 @@ AntdSunburst.propTypes = {
     // 设置填充区域样式，其中透明度默认随着层级增加会逐渐减少填充透明度，可通过sunburstStyle
     // 自定义func回调来自主控制样式
     sunburstStyle: PropTypes.oneOfType([
-        areaBaseStyle,
+        baseStyle,
         PropTypes.exact({
             // 回调模式
             func: PropTypes.string
