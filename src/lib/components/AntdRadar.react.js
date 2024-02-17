@@ -7,9 +7,7 @@
 import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
 import {
-    pointBaseStyle,
-    lineBaseStyle,
-    areaBaseStyle,
+    baseStyle,
     metaBasePropTypes,
     axisBasePropTypes,
     legendBasePropTypes,
@@ -104,7 +102,7 @@ AntdRadar.propTypes = {
     //     return { opacity: 0.5 };
     // }
     lineStyle: PropTypes.oneOfType([
-        lineBaseStyle,
+        baseStyle,
         PropTypes.exact({
             // 回调模式
             func: PropTypes.string
@@ -134,7 +132,7 @@ AntdRadar.propTypes = {
 
         // 设置折点通用style属性，支持对象传入，当对象中具有func属性时，会视作func回调模式处理
         style: PropTypes.oneOfType([
-            pointBaseStyle,
+            baseStyle,
             PropTypes.exact({
                 // 回调模式
                 func: PropTypes.string
@@ -165,7 +163,7 @@ AntdRadar.propTypes = {
 
         // 配置填充面积详细样式
         style: PropTypes.oneOfType([
-            areaBaseStyle,
+            baseStyle,
             PropTypes.exact({
                 // 回调模式
                 func: PropTypes.string
