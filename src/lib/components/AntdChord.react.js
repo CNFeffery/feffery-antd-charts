@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import {
     metaBasePropTypes,
     labelBasePropTypes,
-    areaBaseStyle,
+    baseStyle,
     themeBasePropTypes,
     animationBasePropTypes,
     interactionsBasePropTypes,
@@ -89,7 +89,7 @@ AntdChord.propTypes = {
 
     // 配置和弦图节点样式
     nodeStyle: PropTypes.oneOfType([
-        areaBaseStyle,
+        baseStyle,
         PropTypes.exact({
             // 回调函数
             func: PropTypes.string
@@ -98,7 +98,7 @@ AntdChord.propTypes = {
 
     // 配置和弦图边样式
     edgeStyle: PropTypes.oneOfType([
-        areaBaseStyle,
+        baseStyle,
         PropTypes.exact({
             // 回调函数
             func: PropTypes.string
