@@ -174,12 +174,12 @@ const metaBasePropTypes = PropTypes.objectOf(
         max: PropTypes.number,
 
         /**
-         * 强制设置当前字段的值域最小值，会影响坐标轴刻度开始位置
+         * 强制设置当前字段的值域最小值，会影响坐标轴刻度开始位置，分类度量下无效
          */
         minLimit: PropTypes.number,
 
         /**
-         * 强制设置当前字段的值域最大值，会影响坐标轴刻度结束位置
+         * 强制设置当前字段的值域最大值，会影响坐标轴刻度结束位置，分类度量下无效
          */
         maxLimit: PropTypes.number,
 

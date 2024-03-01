@@ -1,4 +1,5 @@
 import dash
+import math
 from dash import html
 import feffery_antd_charts as fact
 
@@ -6,258 +7,491 @@ app = dash.Dash(__name__, compress=True)
 
 app.layout = html.Div(
     [
-        fact.AntdWaterfall(
+        fact.AntdRadialBar(
             data=[
                 {
-                    'type': '日用品',
-                    'money': 120,
+                    'name': 'X6',
+                    'star': 297,
                 },
                 {
-                    'type': '伙食费',
-                    'money': 900,
+                    'name': 'G',
+                    'star': 506,
                 },
                 {
-                    'type': '交通费',
-                    'money': 200,
+                    'name': 'AVA',
+                    'star': 805,
                 },
                 {
-                    'type': '水电费',
-                    'money': 300,
+                    'name': 'G2Plot',
+                    'star': 1478,
                 },
                 {
-                    'type': '房租',
-                    'money': 1200,
+                    'name': 'L7',
+                    'star': 2029,
                 },
                 {
-                    'type': '商场消费',
-                    'money': 1000,
+                    'name': 'G6',
+                    'star': 7100,
                 },
                 {
-                    'type': '红包收入',
-                    'money': -2000,
+                    'name': 'F2',
+                    'star': 7346,
+                },
+                {
+                    'name': 'G2',
+                    'star': 10178,
                 },
             ],
-            xField='type',
-            yField='money',
-            appendPadding=[15, 0, 0, 0],
-            meta={
-                'type': {
-                    'alias': '类别',
-                },
-                'money': {
-                    'alias': '收支',
-                    'formatter': {
-                        'func': '(v) => `${v} 元`'
-                    },
-                },
-            },
-            label={
-                'style': {
-                    'fontSize': 10,
-                    'fill': 'rgba(0,0,0,0.65)',
-                },
-                'layout': [
-                    {
-                        'type': 'interval-adjust-position',
-                    },
-                ],
-            },
-            total={
-                'label': '总支出',
-                'style': {
-                    'fill': '#96a6a6',
-                },
+            xField='name',
+            yField='star',
+            radius=0.8,
+            innerRadius=0.2,
+            tooltip={
+                'formatter': {
+                    'func': '''(datum) => {
+                    return {
+                        name: 'star数',
+                        value: datum.star,
+                    }
+                }'''
+                }
             }
         ),
-        fact.AntdWaterfall(
+        fact.AntdRadialBar(
             data=[
                 {
-                    'month': '2019',
-                    'value': 23000000,
+                    'name': 'X6',
+                    'star': 297,
                 },
                 {
-                    'month': 'Jan',
-                    'value': 2200000,
+                    'name': 'G',
+                    'star': 506,
                 },
                 {
-                    'month': 'Feb',
-                    'value': -4600000,
+                    'name': 'AVA',
+                    'star': 805,
                 },
                 {
-                    'month': 'Mar',
-                    'value': -9100000,
+                    'name': 'G2Plot',
+                    'star': 1478,
                 },
                 {
-                    'month': 'Apr',
-                    'value': 3700000,
+                    'name': 'L7',
+                    'star': 2029,
                 },
                 {
-                    'month': 'May',
-                    'value': -2100000,
+                    'name': 'G6',
+                    'star': 7100,
                 },
                 {
-                    'month': 'Jun',
-                    'value': 5300000,
+                    'name': 'F2',
+                    'star': 7346,
                 },
                 {
-                    'month': 'Jul',
-                    'value': 3100000,
-                },
-                {
-                    'month': 'Aug',
-                    'value': -1500000,
-                },
-                {
-                    'month': 'Sep',
-                    'value': 4200000,
-                },
-                {
-                    'month': 'Oct',
-                    'value': 5300000,
-                },
-                {
-                    'month': 'Nov',
-                    'value': -1500000,
-                },
-                {
-                    'month': 'Dec',
-                    'value': 5100000,
+                    'name': 'G2',
+                    'star': 10178,
                 },
             ],
-            padding='auto',
-            appendPadding=[20, 0, 0, 0],
-            xField='month',
-            yField='value',
-            meta={
-                'month': {
-                    'alias': '月份',
+            xField='name',
+            yField='star',
+            radius=0.8,
+            innerRadius=0.2,
+            barStyle={
+                'lineCap': 'round',
+            }
+        ),
+        fact.AntdRadialBar(
+            data=[
+                {
+                    'name': 'X6',
+                    'star': 297,
                 },
-                'value': {
-                    'alias': '销售量',
-                    'formatter': {
-                        'func': '(v) => `${v / 10000000} 亿`'
-                    },
+                {
+                    'name': 'G',
+                    'star': 506,
                 },
+                {
+                    'name': 'AVA',
+                    'star': 805,
+                },
+                {
+                    'name': 'G2Plot',
+                    'star': 1478,
+                },
+                {
+                    'name': 'L7',
+                    'star': 2029,
+                },
+                {
+                    'name': 'G6',
+                    'star': 7100,
+                },
+                {
+                    'name': 'F2',
+                    'star': 7346,
+                },
+                {
+                    'name': 'G2',
+                    'star': 10178,
+                },
+            ],
+            xField='name',
+            yField='star',
+            radius=0.8,
+            innerRadius=0.2,
+            maxAngle=270,
+            tooltip={
+                'formatter': {
+                    'func': '''(datum) => {
+                    return {
+                        name: 'star数',
+                        value: datum.star,
+                    }
+                }'''
+                }
             },
-            total={
-                'label': '2020',
-            },
+            colorField='star',
             color={
-                'func': '''({month, value})=> {
-                if (month === '2019' || month === '2020') {
-                    return '#96a6a6'
+                'func': '''({ star }) => {
+      if (star > 10000) {
+        return '#36c361';
+      } else if (star > 1000) {
+        return '#2194ff';
+      }
+
+      return '#ff4d4f';
+    }'''
+            }
+        ),
+        fact.AntdRadialBar(
+            data=[
+                {
+                    "year": "1991",
+                    "value": 3,
+                    "type": "Lon"
+                },
+                {
+                    "year": "1992",
+                    "value": 4,
+                    "type": "Lon"
+                },
+                {
+                    "year": "1993",
+                    "value": 3.5,
+                    "type": "Lon"
+                },
+                {
+                    "year": "1994",
+                    "value": 5,
+                    "type": "Lon"
+                },
+                {
+                    "year": "1995",
+                    "value": 4.9,
+                    "type": "Lon"
+                },
+                {
+                    "year": "1996",
+                    "value": 6,
+                    "type": "Lon"
+                },
+                {
+                    "year": "1997",
+                    "value": 7,
+                    "type": "Lon"
+                },
+                {
+                    "year": "1998",
+                    "value": 9,
+                    "type": "Lon"
+                },
+                {
+                    "year": "1999",
+                    "value": 13,
+                    "type": "Lon"
+                },
+                {
+                    "year": "1991",
+                    "value": 3,
+                    "type": "Bor"
+                },
+                {
+                    "year": "1992",
+                    "value": 4,
+                    "type": "Bor"
+                },
+                {
+                    "year": "1993",
+                    "value": 3.5,
+                    "type": "Bor"
+                },
+                {
+                    "year": "1994",
+                    "value": 5,
+                    "type": "Bor"
+                },
+                {
+                    "year": "1995",
+                    "value": 4.9,
+                    "type": "Bor"
+                },
+                {
+                    "year": "1996",
+                    "value": 6,
+                    "type": "Bor"
+                },
+                {
+                    "year": "1997",
+                    "value": 7,
+                    "type": "Bor"
+                },
+                {
+                    "year": "1998",
+                    "value": 9,
+                    "type": "Bor"
+                },
+                {
+                    "year": "1999",
+                    "value": 13,
+                    "type": "Bor"
+                }
+            ],
+            xField='year',
+            yField='value',
+            colorField='type',
+            isStack=True,
+            maxAngle=270
+        ),
+        fact.AntdRadialBar(
+            data=[
+                {
+                    "year": "1991",
+                    "value": 3,
+                    "type": "Lon"
+                },
+                {
+                    "year": "1992",
+                    "value": 4,
+                    "type": "Lon"
+                },
+                {
+                    "year": "1993",
+                    "value": 3.5,
+                    "type": "Lon"
+                },
+                {
+                    "year": "1994",
+                    "value": 5,
+                    "type": "Lon"
+                },
+                {
+                    "year": "1995",
+                    "value": 4.9,
+                    "type": "Lon"
+                },
+                {
+                    "year": "1996",
+                    "value": 6,
+                    "type": "Lon"
+                },
+                {
+                    "year": "1997",
+                    "value": 7,
+                    "type": "Lon"
+                },
+                {
+                    "year": "1998",
+                    "value": 9,
+                    "type": "Lon"
+                },
+                {
+                    "year": "1999",
+                    "value": 13,
+                    "type": "Lon"
+                },
+                {
+                    "year": "1991",
+                    "value": 3,
+                    "type": "Bor"
+                },
+                {
+                    "year": "1992",
+                    "value": 4,
+                    "type": "Bor"
+                },
+                {
+                    "year": "1993",
+                    "value": 3.5,
+                    "type": "Bor"
+                },
+                {
+                    "year": "1994",
+                    "value": 5,
+                    "type": "Bor"
+                },
+                {
+                    "year": "1995",
+                    "value": 4.9,
+                    "type": "Bor"
+                },
+                {
+                    "year": "1996",
+                    "value": 6,
+                    "type": "Bor"
+                },
+                {
+                    "year": "1997",
+                    "value": 7,
+                    "type": "Bor"
+                },
+                {
+                    "year": "1998",
+                    "value": 9,
+                    "type": "Bor"
+                },
+                {
+                    "year": "1999",
+                    "value": 13,
+                    "type": "Bor"
+                }
+            ],
+            xField='year',
+            yField='value',
+            colorField='type',
+            isGroup=True,
+            maxAngle=270
+        ),
+        fact.AntdRadialBar(
+            data=[
+                {
+                    'name': 'X6',
+                    'star': 297,
+                },
+                {
+                    'name': 'G',
+                    'star': 506,
+                },
+                {
+                    'name': 'AVA',
+                    'star': 805,
+                },
+                {
+                    'name': 'G2Plot',
+                    'star': 1478,
+                },
+                {
+                    'name': 'L7',
+                    'star': 2029,
+                },
+                {
+                    'name': 'G6',
+                    'star': 7100,
+                },
+                {
+                    'name': 'F2',
+                    'star': 7346,
+                },
+                {
+                    'name': 'G2',
+                    'star': 10178,
+                },
+            ],
+            xField='name',
+            yField='star',
+            maxAngle=350,
+            radius=0.8,
+            innerRadius=0.2,
+            tooltip={
+                'formatter': {
+                    'func': '''(datum) => {
+        return {
+          name: 'star数',
+          value: datum.star,
+        };
+      }'''
+                },
+            },
+            colorField='star',
+            color={
+                'func': '''({star}) => {
+                if (star > 10000) {
+                    return '#6349ec'
+                } else if (star > 1000) {
+                    return '#ff9300'
                 }
 
-                return value > 0 ? '#f4664a': '#30bf78'
+                return '#ff93a7'
             }'''
             },
-            label={
-                'style': {
-                    'fontSize': 14,
-                },
-                'background': {
-                    'style': {
-                        'fill': '#f6f6f6',
-                        'stroke': '#e6e6e6',
-                        'strokeOpacity': 0.65,
-                        'radius': 2,
-                    },
-                    'padding': 1.5
-                }
-            },
-            waterfallStyle={
-                'func': '''()=> {
-                return {
-                    fillOpacity: 0.85
-                }
-            }'''
+            barBackground={},
+            barStyle={
+                'lineCap': 'round',
             }
         ),
-        fact.AntdWaterfall(
+        fact.AntdRadialBar(
             data=[
                 {
-                    'month': '一月',
-                    'value': 6200000,
+                    'term': 'Zombieland',
+                    'count': 9,
                 },
                 {
-                    'month': '二月',
-                    'value': -600000,
+                    'term': 'Wieners',
+                    'count': 8,
                 },
                 {
-                    'month': '三月',
-                    'value': -4100000,
+                    'term': 'Toy Story',
+                    'count': 8,
                 },
                 {
-                    'month': '四月',
-                    'value': 3700000,
+                    'term': 'trashkannon',
+                    'count': 7,
                 },
                 {
-                    'month': '五月',
-                    'value': -2100000,
+                    'term': 'the GROWLERS',
+                    'count': 6,
                 },
                 {
-                    'month': '六月',
-                    'value': 5300000,
+                    'term': 'mudweiser',
+                    'count': 6,
                 },
                 {
-                    'month': '七月',
-                    'value': 3100000,
+                    'term': 'ThunderCats',
+                    'count': 4,
                 },
                 {
-                    'month': '八月',
-                    'value': -500000,
+                    'term': 'The Taqwacores - Motion Picture',
+                    'count': 4,
                 },
                 {
-                    'month': '九月',
-                    'value': 4200000,
+                    'term': 'The Shawshank Redemption',
+                    'count': 2,
                 },
                 {
-                    'month': '十月',
-                    'value': 5300000,
-                },
-                {
-                    'month': '十一月',
-                    'value': -500000,
-                },
-                {
-                    'month': '十二月',
-                    'value': 5100000,
+                    'term': 'The Olivia Experiment',
+                    'count': 1,
                 },
             ],
-            padding='auto',
-            appendPadding=[20, 0, 0, 0],
-            xField='month',
-            yField='value',
-            meta={
-                'month': {
-                    'alias': '月份',
-                },
-                'value': {
-                    'alias': '销售量',
-                    'formatter': {
-                        'func': '''(v) => `${v / 10000000} 亿`'''
-                    },
-                },
+            xField='term',
+            yField='count',
+            radius=1,
+            innerRadius=0.4,
+            startAngle=0.5 * math.pi,
+            endAngle=2.5 * math.pi,
+            tooltip={
+                'showMarkers': True,
             },
-            total={
-                'label': '总计',
-                'style': {
-                    'fill': '#96a6a6',
-                },
-            },
-            labelMode='absolute',
-            label={
-                'style': {
-                    'fontSize': 10,
-                },
-                'background': {
+            type='line',
+            annotations=[
+                {
+                    'type': 'text',
+                    'position': ['50%', '50%'],
+                    'content': 'Music',
                     'style': {
-                        'fill': '#f6f6f6',
-                        'radius': 1,
+                        'textAlign': 'center',
+                        'fontSize': 24,
                     },
-                    'padding': 1.5,
-                }
-            }
+                },
+            ]
         )
     ][::-1],
     style={

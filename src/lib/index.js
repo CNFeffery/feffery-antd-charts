@@ -29,6 +29,7 @@ import AntdTinyColumn from "./components/AntdTinyColumn.react";
 import AntdProgress from "./components/AntdProgress.react";
 import AntdRingProgress from "./components/AntdRingProgress.react";
 import AntdWaterfall from "./components/AntdWaterfall.react";
+import AntdRadialBar from "./components/AntdRadialBar.react";
 
 export {
     AntdLine,
@@ -61,5 +62,6 @@ export {
     AntdTinyColumn,
     AntdProgress,
     AntdRingProgress,
-    AntdWaterfall
+    AntdWaterfall,
+    AntdRadialBar
 };
