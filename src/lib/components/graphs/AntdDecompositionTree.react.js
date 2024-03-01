@@ -7,8 +7,7 @@
 import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
 import {
-    baseStyle,
-    textBaseStyle
+    baseStyle
 } from '../BasePropTypes.react';
 
 // 定义指标拆解图组件AntdDecompositionTree，部分API参数参考https://charts.ant.design/zh/examples/relation-graph/decomposition-tree-graph#basic
@@ -68,7 +67,7 @@ AntdDecompositionTree.propTypes = {
         // 设置节点文本样式，支持回调
         label: PropTypes.exact({
             style: PropTypes.oneOfType([
-                textBaseStyle,
+                baseStyle,
                 PropTypes.exact({
                     // 传入回调函数字符串
                     func: PropTypes.string
@@ -88,7 +87,7 @@ AntdDecompositionTree.propTypes = {
 
             // 设置标题样式
             style: PropTypes.oneOfType([
-                textBaseStyle,
+                baseStyle,
                 PropTypes.exact({
                     // 传入回调函数字符串
                     func: PropTypes.string
@@ -106,7 +105,7 @@ AntdDecompositionTree.propTypes = {
 
             // 设置节点内容样式
             style: PropTypes.oneOfType([
-                textBaseStyle,
+                baseStyle,
                 PropTypes.exact({
                     // 传入回调函数字符串
                     func: PropTypes.string
@@ -201,7 +200,7 @@ AntdDecompositionTree.propTypes = {
         // 设置边文本的样式，style支持回调
         label: PropTypes.exact({
             style: PropTypes.oneOfType([
-                textBaseStyle,
+                baseStyle,
                 PropTypes.exact({
                     // 传入回调函数字符串
                     func: PropTypes.string

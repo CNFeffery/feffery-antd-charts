@@ -143,24 +143,24 @@ app.layout = html.Div(
             tooltip={
                 'formatter': {
                     'func': '''(datum) => {
-                    return {
-                        name: 'star数',
-                        value: datum.star,
-                    }
-                }'''
+                        return {
+                            name: 'star数',
+                            value: datum.star,
+                        }
+                    }'''
                 }
             },
             colorField='star',
             color={
                 'func': '''({ star }) => {
-      if (star > 10000) {
-        return '#36c361';
-      } else if (star > 1000) {
-        return '#2194ff';
-      }
+          if (star > 10000) {
+            return '#36c361';
+          } else if (star > 1000) {
+            return '#2194ff';
+          }
 
-      return '#ff4d4f';
-    }'''
+          return '#ff4d4f';
+        }'''
             }
         ),
         fact.AntdRadialBar(
@@ -404,24 +404,24 @@ app.layout = html.Div(
             tooltip={
                 'formatter': {
                     'func': '''(datum) => {
-        return {
-          name: 'star数',
-          value: datum.star,
-        };
-      }'''
+            return {
+              name: 'star数',
+              value: datum.star,
+            };
+          }'''
                 },
             },
             colorField='star',
             color={
                 'func': '''({star}) => {
-                if (star > 10000) {
-                    return '#6349ec'
-                } else if (star > 1000) {
-                    return '#ff9300'
-                }
+                    if (star > 10000) {
+                        return '#6349ec'
+                    } else if (star > 1000) {
+                        return '#ff9300'
+                    }
 
-                return '#ff93a7'
-            }'''
+                    return '#ff93a7'
+                }'''
             },
             barBackground={},
             barStyle={
@@ -487,8 +487,8 @@ app.layout = html.Div(
                     'position': ['50%', '50%'],
                     'content': 'Music',
                     'style': {
-                        'textAlign': 'center',
-                        'fontSize': 24,
+                            'textAlign': 'center',
+                            'fontSize': 24,
                     },
                 },
             ]
