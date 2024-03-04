@@ -1,5 +1,4 @@
 import dash
-import requests
 from dash import html
 import feffery_antd_charts as fact
 
@@ -7,85 +6,206 @@ app = dash.Dash(__name__, compress=True)
 
 app.layout = html.Div(
     [
-        html.H2('基础小提琴图'),
-        fact.AntdViolin(
-            data=(
-                requests
-                .get('https://gw.alipayobjects.com/os/bmw-prod/6b0a5f1d-5931-42ae-b3ba-3c3cb77d0861.json')
-                .json()
-            ),
-            xField='x',
-            yField='y',
-            height=500
+        html.H2('基础韦恩图'),
+        fact.AntdVenn(
+            data=[
+                {
+                    'sets': ['A'],
+                    'size': 12,
+                    'label': 'A',
+                },
+                {
+                    'sets': ['B'],
+                    'size': 12,
+                    'label': 'B',
+                },
+                {
+                    'sets': ['C'],
+                    'size': 12,
+                    'label': 'C',
+                },
+                {
+                    'sets': ['A', 'B'],
+                    'size': 2,
+                    'label': 'A&B',
+                },
+                {
+                    'sets': ['A', 'C'],
+                    'size': 2,
+                    'label': 'A&C',
+                },
+                {
+                    'sets': ['B', 'C'],
+                    'size': 2,
+                    'label': 'B&C',
+                },
+                {
+                    'sets': ['A', 'B', 'C'],
+                    'size': 1,
+                },
+            ],
+            setsField='sets',
+            sizeField='size',
+            pointStyle={
+                'fillOpacity': 0.85,
+            },
+            legend={
+                'position': 'top'
+            }
         ),
-        html.H2('分组小提琴图'),
-        fact.AntdViolin(
-            data=(
-                requests
-                .get('https://gw.alipayobjects.com/os/bmw-prod/6b0a5f1d-5931-42ae-b3ba-3c3cb77d0861.json')
-                .json()
-            ),
-            xField='x',
-            yField='y',
-            seriesField='species',
-            height=500
+        html.H2('设置颜色叠加模式'),
+        fact.AntdVenn(
+            data=[
+                {
+                    'sets': ['A'],
+                    'size': 12,
+                    'label': 'A',
+                },
+                {
+                    'sets': ['B'],
+                    'size': 12,
+                    'label': 'B',
+                },
+                {
+                    'sets': ['C'],
+                    'size': 12,
+                    'label': 'C',
+                },
+                {
+                    'sets': ['A', 'B'],
+                    'size': 2,
+                    'label': 'A&B',
+                },
+                {
+                    'sets': ['A', 'C'],
+                    'size': 2,
+                    'label': 'A&C',
+                },
+                {
+                    'sets': ['B', 'C'],
+                    'size': 2,
+                    'label': 'B&C',
+                },
+                {
+                    'sets': ['A', 'B', 'C'],
+                    'size': 1,
+                },
+            ],
+            setsField='sets',
+            sizeField='size',
+            blendMode='overlay',
+            pointStyle={
+                'fillOpacity': 0.85,
+            }
         ),
-        html.H2('平滑空心小提琴图'),
-        fact.AntdViolin(
-            data=(
-                requests
-                .get('https://gw.alipayobjects.com/os/bmw-prod/6b0a5f1d-5931-42ae-b3ba-3c3cb77d0861.json')
-                .json()
-            ),
-            xField='x',
-            yField='y',
-            seriesField='species',
-            shape='hollow-smooth',
-            height=500
-        ),
-        html.H2('自定义Tooltip文案'),
-        fact.AntdViolin(
-            data=(
-                requests
-                .get('https://gw.alipayobjects.com/os/bmw-prod/6b0a5f1d-5931-42ae-b3ba-3c3cb77d0861.json')
-                .json()
-            ),
-            width=400,
-            height=500,
-            xField='x',
-            yField='y',
-            seriesField='species',
-            meta={
-                'high': {
-                    'alias': '最大值',
-                    'formatter': {
-                        'func': '(v) => `${v.toFixed(2)} %`'
-                    },
+        html.H2('格式化tooltip'),
+        fact.AntdVenn(
+            data=[
+                {
+                    'sets': ['A'],
+                    'size': 12,
+                    'label': 'A',
                 },
-                'low': {
-                    'alias': '最小值',
-                    'formatter': {
-                        'func': '(v) => `${v.toFixed(2)} %`'
-                    },
+                {
+                    'sets': ['B'],
+                    'size': 12,
+                    'label': 'B',
                 },
-                'q1': {
-                    'alias': '上四分位数',
-                    'formatter': {
-                        'func': '(v) => `${v.toFixed(2)} %`'
-                    },
+                {
+                    'sets': ['C'],
+                    'size': 12,
+                    'label': 'C',
                 },
-                'q3': {
-                    'alias': '下四分位数',
-                    'formatter': {
-                        'func': '(v) => `${v.toFixed(2)} %`'
-                    },
+                {
+                    'sets': ['A', 'B'],
+                    'size': 2,
+                    'label': 'A&B',
                 },
-                'species': {
-                    'alias': '品类',
+                {
+                    'sets': ['A', 'C'],
+                    'size': 2,
+                    'label': 'A&C',
                 },
+                {
+                    'sets': ['B', 'C'],
+                    'size': 2,
+                    'label': 'B&C',
+                },
+                {
+                    'sets': ['A', 'B', 'C'],
+                    'size': 1,
+                    'label': 'A&B&C',
+                },
+            ],
+            setsField='sets',
+            sizeField='size',
+            pointStyle={
+                'fillOpacity': 0.85,
             },
             tooltip={
-                'fields': ['species', 'high', 'q1', 'q3', 'low'],
+                'fields': ['label', 'size'],
+                'formatter': {
+                    'func': '''(datum) => {
+        return {
+          name: datum.label,
+          value: datum.size,
+        };
+      }'''
+                }
+            }
+        ),
+        html.H2('设置label'),
+        fact.AntdVenn(
+            data=[
+                {
+                    'sets': ['A'],
+                    'size': 12,
+                    'label': 'A',
+                },
+                {
+                    'sets': ['B'],
+                    'size': 12,
+                    'label': 'B',
+                },
+                {
+                    'sets': ['C'],
+                    'size': 12,
+                    'label': 'C',
+                },
+                {
+                    'sets': ['A', 'B'],
+                    'size': 2,
+                    'label': 'A&B',
+                },
+                {
+                    'sets': ['A', 'C'],
+                    'size': 2,
+                    'label': 'A&C',
+                },
+                {
+                    'sets': ['B', 'C'],
+                    'size': 2,
+                    'label': 'B&C',
+                },
+                {
+                    'sets': ['A', 'B', 'C'],
+                    'size': 1,
+                    'label': 'A&B&C',
+                },
+            ],
+            setsField='sets',
+            sizeField='size',
+            pointStyle={
+                'fillOpacity': 0.85,
+            },
+            label={
+                'offsetY': 7,
+                'style': {
+                    'fontSize': 14,
+                },
+                'formatter': {
+                    'func': '''(datum) => `${datum.sets.join('&')}: ${datum.size}`'''
+                },
             }
         )
     ],
