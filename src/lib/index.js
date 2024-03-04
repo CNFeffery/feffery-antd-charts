@@ -30,6 +30,7 @@ import AntdProgress from "./components/AntdProgress.react";
 import AntdRingProgress from "./components/AntdRingProgress.react";
 import AntdWaterfall from "./components/AntdWaterfall.react";
 import AntdRadialBar from "./components/AntdRadialBar.react";
+import AntdViolin from "./components/AntdViolin.react";
 
 export {
     AntdLine,
@@ -63,5 +64,6 @@ export {
     AntdProgress,
     AntdRingProgress,
     AntdWaterfall,
-    AntdRadialBar
+    AntdRadialBar,
+    AntdViolin
 };
