@@ -81,6 +81,7 @@ export default class AntdDualAxes extends Component {
             padding,
             appendPadding,
             renderer,
+            pixelRatio,
             locale,
             limitInPlot,
             tooltip,
@@ -123,6 +124,7 @@ export default class AntdDualAxes extends Component {
             padding,
             appendPadding,
             renderer,
+            pixelRatio,
             locale,
             limitInPlot,
             theme: (
