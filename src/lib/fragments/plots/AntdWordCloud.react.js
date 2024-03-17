@@ -87,6 +87,7 @@ export default class AntdWordCloud extends Component {
             padding,
             appendPadding,
             renderer,
+            pixelRatio,
             locale,
             limitInPlot,
             wordStyle,
@@ -133,6 +134,7 @@ export default class AntdWordCloud extends Component {
             padding,
             appendPadding,
             renderer,
+            pixelRatio,
             locale,
             limitInPlot,
             theme: (
