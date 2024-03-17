@@ -201,6 +201,12 @@ AntdScatter.propTypes = {
     // 设置图表渲染方式为'canvas'或'svg'模式，默认为'canvas'
     renderer: PropTypes.oneOf(['canvas', 'svg']),
 
+    /**
+     * canvas模式下，控制渲染图表图片的像素比
+     * 默认：1
+     */
+    pixelRatio: PropTypes.number,
+
     // 设置语言，可选的有'zh-CN'与'en-US'
     locale: PropTypes.oneOf(['zh-CN', 'en-US']),
 
