@@ -91,6 +91,7 @@ export default class AntdPie extends Component {
             padding,
             appendPadding,
             renderer,
+            pixelRatio,
             locale,
             limitInPlot,
             legend,
@@ -136,6 +137,7 @@ export default class AntdPie extends Component {
             height,
             autoFit,
             renderer,
+            pixelRatio,
             theme: (
                 // 融合内置主题与自定义主题
                 theme && theme.withTheme ?
