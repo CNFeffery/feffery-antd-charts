@@ -65,6 +65,9 @@ Keyword arguments:
 
 - padding (number | list of numbers | string; optional)
 
+- pixelRatio (number; optional):
+    canvas模式下，控制渲染图表图片的像素比  默认：1.
+
 - pointStyle (dict; optional):
     配置集合圆形样式.
 
@@ -119,10 +122,10 @@ Keyword arguments:
     _namespace = 'feffery_antd_charts'
     _type = 'AntdVenn'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, setsField=Component.UNDEFINED, sizeField=Component.UNDEFINED, blendMode=Component.UNDEFINED, pointStyle=Component.UNDEFINED, color=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, animation=Component.UNDEFINED, recentlyTooltipChangeRecord=Component.UNDEFINED, recentlyCircleClickRecord=Component.UNDEFINED, recentlyLegendInfo=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, interactions=Component.UNDEFINED, state=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'animation', 'appendPadding', 'autoFit', 'blendMode', 'className', 'color', 'data', 'downloadTrigger', 'height', 'interactions', 'key', 'label', 'legend', 'limitInPlot', 'loading_state', 'locale', 'meta', 'padding', 'pointStyle', 'recentlyCircleClickRecord', 'recentlyLegendInfo', 'recentlyTooltipChangeRecord', 'renderer', 'setsField', 'sizeField', 'state', 'style', 'theme', 'tooltip', 'width']
+    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, setsField=Component.UNDEFINED, sizeField=Component.UNDEFINED, blendMode=Component.UNDEFINED, pointStyle=Component.UNDEFINED, color=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, pixelRatio=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, animation=Component.UNDEFINED, recentlyTooltipChangeRecord=Component.UNDEFINED, recentlyCircleClickRecord=Component.UNDEFINED, recentlyLegendInfo=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, interactions=Component.UNDEFINED, state=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'animation', 'appendPadding', 'autoFit', 'blendMode', 'className', 'color', 'data', 'downloadTrigger', 'height', 'interactions', 'key', 'label', 'legend', 'limitInPlot', 'loading_state', 'locale', 'meta', 'padding', 'pixelRatio', 'pointStyle', 'recentlyCircleClickRecord', 'recentlyLegendInfo', 'recentlyTooltipChangeRecord', 'renderer', 'setsField', 'sizeField', 'state', 'style', 'theme', 'tooltip', 'width']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'animation', 'appendPadding', 'autoFit', 'blendMode', 'className', 'color', 'data', 'downloadTrigger', 'height', 'interactions', 'key', 'label', 'legend', 'limitInPlot', 'loading_state', 'locale', 'meta', 'padding', 'pointStyle', 'recentlyCircleClickRecord', 'recentlyLegendInfo', 'recentlyTooltipChangeRecord', 'renderer', 'setsField', 'sizeField', 'state', 'style', 'theme', 'tooltip', 'width']
+        self.available_properties = ['id', 'animation', 'appendPadding', 'autoFit', 'blendMode', 'className', 'color', 'data', 'downloadTrigger', 'height', 'interactions', 'key', 'label', 'legend', 'limitInPlot', 'loading_state', 'locale', 'meta', 'padding', 'pixelRatio', 'pointStyle', 'recentlyCircleClickRecord', 'recentlyLegendInfo', 'recentlyTooltipChangeRecord', 'renderer', 'setsField', 'sizeField', 'state', 'style', 'theme', 'tooltip', 'width']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

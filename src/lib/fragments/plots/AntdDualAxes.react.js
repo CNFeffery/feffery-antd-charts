@@ -329,6 +329,18 @@ export default class AntdDualAxes extends Component {
                 geometryOptions={[configLeft, configRight]}
                 // 绑定常用事件
                 onReady={(plot) => {
+                    // 监听非数据要素区域点击事件
+                    plot.on('plot:click', (e) => {
+                        if (!e.data) {
+                            setProps({
+                                recentlyClickRecord: {
+                                    timestamp: (new Date()).valueOf(),
+                                    data: null
+                                }
+                            })
+                        }
+                    });
+
                     plot.on('element:click', (e) => {
                         setProps({
                             recentlyClickRecord: {

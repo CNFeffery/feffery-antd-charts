@@ -77,6 +77,9 @@ Keyword arguments:
 
 - padding (number | list of numbers | a value equal to: 'auto'; optional)
 
+- pixelRatio (number; optional):
+    canvas模式下，控制渲染图表图片的像素比  默认：1.
+
 - rawFields (list of strings; optional)
 
 - recentlyAreaClickRecord (dict; optional)
@@ -116,10 +119,10 @@ Keyword arguments:
     _namespace = 'feffery_antd_charts'
     _type = 'AntdSankey'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.UNDEFINED, meta=Component.UNDEFINED, sourceField=Component.UNDEFINED, targetField=Component.UNDEFINED, weightField=Component.UNDEFINED, rawFields=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, nodeStyle=Component.UNDEFINED, edgeStyle=Component.UNDEFINED, color=Component.UNDEFINED, nodeWidthRatio=Component.UNDEFINED, nodePaddingRatio=Component.UNDEFINED, nodeAlign=Component.UNDEFINED, nodeDraggable=Component.UNDEFINED, animation=Component.UNDEFINED, recentlyTooltipChangeRecord=Component.UNDEFINED, recentlyAreaClickRecord=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, interactions=Component.UNDEFINED, state=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'animation', 'appendPadding', 'autoFit', 'className', 'color', 'data', 'downloadTrigger', 'edgeStyle', 'height', 'interactions', 'key', 'limitInPlot', 'loading_state', 'locale', 'meta', 'nodeAlign', 'nodeDraggable', 'nodePaddingRatio', 'nodeStyle', 'nodeWidthRatio', 'padding', 'rawFields', 'recentlyAreaClickRecord', 'recentlyTooltipChangeRecord', 'renderer', 'sourceField', 'state', 'style', 'targetField', 'theme', 'weightField', 'width']
+    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.UNDEFINED, meta=Component.UNDEFINED, sourceField=Component.UNDEFINED, targetField=Component.UNDEFINED, weightField=Component.UNDEFINED, rawFields=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, pixelRatio=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, nodeStyle=Component.UNDEFINED, edgeStyle=Component.UNDEFINED, color=Component.UNDEFINED, nodeWidthRatio=Component.UNDEFINED, nodePaddingRatio=Component.UNDEFINED, nodeAlign=Component.UNDEFINED, nodeDraggable=Component.UNDEFINED, animation=Component.UNDEFINED, recentlyTooltipChangeRecord=Component.UNDEFINED, recentlyAreaClickRecord=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, interactions=Component.UNDEFINED, state=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'animation', 'appendPadding', 'autoFit', 'className', 'color', 'data', 'downloadTrigger', 'edgeStyle', 'height', 'interactions', 'key', 'limitInPlot', 'loading_state', 'locale', 'meta', 'nodeAlign', 'nodeDraggable', 'nodePaddingRatio', 'nodeStyle', 'nodeWidthRatio', 'padding', 'pixelRatio', 'rawFields', 'recentlyAreaClickRecord', 'recentlyTooltipChangeRecord', 'renderer', 'sourceField', 'state', 'style', 'targetField', 'theme', 'weightField', 'width']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'animation', 'appendPadding', 'autoFit', 'className', 'color', 'data', 'downloadTrigger', 'edgeStyle', 'height', 'interactions', 'key', 'limitInPlot', 'loading_state', 'locale', 'meta', 'nodeAlign', 'nodeDraggable', 'nodePaddingRatio', 'nodeStyle', 'nodeWidthRatio', 'padding', 'rawFields', 'recentlyAreaClickRecord', 'recentlyTooltipChangeRecord', 'renderer', 'sourceField', 'state', 'style', 'targetField', 'theme', 'weightField', 'width']
+        self.available_properties = ['id', 'animation', 'appendPadding', 'autoFit', 'className', 'color', 'data', 'downloadTrigger', 'edgeStyle', 'height', 'interactions', 'key', 'limitInPlot', 'loading_state', 'locale', 'meta', 'nodeAlign', 'nodeDraggable', 'nodePaddingRatio', 'nodeStyle', 'nodeWidthRatio', 'padding', 'pixelRatio', 'rawFields', 'recentlyAreaClickRecord', 'recentlyTooltipChangeRecord', 'renderer', 'sourceField', 'state', 'style', 'targetField', 'theme', 'weightField', 'width']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

@@ -253,6 +253,17 @@ export default class AntdScatter extends Component {
             ref={this.chartRef}
             // 绑定常用事件
             onReady={(plot) => {
+                // 监听非数据要素区域点击事件
+                plot.on('plot:click', (e) => {
+                    if (!e.data) {
+                        setProps({
+                            recentlyPointClickRecord: {
+                                timestamp: (new Date()).valueOf(),
+                                data: null
+                            }
+                        })
+                    }
+                });
 
                 let recentlyTooltipChangeRecord;
                 // 辅助的tooltip渲染事件

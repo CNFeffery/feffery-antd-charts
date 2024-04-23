@@ -65,6 +65,9 @@ Keyword arguments:
 
 - padding (number | list of numbers | string; optional)
 
+- pixelRatio (number; optional):
+    canvas模式下，控制渲染图表图片的像素比  默认：1.
+
 - recentlyBarClickRecord (dict; optional)
 
     `recentlyBarClickRecord` is a dict with keys:
@@ -114,10 +117,10 @@ Keyword arguments:
     _namespace = 'feffery_antd_charts'
     _type = 'AntdBidirectionalBar'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, xField=Component.REQUIRED, yField=Component.REQUIRED, layout=Component.UNDEFINED, barStyle=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, animation=Component.UNDEFINED, recentlyTooltipChangeRecord=Component.UNDEFINED, recentlyBarClickRecord=Component.UNDEFINED, recentlyLegendInfo=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, interactions=Component.UNDEFINED, state=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'animation', 'annotations', 'appendPadding', 'autoFit', 'barStyle', 'className', 'data', 'downloadTrigger', 'height', 'interactions', 'key', 'label', 'layout', 'legend', 'limitInPlot', 'loading_state', 'locale', 'meta', 'padding', 'recentlyBarClickRecord', 'recentlyLegendInfo', 'recentlyTooltipChangeRecord', 'renderer', 'state', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
+    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, xField=Component.REQUIRED, yField=Component.REQUIRED, layout=Component.UNDEFINED, barStyle=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, pixelRatio=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, animation=Component.UNDEFINED, recentlyTooltipChangeRecord=Component.UNDEFINED, recentlyBarClickRecord=Component.UNDEFINED, recentlyLegendInfo=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, interactions=Component.UNDEFINED, state=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'animation', 'annotations', 'appendPadding', 'autoFit', 'barStyle', 'className', 'data', 'downloadTrigger', 'height', 'interactions', 'key', 'label', 'layout', 'legend', 'limitInPlot', 'loading_state', 'locale', 'meta', 'padding', 'pixelRatio', 'recentlyBarClickRecord', 'recentlyLegendInfo', 'recentlyTooltipChangeRecord', 'renderer', 'state', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'animation', 'annotations', 'appendPadding', 'autoFit', 'barStyle', 'className', 'data', 'downloadTrigger', 'height', 'interactions', 'key', 'label', 'layout', 'legend', 'limitInPlot', 'loading_state', 'locale', 'meta', 'padding', 'recentlyBarClickRecord', 'recentlyLegendInfo', 'recentlyTooltipChangeRecord', 'renderer', 'state', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
+        self.available_properties = ['id', 'animation', 'annotations', 'appendPadding', 'autoFit', 'barStyle', 'className', 'data', 'downloadTrigger', 'height', 'interactions', 'key', 'label', 'layout', 'legend', 'limitInPlot', 'loading_state', 'locale', 'meta', 'padding', 'pixelRatio', 'recentlyBarClickRecord', 'recentlyLegendInfo', 'recentlyTooltipChangeRecord', 'renderer', 'state', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()
