@@ -32,6 +32,7 @@ import AntdWaterfall from "./components/AntdWaterfall.react";
 import AntdRadialBar from "./components/AntdRadialBar.react";
 import AntdViolin from "./components/AntdViolin.react";
 import AntdVenn from "./components/AntdVenn.react";
+import AntdRadialTree from "./components/graphs/AntdRadialTree.react";
 
 export {
     AntdLine,
@@ -67,5 +68,6 @@ export {
     AntdWaterfall,
     AntdRadialBar,
     AntdViolin,
-    AntdVenn
+    AntdVenn,
+    AntdRadialTree
 };

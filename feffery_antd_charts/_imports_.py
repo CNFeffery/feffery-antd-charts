@@ -32,6 +32,7 @@ from .AntdWaterfall import AntdWaterfall
 from .AntdWordCloud import AntdWordCloud
 from .AntdDecompositionTree import AntdDecompositionTree
 from .AntdFundFlow import AntdFundFlow
+from .AntdRadialTree import AntdRadialTree
 
 __all__ = [
     "AntdArea",
@@ -67,5 +68,6 @@ __all__ = [
     "AntdWaterfall",
     "AntdWordCloud",
     "AntdDecompositionTree",
-    "AntdFundFlow"
+    "AntdFundFlow",
+    "AntdRadialTree"
 ]

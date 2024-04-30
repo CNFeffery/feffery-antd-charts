@@ -1065,11 +1065,13 @@ const patternBasePropTypes = PropTypes.oneOfType([
              * 矩形像素大小
              * 默认：6
              */
+            // eslint-disable-next-line no-dupe-keys
             size: PropTypes.number,
             /**
              * 矩形之间的像素间隔大小
              * 默认：1
              */
+            // eslint-disable-next-line no-dupe-keys
             padding: PropTypes.number,
             // square、dot类型专用配置项
             /**
