@@ -234,7 +234,7 @@ AntdRadialTree.propTypes = {
 
     /**
      * 是否开启动画
-     * 默认值：`true`
+     * 默认值：`false`
      */
     animate: PropTypes.bool,
 
@@ -323,7 +323,7 @@ AntdRadialTree.propTypes = {
 AntdRadialTree.defaultProps = {
     autoFit: true,
     behaviors: ['drag-canvas', 'zoom-canvas'],
-    animate: true,
+    animate: false,
 }
 
 export default AntdRadialTree;

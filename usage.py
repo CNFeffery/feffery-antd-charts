@@ -146,6 +146,7 @@ app.layout = html.Div(
     [
         html.Div(
             fact.AntdRadialTree(
+                id='chart-demo',
                 data=demo_data,
                 nodeCfg={
                     'type': 'diamond',
@@ -155,68 +156,28 @@ app.layout = html.Div(
                     'zoom-canvas',
                     'drag-node',
                 ],
-                style={'height': '100%'},
+                style={'height': '100%'}
             ),
             style={'height': 700},
         ),
-        html.Div(
-            fact.AntdRadialTree(
-                data=demo_data,
-                nodeCfg={
-                    'size': [30, 30],
-                    'type': 'circle',
-                    'label': {
-                        'style': {
-                            'fill': '#fff',
-                        },
-                    },
-                    'style': {
-                        'fill': '#73B3D1',
-                        'stroke': '#0E1155',
-                        'lineWidth': 2,
-                        'strokeOpacity': 0.45,
-                        'shadowColor': '#73B3D1',
-                        'shadowBlur': 25,
-                    },
-                    'nodeStateStyles': {
-                        'hover': {
-                            'stroke': '#73B3D1',
-                            'lineWidth': 2,
-                            'strokeOpacity': 1,
-                        },
-                    },
-                },
-                edgeCfg={
-                    'style': {
-                        'stroke': '#73B3D1',
-                        'shadowColor': '#73B3D1',
-                        'shadowBlur': 20,
-                    },
-                    'endArrow': {
-                        'type': 'triangle',
-                        'fill': '#73B3D1',
-                        'd': 15,
-                        'size': 8,
-                    },
-                    'edgeStateStyles': {
-                        'hover': {
-                            'stroke': '#73B3D1',
-                            'lineWidth': 2,
-                        },
-                    },
-                },
-                behaviors=[
-                    'drag-canvas',
-                    'zoom-canvas',
-                    'drag-node',
-                ],
-                style={'height': '100%'},
-            ),
-            style={'height': 700},
-        ),
+        html.Pre(id='output'),
     ],
     style={'padding': 50},
 )
+
+
+@app.callback(
+    Output('output', 'children'),
+    Input('chart-demo', 'recentlyNodeClickRecord'),
+    prevent_initial_call=True,
+)
+def demo(recentlyNodeClickRecord):
+    return json.dumps(
+        recentlyNodeClickRecord,
+        indent=4,
+        ensure_ascii=False,
+    )
+
 
 if __name__ == '__main__':
     app.run(debug=True)

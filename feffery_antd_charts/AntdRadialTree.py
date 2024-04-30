@@ -12,8 +12,8 @@ Keyword arguments:
 - id (string; optional):
     组件唯一id.
 
-- animate (boolean; default True):
-    是否开启动画  默认值：`True`.
+- animate (boolean; default False):
+    是否开启动画  默认值：`False`.
 
 - autoFit (boolean; default True):
     图表是否自适应容器宽高，设置为`True`时，`width`与`height`参数将失效  默认值：`True`.
