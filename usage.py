@@ -7,88 +7,75 @@ from dash.dependencies import Input, Output
 app = dash.Dash(__name__, compress=True)
 
 demo_data = {
-    'nodes': [
+    'id': 'A0',
+    'value': {
+        'title': '订单金额',
+        'items': [{'text': '3031万'}],
+    },
+    'children': [
         {
-            'id': '1',
+            'id': 'A1',
             'value': {
-                'text': 'Company1',
-                'icon': 'https://gw.alipayobjects.com/zos/antfincdn/28B4PgocL4/bbd3e7ef-6b5e-4034-893d-1b5073ad9aa4.png',
+                'title': '华南',
+                'items': [
+                    {'text': '1152万'},
+                    {'text': '占比', 'value': '30%'},
+                ],
             },
-        },
-        {'id': '2', 'value': {'text': 'Company2'}},
-        {'id': '3', 'value': {'text': 'Company3'}},
-        {'id': '4', 'value': {'text': 'Company4'}},
-        {'id': '5', 'value': {'text': 'Company5'}},
-        {'id': '6', 'value': {'text': 'Company6'}},
-        {'id': '7', 'value': {'text': 'Company7'}},
-        {'id': '8', 'value': {'text': 'Company8'}},
-        {'id': '9', 'value': {'text': 'Company9'}},
-    ],
-    'edges': [
-        {
-            'source': '1',
-            'target': '2',
-            'value': {
-                'text': '100,000 Yuan',
-                'subText': '2019-08-03',
-                'extraKey': 'A',
-            },
-        },
-        {
-            'source': '1',
-            'target': '3',
-            'value': {
-                'text': '100,000 Yuan',
-                'subText': '2019-08-03',
-                'extraKey': 'B',
-            },
-        },
-        {
-            'source': '2',
-            'target': '5',
-            'value': {
-                'text': '100,000 Yuan',
-                'subText': '2019-08-03',
-            },
-        },
-        {
-            'source': '5',
-            'target': '6',
-            'value': {
-                'text': '100,000 Yuan',
-                'subText': '2019-08-03',
-            },
-        },
-        {
-            'source': '3',
-            'target': '4',
-            'value': {
-                'text': '100,000 Yuan',
-                'subText': '2019-08-03',
-            },
+            'children': [
+                {
+                    'id': 'A11',
+                    'value': {
+                        'title': '广东',
+                        'items': [
+                            {'text': '1152万'},
+                            {
+                                'text': '占比',
+                                'value': '30%',
+                            },
+                        ],
+                    },
+                },
+                {
+                    'id': 'A12',
+                    'value': {
+                        'title': '广西',
+                        'items': [
+                            {'text': '1152万'},
+                            {
+                                'text': '占比',
+                                'value': '30%',
+                            },
+                        ],
+                    },
+                },
+                {
+                    'id': 'A13',
+                    'value': {
+                        'title': '海南',
+                        'items': [
+                            {'text': '1152万'},
+                            {
+                                'text': '占比',
+                                'value': '30%',
+                            },
+                        ],
+                    },
+                },
+            ],
         },
         {
-            'source': '4',
-            'target': '7',
+            'id': 'A2',
             'value': {
-                'text': '100,000 Yuan',
-                'subText': '2019-08-03',
-            },
-        },
-        {
-            'source': '1',
-            'target': '8',
-            'value': {
-                'text': '100,000 Yuan',
-                'subText': '2019-08-03',
-            },
-        },
-        {
-            'source': '1',
-            'target': '9',
-            'value': {
-                'text': '100,000 Yuan',
-                'subText': '2019-08-03',
+                'title': '华北',
+                'items': [
+                    {'text': '595万'},
+                    {
+                        'text': '占比',
+                        'value': '30%',
+                        'icon': 'https://gw.alipayobjects.com/zos/antfincdn/iFh9X011qd/7797962c-04b6-4d67-9143-e9d05f9778bf.png',
+                    },
+                ],
             },
         },
     ],
@@ -97,9 +84,15 @@ demo_data = {
 app.layout = html.Div(
     [
         html.Div(
-            fact.AntdFundFlow(
+            fact.AntdDecompositionTree(
                 id='chart-demo',
                 data=demo_data,
+                behaviors=[
+                    'drag-canvas',
+                    'zoom-canvas',
+                    'drag-node',
+                ],
+                animate=False,
                 style={'height': '100%'},
             ),
             style={'height': 700},
