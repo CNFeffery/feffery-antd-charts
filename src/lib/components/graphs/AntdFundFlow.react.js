@@ -311,6 +311,20 @@ AntdFundFlow.propTypes = {
         ranksep: PropTypes.number
     }),
 
+    /**
+     * 节点点击事件监听
+     */
+    recentlyNodeClickRecord: PropTypes.exact({
+        /**
+         * 事件触发时间戳
+         */
+        timestamp: PropTypes.number,
+        /**
+         * 事件对应节点信息，点击空白处时为空
+         */
+        data: PropTypes.object
+    }),
+
     loading_state: PropTypes.shape({
         /**
          * Determines if the component is loading or not

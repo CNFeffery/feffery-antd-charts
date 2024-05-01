@@ -98,6 +98,30 @@ export default class AntdFundFlow extends Component {
             key={key}
             className={className}
             style={style}
+            // 绑定常用事件
+            onReady={(plot) => {
+                // 监听非数据要素区域点击事件
+                plot.on('canvas:click', (e) => {
+                    setProps({
+                        recentlyNodeClickRecord: {
+                            timestamp: (new Date()).valueOf(),
+                            data: null
+                        }
+                    })
+                });
+
+                plot.on('node:mousedown', (e) => {
+                    setProps({
+                        recentlyNodeClickRecord: {
+                            timestamp: (new Date()).valueOf(),
+                            data: {
+                                id: e.item._cfg.model.id,
+                                value: e.item._cfg.model.value
+                            }
+                        }
+                    })
+                });
+            }}
             data-dash-is-loading={
                 (loading_state && loading_state.is_loading) || undefined
             }

@@ -7,156 +7,100 @@ from dash.dependencies import Input, Output
 app = dash.Dash(__name__, compress=True)
 
 demo_data = {
-    'id': 'Modeling Methods',
-    'children': [
+    'nodes': [
         {
-            'id': 'Classification',
-            'children': [
-                {
-                    'id': 'Logistic regression',
-                    'value': 'Logistic regression',
-                },
-                {
-                    'id': 'Linear discriminant analysis',
-                    'value': 'Linear discriminant analysis',
-                },
-                {'id': 'Rules', 'value': 'Rules'},
-                {
-                    'id': 'Decision trees',
-                    'value': 'Decision trees',
-                },
-                {
-                    'id': 'Naive Bayes',
-                    'value': 'Naive Bayes',
-                },
-                {
-                    'id': 'K nearest neighbor',
-                    'value': 'K nearest neighbor',
-                },
-                {
-                    'id': 'Probabilistic neural network',
-                    'value': 'Probabilistic neural network',
-                },
-                {
-                    'id': 'Support vector machine',
-                    'value': 'Support vector machine',
-                },
-            ],
-            'value': 'Classification',
+            'id': '1',
+            'value': {
+                'text': 'Company1',
+                'icon': 'https://gw.alipayobjects.com/zos/antfincdn/28B4PgocL4/bbd3e7ef-6b5e-4034-893d-1b5073ad9aa4.png',
+            },
+        },
+        {'id': '2', 'value': {'text': 'Company2'}},
+        {'id': '3', 'value': {'text': 'Company3'}},
+        {'id': '4', 'value': {'text': 'Company4'}},
+        {'id': '5', 'value': {'text': 'Company5'}},
+        {'id': '6', 'value': {'text': 'Company6'}},
+        {'id': '7', 'value': {'text': 'Company7'}},
+        {'id': '8', 'value': {'text': 'Company8'}},
+        {'id': '9', 'value': {'text': 'Company9'}},
+    ],
+    'edges': [
+        {
+            'source': '1',
+            'target': '2',
+            'value': {
+                'text': '100,000 Yuan',
+                'subText': '2019-08-03',
+                'extraKey': 'A',
+            },
         },
         {
-            'id': 'Consensus',
-            'children': [
-                {
-                    'id': 'Models diversity',
-                    'children': [
-                        {
-                            'id': 'Different initializations',
-                            'value': 'Different initializations',
-                        },
-                        {
-                            'id': 'Different parameter choices',
-                            'value': 'Different parameter choices',
-                        },
-                        {
-                            'id': 'Different architectures',
-                            'value': 'Different architectures',
-                        },
-                        {
-                            'id': 'Different modeling methods',
-                            'value': 'Different modeling methods',
-                        },
-                        {
-                            'id': 'Different training sets',
-                            'value': 'Different training sets',
-                        },
-                        {
-                            'id': 'Different feature sets',
-                            'value': 'Different feature sets',
-                        },
-                    ],
-                    'value': 'Models diversity',
-                },
-                {
-                    'id': 'Methods',
-                    'children': [
-                        {
-                            'id': 'Classifier selection',
-                            'value': 'Classifier selection',
-                        },
-                        {
-                            'id': 'Classifier fusion',
-                            'value': 'Classifier fusion',
-                        },
-                    ],
-                    'value': 'Methods',
-                },
-                {
-                    'id': 'Common',
-                    'children': [
-                        {
-                            'id': 'Bagging',
-                            'value': 'Bagging',
-                        },
-                        {
-                            'id': 'Boosting',
-                            'value': 'Boosting',
-                        },
-                        {
-                            'id': 'AdaBoost',
-                            'value': 'AdaBoost',
-                        },
-                    ],
-                    'value': 'Common',
-                },
-            ],
-            'value': 'Consensus',
+            'source': '1',
+            'target': '3',
+            'value': {
+                'text': '100,000 Yuan',
+                'subText': '2019-08-03',
+                'extraKey': 'B',
+            },
         },
         {
-            'id': 'Regression',
-            'children': [
-                {
-                    'id': 'Multiple linear regression',
-                    'value': 'Multiple linear regression',
-                },
-                {
-                    'id': 'Partial least squares',
-                    'value': 'Partial least squares',
-                },
-                {
-                    'id': 'Multi-layer feedforward neural network',
-                    'value': 'Multi-layer feedforward neural network',
-                },
-                {
-                    'id': 'General regression neural network',
-                    'value': 'General regression neural network',
-                },
-                {
-                    'id': 'Support vector regression',
-                    'value': 'Support vector regression',
-                },
-            ],
-            'value': 'Regression',
+            'source': '2',
+            'target': '5',
+            'value': {
+                'text': '100,000 Yuan',
+                'subText': '2019-08-03',
+            },
+        },
+        {
+            'source': '5',
+            'target': '6',
+            'value': {
+                'text': '100,000 Yuan',
+                'subText': '2019-08-03',
+            },
+        },
+        {
+            'source': '3',
+            'target': '4',
+            'value': {
+                'text': '100,000 Yuan',
+                'subText': '2019-08-03',
+            },
+        },
+        {
+            'source': '4',
+            'target': '7',
+            'value': {
+                'text': '100,000 Yuan',
+                'subText': '2019-08-03',
+            },
+        },
+        {
+            'source': '1',
+            'target': '8',
+            'value': {
+                'text': '100,000 Yuan',
+                'subText': '2019-08-03',
+            },
+        },
+        {
+            'source': '1',
+            'target': '9',
+            'value': {
+                'text': '100,000 Yuan',
+                'subText': '2019-08-03',
+            },
         },
     ],
-    'value': 'Modeling Methods',
 }
 
 app.layout = html.Div(
     [
         html.Div(
-            fact.AntdRadialTree(
+            fact.AntdFundFlow(
                 id='chart-demo',
                 data=demo_data,
-                nodeCfg={
-                    'type': 'diamond',
-                },
-                behaviors=[
-                    'drag-canvas',
-                    'zoom-canvas',
-                    'drag-node',
-                ],
-                style={'height': '100%'}
+                style={'height': '100%'},
             ),
             style={'height': 700},
         ),
