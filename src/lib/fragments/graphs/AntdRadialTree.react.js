@@ -84,6 +84,10 @@ const AntdRadialTree = (props) => {
                     recentlyNodeClickRecord: {
                         timestamp: (new Date()).valueOf(),
                         data: null
+                    },
+                    recentlyEdgeClickRecord: {
+                        timestamp: (new Date()).valueOf(),
+                        data: null
                     }
                 })
             });
@@ -115,6 +119,18 @@ const AntdRadialTree = (props) => {
                         data: {
                             id: e.item._cfg.model.id,
                             value: e.item._cfg.model.value
+                        }
+                    }
+                })
+            });
+
+            plot.on('edge:mousedown', (e) => {
+                setProps({
+                    recentlyEdgeClickRecord: {
+                        timestamp: (new Date()).valueOf(),
+                        data: {
+                            source: e.item._cfg.model.source,
+                            target: e.item._cfg.model.target
                         }
                     }
                 })

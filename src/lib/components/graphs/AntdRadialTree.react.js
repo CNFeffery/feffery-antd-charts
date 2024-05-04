@@ -292,7 +292,7 @@ AntdRadialTree.propTypes = {
          */
         timestamp: PropTypes.number,
         /**
-         * 事件对应节点信息，点击空白处时为空[]
+         * 事件对应节点信息，点击空白处时为空
          */
         data: PropTypes.object
     }),
@@ -301,6 +301,20 @@ AntdRadialTree.propTypes = {
      * 节点双击事件监听
      */
     recentlyNodeDoubleClickRecord: PropTypes.exact({
+        /**
+         * 事件触发时间戳
+         */
+        timestamp: PropTypes.number,
+        /**
+         * 事件对应节点信息，点击空白处时为空
+         */
+        data: PropTypes.object
+    }),
+
+    /**
+     * 边点击事件监听
+     */
+    recentlyEdgeClickRecord: PropTypes.exact({
         /**
          * 事件触发时间戳
          */
