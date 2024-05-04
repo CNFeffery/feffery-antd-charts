@@ -169,11 +169,19 @@ app.layout = html.Div(
 
 @app.callback(
     Output('output', 'children'),
-    Input('demo-chart', 'selectedNodes'),
+    Input('demo-chart', 'recentlyNodeClickRecord'),
+    Input('demo-chart', 'recentlyNodeDoubleClickRecord'),
 )
-def update_output(selectedNodes):
+def update_output(
+    recentlyNodeClickRecord, recentlyNodeDoubleClickRecord
+):
     return json.dumps(
-        selectedNodes, indent=4, ensure_ascii=False
+        dict(
+            recentlyNodeClickRecord=recentlyNodeClickRecord,
+            recentlyNodeDoubleClickRecord=recentlyNodeDoubleClickRecord,
+        ),
+        indent=4,
+        ensure_ascii=False,
     )
 
 

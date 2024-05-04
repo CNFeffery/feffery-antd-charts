@@ -87,10 +87,30 @@ const AntdRadialTree = (props) => {
                     }
                 })
             });
+            // 监听非数据要素区域双击事件
+            plot.on('canvas:dblclick', (e) => {
+                setProps({
+                    recentlyNodeDoubleClickRecord: {
+                        timestamp: (new Date()).valueOf(),
+                        data: null
+                    }
+                })
+            });
 
             plot.on('node:mousedown', (e) => {
                 setProps({
                     recentlyNodeClickRecord: {
+                        timestamp: (new Date()).valueOf(),
+                        data: {
+                            id: e.item._cfg.model.id,
+                            value: e.item._cfg.model.value
+                        }
+                    }
+                })
+            });
+            plot.on('node:dblclick', (e) => {
+                setProps({
+                    recentlyNodeDoubleClickRecord: {
                         timestamp: (new Date()).valueOf(),
                         data: {
                             id: e.item._cfg.model.id,
