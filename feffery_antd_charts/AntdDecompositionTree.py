@@ -15,7 +15,7 @@ Keyword arguments:
 
 - autoFit (boolean; optional)
 
-- behaviors (list of a value equal to: 'drag-canvas', 'scroll-canvas', 'zoom-canvas', 'drag-node's; optional)
+- behaviors (list of a value equal to: 'drag-canvas', 'scroll-canvas', 'zoom-canvas', 'drag-node', 'click-select's; optional)
 
 - className (string; optional)
 

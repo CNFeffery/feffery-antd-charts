@@ -23,6 +23,7 @@
     "license": "MIT",
     "dependencies": {
         "@ant-design/charts": "^1.4.2",
+        "@antv/graphin": "^2.7.27",
         "lodash": "^4.17.21"
     },
     "devDependencies": {

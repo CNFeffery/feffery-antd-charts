@@ -254,10 +254,10 @@ AntdFundFlow.propTypes = {
         ])
     }),
 
-    // 配置启用的交互模式，可选的有'drag-canvas'、'scroll-canvas'、'zoom-canvas'、'drag-node'
+    // 配置启用的交互模式，可选的有'drag-canvas'、'scroll-canvas'、'zoom-canvas'、'drag-node'、'click-select'
     // 默认为['drag-canvas', 'zoom-canvas']
     behaviors: PropTypes.arrayOf(
-        PropTypes.oneOf(['drag-canvas', 'scroll-canvas', 'zoom-canvas', 'drag-node'])
+        PropTypes.oneOf(['drag-canvas', 'scroll-canvas', 'zoom-canvas', 'drag-node', 'click-select'])
     ),
 
     // 配置marker，支持回调

@@ -7,92 +7,156 @@ from dash.dependencies import Input, Output
 app = dash.Dash(__name__, compress=True)
 
 demo_data = {
-    'id': 'A0',
-    'value': {
-        'title': '订单金额',
-        'items': [{'text': '3031万'}],
-    },
+    'id': 'Modeling Methods',
     'children': [
         {
-            'id': 'A1',
-            'value': {
-                'title': '华南',
-                'items': [
-                    {'text': '1152万'},
-                    {'text': '占比', 'value': '30%'},
-                ],
-            },
+            'id': 'Classification',
             'children': [
                 {
-                    'id': 'A11',
-                    'value': {
-                        'title': '广东',
-                        'items': [
-                            {'text': '1152万'},
-                            {
-                                'text': '占比',
-                                'value': '30%',
-                            },
-                        ],
-                    },
+                    'id': 'Logistic regression',
+                    'value': 'Logistic regression',
                 },
                 {
-                    'id': 'A12',
-                    'value': {
-                        'title': '广西',
-                        'items': [
-                            {'text': '1152万'},
-                            {
-                                'text': '占比',
-                                'value': '30%',
-                            },
-                        ],
-                    },
+                    'id': 'Linear discriminant analysis',
+                    'value': 'Linear discriminant analysis',
+                },
+                {'id': 'Rules', 'value': 'Rules'},
+                {
+                    'id': 'Decision trees',
+                    'value': 'Decision trees',
                 },
                 {
-                    'id': 'A13',
-                    'value': {
-                        'title': '海南',
-                        'items': [
-                            {'text': '1152万'},
-                            {
-                                'text': '占比',
-                                'value': '30%',
-                            },
-                        ],
-                    },
+                    'id': 'Naive Bayes',
+                    'value': 'Naive Bayes',
+                },
+                {
+                    'id': 'K nearest neighbor',
+                    'value': 'K nearest neighbor',
+                },
+                {
+                    'id': 'Probabilistic neural network',
+                    'value': 'Probabilistic neural network',
+                },
+                {
+                    'id': 'Support vector machine',
+                    'value': 'Support vector machine',
                 },
             ],
+            'value': 'Classification',
         },
         {
-            'id': 'A2',
-            'value': {
-                'title': '华北',
-                'items': [
-                    {'text': '595万'},
-                    {
-                        'text': '占比',
-                        'value': '30%',
-                        'icon': 'https://gw.alipayobjects.com/zos/antfincdn/iFh9X011qd/7797962c-04b6-4d67-9143-e9d05f9778bf.png',
-                    },
-                ],
-            },
+            'id': 'Consensus',
+            'children': [
+                {
+                    'id': 'Models diversity',
+                    'children': [
+                        {
+                            'id': 'Different initializations',
+                            'value': 'Different initializations',
+                        },
+                        {
+                            'id': 'Different parameter choices',
+                            'value': 'Different parameter choices',
+                        },
+                        {
+                            'id': 'Different architectures',
+                            'value': 'Different architectures',
+                        },
+                        {
+                            'id': 'Different modeling methods',
+                            'value': 'Different modeling methods',
+                        },
+                        {
+                            'id': 'Different training sets',
+                            'value': 'Different training sets',
+                        },
+                        {
+                            'id': 'Different feature sets',
+                            'value': 'Different feature sets',
+                        },
+                    ],
+                    'value': 'Models diversity',
+                },
+                {
+                    'id': 'Methods',
+                    'children': [
+                        {
+                            'id': 'Classifier selection',
+                            'value': 'Classifier selection',
+                        },
+                        {
+                            'id': 'Classifier fusion',
+                            'value': 'Classifier fusion',
+                        },
+                    ],
+                    'value': 'Methods',
+                },
+                {
+                    'id': 'Common',
+                    'children': [
+                        {
+                            'id': 'Bagging',
+                            'value': 'Bagging',
+                        },
+                        {
+                            'id': 'Boosting',
+                            'value': 'Boosting',
+                        },
+                        {
+                            'id': 'AdaBoost',
+                            'value': 'AdaBoost',
+                        },
+                    ],
+                    'value': 'Common',
+                },
+            ],
+            'value': 'Consensus',
+        },
+        {
+            'id': 'Regression',
+            'children': [
+                {
+                    'id': 'Multiple linear regression',
+                    'value': 'Multiple linear regression',
+                },
+                {
+                    'id': 'Partial least squares',
+                    'value': 'Partial least squares',
+                },
+                {
+                    'id': 'Multi-layer feedforward neural network',
+                    'value': 'Multi-layer feedforward neural network',
+                },
+                {
+                    'id': 'General regression neural network',
+                    'value': 'General regression neural network',
+                },
+                {
+                    'id': 'Support vector regression',
+                    'value': 'Support vector regression',
+                },
+            ],
+            'value': 'Regression',
         },
     ],
+    'value': 'Modeling Methods',
 }
 
 app.layout = html.Div(
     [
         html.Div(
-            fact.AntdDecompositionTree(
-                id='chart-demo',
+            fact.AntdRadialTree(
+                id='demo-chart',
                 data=demo_data,
+                nodeCfg={
+                    'type': 'diamond',
+                },
                 behaviors=[
                     'drag-canvas',
                     'zoom-canvas',
                     'drag-node',
+                    'click-select',
                 ],
-                animate=False,
                 style={'height': '100%'},
             ),
             style={'height': 700},
@@ -105,14 +169,11 @@ app.layout = html.Div(
 
 @app.callback(
     Output('output', 'children'),
-    Input('chart-demo', 'recentlyNodeClickRecord'),
-    prevent_initial_call=True,
+    Input('demo-chart', 'selectedNodes'),
 )
-def demo(recentlyNodeClickRecord):
+def update_output(selectedNodes):
     return json.dumps(
-        recentlyNodeClickRecord,
-        indent=4,
-        ensure_ascii=False,
+        selectedNodes, indent=4, ensure_ascii=False
     )
 
 

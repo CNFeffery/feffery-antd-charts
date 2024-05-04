@@ -225,11 +225,11 @@ AntdRadialTree.propTypes = {
 
     /**
      * 启用的交互模式，可选项有`'drag-canvas'`（拖拽画布）、`'scroll-canvas'`（滚轮滚动画布）、
-     * `'zoom-canvas'`（缩放画布）、`'drag-node'`（拖拽节点）
+     * `'zoom-canvas'`（缩放画布）、`'drag-node'`（拖拽节点）、'click-select'（节点选择）
      * 默认值：`['drag-canvas', 'zoom-canvas']`
      */
     behaviors: PropTypes.arrayOf(
-        PropTypes.oneOf(['drag-canvas', 'scroll-canvas', 'zoom-canvas', 'drag-node'])
+        PropTypes.oneOf(['drag-canvas', 'scroll-canvas', 'zoom-canvas', 'drag-node', 'click-select'])
     ),
 
     /**
@@ -295,6 +295,20 @@ AntdRadialTree.propTypes = {
          * 事件对应节点信息，点击空白处时为空
          */
         data: PropTypes.object
+    }),
+
+    /**
+     * 节点选中事件监听，需要在``behaviors``中开启``click-select``
+     */
+    selectedNodes: PropTypes.exact({
+        /**
+         * 事件触发时间戳
+         */
+        timestamp: PropTypes.number,
+        /**
+         * 对应选中的节点信息数组
+         */
+        data: PropTypes.array
     }),
 
     loading_state: PropTypes.shape({

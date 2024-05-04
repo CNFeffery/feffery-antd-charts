@@ -99,6 +99,20 @@ const AntdRadialTree = (props) => {
                     }
                 })
             });
+
+            plot.on('nodeselectchange', (e) => {
+                setProps({
+                    selectedNodes: {
+                        timestamp: (new Date()).valueOf(),
+                        data: e.selectedItems.nodes.map(
+                            node => ({
+                                id: node._cfg.model.id,
+                                value: node._cfg.model.value
+                            })
+                        )
+                    }
+                })
+            });
         }}
         data-dash-is-loading={
             (loading_state && loading_state.is_loading) || undefined
