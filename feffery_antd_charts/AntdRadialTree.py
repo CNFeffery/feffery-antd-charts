@@ -210,6 +210,17 @@ Keyword arguments:
     - timestamp (number; optional):
         事件触发时间戳.
 
+- recentlyEdgeDoubleClickRecord (dict; optional):
+    边双击事件监听.
+
+    `recentlyEdgeDoubleClickRecord` is a dict with keys:
+
+    - data (dict; optional):
+        事件对应节点信息，点击空白处时为空.
+
+    - timestamp (number; optional):
+        事件触发时间戳.
+
 - recentlyNodeClickRecord (dict; optional):
     节点点击事件监听.
 
@@ -253,10 +264,10 @@ Keyword arguments:
     _namespace = 'feffery_antd_charts'
     _type = 'AntdRadialTree'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, nodeCfg=Component.UNDEFINED, edgeCfg=Component.UNDEFINED, behaviors=Component.UNDEFINED, animate=Component.UNDEFINED, minimapCfg=Component.UNDEFINED, layout=Component.UNDEFINED, recentlyNodeClickRecord=Component.UNDEFINED, recentlyNodeDoubleClickRecord=Component.UNDEFINED, recentlyEdgeClickRecord=Component.UNDEFINED, selectedNodes=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'animate', 'autoFit', 'behaviors', 'className', 'data', 'edgeCfg', 'height', 'key', 'layout', 'loading_state', 'minimapCfg', 'nodeCfg', 'recentlyEdgeClickRecord', 'recentlyNodeClickRecord', 'recentlyNodeDoubleClickRecord', 'selectedNodes', 'style', 'width']
+    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, nodeCfg=Component.UNDEFINED, edgeCfg=Component.UNDEFINED, behaviors=Component.UNDEFINED, animate=Component.UNDEFINED, minimapCfg=Component.UNDEFINED, layout=Component.UNDEFINED, recentlyNodeClickRecord=Component.UNDEFINED, recentlyNodeDoubleClickRecord=Component.UNDEFINED, recentlyEdgeClickRecord=Component.UNDEFINED, recentlyEdgeDoubleClickRecord=Component.UNDEFINED, selectedNodes=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'animate', 'autoFit', 'behaviors', 'className', 'data', 'edgeCfg', 'height', 'key', 'layout', 'loading_state', 'minimapCfg', 'nodeCfg', 'recentlyEdgeClickRecord', 'recentlyEdgeDoubleClickRecord', 'recentlyNodeClickRecord', 'recentlyNodeDoubleClickRecord', 'selectedNodes', 'style', 'width']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'animate', 'autoFit', 'behaviors', 'className', 'data', 'edgeCfg', 'height', 'key', 'layout', 'loading_state', 'minimapCfg', 'nodeCfg', 'recentlyEdgeClickRecord', 'recentlyNodeClickRecord', 'recentlyNodeDoubleClickRecord', 'selectedNodes', 'style', 'width']
+        self.available_properties = ['id', 'animate', 'autoFit', 'behaviors', 'className', 'data', 'edgeCfg', 'height', 'key', 'layout', 'loading_state', 'minimapCfg', 'nodeCfg', 'recentlyEdgeClickRecord', 'recentlyEdgeDoubleClickRecord', 'recentlyNodeClickRecord', 'recentlyNodeDoubleClickRecord', 'selectedNodes', 'style', 'width']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

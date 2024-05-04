@@ -326,6 +326,20 @@ AntdRadialTree.propTypes = {
     }),
 
     /**
+     * 边双击事件监听
+     */
+    recentlyEdgeDoubleClickRecord: PropTypes.exact({
+        /**
+         * 事件触发时间戳
+         */
+        timestamp: PropTypes.number,
+        /**
+         * 事件对应节点信息，点击空白处时为空
+         */
+        data: PropTypes.object
+    }),
+
+    /**
      * 节点选中事件监听，需要在``behaviors``中开启``click-select``
      */
     selectedNodes: PropTypes.exact({

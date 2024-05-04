@@ -172,17 +172,20 @@ app.layout = html.Div(
     Input('demo-chart', 'recentlyNodeClickRecord'),
     Input('demo-chart', 'recentlyNodeDoubleClickRecord'),
     Input('demo-chart', 'recentlyEdgeClickRecord'),
+    Input('demo-chart', 'recentlyEdgeDoubleClickRecord'),
 )
 def update_output(
     recentlyNodeClickRecord,
     recentlyNodeDoubleClickRecord,
     recentlyEdgeClickRecord,
+    recentlyEdgeDoubleClickRecord,
 ):
     return json.dumps(
         dict(
             recentlyNodeClickRecord=recentlyNodeClickRecord,
             recentlyNodeDoubleClickRecord=recentlyNodeDoubleClickRecord,
             recentlyEdgeClickRecord=recentlyEdgeClickRecord,
+            recentlyEdgeDoubleClickRecord=recentlyEdgeDoubleClickRecord,
         ),
         indent=4,
         ensure_ascii=False,
