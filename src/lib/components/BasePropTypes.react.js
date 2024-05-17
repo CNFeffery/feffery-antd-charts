@@ -1144,21 +1144,23 @@ const interactionsBasePropTypes = PropTypes.arrayOf(
          * 交互类型，可选的有'active-region'、'element-active'、'element-selected'、
          * 'element-single-selected'、'element-highlight'、'element-highlight-by-x'、
          * 'element-highlight-by-color'、'legend-filter'、'legend-visible-filter'、
-         * 'legend-active'、'legend-highlight'、'legend-highlight'、'element-list-highlight'
+         * 'legend-active'、'legend-highlight'、'legend-highlight'、'element-list-highlight'等
+         * 具体参考：https://g2-v4.antv.vision/zh/docs/api/general/interaction
          */
-        type: PropTypes.oneOf([
-            'active-region',
-            'element-active',
-            'element-selected',
-            'element-single-selected',
-            'element-highlight',
-            'element-highlight-by-x',
-            'element-highlight-by-color',
-            'legend-filter',
-            'legend-active',
-            'legend-highlight',
-            'element-list-highlight'
-        ]),
+        type: PropTypes.string,
+        // type: PropTypes.oneOf([
+        //     'active-region',
+        //     'element-active',
+        //     'element-selected',
+        //     'element-single-selected',
+        //     'element-highlight',
+        //     'element-highlight-by-x',
+        //     'element-highlight-by-color',
+        //     'legend-filter',
+        //     'legend-active',
+        //     'legend-highlight',
+        //     'element-list-highlight'
+        // ]),
         /**
          * 当前交互类型对应的配置参数
          */
