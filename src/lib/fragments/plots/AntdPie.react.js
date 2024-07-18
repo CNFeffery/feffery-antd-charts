@@ -3,7 +3,7 @@
 /* eslint-disable prefer-const */
 /* eslint-disable no-else-return */
 /* eslint-disable no-eval */
-import { Pie } from '@ant-design/plots';
+import { Pie, measureTextWidth } from '@ant-design/plots';
 import React, { Component } from 'react';
 import { isUndefined, omitBy, intersection, cloneDeep } from 'lodash';
 import { difference, withTheme } from '../../components/utils';
