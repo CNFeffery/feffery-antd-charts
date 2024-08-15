@@ -20,6 +20,7 @@
         "build:activated": "npm run build:js && npm run build:backends-activated"
     },
     "author": "CNFeffery <fefferypzy@gmail.com>",
+    "email": "fefferypzy@gmail.com",
     "license": "MIT",
     "dependencies": {
         "@ant-design/charts": "^1.4.2",
