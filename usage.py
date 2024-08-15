@@ -2,65 +2,136 @@ import dash
 from dash import html
 import feffery_antd_charts as fact
 import feffery_antd_components as fac
-from feffery_dash_utils.style_utils import style
+import feffery_utils_components as fuc
 
-app = dash.Dash(__name__)
+app = dash.Dash(
+    __name__,
+    suppress_callback_exceptions=True,
+    update_title=None,
+)
 
-mock_data = [
-    {'type': '分类一', 'value': 27},
-    {'type': '分类二', 'value': 25},
-    {'type': '分类三', 'value': 18},
-    {'type': '分类四', 'value': 15},
-    {'type': '分类五', 'value': 10},
-    {'type': '其他', 'value': 5},
+server = app.server
+
+app.title = '自动化测试报告管理平台'
+
+home_content = [
+    {
+        'name': '压测用例数(个)',
+        'data': [
+            {'type': 'App', 'count': 76},
+            {'type': '固件', 'count': 98},
+            {'type': '记录仪', 'count': 10},
+        ],
+    },
+    {
+        'name': '压测覆盖版本(个)',
+        'data': [
+            {'type': 'App', 'count': 76},
+            {'type': '固件', 'count': 98},
+            {'type': '记录仪', 'count': 10},
+        ],
+    },
+    {
+        'name': '压测次数(万次)',
+        'data': [
+            {'type': 'App', 'count': 10.8},
+            {'type': '固件', 'count': 0.7},
+            {'type': '记录仪', 'count': 1},
+        ],
+    },
+    {
+        'name': 'UI用例数(个)',
+        'data': [
+            {'type': 'App', 'count': 76},
+            {'type': '固件', 'count': 98},
+            {'type': '记录仪', 'count': 10},
+        ],
+    },
+    {
+        'name': 'UI回归覆盖版本(个)',
+        'data': [
+            {'type': 'App', 'count': 76},
+            {'type': '固件', 'count': 98},
+            {'type': '记录仪', 'count': 10},
+        ],
+    },
+    {
+        'name': 'UI回归次数(万次)',
+        'data': [
+            {'type': 'App', 'count': 3.5},
+            {'type': '固件', 'count': 1.2},
+            {'type': '记录仪', 'count': 1},
+        ],
+    },
 ]
 
 app.layout = html.Div(
     [
-        html.Div(
+        fac.AntdRow(
             [
-                fac.AntdAvatar(
-                    id=f'demo-avatar{i}',
-                    mode='image',
-                    src=f'https://api.dicebear.com/7.x/miniavs/svg?seed={i}',
-                    size='large',
-                    shape='circle',
+                fac.AntdCol(
+                    fuc.FefferyDiv(
+                        [
+                            fac.AntdTag(
+                                content=item['name'],
+                                style={'fontSize': '12px'},
+                            ),
+                            fact.AntdPie(
+                                data=item['data'],
+                                legend=False,
+                                angleField='count',
+                                colorField='type',
+                                innerRadius=0.8,
+                                label=False,
+                                statistic={
+                                    'title': {
+                                        'style': {
+                                            'fontSize': '11px'
+                                        },
+                                        'content': '总计',
+                                        'offsetY': -5,
+                                    },
+                                    'content': {
+                                        'style': {
+                                            'fontSize': '11px'
+                                        }
+                                    },
+                                },
+                                interactions=[
+                                    {
+                                        'type': 'pie-statistic-active'
+                                    }
+                                ],
+                                height=120,
+                                radius=0.8,
+                                style={'paddingTop': '5px'},
+                            ),
+                        ],
+                        shadow='always-shadow',
+                        style={
+                            'borderRadius': 8,
+                            'height': 140,
+                            'border': '1px solid #e9ecef',
+                            'padding': '20px 25px',
+                            'position': 'relative',
+                        },
+                    ),
+                    span=4,
                 )
-                for i, item in enumerate(mock_data)
+                for index, item in enumerate(home_content)
             ],
-            style=style(display='none'),
-        ),
-        fact.AntdBar(
-            data=[
-                {**item, 'index': i}
-                for i, item in enumerate(mock_data)
-            ],
-            xField='value',
-            yField='index',
-            yAxis={
-                'label': {
-                    'formatter': {
-                        'func': """(idx) => data[idx].type"""
-                    }
-                }
-            },
-            annotations=[
-                {
-                    'type': 'html',
-                    'position': [i, item['value']],
-                    'html': {
-                        'func': "(e) => document.getElementById('demo-avatar%s').cloneNode(true)"
-                        % i
-                    },
-                    'alignY': 'middle',
-                    'offsetX': 5,
-                }
-                for i, item in enumerate(mock_data)
-            ],
+            gutter=15,
+            style={'marginBottom': 25},
         ),
     ],
-    style=style(padding=50),
+    style={'padding': '50px 150px'},
 )
 
+
 if __name__ == '__main__':
+    """
+    1、 想每个柱状图后，显示图像组件
+    2、每个柱状图自定义颜色
+       16进制颜色码  '5b9bd5', 'ed7d31', '70ad47', 'ffc000' , '4472c4', '91d024' , 'b235e6' , '02ae75'
+    """
     app.run(debug=True)
