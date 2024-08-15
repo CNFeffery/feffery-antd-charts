@@ -193,6 +193,12 @@ export default class AntdBidirectionalBar extends Component {
 
         // 标注
         config.annotations = cloneDeep(annotations)
+        for (let i = 0; i < annotations.length; i++) {
+            // 若annotations[i].html具有自定义函数func属性
+            if (annotations[i]?.html?.func) {
+                config.annotations[i].html = eval(annotations[i].html.func)
+            }
+        }
 
         // 动画
         config.animation = cloneDeep(animation)
