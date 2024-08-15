@@ -809,7 +809,15 @@ const annotationsBasePropTypes = PropTypes.oneOfType([
             container: PropTypes.string,
 
             // 设置自定义html图形标记的元素，格式为html源码
-            html: PropTypes.string,
+            html: PropTypes.oneOfType([
+                PropTypes.string,
+                PropTypes.exact({
+                    /**
+                     * 回调模式
+                     */
+                    func: PropTypes.string
+                })
+            ]),
 
             // 设置dom在水平方向上的对齐方式，适用于类型html，可选的有'left'、'middle'、'right'
             alignX: PropTypes.string,
