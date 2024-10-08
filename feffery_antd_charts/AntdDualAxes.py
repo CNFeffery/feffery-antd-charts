@@ -11,37 +11,31 @@ Keyword arguments:
 
 - id (string; optional)
 
-- animation (optional)
-
-- annotations (dict with strings as keys and values of type ; optional)
-
-- appendPadding (number | list of numbers; optional)
-
-- autoFit (boolean; optional)
+- key (string; optional)
 
 - className (string; optional)
 
+- style (dict; optional)
+
 - data (list of list of dictss; required)
 
-- downloadTrigger (string; default 'download-trigger')
+- meta (optional)
+
+- xField (string; required)
+
+- yField (list of strings; required)
 
 - geometryOptions (list of dicts; optional)
 
     `geometryOptions` is a list of dicts with keys:
 
-    - color (dict; optional)
-
-        `color` is a string
-
-      Or list of strings | dict with keys:
-
-        - func (string; optional)
-
-    - connectNulls (boolean; optional)
-
     - geometry (a value equal to: 'line', 'column'; optional)
 
-    - label (optional)
+    - seriesField (string; optional)
+
+    - smooth (boolean; optional)
+
+    - connectNulls (boolean; optional)
 
     - lineStyle (dict; optional)
 
@@ -57,7 +51,9 @@ Keyword arguments:
 
             `color` is a string
 
-          Or list of strings | dict with keys:
+          Or list of strings
+
+      Or dict with keys:
 
     - func (string; optional)
 
@@ -73,25 +69,17 @@ Keyword arguments:
 
     - func (string; optional)
 
-    - seriesField (string; optional)
-
-    - smooth (boolean; optional) | dict with keys:
+    - label (optional)
 
     - color (dict; optional)
 
         `color` is a string | list of strings | dict with keys:
 
-        - func (string; optional)
-
-    - columnStyle (dict; optional)
-
-        `columnStyle` is a dict with keys:
-
-        - func (string; optional)
-
-    - columnWidthRatio (number; optional)
+        - func (string; optional) | dict with keys:
 
     - geometry (a value equal to: 'line', 'column'; optional)
+
+    - seriesField (string; optional)
 
     - groupField (string; optional)
 
@@ -99,29 +87,78 @@ Keyword arguments:
 
     - isStack (boolean; optional)
 
-    - label (optional)
+    - columnWidthRatio (number; optional)
 
     - marginRatio (number; optional)
 
-    - seriesField (string; optional)
+    - columnStyle (dict; optional)
+
+        `columnStyle` is a dict with keys:
+
+        - func (string; optional)
+
+    - label (optional)
+
+    - color (dict; optional)
+
+        `color` is a string | list of strings | dict with keys:
+
+        - func (string; optional)
+
+- width (number; optional)
 
 - height (number; optional)
+
+- autoFit (boolean; optional)
+
+- padding (number | list of numbers | a value equal to: 'auto'; optional)
+
+- appendPadding (number | list of numbers; optional)
+
+- renderer (a value equal to: 'canvas', 'svg'; optional)
+
+- pixelRatio (number; optional):
+    canvas模式下，控制渲染图表图片的像素比  默认：1.
+
+- locale (a value equal to: 'zh-CN', 'en-US'; default 'zh-CN')
+
+- limitInPlot (boolean; optional)
+
+- tooltip (optional)
+
+- xAxis (optional)
+
+- yAxis (dict with strings as keys and values of type ; optional)
+
+- annotations (dict with strings as keys and values of type ; optional)
+
+- legend (optional)
+
+- slider (optional)
+
+- animation (optional)
+
+- recentlyClickRecord (dict; optional)
+
+    `recentlyClickRecord` is a dict with keys:
+
+    - timestamp (number; optional)
+
+    - data (dict; optional)
+
+- downloadTrigger (string; default 'download-trigger')
+
+- theme (optional)
 
 - interactions (optional):
     交互功能项配置.
 
-- key (string; optional)
-
-- legend (optional)
-
-- limitInPlot (boolean; optional)
+- state (optional):
+    状态样式配置.
 
 - loading_state (dict; optional)
 
     `loading_state` is a dict with keys:
-
-    - component_name (string; optional):
-        Holds the name of the component that is loading.
 
     - is_loading (boolean; optional):
         Determines if the component is loading or not.
@@ -129,54 +166,17 @@ Keyword arguments:
     - prop_name (string; optional):
         Holds which property is loading.
 
-- locale (a value equal to: 'zh-CN', 'en-US'; default 'zh-CN')
-
-- meta (optional)
-
-- padding (number | list of numbers | a value equal to: 'auto'; optional)
-
-- pixelRatio (number; optional):
-    canvas模式下，控制渲染图表图片的像素比  默认：1.
-
-- recentlyClickRecord (dict; optional)
-
-    `recentlyClickRecord` is a dict with keys:
-
-    - data (dict; optional)
-
-    - timestamp (number; optional)
-
-- renderer (a value equal to: 'canvas', 'svg'; optional)
-
-- slider (optional)
-
-- state (optional):
-    状态样式配置.
-
-- style (dict; optional)
-
-- theme (optional)
-
-- tooltip (optional)
-
-- width (number; optional)
-
-- xAxis (optional)
-
-- xField (string; required)
-
-- yAxis (dict with strings as keys and values of type ; optional)
-
-- yField (list of strings; required)"""
+    - component_name (string; optional):
+        Holds the name of the component that is loading."""
     _children_props = []
     _base_nodes = ['children']
     _namespace = 'feffery_antd_charts'
     _type = 'AntdDualAxes'
     @_explicitize_args
     def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, xField=Component.REQUIRED, yField=Component.REQUIRED, geometryOptions=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, pixelRatio=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, tooltip=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, annotations=Component.UNDEFINED, legend=Component.UNDEFINED, slider=Component.UNDEFINED, animation=Component.UNDEFINED, recentlyClickRecord=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, interactions=Component.UNDEFINED, state=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'animation', 'annotations', 'appendPadding', 'autoFit', 'className', 'data', 'downloadTrigger', 'geometryOptions', 'height', 'interactions', 'key', 'legend', 'limitInPlot', 'loading_state', 'locale', 'meta', 'padding', 'pixelRatio', 'recentlyClickRecord', 'renderer', 'slider', 'state', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
+        self._prop_names = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'geometryOptions', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'tooltip', 'xAxis', 'yAxis', 'annotations', 'legend', 'slider', 'animation', 'recentlyClickRecord', 'downloadTrigger', 'theme', 'interactions', 'state', 'loading_state']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'animation', 'annotations', 'appendPadding', 'autoFit', 'className', 'data', 'downloadTrigger', 'geometryOptions', 'height', 'interactions', 'key', 'legend', 'limitInPlot', 'loading_state', 'locale', 'meta', 'padding', 'pixelRatio', 'recentlyClickRecord', 'renderer', 'slider', 'state', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
+        self.available_properties = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'geometryOptions', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'tooltip', 'xAxis', 'yAxis', 'annotations', 'legend', 'slider', 'animation', 'recentlyClickRecord', 'downloadTrigger', 'theme', 'interactions', 'state', 'loading_state']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

@@ -95,6 +95,7 @@ export default class AntdSankey extends Component {
             nodePaddingRatio,
             nodeAlign,
             nodeDraggable,
+            tooltip,
             animation,
             theme,
             interactions,
@@ -168,6 +169,17 @@ export default class AntdSankey extends Component {
         // 若color具有自定义函数func属性
         if (color?.func) {
             config.color = eval(color.func)
+        }
+
+        // 悬浮提示
+        config.tooltip = cloneDeep(tooltip)
+        // 若tooltip.formatter具有自定义函数func属性
+        if (tooltip?.formatter?.func) {
+            config.tooltip.formatter = eval(tooltip.formatter.func)
+        }
+        // 若tooltip.customItems具有自定义函数func属性
+        if (tooltip?.customItems?.func) {
+            config.tooltip.customItems = eval(tooltip.customItems.func)
         }
 
         // 动画

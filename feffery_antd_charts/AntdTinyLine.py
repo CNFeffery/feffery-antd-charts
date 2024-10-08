@@ -11,15 +11,19 @@ Keyword arguments:
 
 - id (string; optional)
 
-- animation (optional)
-
-- annotations (optional)
-
-- appendPadding (number | list of numbers; optional)
-
-- autoFit (boolean; optional)
+- key (string; optional)
 
 - className (string; optional)
+
+- style (dict; optional)
+
+- data (list of numbers; required)
+
+- meta (optional)
+
+- smooth (boolean; optional)
+
+- connectNulls (boolean; optional)
 
 - color (dict; optional)
 
@@ -27,48 +31,11 @@ Keyword arguments:
 
     - func (string; optional)
 
-- connectNulls (boolean; optional)
-
-- data (list of numbers; required)
-
-- downloadTrigger (string; default 'download-trigger')
-
-- height (number; optional)
-
-- interactions (optional):
-    交互功能项配置.
-
-- key (string; optional)
-
-- limitInPlot (boolean; optional)
-
 - lineStyle (dict; optional)
 
     `lineStyle` is a dict with keys:
 
     - func (string; optional)
-
-- loading_state (dict; optional)
-
-    `loading_state` is a dict with keys:
-
-    - component_name (string; optional):
-        Holds the name of the component that is loading.
-
-    - is_loading (boolean; optional):
-        Determines if the component is loading or not.
-
-    - prop_name (string; optional):
-        Holds which property is loading.
-
-- locale (a value equal to: 'zh-CN', 'en-US'; default 'zh-CN')
-
-- meta (optional)
-
-- padding (number | list of numbers | a value equal to: 'auto'; optional)
-
-- pixelRatio (number; optional):
-    canvas模式下，控制渲染图表图片的像素比  默认：1.
 
 - point (dict; optional)
 
@@ -94,41 +61,74 @@ Keyword arguments:
 
         - func (string; optional)
 
+- xAxis (optional)
+
+- yAxis (optional)
+
+- width (number; optional)
+
+- height (number; optional)
+
+- autoFit (boolean; optional)
+
+- padding (number | list of numbers | a value equal to: 'auto'; optional)
+
+- appendPadding (number | list of numbers; optional)
+
+- renderer (a value equal to: 'canvas', 'svg'; optional)
+
+- pixelRatio (number; optional):
+    canvas模式下，控制渲染图表图片的像素比  默认：1.
+
+- locale (a value equal to: 'zh-CN', 'en-US'; default 'zh-CN')
+
+- limitInPlot (boolean; optional)
+
+- tooltip (optional)
+
+- annotations (optional)
+
+- animation (optional)
+
 - recentlyTooltipChangeRecord (dict; optional)
 
     `recentlyTooltipChangeRecord` is a dict with keys:
 
-    - data (list of dicts; optional)
-
     - timestamp (number; optional)
 
-- renderer (a value equal to: 'canvas', 'svg'; optional)
+    - data (list of dicts; optional)
 
-- smooth (boolean; optional)
+- downloadTrigger (string; default 'download-trigger')
+
+- theme (optional)
+
+- interactions (optional):
+    交互功能项配置.
 
 - state (optional):
     状态样式配置.
 
-- style (dict; optional)
+- loading_state (dict; optional)
 
-- theme (optional)
+    `loading_state` is a dict with keys:
 
-- tooltip (optional)
+    - is_loading (boolean; optional):
+        Determines if the component is loading or not.
 
-- width (number; optional)
+    - prop_name (string; optional):
+        Holds which property is loading.
 
-- xAxis (optional)
-
-- yAxis (optional)"""
+    - component_name (string; optional):
+        Holds the name of the component that is loading."""
     _children_props = []
     _base_nodes = ['children']
     _namespace = 'feffery_antd_charts'
     _type = 'AntdTinyLine'
     @_explicitize_args
     def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, smooth=Component.UNDEFINED, connectNulls=Component.UNDEFINED, color=Component.UNDEFINED, lineStyle=Component.UNDEFINED, point=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, pixelRatio=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, animation=Component.UNDEFINED, recentlyTooltipChangeRecord=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, interactions=Component.UNDEFINED, state=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'animation', 'annotations', 'appendPadding', 'autoFit', 'className', 'color', 'connectNulls', 'data', 'downloadTrigger', 'height', 'interactions', 'key', 'limitInPlot', 'lineStyle', 'loading_state', 'locale', 'meta', 'padding', 'pixelRatio', 'point', 'recentlyTooltipChangeRecord', 'renderer', 'smooth', 'state', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'yAxis']
+        self._prop_names = ['id', 'key', 'className', 'style', 'data', 'meta', 'smooth', 'connectNulls', 'color', 'lineStyle', 'point', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'tooltip', 'annotations', 'animation', 'recentlyTooltipChangeRecord', 'downloadTrigger', 'theme', 'interactions', 'state', 'loading_state']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'animation', 'annotations', 'appendPadding', 'autoFit', 'className', 'color', 'connectNulls', 'data', 'downloadTrigger', 'height', 'interactions', 'key', 'limitInPlot', 'lineStyle', 'loading_state', 'locale', 'meta', 'padding', 'pixelRatio', 'point', 'recentlyTooltipChangeRecord', 'renderer', 'smooth', 'state', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'yAxis']
+        self.available_properties = ['id', 'key', 'className', 'style', 'data', 'meta', 'smooth', 'connectNulls', 'color', 'lineStyle', 'point', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'tooltip', 'annotations', 'animation', 'recentlyTooltipChangeRecord', 'downloadTrigger', 'theme', 'interactions', 'state', 'loading_state']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

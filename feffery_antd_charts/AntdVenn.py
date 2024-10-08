@@ -11,62 +11,24 @@ Keyword arguments:
 
 - id (string; optional)
 
-- animation (optional)
-
-- appendPadding (number | list of numbers | string; optional)
-
-- autoFit (boolean; optional)
-
-- blendMode (a value equal to: 'multiply', 'normal', 'darken', 'lighten', 'screen', 'overlay', 'burn', 'dodge'; optional):
-    交集区域颜色混合方式，可选项有'multiply'、'normal'、'darken'、'lighten'、'screen'、'overlay'、'burn'、'dodge'.
+- key (string; optional)
 
 - className (string; optional)
 
-- color (dict; optional):
-    配置图形颜色.
-
-    `color` is a string | list of strings | dict with keys:
-
-    - func (string; optional)
+- style (dict; optional)
 
 - data (list of dicts; required)
 
-- downloadTrigger (string; default 'download-trigger')
-
-- height (number; optional)
-
-- interactions (optional):
-    交互功能项配置.
-
-- key (string; optional)
-
-- label (optional)
-
-- legend (optional)
-
-- limitInPlot (boolean; optional)
-
-- loading_state (dict; optional)
-
-    `loading_state` is a dict with keys:
-
-    - component_name (string; optional):
-        Holds the name of the component that is loading.
-
-    - is_loading (boolean; optional):
-        Determines if the component is loading or not.
-
-    - prop_name (string; optional):
-        Holds which property is loading.
-
-- locale (a value equal to: 'zh-CN', 'en-US'; default 'zh-CN')
-
 - meta (optional)
 
-- padding (number | list of numbers | string; optional)
+- setsField (string; optional):
+    定义集合对应字段.
 
-- pixelRatio (number; optional):
-    canvas模式下，控制渲染图表图片的像素比  默认：1.
+- sizeField (string; optional):
+    定义圆形大小映射字段.
+
+- blendMode (a value equal to: 'multiply', 'normal', 'darken', 'lighten', 'screen', 'overlay', 'burn', 'dodge'; optional):
+    交集区域颜色混合方式，可选项有'multiply'、'normal'、'darken'、'lighten'、'screen'、'overlay'、'burn'、'dodge'.
 
 - pointStyle (dict; optional):
     配置集合圆形样式.
@@ -75,57 +37,95 @@ Keyword arguments:
 
     - func (string; optional)
 
-- recentlyCircleClickRecord (dict; optional)
+- color (dict; optional):
+    配置图形颜色.
 
-    `recentlyCircleClickRecord` is a dict with keys:
+    `color` is a string | list of strings | dict with keys:
 
-    - data (dict; optional)
+    - func (string; optional)
 
-    - timestamp (number; optional)
+- width (number; optional)
 
-- recentlyLegendInfo (dict; optional)
+- height (number; optional)
 
-    `recentlyLegendInfo` is a dict with keys:
+- autoFit (boolean; optional)
 
-    - items (list of dicts; optional)
+- padding (number | list of numbers | string; optional)
 
-    - triggerItemName (boolean | number | string | dict | list; optional)
+- appendPadding (number | list of numbers | string; optional)
+
+- renderer (a value equal to: 'canvas', 'svg'; optional)
+
+- pixelRatio (number; optional):
+    canvas模式下，控制渲染图表图片的像素比  默认：1.
+
+- locale (a value equal to: 'zh-CN', 'en-US'; default 'zh-CN')
+
+- limitInPlot (boolean; optional)
+
+- legend (optional)
+
+- label (optional)
+
+- tooltip (optional)
+
+- animation (optional)
 
 - recentlyTooltipChangeRecord (dict; optional)
 
     `recentlyTooltipChangeRecord` is a dict with keys:
 
+    - timestamp (number; optional)
+
     - data (list of dicts; optional)
+
+- recentlyCircleClickRecord (dict; optional)
+
+    `recentlyCircleClickRecord` is a dict with keys:
 
     - timestamp (number; optional)
 
-- renderer (a value equal to: 'canvas', 'svg'; optional)
+    - data (dict; optional)
 
-- setsField (string; optional):
-    定义集合对应字段.
+- recentlyLegendInfo (dict; optional)
 
-- sizeField (string; optional):
-    定义圆形大小映射字段.
+    `recentlyLegendInfo` is a dict with keys:
+
+    - triggerItemName (boolean | number | string | dict | list; optional)
+
+    - items (list of dicts; optional)
+
+- downloadTrigger (string; default 'download-trigger')
+
+- theme (optional)
+
+- interactions (optional):
+    交互功能项配置.
 
 - state (optional):
     状态样式配置.
 
-- style (dict; optional)
+- loading_state (dict; optional)
 
-- theme (optional)
+    `loading_state` is a dict with keys:
 
-- tooltip (optional)
+    - is_loading (boolean; optional):
+        Determines if the component is loading or not.
 
-- width (number; optional)"""
+    - prop_name (string; optional):
+        Holds which property is loading.
+
+    - component_name (string; optional):
+        Holds the name of the component that is loading."""
     _children_props = []
     _base_nodes = ['children']
     _namespace = 'feffery_antd_charts'
     _type = 'AntdVenn'
     @_explicitize_args
     def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, setsField=Component.UNDEFINED, sizeField=Component.UNDEFINED, blendMode=Component.UNDEFINED, pointStyle=Component.UNDEFINED, color=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, pixelRatio=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, animation=Component.UNDEFINED, recentlyTooltipChangeRecord=Component.UNDEFINED, recentlyCircleClickRecord=Component.UNDEFINED, recentlyLegendInfo=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, interactions=Component.UNDEFINED, state=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'animation', 'appendPadding', 'autoFit', 'blendMode', 'className', 'color', 'data', 'downloadTrigger', 'height', 'interactions', 'key', 'label', 'legend', 'limitInPlot', 'loading_state', 'locale', 'meta', 'padding', 'pixelRatio', 'pointStyle', 'recentlyCircleClickRecord', 'recentlyLegendInfo', 'recentlyTooltipChangeRecord', 'renderer', 'setsField', 'sizeField', 'state', 'style', 'theme', 'tooltip', 'width']
+        self._prop_names = ['id', 'key', 'className', 'style', 'data', 'meta', 'setsField', 'sizeField', 'blendMode', 'pointStyle', 'color', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'animation', 'recentlyTooltipChangeRecord', 'recentlyCircleClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'interactions', 'state', 'loading_state']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'animation', 'appendPadding', 'autoFit', 'blendMode', 'className', 'color', 'data', 'downloadTrigger', 'height', 'interactions', 'key', 'label', 'legend', 'limitInPlot', 'loading_state', 'locale', 'meta', 'padding', 'pixelRatio', 'pointStyle', 'recentlyCircleClickRecord', 'recentlyLegendInfo', 'recentlyTooltipChangeRecord', 'renderer', 'setsField', 'sizeField', 'state', 'style', 'theme', 'tooltip', 'width']
+        self.available_properties = ['id', 'key', 'className', 'style', 'data', 'meta', 'setsField', 'sizeField', 'blendMode', 'pointStyle', 'color', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'animation', 'recentlyTooltipChangeRecord', 'recentlyCircleClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'interactions', 'state', 'loading_state']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

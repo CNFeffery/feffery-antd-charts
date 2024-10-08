@@ -11,17 +11,27 @@ Keyword arguments:
 
 - id (string; optional)
 
-- angleField (string; optional)
-
-- animation (optional)
-
-- annotations (optional)
-
-- appendPadding (number | list of numbers | string; optional)
-
-- autoFit (boolean; optional)
+- key (string; optional)
 
 - className (string; optional)
+
+- style (dict; optional)
+
+- data (list of dicts; required)
+
+- meta (optional)
+
+- angleField (string; optional)
+
+- colorField (string; optional)
+
+- radius (number; optional)
+
+- innerRadius (number; optional)
+
+- startAngle (number; optional)
+
+- endAngle (number; optional)
 
 - color (dict; optional)
 
@@ -29,50 +39,63 @@ Keyword arguments:
 
     - func (string; optional)
 
-- colorField (string; optional)
+- statistic (dict; optional)
 
-- data (list of dicts; required)
+    `statistic` is a dict with keys:
 
-- downloadTrigger (string; default 'download-trigger')
+    - title (dict; optional)
 
-- endAngle (number; optional)
+        `title` is a boolean
 
-- height (number; optional)
+      Or dict with keys:
 
-- innerRadius (number; optional)
+        - style (dict; optional)
 
-- interactions (optional):
-    交互功能项配置.
+        - content (string; optional)
 
-- key (string; optional)
+        - formatter (dict; optional)
 
-- label (optional)
+            `formatter` is a dict with keys:
 
-- legend (optional)
+            - func (string; optional)
 
-- limitInPlot (boolean; optional)
+        - customHtml (dict; optional)
 
-- loading_state (dict; optional)
+            `customHtml` is a dict with keys:
 
-    `loading_state` is a dict with keys:
+            - func (string; optional)
 
-    - component_name (string; optional):
-        Holds the name of the component that is loading.
+        - rotate (number; optional)
 
-    - is_loading (boolean; optional):
-        Determines if the component is loading or not.
+        - offsetX (number; optional)
 
-    - prop_name (string; optional):
-        Holds which property is loading.
+        - offsetY (number; optional)
 
-- locale (a value equal to: 'zh-CN', 'en-US'; default 'zh-CN')
+    - content (dict; optional)
 
-- meta (optional)
+        `content` is a boolean | dict with keys:
 
-- padding (number | list of numbers | string; optional)
+        - style (dict; optional)
 
-- pattern (optional):
-    配置图形填充贴图样式.
+        - content (string; optional)
+
+        - formatter (dict; optional)
+
+            `formatter` is a dict with keys:
+
+            - func (string; optional)
+
+        - customHtml (dict; optional)
+
+            `customHtml` is a dict with keys:
+
+            - func (string; optional)
+
+        - rotate (number; optional)
+
+        - offsetX (number; optional)
+
+        - offsetY (number; optional) | boolean
 
 - pieStyle (dict; optional)
 
@@ -80,116 +103,93 @@ Keyword arguments:
 
     - func (string; optional)
 
+- width (number; optional)
+
+- height (number; optional)
+
+- autoFit (boolean; optional)
+
+- padding (number | list of numbers | string; optional)
+
+- appendPadding (number | list of numbers | string; optional)
+
+- renderer (a value equal to: 'canvas', 'svg'; optional)
+
 - pixelRatio (number; optional):
     canvas模式下，控制渲染图表图片的像素比  默认：1.
 
-- radius (number; optional)
+- locale (a value equal to: 'zh-CN', 'en-US'; default 'zh-CN')
 
-- recentlyLegendInfo (dict; optional)
+- limitInPlot (boolean; optional)
 
-    `recentlyLegendInfo` is a dict with keys:
+- legend (optional)
 
-    - items (list of dicts; optional)
+- label (optional)
 
-    - triggerItemName (boolean | number | string | dict | list; optional)
+- tooltip (optional)
 
-- recentlySectorClickRecord (dict; optional)
+- annotations (optional)
 
-    `recentlySectorClickRecord` is a dict with keys:
+- downloadTrigger (string; default 'download-trigger')
 
-    - data (dict; optional)
+- theme (optional)
 
-    - timestamp (number; optional)
+- pattern (optional):
+    配置图形填充贴图样式.
+
+- interactions (optional):
+    交互功能项配置.
+
+- state (optional):
+    状态样式配置.
+
+- animation (optional)
 
 - recentlyTooltipChangeRecord (dict; optional)
 
     `recentlyTooltipChangeRecord` is a dict with keys:
 
+    - timestamp (number; optional)
+
     - data (list of dicts; optional)
+
+- recentlySectorClickRecord (dict; optional)
+
+    `recentlySectorClickRecord` is a dict with keys:
 
     - timestamp (number; optional)
 
-- renderer (a value equal to: 'canvas', 'svg'; optional)
+    - data (dict; optional)
 
-- startAngle (number; optional)
+- recentlyLegendInfo (dict; optional)
 
-- state (optional):
-    状态样式配置.
+    `recentlyLegendInfo` is a dict with keys:
 
-- statistic (dict; optional)
+    - triggerItemName (boolean | number | string | dict | list; optional)
 
-    `statistic` is a dict with keys:
+    - items (list of dicts; optional)
 
-    - content (dict; optional)
+- loading_state (dict; optional)
 
-        `content` is a boolean
+    `loading_state` is a dict with keys:
 
-      Or dict with keys:
+    - is_loading (boolean; optional):
+        Determines if the component is loading or not.
 
-        - content (string; optional)
+    - prop_name (string; optional):
+        Holds which property is loading.
 
-        - customHtml (dict; optional)
-
-            `customHtml` is a dict with keys:
-
-            - func (string; optional)
-
-        - formatter (dict; optional)
-
-            `formatter` is a dict with keys:
-
-            - func (string; optional)
-
-        - offsetX (number; optional)
-
-        - offsetY (number; optional)
-
-        - rotate (number; optional)
-
-        - style (dict; optional)
-
-    - title (dict; optional)
-
-        `title` is a boolean | dict with keys:
-
-        - content (string; optional)
-
-        - customHtml (dict; optional)
-
-            `customHtml` is a dict with keys:
-
-            - func (string; optional)
-
-        - formatter (dict; optional)
-
-            `formatter` is a dict with keys:
-
-            - func (string; optional)
-
-        - offsetX (number; optional)
-
-        - offsetY (number; optional)
-
-        - rotate (number; optional)
-
-        - style (dict; optional) | boolean
-
-- style (dict; optional)
-
-- theme (optional)
-
-- tooltip (optional)
-
-- width (number; optional)"""
+    - component_name (string; optional):
+        Holds the name of the component that is loading."""
     _children_props = []
     _base_nodes = ['children']
     _namespace = 'feffery_antd_charts'
     _type = 'AntdPie'
     @_explicitize_args
     def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, angleField=Component.UNDEFINED, colorField=Component.UNDEFINED, radius=Component.UNDEFINED, innerRadius=Component.UNDEFINED, startAngle=Component.UNDEFINED, endAngle=Component.UNDEFINED, color=Component.UNDEFINED, statistic=Component.UNDEFINED, pieStyle=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, pixelRatio=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, pattern=Component.UNDEFINED, interactions=Component.UNDEFINED, state=Component.UNDEFINED, animation=Component.UNDEFINED, recentlyTooltipChangeRecord=Component.UNDEFINED, recentlySectorClickRecord=Component.UNDEFINED, recentlyLegendInfo=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'angleField', 'animation', 'annotations', 'appendPadding', 'autoFit', 'className', 'color', 'colorField', 'data', 'downloadTrigger', 'endAngle', 'height', 'innerRadius', 'interactions', 'key', 'label', 'legend', 'limitInPlot', 'loading_state', 'locale', 'meta', 'padding', 'pattern', 'pieStyle', 'pixelRatio', 'radius', 'recentlyLegendInfo', 'recentlySectorClickRecord', 'recentlyTooltipChangeRecord', 'renderer', 'startAngle', 'state', 'statistic', 'style', 'theme', 'tooltip', 'width']
+        self._prop_names = ['id', 'key', 'className', 'style', 'data', 'meta', 'angleField', 'colorField', 'radius', 'innerRadius', 'startAngle', 'endAngle', 'color', 'statistic', 'pieStyle', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'downloadTrigger', 'theme', 'pattern', 'interactions', 'state', 'animation', 'recentlyTooltipChangeRecord', 'recentlySectorClickRecord', 'recentlyLegendInfo', 'loading_state']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'angleField', 'animation', 'annotations', 'appendPadding', 'autoFit', 'className', 'color', 'colorField', 'data', 'downloadTrigger', 'endAngle', 'height', 'innerRadius', 'interactions', 'key', 'label', 'legend', 'limitInPlot', 'loading_state', 'locale', 'meta', 'padding', 'pattern', 'pieStyle', 'pixelRatio', 'radius', 'recentlyLegendInfo', 'recentlySectorClickRecord', 'recentlyTooltipChangeRecord', 'renderer', 'startAngle', 'state', 'statistic', 'style', 'theme', 'tooltip', 'width']
+        self.available_properties = ['id', 'key', 'className', 'style', 'data', 'meta', 'angleField', 'colorField', 'radius', 'innerRadius', 'startAngle', 'endAngle', 'color', 'statistic', 'pieStyle', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'downloadTrigger', 'theme', 'pattern', 'interactions', 'state', 'animation', 'recentlyTooltipChangeRecord', 'recentlySectorClickRecord', 'recentlyLegendInfo', 'loading_state']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

@@ -11,15 +11,29 @@ Keyword arguments:
 
 - id (string; optional)
 
-- animation (optional)
-
-- annotations (optional)
-
-- appendPadding (number | list of numbers; optional)
-
-- autoFit (boolean; optional)
+- key (string; optional)
 
 - className (string; optional)
+
+- style (dict; optional)
+
+- data (list of dicts; required)
+
+- meta (optional)
+
+- xField (string; required)
+
+- yField (string; required)
+
+- seriesField (string; optional)
+
+- smooth (boolean; optional)
+
+- stepType (string; optional)
+
+- connectNulls (boolean; optional)
+
+- isStack (boolean; optional)
 
 - color (dict; optional)
 
@@ -27,54 +41,11 @@ Keyword arguments:
 
     - func (string; optional)
 
-- connectNulls (boolean; optional)
-
-- data (list of dicts; required)
-
-- downloadTrigger (string; default 'download-trigger')
-
-- height (number; optional)
-
-- interactions (optional):
-    交互功能项配置.
-
-- isStack (boolean; optional)
-
-- key (string; optional)
-
-- label (optional)
-
-- legend (optional)
-
-- limitInPlot (boolean; optional)
-
 - lineStyle (dict; optional)
 
     `lineStyle` is a dict with keys:
 
     - func (string; optional)
-
-- loading_state (dict; optional)
-
-    `loading_state` is a dict with keys:
-
-    - component_name (string; optional):
-        Holds the name of the component that is loading.
-
-    - is_loading (boolean; optional):
-        Determines if the component is loading or not.
-
-    - prop_name (string; optional):
-        Holds which property is loading.
-
-- locale (a value equal to: 'zh-CN', 'en-US'; default 'zh-CN')
-
-- meta (optional)
-
-- padding (number | list of numbers | a value equal to: 'auto'; optional)
-
-- pixelRatio (number; optional):
-    canvas模式下，控制渲染图表图片的像素比  默认：1.
 
 - point (dict; optional)
 
@@ -100,67 +71,96 @@ Keyword arguments:
 
         - func (string; optional)
 
-- recentlyLegendInfo (dict; optional)
+- xAxis (optional)
 
-    `recentlyLegendInfo` is a dict with keys:
+- yAxis (optional)
 
-    - items (list of dicts; optional)
+- width (number; optional)
 
-    - triggerItemName (boolean | number | string | dict | list; optional)
+- height (number; optional)
 
-- recentlyPointClickRecord (dict; optional)
+- autoFit (boolean; optional)
 
-    `recentlyPointClickRecord` is a dict with keys:
+- padding (number | list of numbers | a value equal to: 'auto'; optional)
 
-    - data (dict; optional)
+- appendPadding (number | list of numbers; optional)
 
-    - timestamp (number; optional)
+- renderer (a value equal to: 'canvas', 'svg'; optional)
+
+- pixelRatio (number; optional):
+    canvas模式下，控制渲染图表图片的像素比  默认：1.
+
+- locale (a value equal to: 'zh-CN', 'en-US'; default 'zh-CN')
+
+- limitInPlot (boolean; optional)
+
+- legend (optional)
+
+- label (optional)
+
+- tooltip (optional)
+
+- annotations (optional)
+
+- slider (optional)
+
+- animation (optional)
 
 - recentlyTooltipChangeRecord (dict; optional)
 
     `recentlyTooltipChangeRecord` is a dict with keys:
 
+    - timestamp (number; optional)
+
     - data (list of dicts; optional)
+
+- recentlyPointClickRecord (dict; optional)
+
+    `recentlyPointClickRecord` is a dict with keys:
 
     - timestamp (number; optional)
 
-- renderer (a value equal to: 'canvas', 'svg'; optional)
+    - data (dict; optional)
 
-- seriesField (string; optional)
+- recentlyLegendInfo (dict; optional)
 
-- slider (optional)
+    `recentlyLegendInfo` is a dict with keys:
 
-- smooth (boolean; optional)
+    - triggerItemName (boolean | number | string | dict | list; optional)
+
+    - items (list of dicts; optional)
+
+- downloadTrigger (string; default 'download-trigger')
+
+- theme (optional)
+
+- interactions (optional):
+    交互功能项配置.
 
 - state (optional):
     状态样式配置.
 
-- stepType (string; optional)
+- loading_state (dict; optional)
 
-- style (dict; optional)
+    `loading_state` is a dict with keys:
 
-- theme (optional)
+    - is_loading (boolean; optional):
+        Determines if the component is loading or not.
 
-- tooltip (optional)
+    - prop_name (string; optional):
+        Holds which property is loading.
 
-- width (number; optional)
-
-- xAxis (optional)
-
-- xField (string; required)
-
-- yAxis (optional)
-
-- yField (string; required)"""
+    - component_name (string; optional):
+        Holds the name of the component that is loading."""
     _children_props = []
     _base_nodes = ['children']
     _namespace = 'feffery_antd_charts'
     _type = 'AntdLine'
     @_explicitize_args
     def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, xField=Component.REQUIRED, yField=Component.REQUIRED, seriesField=Component.UNDEFINED, smooth=Component.UNDEFINED, stepType=Component.UNDEFINED, connectNulls=Component.UNDEFINED, isStack=Component.UNDEFINED, color=Component.UNDEFINED, lineStyle=Component.UNDEFINED, point=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, pixelRatio=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, slider=Component.UNDEFINED, animation=Component.UNDEFINED, recentlyTooltipChangeRecord=Component.UNDEFINED, recentlyPointClickRecord=Component.UNDEFINED, recentlyLegendInfo=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, interactions=Component.UNDEFINED, state=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'animation', 'annotations', 'appendPadding', 'autoFit', 'className', 'color', 'connectNulls', 'data', 'downloadTrigger', 'height', 'interactions', 'isStack', 'key', 'label', 'legend', 'limitInPlot', 'lineStyle', 'loading_state', 'locale', 'meta', 'padding', 'pixelRatio', 'point', 'recentlyLegendInfo', 'recentlyPointClickRecord', 'recentlyTooltipChangeRecord', 'renderer', 'seriesField', 'slider', 'smooth', 'state', 'stepType', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
+        self._prop_names = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'seriesField', 'smooth', 'stepType', 'connectNulls', 'isStack', 'color', 'lineStyle', 'point', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'slider', 'animation', 'recentlyTooltipChangeRecord', 'recentlyPointClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'interactions', 'state', 'loading_state']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'animation', 'annotations', 'appendPadding', 'autoFit', 'className', 'color', 'connectNulls', 'data', 'downloadTrigger', 'height', 'interactions', 'isStack', 'key', 'label', 'legend', 'limitInPlot', 'lineStyle', 'loading_state', 'locale', 'meta', 'padding', 'pixelRatio', 'point', 'recentlyLegendInfo', 'recentlyPointClickRecord', 'recentlyTooltipChangeRecord', 'renderer', 'seriesField', 'slider', 'smooth', 'state', 'stepType', 'style', 'theme', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis', 'yField']
+        self.available_properties = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'seriesField', 'smooth', 'stepType', 'connectNulls', 'isStack', 'color', 'lineStyle', 'point', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'slider', 'animation', 'recentlyTooltipChangeRecord', 'recentlyPointClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'interactions', 'state', 'loading_state']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

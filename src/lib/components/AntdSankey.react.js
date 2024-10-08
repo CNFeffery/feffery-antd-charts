@@ -10,6 +10,7 @@ import {
     metaBasePropTypes,
     baseStyle,
     themeBasePropTypes,
+    tooltipBasePropTypes,
     animationBasePropTypes,
     interactionsBasePropTypes,
     stateBasePropTypes
@@ -138,6 +139,9 @@ AntdSankey.propTypes = {
 
     // 设置桑基图中的节点是否可拖拽调整位置，默认为false
     nodeDraggable: PropTypes.bool,
+
+    // 设置tooltip相关参数
+    tooltip: tooltipBasePropTypes,
 
     // 配置动画相关参数
     animation: animationBasePropTypes,

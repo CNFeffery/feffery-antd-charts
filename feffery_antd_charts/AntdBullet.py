@@ -11,116 +11,74 @@ Keyword arguments:
 
 - id (string; optional)
 
-- animation (optional)
+- key (string; optional)
 
-- appendPadding (number | list of numbers; optional)
+- className (string; optional)
+
+- style (dict; optional)
+
+- data (list of dicts; required)
+
+- meta (optional)
+
+- measureField (string; required)
+
+- rangeField (string; required)
+
+- targetField (string; required)
+
+- xField (string; optional)
+
+- xAxis (optional)
+
+- yAxis (optional)
+
+- width (number; optional)
+
+- height (number; optional)
 
 - autoFit (boolean; optional)
 
-- bulletStyle (dict; optional)
+- padding (number | list of numbers | a value equal to: 'auto'; optional)
 
-    `bulletStyle` is a dict with keys:
+- appendPadding (number | list of numbers; optional)
 
-    - measure (dict; optional)
+- renderer (a value equal to: 'canvas', 'svg'; optional)
 
-        `measure` is a dict with keys:
+- pixelRatio (number; optional):
+    canvas模式下，控制渲染图表图片的像素比  默认：1.
 
-        - func (string; optional)
+- locale (a value equal to: 'zh-CN', 'en-US'; default 'zh-CN')
 
-    - range (dict; optional)
+- limitInPlot (boolean; optional)
 
-        `range` is a dict with keys:
-
-        - func (string; optional)
-
-    - target (dict; optional)
-
-        `target` is a dict with keys:
-
-        - func (string; optional)
-
-- className (string; optional)
+- layout (a value equal to: 'horizontal', 'vertical'; default 'horizontal')
 
 - color (dict; optional)
 
     `color` is a dict with keys:
 
-    - measure (string | list of strings; optional)
-
     - range (string | list of strings; optional)
 
+    - measure (string | list of strings; optional)
+
     - target (string | list of strings; optional)
-
-- data (list of dicts; required)
-
-- downloadTrigger (string; default 'download-trigger')
-
-- height (number; optional)
-
-- interactions (optional):
-    交互功能项配置.
-
-- key (string; optional)
-
-- label (dict; optional)
-
-    `label` is a dict with keys:
-
-    - measure (optional)
-
-    - range (optional)
-
-    - target (optional)
-
-- layout (a value equal to: 'horizontal', 'vertical'; default 'horizontal')
-
-- legend (optional)
-
-- limitInPlot (boolean; optional)
-
-- loading_state (dict; optional)
-
-    `loading_state` is a dict with keys:
-
-    - component_name (string; optional):
-        Holds the name of the component that is loading.
-
-    - is_loading (boolean; optional):
-        Determines if the component is loading or not.
-
-    - prop_name (string; optional):
-        Holds which property is loading.
-
-- locale (a value equal to: 'zh-CN', 'en-US'; default 'zh-CN')
-
-- measureField (string; required)
-
-- meta (optional)
-
-- padding (number | list of numbers | a value equal to: 'auto'; optional)
-
-- pixelRatio (number; optional):
-    canvas模式下，控制渲染图表图片的像素比  默认：1.
-
-- rangeField (string; required)
-
-- renderer (a value equal to: 'canvas', 'svg'; optional)
 
 - size (dict; optional)
 
     `size` is a dict with keys:
 
-    - measure (dict; optional)
+    - range (dict; optional)
 
-        `measure` is a number
+        `range` is a number
 
       Or list of numbers | dict with keys:
 
         - func (string; optional)
 
-    - range (dict; optional)
+    - measure (dict; optional)
 
-        `range` is a number | list of numbers | dict with keys:
+        `measure` is a number | list of numbers | dict with keys:
 
         - func (string; optional)
 
@@ -130,33 +88,75 @@ Keyword arguments:
 
         - func (string; optional)
 
-- state (optional):
-    状态样式配置.
+- bulletStyle (dict; optional)
 
-- style (dict; optional)
+    `bulletStyle` is a dict with keys:
 
-- targetField (string; required)
+    - range (dict; optional)
 
-- theme (optional)
+        `range` is a dict with keys:
+
+        - func (string; optional)
+
+    - measure (dict; optional)
+
+        `measure` is a dict with keys:
+
+        - func (string; optional)
+
+    - target (dict; optional)
+
+        `target` is a dict with keys:
+
+        - func (string; optional)
+
+- label (dict; optional)
+
+    `label` is a dict with keys:
+
+    - range (optional)
+
+    - measure (optional)
+
+    - target (optional)
 
 - tooltip (optional)
 
-- width (number; optional)
+- legend (optional)
 
-- xAxis (optional)
+- animation (optional)
 
-- xField (string; optional)
+- downloadTrigger (string; default 'download-trigger')
 
-- yAxis (optional)"""
+- theme (optional)
+
+- interactions (optional):
+    交互功能项配置.
+
+- state (optional):
+    状态样式配置.
+
+- loading_state (dict; optional)
+
+    `loading_state` is a dict with keys:
+
+    - is_loading (boolean; optional):
+        Determines if the component is loading or not.
+
+    - prop_name (string; optional):
+        Holds which property is loading.
+
+    - component_name (string; optional):
+        Holds the name of the component that is loading."""
     _children_props = []
     _base_nodes = ['children']
     _namespace = 'feffery_antd_charts'
     _type = 'AntdBullet'
     @_explicitize_args
     def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, measureField=Component.REQUIRED, rangeField=Component.REQUIRED, targetField=Component.REQUIRED, xField=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, pixelRatio=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, layout=Component.UNDEFINED, color=Component.UNDEFINED, size=Component.UNDEFINED, bulletStyle=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, legend=Component.UNDEFINED, animation=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, interactions=Component.UNDEFINED, state=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'animation', 'appendPadding', 'autoFit', 'bulletStyle', 'className', 'color', 'data', 'downloadTrigger', 'height', 'interactions', 'key', 'label', 'layout', 'legend', 'limitInPlot', 'loading_state', 'locale', 'measureField', 'meta', 'padding', 'pixelRatio', 'rangeField', 'renderer', 'size', 'state', 'style', 'targetField', 'theme', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis']
+        self._prop_names = ['id', 'key', 'className', 'style', 'data', 'meta', 'measureField', 'rangeField', 'targetField', 'xField', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'layout', 'color', 'size', 'bulletStyle', 'label', 'tooltip', 'legend', 'animation', 'downloadTrigger', 'theme', 'interactions', 'state', 'loading_state']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'animation', 'appendPadding', 'autoFit', 'bulletStyle', 'className', 'color', 'data', 'downloadTrigger', 'height', 'interactions', 'key', 'label', 'layout', 'legend', 'limitInPlot', 'loading_state', 'locale', 'measureField', 'meta', 'padding', 'pixelRatio', 'rangeField', 'renderer', 'size', 'state', 'style', 'targetField', 'theme', 'tooltip', 'width', 'xAxis', 'xField', 'yAxis']
+        self.available_properties = ['id', 'key', 'className', 'style', 'data', 'meta', 'measureField', 'rangeField', 'targetField', 'xField', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'layout', 'color', 'size', 'bulletStyle', 'label', 'tooltip', 'legend', 'animation', 'downloadTrigger', 'theme', 'interactions', 'state', 'loading_state']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()
