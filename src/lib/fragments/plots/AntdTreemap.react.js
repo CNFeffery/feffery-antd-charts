@@ -5,7 +5,7 @@
 /* eslint-disable prefer-const */
 import { Treemap } from '@ant-design/plots';
 import React, { Component } from 'react';
-import { isUndefined, omitBy, intersection, cloneDeep } from 'lodash';
+import { isUndefined, omit, omitBy, intersection, cloneDeep } from 'lodash';
 import { difference, withTheme } from '../../components/utils';
 import { propTypes, defaultProps } from '../../components/AntdTreemap.react';
 
@@ -250,7 +250,7 @@ export default class AntdTreemap extends Component {
                     setProps({
                         recentlyAreaClickRecord: {
                             timestamp: (new Date()).valueOf(),
-                            data: e.data.data.data
+                            data: omit(e.data.data.data, ['children']) // 移除children字段
                         }
                     })
                 });

@@ -114,7 +114,8 @@ Keyword arguments:
         `breadCrumb` is a dict with keys:
 
         - position (a value equal to: 'top-left', 'bottom-left'; optional):
-            控件位置，可选项有`'top-left'`、`'bottom-left'`  默认值：`'top-left'`.
+            控件位置，可选项有`'top-left'`、`'bottom-left'`
+            默认值：`'bottom-left'`.
 
         - rootText (string; optional):
             自定义根节点文案内容.
@@ -126,7 +127,7 @@ Keyword arguments:
             设置字体样式.
 
         - activeTextStyle (optional):
-            设置激活状态下的字体样式.
+            设置鼠标移入激活状态下的字体样式.
 
 - state (optional):
     状态样式配置.
