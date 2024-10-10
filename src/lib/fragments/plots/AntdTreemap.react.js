@@ -94,6 +94,7 @@ export default class AntdTreemap extends Component {
             tooltip,
             annotations,
             interactions,
+            drilldown,
             state,
             animation,
             theme,
@@ -132,6 +133,7 @@ export default class AntdTreemap extends Component {
             locale,
             limitInPlot,
             interactions,
+            drilldown,
             state,
             theme: (
                 // 融合内置主题与自定义主题

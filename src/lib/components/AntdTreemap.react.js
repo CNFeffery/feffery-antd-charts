@@ -181,6 +181,44 @@ AntdTreemap.propTypes = {
     interactions: interactionsBasePropTypes,
 
     /**
+     * 配置矩形树图下钻功能
+     */
+    drilldown: PropTypes.exact({
+        /**
+         * 是否启用矩形树图下钻功能
+         * 默认值：`false`
+         */
+        enabled: PropTypes.bool,
+        /**
+         * 配置下钻层级引导交互面包屑控件
+         */
+        breadCrumb: PropTypes.exact({
+            /**
+             * 控件位置，可选项有`'top-left'`、`'bottom-left'`
+             * 默认值：`'bottom-left'`
+             */
+            position: PropTypes.oneOf(['top-left', 'bottom-left']),
+            /**
+             * 自定义根节点文案内容
+             */
+            rootText: PropTypes.string,
+            /**
+             * 自定义层级分割文本内容
+             * 默认值：`/`
+             */
+            dividerText: PropTypes.string,
+            /**
+             * 设置字体样式
+             */
+            textStyle: baseStyle,
+            /**
+             * 设置鼠标移入激活状态下的字体样式
+             */
+            activeTextStyle: baseStyle
+        })
+    }),
+
+    /**
      * 状态样式配置
      */
     state: stateBasePropTypes,
