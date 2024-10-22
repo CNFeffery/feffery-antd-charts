@@ -14,6 +14,7 @@ const preventUpdateProps = [
     'loading_state',
     'recentlyTooltipChangeRecord',
     'recentlyPointClickRecord',
+    'recentlyPointDoubleClickRecord',
     'recentlyLegendInfo'
 ];
 
@@ -108,6 +109,7 @@ export default class AntdScatter extends Component {
             theme,
             interactions,
             state,
+            brush,
             setProps,
             loading_state
         } = this.props;
@@ -153,6 +155,7 @@ export default class AntdScatter extends Component {
             ),
             interactions,
             state,
+            brush,
             locale,
             limitInPlot
         };
@@ -286,9 +289,17 @@ export default class AntdScatter extends Component {
                 });
 
                 plot.on('element:click', (e) => {
-
                     setProps({
                         recentlyPointClickRecord: {
+                            timestamp: (new Date()).valueOf(),
+                            data: e.data.data
+                        }
+                    })
+                });
+
+                plot.on('point:dblclick', (e) => {
+                    setProps({
+                        recentlyPointDoubleClickRecord: {
                             timestamp: (new Date()).valueOf(),
                             data: e.data.data
                         }

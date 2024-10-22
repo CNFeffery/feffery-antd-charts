@@ -1220,6 +1220,62 @@ const stateBasePropTypes = PropTypes.exact({
     })
 })
 
+// 刷选交互功能通用PropTypes模板
+const brushBasePropTypes = PropTypes.exact({
+    /**
+     * 是否启用筛选功能
+     * 默认值：`false`
+     */
+    enabled: PropTypes.bool,
+    /**
+     * 刷选类型，可选项有`'rect'`、`'x-rect'`、`'y-rect'`、`'circle'`、`'path'`
+     * 默认值：`'rect'`
+     */
+    type: PropTypes.oneOf(['rect', 'x-rect', 'y-rect', 'circle', 'path']),
+    /**
+     * 刷选动作类型，可选项有`'filter'`、`'highlight'`
+     * 默认值：`'filter'`
+     */
+    action: PropTypes.oneOf(['filter', 'highlight']),
+    /**
+     * 配置刷选范围样式
+     */
+    mask: baseStyle,
+    /**
+     * 配置筛选重置按钮
+     */
+    button: PropTypes.exact({
+        /**
+         * 按钮内边距
+         */
+        padding: PropTypes.oneOfType([
+            PropTypes.number,
+            PropTypes.arrayOf(PropTypes.number)
+        ]),
+        /**
+         * 按钮文本内容
+         */
+        text: PropTypes.string,
+        /**
+         * 文本样式
+         */
+        textStyle: baseStyle,
+        /**
+         * 按钮样式
+         */
+        buttonStyle: PropTypes.exact({
+            /**
+             * 默认状态样式
+             */
+            default: baseStyle,
+            /**
+             * 激活状态样式
+             */
+            active: baseStyle
+        })
+    })
+})
+
 export {
     baseStyle,
     metaBasePropTypes,
@@ -1234,5 +1290,6 @@ export {
     patternBasePropTypes,
     animationBasePropTypes,
     interactionsBasePropTypes,
-    stateBasePropTypes
+    stateBasePropTypes,
+    brushBasePropTypes
 };

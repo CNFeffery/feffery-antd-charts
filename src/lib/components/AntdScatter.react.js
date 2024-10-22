@@ -17,7 +17,8 @@ import {
     themeBasePropTypes,
     animationBasePropTypes,
     interactionsBasePropTypes,
-    stateBasePropTypes
+    stateBasePropTypes,
+    brushBasePropTypes
 } from './BasePropTypes.react';
 
 const LazyAntdScatter = React.lazy(() => import(/* webpackChunkName: "plots" */ '../fragments/plots/AntdScatter.react'));
@@ -247,6 +248,16 @@ AntdScatter.propTypes = {
         data: PropTypes.object
     }),
 
+    /**
+     * 散点双击点击事件
+     */
+    recentlyPointDoubleClickRecord: PropTypes.exact({
+        // 事件触发的时间戳信息
+        timestamp: PropTypes.number,
+        // 对应的数据点信息
+        data: PropTypes.object
+    }),
+
     // 监听图例事件
     recentlyLegendInfo: PropTypes.exact({
         // 记录当前点击的图例项内容
@@ -272,6 +283,11 @@ AntdScatter.propTypes = {
      * 状态样式配置
      */
     state: stateBasePropTypes,
+
+    /**
+     * 配置刷选相关功能
+     */
+    brush: brushBasePropTypes,
 
     loading_state: PropTypes.shape({
         /**

@@ -146,6 +146,15 @@ Keyword arguments:
 
     - data (dict; optional)
 
+- recentlyPointDoubleClickRecord (dict; optional):
+    散点双击点击事件.
+
+    `recentlyPointDoubleClickRecord` is a dict with keys:
+
+    - timestamp (number; optional)
+
+    - data (dict; optional)
+
 - recentlyLegendInfo (dict; optional)
 
     `recentlyLegendInfo` is a dict with keys:
@@ -164,6 +173,9 @@ Keyword arguments:
 - state (optional):
     状态样式配置.
 
+- brush (optional):
+    配置刷选相关功能.
+
 - loading_state (dict; optional)
 
     `loading_state` is a dict with keys:
@@ -181,10 +193,10 @@ Keyword arguments:
     _namespace = 'feffery_antd_charts'
     _type = 'AntdScatter'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, xField=Component.REQUIRED, yField=Component.REQUIRED, colorField=Component.UNDEFINED, sizeField=Component.UNDEFINED, shapeField=Component.UNDEFINED, color=Component.UNDEFINED, size=Component.UNDEFINED, shape=Component.UNDEFINED, pointStyle=Component.UNDEFINED, shapeLegend=Component.UNDEFINED, sizeLegend=Component.UNDEFINED, quadrant=Component.UNDEFINED, regressionLine=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, pixelRatio=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, animation=Component.UNDEFINED, recentlyTooltipChangeRecord=Component.UNDEFINED, recentlyPointClickRecord=Component.UNDEFINED, recentlyLegendInfo=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, interactions=Component.UNDEFINED, state=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'colorField', 'sizeField', 'shapeField', 'color', 'size', 'shape', 'pointStyle', 'shapeLegend', 'sizeLegend', 'quadrant', 'regressionLine', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'animation', 'recentlyTooltipChangeRecord', 'recentlyPointClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'interactions', 'state', 'loading_state']
+    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, xField=Component.REQUIRED, yField=Component.REQUIRED, colorField=Component.UNDEFINED, sizeField=Component.UNDEFINED, shapeField=Component.UNDEFINED, color=Component.UNDEFINED, size=Component.UNDEFINED, shape=Component.UNDEFINED, pointStyle=Component.UNDEFINED, shapeLegend=Component.UNDEFINED, sizeLegend=Component.UNDEFINED, quadrant=Component.UNDEFINED, regressionLine=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, pixelRatio=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, animation=Component.UNDEFINED, recentlyTooltipChangeRecord=Component.UNDEFINED, recentlyPointClickRecord=Component.UNDEFINED, recentlyPointDoubleClickRecord=Component.UNDEFINED, recentlyLegendInfo=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, interactions=Component.UNDEFINED, state=Component.UNDEFINED, brush=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'colorField', 'sizeField', 'shapeField', 'color', 'size', 'shape', 'pointStyle', 'shapeLegend', 'sizeLegend', 'quadrant', 'regressionLine', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'animation', 'recentlyTooltipChangeRecord', 'recentlyPointClickRecord', 'recentlyPointDoubleClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'interactions', 'state', 'brush', 'loading_state']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'colorField', 'sizeField', 'shapeField', 'color', 'size', 'shape', 'pointStyle', 'shapeLegend', 'sizeLegend', 'quadrant', 'regressionLine', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'animation', 'recentlyTooltipChangeRecord', 'recentlyPointClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'interactions', 'state', 'loading_state']
+        self.available_properties = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'colorField', 'sizeField', 'shapeField', 'color', 'size', 'shape', 'pointStyle', 'shapeLegend', 'sizeLegend', 'quadrant', 'regressionLine', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'animation', 'recentlyTooltipChangeRecord', 'recentlyPointClickRecord', 'recentlyPointDoubleClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'interactions', 'state', 'brush', 'loading_state']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()
