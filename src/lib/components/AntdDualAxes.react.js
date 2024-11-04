@@ -62,7 +62,7 @@ AntdDualAxes.propTypes = {
     geometryOptions: PropTypes.arrayOf(
         PropTypes.oneOfType([
             // 折线图专用参数
-            PropTypes.exact({
+            PropTypes.shape({
                 // 设置当前对应轴的图表类型，可选的有'line'、'column'
                 geometry: PropTypes.oneOf(['line', 'column']),
                 // 设置作为分组依据的字段名
@@ -136,9 +136,12 @@ AntdDualAxes.propTypes = {
                         func: PropTypes.string,
                     }),
                 ]),
+                // 对应阶梯折线图类型的阶梯曲折方式，可选的有'hv'、'vh'、'hvh'及'vhv'
+                // 其中'h'表示horizontal，'v'表示vertical，譬如`vh`就代表先竖直方向再水平方向
+                stepType: PropTypes.string,
             }),
             // 柱状图专用参数
-            PropTypes.exact({
+            PropTypes.shape({
                 // 设置当前对应轴的图表类型，可选的有'line'、'column'
                 geometry: PropTypes.oneOf(['line', 'column']),
                 // 设置作为分组依据的字段名

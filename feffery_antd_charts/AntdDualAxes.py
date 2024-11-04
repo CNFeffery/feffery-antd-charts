@@ -75,7 +75,9 @@ Keyword arguments:
 
         `color` is a string | list of strings | dict with keys:
 
-        - func (string; optional) | dict with keys:
+        - func (string; optional)
+
+    - stepType (string; optional) | dict with keys:
 
     - geometry (a value equal to: 'line', 'column'; optional)
 
