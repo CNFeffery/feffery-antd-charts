@@ -16,7 +16,9 @@ const preventUpdateProps = [
     'recentlyAreaClickRecord'
 ];
 
-// 定义和弦图组件AntdChord，部分API参数参考https://charts.ant.design/zh/examples/relation-plots/chord#chord-population
+/**
+ * 和弦图组件AntdChord
+ */
 export default class AntdChord extends Component {
 
     constructor(props) {
