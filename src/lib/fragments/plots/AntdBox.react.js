@@ -17,7 +17,9 @@ const preventUpdateProps = [
     'recentlyLegendInfo'
 ];
 
-// 定义箱线图AntdBox，部分API参数参考https://charts.ant.design/zh/examples/more-plots/box#basic
+/**
+ * 箱线图组件AntdBox
+ */
 export default class AntdBox extends Component {
 
     constructor(props) {
