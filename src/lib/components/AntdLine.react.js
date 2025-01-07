@@ -61,7 +61,7 @@ AntdLine.propTypes = {
     data: PropTypes.arrayOf(PropTypes.object).isRequired,
 
     /**
-     * 以字段为单位，配置图表数据元信息，来定义所涉及数据的类型和展示方式
+     * 以字段为单位，配置图表数据元信息，来定义所涉及数据的类型和展示方式，具体见在线文档相关说明
      */
     meta: metaBasePropTypes,
 

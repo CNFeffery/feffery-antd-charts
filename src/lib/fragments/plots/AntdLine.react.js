@@ -17,7 +17,9 @@ const preventUpdateProps = [
     'recentlyLegendInfo'
 ];
 
-// 定义折线图组件AntdLine，部分API参数参考https://charts.ant.design/zh-CN/demos/line
+/**
+ * 折线图组件AntdLine
+ */
 export default class AntdLine extends Component {
 
     constructor(props) {

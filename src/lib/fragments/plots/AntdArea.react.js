@@ -17,7 +17,9 @@ const preventUpdateProps = [
     'recentlyLegendInfo'
 ];
 
-// 定义面积图组件AntdArea，部分API参数参考https://charts.ant.design/zh-CN/demos/area
+/**
+ * 面积图组件AntdArea
+ */
 export default class AntdArea extends Component {
 
     constructor(props) {
