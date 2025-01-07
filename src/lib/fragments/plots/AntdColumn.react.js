@@ -17,7 +17,9 @@ const preventUpdateProps = [
     'recentlyLegendInfo'
 ];
 
-// 定义柱状图AntdColumn，部分API参数参考https://charts.ant.design/zh-CN/demos/column
+/**
+ * 柱状图组件AntdColumn
+ */
 export default class AntdColumn extends Component {
 
     constructor(props) {
