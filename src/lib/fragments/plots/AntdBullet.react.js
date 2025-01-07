@@ -14,7 +14,9 @@ const preventUpdateProps = [
     'loading_state'
 ];
 
-// 定义子弹图组件AntdBullet，部分API参数参考https://charts.ant.design/zh/examples/progress-plots/bullet#basic
+/**
+ * 子弹图组件AntdBullet
+ */
 export default class AntdBullet extends Component {
 
     constructor(props) {
