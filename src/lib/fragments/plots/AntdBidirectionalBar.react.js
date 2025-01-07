@@ -17,7 +17,9 @@ const preventUpdateProps = [
     'recentlyLegendInfo'
 ];
 
-// 定义对称条形图组件AntdBidirectionalBar，部分API参数参考https://charts.ant.design/zh/examples/more-plots/bidirectional-bar/#basic
+/**
+ * 对称条形图组件AntdBidirectionalBar
+ */
 export default class AntdBidirectionalBar extends Component {
 
     constructor(props) {
