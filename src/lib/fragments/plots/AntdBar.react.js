@@ -17,7 +17,9 @@ const preventUpdateProps = [
     'recentlyLegendInfo'
 ];
 
-// 定义条形图组件AntdBar，部分API参数参考https://charts.ant.design/zh-CN/demos/bar
+/**
+ * 条形图组件AntdBar
+ */
 export default class AntdBar extends Component {
 
     constructor(props) {
