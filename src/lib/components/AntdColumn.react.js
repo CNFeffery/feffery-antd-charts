@@ -53,7 +53,7 @@ AntdColumn.propTypes = {
     className: PropTypes.string,
 
     /**
-     * 当前组件css样式
+     * css样式
      */
     style: PropTypes.object,
 

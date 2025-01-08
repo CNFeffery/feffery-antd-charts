@@ -16,7 +16,9 @@ const preventUpdateProps = [
     'recentlyGridClickRecord'
 ];
 
-// 定义热力图组件AntdHeatmap，部分API参数参考https://ant-design-charts.antgroup.com/api/plots/heatmap
+/**
+ * 热力图组件AntdHeatmap
+ */
 export default class AntdHeatmap extends Component {
 
     constructor(props) {
