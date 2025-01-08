@@ -17,7 +17,9 @@ const preventUpdateProps = [
     'recentlyLegendInfo'
 ];
 
-// 定义漏斗图组件AntdFunnel，部分API参数参考https://charts.ant.design/zh/examples/more-plots/funnel#basic
+/**
+ * 漏斗图组件AntdFunnel
+ */
 export default class AntdFunnel extends Component {
 
     constructor(props) {

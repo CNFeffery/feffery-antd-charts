@@ -219,7 +219,7 @@ AntdColumn.propTypes = {
             PropTypes.bool,
             PropTypes.exact({
                 /**
-                 * 自定义转化率计算参数
+                 * 自定义转化率计算函数
                  */
                 formatter: PropTypes.exact({
                     /**
