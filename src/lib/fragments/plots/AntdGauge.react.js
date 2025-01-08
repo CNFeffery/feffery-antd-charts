@@ -157,7 +157,9 @@ const preventUpdateProps = [
     'loading_state'
 ];
 
-// 定义仪表盘AntdGauge，部分API参数参考https://charts.ant.design/zh/examples/progress-plots/gauge#basic
+/**
+ * 仪表盘组件AntdGauge
+ */
 export default class AntdGauge extends Component {
 
     constructor(props) {

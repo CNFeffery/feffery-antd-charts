@@ -18,6 +18,9 @@ import {
 
 const LazyAntdGauge = React.lazy(() => import(/* webpackChunkName: "plots" */ '../fragments/plots/AntdGauge.react'));
 
+/**
+ * 仪表盘组件AntdGauge
+ */
 const AntdGauge = (props) => {
     return (
         <Suspense fallback={null}>
@@ -26,214 +29,327 @@ const AntdGauge = (props) => {
     );
 }
 
-// 定义参数或属性
 AntdGauge.propTypes = {
-    // 部件id
+    /**
+     * 组件唯一id
+     */
     id: PropTypes.string,
 
-    // 辅助强制刷新
+    /**
+     * 对当前组件的`key`值进行更新，可实现强制重绘当前组件的效果
+     */
     key: PropTypes.string,
 
-    // css类名
+    /**
+     * 当前组件css类名
+     */
     className: PropTypes.string,
 
-    // 自定义css字典
+    /**
+     * 当前组件css样式
+     */
     style: PropTypes.object,
 
-    // 设置当前仪表盘百分比，必填
+    /**
+     * 当前仪表盘实际值，取值应在`0`到`1`之间
+     */
     percent: PropTypes.number.isRequired,
 
-    // 设置仪表盘相对画布的外环半径大小，取值应在0~1之间，默认为0.95
+    /**
+     * 仪表盘相对画布的外环半径尺寸，取值应在`0`到`1`之间
+     * 默认值：`0.95`
+     */
     radius: PropTypes.number,
 
-    // 设置仪表盘相对画布的内环半径大小，取值应在0~1之间，默认为0.9
+    /**
+     * 仪表盘相对画布的内环半径大小，取值应在`0`到`1`之间
+     * 默认值：`0.9`
+     */
     innerRadius: PropTypes.number,
 
-    // 设置仪表盘的开始角度，弧度制，默认为(-7 / 6) * pi
+    /**
+     * 仪表盘开始角度，弧度制
+     * 默认值：`(-7 / 6) * π`
+     */
     startAngle: PropTypes.number,
 
-    // 设置仪表盘的终止角度，弧度制，默认为(1 / 6) * pi
+    /**
+     * 仪表盘终止角度，弧度制
+     * 默认值：`(1 / 6) * π`
+     */
     endAngle: PropTypes.number,
 
-    // 定义图表容器像素宽度，默认为400
+    /**
+     * 图表容器像素宽度
+     */
     width: PropTypes.number,
 
-    // 定义图表容器像素高度，默认为400
+    /**
+     * 图表容器像素高度
+     */
     height: PropTypes.number,
 
-    // 设置图表是否自适应容器宽高，当设置为true时，width与height参数将失效，默认为true
+    /**
+     * 图表是否自适应所在父容器宽高，当`autoFit=True`时，`width`和`height`参数将失效
+     * 默认值：`true`
+     */
     autoFit: PropTypes.bool,
 
-    // 定义图表四个方向的空白间距值，可以为单个数字譬如16，也可以为四个数字构成的数组，按顺序代表上-右-下-左分别的像素间距
+    /**
+     * 画布内边距，传入单个数值表示四周边距，也可传入格式如`[上边距，右边距，下边距，左边距]`的数组，或传入`'auto'`开启底层自动计算
+     */
     padding: PropTypes.oneOfType([
         PropTypes.number,
         PropTypes.arrayOf(PropTypes.number),
         PropTypes.oneOf(['auto'])
     ]),
 
-    // 定义在padding基础上额外的像素填充间距
+    /**
+     * 画布额外内边距，传入单个数值表示四周边距，也可传入格式如`[上边距，右边距，下边距，左边距]`的数组
+     */
     appendPadding: PropTypes.oneOfType([
         PropTypes.number,
         PropTypes.arrayOf(PropTypes.number)
     ]),
 
-    // 设置图表渲染方式为'canvas'或'svg'模式，默认为'canvas'
+    /**
+     * 图表底层渲染方式，可选项有`'canvas'`和`'svg'`
+     * 默认值：`'canvas'`
+     */
     renderer: PropTypes.oneOf(['canvas', 'svg']),
 
     /**
-     * canvas模式下，控制渲染图表图片的像素比
-     * 默认：1
+     * `renderer='canvas'`时，控制渲染图表图片的像素比
+     * 默认值：`1`
      */
     pixelRatio: PropTypes.number,
 
-    // 设置语言，可选的有'zh-CN'与'en-US'
+    /**
+     * 图表文案语种，可选项有`'zh-CN'`、`'en-US'`
+     * 默认值：`'zh-CN'`
+     */
     locale: PropTypes.oneOf(['zh-CN', 'en-US']),
 
-    // 设置是否对超出绘图区域的几何元素进行裁剪
+    /**
+     * 是否对超出绘图区域的几何元素进行裁剪
+     */
     limitInPlot: PropTypes.bool,
 
-    // 设置仪表盘辅助圆弧样式
+    /**
+     * 配置仪表盘辅助圆弧，具体见在线文档相关说明
+     */
     range: PropTypes.exact({
-        // 设置辅助圆弧显示刻度的数值数组
+        /**
+         * 辅助圆弧显示刻度值数组
+         */
         ticks: PropTypes.arrayOf(PropTypes.number),
-        // 设置辅助圆弧的背景色
+        /**
+         * 辅助圆弧背景色，传入数组时表示渐变色
+         */
         color: PropTypes.oneOfType([
             PropTypes.string,
             PropTypes.arrayOf(PropTypes.string)
         ]),
-        // 设置辅助圆弧的像素宽度，不设置时圆弧宽度由radius、innerRadius参数按比例控制
+        /**
+         * 辅助圆弧像素宽度
+         */
         width: PropTypes.number
     }),
 
-    // 设置仪表盘类型，可选项为'meter'
+    /**
+     * 仪表盘类型，可选项有`'meter'`
+     */
     type: PropTypes.oneOf(['meter']),
 
-    // 当type='meter'时用于进行仪表盘样式的具体配置
+    /**
+     * 针对`type='meter'`的仪表盘进行配置
+     */
     meter: PropTypes.exact({
-        // 仪表盘总步数，默认为50
+        /**
+         * 仪表盘总步数
+         * 默认值：`50`
+         */
         steps: PropTypes.number,
-        // 设置分步刻度与间距之间的宽度比例关系，默认为0.5
+        /**
+         * 分步刻度与对应间距的宽度比例关系
+         * 默认值：`0.5`
+         */
         stepRatio: PropTypes.number
     }),
 
-    // 配置仪表盘样式
+    /**
+     * 控制仪表盘样式，具体见在线文档相关说明
+     */
     gaugeStyle: PropTypes.oneOfType([
         baseStyle,
         PropTypes.exact({
-            // 回调函数
+            /**
+             * js函数体字符串
+             */
             func: PropTypes.string
         })
     ]),
 
-    // 设置坐标轴相关属性
+    /**
+     * 配置坐标轴相关参数，具体见在线文档相关说明
+     */
     axis: axisBasePropTypes,
 
-    // 配置仪表盘指示器样式
+    /**
+     * 配置仪表盘指示器，具体见在线文档相关说明
+     */
     indicator: PropTypes.exact({
-        // 配置指示器指针样式
+        /**
+         * 配置指示器指针
+         */
         pointer: PropTypes.exact({
+            /**
+             * 配置指示器指针样式
+             */
             style: baseStyle
         }),
-        // 配置指示器圆盘样式
+        /**
+         * 配置指示器圆盘
+         */
         pin: PropTypes.exact({
+            /**
+             * 配置指示器圆盘样式
+             */
             style: baseStyle
         }),
-
-        // 配置指示器指针类型，可选的有'default'、'cursor'、'ring-cursor'、'simple'
+        /**
+         * 指示器指针类型，可选项有`'default'`、`'cursor'`、`'ring-cursor'`、`'simple'`
+         */
         shape: PropTypes.oneOf(['default', 'cursor', 'ring-cursor', 'simple'])
     }),
 
-    // 配置仪表盘中心文本内容
+    /**
+     * 配置仪表盘中心统计内容，具体见在线文档相关说明
+     */
     statistic: PropTypes.oneOfType([
         PropTypes.bool,
         PropTypes.exact({
-            // 配置统计内容标题，设置为false时隐藏标题
+            /**
+             * 配置统计内容标题，设置为`False`时将隐藏标题
+             */
             title: PropTypes.oneOfType([
                 PropTypes.bool,
                 PropTypes.exact({
-                    // 配置统计文本的css样式
+                    /**
+                     * 统计内容标题样式
+                     */
                     style: PropTypes.object,
-
-                    // 配置标题文本内容，优先级：customHtml > formatter > content
+                    /**
+                     * 配置统计内容标题文本
+                     */
                     content: PropTypes.string,
-
-                    // 回调自定义标题文本信息
+                    /**
+                     * 格式化统计内容标题文本函数
+                     */
                     formatter: PropTypes.exact({
-                        // 回调模式
+                        /**
+                         * js函数体字符串
+                         */
                         func: PropTypes.string
                     }),
-
-                    // 回调自定义标题文本信息，优先级最高
-                    // 格式：(container, view, datum, data) => string
+                    /**
+                     * 配置统计内容标题原始html文本内容
+                     */
                     customHtml: PropTypes.exact({
-                        // 回调模式
+                        /**
+                         * js函数体字符串
+                         */
                         func: PropTypes.string
                     }),
-
-                    // 设置标题的旋转角度
+                    /**
+                     * 标题旋转角度
+                     */
                     rotate: PropTypes.number,
-
-                    // 设置标题的水平方向偏移像素值
+                    /**
+                     * 标题水平像素偏移
+                     */
                     offsetX: PropTypes.number,
-
-                    // 设置标题的竖直方向偏移像素值
+                    /**
+                     * 标题竖直像素偏移
+                     */
                     offsetY: PropTypes.number
                 })
             ]),
-
-            // 配置统计内容主体信息，设置为false时隐藏标题
+            /**
+             * 配置统计内容，设置为`False`时将隐藏内容
+             */
             content: PropTypes.oneOfType([
                 PropTypes.bool,
                 PropTypes.exact({
-                    // 配置统计文本的css样式
+                    /**
+                     * 统计内容样式
+                     */
                     style: PropTypes.object,
-
-                    // 配置主体信息文本内容，优先级：customHtml > formatter > content
+                    /**
+                     * 配置统计内容文本
+                     */
                     content: PropTypes.string,
-
-                    // 回调自定义主体信息文本信息
+                    /**
+                     * 格式化统计内容文本函数
+                     */
                     formatter: PropTypes.exact({
-                        // 回调模式
+                        /**
+                         * js函数体字符串
+                         */
                         func: PropTypes.string
                     }),
-
-                    // 回调自定义标题文本信息，优先级最高
-                    // 格式：(container, view, datum, data) => string
+                    /**
+                     * 配置统计内容原始html文本内容
+                     */
                     customHtml: PropTypes.exact({
-                        // 回调模式
+                        /**
+                         * js函数体字符串
+                         */
                         func: PropTypes.string
                     }),
-
-                    // 设置主体信息旋转角度
+                    /**
+                     * 标题旋转角度
+                     */
                     rotate: PropTypes.number,
-
-                    // 设置主体信息的水平方向偏移像素值
+                    /**
+                     * 标题水平像素偏移
+                     */
                     offsetX: PropTypes.number,
-
-                    // 设置主体信息的竖直方向偏移像素值
+                    /**
+                     * 标题竖直像素偏移
+                     */
                     offsetY: PropTypes.number
                 })
             ]),
+            /**
+             * 统计内容样式
+             */
             style: baseStyle
         })
     ]),
 
-    // 配置动画相关参数
+    /**
+     * 配置动画相关参数，具体见在线文档相关说明
+     */
     animation: animationBasePropTypes,
 
-    // 用于在回调中传入uuid、ulid之类的唯一标识，来主动下载当前图表为png格式图片
+    /**
+     * 对当前组件的`downloadTrigger`值进行更新，可实现主动下载当前图表为`png`格式图片
+     */
     downloadTrigger: PropTypes.string,
 
-    // 主题配置
+    /**
+     * 配置主题相关参数，具体见在线文档相关说明
+     */
     theme: themeBasePropTypes,
 
     /**
-     * 交互功能项配置
+     * 配置交互功能相关参数，具体见在线文档相关说明
      */
     interactions: interactionsBasePropTypes,
 
     /**
-     * 状态样式配置
+     * 配置状态样式相关参数，具体见在线文档相关说明
      */
     state: stateBasePropTypes,
 
@@ -259,7 +375,6 @@ AntdGauge.propTypes = {
     setProps: PropTypes.func
 };
 
-// 设置默认参数
 AntdGauge.defaultProps = {
     locale: 'zh-CN',
     radius: 0.95,
