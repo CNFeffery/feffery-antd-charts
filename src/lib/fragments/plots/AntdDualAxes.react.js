@@ -12,7 +12,9 @@ import { propTypes, defaultProps } from '../../components/AntdDualAxes.react';
 // 定义不触发重绘的参数数组
 const preventUpdateProps = ['loading_state', 'recentlyClickRecord'];
 
-// 定义双轴图组件AntdDualAxes，部分API参数参考https://charts.ant.design/zh/examples/dual-axes/dual-line#dual-line
+/**
+ * 双轴图组件AntdDualAxes
+ */
 export default class AntdDualAxes extends Component {
     constructor(props) {
         super(props);
