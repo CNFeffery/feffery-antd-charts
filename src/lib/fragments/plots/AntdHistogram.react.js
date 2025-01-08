@@ -17,7 +17,9 @@ const preventUpdateProps = [
     'recentlyLegendInfo'
 ];
 
-// 定义直方图AntdHistogram，部分API参数参考https://charts.ant.design/zh/examples/more-plots/histogram#basic
+/**
+ * 直方图组件AntdHistogram
+ */
 export default class AntdHistogram extends Component {
 
     constructor(props) {
