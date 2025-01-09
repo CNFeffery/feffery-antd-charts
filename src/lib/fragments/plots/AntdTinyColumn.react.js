@@ -14,7 +14,9 @@ const preventUpdateProps = [
     'recentlyTooltipChangeRecord'
 ];
 
-// 定义迷你柱状图组件AntdTinyLColumn，部分API参数参考https://ant-design-charts.antgroup.com/api/plots/tiny-column
+/**
+ * 迷你柱状图组件AntdTinyLColumn
+ */
 export default class AntdTinyColumn extends Component {
 
     constructor(props) {
