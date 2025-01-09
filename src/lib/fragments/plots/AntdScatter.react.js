@@ -18,7 +18,9 @@ const preventUpdateProps = [
     'recentlyLegendInfo'
 ];
 
-// 定义散点气泡图组件AntdScatter，部分API参数参考https://charts.ant.design/zh-CN/demos/scatter
+/**
+ * 散点图组件AntdScatter
+ */
 export default class AntdScatter extends Component {
 
     constructor(props) {
