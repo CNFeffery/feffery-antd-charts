@@ -14,7 +14,9 @@ const preventUpdateProps = [
     'loading_state'
 ];
 
-// 定义水波图组件AntdLiquid，部分API参数参考https://charts.ant.design/zh/examples/progress-plots/liquid#basic
+/**
+ * 水波图组件AntdLiquid
+ */
 export default class AntdLiquid extends Component {
 
     constructor(props) {
