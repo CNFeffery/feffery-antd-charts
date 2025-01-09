@@ -140,7 +140,9 @@ AntdPie.propTypes = {
                      * 配置统计内容标题原始html文本内容
                      */
                     customHtml: PropTypes.exact({
-                        // 回调模式
+                        /**
+                         * js函数体字符串
+                         */
                         func: PropTypes.string
                     }),
                     /**

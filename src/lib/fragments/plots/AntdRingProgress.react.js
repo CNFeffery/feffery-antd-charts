@@ -13,7 +13,9 @@ const preventUpdateProps = [
     'loading_state'
 ];
 
-// 定义进度环图组件AntdRingProgress，部分API参数参考https://ant-design-charts.antgroup.com/api/plots/ring-progress
+/**
+ * 进度环图组件AntdRingProgress
+ */
 export default class AntdRingProgress extends Component {
 
     constructor(props) {
