@@ -14,7 +14,9 @@ const preventUpdateProps = [
     'recentlyTooltipChangeRecord'
 ];
 
-// 定义迷你折线图组件AntdTinyLine，部分API参数参考https://charts.ant.design/zh/examples/tiny/tiny-line#basic-line
+/**
+ * 迷你折线图组件AntdTinyLine
+ */
 export default class AntdTinyLine extends Component {
 
     constructor(props) {
