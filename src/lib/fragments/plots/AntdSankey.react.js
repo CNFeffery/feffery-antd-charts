@@ -16,7 +16,9 @@ const preventUpdateProps = [
     'recentlyAreaClickRecord'
 ];
 
-// 定义桑基图组件AntdSankey，部分API参数参考https://charts.ant.design/zh/examples/relation-plots/sankey#alipay
+/**
+ * 桑基图组件AntdSankey
+ */
 export default class AntdSankey extends Component {
 
     constructor(props) {
