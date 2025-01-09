@@ -17,7 +17,9 @@ const preventUpdateProps = [
     'recentlyLegendInfo'
 ];
 
-// 定义雷达图组件AntdRadar，部分API参数参考https://charts.ant.design/zh-CN/demos/radar
+/**
+ * 雷达图组件AntdRadar
+ */
 export default class AntdRadar extends Component {
 
     constructor(props) {
