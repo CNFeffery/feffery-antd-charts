@@ -18,7 +18,9 @@ const preventUpdateProps = [
     'recentlyLegendInfo'
 ];
 
-// 定义股票图组件AntdStock，部分API参数参考https://charts.ant.design/zh/examples/gallery
+/**
+ * 股票图组件AntdStock
+ */
 export default class AntdStock extends Component {
 
     constructor(props) {
