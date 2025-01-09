@@ -21,6 +21,9 @@ import {
 
 const LazyAntdSunburst = React.lazy(() => import(/* webpackChunkName: "plots" */ '../fragments/plots/AntdSunburst.react'));
 
+/**
+ * 旭日图组件AntdSunburst
+ */
 const AntdSunburst = (props) => {
     return (
         <Suspense fallback={null}>
@@ -29,194 +32,272 @@ const AntdSunburst = (props) => {
     );
 }
 
-// 定义参数或属性
 AntdSunburst.propTypes = {
-    // 部件id
+    /**
+     * 组件唯一id
+     */
     id: PropTypes.string,
 
-    // 辅助强制刷新
+    /**
+     * 对当前组件的`key`值进行更新，可实现强制重绘当前组件的效果
+     */
     key: PropTypes.string,
 
-    // css类名
+    /**
+     * 当前组件css类名
+     */
     className: PropTypes.string,
 
-    // 自定义css字典
+    /**
+     * 当前组件css样式
+     */
     style: PropTypes.object,
 
-    // 定义绘图所需数据，必须参数
+    /**
+     * 必填，定义绘图所需数据
+     */
     data: PropTypes.object.isRequired,
 
-    // 定义字段预处理元信息
+    /**
+     * 以字段为单位，配置图表数据元信息，来定义所涉及数据的类型和展示方式，具体见在线文档相关说明
+     */
     meta: metaBasePropTypes,
 
-    // 定义色彩区分所依据的字段，默认为祖先节点的name字段
+    /**
+     * 色彩区分字段，默认为根节点的`name`字段
+     */
     colorField: PropTypes.string,
 
-    // 定义额外的原始字段名数组，可在tooltip等回调函数中用于取得辅助用数据
+    /**
+     * 声明额外辅助字段
+     */
     rawFields: PropTypes.arrayOf(PropTypes.string),
 
-    // 定义图表容器像素宽度，默认为400
+    /**
+     * 图表容器像素宽度
+     */
     width: PropTypes.number,
 
-    // 定义图表容器像素高度，默认为400
+    /**
+     * 图表容器像素高度
+     */
     height: PropTypes.number,
 
-    // 设置图表是否自适应容器宽高，当设置为true时，width与height参数将失效，默认为true
+    /**
+     * 图表是否自适应所在父容器宽高，当`autoFit=True`时，`width`和`height`参数将失效
+     * 默认值：`true`
+     */
     autoFit: PropTypes.bool,
 
-    // 定义图表四个方向的空白间距值，可以为单个数字譬如16，也可以为四个数字构成的数组，按顺序代表上-右-下-左分别的像素间距
+    /**
+     * 画布内边距，传入单个数值表示四周边距，也可传入格式如`[上边距，右边距，下边距，左边距]`的数组，或传入`'auto'`开启底层自动计算
+     */
     padding: PropTypes.oneOfType([
         PropTypes.number,
         PropTypes.arrayOf(PropTypes.number),
         PropTypes.oneOf(['auto'])
     ]),
 
-    // 定义在padding基础上额外的像素填充间距
+    /**
+     * 画布额外内边距，传入单个数值表示四周边距，也可传入格式如`[上边距，右边距，下边距，左边距]`的数组
+     */
     appendPadding: PropTypes.oneOfType([
         PropTypes.number,
         PropTypes.arrayOf(PropTypes.number)
     ]),
 
-    // 设置图表渲染方式为'canvas'或'svg'模式，默认为'canvas'
+    /**
+     * 图表底层渲染方式，可选项有`'canvas'`和`'svg'`
+     * 默认值：`'canvas'`
+     */
     renderer: PropTypes.oneOf(['canvas', 'svg']),
 
     /**
-     * canvas模式下，控制渲染图表图片的像素比
-     * 默认：1
+     * `renderer='canvas'`时，控制渲染图表图片的像素比
+     * 默认值：`1`
      */
     pixelRatio: PropTypes.number,
 
-    // 设置语言，可选的有'zh-CN'与'en-US'
+    /**
+     * 图表文案语种，可选项有`'zh-CN'`、`'en-US'`
+     * 默认值：`'zh-CN'`
+     */
     locale: PropTypes.oneOf(['zh-CN', 'en-US']),
 
-    // 设置是否对超出绘图区域的几何元素进行裁剪
+    /**
+     * 是否对超出绘图区域的几何元素进行裁剪
+     */
     limitInPlot: PropTypes.bool,
 
-    // 图形样式类参数
-
-    // 层级布局配置参数
+    /**
+     * 配置层次布局相关参数，具体见在线文档相关说明
+     */
     hierarchyConfig: PropTypes.exact({
-        // 数据节点权重映射字段，默认为'value'
+        /**
+         * 节点权重字段
+         * 默认值：`'value'`
+         */
         field: PropTypes.string,
-
-        // 设置是否忽略父节点实际权重，默认为true
+        /**
+         * 是否忽略父节点实际权重
+         * 默认值：`true`
+         */
         ignoreParentValue: PropTypes.bool
     }),
 
-    // 配置下钻相关参数
+    /**
+     * 配置下钻交互相关参数，具体见在线文档相关说明
+     */
     drilldown: PropTypes.exact({
-        // 设置是否允许下钻交互，默认为true
+        /**
+         * 是否开启下钻交互
+         * 默认值：`true`
+         */
         enabled: PropTypes.bool,
-
-        // 配置层级面包屑相关参数
+        /**
+         * 配置下钻层级指示面包屑相关参数
+         */
         breadCrumb: PropTypes.exact({
-            // 设置根节点文案，默认：'Root'，中文默认：'根节点'
+            /**
+             * 根节点文案
+             */
             rootText: PropTypes.string,
-
-            // 设置面包屑分割文字，默认为'/'
+            /**
+             * 面包屑分隔符
+             * 默认值：`'/'`
+             */
             dividerText: PropTypes.string,
-
-            // 设置面包屑字体样式
+            /**
+             * 面包屑文字样式
+             */
             textStyle: baseStyle,
-
-            // 设置激活状态下的字体样式
+            /**
+             * 面包屑激活状态字体样式
+             */
             activeTextStyle: baseStyle,
-
-            // 设置下钻层级面包屑的方位，可选的有'top-left'、'bottom-left'
-            // 默认为'top-left'
+            /**
+             * 面包屑显示位置，可选项有`'top-left'`、`'bottom-left'`
+             * 默认值：`'bottom-left'`
+             */
             position: PropTypes.oneOf(['top-left', 'bottom-left'])
         })
     }),
 
-    // 设置半径比例，取值应在0到1之间，默认为0.85
+    /**
+     * 外半径大小，取值应在`0`到`1`之间
+     * 默认值：`0.85`
+     */
     radius: PropTypes.number,
 
-    // 设置内径比例，取值应在0到1之间，默认为0
+    /**
+     * 内半径大小，取值应在`0`到`1`之间
+     * 默认值：`0`
+     */
     innerRadius: PropTypes.number,
 
-    // 用于手动设置调色方案，接受css中合法的所有颜色值，当传入单个字符串时，所有折线沿用此颜色值
-    // 当传入数组时，会视作调色盘方案对seriesField区分的不同系列进行着色
-    // 当传入对象时，会解析出其'func'属性对应的字符串，解析为函数，以支持更为自由的seriesField->色彩映射
+    /**
+     * 控制填充区域颜色，具体见在线文档相关说明
+     */
     color: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.arrayOf(PropTypes.string),
         PropTypes.exact({
-            // 传入字符串形式的js函数体源码，例如
-            // (ref) => {
-            //     if (ref.series === '系列一'){
-            //         return 'red'
-            //     }
-            //     return 'blue'
-            // }
+            /**
+             * js函数体字符串
+             */
             func: PropTypes.string
         })
     ]),
 
-    // // 设置图形的贴图样式
-    // pattern: PropTypes.object,
-
-    // 设置填充区域样式，其中透明度默认随着层级增加会逐渐减少填充透明度，可通过sunburstStyle
-    // 自定义func回调来自主控制样式
+    /**
+     * 控制填充区域样式，具体见在线文档相关说明
+     */
     sunburstStyle: PropTypes.oneOfType([
         baseStyle,
         PropTypes.exact({
-            // 回调模式
+            /**
+             * js函数体字符串
+             */
             func: PropTypes.string
         })
     ]),
 
-    // 设置是否进行径向反转，默认为false，当设置为true后旭日图将会以从外向内的方式进行层次的递进
+    /**
+     * 是否进行径向反转
+     * 默认值：`false`
+     */
     reflect: PropTypes.bool,
 
-    // 配置文字标签相关参数
+    /**
+     * 配置数值标签相关参数，具体见在线文档相关说明
+     */
     label: labelBasePropTypes,
 
-    // 设置tooltip相关参数
+    /**
+     * 配置信息框相关参数，具体见在线文档相关说明
+     */
     tooltip: tooltipBasePropTypes,
 
-    // 配置标注相关参数
+    /**
+     * 配置标注相关参数，具体见在线文档相关说明
+     */
     annotations: annotationsBasePropTypes,
 
-    // 配置动画相关参数
+    /**
+     * 配置动画相关参数，具体见在线文档相关说明
+     */
     animation: animationBasePropTypes,
 
-    // 常用事件监听参数
-    // tooltip显示事件
+    /**
+     * 事件监听属性，用于监听最近一次信息框显示事件
+     */
     recentlyTooltipChangeRecord: PropTypes.exact({
-        // 事件触发的时间戳信息
+        /**
+         * 事件时间戳
+         */
         timestamp: PropTypes.number,
-
-        // 对应的数据点信息
+        /**
+         * 涉及数据信息
+         */
         data: PropTypes.any
     }),
 
-    // 单独折线点击事件
+    /**
+     * 事件监听属性，用于监听最近一次折点点击事件
+     */
     recentlyAreaClickRecord: PropTypes.exact({
-        // 事件触发的时间戳信息
+        /**
+         * 事件时间戳
+         */
         timestamp: PropTypes.number,
-
-        // 对应的数据点信息
+        /**
+         * 涉及数据信息
+         */
         data: PropTypes.any
     }),
 
-    // 用于在回调中传入uuid、ulid之类的唯一标识，来主动下载当前图表为png格式图片
+    /**
+     * 对当前组件的`downloadTrigger`值进行更新，可实现主动下载当前图表为`png`格式图片
+     */
     downloadTrigger: PropTypes.string,
 
-    // 主题配置
+    /**
+     * 配置主题相关参数，具体见在线文档相关说明
+     */
     theme: themeBasePropTypes,
 
     /**
-     * 配置图形填充贴图样式
+     * 配置图形填充贴图相关参数，具体见在线文档相关说明
      */
     pattern: patternBasePropTypes,
 
     /**
-     * 交互功能项配置
+     * 配置交互功能相关参数，具体见在线文档相关说明
      */
     interactions: interactionsBasePropTypes,
 
     /**
-     * 状态样式配置
+     * 配置状态样式相关参数，具体见在线文档相关说明
      */
     state: stateBasePropTypes,
 
@@ -242,7 +323,6 @@ AntdSunburst.propTypes = {
     setProps: PropTypes.func
 };
 
-// 设置默认参数
 AntdSunburst.defaultProps = {
     locale: 'zh-CN',
     reflect: false,

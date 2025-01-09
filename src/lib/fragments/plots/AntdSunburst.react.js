@@ -16,7 +16,9 @@ const preventUpdateProps = [
     'recentlyAreaClickRecord'
 ];
 
-// 定义旭日图组件AntdSunburst，部分API参数参考https://charts.ant.design/zh/examples/more-plots/sunburst#basic
+/**
+ * 旭日图组件AntdSunburst
+ */
 export default class AntdSunburst extends Component {
 
     constructor(props) {
