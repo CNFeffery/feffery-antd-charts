@@ -17,7 +17,9 @@ const preventUpdateProps = [
     'recentlyLegendInfo'
 ];
 
-// 定义风玫瑰图组件AntdRose，部分API参数参考https://charts.ant.design/zh/examples/rose/basic#basic
+/**
+ * 风玫瑰图组件AntdRose
+ */
 export default class AntdRose extends Component {
 
     constructor(props) {
