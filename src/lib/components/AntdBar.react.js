@@ -158,7 +158,7 @@ AntdBar.propTypes = {
      */
     barBackground: PropTypes.exact({
         /**
-         * 条形背景颜色
+         * 条形背景样式
          */
         style: baseStyle
     }),

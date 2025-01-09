@@ -17,7 +17,9 @@ const preventUpdateProps = [
     'recentlyLegendInfo'
 ];
 
-// 定义环状条形图组件AntdRadialBar，部分API参数参考https://ant-design-charts.antgroup.com/zh/examples/more-plots/radial-bar/#basic
+/**
+ * 环状条形图组件AntdRadialBar
+ */
 export default class AntdRadialBar extends Component {
 
     constructor(props) {
