@@ -17,7 +17,9 @@ const preventUpdateProps = [
     'recentlyLegendInfo'
 ];
 
-// 定义饼图组件AntdPie，部分API参数参考https://charts.ant.design/zh-CN/demos/pie
+/**
+ * 饼图组件AntdPie
+ */
 export default class AntdPie extends Component {
 
     constructor(props) {
