@@ -17,7 +17,9 @@ const preventUpdateProps = [
     'recentlyLegendInfo'
 ];
 
-// 定义矩形树图组件AntdTreemap，部分API参数参考https://charts.ant.design/zh/examples/more-plots/treemap#basic
+/**
+ * 矩形树图组件AntdTreemap
+ */
 export default class AntdTreemap extends Component {
 
     constructor(props) {
