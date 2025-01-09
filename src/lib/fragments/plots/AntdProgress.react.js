@@ -13,7 +13,9 @@ const preventUpdateProps = [
     'loading_state'
 ];
 
-// 定义进度条图组件AntdProgress，部分API参数参考https://ant-design-charts.antgroup.com/api/plots/progress
+/**
+ * 进度条组件AntdProgress
+ */
 export default class AntdProgress extends Component {
 
     constructor(props) {

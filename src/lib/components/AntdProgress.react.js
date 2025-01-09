@@ -14,6 +14,9 @@ import {
 
 const LazyAntdProgress = React.lazy(() => import(/* webpackChunkName: "plots" */ '../fragments/plots/AntdProgress.react'));
 
+/**
+ * 进度条组件AntdProgress
+ */
 const AntdProgress = (props) => {
     return (
         <Suspense fallback={null}>
@@ -22,76 +25,102 @@ const AntdProgress = (props) => {
     );
 }
 
-// 定义参数或属性
 AntdProgress.propTypes = {
-    // 部件id
+    /**
+     * 组件唯一id
+     */
     id: PropTypes.string,
 
-    // 辅助强制刷新
+    /**
+     * 对当前组件的`key`值进行更新，可实现强制重绘当前组件的效果
+     */
     key: PropTypes.string,
 
-    // css类名
+    /**
+     * 当前组件css类名
+     */
     className: PropTypes.string,
 
-    // 自定义css字典
+    /**
+     * 当前组件css样式
+     */
     style: PropTypes.object,
 
     /**
-     * 必填，设置百分比数值，取值应在0到1
+     * 必填，百分比数值，取值应在`0`到`1`之间
      */
     percent: PropTypes.number.isRequired,
 
     /**
-     * 设置进度条宽度占比，取值应在0到1之间
-     * 默认：0.5
+     * 进度条宽度占比，取值应在`0`到`1`之间
+     * 默认值：`0.5`
      */
     barWidthRatio: PropTypes.number,
 
     /**
-     * 配置进度条颜色
+     * 控制进度条颜色，具体见在线文档相关说明
      */
     color: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.arrayOf(PropTypes.string),
         PropTypes.exact({
+            /**
+             * js函数体字符串
+             */
             func: PropTypes.string
         })
     ]),
 
     /**
-     * 设置进度条样式
+     * 控制进度条样式，具体见在线文档相关说明
      */
     progressStyle: PropTypes.oneOfType([
         baseStyle,
         PropTypes.exact({
-            // 回调模式
+            /**
+             * js函数体字符串
+             */
             func: PropTypes.string
         })
     ]),
 
-    // 定义图表容器像素宽度，默认为400
+    /**
+     * 图表容器像素宽度
+     */
     width: PropTypes.number,
 
-    // 定义图表容器像素高度，默认为400
+    /**
+     * 图表容器像素高度
+     */
     height: PropTypes.number,
 
-    // 设置图表是否自适应容器宽高，当设置为true时，width与height参数将失效，默认为true
+    /**
+     * 图表是否自适应所在父容器宽高，当`autoFit=True`时，`width`和`height`参数将失效
+     * 默认值：`true`
+     */
     autoFit: PropTypes.bool,
 
-    // 定义图表四个方向的空白间距值，可以为单个数字譬如16，也可以为四个数字构成的数组，按顺序代表上-右-下-左分别的像素间距
+    /**
+     * 画布内边距，传入单个数值表示四周边距，也可传入格式如`[上边距，右边距，下边距，左边距]`的数组，或传入`'auto'`开启底层自动计算
+     */
     padding: PropTypes.oneOfType([
         PropTypes.number,
         PropTypes.arrayOf(PropTypes.number),
         PropTypes.oneOf(['auto'])
     ]),
 
-    // 定义在padding基础上额外的像素填充间距
+    /**
+     * 画布额外内边距，传入单个数值表示四周边距，也可传入格式如`[上边距，右边距，下边距，左边距]`的数组
+     */
     appendPadding: PropTypes.oneOfType([
         PropTypes.number,
         PropTypes.arrayOf(PropTypes.number)
     ]),
 
-    // 设置图表渲染方式为'canvas'或'svg'模式，默认为'canvas'
+    /**
+     * 图表底层渲染方式，可选项有`'canvas'`和`'svg'`
+     * 默认值：`'canvas'`
+     */
     renderer: PropTypes.oneOf(['canvas', 'svg']),
 
     /**
@@ -100,22 +129,35 @@ AntdProgress.propTypes = {
      */
     pixelRatio: PropTypes.number,
 
-    // 设置语言，可选的有'zh-CN'与'en-US'
+    /**
+     * 图表文案语种，可选项有`'zh-CN'`、`'en-US'`
+     * 默认值：`'zh-CN'`
+     */
     locale: PropTypes.oneOf(['zh-CN', 'en-US']),
 
-    // 设置是否对超出绘图区域的几何元素进行裁剪
+    /**
+     * 是否对超出绘图区域的几何元素进行裁剪
+     */
     limitInPlot: PropTypes.bool,
 
-    // 配置标注相关参数
+    /**
+     * 配置标注相关参数，具体见在线文档相关说明
+     */
     annotations: annotationsBasePropTypes,
 
-    // 配置动画相关参数
+    /**
+     * 配置动画相关参数，具体见在线文档相关说明
+     */
     animation: animationBasePropTypes,
 
-    // 用于在回调中传入uuid、ulid之类的唯一标识，来主动下载当前图表为png格式图片
+    /**
+     * 对当前组件的`downloadTrigger`值进行更新，可实现主动下载当前图表为`png`格式图片
+     */
     downloadTrigger: PropTypes.string,
 
-    // 主题配置
+    /**
+     * 配置主题相关参数，具体见在线文档相关说明
+     */
     theme: themeBasePropTypes,
 
     loading_state: PropTypes.shape({
@@ -140,7 +182,6 @@ AntdProgress.propTypes = {
     setProps: PropTypes.func
 };
 
-// 设置默认参数
 AntdProgress.defaultProps = {
     locale: 'zh-CN',
     downloadTrigger: 'download-trigger'
