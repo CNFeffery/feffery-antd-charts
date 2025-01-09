@@ -20,6 +20,9 @@ import {
 
 const LazyAntdTinyArea = React.lazy(() => import(/* webpackChunkName: "plots" */ '../fragments/plots/AntdTinyArea.react'));
 
+/**
+ * 迷你面积图组件AntdTinyArea
+ */
 const AntdTinyArea = (props) => {
     return (
         <Suspense fallback={null}>
@@ -28,145 +31,198 @@ const AntdTinyArea = (props) => {
     );
 }
 
-// 定义参数或属性
 AntdTinyArea.propTypes = {
-    // 部件id
+    /**
+     * 组件唯一id
+     */
     id: PropTypes.string,
 
-    // 辅助强制刷新
+    /**
+     * 对当前组件的`key`值进行更新，可实现强制重绘当前组件的效果
+     */
     key: PropTypes.string,
 
-    // css类名
+    /**
+     * 当前组件css类名
+     */
     className: PropTypes.string,
 
-    // 自定义css字典
+    /**
+     * 当前组件css样式
+     */
     style: PropTypes.object,
 
-    // 定义绘图所需数据，必须参数
+    /**
+     * 必填，定义绘图所需数据
+     */
     data: PropTypes.arrayOf(PropTypes.number).isRequired,
 
-    // 定义字段预处理元信息
+    /**
+     * 以字段为单位，配置图表数据元信息，来定义所涉及数据的类型和展示方式，具体见在线文档相关说明
+     */
     meta: metaBasePropTypes,
 
-    // 设置是否以平滑曲线方式渲染折线，默认为false
+    /**
+     * 是否渲染为平滑曲线
+     * 默认值：`false`
+     */
     smooth: PropTypes.bool,
 
-    // 设置面积图颜色
+    /**
+     * 面积填充颜色
+     */
     color: PropTypes.string,
 
     /**
-     * 设置面积区域样式
+     * 控制面积填充样式，具体见在线文档相关说明
      */
     areaStyle: baseStyle,
 
     /**
-     * 配置折线样式
+     * 配置折线相关参数，具体见在线文档相关说明
      */
     line: PropTypes.exact({
         /**
-         * 设置折线颜色
+         * 折线颜色
          */
         color: PropTypes.string,
         /**
-         * 设置折线样式
+         * 折线样式
          */
         style: baseStyle
     }),
 
     /**
-     * 配置折点样式
+     * 配置折点相关参数，具体见在线文档相关说明
      */
     point: PropTypes.exact({
         /**
-         * 设置折点颜色
+         * 折点颜色
          */
         color: PropTypes.string,
         /**
-         * 设置折点样式
+         * 折点样式
          */
         style: baseStyle
     }),
 
-    // 设置x坐标轴相关属性
+    /**
+     * 配置横坐标轴相关参数，具体见在线文档相关说明
+     */
     xAxis: axisBasePropTypes,
 
-    // 设置y坐标轴相关属性
+    /**
+     * 配置纵坐标轴相关参数，具体见在线文档相关说明
+     */
     yAxis: axisBasePropTypes,
 
-    // 定义图表容器像素宽度，默认为400
+    /**
+     * 图表容器像素宽度
+     */
     width: PropTypes.number,
 
-    // 定义图表容器像素高度，默认为400
+    /**
+     * 图表容器像素高度
+     */
     height: PropTypes.number,
 
-    // 设置图表是否自适应容器宽高，当设置为true时，width与height参数将失效，默认为true
+    /**
+     * 图表是否自适应所在父容器宽高，当`autoFit=True`时，`width`和`height`参数将失效
+     * 默认值：`true`
+     */
     autoFit: PropTypes.bool,
 
-    // 定义图表四个方向的空白间距值，可以为单个数字譬如16，也可以为四个数字构成的数组，按顺序代表上-右-下-左分别的像素间距
+    /**
+     * 画布内边距，传入单个数值表示四周边距，也可传入格式如`[上边距，右边距，下边距，左边距]`的数组，或传入`'auto'`开启底层自动计算
+     */
     padding: PropTypes.oneOfType([
         PropTypes.number,
         PropTypes.arrayOf(PropTypes.number),
         PropTypes.oneOf(['auto'])
     ]),
 
-    // 定义在padding基础上额外的像素填充间距
+    /**
+     * 画布额外内边距，传入单个数值表示四周边距，也可传入格式如`[上边距，右边距，下边距，左边距]`的数组
+     */
     appendPadding: PropTypes.oneOfType([
         PropTypes.number,
         PropTypes.arrayOf(PropTypes.number)
     ]),
 
-    // 设置图表渲染方式为'canvas'或'svg'模式，默认为'canvas'
+    /**
+     * 图表底层渲染方式，可选项有`'canvas'`和`'svg'`
+     * 默认值：`'canvas'`
+     */
     renderer: PropTypes.oneOf(['canvas', 'svg']),
 
     /**
-     * canvas模式下，控制渲染图表图片的像素比
-     * 默认：1
+     * `renderer='canvas'`时，控制渲染图表图片的像素比
+     * 默认值：`1`
      */
     pixelRatio: PropTypes.number,
 
-    // 设置语言，可选的有'zh-CN'与'en-US'
+    /**
+     * 图表文案语种，可选项有`'zh-CN'`、`'en-US'`
+     * 默认值：`'zh-CN'`
+     */
     locale: PropTypes.oneOf(['zh-CN', 'en-US']),
 
-    // 设置是否对超出绘图区域的几何元素进行裁剪
+    /**
+     * 是否对超出绘图区域的几何元素进行裁剪
+     */
     limitInPlot: PropTypes.bool,
 
-    // 设置tooltip相关参数
+    /**
+     * 配置信息框相关参数，具体见在线文档相关说明
+     */
     tooltip: tooltipBasePropTypes,
 
-    // 配置标注相关参数
+    /**
+     * 配置标注相关参数，具体见在线文档相关说明
+     */
     annotations: annotationsBasePropTypes,
 
     /**
-     * 配置图形填充贴图样式
+     * 配置图形填充贴图相关参数，具体见在线文档相关说明
      */
     pattern: patternBasePropTypes,
 
-    // 配置动画相关参数
+    /**
+     * 配置动画相关参数，具体见在线文档相关说明
+     */
     animation: animationBasePropTypes,
 
-    // 常用事件监听参数
-    // tooltip显示事件
+    /**
+     * 事件监听属性，用于监听最近一次信息框显示事件
+     */
     recentlyTooltipChangeRecord: PropTypes.exact({
-        // 事件触发的时间戳信息
+        /**
+         * 事件时间戳
+         */
         timestamp: PropTypes.number,
-
-        // 对应的数据点信息
+        /**
+         * 涉及数据信息
+         */
         data: PropTypes.arrayOf(PropTypes.object)
     }),
 
-    // 用于在回调中传入uuid、ulid之类的唯一标识，来主动下载当前图表为png格式图片
+    /**
+     * 对当前组件的`downloadTrigger`值进行更新，可实现主动下载当前图表为`png`格式图片
+     */
     downloadTrigger: PropTypes.string,
 
-    // 主题配置
+    /**
+     * 配置主题相关参数，具体见在线文档相关说明
+     */
     theme: themeBasePropTypes,
 
     /**
-     * 交互功能项配置
+     * 配置交互功能相关参数，具体见在线文档相关说明
      */
     interactions: interactionsBasePropTypes,
 
     /**
-     * 状态样式配置
+     * 配置状态样式相关参数，具体见在线文档相关说明
      */
     state: stateBasePropTypes,
 
@@ -192,7 +248,6 @@ AntdTinyArea.propTypes = {
     setProps: PropTypes.func
 };
 
-// 设置默认参数
 AntdTinyArea.defaultProps = {
     locale: 'zh-CN',
     downloadTrigger: 'download-trigger'

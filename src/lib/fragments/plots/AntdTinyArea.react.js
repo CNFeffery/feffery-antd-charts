@@ -14,7 +14,9 @@ const preventUpdateProps = [
     'recentlyTooltipChangeRecord'
 ];
 
-// 定义迷你面积图组件AntdTinyArea，部分API参数参考https://ant-design-charts.antgroup.com/api/plots/tiny-area
+/**
+ * 迷你面积图组件AntdTinyArea
+ */
 export default class AntdTinyArea extends Component {
 
     constructor(props) {
