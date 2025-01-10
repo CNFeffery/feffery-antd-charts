@@ -16,7 +16,9 @@ const preventUpdateProps = [
     'recentlyColumnClickRecord'
 ];
 
-// 定义瀑布图组件AntdWaterfall，部分API参数参考https://ant-design-charts.antgroup.com/api/plots/waterfall
+/**
+ * 瀑布图组件AntdWaterfall
+ */
 export default class AntdWaterfall extends Component {
 
     constructor(props) {
