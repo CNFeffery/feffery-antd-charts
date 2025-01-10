@@ -17,7 +17,9 @@ const preventUpdateProps = [
     'recentlyLegendInfo'
 ];
 
-// 定义词云图组件AntdWordCloud，部分API参数参考https://charts.ant.design/zh/examples/more-plots/word-cloud#basic
+/**
+ * 词云图组件AntdWordCloud
+ */
 export default class AntdWordCloud extends Component {
 
     constructor(props) {
