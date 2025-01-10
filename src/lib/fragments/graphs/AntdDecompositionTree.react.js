@@ -8,11 +8,11 @@ import React, { Component } from 'react';
 import { isUndefined, omitBy, cloneDeep } from 'lodash';
 import { propTypes, defaultProps } from '../../components/graphs/AntdDecompositionTree.react';
 
-// 定义指标拆解图组件AntdDecompositionTree，部分API参数参考https://charts.ant.design/zh/examples/relation-graph/decomposition-tree-graph#basic
+/**
+ * 指标拆解图组件AntdDecompositionTree
+ */
 export default class AntdDecompositionTree extends Component {
-
     render() {
-        // 取得必要属性或参数
         const {
             id,
             key,

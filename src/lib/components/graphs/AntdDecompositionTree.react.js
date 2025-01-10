@@ -10,9 +10,11 @@ import {
     baseStyle
 } from '../BasePropTypes.react';
 
-// 定义指标拆解图组件AntdDecompositionTree，部分API参数参考https://charts.ant.design/zh/examples/relation-graph/decomposition-tree-graph#basic
 const LazyAntdDecompositionTree = React.lazy(() => import(/* webpackChunkName: "graphs" */ '../../fragments/graphs/AntdDecompositionTree.react'));
 
+/**
+ * 指标拆解图组件AntdDecompositionTree
+ */
 const AntdDecompositionTree = (props) => {
     return (
         <Suspense fallback={null}>
@@ -21,164 +23,227 @@ const AntdDecompositionTree = (props) => {
     );
 }
 
-// 定义参数或属性
 AntdDecompositionTree.propTypes = {
-    // 部件id
+    /**
+     * 组件唯一id
+     */
     id: PropTypes.string,
 
-    // 辅助强制刷新
+    /**
+     * 对当前组件的`key`值进行更新，可实现强制重绘当前组件的效果
+     */
     key: PropTypes.string,
 
-    // css类名
+    /**
+     * 当前组件css类名
+     */
     className: PropTypes.string,
 
-    // 自定义css字典
+    /**
+     * 当前组件css样式
+     */
     style: PropTypes.object,
 
-    // 设置指标拆解图绘图所需数据
+    /**
+     * 必填，定义绘图所需数据
+     */
     data: PropTypes.object.isRequired,
 
-    // 定义图表容器像素宽度，默认为500
+    /**
+     * 图表容器像素宽度
+     */
     width: PropTypes.number,
 
-    // 定义图表容器像素高度，默认为500
+    /**
+     * 图表容器像素高度
+     */
     height: PropTypes.number,
 
-    // 设置图表是否自适应容器宽高，当设置为true时，width与height参数将失效，默认为true
+    /**
+     * 图表是否自适应所在父容器宽高，当`autoFit=True`时，`width`和`height`参数将失效
+     * 默认值：`true`
+     */
     autoFit: PropTypes.bool,
 
-    // 配置节点
+    /**
+     * 配置节点相关参数，具体见在线文档相关说明
+     */
     nodeCfg: PropTypes.exact({
-        // 设置节点类型，可选的有'indicator-card'
+        /**
+         * 节点类型，可选项有`'indicator-card'`
+         */
         type: PropTypes.oneOf(['indicator-card']),
-
-        // 设置节点最小尺寸，默认为[120, 40]
+        /**
+         * 节点像素尺寸范围
+         * 默认值：`[120, 40]`
+         */
         size: PropTypes.arrayOf(PropTypes.number),
-
-        // 设置节点样式，支持func回调
+        /**
+         * 节点样式
+         */
         style: PropTypes.oneOfType([
             baseStyle,
             PropTypes.exact({
-                // 传入回调函数字符串
+                /**
+                 * js函数体字符串
+                 */
                 func: PropTypes.string
             })
         ]),
-
-        // 设置节点文本样式，支持回调
+        /**
+         * 节点文本样式
+         */
         label: PropTypes.exact({
             style: PropTypes.oneOfType([
                 baseStyle,
                 PropTypes.exact({
-                    // 传入回调函数字符串
+                    /**
+                     * js函数体字符串
+                     */
                     func: PropTypes.string
                 })
             ])
         }),
-
-        // 设置边在节点上的锚点位置，默认为[[0.5, 0], [0.5, 1]]
+        /**
+         * 边相对于节点的锚点位置
+         * 默认值：`[[0.5, 0], [0.5, 1]]`
+         */
         anchorPoints: PropTypes.arrayOf(
             PropTypes.arrayOf(PropTypes.number)
         ),
-
-        // 配置节点标题
+        /**
+         * 配置节点标题
+         */
         title: PropTypes.exact({
-            // 设置容器样式
+            /**
+             * 标题容器样式
+             */
             containerStyle: baseStyle,
-
-            // 设置标题样式
+            /**
+             * 标题样式
+             */
             style: PropTypes.oneOfType([
                 baseStyle,
                 PropTypes.exact({
-                    // 传入回调函数字符串
+                    /**
+                     * js函数体字符串
+                     */
                     func: PropTypes.string
                 })
             ]),
-
-            // 设置文字超出范围是否自动隐藏
+            /**
+             * 文本是否超出范围后自动隐藏
+             */
             autoEllipsis: PropTypes.bool
         }),
-
-        // 配置节点内容
+        /**
+         * 配置节点内容
+         */
         items: PropTypes.exact({
-            // 设置节点内容容器样式
+            /**
+             * 节点内容容器样式
+             */
             containerStyle: baseStyle,
-
-            // 设置节点内容样式
+            /**
+             * 节点内容样式
+             */
             style: PropTypes.oneOfType([
                 baseStyle,
                 PropTypes.exact({
-                    // 传入回调函数字符串
+                    /**
+                     * js函数体字符串
+                     */
                     func: PropTypes.string
                 })
             ]),
-
-            // 设置布局方式，可选的有'bundled'、'flex'、'follow'
-            // 默认为'bundled'
+            /**
+             * 布局方式，可选项有`'bundled'`、`'flex'`、`'follow'`
+             * 默认值：`'bundled'`
+             */
             layout: PropTypes.oneOf(['bundled', 'flex', 'follow']),
-
-            // 设置是否根据节点顺序绘制
+            /**
+             * 是否按照节点顺序渲染
+             */
             sort: PropTypes.bool,
-
-            // 设置节点内容容器填充
+            /**
+             * 节点内容容器填充
+             */
             padding: PropTypes.oneOfType([
                 PropTypes.number,
                 PropTypes.arrayOf(PropTypes.number)
             ])
         }),
-
-        // 设置文本填充
+        /**
+         * 文本填充
+         */
         padding: PropTypes.oneOfType([
             PropTypes.number,
             PropTypes.arrayOf(PropTypes.number)
         ]),
-
-        // 配置节点状态，其中style支持回调
+        /**
+         * 配置节点标记
+         */
         badge: PropTypes.exact({
-            // 设置标记位置，可选的有'left'、'top'、'right'、'bottom'
+            /**
+             * 标记位置，可选项有`'left'`、`'top'`、`'right'`、`'bottom'`
+             */
             position: PropTypes.oneOf(['left', 'top', 'right', 'bottom']),
-
-            // 设置标记大小
+            /**
+             * 标记尺寸
+             */
             size: PropTypes.oneOfType([
                 PropTypes.number,
                 PropTypes.arrayOf(PropTypes.number)
             ]),
-
-            // 设置标记样式
+            /**
+             * 标记样式
+             */
             style: PropTypes.oneOfType([
                 baseStyle,
                 PropTypes.exact({
-                    // 传入回调函数字符串
+                    /**
+                     * js函数体字符串
+                     */
                     func: PropTypes.string
                 })
             ])
         }),
-
-        // 配置节点占比，其中style支持回调
+        /**
+         * 配置节点占比内容
+         */
         percent: PropTypes.exact({
-            // 设置占比位置，可选的有'top'、'bottom'
+            /**
+             * 占比内容位置，可选项有`'top'`、`'bottom'`
+             */
             position: PropTypes.oneOf(['top', 'bottom']),
-
-            // 设置背景高度
+            /**
+             * 占比内容背景像素高度
+             */
             size: PropTypes.number,
-
-            // 设置占比样式
+            /**
+             * 占比内容样式
+             */
             style: PropTypes.oneOfType([
                 baseStyle,
                 PropTypes.exact({
-                    // 传入回调函数字符串
+                    /**
+                     * js函数体字符串
+                     */
                     func: PropTypes.string
                 })
             ]),
-
-            // 设置占比背景样式
+            /**
+             * 占比内容背景样式
+             */
             backgroundStyle: baseStyle
         }),
-
-        // 设置是否动态调整节点宽度
+        /**
+         * 是否动态调整节点宽度
+         */
         autoWidth: PropTypes.bool,
-
-        // 配置节点在不同状态下的样式，可用的状态有
-        // 'hover'
+        /**
+         * 配置节点不同状态下的样式，可用的状态有`'hover'`
+         */
         nodeStateStyles: PropTypes.oneOfType([
             PropTypes.objectOf(
                 baseStyle
@@ -187,150 +252,198 @@ AntdDecompositionTree.propTypes = {
         ])
     }),
 
-    // 配置边
+    /**
+     * 配置边相关参数，具体见在线文档相关说明
+     */
     edgeCfg: PropTypes.exact({
-        // 设置边类型，可选的有'line'、'polyline'、'arc'、'quadratic'
-        // 'cubic'、'cubic-vertical'、'cubic-horizontal'、'loop'
-        // 默认为'cubic-horizontal'
+        /**
+         * 边类型，可选项有`'line'`、`'polyline'`、`'arc'`、`'quadratic'`、`'cubic'`、`'cubic-vertical'`、`'cubic-horizontal'`、`'loop'`
+         * 默认值：`'cubic-horizontal'`
+         */
         type: PropTypes.oneOf([
             'line', 'polyline', 'arc', 'quadratic', 'cubic',
             'cubic-vertical', 'cubic-horizontal', 'loop'
         ]),
-
-        // 设置边文本的样式，style支持回调
+        /**
+         * 边文本样式
+         */
         label: PropTypes.exact({
             style: PropTypes.oneOfType([
                 baseStyle,
                 PropTypes.exact({
-                    // 传入回调函数字符串
+                    /**
+                     * js函数体字符串
+                     */
                     func: PropTypes.string
                 })
             ])
         }),
-
-        // 配置边开始箭头样式
+        /**
+         * 配置边开始箭头
+         */
         startArrow: PropTypes.exact({
-            // 设置箭头类型，可选的有'vee'、'triangle'
+            /**
+             * 箭头类型，可选项有`'vee'`、`'triangle'`
+             */
             type: PropTypes.oneOf(['vee', 'triangle']),
-
-            // 设置像素偏移量
+            /**
+             * 像素偏移量
+             */
             d: PropTypes.number,
-
-            // 设置绘制路径
+            /**
+             * 绘制路径
+             */
             path: PropTypes.string,
-
-            // 设置描边色
+            /**
+             * 描边色
+             */
             stroke: PropTypes.string,
-
-            // 设置填充色
+            /**
+             * 填充色
+             */
             fill: PropTypes.string
         }),
-
-        // 配置边结束箭头样式
+        /**
+         * 配置边结束箭头
+         */
         endArrow: PropTypes.exact({
-            // 设置填充色
+            /**
+             * 填充色
+             */
             fill: PropTypes.string,
-
-            // 设置是否展示结束箭头
+            /**
+             * 是否展示结束箭头
+             */
             show: PropTypes.bool
         }),
-
-        // 配置边在不同状态下的样式，可用的状态有
-        // 'hover'
+        /**
+         * 配置边不同状态下的样式，可用的状态有`'hover'`
+         */
         edgeStateStyles: PropTypes.oneOfType([
             PropTypes.objectOf(
                 baseStyle
             ),
             PropTypes.bool
         ]),
-
-        // 配置边样式，支持回调
+        /**
+         * 边样式
+         */
         style: PropTypes.oneOfType([
             baseStyle,
             PropTypes.exact({
-                // 传入回调函数字符串
+                /**
+                 * js函数体字符串
+                 */
                 func: PropTypes.string
             })
         ])
     }),
 
-    // 设置默认展开的层级，默认为100
+    /**
+     * 默认展开层级
+     * 默认值：`100`
+     */
     level: PropTypes.number,
 
-    // 配置启用的交互模式，可选的有'drag-canvas'、'scroll-canvas'、'zoom-canvas'、'drag-node'、'click-select'
-    // 默认为['drag-canvas', 'zoom-canvas']
+    /**
+     * 配置要启用的交互模式，支持多选，可选项有`'drag-canvas'`、`'scroll-canvas'`、`'zoom-canvas'`、`'drag-node'`、`'click-select'`
+     * 默认值：`['drag-canvas', 'zoom-canvas']`
+     */
     behaviors: PropTypes.arrayOf(
         PropTypes.oneOf(['drag-canvas', 'scroll-canvas', 'zoom-canvas', 'drag-node', 'click-select'])
     ),
 
-    // 配置marker，支持回调
+    /**
+     * 配置标记相关参数，具体见在线文档
+     */
     markerCfg: PropTypes.oneOfType([
         PropTypes.exact({
-            // 设置是否展示
+            /**
+             * 是否展示标记
+             */
             show: PropTypes.bool,
-
-            // 设置是否显示折叠状态
+            /**
+             * 是否显示为折叠状态
+             */
             collapsed: PropTypes.bool,
-
-            // 设置位置，可选的有'left'、'right'、'top'、'bottom'
+            /**
+             * 标记位置，可选项有`'left'`、`'right'`、`'top'`、`'bottom'`
+             */
             position: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
-
-            // 设置样式
+            /**
+             * 标记样式
+             */
             style: baseStyle
         }),
         PropTypes.exact({
+            /**
+             * js函数体字符串
+             */
             func: PropTypes.string
         })
     ]),
 
-    // 设置是否启用动画效果，默认为true
+    /**
+     * 是否启用动画效果
+     * 默认值：`true`
+     */
     animate: PropTypes.bool,
 
-    // 配置迷你图
+    /**
+     * 配置迷你图相关参数，具体见在线文档
+     */
     minimapCfg: PropTypes.exact({
-        // 设置是否展示迷你图，默认为false
+        /**
+         * 是否展示迷你图
+         * 默认值：`false`
+         */
         show: PropTypes.bool,
-
-        // 设置迷你图class类名
+        /**
+         * 迷你图css类名
+         */
         viewportClassName: PropTypes.string,
-
-        // 设置迷你图类型，可选的有'default'、'keyShape'、'delegate'
+        /**
+         * 迷你图类型，可选项有`'default'`、`'keyShape'`、`'delegate'`
+         */
         type: PropTypes.oneOf(['default', 'keyShape', 'delegate']),
-
-        // 设置尺寸
+        /**
+         * 配置迷你图像素尺寸，格式如`[宽度, 高度]`
+         */
         size: PropTypes.arrayOf(PropTypes.number),
-
-        delegateStyle: baseStyle,
-
-        refresh: PropTypes.bool,
-
-        // 设置填充
+        /**
+         * 内填充像素尺寸
+         */
         padding: PropTypes.number
     }),
 
-    // 配置布局
+    /**
+     * 配置布局相关参数，具体见在线文档
+     */
     layout: PropTypes.exact({
-        // 设置布局方式，可选的有'TB'、'BT'、'LR'、'RL'
+        /**
+         * 布局方式，可选项有`'TB'`、`'BT'`、`'LR'`、`'RL'`
+         */
         direction: PropTypes.oneOf(['TB', 'BT', 'LR', 'RL']),
-
-        // 设置布局类型，可选的有'indented'
+        /**
+         * 布局类型，可选项有`'indented'`
+         */
         type: PropTypes.oneOf(['indented']),
-
-        dropCap: PropTypes.bool,
-
+        /**
+         * 缩进像素宽度
+         */
         indent: PropTypes.number
     }),
 
     /**
-     * 节点点击事件监听
+     * 事件监听属性，用于监听最近一次节点点击事件
      */
     recentlyNodeClickRecord: PropTypes.exact({
         /**
-         * 事件触发时间戳
+         * 事件时间戳
          */
         timestamp: PropTypes.number,
         /**
-         * 事件对应节点信息，点击空白处时为空
+         * 涉及数据信息
          */
         data: PropTypes.object
     }),
@@ -357,9 +470,7 @@ AntdDecompositionTree.propTypes = {
     setProps: PropTypes.func
 };
 
-// 设置默认参数
-AntdDecompositionTree.defaultProps = {
-}
+AntdDecompositionTree.defaultProps = {}
 
 export default AntdDecompositionTree;
 
