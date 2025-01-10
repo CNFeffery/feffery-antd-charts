@@ -17,7 +17,9 @@ const preventUpdateProps = [
     'recentlyLegendInfo'
 ];
 
-// 定义小提琴图组件AntdViolin，部分API参数参考https://ant-design-charts.antgroup.com/api/plots/violin
+/**
+ * 小提琴图组件AntdViolin
+ */
 export default class AntdViolin extends Component {
 
     constructor(props) {
