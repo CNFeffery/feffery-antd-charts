@@ -17,7 +17,9 @@ const preventUpdateProps = [
     'recentlyLegendInfo'
 ];
 
-// 定义韦恩图组件AntdVenn，部分API参数参考https://ant-design-charts.antgroup.com/api/plots/venn
+/**
+ * 韦恩图组件AntdVenn
+ */
 export default class AntdVenn extends Component {
 
     constructor(props) {

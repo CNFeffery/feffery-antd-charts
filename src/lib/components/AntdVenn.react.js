@@ -20,6 +20,9 @@ import {
 
 const LazyAntdVenn = React.lazy(() => import(/* webpackChunkName: "plots" */ '../fragments/plots/AntdVenn.react'));
 
+/**
+ * 韦恩图组件AntdVenn
+ */
 const AntdVenn = (props) => {
     return (
         <Suspense fallback={null}>
@@ -28,162 +31,216 @@ const AntdVenn = (props) => {
     );
 }
 
-// 定义参数或属性
 AntdVenn.propTypes = {
-    // 部件id
+    /**
+     * 组件唯一id
+     */
     id: PropTypes.string,
 
-    // 辅助强制刷新
+    /**
+     * 对当前组件的`key`值进行更新，可实现强制重绘当前组件的效果
+     */
     key: PropTypes.string,
 
-    // css类名
+    /**
+     * 当前组件css类名
+     */
     className: PropTypes.string,
 
-    // 自定义css字典
+    /**
+     * 当前组件css样式
+     */
     style: PropTypes.object,
 
-    // 定义绘图所需数据，必须参数
+    /**
+     * 必填，定义绘图所需数据
+     */
     data: PropTypes.arrayOf(PropTypes.object).isRequired,
 
-    // 定义字段预处理元信息
+    /**
+     * 以字段为单位，配置图表数据元信息，来定义所涉及数据的类型和展示方式，具体见在线文档相关说明
+     */
     meta: metaBasePropTypes,
 
     /**
-     * 定义集合对应字段
+     * 集合映射字段
      */
     setsField: PropTypes.string,
 
     /**
-     * 定义圆形大小映射字段
+     * 尺寸映射字段
      */
     sizeField: PropTypes.string,
 
     /**
-     * 交集区域颜色混合方式，可选项有'multiply'、'normal'、'darken'、'lighten'、'screen'、'overlay'、'burn'、'dodge'
+     * 交集区域颜色混合方式，可选项有`'multiply'`、`'normal'`、`'darken'`、`'lighten'`、`'screen'`、`'overlay'`、`'burn'`、`'dodge'`
      */
     blendMode: PropTypes.oneOf(['multiply', 'normal', 'darken', 'lighten', 'screen', 'overlay', 'burn', 'dodge']),
 
     /**
-     * 配置集合圆形样式
+     * 控制集合填充样式，具体见在线文档相关说明
      */
     pointStyle: PropTypes.oneOfType([
         baseStyle,
         PropTypes.exact({
-            // 回调模式
+            /**
+             * js函数体字符串
+             */
             func: PropTypes.string
         })
     ]),
-
     /**
-     * 配置图形颜色
+     * 控制集合填充颜色，具体见在线文档相关说明
      */
     color: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.arrayOf(PropTypes.string),
         PropTypes.exact({
-            // 传入字符串形式的js函数体源码，例如
-            // (ref) => {
-            //     if (ref.series === '系列一'){
-            //         return 'red'
-            //     }
-            //     return 'blue'
-            // }
+            /**
+             * js函数体字符串
+             */
             func: PropTypes.string
         })
     ]),
 
-    // 定义图表容器像素宽度，默认为400
+    /**
+     * 图表容器像素宽度
+     */
     width: PropTypes.number,
 
-    // 定义图表容器像素高度，默认为400
+    /**
+     * 图表容器像素高度
+     */
     height: PropTypes.number,
 
-    // 设置图表是否自适应容器宽高，当设置为true时，width与height参数将失效，默认为true
+    /**
+     * 图表是否自适应所在父容器宽高，当`autoFit=True`时，`width`和`height`参数将失效
+     * 默认值：`true`
+     */
     autoFit: PropTypes.bool,
 
-    // 定义图表四个方向的空白间距值，可以为单个数字譬如16，也可以为四个数字构成的数组，按顺序代表上-右-下-左分别的像素间距
+    /**
+     * 画布内边距，传入单个数值表示四周边距，也可传入格式如`[上边距，右边距，下边距，左边距]`的数组，或传入`'auto'`开启底层自动计算
+     */
     padding: PropTypes.oneOfType([
         PropTypes.number,
         PropTypes.arrayOf(PropTypes.number),
         PropTypes.string
     ]),
 
-    // 定义在padding基础上额外的像素填充间距
+    /**
+     * 画布额外内边距，传入单个数值表示四周边距，也可传入格式如`[上边距，右边距，下边距，左边距]`的数组
+     */
     appendPadding: PropTypes.oneOfType([
         PropTypes.number,
         PropTypes.arrayOf(PropTypes.number),
         PropTypes.string
     ]),
 
-    // 设置图表渲染方式为'canvas'或'svg'模式，默认为'canvas'
+    /**
+     * 图表底层渲染方式，可选项有`'canvas'`和`'svg'`
+     * 默认值：`'canvas'`
+     */
     renderer: PropTypes.oneOf(['canvas', 'svg']),
 
     /**
-     * canvas模式下，控制渲染图表图片的像素比
-     * 默认：1
+     * `renderer='canvas'`时，控制渲染图表图片的像素比
+     * 默认值：`1`
      */
     pixelRatio: PropTypes.number,
 
-    // 设置语言，可选的有'zh-CN'与'en-US'
+    /**
+     * 图表文案语种，可选项有`'zh-CN'`、`'en-US'`
+     * 默认值：`'zh-CN'`
+     */
     locale: PropTypes.oneOf(['zh-CN', 'en-US']),
 
-    // 设置是否对超出绘图区域的几何元素进行裁剪
+    /**
+     * 是否对超出绘图区域的几何元素进行裁剪
+     */
     limitInPlot: PropTypes.bool,
 
-    // 配置图例相关参数
+    /**
+     * 配置图例相关参数，具体见在线文档相关说明
+     */
     legend: legendBasePropTypes,
 
-    // 配置文字标签相关参数
+    /**
+     * 配置数值标签相关参数，具体见在线文档相关说明
+     */
     label: labelBasePropTypes,
 
-    // 设置tooltip相关参数
+    /**
+     * 配置信息框相关参数，具体见在线文档相关说明
+     */
     tooltip: tooltipBasePropTypes,
 
-    // 配置动画相关参数
+    /**
+     * 配置动画相关参数，具体见在线文档相关说明
+     */
     animation: animationBasePropTypes,
 
-    // 常用事件监听参数
-    // tooltip显示事件
+    /**
+     * 事件监听属性，用于监听最近一次信息框显示事件
+     */
     recentlyTooltipChangeRecord: PropTypes.exact({
-        // 事件触发的时间戳信息
+        /**
+         * 事件时间戳
+         */
         timestamp: PropTypes.number,
-
-        // 对应的数据点信息
+        /**
+         * 涉及数据信息
+         */
         data: PropTypes.arrayOf(PropTypes.object)
     }),
 
-    // 单独集合圆形点击事件
+    /**
+     * 事件监听属性，用于监听最近一次集合填充点击事件
+     */
     recentlyCircleClickRecord: PropTypes.exact({
-        // 事件触发的时间戳信息
+        /**
+         * 事件时间戳
+         */
         timestamp: PropTypes.number,
-
-        // 对应的数据点信息
+        /**
+         * 涉及数据信息
+         */
         data: PropTypes.object
     }),
 
-    // 监听图例事件
+    /**
+     * 事件监听属性，用于监听最近一次图例点击事件
+     */
     recentlyLegendInfo: PropTypes.exact({
-        // 记录当前点击的图例项内容
+        /**
+         * 被点击图例项名称
+         */
         triggerItemName: PropTypes.any,
-        // 记录当前各图例项信息
+        /**
+         * 当前各图例项信息
+         */
         items: PropTypes.arrayOf(
             PropTypes.object
         )
     }),
 
-    // 用于在回调中传入uuid、ulid之类的唯一标识，来主动下载当前图表为png格式图片
+    /**
+     * 对当前组件的`downloadTrigger`值进行更新，可实现主动下载当前图表为`png`格式图片
+     */
     downloadTrigger: PropTypes.string,
 
-    // 主题配置
+    /**
+     * 配置主题相关参数，具体见在线文档相关说明
+     */
     theme: themeBasePropTypes,
 
     /**
-     * 交互功能项配置
+     * 配置交互功能相关参数，具体见在线文档相关说明
      */
     interactions: interactionsBasePropTypes,
 
     /**
-     * 状态样式配置
+     * 配置状态样式相关参数，具体见在线文档相关说明
      */
     state: stateBasePropTypes,
 
@@ -209,7 +266,6 @@ AntdVenn.propTypes = {
     setProps: PropTypes.func
 };
 
-// 设置默认参数
 AntdVenn.defaultProps = {
     locale: 'zh-CN',
     downloadTrigger: 'download-trigger'
