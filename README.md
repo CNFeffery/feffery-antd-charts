@@ -13,7 +13,7 @@
 
 </div>
 
-`feffery-components`计划子项目，`Plotly Dash`第三方组件库，基于`Antd Charts`，将常见的各类数据可视化图表组件引入`Dash`的生态中🥳，最新稳定版本：`0.1.0`（2025-01-06）
+`feffery-components`计划子项目，`Plotly Dash`第三方组件库，基于`Antd Charts`，将常见的各类数据可视化图表组件引入`Dash`的生态中🥳，最新稳定版本：`0.1.1`（2025-01-11）
 
 ## 1 最新版本安装方式
 

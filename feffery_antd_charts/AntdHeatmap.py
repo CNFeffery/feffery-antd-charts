@@ -5,18 +5,18 @@ from dash.development.base_component import Component, _explicitize_args
 
 class AntdHeatmap(Component):
     """An AntdHeatmap component.
-
+热力图组件AntdHeatmap
 
 Keyword arguments:
 
 - id (string; optional):
-    组件id.
+    组件唯一id.
 
 - key (string; optional):
-    辅助强制刷新.
+    对当前组件的`key`值进行更新，可实现强制重绘当前组件的效果.
 
 - className (string; optional):
-    css类名.
+    当前组件css类名.
 
 - style (dict; optional):
     css样式.
@@ -25,134 +25,154 @@ Keyword arguments:
     必填，用于定义绘图所需数据.
 
 - meta (optional):
-    字段预处理元信息.
+    以字段为单位，配置图表数据元信息，来定义所涉及数据的类型和展示方式，具体见在线文档相关说明.
 
 - xField (string; required):
-    定义作为x轴的字段名.
+    必填，图表x轴字段.
 
-- yField (string; required)
+- yField (string; required):
+    必填，图表y轴字段.
 
 - colorField (string; optional):
     定义作为色彩映射依据的字段.
 
 - sizeField (string; optional):
-    定义作为尺寸映射依据的字段.
+    图表尺寸映射字段.
 
 - reflect (a value equal to: 'x', 'y'; optional):
-    配置坐标轴映射，可选的有'x'、'y'.
+    坐标轴映射类型，可选项有`'x'`、`'y'`.
 
-- color (dict; optional)
+- color (dict; optional):
+    控制热力网格填充颜色，具体见在线文档相关说明.
 
     `color` is a string | list of strings | dict with keys:
 
-    - func (string; optional)
+    - func (string; optional):
+        js函数体字符串.
 
 - shape (a value equal to: 'rect', 'square', 'circle'; optional):
-    设置热力网格形状，可选的有'rect'、'square'、'square'.
+    热力网格形状，可选项有`'rect'`、`'square'`、`'circle'`.
 
 - coordinate (dict; optional):
-    配置坐标系相关参数.
+    配置坐标系相关参数，具体见在线文档相关说明.
 
     `coordinate` is a dict with keys:
 
     - type (a value equal to: 'cartesian', 'polar', 'helix', 'theta'; optional):
-        坐标系类型，可选的有'cartesian'（笛卡尔坐标系）、'polar'（极坐标系）、'helix'（螺旋坐标系）、'theta'（角度映射坐标系）.
+        坐标系类型，可选项有`'cartesian'`（笛卡尔坐标系）、`'polar'`（极坐标系）、`'helix'`（螺旋坐标系）、`'theta'`（角度映射坐标系）.
 
     - cfg (dict; optional):
-        坐标系配置项，作用于极坐标系.
+        坐标系配置项，适用于极坐标系.
 
         `cfg` is a dict with keys:
 
         - startAngle (number; optional):
-            配置起始弧度.
+            起始弧度.
 
         - endAngle (number; optional):
-            配置结束弧度.
+            结束弧度.
 
         - radius (number; optional):
-            配置极坐标系半径，取值在0到1之间.
+            极坐标系半径，取值应在`0`到`1`之间.
 
         - innerRadius (number; optional):
-            配置极坐标系内半径，取值在0到1之间.
+            极坐标系内半径，取值应在`0`到`1`之间.
 
 - sizeRatio (number; optional):
-    热力网格中图形的尺寸比例，当shape或sizeField定义时有效.
+    热力网格中图形的尺寸比例，需有效定义`shape`或`sizeField`.
 
-- heatmapStyle (dict; optional)
+- heatmapStyle (dict; optional):
+    控制热力网格填充样式，具体见在线文档相关说明.
 
     `heatmapStyle` is a dict with keys:
 
-    - func (string; optional)
+    - func (string; optional):
+        js函数体字符串.
 
-- xAxis (optional)
+- xAxis (optional):
+    配置横坐标轴相关参数，具体见在线文档相关说明.
 
-- yAxis (optional)
+- yAxis (optional):
+    配置纵坐标轴相关参数，具体见在线文档相关说明.
 
 - width (number; optional):
-    定义图表容器像素宽度  默认：400.
+    图表容器像素宽度.
 
 - height (number; optional):
-    定义图表容器像素高度  默认：400.
+    图表容器像素高度.
 
 - autoFit (boolean; optional):
-    图表是否自适应容器宽高，当设置为True时，width与height参数将失效  默认：True.
+    图表是否自适应所在父容器宽高，当`autoFit=True`时，`width`和`height`参数将失效  默认值：`True`.
 
 - padding (number | list of numbers | string; optional):
-    定义图表四个方向的空白间距值，可以为单个数字譬如16，也可以为四个数字构成的数组，  按顺序代表上-右-下-左分别的像素间距.
+    画布内边距，传入单个数值表示四周边距，也可传入格式如`[上边距，右边距，下边距，左边距]`的数组，或传入`'auto'`开启底层自动计算.
 
 - appendPadding (number | list of numbers | string; optional):
-    定义在padding基础上额外的像素填充间距.
+    画布额外内边距，传入单个数值表示四周边距，也可传入格式如`[上边距，右边距，下边距，左边距]`的数组.
 
 - renderer (a value equal to: 'canvas', 'svg'; optional):
-    图表渲染模式，可选的有'canvas'、'svg'  默认：'canvas'.
+    图表底层渲染方式，可选项有`'canvas'`和`'svg'`  默认值：`'canvas'`.
 
 - pixelRatio (number; optional):
-    canvas模式下，控制渲染图表图片的像素比  默认：1.
+    `renderer='canvas'`时，控制渲染图表图片的像素比  默认值：`1`.
 
 - locale (a value equal to: 'zh-CN', 'en-US'; default 'zh-CN'):
-    设置语言，可选的有'zh-CN'与'en-US'.
+    图表文案语种，可选项有`'zh-CN'`、`'en-US'`  默认值：`'zh-CN'`.
 
 - limitInPlot (boolean; optional):
     是否对超出绘图区域的几何元素进行裁剪.
 
-- legend (optional)
+- legend (optional):
+    配置图例相关参数，具体见在线文档相关说明.
 
-- label (optional)
+- label (optional):
+    配置数值标签相关参数，具体见在线文档相关说明.
 
-- tooltip (optional)
+- tooltip (optional):
+    配置信息框相关参数，具体见在线文档相关说明.
 
-- annotations (optional)
+- annotations (optional):
+    配置标注相关参数，具体见在线文档相关说明.
 
 - pattern (optional):
-    配置图形填充贴图样式.
+    配置图形填充贴图相关参数，具体见在线文档相关说明.
 
-- animation (optional)
+- animation (optional):
+    配置动画相关参数，具体见在线文档相关说明.
 
-- recentlyTooltipChangeRecord (dict; optional)
+- recentlyTooltipChangeRecord (dict; optional):
+    事件监听属性，用于监听最近一次信息框显示事件.
 
     `recentlyTooltipChangeRecord` is a dict with keys:
 
-    - timestamp (number; optional)
+    - timestamp (number; optional):
+        事件时间戳.
 
-    - data (list of dicts; optional)
+    - data (list of dicts; optional):
+        涉及数据信息.
 
-- recentlyGridClickRecord (dict; optional)
+- recentlyGridClickRecord (dict; optional):
+    事件监听属性，用于监听最近一次热力网格点击事件.
 
     `recentlyGridClickRecord` is a dict with keys:
 
-    - timestamp (number; optional)
+    - timestamp (number; optional):
+        事件时间戳.
 
-    - data (dict; optional)
+    - data (dict; optional):
+        涉及数据信息.
 
-- downloadTrigger (string; default 'download-trigger')
+- downloadTrigger (string; default 'download-trigger'):
+    对当前组件的`downloadTrigger`值进行更新，可实现主动下载当前图表为`png`格式图片.
 
-- theme (optional)
+- theme (optional):
+    配置主题相关参数，具体见在线文档相关说明.
 
 - interactions (optional):
-    交互功能项配置.
+    配置交互功能相关参数，具体见在线文档相关说明.
 
 - state (optional):
-    状态样式配置.
+    配置状态样式相关参数，具体见在线文档相关说明.
 
 - loading_state (dict; optional)
 

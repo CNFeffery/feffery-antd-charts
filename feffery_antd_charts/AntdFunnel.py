@@ -5,124 +5,171 @@ from dash.development.base_component import Component, _explicitize_args
 
 class AntdFunnel(Component):
     """An AntdFunnel component.
-
+漏斗图组件AntdFunnel
 
 Keyword arguments:
 
-- id (string; optional)
+- id (string; optional):
+    组件唯一id.
 
-- key (string; optional)
+- key (string; optional):
+    对当前组件的`key`值进行更新，可实现强制重绘当前组件的效果.
 
-- className (string; optional)
+- className (string; optional):
+    当前组件css类名.
 
-- style (dict; optional)
+- style (dict; optional):
+    当前组件css样式.
 
-- data (list of dicts; required)
+- data (list of dicts; required):
+    必填，定义绘图所需数据.
 
-- meta (optional)
+- meta (optional):
+    以字段为单位，配置图表数据元信息，来定义所涉及数据的类型和展示方式，具体见在线文档相关说明.
 
-- xField (string; required)
+- xField (string; required):
+    必填，图表x轴字段.
 
-- yField (string; required)
+- yField (string; required):
+    必填，图表y轴字段.
 
-- compareField (string; optional)
+- compareField (string; optional):
+    图表对比字段.
 
-- seriesField (string; optional)
+- seriesField (string; optional):
+    图表分组字段.
 
-- isTransposed (boolean; optional)
+- isTransposed (boolean; optional):
+    是否转置显示  默认值：`True`.
 
-- shape (a value equal to: 'funnel', 'pyramid'; optional)
+- shape (a value equal to: 'funnel', 'pyramid'; optional):
+    漏斗形状，可选项有`'funnel'`、`'pyramid'`.
 
-- dynamicHeight (boolean; optional)
+- dynamicHeight (boolean; optional):
+    是否启用动态高度映射  默认值：`False`.
 
-- maxSize (number; optional)
+- maxSize (number; optional):
+    漏斗最大宽度比例，取值应在`0`到`1`之间.
 
-- minSize (number; optional)
+- minSize (number; optional):
+    漏斗最小宽度比例，取值应在`0`到`1`之间.
 
-- funnelStyle (dict; optional)
+- funnelStyle (dict; optional):
+    控制漏斗样式，具体见在线文档相关说明.
 
     `funnelStyle` is a dict with keys:
 
-    - func (string; optional)
+    - func (string; optional):
+        js函数体字符串.
 
-- conversionTag (dict; optional)
+- conversionTag (dict; optional):
+    配置转化标签相关参数，具体见在线文档相关说明.
 
     `conversionTag` is a boolean | dict with keys:
 
-    - offsetX (number; optional)
+    - offsetX (number; optional):
+        水平方向像素偏移量.
 
-    - offsetY (number; optional)
+    - offsetY (number; optional):
+        竖直方向像素偏移量.
 
-    - style (optional)
+    - style (optional):
+        文本样式.
 
-    - formatter (dict; optional)
+    - formatter (dict; optional):
+        自定义转化率计算函数.
 
         `formatter` is a dict with keys:
 
-        - func (string; optional)
+        - func (string; optional):
+            js函数体字符串.
 
-- width (number; optional)
+- width (number; optional):
+    图表容器像素宽度.
 
-- height (number; optional)
+- height (number; optional):
+    图表容器像素高度.
 
-- autoFit (boolean; optional)
+- autoFit (boolean; optional):
+    图表是否自适应所在父容器宽高，当`autoFit=True`时，`width`和`height`参数将失效  默认值：`True`.
 
-- padding (number | list of numbers | string; optional)
+- padding (number | list of numbers | string; optional):
+    画布内边距，传入单个数值表示四周边距，也可传入格式如`[上边距，右边距，下边距，左边距]`的数组，或传入`'auto'`开启底层自动计算.
 
-- appendPadding (number | list of numbers | string; optional)
+- appendPadding (number | list of numbers | string; optional):
+    画布额外内边距，传入单个数值表示四周边距，也可传入格式如`[上边距，右边距，下边距，左边距]`的数组.
 
-- renderer (a value equal to: 'canvas', 'svg'; optional)
+- renderer (a value equal to: 'canvas', 'svg'; optional):
+    图表底层渲染方式，可选项有`'canvas'`和`'svg'`  默认值：`'canvas'`.
 
 - pixelRatio (number; optional):
-    canvas模式下，控制渲染图表图片的像素比  默认：1.
+    `renderer='canvas'`时，控制渲染图表图片的像素比  默认值：`1`.
 
-- locale (a value equal to: 'zh-CN', 'en-US'; default 'zh-CN')
+- locale (a value equal to: 'zh-CN', 'en-US'; default 'zh-CN'):
+    图表文案语种，可选项有`'zh-CN'`、`'en-US'`  默认值：`'zh-CN'`.
 
-- limitInPlot (boolean; optional)
+- limitInPlot (boolean; optional):
+    是否对超出绘图区域的几何元素进行裁剪.
 
-- legend (optional)
+- legend (optional):
+    配置图例相关参数，具体见在线文档相关说明.
 
-- label (optional)
+- label (optional):
+    配置数值标签相关参数，具体见在线文档相关说明.
 
-- tooltip (optional)
+- tooltip (optional):
+    配置信息框相关参数，具体见在线文档相关说明.
 
-- annotations (optional)
+- annotations (optional):
+    配置标注相关参数，具体见在线文档相关说明.
 
-- animation (optional)
+- animation (optional):
+    配置动画相关参数，具体见在线文档相关说明.
 
-- recentlyTooltipChangeRecord (dict; optional)
+- recentlyTooltipChangeRecord (dict; optional):
+    事件监听属性，用于监听最近一次信息框显示事件.
 
     `recentlyTooltipChangeRecord` is a dict with keys:
 
-    - timestamp (number; optional)
+    - timestamp (number; optional):
+        事件时间戳.
 
-    - data (list of dicts; optional)
+    - data (list of dicts; optional):
+        涉及数据信息.
 
-- recentlyAreaClickRecord (dict; optional)
+- recentlyAreaClickRecord (dict; optional):
+    事件监听属性，用于监听最近一次区域点击事件.
 
     `recentlyAreaClickRecord` is a dict with keys:
 
-    - timestamp (number; optional)
+    - timestamp (number; optional):
+        事件时间戳.
 
-    - data (dict; optional)
+    - data (dict; optional):
+        涉及数据信息.
 
-- recentlyLegendInfo (dict; optional)
+- recentlyLegendInfo (dict; optional):
+    事件监听属性，用于监听最近一次图例点击事件.
 
     `recentlyLegendInfo` is a dict with keys:
 
-    - triggerItemName (boolean | number | string | dict | list; optional)
+    - triggerItemName (boolean | number | string | dict | list; optional):
+        被点击图例项名称.
 
-    - items (list of dicts; optional)
+    - items (list of dicts; optional):
+        当前各图例项信息.
 
-- downloadTrigger (string; default 'download-trigger')
+- downloadTrigger (string; default 'download-trigger'):
+    对当前组件的`downloadTrigger`值进行更新，可实现主动下载当前图表为`png`格式图片.
 
-- theme (optional)
+- theme (optional):
+    配置主题相关参数，具体见在线文档相关说明.
 
 - interactions (optional):
-    交互功能项配置.
+    配置交互功能相关参数，具体见在线文档相关说明.
 
 - state (optional):
-    状态样式配置.
+    配置状态样式相关参数，具体见在线文档相关说明.
 
 - loading_state (dict; optional)
 

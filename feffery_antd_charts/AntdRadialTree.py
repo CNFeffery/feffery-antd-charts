@@ -16,10 +16,10 @@ Keyword arguments:
     对当前组件的`key`值进行更新，可实现强制重绘当前组件的效果.
 
 - className (string; optional):
-    css类名.
+    当前组件css类名.
 
 - style (dict; optional):
-    css样式.
+    当前组件css样式.
 
 - data (dict; required):
     必填，定义绘图所需数据.
@@ -31,31 +31,30 @@ Keyword arguments:
     图表容器像素高度.
 
 - autoFit (boolean; default True):
-    图表是否自适应容器宽高，设置为`True`时，`width`与`height`参数将失效  默认值：`True`.
+    图表是否自适应所在父容器宽高，当`autoFit=True`时，`width`和`height`参数将失效  默认值：`True`.
 
 - nodeCfg (dict; optional):
-    配置节点相关参数.
+    配置节点相关参数，具体见在线文档相关说明.
 
     `nodeCfg` is a dict with keys:
 
     - type (a value equal to: 'icon-node', 'card', 'circle', 'rect', 'ellipse', 'diamond', 'triangle', 'star', 'image', 'modelRect', 'donut'; optional):
-        节点类型，可选项有`'icon-node'`、`'card'`、`'circle'`、`'rect'`、`'ellipse'`、`'diamond'`、`'triangle'`、
-        `'star'`、`'image'`、`'modelRect'`、`'donut'`.
+        节点类型，可选项有`'icon-node'`、`'card'`、`'circle'`、`'rect'`、`'ellipse'`、`'diamond'`、`'triangle'`、`'star'`、`'image'`、`'modelRect'`、`'donut'`.
 
     - size (list of numbers; optional):
-        节点最小像素尺寸，格式如：`[像素宽度, 像素高度]`  默认值：`[100, 44]`.
+        节点像素尺寸范围  默认值：`[100, 44]`.
 
     - style (dict; optional):
-        节点样式，支持`func`回调.
+        节点样式.
 
         `style` is a dict with keys:
 
         - func (string; optional):
 
-            回调函数字符串.
+            js函数体字符串.
 
     - label (dict; optional):
-        节点文本样式，支持`func`回调.
+        节点文本样式.
 
         `label` is a dict with keys:
 
@@ -64,30 +63,31 @@ Keyword arguments:
             `style` is a dict with keys:
 
     - func (string; optional):
-        回调函数字符串.
+        js函数体字符串.
 
     - nodeStateStyles (dict with strings as keys and values of type ; optional):
-        节点在不同状态下的样式.
+        配置节点不同状态下的样式，可用的状态有`'hover'`.
 
-- edgeCfg (dict; optional)
+- edgeCfg (dict; optional):
+    配置边相关参数，具体见在线文档相关说明.
 
     `edgeCfg` is a dict with keys:
 
     - style (dict; optional):
-        边样式，支持`func`回调.
+        边样式.
 
         `style` is a dict with keys:
 
         - func (string; optional):
 
-            回调函数字符串.
+            js函数体字符串.
 
     - type (a value equal to: 'line', 'polyline', 'arc', 'quadratic', 'cubic', 'cubic-vertical', 'cubic-horizontal', 'loop'; optional):
-        边类型，可选项有`'line'`、`'polyline'`、`'arc'`、`'quadratic'`、`'cubic'`、`'cubic-vertical'`、
-        `'cubic-horizontal'`、`'loop'`  默认值：`'polyline'`.
+        边类型，可选项有`'line'`、`'polyline'`、`'arc'`、`'quadratic'`、`'cubic'`、`'cubic-vertical'`、`'cubic-horizontal'`、`'loop'`
+        默认值：`'cubic-horizontal'`.
 
     - label (dict; optional):
-        边文本样式，支持`func`回调.
+        边文本样式.
 
         `label` is a dict with keys:
 
@@ -96,7 +96,7 @@ Keyword arguments:
             `style` is a dict with keys:
 
     - func (string; optional):
-        回调函数字符串.
+        js函数体字符串.
 
     - startArrow (dict; optional):
         配置边开始箭头.
@@ -145,23 +145,22 @@ Keyword arguments:
             填充色.
 
     - edgeStateStyles (dict with strings as keys and values of type ; optional):
-        边在不同状态下的样式.
+        配置边不同状态下的样式，可用的状态有`'hover'`.
 
 - behaviors (list of a value equal to: 'drag-canvas', 'scroll-canvas', 'zoom-canvas', 'drag-node', 'click-select's; default ['drag-canvas', 'zoom-canvas']):
-    启用的交互模式，可选项有`'drag-canvas'`（拖拽画布）、`'scroll-canvas'`（滚轮滚动画布）、
-    `'zoom-canvas'`（缩放画布）、`'drag-node'`（拖拽节点）、'click-select'（节点选择）
+    配置要启用的交互模式，支持多选，可选项有`'drag-canvas'`、`'scroll-canvas'`、`'zoom-canvas'`、`'drag-node'`、`'click-select'`
     默认值：`['drag-canvas', 'zoom-canvas']`.
 
 - animate (boolean; default False):
-    是否开启动画  默认值：`False`.
+    是否启用动画效果  默认值：`True`.
 
 - minimapCfg (dict; optional):
-    配置迷你图相关参数.
+    配置迷你图相关参数，具体见在线文档.
 
     `minimapCfg` is a dict with keys:
 
     - show (boolean; optional):
-        是否开启迷你图  默认值：`False`.
+        是否展示迷你图  默认值：`False`.
 
     - viewportClassName (string; optional):
         迷你图css类名.
@@ -170,21 +169,18 @@ Keyword arguments:
         迷你图类型，可选项有`'default'`、`'keyShape'`、`'delegate'`.
 
     - size (list of numbers; optional):
-        迷你图像素尺寸，格式如：`[像素宽度, 像素高度]`.
-
-    - delegateStyle (optional)
-
-    - refresh (boolean; optional)
+        配置迷你图像素尺寸，格式如`[宽度, 高度]`.
 
     - padding (number; optional):
-        像素内边距.
+        内填充像素尺寸.
 
-- layout (dict; optional)
+- layout (dict; optional):
+    配置布局相关参数，具体见在线文档.
 
     `layout` is a dict with keys:
 
     - direction (a value equal to: 'TB', 'BT', 'LR', 'RL'; optional):
-        布局方向，可选项有`'TB'`、`'BT'`、`'LR'`、`'RL'`.
+        布局方式，可选项有`'TB'`、`'BT'`、`'LR'`、`'RL'`.
 
     - nodesep (number; optional):
         节点垂直方向像素间隔大小.
@@ -193,59 +189,59 @@ Keyword arguments:
         节点水平方向像素间隔大小.
 
 - recentlyNodeClickRecord (dict; optional):
-    节点点击事件监听.
+    事件监听属性，用于监听最近一次节点点击事件.
 
     `recentlyNodeClickRecord` is a dict with keys:
 
     - timestamp (number; optional):
-        事件触发时间戳.
+        事件时间戳.
 
     - data (dict; optional):
-        事件对应节点信息，点击空白处时为空.
+        涉及数据信息.
 
 - recentlyNodeDoubleClickRecord (dict; optional):
-    节点双击事件监听.
+    事件监听属性，用于监听最近一次节点双击事件.
 
     `recentlyNodeDoubleClickRecord` is a dict with keys:
 
     - timestamp (number; optional):
-        事件触发时间戳.
+        事件时间戳.
 
     - data (dict; optional):
-        事件对应节点信息，点击空白处时为空.
+        涉及数据信息.
 
 - recentlyEdgeClickRecord (dict; optional):
-    边点击事件监听.
+    事件监听属性，用于监听最近一次边点击事件.
 
     `recentlyEdgeClickRecord` is a dict with keys:
 
     - timestamp (number; optional):
-        事件触发时间戳.
+        事件时间戳.
 
     - data (dict; optional):
-        事件对应节点信息，点击空白处时为空.
+        涉及数据信息.
 
 - recentlyEdgeDoubleClickRecord (dict; optional):
-    边双击事件监听.
+    事件监听属性，用于监听最近一次边双击事件.
 
     `recentlyEdgeDoubleClickRecord` is a dict with keys:
 
     - timestamp (number; optional):
-        事件触发时间戳.
+        事件时间戳.
 
     - data (dict; optional):
-        事件对应节点信息，点击空白处时为空.
+        涉及数据信息.
 
 - selectedNodes (dict; optional):
-    节点选中事件监听，需要在``behaviors``中开启``click-select``.
+    事件监听属性，用于监听最近一次节点选中事件，需要在``behaviors``中开启``click-select``.
 
     `selectedNodes` is a dict with keys:
 
     - timestamp (number; optional):
-        事件触发时间戳.
+        事件时间戳.
 
     - data (list; optional):
-        对应选中的节点信息数组.
+        涉及数据信息.
 
 - loading_state (dict; optional)
 

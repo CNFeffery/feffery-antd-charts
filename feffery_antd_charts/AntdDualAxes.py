@@ -5,49 +5,67 @@ from dash.development.base_component import Component, _explicitize_args
 
 class AntdDualAxes(Component):
     """An AntdDualAxes component.
-
+双轴图组件AntdDualAxes
 
 Keyword arguments:
 
-- id (string; optional)
+- id (string; optional):
+    组件唯一id.
 
-- key (string; optional)
+- key (string; optional):
+    对当前组件的`key`值进行更新，可实现强制重绘当前组件的效果.
 
-- className (string; optional)
+- className (string; optional):
+    当前组件css类名.
 
-- style (dict; optional)
+- style (dict; optional):
+    当前组件css样式.
 
-- data (list of list of dictss; required)
+- data (list of list of dictss; required):
+    必填，定义绘图所需数据.
 
-- meta (optional)
+- meta (optional):
+    以字段为单位，配置图表数据元信息，来定义所涉及数据的类型和展示方式，具体见在线文档相关说明.
 
-- xField (string; required)
+- xField (string; required):
+    必填，图表x轴字段.
 
-- yField (list of strings; required)
+- yField (list of strings; required):
+    必填，图表y轴字段，格式如`[左轴字段, 右轴字段]`.
 
-- geometryOptions (list of dicts; optional)
+- geometryOptions (list of dicts; optional):
+    分别配置左右轴相关参数，格式如`[左轴配置, 右轴配置]`，具体见在线文档相关说明.
 
     `geometryOptions` is a list of dicts with keys:
 
-    - geometry (a value equal to: 'line', 'column'; optional)
+    - geometry (a value equal to: 'line', 'column'; optional):
+        当前轴图表类型，可选项为`'line'`（折线图）、`'column'`（柱状图）.
 
-    - seriesField (string; optional)
+    - seriesField (string; optional):
+        当前轴分组字段.
 
-    - smooth (boolean; optional)
+    - smooth (boolean; optional):
+        针对折线图是否渲染为光滑曲线  默认值：`False`.
 
-    - connectNulls (boolean; optional)
+    - connectNulls (boolean; optional):
+        针对折线图中的缺失值片段，是否对空数据段两端进行连线  默认值：`True`.
 
-    - lineStyle (dict; optional)
+    - lineStyle (dict; optional):
+        控制折线样式，具体见在线文档相关说明.
 
         `lineStyle` is a dict with keys:
 
-        - func (string; optional)
+        - func (string; optional):
 
-    - point (dict; optional)
+            js函数体字符串.
+
+    - point (dict; optional):
+        配置折点相关参数，具体见在线文档相关说明.
 
         `point` is a dict with keys:
 
-        - color (dict; optional)
+        - color (dict; optional):
+            配置折点颜色，具体见在线文档相关说明.
 
             `color` is a string
 
@@ -55,108 +73,152 @@ Keyword arguments:
 
       Or dict with keys:
 
-    - func (string; optional)
+    - func (string; optional):
+        js函数体字符串.
 
-        - shape (dict; optional)
+        - shape (dict; optional):
+            配置折点形状，具体见在线文档相关说明.
 
             `shape` is a string | dict with keys:
 
-    - func (string; optional)
+    - func (string; optional):
+        js函数体字符串.
 
-        - style (dict; optional)
+        - style (dict; optional):
+            配置折点样式，具体见在线文档相关说明.
 
             `style` is a dict with keys:
 
-    - func (string; optional)
+    - func (string; optional):
+        js函数体字符串.
 
-    - label (optional)
+    - label (optional):
+        配置数值标签相关参数，具体见在线文档相关说明.
 
-    - color (dict; optional)
+    - color (dict; optional):
+        控制折线颜色，具体见在线文档相关说明.
 
         `color` is a string | list of strings | dict with keys:
 
-        - func (string; optional)
+        - func (string; optional):
 
-    - stepType (string; optional) | dict with keys:
+            js函数体字符串.
 
-    - geometry (a value equal to: 'line', 'column'; optional)
+    - stepType (string; optional):
+        阶梯折线图类型，可选项有`'hv'`、`'vh'`、`'hvh'`、`'vhv'`，其中`'h'`代表水平方向，`'v'`代表竖直方向，譬如`'vh`就代表先竖直再水平. | dict with keys:
 
-    - seriesField (string; optional)
+    - geometry (a value equal to: 'line', 'column'; optional):
+        当前轴图表类型，可选项为`'line'`（折线图）、`'column'`（柱状图）.
 
-    - groupField (string; optional)
+    - seriesField (string; optional):
+        当前轴分组字段.
 
-    - isGroup (boolean; optional)
+    - groupField (string; optional):
+        `isGroup=True`时有效，用于针对堆叠分组条形图指定分组字段.
 
-    - isStack (boolean; optional)
+    - isGroup (boolean; optional):
+        `seriesField`有效时，是否渲染分组条形图.
 
-    - columnWidthRatio (number; optional)
+    - isStack (boolean; optional):
+        `seriesField`有效时，是否渲染堆叠条形图.
 
-    - marginRatio (number; optional)
+    - columnWidthRatio (number; optional):
+        柱体宽度比例，取值在`0`到`1`之间.
 
-    - columnStyle (dict; optional)
+    - marginRatio (number; optional):
+        分组柱体间隔宽度比例，取值在`0`到`1`之间.
+
+    - columnStyle (dict; optional):
+        控制柱体填充样式，具体见在线文档相关说明.
 
         `columnStyle` is a dict with keys:
 
-        - func (string; optional)
+        - func (string; optional):
 
-    - label (optional)
+            js函数体字符串.
 
-    - color (dict; optional)
+    - label (optional):
+        配置数值标签相关参数，具体见在线文档相关说明.
+
+    - color (dict; optional):
+        控制柱体填充颜色，具体见在线文档相关说明.
 
         `color` is a string | list of strings | dict with keys:
 
-        - func (string; optional)
+        - func (string; optional):
 
-- width (number; optional)
+            js函数体字符串.
 
-- height (number; optional)
+- width (number; optional):
+    图表容器像素宽度.
 
-- autoFit (boolean; optional)
+- height (number; optional):
+    图表容器像素高度.
 
-- padding (number | list of numbers | a value equal to: 'auto'; optional)
+- autoFit (boolean; optional):
+    图表是否自适应所在父容器宽高，当`autoFit=True`时，`width`和`height`参数将失效  默认值：`True`.
 
-- appendPadding (number | list of numbers; optional)
+- padding (number | list of numbers | a value equal to: 'auto'; optional):
+    画布内边距，传入单个数值表示四周边距，也可传入格式如`[上边距，右边距，下边距，左边距]`的数组，或传入`'auto'`开启底层自动计算.
 
-- renderer (a value equal to: 'canvas', 'svg'; optional)
+- appendPadding (number | list of numbers; optional):
+    画布额外内边距，传入单个数值表示四周边距，也可传入格式如`[上边距，右边距，下边距，左边距]`的数组.
+
+- renderer (a value equal to: 'canvas', 'svg'; optional):
+    图表底层渲染方式，可选项有`'canvas'`和`'svg'`  默认值：`'canvas'`.
 
 - pixelRatio (number; optional):
-    canvas模式下，控制渲染图表图片的像素比  默认：1.
+    `renderer='canvas'`时，控制渲染图表图片的像素比  默认值：`1`.
 
-- locale (a value equal to: 'zh-CN', 'en-US'; default 'zh-CN')
+- locale (a value equal to: 'zh-CN', 'en-US'; default 'zh-CN'):
+    图表文案语种，可选项有`'zh-CN'`、`'en-US'`  默认值：`'zh-CN'`.
 
-- limitInPlot (boolean; optional)
+- limitInPlot (boolean; optional):
+    是否对超出绘图区域的几何元素进行裁剪.
 
-- tooltip (optional)
+- tooltip (optional):
+    配置信息框相关参数，具体见在线文档相关说明.
 
-- xAxis (optional)
+- xAxis (optional):
+    配置横坐标轴相关参数，具体见在线文档相关说明.
 
-- yAxis (dict with strings as keys and values of type ; optional)
+- yAxis (dict with strings as keys and values of type ; optional):
+    配置纵坐标轴相关参数，具体见在线文档相关说明.
 
-- annotations (dict with strings as keys and values of type ; optional)
+- annotations (dict with strings as keys and values of type ; optional):
+    配置标注相关参数，具体见在线文档相关说明.
 
-- legend (optional)
+- legend (optional):
+    配置图例相关参数，具体见在线文档相关说明.
 
-- slider (optional)
+- slider (optional):
+    配置缩略轴相关参数，具体见在线文档相关说明.
 
-- animation (optional)
+- animation (optional):
+    配置动画相关参数，具体见在线文档相关说明.
 
-- recentlyClickRecord (dict; optional)
+- recentlyClickRecord (dict; optional):
+    事件监听属性，用于监听最近一次数据项点击事件.
 
     `recentlyClickRecord` is a dict with keys:
 
-    - timestamp (number; optional)
+    - timestamp (number; optional):
+        事件时间戳.
 
-    - data (dict; optional)
+    - data (dict; optional):
+        涉及数据信息.
 
-- downloadTrigger (string; default 'download-trigger')
+- downloadTrigger (string; default 'download-trigger'):
+    对当前组件的`downloadTrigger`值进行更新，可实现主动下载当前图表为`png`格式图片.
 
-- theme (optional)
+- theme (optional):
+    配置主题相关参数，具体见在线文档相关说明.
 
 - interactions (optional):
-    交互功能项配置.
+    配置交互功能相关参数，具体见在线文档相关说明.
 
 - state (optional):
-    状态样式配置.
+    配置状态样式相关参数，具体见在线文档相关说明.
 
 - loading_state (dict; optional)
 
