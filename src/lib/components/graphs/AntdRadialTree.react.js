@@ -35,12 +35,12 @@ AntdRadialTree.propTypes = {
     key: PropTypes.string,
 
     /**
-     * css类名
+     * 当前组件css类名
      */
     className: PropTypes.string,
 
     /**
-     * css样式
+     * 当前组件css样式
      */
     style: PropTypes.object,
 
@@ -59,104 +59,95 @@ AntdRadialTree.propTypes = {
      */
     height: PropTypes.number,
 
-    // 设置图表是否自适应容器宽高，当设置为true时，width与height参数将失效，默认为true
     /**
-     * 图表是否自适应容器宽高，设置为`true`时，`width`与`height`参数将失效
+     * 图表是否自适应所在父容器宽高，当`autoFit=True`时，`width`和`height`参数将失效
      * 默认值：`true`
      */
     autoFit: PropTypes.bool,
 
     /**
-     * 配置节点相关参数
+     * 配置节点相关参数，具体见在线文档相关说明
      */
     nodeCfg: PropTypes.exact({
         /**
-         * 节点类型，可选项有`'icon-node'`、`'card'`、`'circle'`、`'rect'`、`'ellipse'`、`'diamond'`、`'triangle'`、
-         * `'star'`、`'image'`、`'modelRect'`、`'donut'`
+         * 节点类型，可选项有`'icon-node'`、`'card'`、`'circle'`、`'rect'`、`'ellipse'`、`'diamond'`、`'triangle'`、`'star'`、`'image'`、`'modelRect'`、`'donut'`
          */
         type: PropTypes.oneOf(['icon-node', 'card', 'circle', 'rect', 'ellipse', 'diamond', 'triangle', 'star', 'image', 'modelRect', 'donut']),
-
-        // 设置节点最小尺寸，默认为[120, 40]
         /**
-         * 节点最小像素尺寸，格式如：`[像素宽度, 像素高度]`
+         * 节点像素尺寸范围
          * 默认值：`[100, 44]`
          */
         size: PropTypes.arrayOf(PropTypes.number),
-
         /**
-         * 节点样式，支持`func`回调
+         * 节点样式
          */
         style: PropTypes.oneOfType([
             baseStyle,
             PropTypes.exact({
                 /**
-                 * 回调函数字符串
+                 * js函数体字符串
                  */
                 func: PropTypes.string
             })
         ]),
-
         /**
-         * 节点文本样式，支持`func`回调
+         * 节点文本样式
          */
         label: PropTypes.exact({
             style: PropTypes.oneOfType([
                 baseStyle,
                 PropTypes.exact({
                     /**
-                     * 回调函数字符串
+                     * js函数体字符串
                      */
                     func: PropTypes.string
                 })
             ])
         }),
-
         /**
-         * 节点在不同状态下的样式
+         * 配置节点不同状态下的样式，可用的状态有`'hover'`
          */
         nodeStateStyles: PropTypes.objectOf(baseStyle)
     }),
 
-    // 配置边
+    /**
+     * 配置边相关参数，具体见在线文档相关说明
+     */
     edgeCfg: PropTypes.exact({
         /**
-         * 边样式，支持`func`回调
+         * 边样式
          */
         style: PropTypes.oneOfType([
             baseStyle,
             PropTypes.exact({
                 /**
-                 * 回调函数字符串
+                 * js函数体字符串
                  */
                 func: PropTypes.string
             })
         ]),
-
         /**
-         * 边类型，可选项有`'line'`、`'polyline'`、`'arc'`、`'quadratic'`、`'cubic'`、`'cubic-vertical'`、
-         * `'cubic-horizontal'`、`'loop'`
-         * 默认值：`'polyline'`
+         * 边类型，可选项有`'line'`、`'polyline'`、`'arc'`、`'quadratic'`、`'cubic'`、`'cubic-vertical'`、`'cubic-horizontal'`、`'loop'`
+         * 默认值：`'cubic-horizontal'`
          */
         type: PropTypes.oneOf([
             'line', 'polyline', 'arc', 'quadratic', 'cubic',
             'cubic-vertical', 'cubic-horizontal', 'loop'
         ]),
-
         /**
-         * 边文本样式，支持`func`回调
+         * 边文本样式
          */
         label: PropTypes.exact({
             style: PropTypes.oneOfType([
                 baseStyle,
                 PropTypes.exact({
                     /**
-                     * 回调函数字符串
+                     * js函数体字符串
                      */
                     func: PropTypes.string
                 })
             ])
         }),
-
         /**
          * 配置边开始箭头
          */
@@ -186,7 +177,6 @@ AntdRadialTree.propTypes = {
              */
             fill: PropTypes.string
         }),
-
         /**
          * 配置边结束箭头
          */
@@ -216,16 +206,14 @@ AntdRadialTree.propTypes = {
              */
             fill: PropTypes.string
         }),
-
         /**
-         * 边在不同状态下的样式
+         * 配置边不同状态下的样式，可用的状态有`'hover'`
          */
         edgeStateStyles: PropTypes.objectOf(baseStyle)
     }),
 
     /**
-     * 启用的交互模式，可选项有`'drag-canvas'`（拖拽画布）、`'scroll-canvas'`（滚轮滚动画布）、
-     * `'zoom-canvas'`（缩放画布）、`'drag-node'`（拖拽节点）、'click-select'（节点选择）
+     * 配置要启用的交互模式，支持多选，可选项有`'drag-canvas'`、`'scroll-canvas'`、`'zoom-canvas'`、`'drag-node'`、`'click-select'`
      * 默认值：`['drag-canvas', 'zoom-canvas']`
      */
     behaviors: PropTypes.arrayOf(
@@ -233,17 +221,17 @@ AntdRadialTree.propTypes = {
     ),
 
     /**
-     * 是否开启动画
-     * 默认值：`false`
+     * 是否启用动画效果
+     * 默认值：`true`
      */
     animate: PropTypes.bool,
 
     /**
-     * 配置迷你图相关参数
+     * 配置迷你图相关参数，具体见在线文档
      */
     minimapCfg: PropTypes.exact({
         /**
-         * 是否开启迷你图
+         * 是否展示迷你图
          * 默认值：`false`
          */
         show: PropTypes.bool,
@@ -256,21 +244,21 @@ AntdRadialTree.propTypes = {
          */
         type: PropTypes.oneOf(['default', 'keyShape', 'delegate']),
         /**
-         * 迷你图像素尺寸，格式如：`[像素宽度, 像素高度]`
+         * 配置迷你图像素尺寸，格式如`[宽度, 高度]`
          */
         size: PropTypes.arrayOf(PropTypes.number),
-        delegateStyle: baseStyle,
-        refresh: PropTypes.bool,
         /**
-         * 像素内边距
+         * 内填充像素尺寸
          */
         padding: PropTypes.number
     }),
 
-    // 配置布局
+    /**
+     * 配置布局相关参数，具体见在线文档
+     */
     layout: PropTypes.exact({
         /**
-         * 布局方向，可选项有`'TB'`、`'BT'`、`'LR'`、`'RL'`
+         * 布局方式，可选项有`'TB'`、`'BT'`、`'LR'`、`'RL'`
          */
         direction: PropTypes.oneOf(['TB', 'BT', 'LR', 'RL']),
         /**
@@ -284,71 +272,71 @@ AntdRadialTree.propTypes = {
     }),
 
     /**
-     * 节点点击事件监听
+     * 事件监听属性，用于监听最近一次节点点击事件
      */
     recentlyNodeClickRecord: PropTypes.exact({
         /**
-         * 事件触发时间戳
+         * 事件时间戳
          */
         timestamp: PropTypes.number,
         /**
-         * 事件对应节点信息，点击空白处时为空
+         * 涉及数据信息
          */
         data: PropTypes.object
     }),
 
     /**
-     * 节点双击事件监听
+     * 事件监听属性，用于监听最近一次节点双击事件
      */
     recentlyNodeDoubleClickRecord: PropTypes.exact({
         /**
-         * 事件触发时间戳
+         * 事件时间戳
          */
         timestamp: PropTypes.number,
         /**
-         * 事件对应节点信息，点击空白处时为空
+         * 涉及数据信息
          */
         data: PropTypes.object
     }),
 
     /**
-     * 边点击事件监听
+     * 事件监听属性，用于监听最近一次边点击事件
      */
     recentlyEdgeClickRecord: PropTypes.exact({
         /**
-         * 事件触发时间戳
+         * 事件时间戳
          */
         timestamp: PropTypes.number,
         /**
-         * 事件对应节点信息，点击空白处时为空
+         * 涉及数据信息
          */
         data: PropTypes.object
     }),
 
     /**
-     * 边双击事件监听
+     * 事件监听属性，用于监听最近一次边双击事件
      */
     recentlyEdgeDoubleClickRecord: PropTypes.exact({
         /**
-         * 事件触发时间戳
+         * 事件时间戳
          */
         timestamp: PropTypes.number,
         /**
-         * 事件对应节点信息，点击空白处时为空
+         * 涉及数据信息
          */
         data: PropTypes.object
     }),
 
     /**
-     * 节点选中事件监听，需要在``behaviors``中开启``click-select``
+     * 事件监听属性，用于监听最近一次节点选中事件，需要在``behaviors``中开启``click-select``
      */
     selectedNodes: PropTypes.exact({
         /**
-         * 事件触发时间戳
+         * 事件时间戳
          */
         timestamp: PropTypes.number,
         /**
-         * 对应选中的节点信息数组
+         * 涉及数据信息
          */
         data: PropTypes.array
     }),
@@ -375,7 +363,6 @@ AntdRadialTree.propTypes = {
     setProps: PropTypes.func
 };
 
-// 设置默认参数
 AntdRadialTree.defaultProps = {
     autoFit: true,
     behaviors: ['drag-canvas', 'zoom-canvas'],
