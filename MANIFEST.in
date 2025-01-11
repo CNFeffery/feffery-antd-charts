@@ -1,5 +1,5 @@
 include feffery_antd_charts/*.js
-exclude feffery_antd_charts/*.map
+include feffery_antd_charts/*.map
 include *.json
 include README.md
 include LICENSE
