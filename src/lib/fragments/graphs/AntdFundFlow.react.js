@@ -8,11 +8,11 @@ import React, { Component } from 'react';
 import { isUndefined, omitBy, cloneDeep } from 'lodash';
 import { propTypes, defaultProps } from '../../components/graphs/AntdFundFlow.react';
 
-// 定义资金流向图组件AntdFundFlow，部分API参数参考https://charts.ant.design/zh/examples/relation-graph/fund-flow-graph#basic
+/**
+ * 资金流向图组件AntdFundFlow
+ */
 export default class AntdFundFlow extends Component {
-
     render() {
-        // 取得必要属性或参数
         const {
             id,
             key,
