@@ -40,7 +40,7 @@ app = dash.Dash(serve_locally=False)
 
 ## 4 在线文档
 
-> 建设中，敬请期待
+[文档地址](https://fact.feffery.tech/)
 
 ## 5 贡献者
 
