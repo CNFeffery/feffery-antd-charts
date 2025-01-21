@@ -37,7 +37,7 @@ Keyword arguments:
     图表分组字段.
 
 - isPercent (boolean; optional):
-    是否渲染为百分比面积图，开启后将自动启用堆叠效果.
+    是否渲染为百分比形式，开启后将自动启用堆叠效果.
 
 - smooth (boolean; optional):
     是否渲染为平滑曲线  默认值：`False`.
@@ -46,7 +46,15 @@ Keyword arguments:
     是否渲染为堆叠面积图.
 
 - startOnZero (boolean; optional):
-    面积图是否从`0`基准线开始填充.
+    是否从`0`基准线开始填充.
+
+- color (dict; optional):
+    控制面积填充颜色，具体见在线文档相关说明.
+
+    `color` is a string | list of strings | dict with keys:
+
+    - func (string; optional):
+        js函数体字符串.
 
 - areaStyle (dict; optional):
     控制面积填充样式，具体见在线文档相关说明.
@@ -114,14 +122,6 @@ Keyword arguments:
         - func (string; optional):
 
             js函数体字符串.
-
-- color (dict; optional):
-    控制面积填充颜色，具体见在线文档相关说明.
-
-    `color` is a string | list of strings | dict with keys:
-
-    - func (string; optional):
-        js函数体字符串.
 
 - xAxis (optional):
     配置横坐标轴相关参数，具体见在线文档相关说明.
@@ -239,10 +239,10 @@ Keyword arguments:
     _namespace = 'feffery_antd_charts'
     _type = 'AntdArea'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, xField=Component.REQUIRED, yField=Component.REQUIRED, seriesField=Component.UNDEFINED, isPercent=Component.UNDEFINED, smooth=Component.UNDEFINED, isStack=Component.UNDEFINED, startOnZero=Component.UNDEFINED, areaStyle=Component.UNDEFINED, line=Component.UNDEFINED, point=Component.UNDEFINED, color=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, pixelRatio=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, slider=Component.UNDEFINED, animation=Component.UNDEFINED, recentlyTooltipChangeRecord=Component.UNDEFINED, recentlyPointClickRecord=Component.UNDEFINED, recentlyLegendInfo=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, pattern=Component.UNDEFINED, interactions=Component.UNDEFINED, state=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'seriesField', 'isPercent', 'smooth', 'isStack', 'startOnZero', 'areaStyle', 'line', 'point', 'color', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'slider', 'animation', 'recentlyTooltipChangeRecord', 'recentlyPointClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'pattern', 'interactions', 'state', 'loading_state']
+    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, xField=Component.REQUIRED, yField=Component.REQUIRED, seriesField=Component.UNDEFINED, isPercent=Component.UNDEFINED, smooth=Component.UNDEFINED, isStack=Component.UNDEFINED, startOnZero=Component.UNDEFINED, color=Component.UNDEFINED, areaStyle=Component.UNDEFINED, line=Component.UNDEFINED, point=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, pixelRatio=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, slider=Component.UNDEFINED, animation=Component.UNDEFINED, recentlyTooltipChangeRecord=Component.UNDEFINED, recentlyPointClickRecord=Component.UNDEFINED, recentlyLegendInfo=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, pattern=Component.UNDEFINED, interactions=Component.UNDEFINED, state=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'seriesField', 'isPercent', 'smooth', 'isStack', 'startOnZero', 'color', 'areaStyle', 'line', 'point', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'slider', 'animation', 'recentlyTooltipChangeRecord', 'recentlyPointClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'pattern', 'interactions', 'state', 'loading_state']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'seriesField', 'isPercent', 'smooth', 'isStack', 'startOnZero', 'areaStyle', 'line', 'point', 'color', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'slider', 'animation', 'recentlyTooltipChangeRecord', 'recentlyPointClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'pattern', 'interactions', 'state', 'loading_state']
+        self.available_properties = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'seriesField', 'isPercent', 'smooth', 'isStack', 'startOnZero', 'color', 'areaStyle', 'line', 'point', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'slider', 'animation', 'recentlyTooltipChangeRecord', 'recentlyPointClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'pattern', 'interactions', 'state', 'loading_state']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

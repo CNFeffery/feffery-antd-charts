@@ -120,106 +120,81 @@ const baseStyle = PropTypes.shape({
 const metaBasePropTypes = PropTypes.objectOf(
     PropTypes.exact({
         /**
-         * 声明当前字段数据类型，可选的有：
-         * cat: 分类度量
-         * timeCat: 时间分类度量
-         * linear: 线性度量
-         * time: 连续的时间度量
-         * log: 对数度量
-         * pow: 幂数度量
-         * quantize: 分段度量，用户可以指定不均匀的分段
-         * quantile: 等分度量，根据数据的分布自动计算分段
-         * identity: 常量度量
+         * 声明当前字段度量类型，可选项有`'cat'`（分类度量）、`'timeCat'`（时间分类度量）、`'linear'`（线性度量）、`'time'`（连续的时间度量）、`'log'`（对数度量）、`'pow'`（幂数度量）、`'quantize'`（分段度量）、`'quantile'`（等分度量）、`'identity'`（常量度量）
          */
         type: PropTypes.oneOf([
             'cat', 'timeCat', 'linear', 'time', 'log',
             'pow', 'quantize', 'quantile', 'identity'
         ]),
-
         /**
-         * 设置当前字段的显示别名
+         * 当前字段显示别名
          */
         alias: PropTypes.string,
-
         /**
          * 枚举当前字段下所有值
          */
         values: PropTypes.arrayOf(PropTypes.any),
-
         /**
-         * 统一设置当前字段在坐标轴、图例、tooltip中的显示格式化规则
+         * 统一设置当前字段在坐标轴、图例、信息框中对应的文字内容`javascript`格式化函数
          */
         formatter: PropTypes.oneOfType([
             PropTypes.exact({
-                // 回调模式
+                /**
+                 * js函数体字符串
+                 */
                 func: PropTypes.string
             }),
             PropTypes.any
         ]),
-
         /**
-         * 设置当前字段用于绘图的值范围
-         * 默认：[0, 1]
+         * 当前字段绘图值域比例范围
+         * 默认值：`[0, 1]`
          */
         range: PropTypes.arrayOf(PropTypes.number),
-
         /**
-         * 定义当前字段值域的最小值，分类度量下无效
+         * 当前字段值域下限，分类度量下无效
          */
         min: PropTypes.number,
-
         /**
-         * 定义当前字段值域的最大值，分类度量下无效
+         * 当前字段值域上限，分类度量下无效
          */
         max: PropTypes.number,
-
         /**
          * 强制设置当前字段的值域最小值，会影响坐标轴刻度开始位置，分类度量下无效
          */
         minLimit: PropTypes.number,
-
         /**
          * 强制设置当前字段的值域最大值，会影响坐标轴刻度结束位置，分类度量下无效
          */
         maxLimit: PropTypes.number,
-
         /**
          * 对数度量下有效，用于定义底数
          */
         base: PropTypes.number,
-
         /**
          * 幂数度量下有效，用于定义指数
          */
         exponent: PropTypes.number,
-
         /**
          * 是否自动调整坐标轴范围
          */
         nice: PropTypes.bool,
-
         /**
          * 为当前字段手动设置坐标轴刻度值，优先级最高
          */
         ticks: PropTypes.arrayOf(PropTypes.any),
-
         /**
          * 线性度量下有效，为当前字段设置坐标轴刻度最小间隔
          */
         minTickInterval: PropTypes.number,
-
         /**
          * 为当前字段设置坐标轴刻度数量
-         * 默认：5
          */
         tickCount: PropTypes.number,
-
         /**
          * 为当前字段设置坐标轴刻度最大数量
-         * 默认：10
          */
         maxTickCount: PropTypes.number,
-
         /**
          * 连续的时间度量下有效，设置是否强制显示坐标轴刻度最后的时间刻度值
          */
@@ -998,38 +973,51 @@ const annotationsBasePropTypes = PropTypes.oneOfType([
 // 定义滚动条通用PropTypes模板
 // 参考文档：https://antv-g2plot.gitee.io/zh/docs/api/components/scrollbar
 const scrollbarBasePropTypes = PropTypes.oneOfType([
-    PropTypes.oneOf([false]),
+    PropTypes.bool,
     PropTypes.exact({
-        // 设置滚动条类型，可选的有'horizontal'、'vertical'，默认'horizontal'
+        /**
+         * 滚动条类型，可选项有`'horizontal'`、`'vertical'`
+         * 默认值：`'horizontal'`
+         */
         type: PropTypes.string,
-
-        // 设置滚动条像素宽度，仅在type='vertical'时生效
+        /**
+         * 适用于`'vertical'`类型滚动条，设置滚动条像素宽度
+         */
         width: PropTypes.number,
-
-        // 设置滚动条高度，仅在type='horizontal'时生效
+        /**
+         * 适用于`'horizontal'`类型滚动条，设置滚动条像素高度
+         */
         height: PropTypes.number,
-
-        // 设置滚动条布局padding
+        /**
+         * 滚动条像素内边距
+         */
         padding: PropTypes.oneOfType([
             PropTypes.number,
             PropTypes.arrayOf(PropTypes.number)
         ]),
-
-        // 对应水平滚动条，为X轴每个分类字段的宽度；对于垂直滚动条，为X轴每个分类字段的高度
+        /**
+         * 对于`'horizontal'`类型滚动条，设置X轴每个分类字段的像素宽度；对于`'vertical'`类型滚动条，设置X轴每个分类字段的像素高度
+         */
         categorySize: PropTypes.number,
-
-        // 设置滚动条样式
+        /**
+         * 配置滚动条样式
+         */
         style: PropTypes.exact({
-            // 设置滚动条滑道颜色
+            /**
+             * 滚动条滑道颜色
+             */
             trackColor: PropTypes.string,
-
-            // 设置滚动条滑块颜色
+            /**
+             * 滚动条滑块颜色
+             */
             thumbColor: PropTypes.string,
-
-            // 设置滚动条滑块高亮颜色
+            /**
+             * 滚动条滑块高亮颜色
+             */
             thumbHighlightColor: PropTypes.string,
-
-            // 设置滚动条圆角样式，可选的有'butt'、'round'、'square'
+            /**
+             * 滚动条滑道圆角类型，可选项有`'butt'`、`'round'`、`'square'`
+             */
             lineCap: PropTypes.string
         })
     })
@@ -1205,31 +1193,29 @@ const themeBasePropTypes = PropTypes.oneOfType([
 const patternBasePropTypes = PropTypes.oneOfType([
     PropTypes.exact({
         /**
-         * 自定义js回调函数字符串
+         * js函数体字符串
          */
         func: PropTypes.string
     }),
     PropTypes.exact({
         /**
-         * 贴图类型
-         * 可选的有'dot'、'square'、'line'
+         * 贴图类型，可选项有`'dot'`、`'square'`、`'line'`
          */
         type: PropTypes.oneOf(['dot', 'square', 'line']),
         /**
-         * 贴图配置参数
+         * 配置贴图样式
          */
         cfg: PropTypes.exact({
-            // 通用配置参数
             /**
              * 贴图背景色
              */
             backgroundColor: PropTypes.string,
             /**
-             * 贴图元素的填充色
+             * 贴图元素填充色
              */
             fill: PropTypes.string,
             /**
-             * 贴图元素填充透明度
+             * 贴图元素填充透明度，取值应在`0`到`1`之间
              */
             fillOpacity: PropTypes.number,
             /**
@@ -1237,7 +1223,7 @@ const patternBasePropTypes = PropTypes.oneOfType([
              */
             stroke: PropTypes.string,
             /**
-             * 贴图元素描边透明度
+             * 贴图元素描边透明度，取值应在`0`到`1`之间
              */
             strokeOpacity: PropTypes.number,
             /**
@@ -1245,47 +1231,30 @@ const patternBasePropTypes = PropTypes.oneOfType([
              */
             lineWidth: PropTypes.number,
             /**
-             * 贴图整体透明度
+             * 贴图整体透明度，取值应在`0`到`1`之间
              */
             opacity: PropTypes.number,
             /**
              * 贴图整体旋转角度
              */
             rotation: PropTypes.number,
-            // dot类型专用配置项
             /**
-             * 圆点像素大小
-             * 默认：6
+             * 适用于`'dot'`、`'square'`类型贴图，设置圆点或矩形像素大小
+             * 默认值：`6`
              */
             size: PropTypes.number,
             /**
-             * 圆点之间的像素间隔大小
-             * 默认：2
+             * 适用于`'dot'`、`'square'`类型贴图，设置圆点或矩形之间的像素间隔大小
              */
             padding: PropTypes.number,
-            // line类型专用配置项
             /**
-             * 线条之间的像素距离
-             * 默认：5
+             * 适用于`'line'`类型贴图，设置线条之间的像素距离
+             * 默认值：`5`
              */
             spacing: PropTypes.number,
-            // square类型专用配置项
             /**
-             * 矩形像素大小
-             * 默认：6
-             */
-            // eslint-disable-next-line no-dupe-keys
-            size: PropTypes.number,
-            /**
-             * 矩形之间的像素间隔大小
-             * 默认：1
-             */
-            // eslint-disable-next-line no-dupe-keys
-            padding: PropTypes.number,
-            // square、dot类型专用配置项
-            /**
-             * 矩形或圆点之间是否交错
-             * 默认：true
+             * 适用于`'dot'`、`'square'`类型贴图，控制圆点或矩形之间是否交错
+             * 默认值：`True`
              */
             isStagger: PropTypes.bool
         })

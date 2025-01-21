@@ -82,7 +82,7 @@ AntdArea.propTypes = {
     seriesField: PropTypes.string,
 
     /**
-     * 是否渲染为百分比面积图，开启后将自动启用堆叠效果
+     * 是否渲染为百分比形式，开启后将自动启用堆叠效果
      */
     isPercent: PropTypes.bool,
 
@@ -98,9 +98,23 @@ AntdArea.propTypes = {
     isStack: PropTypes.bool,
 
     /**
-     * 面积图是否从`0`基准线开始填充
+     * 是否从`0`基准线开始填充
      */
     startOnZero: PropTypes.bool,
+
+    /**
+     * 控制面积填充颜色，具体见在线文档相关说明
+     */
+    color: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.arrayOf(PropTypes.string),
+        PropTypes.exact({
+            /**
+             * js函数体字符串
+             */
+            func: PropTypes.string
+        })
+    ]),
 
     /**
      * 控制面积填充样式，具体见在线文档相关说明
@@ -189,20 +203,6 @@ AntdArea.propTypes = {
             })
         ])
     }),
-
-    /**
-     * 控制面积填充颜色，具体见在线文档相关说明
-     */
-    color: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.arrayOf(PropTypes.string),
-        PropTypes.exact({
-            /**
-             * js函数体字符串
-             */
-            func: PropTypes.string
-        })
-    ]),
 
     /**
      * 配置横坐标轴相关参数，具体见在线文档相关说明

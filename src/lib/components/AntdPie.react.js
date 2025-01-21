@@ -109,7 +109,7 @@ AntdPie.propTypes = {
     ]),
 
     /**
-     * 配置饼图中心统计内容，具体见在线文档相关说明
+     * `innerRadius`有效时可用，配置饼图中心统计内容，具体见在线文档相关说明
      */
     statistic: PropTypes.oneOfType([
         PropTypes.exact({
@@ -120,7 +120,7 @@ AntdPie.propTypes = {
                 PropTypes.bool,
                 PropTypes.exact({
                     /**
-                     * 统计内容标题样式
+                     * 统计内容标题css样式
                      */
                     style: PropTypes.object,
                     /**
@@ -128,7 +128,7 @@ AntdPie.propTypes = {
                      */
                     content: PropTypes.string,
                     /**
-                     * 格式化统计内容标题文本函数
+                     * 统计内容`javascript`格式化函数
                      */
                     formatter: PropTypes.exact({
                         /**
@@ -137,7 +137,7 @@ AntdPie.propTypes = {
                         func: PropTypes.string
                     }),
                     /**
-                     * 配置统计内容标题原始html文本内容
+                     * 统计内容标题动态html渲染`javascript`函数
                      */
                     customHtml: PropTypes.exact({
                         /**

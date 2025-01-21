@@ -37,24 +37,32 @@ Keyword arguments:
     图表分组字段.
 
 - groupField (string; optional):
-    `isGroup=True`时有效，用于针对堆叠分组条形图指定分组字段.
+    `isGroup=True`时有效，用于针对堆叠分组柱状图指定分组字段.
 
 - isStack (boolean; optional):
-    `seriesField`有效时，是否渲染堆叠条形图.
+    `seriesField`有效时，是否渲染堆叠柱状图.
 
 - isGroup (boolean; optional):
-    `seriesField`有效时，是否渲染分组条形图.
+    `seriesField`有效时，是否渲染分组柱状图.
 
 - isRange (boolean; optional):
-    当`yField`对应数据项满足格式`[区间开始值, 区间结束值]`时，用于控制是否渲染区间条形图.
+    当`yField`对应数据项满足格式`[区间开始值, 区间结束值]`时，用于控制是否渲染区间柱状图.
 
 - isPercent (boolean; optional):
-    是否渲染为百分比条形图，需配合设置`isStack=True`.
+    是否渲染为百分比柱状图，需配合设置`isStack=True`.
 
 - color (dict; optional):
     控制柱体填充颜色，具体见在线文档相关说明.
 
     `color` is a string | list of strings | dict with keys:
+
+    - func (string; optional):
+        js函数体字符串.
+
+- columnStyle (dict; optional):
+    控制柱体填充样式，具体见在线文档相关说明.
+
+    `columnStyle` is a dict with keys:
 
     - func (string; optional):
         js函数体字符串.
@@ -74,21 +82,13 @@ Keyword arguments:
 - maxColumnWidth (number; optional):
     柱状图最大像素宽度.
 
-- columnStyle (dict; optional):
-    控制柱体填充样式，具体见在线文档相关说明.
-
-    `columnStyle` is a dict with keys:
-
-    - func (string; optional):
-        js函数体字符串.
-
 - columnBackground (dict; optional):
     配置柱体背景相关参数，具体见在线文档相关说明.
 
     `columnBackground` is a dict with keys:
 
     - style (optional):
-        柱体背景颜色.
+        柱体背景样式.
 
 - columnWidthRatio (number; optional):
     柱体宽度比例，取值在`0`到`1`之间.
@@ -108,7 +108,7 @@ Keyword arguments:
         转化率标签像素尺寸.
 
     - spacing (number; optional):
-        转化率标签与条形之间的像素间距.
+        转化率标签与图表元素之间的像素间距.
 
     - offset (number; optional):
         组件与坐标轴之间的像素距离.
@@ -131,7 +131,7 @@ Keyword arguments:
 
         - formatter (dict; optional):
 
-            自定义转化率计算函数.
+            自定义转化率计算`javascript`函数.
 
             `formatter` is a dict with keys:
 
@@ -264,10 +264,10 @@ Keyword arguments:
     _namespace = 'feffery_antd_charts'
     _type = 'AntdColumn'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, xField=Component.REQUIRED, yField=Component.REQUIRED, seriesField=Component.UNDEFINED, groupField=Component.UNDEFINED, isStack=Component.UNDEFINED, isGroup=Component.UNDEFINED, isRange=Component.UNDEFINED, isPercent=Component.UNDEFINED, color=Component.UNDEFINED, slider=Component.UNDEFINED, intervalPadding=Component.UNDEFINED, dodgePadding=Component.UNDEFINED, minColumnWidth=Component.UNDEFINED, maxColumnWidth=Component.UNDEFINED, columnStyle=Component.UNDEFINED, columnBackground=Component.UNDEFINED, columnWidthRatio=Component.UNDEFINED, marginRatio=Component.UNDEFINED, scrollbar=Component.UNDEFINED, conversionTag=Component.UNDEFINED, connectedArea=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, pixelRatio=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, animation=Component.UNDEFINED, recentlyTooltipChangeRecord=Component.UNDEFINED, recentlyColumnClickRecord=Component.UNDEFINED, recentlyLegendInfo=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, pattern=Component.UNDEFINED, interactions=Component.UNDEFINED, state=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'seriesField', 'groupField', 'isStack', 'isGroup', 'isRange', 'isPercent', 'color', 'slider', 'intervalPadding', 'dodgePadding', 'minColumnWidth', 'maxColumnWidth', 'columnStyle', 'columnBackground', 'columnWidthRatio', 'marginRatio', 'scrollbar', 'conversionTag', 'connectedArea', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'animation', 'recentlyTooltipChangeRecord', 'recentlyColumnClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'pattern', 'interactions', 'state', 'loading_state']
+    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, xField=Component.REQUIRED, yField=Component.REQUIRED, seriesField=Component.UNDEFINED, groupField=Component.UNDEFINED, isStack=Component.UNDEFINED, isGroup=Component.UNDEFINED, isRange=Component.UNDEFINED, isPercent=Component.UNDEFINED, color=Component.UNDEFINED, columnStyle=Component.UNDEFINED, slider=Component.UNDEFINED, intervalPadding=Component.UNDEFINED, dodgePadding=Component.UNDEFINED, minColumnWidth=Component.UNDEFINED, maxColumnWidth=Component.UNDEFINED, columnBackground=Component.UNDEFINED, columnWidthRatio=Component.UNDEFINED, marginRatio=Component.UNDEFINED, scrollbar=Component.UNDEFINED, conversionTag=Component.UNDEFINED, connectedArea=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, pixelRatio=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, animation=Component.UNDEFINED, recentlyTooltipChangeRecord=Component.UNDEFINED, recentlyColumnClickRecord=Component.UNDEFINED, recentlyLegendInfo=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, pattern=Component.UNDEFINED, interactions=Component.UNDEFINED, state=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'seriesField', 'groupField', 'isStack', 'isGroup', 'isRange', 'isPercent', 'color', 'columnStyle', 'slider', 'intervalPadding', 'dodgePadding', 'minColumnWidth', 'maxColumnWidth', 'columnBackground', 'columnWidthRatio', 'marginRatio', 'scrollbar', 'conversionTag', 'connectedArea', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'animation', 'recentlyTooltipChangeRecord', 'recentlyColumnClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'pattern', 'interactions', 'state', 'loading_state']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'seriesField', 'groupField', 'isStack', 'isGroup', 'isRange', 'isPercent', 'color', 'slider', 'intervalPadding', 'dodgePadding', 'minColumnWidth', 'maxColumnWidth', 'columnStyle', 'columnBackground', 'columnWidthRatio', 'marginRatio', 'scrollbar', 'conversionTag', 'connectedArea', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'animation', 'recentlyTooltipChangeRecord', 'recentlyColumnClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'pattern', 'interactions', 'state', 'loading_state']
+        self.available_properties = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'seriesField', 'groupField', 'isStack', 'isGroup', 'isRange', 'isPercent', 'color', 'columnStyle', 'slider', 'intervalPadding', 'dodgePadding', 'minColumnWidth', 'maxColumnWidth', 'columnBackground', 'columnWidthRatio', 'marginRatio', 'scrollbar', 'conversionTag', 'connectedArea', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'animation', 'recentlyTooltipChangeRecord', 'recentlyColumnClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'pattern', 'interactions', 'state', 'loading_state']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

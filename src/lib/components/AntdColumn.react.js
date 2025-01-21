@@ -83,27 +83,27 @@ AntdColumn.propTypes = {
     seriesField: PropTypes.string,
 
     /**
-     * `isGroup=True`时有效，用于针对堆叠分组条形图指定分组字段
+     * `isGroup=True`时有效，用于针对堆叠分组柱状图指定分组字段
      */
     groupField: PropTypes.string,
 
     /**
-     * `seriesField`有效时，是否渲染堆叠条形图
+     * `seriesField`有效时，是否渲染堆叠柱状图
      */
     isStack: PropTypes.bool,
 
     /**
-     * `seriesField`有效时，是否渲染分组条形图
+     * `seriesField`有效时，是否渲染分组柱状图
      */
     isGroup: PropTypes.bool,
 
     /**
-     * 当`yField`对应数据项满足格式`[区间开始值, 区间结束值]`时，用于控制是否渲染区间条形图
+     * 当`yField`对应数据项满足格式`[区间开始值, 区间结束值]`时，用于控制是否渲染区间柱状图
      */
     isRange: PropTypes.bool,
 
     /**
-     * 是否渲染为百分比条形图，需配合设置`isStack=True`
+     * 是否渲染为百分比柱状图，需配合设置`isStack=True`
      */
     isPercent: PropTypes.bool,
 
@@ -113,6 +113,19 @@ AntdColumn.propTypes = {
     color: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.arrayOf(PropTypes.string),
+        PropTypes.exact({
+            /**
+             * js函数体字符串
+             */
+            func: PropTypes.string
+        })
+    ]),
+
+    /**
+     * 控制柱体填充样式，具体见在线文档相关说明
+     */
+    columnStyle: PropTypes.oneOfType([
+        baseStyle,
         PropTypes.exact({
             /**
              * js函数体字符串
@@ -147,24 +160,11 @@ AntdColumn.propTypes = {
     maxColumnWidth: PropTypes.number,
 
     /**
-     * 控制柱体填充样式，具体见在线文档相关说明
-     */
-    columnStyle: PropTypes.oneOfType([
-        baseStyle,
-        PropTypes.exact({
-            /**
-             * js函数体字符串
-             */
-            func: PropTypes.string
-        })
-    ]),
-
-    /**
      * 配置柱体背景相关参数，具体见在线文档相关说明
      */
     columnBackground: PropTypes.exact({
         /**
-         * 柱体背景颜色
+         * 柱体背景样式
          */
         style: baseStyle
     }),
@@ -193,7 +193,7 @@ AntdColumn.propTypes = {
          */
         size: PropTypes.number,
         /**
-         * 转化率标签与条形之间的像素间距
+         * 转化率标签与图表元素之间的像素间距
          */
         spacing: PropTypes.number,
         /**
@@ -219,7 +219,7 @@ AntdColumn.propTypes = {
             PropTypes.bool,
             PropTypes.exact({
                 /**
-                 * 自定义转化率计算函数
+                 * 自定义转化率计算`javascript`函数
                  */
                 formatter: PropTypes.exact({
                     /**

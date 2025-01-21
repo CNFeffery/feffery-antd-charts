@@ -179,7 +179,7 @@ AntdDualAxes.propTypes = {
                 stepType: PropTypes.string,
             }),
             /**
-             * 适用于折线图类型的配置
+             * 适用于柱状图类型的配置
              */
             PropTypes.shape({
                 /**
