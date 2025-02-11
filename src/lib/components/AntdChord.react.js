@@ -6,6 +6,7 @@
 /* eslint-disable prefer-const */
 import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
+import { useLoading } from './utils';
 import {
     metaBasePropTypes,
     labelBasePropTypes,
@@ -21,10 +22,24 @@ const LazyAntdChord = React.lazy(() => import(/* webpackChunkName: "plots" */ '.
 /**
  * 和弦图组件AntdChord
  */
-const AntdChord = (props) => {
+const AntdChord = ({
+    locale = 'zh-CN',
+    downloadTrigger = 'download-trigger',
+    ...others
+}) => {
+
+    const component_loading = useLoading();
+
     return (
         <Suspense fallback={null}>
-            <LazyAntdChord {...props} />
+            <LazyAntdChord {
+                ...{
+                    locale,
+                    downloadTrigger,
+                    component_loading,
+                    ...others
+                }
+            } />
         </Suspense>
     );
 }
@@ -227,32 +242,12 @@ AntdChord.propTypes = {
      */
     state: stateBasePropTypes,
 
-    loading_state: PropTypes.shape({
-        /**
-         * Determines if the component is loading or not
-         */
-        is_loading: PropTypes.bool,
-        /**
-         * Holds which property is loading
-         */
-        prop_name: PropTypes.string,
-        /**
-         * Holds the name of the component that is loading
-         */
-        component_name: PropTypes.string
-    }),
-
     /**
      * Dash-assigned callback that should be called to report property changes
      * to Dash, to make them available for callbacks.
      */
     setProps: PropTypes.func
 };
-
-AntdChord.defaultProps = {
-    locale: 'zh-CN',
-    downloadTrigger: 'download-trigger'
-}
 
 export default AntdChord;
 

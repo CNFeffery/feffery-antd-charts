@@ -1,6 +1,13 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+import typing  # noqa: F401
+import numbers # noqa: F401
+from typing_extensions import TypedDict, NotRequired, Literal # noqa: F401
 from dash.development.base_component import Component, _explicitize_args
+try:
+    from dash.development.base_component import ComponentType # noqa: F401
+except ImportError:
+    ComponentType = typing.TypeVar("ComponentType", bound=Component)
 
 
 class AntdDecompositionTree(Component):
@@ -301,29 +308,229 @@ Keyword arguments:
         事件时间戳.
 
     - data (dict; optional):
-        涉及数据信息.
-
-- loading_state (dict; optional)
-
-    `loading_state` is a dict with keys:
-
-    - is_loading (boolean; optional):
-        Determines if the component is loading or not.
-
-    - prop_name (string; optional):
-        Holds which property is loading.
-
-    - component_name (string; optional):
-        Holds the name of the component that is loading."""
+        涉及数据信息."""
     _children_props = []
     _base_nodes = ['children']
     _namespace = 'feffery_antd_charts'
     _type = 'AntdDecompositionTree'
+    NodeCfgStyle = TypedDict(
+        "NodeCfgStyle",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    NodeCfgLabelStyle = TypedDict(
+        "NodeCfgLabelStyle",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    NodeCfgLabel = TypedDict(
+        "NodeCfgLabel",
+            {
+            "style": NotRequired[typing.Union[typing.Any, "NodeCfgLabelStyle"]]
+        }
+    )
+
+    NodeCfgTitleStyle = TypedDict(
+        "NodeCfgTitleStyle",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    NodeCfgTitle = TypedDict(
+        "NodeCfgTitle",
+            {
+            "containerStyle": NotRequired[typing.Any],
+            "style": NotRequired[typing.Union[typing.Any, "NodeCfgTitleStyle"]],
+            "autoEllipsis": NotRequired[bool]
+        }
+    )
+
+    NodeCfgItemsStyle = TypedDict(
+        "NodeCfgItemsStyle",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    NodeCfgItems = TypedDict(
+        "NodeCfgItems",
+            {
+            "containerStyle": NotRequired[typing.Any],
+            "style": NotRequired[typing.Union[typing.Any, "NodeCfgItemsStyle"]],
+            "layout": NotRequired[Literal["bundled", "flex", "follow"]],
+            "sort": NotRequired[bool],
+            "padding": NotRequired[typing.Union[typing.Union[int, float, numbers.Number], typing.Sequence[typing.Union[int, float, numbers.Number]]]]
+        }
+    )
+
+    NodeCfgBadgeStyle = TypedDict(
+        "NodeCfgBadgeStyle",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    NodeCfgBadge = TypedDict(
+        "NodeCfgBadge",
+            {
+            "position": NotRequired[Literal["left", "top", "right", "bottom"]],
+            "size": NotRequired[typing.Union[typing.Union[int, float, numbers.Number], typing.Sequence[typing.Union[int, float, numbers.Number]]]],
+            "style": NotRequired[typing.Union[typing.Any, "NodeCfgBadgeStyle"]]
+        }
+    )
+
+    NodeCfgPercentStyle = TypedDict(
+        "NodeCfgPercentStyle",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    NodeCfgPercent = TypedDict(
+        "NodeCfgPercent",
+            {
+            "position": NotRequired[Literal["top", "bottom"]],
+            "size": NotRequired[typing.Union[int, float, numbers.Number]],
+            "style": NotRequired[typing.Union[typing.Any, "NodeCfgPercentStyle"]],
+            "backgroundStyle": NotRequired[typing.Any]
+        }
+    )
+
+    NodeCfg = TypedDict(
+        "NodeCfg",
+            {
+            "type": NotRequired[Literal["indicator-card"]],
+            "size": NotRequired[typing.Sequence[typing.Union[int, float, numbers.Number]]],
+            "style": NotRequired[typing.Union[typing.Any, "NodeCfgStyle"]],
+            "label": NotRequired["NodeCfgLabel"],
+            "anchorPoints": NotRequired[typing.Sequence[typing.Sequence[typing.Union[int, float, numbers.Number]]]],
+            "title": NotRequired["NodeCfgTitle"],
+            "items": NotRequired["NodeCfgItems"],
+            "padding": NotRequired[typing.Union[typing.Union[int, float, numbers.Number], typing.Sequence[typing.Union[int, float, numbers.Number]]]],
+            "badge": NotRequired["NodeCfgBadge"],
+            "percent": NotRequired["NodeCfgPercent"],
+            "autoWidth": NotRequired[bool],
+            "nodeStateStyles": NotRequired[typing.Union[typing.Dict[typing.Union[str, float, int], typing.Any], bool]]
+        }
+    )
+
+    EdgeCfgLabelStyle = TypedDict(
+        "EdgeCfgLabelStyle",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    EdgeCfgLabel = TypedDict(
+        "EdgeCfgLabel",
+            {
+            "style": NotRequired[typing.Union[typing.Any, "EdgeCfgLabelStyle"]]
+        }
+    )
+
+    EdgeCfgStartArrow = TypedDict(
+        "EdgeCfgStartArrow",
+            {
+            "type": NotRequired[Literal["vee", "triangle"]],
+            "d": NotRequired[typing.Union[int, float, numbers.Number]],
+            "path": NotRequired[str],
+            "stroke": NotRequired[str],
+            "fill": NotRequired[str]
+        }
+    )
+
+    EdgeCfgEndArrow = TypedDict(
+        "EdgeCfgEndArrow",
+            {
+            "fill": NotRequired[str],
+            "show": NotRequired[bool]
+        }
+    )
+
+    EdgeCfgStyle = TypedDict(
+        "EdgeCfgStyle",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    EdgeCfg = TypedDict(
+        "EdgeCfg",
+            {
+            "type": NotRequired[Literal["line", "polyline", "arc", "quadratic", "cubic", "cubic-vertical", "cubic-horizontal", "loop"]],
+            "label": NotRequired["EdgeCfgLabel"],
+            "startArrow": NotRequired["EdgeCfgStartArrow"],
+            "endArrow": NotRequired["EdgeCfgEndArrow"],
+            "edgeStateStyles": NotRequired[typing.Union[typing.Dict[typing.Union[str, float, int], typing.Any], bool]],
+            "style": NotRequired[typing.Union[typing.Any, "EdgeCfgStyle"]]
+        }
+    )
+
+    MarkerCfg = TypedDict(
+        "MarkerCfg",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    MinimapCfg = TypedDict(
+        "MinimapCfg",
+            {
+            "show": NotRequired[bool],
+            "viewportClassName": NotRequired[str],
+            "type": NotRequired[Literal["default", "keyShape", "delegate"]],
+            "size": NotRequired[typing.Sequence[typing.Union[int, float, numbers.Number]]],
+            "padding": NotRequired[typing.Union[int, float, numbers.Number]]
+        }
+    )
+
+    Layout = TypedDict(
+        "Layout",
+            {
+            "direction": NotRequired[Literal["TB", "BT", "LR", "RL"]],
+            "type": NotRequired[Literal["indented"]],
+            "indent": NotRequired[typing.Union[int, float, numbers.Number]]
+        }
+    )
+
+    RecentlyNodeClickRecord = TypedDict(
+        "RecentlyNodeClickRecord",
+            {
+            "timestamp": NotRequired[typing.Union[int, float, numbers.Number]],
+            "data": NotRequired[dict]
+        }
+    )
+
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, nodeCfg=Component.UNDEFINED, edgeCfg=Component.UNDEFINED, level=Component.UNDEFINED, behaviors=Component.UNDEFINED, markerCfg=Component.UNDEFINED, animate=Component.UNDEFINED, minimapCfg=Component.UNDEFINED, layout=Component.UNDEFINED, recentlyNodeClickRecord=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'key', 'className', 'style', 'data', 'width', 'height', 'autoFit', 'nodeCfg', 'edgeCfg', 'level', 'behaviors', 'markerCfg', 'animate', 'minimapCfg', 'layout', 'recentlyNodeClickRecord', 'loading_state']
+    def __init__(
+        self,
+        id: typing.Optional[str] = None,
+        key: typing.Optional[str] = None,
+        className: typing.Optional[str] = None,
+        style: typing.Optional[dict] = None,
+        data: typing.Optional[dict] = None,
+        width: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        height: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        autoFit: typing.Optional[bool] = None,
+        nodeCfg: typing.Optional["NodeCfg"] = None,
+        edgeCfg: typing.Optional["EdgeCfg"] = None,
+        level: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        behaviors: typing.Optional[typing.Sequence[Literal["drag-canvas", "scroll-canvas", "zoom-canvas", "drag-node", "click-select"]]] = None,
+        markerCfg: typing.Optional[typing.Union["MarkerCfg"]] = None,
+        animate: typing.Optional[bool] = None,
+        minimapCfg: typing.Optional["MinimapCfg"] = None,
+        layout: typing.Optional["Layout"] = None,
+        recentlyNodeClickRecord: typing.Optional["RecentlyNodeClickRecord"] = None,
+        **kwargs
+    ):
+        self._prop_names = ['id', 'key', 'className', 'style', 'data', 'width', 'height', 'autoFit', 'nodeCfg', 'edgeCfg', 'level', 'behaviors', 'markerCfg', 'animate', 'minimapCfg', 'layout', 'recentlyNodeClickRecord']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'key', 'className', 'style', 'data', 'width', 'height', 'autoFit', 'nodeCfg', 'edgeCfg', 'level', 'behaviors', 'markerCfg', 'animate', 'minimapCfg', 'layout', 'recentlyNodeClickRecord', 'loading_state']
+        self.available_properties = ['id', 'key', 'className', 'style', 'data', 'width', 'height', 'autoFit', 'nodeCfg', 'edgeCfg', 'level', 'behaviors', 'markerCfg', 'animate', 'minimapCfg', 'layout', 'recentlyNodeClickRecord']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

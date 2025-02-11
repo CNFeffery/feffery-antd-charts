@@ -12,7 +12,8 @@ import { propTypes, defaultProps } from '../../components/AntdStock.react';
 
 // 定义不触发重绘的参数数组
 const preventUpdateProps = [
-    'loading_state',
+    'setProps',
+    'component_loading',
     'recentlyTooltipChangeRecord',
     'recentlyAreaClickRecord',
     'recentlyLegendInfo'
@@ -104,7 +105,7 @@ export default class AntdStock extends Component {
             theme,
             interactions,
             state,
-            loading_state,
+            component_loading,
             setProps
         } = this.props;
 
@@ -251,9 +252,7 @@ export default class AntdStock extends Component {
             key={key}
             className={className}
             style={style}
-            data-dash-is-loading={
-                (loading_state && loading_state.is_loading) || undefined
-            }
+            data-dash-is-loading={component_loading}
             ref={this.chartRef}
             // 绑定常用事件
             onReady={(plot) => {

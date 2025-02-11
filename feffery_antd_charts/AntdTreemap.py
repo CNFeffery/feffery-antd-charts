@@ -1,6 +1,13 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+import typing  # noqa: F401
+import numbers # noqa: F401
+from typing_extensions import TypedDict, NotRequired, Literal # noqa: F401
 from dash.development.base_component import Component, _explicitize_args
+try:
+    from dash.development.base_component import ComponentType # noqa: F401
+except ImportError:
+    ComponentType = typing.TypeVar("ComponentType", bound=Component)
 
 
 class AntdTreemap(Component):
@@ -166,29 +173,109 @@ Keyword arguments:
             设置鼠标移入激活状态下的字体样式.
 
 - state (optional):
-    配置状态样式相关参数，具体见在线文档相关说明.
-
-- loading_state (dict; optional)
-
-    `loading_state` is a dict with keys:
-
-    - is_loading (boolean; optional):
-        Determines if the component is loading or not.
-
-    - prop_name (string; optional):
-        Holds which property is loading.
-
-    - component_name (string; optional):
-        Holds the name of the component that is loading."""
+    配置状态样式相关参数，具体见在线文档相关说明."""
     _children_props = []
     _base_nodes = ['children']
     _namespace = 'feffery_antd_charts'
     _type = 'AntdTreemap'
+    RectStyle = TypedDict(
+        "RectStyle",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    Color = TypedDict(
+        "Color",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    RecentlyTooltipChangeRecord = TypedDict(
+        "RecentlyTooltipChangeRecord",
+            {
+            "timestamp": NotRequired[typing.Union[int, float, numbers.Number]],
+            "data": NotRequired[typing.Sequence[dict]]
+        }
+    )
+
+    RecentlyAreaClickRecord = TypedDict(
+        "RecentlyAreaClickRecord",
+            {
+            "timestamp": NotRequired[typing.Union[int, float, numbers.Number]],
+            "data": NotRequired[dict]
+        }
+    )
+
+    RecentlyLegendInfo = TypedDict(
+        "RecentlyLegendInfo",
+            {
+            "triggerItemName": NotRequired[typing.Any],
+            "items": NotRequired[typing.Sequence[dict]]
+        }
+    )
+
+    DrilldownBreadCrumb = TypedDict(
+        "DrilldownBreadCrumb",
+            {
+            "position": NotRequired[Literal["top-left", "bottom-left"]],
+            "rootText": NotRequired[str],
+            "dividerText": NotRequired[str],
+            "textStyle": NotRequired[typing.Any],
+            "activeTextStyle": NotRequired[typing.Any]
+        }
+    )
+
+    Drilldown = TypedDict(
+        "Drilldown",
+            {
+            "enabled": NotRequired[bool],
+            "breadCrumb": NotRequired["DrilldownBreadCrumb"]
+        }
+    )
+
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.UNDEFINED, meta=Component.UNDEFINED, colorField=Component.REQUIRED, rawFields=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, pixelRatio=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, rectStyle=Component.UNDEFINED, color=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, animation=Component.UNDEFINED, recentlyTooltipChangeRecord=Component.UNDEFINED, recentlyAreaClickRecord=Component.UNDEFINED, recentlyLegendInfo=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, pattern=Component.UNDEFINED, interactions=Component.UNDEFINED, drilldown=Component.UNDEFINED, state=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'key', 'className', 'style', 'data', 'meta', 'colorField', 'rawFields', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'rectStyle', 'color', 'legend', 'label', 'tooltip', 'annotations', 'animation', 'recentlyTooltipChangeRecord', 'recentlyAreaClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'pattern', 'interactions', 'drilldown', 'state', 'loading_state']
+    def __init__(
+        self,
+        id: typing.Optional[str] = None,
+        key: typing.Optional[str] = None,
+        className: typing.Optional[str] = None,
+        style: typing.Optional[dict] = None,
+        data: typing.Optional[dict] = None,
+        meta: typing.Optional[typing.Any] = None,
+        colorField: typing.Optional[str] = None,
+        rawFields: typing.Optional[typing.Sequence[str]] = None,
+        width: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        height: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        autoFit: typing.Optional[bool] = None,
+        padding: typing.Optional[typing.Union[typing.Union[int, float, numbers.Number], typing.Sequence[typing.Union[int, float, numbers.Number]], Literal["auto"]]] = None,
+        appendPadding: typing.Optional[typing.Union[typing.Union[int, float, numbers.Number], typing.Sequence[typing.Union[int, float, numbers.Number]]]] = None,
+        renderer: typing.Optional[Literal["canvas", "svg"]] = None,
+        pixelRatio: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        locale: typing.Optional[Literal["zh-CN", "en-US"]] = None,
+        limitInPlot: typing.Optional[bool] = None,
+        rectStyle: typing.Optional[typing.Union[typing.Any, "RectStyle"]] = None,
+        color: typing.Optional[typing.Union[str, typing.Sequence[str], "Color"]] = None,
+        legend: typing.Optional[typing.Any] = None,
+        label: typing.Optional[typing.Any] = None,
+        tooltip: typing.Optional[typing.Any] = None,
+        annotations: typing.Optional[typing.Any] = None,
+        animation: typing.Optional[typing.Any] = None,
+        recentlyTooltipChangeRecord: typing.Optional["RecentlyTooltipChangeRecord"] = None,
+        recentlyAreaClickRecord: typing.Optional["RecentlyAreaClickRecord"] = None,
+        recentlyLegendInfo: typing.Optional["RecentlyLegendInfo"] = None,
+        downloadTrigger: typing.Optional[str] = None,
+        theme: typing.Optional[typing.Any] = None,
+        pattern: typing.Optional[typing.Any] = None,
+        interactions: typing.Optional[typing.Any] = None,
+        drilldown: typing.Optional["Drilldown"] = None,
+        state: typing.Optional[typing.Any] = None,
+        **kwargs
+    ):
+        self._prop_names = ['id', 'key', 'className', 'style', 'data', 'meta', 'colorField', 'rawFields', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'rectStyle', 'color', 'legend', 'label', 'tooltip', 'annotations', 'animation', 'recentlyTooltipChangeRecord', 'recentlyAreaClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'pattern', 'interactions', 'drilldown', 'state']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'key', 'className', 'style', 'data', 'meta', 'colorField', 'rawFields', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'rectStyle', 'color', 'legend', 'label', 'tooltip', 'annotations', 'animation', 'recentlyTooltipChangeRecord', 'recentlyAreaClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'pattern', 'interactions', 'drilldown', 'state', 'loading_state']
+        self.available_properties = ['id', 'key', 'className', 'style', 'data', 'meta', 'colorField', 'rawFields', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'rectStyle', 'color', 'legend', 'label', 'tooltip', 'annotations', 'animation', 'recentlyTooltipChangeRecord', 'recentlyAreaClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'pattern', 'interactions', 'drilldown', 'state']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

@@ -6,6 +6,7 @@
 /* eslint-disable prefer-const */
 import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
+import { useLoading } from './utils';
 import {
     baseStyle,
     metaBasePropTypes,
@@ -25,10 +26,26 @@ const LazyAntdTreemap = React.lazy(() => import(/* webpackChunkName: "plots" */ 
 /**
  * 矩形树图组件AntdTreemap
  */
-const AntdTreemap = (props) => {
+const AntdTreemap = ({
+    locale = 'zh-CN',
+    downloadTrigger = 'download-trigger',
+    animation = {},
+    ...others
+}) => {
+
+    const component_loading = useLoading();
+
     return (
         <Suspense fallback={null}>
-            <LazyAntdTreemap {...props} />
+            <LazyAntdTreemap {
+                ...{
+                    locale,
+                    downloadTrigger,
+                    animation,
+                    component_loading,
+                    ...others
+                }
+            } />
         </Suspense>
     );
 }
@@ -289,33 +306,12 @@ AntdTreemap.propTypes = {
      */
     state: stateBasePropTypes,
 
-    loading_state: PropTypes.shape({
-        /**
-         * Determines if the component is loading or not
-         */
-        is_loading: PropTypes.bool,
-        /**
-         * Holds which property is loading
-         */
-        prop_name: PropTypes.string,
-        /**
-         * Holds the name of the component that is loading
-         */
-        component_name: PropTypes.string
-    }),
-
     /**
      * Dash-assigned callback that should be called to report property changes
      * to Dash, to make them available for callbacks.
      */
     setProps: PropTypes.func
 };
-
-AntdTreemap.defaultProps = {
-    locale: 'zh-CN',
-    downloadTrigger: 'download-trigger',
-    animation: {}
-}
 
 export default AntdTreemap;
 

@@ -11,7 +11,8 @@ import { propTypes, defaultProps } from '../../components/AntdArea.react';
 
 // 定义不触发重绘的参数数组
 const preventUpdateProps = [
-    'loading_state',
+    'setProps',
+    'component_loading',
     'recentlyTooltipChangeRecord',
     'recentlyPointClickRecord',
     'recentlyLegendInfo'
@@ -111,7 +112,7 @@ export default class AntdArea extends Component {
             interactions,
             state,
             setProps,
-            loading_state
+            component_loading
         } = this.props;
 
         // 初始化config参数对象，每次渲染前的参数解析变动只在config中生效
@@ -340,9 +341,7 @@ export default class AntdArea extends Component {
                     })
                 });
             }}
-            data-dash-is-loading={
-                (loading_state && loading_state.is_loading) || undefined
-            }
+            data-dash-is-loading={component_loading}
             {...config} />;
     }
 }

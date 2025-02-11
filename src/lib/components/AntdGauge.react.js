@@ -7,6 +7,7 @@
 /* eslint-disable prefer-const */
 import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
+import { useLoading } from './utils';
 import {
     baseStyle,
     axisBasePropTypes,
@@ -21,10 +22,26 @@ const LazyAntdGauge = React.lazy(() => import(/* webpackChunkName: "plots" */ '.
 /**
  * 仪表盘组件AntdGauge
  */
-const AntdGauge = (props) => {
+const AntdGauge = ({
+    locale = 'zh-CN',
+    downloadTrigger = 'download-trigger',
+    radius = 0.95,
+    ...others
+}) => {
+
+    const component_loading = useLoading();
+
     return (
         <Suspense fallback={null}>
-            <LazyAntdGauge {...props} />
+            <LazyAntdGauge {
+                ...{
+                    locale,
+                    downloadTrigger,
+                    radius,
+                    component_loading,
+                    ...others
+                }
+            } />
         </Suspense>
     );
 }
@@ -353,33 +370,12 @@ AntdGauge.propTypes = {
      */
     state: stateBasePropTypes,
 
-    loading_state: PropTypes.shape({
-        /**
-         * Determines if the component is loading or not
-         */
-        is_loading: PropTypes.bool,
-        /**
-         * Holds which property is loading
-         */
-        prop_name: PropTypes.string,
-        /**
-         * Holds the name of the component that is loading
-         */
-        component_name: PropTypes.string
-    }),
-
     /**
      * Dash-assigned callback that should be called to report property changes
      * to Dash, to make them available for callbacks.
      */
     setProps: PropTypes.func
 };
-
-AntdGauge.defaultProps = {
-    locale: 'zh-CN',
-    radius: 0.95,
-    downloadTrigger: 'download-trigger'
-}
 
 export default AntdGauge;
 

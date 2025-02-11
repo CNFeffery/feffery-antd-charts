@@ -6,6 +6,7 @@
 /* eslint-disable prefer-const */
 import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
+import { useLoading } from './utils';
 import {
     metaBasePropTypes,
     baseStyle,
@@ -24,10 +25,26 @@ const LazyAntdBullet = React.lazy(() => import(/* webpackChunkName: "plots" */ '
 /**
  * 子弹图组件AntdBullet
  */
-const AntdBullet = (props) => {
+const AntdBullet = ({
+    locale = 'zh-CN',
+    downloadTrigger = 'download-trigger',
+    layout = 'horizontal',
+    ...others
+}) => {
+
+    const component_loading = useLoading();
+
     return (
         <Suspense fallback={null}>
-            <LazyAntdBullet {...props} />
+            <LazyAntdBullet {
+                ...{
+                    locale,
+                    downloadTrigger,
+                    layout,
+                    component_loading,
+                    ...others
+                }
+            } />
         </Suspense>
     );
 }
@@ -322,33 +339,12 @@ AntdBullet.propTypes = {
      */
     state: stateBasePropTypes,
 
-    loading_state: PropTypes.shape({
-        /**
-         * Determines if the component is loading or not
-         */
-        is_loading: PropTypes.bool,
-        /**
-         * Holds which property is loading
-         */
-        prop_name: PropTypes.string,
-        /**
-         * Holds the name of the component that is loading
-         */
-        component_name: PropTypes.string
-    }),
-
     /**
      * Dash-assigned callback that should be called to report property changes
      * to Dash, to make them available for callbacks.
      */
     setProps: PropTypes.func
 };
-
-AntdBullet.defaultProps = {
-    locale: 'zh-CN',
-    layout: 'horizontal',
-    downloadTrigger: 'download-trigger'
-}
 
 export default AntdBullet;
 

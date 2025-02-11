@@ -5,6 +5,7 @@
 /* eslint-disable no-eval */
 import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
+import { useLoading } from './utils';
 import {
     annotationsBasePropTypes,
     themeBasePropTypes,
@@ -17,10 +18,24 @@ const LazyAntdRingProgress = React.lazy(() => import(/* webpackChunkName: "plots
 /**
  * 进度环图组件AntdRingProgress
  */
-const AntdRingProgress = (props) => {
+const AntdRingProgress = ({
+    locale = 'zh-CN',
+    downloadTrigger = 'download-trigger',
+    ...others
+}) => {
+
+    const component_loading = useLoading();
+
     return (
         <Suspense fallback={null}>
-            <LazyAntdRingProgress {...props} />
+            <LazyAntdRingProgress {
+                ...{
+                    locale,
+                    downloadTrigger,
+                    component_loading,
+                    ...others
+                }
+            } />
         </Suspense>
     );
 }
@@ -266,32 +281,12 @@ AntdRingProgress.propTypes = {
      */
     theme: themeBasePropTypes,
 
-    loading_state: PropTypes.shape({
-        /**
-         * Determines if the component is loading or not
-         */
-        is_loading: PropTypes.bool,
-        /**
-         * Holds which property is loading
-         */
-        prop_name: PropTypes.string,
-        /**
-         * Holds the name of the component that is loading
-         */
-        component_name: PropTypes.string
-    }),
-
     /**
      * Dash-assigned callback that should be called to report property changes
      * to Dash, to make them available for callbacks.
      */
     setProps: PropTypes.func
 };
-
-AntdRingProgress.defaultProps = {
-    locale: 'zh-CN',
-    downloadTrigger: 'download-trigger'
-}
 
 export default AntdRingProgress;
 
