@@ -25,4 +25,6 @@ const withTheme = (theme, customTheme) => {
     )
 }
 
-export { difference, withTheme };
+const useLoading = () => window.dash_component_api.useDashContext().useLoading() || undefined;
+
+export { difference, withTheme, useLoading };
