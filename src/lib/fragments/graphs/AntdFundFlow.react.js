@@ -29,7 +29,7 @@ export default class AntdFundFlow extends Component {
             minimapCfg,
             layout,
             setProps,
-            loading_state
+            component_loading
         } = this.props;
 
         // 初始化config参数对象，每次渲染前的参数解析变动只在config中生效
@@ -122,9 +122,7 @@ export default class AntdFundFlow extends Component {
                     })
                 });
             }}
-            data-dash-is-loading={
-                (loading_state && loading_state.is_loading) || undefined
-            }
+            data-dash-is-loading={component_loading}
             {...config} />;
     }
 }

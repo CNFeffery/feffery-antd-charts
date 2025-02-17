@@ -1,6 +1,13 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+import typing  # noqa: F401
+import numbers # noqa: F401
+from typing_extensions import TypedDict, NotRequired, Literal # noqa: F401
 from dash.development.base_component import Component, _explicitize_args
+try:
+    from dash.development.base_component import ComponentType # noqa: F401
+except ImportError:
+    ComponentType = typing.TypeVar("ComponentType", bound=Component)
 
 
 class AntdRadar(Component):
@@ -215,29 +222,150 @@ Keyword arguments:
     配置交互功能相关参数，具体见在线文档相关说明.
 
 - state (optional):
-    配置状态样式相关参数，具体见在线文档相关说明.
-
-- loading_state (dict; optional)
-
-    `loading_state` is a dict with keys:
-
-    - is_loading (boolean; optional):
-        Determines if the component is loading or not.
-
-    - prop_name (string; optional):
-        Holds which property is loading.
-
-    - component_name (string; optional):
-        Holds the name of the component that is loading."""
+    配置状态样式相关参数，具体见在线文档相关说明."""
     _children_props = []
     _base_nodes = ['children']
     _namespace = 'feffery_antd_charts'
     _type = 'AntdRadar'
+    Color = TypedDict(
+        "Color",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    LineStyle = TypedDict(
+        "LineStyle",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    PointColor = TypedDict(
+        "PointColor",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    PointShape = TypedDict(
+        "PointShape",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    PointStyle = TypedDict(
+        "PointStyle",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    Point = TypedDict(
+        "Point",
+            {
+            "color": NotRequired[typing.Union[str, typing.Sequence[str], "PointColor"]],
+            "shape": NotRequired[typing.Union[str, "PointShape"]],
+            "style": NotRequired[typing.Union[typing.Any, "PointStyle"]]
+        }
+    )
+
+    AreaColor = TypedDict(
+        "AreaColor",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    AreaStyle = TypedDict(
+        "AreaStyle",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    Area = TypedDict(
+        "Area",
+            {
+            "smooth": NotRequired[bool],
+            "color": NotRequired[typing.Union[str, typing.Sequence[str], "AreaColor"]],
+            "style": NotRequired[typing.Union[typing.Any, "AreaStyle"]]
+        }
+    )
+
+    RecentlyTooltipChangeRecord = TypedDict(
+        "RecentlyTooltipChangeRecord",
+            {
+            "timestamp": NotRequired[typing.Union[int, float, numbers.Number]],
+            "data": NotRequired[typing.Sequence[dict]]
+        }
+    )
+
+    RecentlyAreaClickRecord = TypedDict(
+        "RecentlyAreaClickRecord",
+            {
+            "timestamp": NotRequired[typing.Union[int, float, numbers.Number]],
+            "data": NotRequired[typing.Any]
+        }
+    )
+
+    RecentlyLegendInfo = TypedDict(
+        "RecentlyLegendInfo",
+            {
+            "triggerItemName": NotRequired[typing.Any],
+            "items": NotRequired[typing.Sequence[dict]]
+        }
+    )
+
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, xField=Component.REQUIRED, yField=Component.REQUIRED, seriesField=Component.UNDEFINED, smooth=Component.UNDEFINED, radius=Component.UNDEFINED, startAngle=Component.UNDEFINED, endAngle=Component.UNDEFINED, color=Component.UNDEFINED, lineStyle=Component.UNDEFINED, point=Component.UNDEFINED, area=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, pixelRatio=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, animation=Component.UNDEFINED, recentlyTooltipChangeRecord=Component.UNDEFINED, recentlyAreaClickRecord=Component.UNDEFINED, recentlyLegendInfo=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, interactions=Component.UNDEFINED, state=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'seriesField', 'smooth', 'radius', 'startAngle', 'endAngle', 'color', 'lineStyle', 'point', 'area', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'animation', 'recentlyTooltipChangeRecord', 'recentlyAreaClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'interactions', 'state', 'loading_state']
+    def __init__(
+        self,
+        id: typing.Optional[str] = None,
+        key: typing.Optional[str] = None,
+        className: typing.Optional[str] = None,
+        style: typing.Optional[dict] = None,
+        data: typing.Optional[typing.Sequence[dict]] = None,
+        meta: typing.Optional[typing.Any] = None,
+        xField: typing.Optional[str] = None,
+        yField: typing.Optional[str] = None,
+        seriesField: typing.Optional[str] = None,
+        smooth: typing.Optional[bool] = None,
+        radius: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        startAngle: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        endAngle: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        color: typing.Optional[typing.Union[str, typing.Sequence[str], "Color"]] = None,
+        lineStyle: typing.Optional[typing.Union[typing.Any, "LineStyle"]] = None,
+        point: typing.Optional["Point"] = None,
+        area: typing.Optional["Area"] = None,
+        xAxis: typing.Optional[typing.Any] = None,
+        yAxis: typing.Optional[typing.Any] = None,
+        width: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        height: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        autoFit: typing.Optional[bool] = None,
+        padding: typing.Optional[typing.Union[typing.Union[int, float, numbers.Number], typing.Sequence[typing.Union[int, float, numbers.Number]], str]] = None,
+        appendPadding: typing.Optional[typing.Union[typing.Union[int, float, numbers.Number], typing.Sequence[typing.Union[int, float, numbers.Number]], str]] = None,
+        renderer: typing.Optional[Literal["canvas", "svg"]] = None,
+        pixelRatio: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        locale: typing.Optional[Literal["zh-CN", "en-US"]] = None,
+        limitInPlot: typing.Optional[bool] = None,
+        legend: typing.Optional[typing.Any] = None,
+        label: typing.Optional[typing.Any] = None,
+        tooltip: typing.Optional[typing.Any] = None,
+        annotations: typing.Optional[typing.Any] = None,
+        animation: typing.Optional[typing.Any] = None,
+        recentlyTooltipChangeRecord: typing.Optional["RecentlyTooltipChangeRecord"] = None,
+        recentlyAreaClickRecord: typing.Optional["RecentlyAreaClickRecord"] = None,
+        recentlyLegendInfo: typing.Optional["RecentlyLegendInfo"] = None,
+        downloadTrigger: typing.Optional[str] = None,
+        theme: typing.Optional[typing.Any] = None,
+        interactions: typing.Optional[typing.Any] = None,
+        state: typing.Optional[typing.Any] = None,
+        **kwargs
+    ):
+        self._prop_names = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'seriesField', 'smooth', 'radius', 'startAngle', 'endAngle', 'color', 'lineStyle', 'point', 'area', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'animation', 'recentlyTooltipChangeRecord', 'recentlyAreaClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'interactions', 'state']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'seriesField', 'smooth', 'radius', 'startAngle', 'endAngle', 'color', 'lineStyle', 'point', 'area', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'animation', 'recentlyTooltipChangeRecord', 'recentlyAreaClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'interactions', 'state', 'loading_state']
+        self.available_properties = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'seriesField', 'smooth', 'radius', 'startAngle', 'endAngle', 'color', 'lineStyle', 'point', 'area', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'animation', 'recentlyTooltipChangeRecord', 'recentlyAreaClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'interactions', 'state']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

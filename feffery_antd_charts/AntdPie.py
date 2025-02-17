@@ -1,6 +1,13 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+import typing  # noqa: F401
+import numbers # noqa: F401
+from typing_extensions import TypedDict, NotRequired, Literal # noqa: F401
 from dash.development.base_component import Component, _explicitize_args
+try:
+    from dash.development.base_component import ComponentType # noqa: F401
+except ImportError:
+    ComponentType = typing.TypeVar("ComponentType", bound=Component)
 
 
 class AntdPie(Component):
@@ -246,29 +253,156 @@ Keyword arguments:
         被点击图例项名称.
 
     - items (list of dicts; optional):
-        当前各图例项信息.
-
-- loading_state (dict; optional)
-
-    `loading_state` is a dict with keys:
-
-    - is_loading (boolean; optional):
-        Determines if the component is loading or not.
-
-    - prop_name (string; optional):
-        Holds which property is loading.
-
-    - component_name (string; optional):
-        Holds the name of the component that is loading."""
+        当前各图例项信息."""
     _children_props = []
     _base_nodes = ['children']
     _namespace = 'feffery_antd_charts'
     _type = 'AntdPie'
+    Color = TypedDict(
+        "Color",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    StatisticTitleFormatter = TypedDict(
+        "StatisticTitleFormatter",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    StatisticTitleCustomHtml = TypedDict(
+        "StatisticTitleCustomHtml",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    StatisticTitle = TypedDict(
+        "StatisticTitle",
+            {
+            "style": NotRequired[dict],
+            "content": NotRequired[str],
+            "formatter": NotRequired["StatisticTitleFormatter"],
+            "customHtml": NotRequired["StatisticTitleCustomHtml"],
+            "rotate": NotRequired[typing.Union[int, float, numbers.Number]],
+            "offsetX": NotRequired[typing.Union[int, float, numbers.Number]],
+            "offsetY": NotRequired[typing.Union[int, float, numbers.Number]]
+        }
+    )
+
+    StatisticContentFormatter = TypedDict(
+        "StatisticContentFormatter",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    StatisticContentCustomHtml = TypedDict(
+        "StatisticContentCustomHtml",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    StatisticContent = TypedDict(
+        "StatisticContent",
+            {
+            "style": NotRequired[dict],
+            "content": NotRequired[str],
+            "formatter": NotRequired["StatisticContentFormatter"],
+            "customHtml": NotRequired["StatisticContentCustomHtml"],
+            "rotate": NotRequired[typing.Union[int, float, numbers.Number]],
+            "offsetX": NotRequired[typing.Union[int, float, numbers.Number]],
+            "offsetY": NotRequired[typing.Union[int, float, numbers.Number]]
+        }
+    )
+
+    Statistic = TypedDict(
+        "Statistic",
+            {
+            "title": NotRequired[typing.Union[bool, "StatisticTitle"]],
+            "content": NotRequired[typing.Union[bool, "StatisticContent"]]
+        }
+    )
+
+    PieStyle = TypedDict(
+        "PieStyle",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    RecentlyTooltipChangeRecord = TypedDict(
+        "RecentlyTooltipChangeRecord",
+            {
+            "timestamp": NotRequired[typing.Union[int, float, numbers.Number]],
+            "data": NotRequired[typing.Sequence[dict]]
+        }
+    )
+
+    RecentlySectorClickRecord = TypedDict(
+        "RecentlySectorClickRecord",
+            {
+            "timestamp": NotRequired[typing.Union[int, float, numbers.Number]],
+            "data": NotRequired[dict]
+        }
+    )
+
+    RecentlyLegendInfo = TypedDict(
+        "RecentlyLegendInfo",
+            {
+            "triggerItemName": NotRequired[typing.Any],
+            "items": NotRequired[typing.Sequence[dict]]
+        }
+    )
+
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, angleField=Component.UNDEFINED, colorField=Component.UNDEFINED, radius=Component.UNDEFINED, innerRadius=Component.UNDEFINED, startAngle=Component.UNDEFINED, endAngle=Component.UNDEFINED, color=Component.UNDEFINED, statistic=Component.UNDEFINED, pieStyle=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, pixelRatio=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, pattern=Component.UNDEFINED, interactions=Component.UNDEFINED, state=Component.UNDEFINED, animation=Component.UNDEFINED, recentlyTooltipChangeRecord=Component.UNDEFINED, recentlySectorClickRecord=Component.UNDEFINED, recentlyLegendInfo=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'key', 'className', 'style', 'data', 'meta', 'angleField', 'colorField', 'radius', 'innerRadius', 'startAngle', 'endAngle', 'color', 'statistic', 'pieStyle', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'downloadTrigger', 'theme', 'pattern', 'interactions', 'state', 'animation', 'recentlyTooltipChangeRecord', 'recentlySectorClickRecord', 'recentlyLegendInfo', 'loading_state']
+    def __init__(
+        self,
+        id: typing.Optional[str] = None,
+        key: typing.Optional[str] = None,
+        className: typing.Optional[str] = None,
+        style: typing.Optional[dict] = None,
+        data: typing.Optional[typing.Sequence[dict]] = None,
+        meta: typing.Optional[typing.Any] = None,
+        angleField: typing.Optional[str] = None,
+        colorField: typing.Optional[str] = None,
+        radius: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        innerRadius: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        startAngle: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        endAngle: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        color: typing.Optional[typing.Union[str, typing.Sequence[str], "Color"]] = None,
+        statistic: typing.Optional[typing.Union["Statistic", bool]] = None,
+        pieStyle: typing.Optional[typing.Union[typing.Any, "PieStyle"]] = None,
+        width: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        height: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        autoFit: typing.Optional[bool] = None,
+        padding: typing.Optional[typing.Union[typing.Union[int, float, numbers.Number], typing.Sequence[typing.Union[int, float, numbers.Number]], str]] = None,
+        appendPadding: typing.Optional[typing.Union[typing.Union[int, float, numbers.Number], typing.Sequence[typing.Union[int, float, numbers.Number]], str]] = None,
+        renderer: typing.Optional[Literal["canvas", "svg"]] = None,
+        pixelRatio: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        locale: typing.Optional[Literal["zh-CN", "en-US"]] = None,
+        limitInPlot: typing.Optional[bool] = None,
+        legend: typing.Optional[typing.Any] = None,
+        label: typing.Optional[typing.Any] = None,
+        tooltip: typing.Optional[typing.Any] = None,
+        annotations: typing.Optional[typing.Any] = None,
+        downloadTrigger: typing.Optional[str] = None,
+        theme: typing.Optional[typing.Any] = None,
+        pattern: typing.Optional[typing.Any] = None,
+        interactions: typing.Optional[typing.Any] = None,
+        state: typing.Optional[typing.Any] = None,
+        animation: typing.Optional[typing.Any] = None,
+        recentlyTooltipChangeRecord: typing.Optional["RecentlyTooltipChangeRecord"] = None,
+        recentlySectorClickRecord: typing.Optional["RecentlySectorClickRecord"] = None,
+        recentlyLegendInfo: typing.Optional["RecentlyLegendInfo"] = None,
+        **kwargs
+    ):
+        self._prop_names = ['id', 'key', 'className', 'style', 'data', 'meta', 'angleField', 'colorField', 'radius', 'innerRadius', 'startAngle', 'endAngle', 'color', 'statistic', 'pieStyle', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'downloadTrigger', 'theme', 'pattern', 'interactions', 'state', 'animation', 'recentlyTooltipChangeRecord', 'recentlySectorClickRecord', 'recentlyLegendInfo']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'key', 'className', 'style', 'data', 'meta', 'angleField', 'colorField', 'radius', 'innerRadius', 'startAngle', 'endAngle', 'color', 'statistic', 'pieStyle', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'downloadTrigger', 'theme', 'pattern', 'interactions', 'state', 'animation', 'recentlyTooltipChangeRecord', 'recentlySectorClickRecord', 'recentlyLegendInfo', 'loading_state']
+        self.available_properties = ['id', 'key', 'className', 'style', 'data', 'meta', 'angleField', 'colorField', 'radius', 'innerRadius', 'startAngle', 'endAngle', 'color', 'statistic', 'pieStyle', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'downloadTrigger', 'theme', 'pattern', 'interactions', 'state', 'animation', 'recentlyTooltipChangeRecord', 'recentlySectorClickRecord', 'recentlyLegendInfo']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

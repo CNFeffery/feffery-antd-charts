@@ -10,7 +10,11 @@ import { difference, withTheme } from '../../components/utils';
 import { propTypes, defaultProps } from '../../components/AntdDualAxes.react';
 
 // 定义不触发重绘的参数数组
-const preventUpdateProps = ['loading_state', 'recentlyClickRecord'];
+const preventUpdateProps = [
+    'setProps',
+    'component_loading',
+    'recentlyClickRecord'
+];
 
 /**
  * 双轴图组件AntdDualAxes
@@ -97,7 +101,7 @@ export default class AntdDualAxes extends Component {
             interactions,
             state,
             setProps,
-            loading_state,
+            component_loading,
         } = this.props;
 
         // 初始化config参数对象，每次渲染前的参数解析变动只在config中生效
@@ -330,9 +334,7 @@ export default class AntdDualAxes extends Component {
                 key={key}
                 className={className}
                 style={style}
-                data-dash-is-loading={
-                    (loading_state && loading_state.is_loading) || undefined
-                }
+                data-dash-is-loading={component_loading}
                 ref={this.chartRef}
                 geometryOptions={[configLeft, configRight]}
                 // 绑定常用事件

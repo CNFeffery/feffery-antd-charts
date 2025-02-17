@@ -6,6 +6,7 @@
 /* eslint-disable prefer-const */
 import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
+import { useLoading } from '../utils';
 import {
     baseStyle
 } from '../BasePropTypes.react';
@@ -15,10 +16,26 @@ const LazyAntdRadialTree = React.lazy(() => import(/* webpackChunkName: "graphs"
 /**
  * 辐射树图组件AntdRadialTree
  */
-const AntdRadialTree = (props) => {
+const AntdRadialTree = ({
+    autoFit = true,
+    behaviors = ['drag-canvas', 'zoom-canvas'],
+    animate = false,
+    ...others
+}) => {
+
+    const component_loading = useLoading();
+
     return (
         <Suspense fallback={null}>
-            <LazyAntdRadialTree {...props} />
+            <LazyAntdRadialTree {
+                ...{
+                    autoFit,
+                    behaviors,
+                    animate,
+                    component_loading,
+                    ...others
+                }
+            } />
         </Suspense>
     );
 }
@@ -341,33 +358,12 @@ AntdRadialTree.propTypes = {
         data: PropTypes.array
     }),
 
-    loading_state: PropTypes.shape({
-        /**
-         * Determines if the component is loading or not
-         */
-        is_loading: PropTypes.bool,
-        /**
-         * Holds which property is loading
-         */
-        prop_name: PropTypes.string,
-        /**
-         * Holds the name of the component that is loading
-         */
-        component_name: PropTypes.string
-    }),
-
     /**
      * Dash-assigned callback that should be called to report property changes
      * to Dash, to make them available for callbacks.
      */
     setProps: PropTypes.func
 };
-
-AntdRadialTree.defaultProps = {
-    autoFit: true,
-    behaviors: ['drag-canvas', 'zoom-canvas'],
-    animate: false,
-}
 
 export default AntdRadialTree;
 

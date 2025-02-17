@@ -1,6 +1,13 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+import typing  # noqa: F401
+import numbers # noqa: F401
+from typing_extensions import TypedDict, NotRequired, Literal # noqa: F401
 from dash.development.base_component import Component, _explicitize_args
+try:
+    from dash.development.base_component import ComponentType # noqa: F401
+except ImportError:
+    ComponentType = typing.TypeVar("ComponentType", bound=Component)
 
 
 class AntdRadialTree(Component):
@@ -241,29 +248,187 @@ Keyword arguments:
         事件时间戳.
 
     - data (list; optional):
-        涉及数据信息.
-
-- loading_state (dict; optional)
-
-    `loading_state` is a dict with keys:
-
-    - is_loading (boolean; optional):
-        Determines if the component is loading or not.
-
-    - prop_name (string; optional):
-        Holds which property is loading.
-
-    - component_name (string; optional):
-        Holds the name of the component that is loading."""
+        涉及数据信息."""
     _children_props = []
     _base_nodes = ['children']
     _namespace = 'feffery_antd_charts'
     _type = 'AntdRadialTree'
+    NodeCfgStyle = TypedDict(
+        "NodeCfgStyle",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    NodeCfgLabelStyle = TypedDict(
+        "NodeCfgLabelStyle",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    NodeCfgLabel = TypedDict(
+        "NodeCfgLabel",
+            {
+            "style": NotRequired[typing.Union[typing.Any, "NodeCfgLabelStyle"]]
+        }
+    )
+
+    NodeCfg = TypedDict(
+        "NodeCfg",
+            {
+            "type": NotRequired[Literal["icon-node", "card", "circle", "rect", "ellipse", "diamond", "triangle", "star", "image", "modelRect", "donut"]],
+            "size": NotRequired[typing.Sequence[typing.Union[int, float, numbers.Number]]],
+            "style": NotRequired[typing.Union[typing.Any, "NodeCfgStyle"]],
+            "label": NotRequired["NodeCfgLabel"],
+            "nodeStateStyles": NotRequired[typing.Dict[typing.Union[str, float, int], typing.Any]]
+        }
+    )
+
+    EdgeCfgStyle = TypedDict(
+        "EdgeCfgStyle",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    EdgeCfgLabelStyle = TypedDict(
+        "EdgeCfgLabelStyle",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    EdgeCfgLabel = TypedDict(
+        "EdgeCfgLabel",
+            {
+            "style": NotRequired[typing.Union[typing.Any, "EdgeCfgLabelStyle"]]
+        }
+    )
+
+    EdgeCfgStartArrow = TypedDict(
+        "EdgeCfgStartArrow",
+            {
+            "type": NotRequired[Literal["vee", "triangle"]],
+            "size": NotRequired[typing.Union[int, float, numbers.Number]],
+            "d": NotRequired[typing.Union[int, float, numbers.Number]],
+            "path": NotRequired[str],
+            "stroke": NotRequired[str],
+            "fill": NotRequired[str]
+        }
+    )
+
+    EdgeCfgEndArrow = TypedDict(
+        "EdgeCfgEndArrow",
+            {
+            "type": NotRequired[Literal["vee", "triangle"]],
+            "size": NotRequired[typing.Union[int, float, numbers.Number]],
+            "d": NotRequired[typing.Union[int, float, numbers.Number]],
+            "path": NotRequired[str],
+            "stroke": NotRequired[str],
+            "fill": NotRequired[str]
+        }
+    )
+
+    EdgeCfg = TypedDict(
+        "EdgeCfg",
+            {
+            "style": NotRequired[typing.Union[typing.Any, "EdgeCfgStyle"]],
+            "type": NotRequired[Literal["line", "polyline", "arc", "quadratic", "cubic", "cubic-vertical", "cubic-horizontal", "loop"]],
+            "label": NotRequired["EdgeCfgLabel"],
+            "startArrow": NotRequired["EdgeCfgStartArrow"],
+            "endArrow": NotRequired["EdgeCfgEndArrow"],
+            "edgeStateStyles": NotRequired[typing.Dict[typing.Union[str, float, int], typing.Any]]
+        }
+    )
+
+    MinimapCfg = TypedDict(
+        "MinimapCfg",
+            {
+            "show": NotRequired[bool],
+            "viewportClassName": NotRequired[str],
+            "type": NotRequired[Literal["default", "keyShape", "delegate"]],
+            "size": NotRequired[typing.Sequence[typing.Union[int, float, numbers.Number]]],
+            "padding": NotRequired[typing.Union[int, float, numbers.Number]]
+        }
+    )
+
+    Layout = TypedDict(
+        "Layout",
+            {
+            "direction": NotRequired[Literal["TB", "BT", "LR", "RL"]],
+            "nodesep": NotRequired[typing.Union[int, float, numbers.Number]],
+            "ranksep": NotRequired[typing.Union[int, float, numbers.Number]]
+        }
+    )
+
+    RecentlyNodeClickRecord = TypedDict(
+        "RecentlyNodeClickRecord",
+            {
+            "timestamp": NotRequired[typing.Union[int, float, numbers.Number]],
+            "data": NotRequired[dict]
+        }
+    )
+
+    RecentlyNodeDoubleClickRecord = TypedDict(
+        "RecentlyNodeDoubleClickRecord",
+            {
+            "timestamp": NotRequired[typing.Union[int, float, numbers.Number]],
+            "data": NotRequired[dict]
+        }
+    )
+
+    RecentlyEdgeClickRecord = TypedDict(
+        "RecentlyEdgeClickRecord",
+            {
+            "timestamp": NotRequired[typing.Union[int, float, numbers.Number]],
+            "data": NotRequired[dict]
+        }
+    )
+
+    RecentlyEdgeDoubleClickRecord = TypedDict(
+        "RecentlyEdgeDoubleClickRecord",
+            {
+            "timestamp": NotRequired[typing.Union[int, float, numbers.Number]],
+            "data": NotRequired[dict]
+        }
+    )
+
+    SelectedNodes = TypedDict(
+        "SelectedNodes",
+            {
+            "timestamp": NotRequired[typing.Union[int, float, numbers.Number]],
+            "data": NotRequired[typing.Sequence]
+        }
+    )
+
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, nodeCfg=Component.UNDEFINED, edgeCfg=Component.UNDEFINED, behaviors=Component.UNDEFINED, animate=Component.UNDEFINED, minimapCfg=Component.UNDEFINED, layout=Component.UNDEFINED, recentlyNodeClickRecord=Component.UNDEFINED, recentlyNodeDoubleClickRecord=Component.UNDEFINED, recentlyEdgeClickRecord=Component.UNDEFINED, recentlyEdgeDoubleClickRecord=Component.UNDEFINED, selectedNodes=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'key', 'className', 'style', 'data', 'width', 'height', 'autoFit', 'nodeCfg', 'edgeCfg', 'behaviors', 'animate', 'minimapCfg', 'layout', 'recentlyNodeClickRecord', 'recentlyNodeDoubleClickRecord', 'recentlyEdgeClickRecord', 'recentlyEdgeDoubleClickRecord', 'selectedNodes', 'loading_state']
+    def __init__(
+        self,
+        id: typing.Optional[str] = None,
+        key: typing.Optional[str] = None,
+        className: typing.Optional[str] = None,
+        style: typing.Optional[dict] = None,
+        data: typing.Optional[dict] = None,
+        width: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        height: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        autoFit: typing.Optional[bool] = None,
+        nodeCfg: typing.Optional["NodeCfg"] = None,
+        edgeCfg: typing.Optional["EdgeCfg"] = None,
+        behaviors: typing.Optional[typing.Sequence[Literal["drag-canvas", "scroll-canvas", "zoom-canvas", "drag-node", "click-select"]]] = None,
+        animate: typing.Optional[bool] = None,
+        minimapCfg: typing.Optional["MinimapCfg"] = None,
+        layout: typing.Optional["Layout"] = None,
+        recentlyNodeClickRecord: typing.Optional["RecentlyNodeClickRecord"] = None,
+        recentlyNodeDoubleClickRecord: typing.Optional["RecentlyNodeDoubleClickRecord"] = None,
+        recentlyEdgeClickRecord: typing.Optional["RecentlyEdgeClickRecord"] = None,
+        recentlyEdgeDoubleClickRecord: typing.Optional["RecentlyEdgeDoubleClickRecord"] = None,
+        selectedNodes: typing.Optional["SelectedNodes"] = None,
+        **kwargs
+    ):
+        self._prop_names = ['id', 'key', 'className', 'style', 'data', 'width', 'height', 'autoFit', 'nodeCfg', 'edgeCfg', 'behaviors', 'animate', 'minimapCfg', 'layout', 'recentlyNodeClickRecord', 'recentlyNodeDoubleClickRecord', 'recentlyEdgeClickRecord', 'recentlyEdgeDoubleClickRecord', 'selectedNodes']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'key', 'className', 'style', 'data', 'width', 'height', 'autoFit', 'nodeCfg', 'edgeCfg', 'behaviors', 'animate', 'minimapCfg', 'layout', 'recentlyNodeClickRecord', 'recentlyNodeDoubleClickRecord', 'recentlyEdgeClickRecord', 'recentlyEdgeDoubleClickRecord', 'selectedNodes', 'loading_state']
+        self.available_properties = ['id', 'key', 'className', 'style', 'data', 'width', 'height', 'autoFit', 'nodeCfg', 'edgeCfg', 'behaviors', 'animate', 'minimapCfg', 'layout', 'recentlyNodeClickRecord', 'recentlyNodeDoubleClickRecord', 'recentlyEdgeClickRecord', 'recentlyEdgeDoubleClickRecord', 'selectedNodes']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

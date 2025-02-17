@@ -11,7 +11,8 @@ import { propTypes, defaultProps } from '../../components/AntdTreemap.react';
 
 // 定义不触发重绘的参数数组
 const preventUpdateProps = [
-    'loading_state',
+    'setProps',
+    'component_loading',
     'recentlyTooltipChangeRecord',
     'recentlyAreaClickRecord',
     'recentlyLegendInfo'
@@ -102,7 +103,7 @@ export default class AntdTreemap extends Component {
             theme,
             pattern,
             setProps,
-            loading_state
+            component_loading
         } = this.props;
 
         // 初始化config参数对象，每次渲染前的参数解析变动只在config中生效
@@ -215,9 +216,7 @@ export default class AntdTreemap extends Component {
             key={key}
             className={className}
             style={style}
-            data-dash-is-loading={
-                (loading_state && loading_state.is_loading) || undefined
-            }
+            data-dash-is-loading={component_loading}
             ref={this.chartRef}
             // 绑定常用事件
             onReady={(plot) => {

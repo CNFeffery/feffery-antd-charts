@@ -1,6 +1,13 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+import typing  # noqa: F401
+import numbers # noqa: F401
+from typing_extensions import TypedDict, NotRequired, Literal # noqa: F401
 from dash.development.base_component import Component, _explicitize_args
+try:
+    from dash.development.base_component import ComponentType # noqa: F401
+except ImportError:
+    ComponentType = typing.TypeVar("ComponentType", bound=Component)
 
 
 class AntdDualAxes(Component):
@@ -218,29 +225,124 @@ Keyword arguments:
     配置交互功能相关参数，具体见在线文档相关说明.
 
 - state (optional):
-    配置状态样式相关参数，具体见在线文档相关说明.
-
-- loading_state (dict; optional)
-
-    `loading_state` is a dict with keys:
-
-    - is_loading (boolean; optional):
-        Determines if the component is loading or not.
-
-    - prop_name (string; optional):
-        Holds which property is loading.
-
-    - component_name (string; optional):
-        Holds the name of the component that is loading."""
+    配置状态样式相关参数，具体见在线文档相关说明."""
     _children_props = []
     _base_nodes = ['children']
     _namespace = 'feffery_antd_charts'
     _type = 'AntdDualAxes'
+    GeometryOptionsLineStyle = TypedDict(
+        "GeometryOptionsLineStyle",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    GeometryOptionsPointColor = TypedDict(
+        "GeometryOptionsPointColor",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    GeometryOptionsPointShape = TypedDict(
+        "GeometryOptionsPointShape",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    GeometryOptionsPointStyle = TypedDict(
+        "GeometryOptionsPointStyle",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    GeometryOptionsPoint = TypedDict(
+        "GeometryOptionsPoint",
+            {
+            "color": NotRequired[typing.Union[str, typing.Sequence[str], "GeometryOptionsPointColor"]],
+            "shape": NotRequired[typing.Union[str, "GeometryOptionsPointShape"]],
+            "style": NotRequired[typing.Union[typing.Any, "GeometryOptionsPointStyle"]]
+        }
+    )
+
+    GeometryOptionsColor = TypedDict(
+        "GeometryOptionsColor",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    GeometryOptions = TypedDict(
+        "GeometryOptions",
+            {
+            "geometry": NotRequired[Literal["line", "column"]],
+            "seriesField": NotRequired[str],
+            "groupField": NotRequired[str],
+            "isGroup": NotRequired[bool],
+            "isStack": NotRequired[bool],
+            "columnWidthRatio": NotRequired[typing.Union[int, float, numbers.Number]],
+            "marginRatio": NotRequired[typing.Union[int, float, numbers.Number]],
+            "columnStyle": NotRequired[typing.Union[typing.Any, "GeometryOptionsColumnStyle"]],
+            "label": NotRequired[typing.Any],
+            "color": NotRequired[typing.Union[str, typing.Sequence[str], "GeometryOptionsColor"]]
+        }
+    )
+
+    GeometryOptionsColumnStyle = TypedDict(
+        "GeometryOptionsColumnStyle",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    RecentlyClickRecord = TypedDict(
+        "RecentlyClickRecord",
+            {
+            "timestamp": NotRequired[typing.Union[int, float, numbers.Number]],
+            "data": NotRequired[dict]
+        }
+    )
+
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, xField=Component.REQUIRED, yField=Component.REQUIRED, geometryOptions=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, pixelRatio=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, tooltip=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, annotations=Component.UNDEFINED, legend=Component.UNDEFINED, slider=Component.UNDEFINED, animation=Component.UNDEFINED, recentlyClickRecord=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, interactions=Component.UNDEFINED, state=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'geometryOptions', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'tooltip', 'xAxis', 'yAxis', 'annotations', 'legend', 'slider', 'animation', 'recentlyClickRecord', 'downloadTrigger', 'theme', 'interactions', 'state', 'loading_state']
+    def __init__(
+        self,
+        id: typing.Optional[str] = None,
+        key: typing.Optional[str] = None,
+        className: typing.Optional[str] = None,
+        style: typing.Optional[dict] = None,
+        data: typing.Optional[typing.Sequence[typing.Sequence[dict]]] = None,
+        meta: typing.Optional[typing.Any] = None,
+        xField: typing.Optional[str] = None,
+        yField: typing.Optional[typing.Sequence[str]] = None,
+        geometryOptions: typing.Optional[typing.Sequence[typing.Union["GeometryOptions"]]] = None,
+        width: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        height: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        autoFit: typing.Optional[bool] = None,
+        padding: typing.Optional[typing.Union[typing.Union[int, float, numbers.Number], typing.Sequence[typing.Union[int, float, numbers.Number]], Literal["auto"]]] = None,
+        appendPadding: typing.Optional[typing.Union[typing.Union[int, float, numbers.Number], typing.Sequence[typing.Union[int, float, numbers.Number]]]] = None,
+        renderer: typing.Optional[Literal["canvas", "svg"]] = None,
+        pixelRatio: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        locale: typing.Optional[Literal["zh-CN", "en-US"]] = None,
+        limitInPlot: typing.Optional[bool] = None,
+        tooltip: typing.Optional[typing.Any] = None,
+        xAxis: typing.Optional[typing.Any] = None,
+        yAxis: typing.Optional[typing.Dict[typing.Union[str, float, int], typing.Any]] = None,
+        annotations: typing.Optional[typing.Dict[typing.Union[str, float, int], typing.Any]] = None,
+        legend: typing.Optional[typing.Any] = None,
+        slider: typing.Optional[typing.Any] = None,
+        animation: typing.Optional[typing.Any] = None,
+        recentlyClickRecord: typing.Optional["RecentlyClickRecord"] = None,
+        downloadTrigger: typing.Optional[str] = None,
+        theme: typing.Optional[typing.Any] = None,
+        interactions: typing.Optional[typing.Any] = None,
+        state: typing.Optional[typing.Any] = None,
+        **kwargs
+    ):
+        self._prop_names = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'geometryOptions', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'tooltip', 'xAxis', 'yAxis', 'annotations', 'legend', 'slider', 'animation', 'recentlyClickRecord', 'downloadTrigger', 'theme', 'interactions', 'state']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'geometryOptions', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'tooltip', 'xAxis', 'yAxis', 'annotations', 'legend', 'slider', 'animation', 'recentlyClickRecord', 'downloadTrigger', 'theme', 'interactions', 'state', 'loading_state']
+        self.available_properties = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'geometryOptions', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'tooltip', 'xAxis', 'yAxis', 'annotations', 'legend', 'slider', 'animation', 'recentlyClickRecord', 'downloadTrigger', 'theme', 'interactions', 'state']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

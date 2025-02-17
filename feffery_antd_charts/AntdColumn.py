@@ -1,6 +1,13 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+import typing  # noqa: F401
+import numbers # noqa: F401
+from typing_extensions import TypedDict, NotRequired, Literal # noqa: F401
 from dash.development.base_component import Component, _explicitize_args
+try:
+    from dash.development.base_component import ComponentType # noqa: F401
+except ImportError:
+    ComponentType = typing.TypeVar("ComponentType", bound=Component)
 
 
 class AntdColumn(Component):
@@ -245,29 +252,155 @@ Keyword arguments:
     配置交互功能相关参数，具体见在线文档相关说明.
 
 - state (optional):
-    配置状态样式相关参数，具体见在线文档相关说明.
-
-- loading_state (dict; optional)
-
-    `loading_state` is a dict with keys:
-
-    - is_loading (boolean; optional):
-        Determines if the component is loading or not.
-
-    - prop_name (string; optional):
-        Holds which property is loading.
-
-    - component_name (string; optional):
-        Holds the name of the component that is loading."""
+    配置状态样式相关参数，具体见在线文档相关说明."""
     _children_props = []
     _base_nodes = ['children']
     _namespace = 'feffery_antd_charts'
     _type = 'AntdColumn'
+    Color = TypedDict(
+        "Color",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    ColumnStyle = TypedDict(
+        "ColumnStyle",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    ColumnBackground = TypedDict(
+        "ColumnBackground",
+            {
+            "style": NotRequired[typing.Any]
+        }
+    )
+
+    ConversionTagArrow = TypedDict(
+        "ConversionTagArrow",
+            {
+            "headSize": NotRequired[typing.Union[int, float, numbers.Number]]
+        }
+    )
+
+    ConversionTagTextFormatter = TypedDict(
+        "ConversionTagTextFormatter",
+            {
+            "func": NotRequired[str]
+        }
+    )
+
+    ConversionTagText = TypedDict(
+        "ConversionTagText",
+            {
+            "formatter": NotRequired["ConversionTagTextFormatter"],
+            "style": NotRequired[typing.Any]
+        }
+    )
+
+    ConversionTag = TypedDict(
+        "ConversionTag",
+            {
+            "size": NotRequired[typing.Union[int, float, numbers.Number]],
+            "spacing": NotRequired[typing.Union[int, float, numbers.Number]],
+            "offset": NotRequired[typing.Union[int, float, numbers.Number]],
+            "arrow": NotRequired[typing.Union[bool, "ConversionTagArrow"]],
+            "text": NotRequired[typing.Union[bool, "ConversionTagText"]]
+        }
+    )
+
+    ConnectedArea = TypedDict(
+        "ConnectedArea",
+            {
+            "trigger": NotRequired[typing.Union[bool, str]]
+        }
+    )
+
+    RecentlyTooltipChangeRecord = TypedDict(
+        "RecentlyTooltipChangeRecord",
+            {
+            "timestamp": NotRequired[typing.Union[int, float, numbers.Number]],
+            "data": NotRequired[typing.Sequence[dict]]
+        }
+    )
+
+    RecentlyColumnClickRecord = TypedDict(
+        "RecentlyColumnClickRecord",
+            {
+            "timestamp": NotRequired[typing.Union[int, float, numbers.Number]],
+            "data": NotRequired[dict]
+        }
+    )
+
+    RecentlyLegendInfo = TypedDict(
+        "RecentlyLegendInfo",
+            {
+            "triggerItemName": NotRequired[typing.Any],
+            "items": NotRequired[typing.Sequence[dict]]
+        }
+    )
+
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, data=Component.REQUIRED, meta=Component.UNDEFINED, xField=Component.REQUIRED, yField=Component.REQUIRED, seriesField=Component.UNDEFINED, groupField=Component.UNDEFINED, isStack=Component.UNDEFINED, isGroup=Component.UNDEFINED, isRange=Component.UNDEFINED, isPercent=Component.UNDEFINED, color=Component.UNDEFINED, columnStyle=Component.UNDEFINED, slider=Component.UNDEFINED, intervalPadding=Component.UNDEFINED, dodgePadding=Component.UNDEFINED, minColumnWidth=Component.UNDEFINED, maxColumnWidth=Component.UNDEFINED, columnBackground=Component.UNDEFINED, columnWidthRatio=Component.UNDEFINED, marginRatio=Component.UNDEFINED, scrollbar=Component.UNDEFINED, conversionTag=Component.UNDEFINED, connectedArea=Component.UNDEFINED, xAxis=Component.UNDEFINED, yAxis=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, autoFit=Component.UNDEFINED, padding=Component.UNDEFINED, appendPadding=Component.UNDEFINED, renderer=Component.UNDEFINED, pixelRatio=Component.UNDEFINED, locale=Component.UNDEFINED, limitInPlot=Component.UNDEFINED, legend=Component.UNDEFINED, label=Component.UNDEFINED, tooltip=Component.UNDEFINED, annotations=Component.UNDEFINED, animation=Component.UNDEFINED, recentlyTooltipChangeRecord=Component.UNDEFINED, recentlyColumnClickRecord=Component.UNDEFINED, recentlyLegendInfo=Component.UNDEFINED, downloadTrigger=Component.UNDEFINED, theme=Component.UNDEFINED, pattern=Component.UNDEFINED, interactions=Component.UNDEFINED, state=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'seriesField', 'groupField', 'isStack', 'isGroup', 'isRange', 'isPercent', 'color', 'columnStyle', 'slider', 'intervalPadding', 'dodgePadding', 'minColumnWidth', 'maxColumnWidth', 'columnBackground', 'columnWidthRatio', 'marginRatio', 'scrollbar', 'conversionTag', 'connectedArea', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'animation', 'recentlyTooltipChangeRecord', 'recentlyColumnClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'pattern', 'interactions', 'state', 'loading_state']
+    def __init__(
+        self,
+        id: typing.Optional[str] = None,
+        key: typing.Optional[str] = None,
+        className: typing.Optional[str] = None,
+        style: typing.Optional[dict] = None,
+        data: typing.Optional[typing.Sequence[dict]] = None,
+        meta: typing.Optional[typing.Any] = None,
+        xField: typing.Optional[str] = None,
+        yField: typing.Optional[str] = None,
+        seriesField: typing.Optional[str] = None,
+        groupField: typing.Optional[str] = None,
+        isStack: typing.Optional[bool] = None,
+        isGroup: typing.Optional[bool] = None,
+        isRange: typing.Optional[bool] = None,
+        isPercent: typing.Optional[bool] = None,
+        color: typing.Optional[typing.Union[str, typing.Sequence[str], "Color"]] = None,
+        columnStyle: typing.Optional[typing.Union[typing.Any, "ColumnStyle"]] = None,
+        slider: typing.Optional[typing.Any] = None,
+        intervalPadding: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        dodgePadding: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        minColumnWidth: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        maxColumnWidth: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        columnBackground: typing.Optional["ColumnBackground"] = None,
+        columnWidthRatio: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        marginRatio: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        scrollbar: typing.Optional[typing.Any] = None,
+        conversionTag: typing.Optional["ConversionTag"] = None,
+        connectedArea: typing.Optional[typing.Union["ConnectedArea", bool]] = None,
+        xAxis: typing.Optional[typing.Any] = None,
+        yAxis: typing.Optional[typing.Any] = None,
+        width: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        height: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        autoFit: typing.Optional[bool] = None,
+        padding: typing.Optional[typing.Union[typing.Union[int, float, numbers.Number], typing.Sequence[typing.Union[int, float, numbers.Number]], str]] = None,
+        appendPadding: typing.Optional[typing.Union[typing.Union[int, float, numbers.Number], typing.Sequence[typing.Union[int, float, numbers.Number]], str]] = None,
+        renderer: typing.Optional[Literal["canvas", "svg"]] = None,
+        pixelRatio: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        locale: typing.Optional[Literal["zh-CN", "en-US"]] = None,
+        limitInPlot: typing.Optional[bool] = None,
+        legend: typing.Optional[typing.Any] = None,
+        label: typing.Optional[typing.Any] = None,
+        tooltip: typing.Optional[typing.Any] = None,
+        annotations: typing.Optional[typing.Any] = None,
+        animation: typing.Optional[typing.Any] = None,
+        recentlyTooltipChangeRecord: typing.Optional["RecentlyTooltipChangeRecord"] = None,
+        recentlyColumnClickRecord: typing.Optional["RecentlyColumnClickRecord"] = None,
+        recentlyLegendInfo: typing.Optional["RecentlyLegendInfo"] = None,
+        downloadTrigger: typing.Optional[str] = None,
+        theme: typing.Optional[typing.Any] = None,
+        pattern: typing.Optional[typing.Any] = None,
+        interactions: typing.Optional[typing.Any] = None,
+        state: typing.Optional[typing.Any] = None,
+        **kwargs
+    ):
+        self._prop_names = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'seriesField', 'groupField', 'isStack', 'isGroup', 'isRange', 'isPercent', 'color', 'columnStyle', 'slider', 'intervalPadding', 'dodgePadding', 'minColumnWidth', 'maxColumnWidth', 'columnBackground', 'columnWidthRatio', 'marginRatio', 'scrollbar', 'conversionTag', 'connectedArea', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'animation', 'recentlyTooltipChangeRecord', 'recentlyColumnClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'pattern', 'interactions', 'state']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'seriesField', 'groupField', 'isStack', 'isGroup', 'isRange', 'isPercent', 'color', 'columnStyle', 'slider', 'intervalPadding', 'dodgePadding', 'minColumnWidth', 'maxColumnWidth', 'columnBackground', 'columnWidthRatio', 'marginRatio', 'scrollbar', 'conversionTag', 'connectedArea', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'animation', 'recentlyTooltipChangeRecord', 'recentlyColumnClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'pattern', 'interactions', 'state', 'loading_state']
+        self.available_properties = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'seriesField', 'groupField', 'isStack', 'isGroup', 'isRange', 'isPercent', 'color', 'columnStyle', 'slider', 'intervalPadding', 'dodgePadding', 'minColumnWidth', 'maxColumnWidth', 'columnBackground', 'columnWidthRatio', 'marginRatio', 'scrollbar', 'conversionTag', 'connectedArea', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'animation', 'recentlyTooltipChangeRecord', 'recentlyColumnClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'pattern', 'interactions', 'state']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()
