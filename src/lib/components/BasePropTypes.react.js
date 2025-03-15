@@ -118,7 +118,7 @@ const baseStyle = PropTypes.shape({
 
 // 定义全局化配置图表数据元信息PropTypes模板，其中原始字段名为属性名
 const metaBasePropTypes = PropTypes.objectOf(
-    PropTypes.exact({
+    PropTypes.shape({
         /**
          * 声明当前字段度量类型，可选项有`'cat'`（分类度量）、`'timeCat'`（时间分类度量）、`'linear'`（线性度量）、`'time'`（连续的时间度量）、`'log'`（对数度量）、`'pow'`（幂数度量）、`'quantize'`（分段度量）、`'quantile'`（等分度量）、`'identity'`（常量度量）
          */
@@ -138,7 +138,7 @@ const metaBasePropTypes = PropTypes.objectOf(
          * 统一设置当前字段在坐标轴、图例、信息框中对应的文字内容`javascript`格式化函数
          */
         formatter: PropTypes.oneOfType([
-            PropTypes.exact({
+            PropTypes.shape({
                 /**
                  * js函数体字符串
                  */
@@ -206,7 +206,7 @@ const metaBasePropTypes = PropTypes.objectOf(
 // 参考文档：https://antv-g2plot.gitee.io/zh/docs/api/components/axis
 const axisBasePropTypes = PropTypes.oneOfType([
     PropTypes.bool,
-    PropTypes.exact({
+    PropTypes.shape({
         /**
          * 是否将坐标轴渲染于画布顶层，从而避免部分图表坐标轴被图形遮挡
          * 默认值：`false`
@@ -223,7 +223,7 @@ const axisBasePropTypes = PropTypes.oneOfType([
         /**
          * 配置坐标轴标题
          */
-        title: PropTypes.exact({
+        title: PropTypes.shape({
             /**
              * 标题内容
              */
@@ -254,7 +254,7 @@ const axisBasePropTypes = PropTypes.oneOfType([
          */
         label: PropTypes.oneOfType([
             PropTypes.bool,
-            PropTypes.exact({
+            PropTypes.shape({
                 /**
                  * 像素偏移量
                  */
@@ -291,7 +291,7 @@ const axisBasePropTypes = PropTypes.oneOfType([
                  * 文字内容`javascript`格式化函数
                  */
                 formatter: PropTypes.oneOfType([
-                    PropTypes.exact({
+                    PropTypes.shape({
                         /**
                          * js函数体字符串
                          */
@@ -308,7 +308,7 @@ const axisBasePropTypes = PropTypes.oneOfType([
         /**
          * 配置坐标轴线
          */
-        line: PropTypes.exact({
+        line: PropTypes.shape({
             /**
              * 坐标轴线样式，具体参数请参考[样式配置项](https://fact.feffery.tech/style)
              */
@@ -317,11 +317,11 @@ const axisBasePropTypes = PropTypes.oneOfType([
         /**
          * 配置坐标轴网格
          */
-        grid: PropTypes.exact({
+        grid: PropTypes.shape({
             /**
              * 配置网格线
              */
-            line: PropTypes.exact({
+            line: PropTypes.shape({
                 /**
                  * 网格线样式，具体参数请参考[样式配置项](https://fact.feffery.tech/style)
                  */
@@ -350,7 +350,7 @@ const axisBasePropTypes = PropTypes.oneOfType([
         /**
          * 配置坐标轴刻度线
          */
-        tickLine: PropTypes.exact({
+        tickLine: PropTypes.shape({
             /**
              * 刻度线样式，具体参数请参考[样式配置项](https://fact.feffery.tech/style)
              */
@@ -367,7 +367,7 @@ const axisBasePropTypes = PropTypes.oneOfType([
         /**
          * 配置坐标轴子刻度线
          */
-        subTickLine: PropTypes.exact({
+        subTickLine: PropTypes.shape({
             /**
              * 子刻度线样式，具体参数请参考[样式配置项](https://fact.feffery.tech/style)
              */
@@ -417,7 +417,7 @@ const axisBasePropTypes = PropTypes.oneOfType([
 // 参考文档：https://antv-g2plot.gitee.io/zh/docs/api/components/legend
 const legendBasePropTypes = PropTypes.oneOfType([
     PropTypes.bool,
-    PropTypes.exact({
+    PropTypes.shape({
         /**
          * 图例位置，可选项有`'top'`、`'top-left'`、`'top-right'`、`'left'`、`'left-top'`、`'left-bottom'`、`'right'`、`'right-top'`、`'right-bottom'`、`'bottom'`、`'bottom-left'`、`'bottom-right'`
          */
@@ -434,7 +434,7 @@ const legendBasePropTypes = PropTypes.oneOfType([
         /**
          * 配置图例标题
          */
-        title: PropTypes.exact({
+        title: PropTypes.shape({
             /**
              * 图例标题内容
              */
@@ -459,7 +459,7 @@ const legendBasePropTypes = PropTypes.oneOfType([
         /**
          * 配置图例背景
          */
-        background: PropTypes.exact({
+        background: PropTypes.shape({
             /**
              * 图例背景框像素内边距
              */
@@ -495,7 +495,7 @@ const legendBasePropTypes = PropTypes.oneOfType([
         /**
          * 配置图例项名称
          */
-        itemName: PropTypes.exact({
+        itemName: PropTypes.shape({
             /**
              * 图例项名称与标记之间的像素间距
              */
@@ -508,7 +508,7 @@ const legendBasePropTypes = PropTypes.oneOfType([
              * 图例项名称内容`javascript`格式化函数
              */
             formatter: PropTypes.oneOfType([
-                PropTypes.exact({
+                PropTypes.shape({
                     /**
                      * js函数体字符串
                      */
@@ -520,7 +520,7 @@ const legendBasePropTypes = PropTypes.oneOfType([
         /**
          * 配置图例项数值
          */
-        itemValue: PropTypes.exact({
+        itemValue: PropTypes.shape({
             /**
              * 设置图例项宽度后，控制数值是否右对齐
              */
@@ -533,7 +533,7 @@ const legendBasePropTypes = PropTypes.oneOfType([
              * 图例项数值内容`javascript`格式化函数
              */
             formatter: PropTypes.oneOfType([
-                PropTypes.exact({
+                PropTypes.shape({
                     /**
                      * js函数体字符串
                      */
@@ -569,7 +569,7 @@ const legendBasePropTypes = PropTypes.oneOfType([
         /**
          * 配置连续型图例滑轨
          */
-        rail: PropTypes.exact({
+        rail: PropTypes.shape({
             /**
              * 滑轨类型，可选项有`'color'`、`'size'`
              */
@@ -590,7 +590,7 @@ const legendBasePropTypes = PropTypes.oneOfType([
         /**
          * 针对连续型图例，配置滑轨选择范围
          */
-        track: PropTypes.exact({
+        track: PropTypes.shape({
             /**
              * 滑轨选择范围样式，具体参数请参考[样式配置项](https://fact.feffery.tech/style)
              */
@@ -599,7 +599,7 @@ const legendBasePropTypes = PropTypes.oneOfType([
         /**
          * 针对连续型图例，配置滑轨滑块
          */
-        handler: PropTypes.exact({
+        handler: PropTypes.shape({
             /**
              * 滑块像素尺寸
              */
@@ -618,7 +618,7 @@ const legendBasePropTypes = PropTypes.oneOfType([
          * 配置自定义分类型图例
          */
         items: PropTypes.arrayOf(
-            PropTypes.exact({
+            PropTypes.shape({
                 /**
                  * 当前图例项名称
                  */
@@ -630,7 +630,7 @@ const legendBasePropTypes = PropTypes.oneOfType([
                 /**
                  * 配置当前图例项标记
                  */
-                marker: PropTypes.exact({
+                marker: PropTypes.shape({
                     /**
                      * 图例项标记类型，可选项有`'circle'`、`'square'`、`'line'`、`'diamond'`、`'triangle'`、`'triangle-down'`、`'hexagon'`、`'bowtie'`、`'cross'`、`'tick'`、`'plus'`、`'hyphen'`
                      */
@@ -655,7 +655,7 @@ const legendBasePropTypes = PropTypes.oneOfType([
 // 参考文档：https://antv-g2plot.gitee.io/zh/docs/api/components/label
 const labelBasePropTypes = PropTypes.oneOfType([
     PropTypes.bool,
-    PropTypes.exact({
+    PropTypes.shape({
         /**
          * 特殊标签类型，如针对饼图可用的`'inner'`、`'outer'`、`'spider'`
          */
@@ -699,7 +699,7 @@ const labelBasePropTypes = PropTypes.oneOfType([
          * 配置文本布局
          */
         layout: PropTypes.arrayOf(
-            PropTypes.exact({
+            PropTypes.shape({
                 /**
                  * 文本布局类型，可选项有`'overlap'`、`'fixed-overlap'`、`'limit-in-shape'`
                  */
@@ -714,7 +714,7 @@ const labelBasePropTypes = PropTypes.oneOfType([
          * 标签内容`javascript`格式化函数
          */
         formatter: PropTypes.oneOfType([
-            PropTypes.exact({
+            PropTypes.shape({
                 /**
                  * js函数体字符串
                  */
@@ -730,7 +730,7 @@ const labelBasePropTypes = PropTypes.oneOfType([
         /**
          * 配置标签背景
          */
-        background: PropTypes.exact({
+        background: PropTypes.shape({
             /**
              * 标签背景样式，具体参数请参考[样式配置项](https://fact.feffery.tech/style)
              */
@@ -747,7 +747,7 @@ const labelBasePropTypes = PropTypes.oneOfType([
 // 参考文档：https://antv-g2plot.gitee.io/zh/docs/api/components/tooltip
 const tooltipBasePropTypes = PropTypes.oneOfType([
     PropTypes.bool,
-    PropTypes.exact({
+    PropTypes.shape({
         /**
          * 需要在信息框中显示的字段
          */
@@ -756,7 +756,7 @@ const tooltipBasePropTypes = PropTypes.oneOfType([
          * 信息框内容`javascript`格式化函数
          */
         formatter: PropTypes.oneOfType([
-            PropTypes.exact({
+            PropTypes.shape({
                 /**
                  * js函数体字符串
                  */
@@ -816,7 +816,7 @@ const tooltipBasePropTypes = PropTypes.oneOfType([
          * 信息框子项`javascript`预处理函数
          */
         customItems: PropTypes.oneOfType([
-            PropTypes.exact({
+            PropTypes.shape({
                 /**
                  * js函数体字符串
                  */
@@ -908,7 +908,7 @@ const annotationsBasePropTypes = PropTypes.oneOfType([
             /**
              * 适用于`'text'`类型标注，配置文本背景框
              */
-            background: PropTypes.exact({
+            background: PropTypes.shape({
                 /**
                  * 文本背景框样式，具体参数请参考[样式配置项](https://fact.feffery.tech/style)
                  */
@@ -950,7 +950,7 @@ const annotationsBasePropTypes = PropTypes.oneOfType([
              */
             html: PropTypes.oneOfType([
                 PropTypes.string,
-                PropTypes.exact({
+                PropTypes.shape({
                     /**
                      * js函数体字符串
                      */
@@ -974,7 +974,7 @@ const annotationsBasePropTypes = PropTypes.oneOfType([
 // 参考文档：https://antv-g2plot.gitee.io/zh/docs/api/components/scrollbar
 const scrollbarBasePropTypes = PropTypes.oneOfType([
     PropTypes.bool,
-    PropTypes.exact({
+    PropTypes.shape({
         /**
          * 滚动条类型，可选项有`'horizontal'`、`'vertical'`
          * 默认值：`'horizontal'`
@@ -1002,7 +1002,7 @@ const scrollbarBasePropTypes = PropTypes.oneOfType([
         /**
          * 配置滚动条样式
          */
-        style: PropTypes.exact({
+        style: PropTypes.shape({
             /**
              * 滚动条滑道颜色
              */
@@ -1027,7 +1027,7 @@ const scrollbarBasePropTypes = PropTypes.oneOfType([
 // 参考文档：https://antv-g2plot.gitee.io/zh/docs/api/components/slider
 const sliderBasePropTypes = PropTypes.oneOfType([
     PropTypes.bool,
-    PropTypes.exact({
+    PropTypes.shape({
         /**
          * 初始化范围起始比例位置，取值应在`0`到`1`之间
          */
@@ -1051,7 +1051,7 @@ const sliderBasePropTypes = PropTypes.oneOfType([
         /**
          * 配置缩略轴手柄
          */
-        handlerStyle: PropTypes.exact({
+        handlerStyle: PropTypes.shape({
             /**
              * 手柄像素宽度
              */
@@ -1101,7 +1101,7 @@ const sliderBasePropTypes = PropTypes.oneOfType([
          * 缩略轴文本`javascript`格式化函数
          */
         formatter: PropTypes.oneOfType([
-            PropTypes.exact({
+            PropTypes.shape({
                 /**
                  * js函数体字符串
                  */
@@ -1112,7 +1112,7 @@ const sliderBasePropTypes = PropTypes.oneOfType([
         /**
          * 配置趋势线背景
          */
-        trendCfg: PropTypes.exact({
+        trendCfg: PropTypes.shape({
             /**
              * 趋势线数据，默认会自动生成
              */
@@ -1191,13 +1191,13 @@ const themeBasePropTypes = PropTypes.oneOfType([
 
 // 定义贴图通用PropTypes模板
 const patternBasePropTypes = PropTypes.oneOfType([
-    PropTypes.exact({
+    PropTypes.shape({
         /**
          * js函数体字符串
          */
         func: PropTypes.string
     }),
-    PropTypes.exact({
+    PropTypes.shape({
         /**
          * 贴图类型，可选项有`'dot'`、`'square'`、`'line'`
          */
@@ -1205,7 +1205,7 @@ const patternBasePropTypes = PropTypes.oneOfType([
         /**
          * 配置贴图样式
          */
-        cfg: PropTypes.exact({
+        cfg: PropTypes.shape({
             /**
              * 贴图背景色
              */
@@ -1262,7 +1262,7 @@ const patternBasePropTypes = PropTypes.oneOfType([
 ])
 
 // 定义动画通用PropTypes模板
-const animationExactPropTypes = PropTypes.exact({
+const animationExactPropTypes = PropTypes.shape({
     /**
      * 动画效果类型，可选项有`'fade-in'`、`'fade-out'`、`'grow-in-x'`、`'grow-in-y'`、`'grow-in-xy'`、`'scale-in-x'`、`'scale-in-y'`、`'wave-in'`、`'zoom-in'`、`'zoom-out'`、`'path-in'`、`'position-update'`
      */
@@ -1293,7 +1293,7 @@ const animationExactPropTypes = PropTypes.exact({
 const animationBasePropTypes = PropTypes.oneOfType([
     // 设置为false时关闭动画
     PropTypes.bool,
-    PropTypes.exact({
+    PropTypes.shape({
         /**
          * 初次加载阶段
          */
@@ -1315,7 +1315,7 @@ const animationBasePropTypes = PropTypes.oneOfType([
 
 // 定义交互通用PropTypes模板
 const interactionsBasePropTypes = PropTypes.arrayOf(
-    PropTypes.exact({
+    PropTypes.shape({
         /**
          * 当前交互类型，常用项有`'active-region'`、`'element-active'`、`'element-selected'`、`'element-single-selected'`、`'element-highlight'`、`'element-highlight-by-x'`、·'element-highlight-by-color'·、`'legend-filter'`、`'legend-visible-filter'`、`'legend-active'`、`'legend-highlight'`、`'legend-highlight'`、`'element-list-highlight'`、`'pie-statistic-active'`等，[拓展阅读](https://g2-v4.antv.vision/zh/docs/api/general/interaction)
          */
@@ -1332,11 +1332,11 @@ const interactionsBasePropTypes = PropTypes.arrayOf(
 )
 
 // 定义状态样式通用PropTypes模板
-const stateBasePropTypes = PropTypes.exact({
+const stateBasePropTypes = PropTypes.shape({
     /**
      * 配置激活状态
      */
-    active: PropTypes.exact({
+    active: PropTypes.shape({
         /**
          * 激活状态样式，具体参数请参考[样式配置项](https://fact.feffery.tech/style)
          */
@@ -1345,7 +1345,7 @@ const stateBasePropTypes = PropTypes.exact({
     /**
      * 配置非激活状态
      */
-    inactive: PropTypes.exact({
+    inactive: PropTypes.shape({
         /**
          * 非激活状态样式，具体参数请参考[样式配置项](https://fact.feffery.tech/style)
          */
@@ -1354,7 +1354,7 @@ const stateBasePropTypes = PropTypes.exact({
     /**
      * 配置选中状态
      */
-    selected: PropTypes.exact({
+    selected: PropTypes.shape({
         /**
          * 选中状态样式，具体参数请参考[样式配置项](https://fact.feffery.tech/style)
          */
@@ -1363,7 +1363,7 @@ const stateBasePropTypes = PropTypes.exact({
     /**
      * 配置默认状态
      */
-    default: PropTypes.exact({
+    default: PropTypes.shape({
         /**
          * 默认状态样式，具体参数请参考[样式配置项](https://fact.feffery.tech/style)
          */
@@ -1372,7 +1372,7 @@ const stateBasePropTypes = PropTypes.exact({
 })
 
 // 刷选交互功能通用PropTypes模板
-const brushBasePropTypes = PropTypes.exact({
+const brushBasePropTypes = PropTypes.shape({
     /**
      * 是否启用筛选功能
      * 默认值：`false`
@@ -1395,7 +1395,7 @@ const brushBasePropTypes = PropTypes.exact({
     /**
      * 配置筛选重置按钮
      */
-    button: PropTypes.exact({
+    button: PropTypes.shape({
         /**
          * 按钮内边距
          */
@@ -1414,7 +1414,7 @@ const brushBasePropTypes = PropTypes.exact({
         /**
          * 按钮样式
          */
-        buttonStyle: PropTypes.exact({
+        buttonStyle: PropTypes.shape({
             /**
              * 默认状态样式
              */
