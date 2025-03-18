@@ -25,9 +25,6 @@ Keyword arguments:
 - className (string; optional):
     当前组件css类名.
 
-- style (dict; optional):
-    当前组件css样式.
-
 - data (list of dicts; required):
     必填，定义绘图所需数据，格式如`[{title: '满意度', ranges: [50, 100], measures: [80],
     target: 85}]`.
@@ -285,7 +282,7 @@ Keyword arguments:
         id: typing.Optional[typing.Union[str, dict]] = None,
         key: typing.Optional[str] = None,
         className: typing.Optional[str] = None,
-        style: typing.Optional[dict] = None,
+        style: typing.Optional[typing.Any] = None,
         data: typing.Optional[typing.Sequence[dict]] = None,
         meta: typing.Optional[typing.Any] = None,
         measureField: typing.Optional[str] = None,

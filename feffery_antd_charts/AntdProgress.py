@@ -25,9 +25,6 @@ Keyword arguments:
 - className (string; optional):
     当前组件css类名.
 
-- style (dict; optional):
-    当前组件css样式.
-
 - percent (number; required):
     必填，百分比数值，取值应在`0`到`1`之间.
 
@@ -112,7 +109,7 @@ Keyword arguments:
         id: typing.Optional[typing.Union[str, dict]] = None,
         key: typing.Optional[str] = None,
         className: typing.Optional[str] = None,
-        style: typing.Optional[dict] = None,
+        style: typing.Optional[typing.Any] = None,
         percent: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
         barWidthRatio: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
         color: typing.Optional[typing.Union[str, typing.Sequence[str], "Color"]] = None,

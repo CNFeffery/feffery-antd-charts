@@ -25,9 +25,6 @@ Keyword arguments:
 - className (string; optional):
     当前组件css类名.
 
-- style (dict; optional):
-    当前组件css样式.
-
 - data (list of dicts with strings as keys and values of type string | number; required):
     必填，定义绘图所需数据，具体格式见在线文档相关说明.
 
@@ -190,7 +187,7 @@ Keyword arguments:
         id: typing.Optional[typing.Union[str, dict]] = None,
         key: typing.Optional[str] = None,
         className: typing.Optional[str] = None,
-        style: typing.Optional[dict] = None,
+        style: typing.Optional[typing.Any] = None,
         data: typing.Optional[typing.Sequence[typing.Dict[typing.Union[str, float, int], typing.Union[str, typing.Union[int, float, numbers.Number]]]]] = None,
         meta: typing.Optional[typing.Any] = None,
         xField: typing.Optional[str] = None,
