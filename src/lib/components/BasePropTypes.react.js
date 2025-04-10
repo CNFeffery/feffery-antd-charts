@@ -1374,7 +1374,7 @@ const stateBasePropTypes = PropTypes.shape({
 // 刷选交互功能通用PropTypes模板
 const brushBasePropTypes = PropTypes.shape({
     /**
-     * 是否启用筛选功能
+     * 是否启用刷选功能
      * 默认值：`false`
      */
     enabled: PropTypes.bool,
@@ -1393,7 +1393,7 @@ const brushBasePropTypes = PropTypes.shape({
      */
     mask: baseStyle,
     /**
-     * 配置筛选重置按钮
+     * 配置刷选重置按钮
      */
     button: PropTypes.shape({
         /**

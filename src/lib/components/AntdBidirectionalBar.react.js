@@ -116,7 +116,7 @@ AntdBidirectionalBar.propTypes = {
     /**
      * 配置纵坐标轴相关参数，具体见在线文档相关说明
      */
-    yAxis: axisBasePropTypes,
+    yAxis: PropTypes.objectOf(axisBasePropTypes),
 
     /**
      * 图表容器像素宽度

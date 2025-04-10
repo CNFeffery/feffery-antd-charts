@@ -51,7 +51,7 @@ Keyword arguments:
 - xAxis (optional):
     配置横坐标轴相关参数，具体见在线文档相关说明.
 
-- yAxis (optional):
+- yAxis (dict with strings as keys and values of type ; optional):
     配置纵坐标轴相关参数，具体见在线文档相关说明.
 
 - width (number; optional):
@@ -189,7 +189,7 @@ Keyword arguments:
         layout: typing.Optional[Literal["horizontal", "vertical"]] = None,
         barStyle: typing.Optional[typing.Union[typing.Any, "BarStyle"]] = None,
         xAxis: typing.Optional[typing.Any] = None,
-        yAxis: typing.Optional[typing.Any] = None,
+        yAxis: typing.Optional[typing.Dict[typing.Union[str, float, int], typing.Any]] = None,
         width: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
         height: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
         autoFit: typing.Optional[bool] = None,
