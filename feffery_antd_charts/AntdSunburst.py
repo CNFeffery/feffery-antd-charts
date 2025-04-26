@@ -1,13 +1,21 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
 import typing  # noqa: F401
-import numbers # noqa: F401
 from typing_extensions import TypedDict, NotRequired, Literal # noqa: F401
 from dash.development.base_component import Component, _explicitize_args
-try:
-    from dash.development.base_component import ComponentType # noqa: F401
-except ImportError:
-    ComponentType = typing.TypeVar("ComponentType", bound=Component)
+
+ComponentType = typing.Union[
+    str,
+    int,
+    float,
+    Component,
+    None,
+    typing.Sequence[typing.Union[str, int, float, Component, None]],
+]
+
+NumberType = typing.Union[
+    typing.SupportsFloat, typing.SupportsInt, typing.SupportsComplex
+]
 
 
 class AntdSunburst(Component):
@@ -225,7 +233,7 @@ Keyword arguments:
     RecentlyTooltipChangeRecord = TypedDict(
         "RecentlyTooltipChangeRecord",
             {
-            "timestamp": NotRequired[typing.Union[int, float, numbers.Number]],
+            "timestamp": NotRequired[NumberType],
             "data": NotRequired[typing.Any]
         }
     )
@@ -233,12 +241,12 @@ Keyword arguments:
     RecentlyAreaClickRecord = TypedDict(
         "RecentlyAreaClickRecord",
             {
-            "timestamp": NotRequired[typing.Union[int, float, numbers.Number]],
+            "timestamp": NotRequired[NumberType],
             "data": NotRequired[typing.Any]
         }
     )
 
-    @_explicitize_args
+
     def __init__(
         self,
         id: typing.Optional[typing.Union[str, dict]] = None,
@@ -249,19 +257,19 @@ Keyword arguments:
         meta: typing.Optional[typing.Any] = None,
         colorField: typing.Optional[str] = None,
         rawFields: typing.Optional[typing.Sequence[str]] = None,
-        width: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
-        height: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        width: typing.Optional[NumberType] = None,
+        height: typing.Optional[NumberType] = None,
         autoFit: typing.Optional[bool] = None,
-        padding: typing.Optional[typing.Union[typing.Union[int, float, numbers.Number], typing.Sequence[typing.Union[int, float, numbers.Number]], Literal["auto"]]] = None,
-        appendPadding: typing.Optional[typing.Union[typing.Union[int, float, numbers.Number], typing.Sequence[typing.Union[int, float, numbers.Number]]]] = None,
+        padding: typing.Optional[typing.Union[NumberType, typing.Sequence[NumberType], Literal["auto"]]] = None,
+        appendPadding: typing.Optional[typing.Union[NumberType, typing.Sequence[NumberType]]] = None,
         renderer: typing.Optional[Literal["canvas", "svg"]] = None,
-        pixelRatio: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        pixelRatio: typing.Optional[NumberType] = None,
         locale: typing.Optional[Literal["zh-CN", "en-US"]] = None,
         limitInPlot: typing.Optional[bool] = None,
         hierarchyConfig: typing.Optional["HierarchyConfig"] = None,
         drilldown: typing.Optional["Drilldown"] = None,
-        radius: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
-        innerRadius: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        radius: typing.Optional[NumberType] = None,
+        innerRadius: typing.Optional[NumberType] = None,
         color: typing.Optional[typing.Union[str, typing.Sequence[str], "Color"]] = None,
         sunburstStyle: typing.Optional[typing.Union[typing.Any, "SunburstStyle"]] = None,
         reflect: typing.Optional[bool] = None,
@@ -293,3 +301,5 @@ Keyword arguments:
                     'Required argument `' + k + '` was not specified.')
 
         super(AntdSunburst, self).__init__(**args)
+
+setattr(AntdSunburst, "__init__", _explicitize_args(AntdSunburst.__init__))

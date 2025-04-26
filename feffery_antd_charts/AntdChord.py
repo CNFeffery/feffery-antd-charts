@@ -1,13 +1,21 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
 import typing  # noqa: F401
-import numbers # noqa: F401
 from typing_extensions import TypedDict, NotRequired, Literal # noqa: F401
 from dash.development.base_component import Component, _explicitize_args
-try:
-    from dash.development.base_component import ComponentType # noqa: F401
-except ImportError:
-    ComponentType = typing.TypeVar("ComponentType", bound=Component)
+
+ComponentType = typing.Union[
+    str,
+    int,
+    float,
+    Component,
+    None,
+    typing.Sequence[typing.Union[str, int, float, Component, None]],
+]
+
+NumberType = typing.Union[
+    typing.SupportsFloat, typing.SupportsInt, typing.SupportsComplex
+]
 
 
 class AntdChord(Component):
@@ -149,7 +157,7 @@ Keyword arguments:
     RecentlyTooltipChangeRecord = TypedDict(
         "RecentlyTooltipChangeRecord",
             {
-            "timestamp": NotRequired[typing.Union[int, float, numbers.Number]],
+            "timestamp": NotRequired[NumberType],
             "data": NotRequired[typing.Sequence[dict]]
         }
     )
@@ -157,12 +165,12 @@ Keyword arguments:
     RecentlyAreaClickRecord = TypedDict(
         "RecentlyAreaClickRecord",
             {
-            "timestamp": NotRequired[typing.Union[int, float, numbers.Number]],
+            "timestamp": NotRequired[NumberType],
             "data": NotRequired[dict]
         }
     )
 
-    @_explicitize_args
+
     def __init__(
         self,
         id: typing.Optional[typing.Union[str, dict]] = None,
@@ -174,19 +182,19 @@ Keyword arguments:
         sourceField: typing.Optional[str] = None,
         targetField: typing.Optional[str] = None,
         weightField: typing.Optional[str] = None,
-        width: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
-        height: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        width: typing.Optional[NumberType] = None,
+        height: typing.Optional[NumberType] = None,
         autoFit: typing.Optional[bool] = None,
-        padding: typing.Optional[typing.Union[typing.Union[int, float, numbers.Number], typing.Sequence[typing.Union[int, float, numbers.Number]], Literal["auto"]]] = None,
-        appendPadding: typing.Optional[typing.Union[typing.Union[int, float, numbers.Number], typing.Sequence[typing.Union[int, float, numbers.Number]]]] = None,
+        padding: typing.Optional[typing.Union[NumberType, typing.Sequence[NumberType], Literal["auto"]]] = None,
+        appendPadding: typing.Optional[typing.Union[NumberType, typing.Sequence[NumberType]]] = None,
         renderer: typing.Optional[Literal["canvas", "svg"]] = None,
-        pixelRatio: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        pixelRatio: typing.Optional[NumberType] = None,
         locale: typing.Optional[Literal["zh-CN", "en-US"]] = None,
         limitInPlot: typing.Optional[bool] = None,
         nodeStyle: typing.Optional[typing.Union[typing.Any, "NodeStyle"]] = None,
         edgeStyle: typing.Optional[typing.Union[typing.Any, "EdgeStyle"]] = None,
-        nodeWidthRatio: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
-        nodePaddingRatio: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        nodeWidthRatio: typing.Optional[NumberType] = None,
+        nodePaddingRatio: typing.Optional[NumberType] = None,
         label: typing.Optional[typing.Any] = None,
         animation: typing.Optional[typing.Any] = None,
         recentlyTooltipChangeRecord: typing.Optional["RecentlyTooltipChangeRecord"] = None,
@@ -212,3 +220,5 @@ Keyword arguments:
                     'Required argument `' + k + '` was not specified.')
 
         super(AntdChord, self).__init__(**args)
+
+setattr(AntdChord, "__init__", _explicitize_args(AntdChord.__init__))

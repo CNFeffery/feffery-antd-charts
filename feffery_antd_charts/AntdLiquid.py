@@ -1,13 +1,21 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
 import typing  # noqa: F401
-import numbers # noqa: F401
 from typing_extensions import TypedDict, NotRequired, Literal # noqa: F401
 from dash.development.base_component import Component, _explicitize_args
-try:
-    from dash.development.base_component import ComponentType # noqa: F401
-except ImportError:
-    ComponentType = typing.TypeVar("ComponentType", bound=Component)
+
+ComponentType = typing.Union[
+    str,
+    int,
+    float,
+    Component,
+    None,
+    typing.Sequence[typing.Union[str, int, float, Component, None]],
+]
+
+NumberType = typing.Union[
+    typing.SupportsFloat, typing.SupportsInt, typing.SupportsComplex
+]
 
 
 class AntdLiquid(Component):
@@ -241,15 +249,15 @@ Keyword arguments:
         "OutlineStyle",
             {
             "stroke": NotRequired[str],
-            "strokeOpacity": NotRequired[typing.Union[int, float, numbers.Number]]
+            "strokeOpacity": NotRequired[NumberType]
         }
     )
 
     Outline = TypedDict(
         "Outline",
             {
-            "border": NotRequired[typing.Union[int, float, numbers.Number]],
-            "distance": NotRequired[typing.Union[int, float, numbers.Number]],
+            "border": NotRequired[NumberType],
+            "distance": NotRequired[NumberType],
             "style": NotRequired["OutlineStyle"]
         }
     )
@@ -257,8 +265,8 @@ Keyword arguments:
     Wave = TypedDict(
         "Wave",
             {
-            "count": NotRequired[typing.Union[int, float, numbers.Number]],
-            "length": NotRequired[typing.Union[int, float, numbers.Number]]
+            "count": NotRequired[NumberType],
+            "length": NotRequired[NumberType]
         }
     )
 
@@ -283,9 +291,9 @@ Keyword arguments:
             "content": NotRequired[str],
             "formatter": NotRequired["StatisticTitleFormatter"],
             "customHtml": NotRequired["StatisticTitleCustomHtml"],
-            "rotate": NotRequired[typing.Union[int, float, numbers.Number]],
-            "offsetX": NotRequired[typing.Union[int, float, numbers.Number]],
-            "offsetY": NotRequired[typing.Union[int, float, numbers.Number]]
+            "rotate": NotRequired[NumberType],
+            "offsetX": NotRequired[NumberType],
+            "offsetY": NotRequired[NumberType]
         }
     )
 
@@ -310,9 +318,9 @@ Keyword arguments:
             "content": NotRequired[str],
             "formatter": NotRequired["StatisticContentFormatter"],
             "customHtml": NotRequired["StatisticContentCustomHtml"],
-            "rotate": NotRequired[typing.Union[int, float, numbers.Number]],
-            "offsetX": NotRequired[typing.Union[int, float, numbers.Number]],
-            "offsetY": NotRequired[typing.Union[int, float, numbers.Number]]
+            "rotate": NotRequired[NumberType],
+            "offsetX": NotRequired[NumberType],
+            "offsetY": NotRequired[NumberType]
         }
     )
 
@@ -324,22 +332,22 @@ Keyword arguments:
         }
     )
 
-    @_explicitize_args
+
     def __init__(
         self,
         id: typing.Optional[typing.Union[str, dict]] = None,
         key: typing.Optional[str] = None,
         className: typing.Optional[str] = None,
         style: typing.Optional[typing.Any] = None,
-        percent: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
-        radius: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
-        width: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
-        height: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        percent: typing.Optional[NumberType] = None,
+        radius: typing.Optional[NumberType] = None,
+        width: typing.Optional[NumberType] = None,
+        height: typing.Optional[NumberType] = None,
         autoFit: typing.Optional[bool] = None,
-        padding: typing.Optional[typing.Union[typing.Union[int, float, numbers.Number], typing.Sequence[typing.Union[int, float, numbers.Number]], Literal["auto"]]] = None,
-        appendPadding: typing.Optional[typing.Union[typing.Union[int, float, numbers.Number], typing.Sequence[typing.Union[int, float, numbers.Number]]]] = None,
+        padding: typing.Optional[typing.Union[NumberType, typing.Sequence[NumberType], Literal["auto"]]] = None,
+        appendPadding: typing.Optional[typing.Union[NumberType, typing.Sequence[NumberType]]] = None,
         renderer: typing.Optional[Literal["canvas", "svg"]] = None,
-        pixelRatio: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        pixelRatio: typing.Optional[NumberType] = None,
         locale: typing.Optional[Literal["zh-CN", "en-US"]] = None,
         limitInPlot: typing.Optional[bool] = None,
         liquidStyle: typing.Optional[typing.Union[typing.Any, "LiquidStyle"]] = None,
@@ -371,3 +379,5 @@ Keyword arguments:
                     'Required argument `' + k + '` was not specified.')
 
         super(AntdLiquid, self).__init__(**args)
+
+setattr(AntdLiquid, "__init__", _explicitize_args(AntdLiquid.__init__))

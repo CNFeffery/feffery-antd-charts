@@ -88,7 +88,7 @@ AntdWordCloud.propTypes = {
     weightField: PropTypes.string.isRequired,
 
     /**
-     * 必填，文字颜色映射字段
+     * 文字颜色映射字段
      */
     colorField: PropTypes.string,
 

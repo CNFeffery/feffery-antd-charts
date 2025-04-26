@@ -1,13 +1,21 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
 import typing  # noqa: F401
-import numbers # noqa: F401
 from typing_extensions import TypedDict, NotRequired, Literal # noqa: F401
 from dash.development.base_component import Component, _explicitize_args
-try:
-    from dash.development.base_component import ComponentType # noqa: F401
-except ImportError:
-    ComponentType = typing.TypeVar("ComponentType", bound=Component)
+
+ComponentType = typing.Union[
+    str,
+    int,
+    float,
+    Component,
+    None,
+    typing.Sequence[typing.Union[str, int, float, Component, None]],
+]
+
+NumberType = typing.Union[
+    typing.SupportsFloat, typing.SupportsInt, typing.SupportsComplex
+]
 
 
 class AntdRadialTree(Component):
@@ -275,7 +283,7 @@ Keyword arguments:
         "NodeCfg",
             {
             "type": NotRequired[Literal["icon-node", "card", "circle", "rect", "ellipse", "diamond", "triangle", "star", "image", "modelRect", "donut"]],
-            "size": NotRequired[typing.Sequence[typing.Union[int, float, numbers.Number]]],
+            "size": NotRequired[typing.Sequence[NumberType]],
             "style": NotRequired[typing.Union[typing.Any, "NodeCfgStyle"]],
             "label": NotRequired["NodeCfgLabel"],
             "nodeStateStyles": NotRequired[typing.Dict[typing.Union[str, float, int], typing.Any]]
@@ -307,8 +315,8 @@ Keyword arguments:
         "EdgeCfgStartArrow",
             {
             "type": NotRequired[Literal["vee", "triangle"]],
-            "size": NotRequired[typing.Union[int, float, numbers.Number]],
-            "d": NotRequired[typing.Union[int, float, numbers.Number]],
+            "size": NotRequired[NumberType],
+            "d": NotRequired[NumberType],
             "path": NotRequired[str],
             "stroke": NotRequired[str],
             "fill": NotRequired[str]
@@ -319,8 +327,8 @@ Keyword arguments:
         "EdgeCfgEndArrow",
             {
             "type": NotRequired[Literal["vee", "triangle"]],
-            "size": NotRequired[typing.Union[int, float, numbers.Number]],
-            "d": NotRequired[typing.Union[int, float, numbers.Number]],
+            "size": NotRequired[NumberType],
+            "d": NotRequired[NumberType],
             "path": NotRequired[str],
             "stroke": NotRequired[str],
             "fill": NotRequired[str]
@@ -345,8 +353,8 @@ Keyword arguments:
             "show": NotRequired[bool],
             "viewportClassName": NotRequired[str],
             "type": NotRequired[Literal["default", "keyShape", "delegate"]],
-            "size": NotRequired[typing.Sequence[typing.Union[int, float, numbers.Number]]],
-            "padding": NotRequired[typing.Union[int, float, numbers.Number]]
+            "size": NotRequired[typing.Sequence[NumberType]],
+            "padding": NotRequired[NumberType]
         }
     )
 
@@ -354,15 +362,15 @@ Keyword arguments:
         "Layout",
             {
             "direction": NotRequired[Literal["TB", "BT", "LR", "RL"]],
-            "nodesep": NotRequired[typing.Union[int, float, numbers.Number]],
-            "ranksep": NotRequired[typing.Union[int, float, numbers.Number]]
+            "nodesep": NotRequired[NumberType],
+            "ranksep": NotRequired[NumberType]
         }
     )
 
     RecentlyNodeClickRecord = TypedDict(
         "RecentlyNodeClickRecord",
             {
-            "timestamp": NotRequired[typing.Union[int, float, numbers.Number]],
+            "timestamp": NotRequired[NumberType],
             "data": NotRequired[dict]
         }
     )
@@ -370,7 +378,7 @@ Keyword arguments:
     RecentlyNodeDoubleClickRecord = TypedDict(
         "RecentlyNodeDoubleClickRecord",
             {
-            "timestamp": NotRequired[typing.Union[int, float, numbers.Number]],
+            "timestamp": NotRequired[NumberType],
             "data": NotRequired[dict]
         }
     )
@@ -378,7 +386,7 @@ Keyword arguments:
     RecentlyEdgeClickRecord = TypedDict(
         "RecentlyEdgeClickRecord",
             {
-            "timestamp": NotRequired[typing.Union[int, float, numbers.Number]],
+            "timestamp": NotRequired[NumberType],
             "data": NotRequired[dict]
         }
     )
@@ -386,7 +394,7 @@ Keyword arguments:
     RecentlyEdgeDoubleClickRecord = TypedDict(
         "RecentlyEdgeDoubleClickRecord",
             {
-            "timestamp": NotRequired[typing.Union[int, float, numbers.Number]],
+            "timestamp": NotRequired[NumberType],
             "data": NotRequired[dict]
         }
     )
@@ -394,12 +402,12 @@ Keyword arguments:
     SelectedNodes = TypedDict(
         "SelectedNodes",
             {
-            "timestamp": NotRequired[typing.Union[int, float, numbers.Number]],
+            "timestamp": NotRequired[NumberType],
             "data": NotRequired[typing.Sequence]
         }
     )
 
-    @_explicitize_args
+
     def __init__(
         self,
         id: typing.Optional[typing.Union[str, dict]] = None,
@@ -407,8 +415,8 @@ Keyword arguments:
         className: typing.Optional[str] = None,
         style: typing.Optional[typing.Any] = None,
         data: typing.Optional[dict] = None,
-        width: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
-        height: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        width: typing.Optional[NumberType] = None,
+        height: typing.Optional[NumberType] = None,
         autoFit: typing.Optional[bool] = None,
         nodeCfg: typing.Optional["NodeCfg"] = None,
         edgeCfg: typing.Optional["EdgeCfg"] = None,
@@ -438,3 +446,5 @@ Keyword arguments:
                     'Required argument `' + k + '` was not specified.')
 
         super(AntdRadialTree, self).__init__(**args)
+
+setattr(AntdRadialTree, "__init__", _explicitize_args(AntdRadialTree.__init__))

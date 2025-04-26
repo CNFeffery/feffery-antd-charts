@@ -1,13 +1,21 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
 import typing  # noqa: F401
-import numbers # noqa: F401
 from typing_extensions import TypedDict, NotRequired, Literal # noqa: F401
 from dash.development.base_component import Component, _explicitize_args
-try:
-    from dash.development.base_component import ComponentType # noqa: F401
-except ImportError:
-    ComponentType = typing.TypeVar("ComponentType", bound=Component)
+
+ComponentType = typing.Union[
+    str,
+    int,
+    float,
+    Component,
+    None,
+    typing.Sequence[typing.Union[str, int, float, Component, None]],
+]
+
+NumberType = typing.Union[
+    typing.SupportsFloat, typing.SupportsInt, typing.SupportsComplex
+]
 
 
 class AntdRadialBar(Component):
@@ -223,7 +231,7 @@ Keyword arguments:
     RecentlyTooltipChangeRecord = TypedDict(
         "RecentlyTooltipChangeRecord",
             {
-            "timestamp": NotRequired[typing.Union[int, float, numbers.Number]],
+            "timestamp": NotRequired[NumberType],
             "data": NotRequired[typing.Sequence[dict]]
         }
     )
@@ -231,7 +239,7 @@ Keyword arguments:
     RecentlyBarClickRecord = TypedDict(
         "RecentlyBarClickRecord",
             {
-            "timestamp": NotRequired[typing.Union[int, float, numbers.Number]],
+            "timestamp": NotRequired[NumberType],
             "data": NotRequired[dict]
         }
     )
@@ -244,7 +252,7 @@ Keyword arguments:
         }
     )
 
-    @_explicitize_args
+
     def __init__(
         self,
         id: typing.Optional[typing.Union[str, dict]] = None,
@@ -258,28 +266,28 @@ Keyword arguments:
         colorField: typing.Optional[str] = None,
         isStack: typing.Optional[bool] = None,
         isGroup: typing.Optional[bool] = None,
-        radius: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
-        innerRadius: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
-        startAngle: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
-        endAngle: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
-        maxAngle: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        radius: typing.Optional[NumberType] = None,
+        innerRadius: typing.Optional[NumberType] = None,
+        startAngle: typing.Optional[NumberType] = None,
+        endAngle: typing.Optional[NumberType] = None,
+        maxAngle: typing.Optional[NumberType] = None,
         type: typing.Optional[Literal["line"]] = None,
-        intervalPadding: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
-        dodgePadding: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
-        minBarWidth: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
-        maxBarWidth: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        intervalPadding: typing.Optional[NumberType] = None,
+        dodgePadding: typing.Optional[NumberType] = None,
+        minBarWidth: typing.Optional[NumberType] = None,
+        maxBarWidth: typing.Optional[NumberType] = None,
         barStyle: typing.Optional[typing.Union[typing.Any, "BarStyle"]] = None,
         barBackground: typing.Optional["BarBackground"] = None,
         color: typing.Optional[typing.Union[str, typing.Sequence[str], "Color"]] = None,
         xAxis: typing.Optional[typing.Any] = None,
         yAxis: typing.Optional[typing.Any] = None,
-        width: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
-        height: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        width: typing.Optional[NumberType] = None,
+        height: typing.Optional[NumberType] = None,
         autoFit: typing.Optional[bool] = None,
-        padding: typing.Optional[typing.Union[typing.Union[int, float, numbers.Number], typing.Sequence[typing.Union[int, float, numbers.Number]], str]] = None,
-        appendPadding: typing.Optional[typing.Union[typing.Union[int, float, numbers.Number], typing.Sequence[typing.Union[int, float, numbers.Number]], str]] = None,
+        padding: typing.Optional[typing.Union[NumberType, typing.Sequence[NumberType], str]] = None,
+        appendPadding: typing.Optional[typing.Union[NumberType, typing.Sequence[NumberType], str]] = None,
         renderer: typing.Optional[Literal["canvas", "svg"]] = None,
-        pixelRatio: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        pixelRatio: typing.Optional[NumberType] = None,
         locale: typing.Optional[Literal["zh-CN", "en-US"]] = None,
         limitInPlot: typing.Optional[bool] = None,
         legend: typing.Optional[typing.Any] = None,
@@ -312,3 +320,5 @@ Keyword arguments:
                     'Required argument `' + k + '` was not specified.')
 
         super(AntdRadialBar, self).__init__(**args)
+
+setattr(AntdRadialBar, "__init__", _explicitize_args(AntdRadialBar.__init__))

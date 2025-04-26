@@ -1,13 +1,21 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
 import typing  # noqa: F401
-import numbers # noqa: F401
 from typing_extensions import TypedDict, NotRequired, Literal # noqa: F401
 from dash.development.base_component import Component, _explicitize_args
-try:
-    from dash.development.base_component import ComponentType # noqa: F401
-except ImportError:
-    ComponentType = typing.TypeVar("ComponentType", bound=Component)
+
+ComponentType = typing.Union[
+    str,
+    int,
+    float,
+    Component,
+    None,
+    typing.Sequence[typing.Union[str, int, float, Component, None]],
+]
+
+NumberType = typing.Union[
+    typing.SupportsFloat, typing.SupportsInt, typing.SupportsComplex
+]
 
 
 class AntdScatter(Component):
@@ -282,7 +290,7 @@ Keyword arguments:
         "QuadrantLabels",
             {
             "content": NotRequired[str],
-            "position": NotRequired[typing.Sequence[typing.Union[int, float, numbers.Number]]],
+            "position": NotRequired[typing.Sequence[NumberType]],
             "style": NotRequired[typing.Any]
         }
     )
@@ -290,8 +298,8 @@ Keyword arguments:
     Quadrant = TypedDict(
         "Quadrant",
             {
-            "xBaseline": NotRequired[typing.Union[int, float, numbers.Number]],
-            "yBaseline": NotRequired[typing.Union[int, float, numbers.Number]],
+            "xBaseline": NotRequired[NumberType],
+            "yBaseline": NotRequired[NumberType],
             "lineStyle": NotRequired[typing.Any],
             "regionStyle": NotRequired[typing.Union[typing.Any, typing.Sequence[typing.Any]]],
             "labels": NotRequired[typing.Sequence["QuadrantLabels"]]
@@ -318,7 +326,7 @@ Keyword arguments:
     RecentlyTooltipChangeRecord = TypedDict(
         "RecentlyTooltipChangeRecord",
             {
-            "timestamp": NotRequired[typing.Union[int, float, numbers.Number]],
+            "timestamp": NotRequired[NumberType],
             "data": NotRequired[typing.Sequence[dict]]
         }
     )
@@ -326,7 +334,7 @@ Keyword arguments:
     RecentlyPointClickRecord = TypedDict(
         "RecentlyPointClickRecord",
             {
-            "timestamp": NotRequired[typing.Union[int, float, numbers.Number]],
+            "timestamp": NotRequired[NumberType],
             "data": NotRequired[dict]
         }
     )
@@ -334,7 +342,7 @@ Keyword arguments:
     RecentlyPointDoubleClickRecord = TypedDict(
         "RecentlyPointDoubleClickRecord",
             {
-            "timestamp": NotRequired[typing.Union[int, float, numbers.Number]],
+            "timestamp": NotRequired[NumberType],
             "data": NotRequired[dict]
         }
     )
@@ -347,7 +355,7 @@ Keyword arguments:
         }
     )
 
-    @_explicitize_args
+
     def __init__(
         self,
         id: typing.Optional[typing.Union[str, dict]] = None,
@@ -362,7 +370,7 @@ Keyword arguments:
         sizeField: typing.Optional[str] = None,
         shapeField: typing.Optional[str] = None,
         color: typing.Optional[typing.Union[str, typing.Sequence[str], "Color"]] = None,
-        size: typing.Optional[typing.Union[typing.Union[int, float, numbers.Number], typing.Sequence[typing.Union[int, float, numbers.Number]], "Size"]] = None,
+        size: typing.Optional[typing.Union[NumberType, typing.Sequence[NumberType], "Size"]] = None,
         shape: typing.Optional[typing.Union[str, typing.Sequence[str], "Shape"]] = None,
         pointStyle: typing.Optional[typing.Union[typing.Any, "PointStyle"]] = None,
         shapeLegend: typing.Optional[typing.Any] = None,
@@ -371,13 +379,13 @@ Keyword arguments:
         regressionLine: typing.Optional["RegressionLine"] = None,
         xAxis: typing.Optional[typing.Any] = None,
         yAxis: typing.Optional[typing.Any] = None,
-        width: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
-        height: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        width: typing.Optional[NumberType] = None,
+        height: typing.Optional[NumberType] = None,
         autoFit: typing.Optional[bool] = None,
-        padding: typing.Optional[typing.Union[typing.Union[int, float, numbers.Number], typing.Sequence[typing.Union[int, float, numbers.Number]], str]] = None,
-        appendPadding: typing.Optional[typing.Union[typing.Union[int, float, numbers.Number], typing.Sequence[typing.Union[int, float, numbers.Number]], str]] = None,
+        padding: typing.Optional[typing.Union[NumberType, typing.Sequence[NumberType], str]] = None,
+        appendPadding: typing.Optional[typing.Union[NumberType, typing.Sequence[NumberType], str]] = None,
         renderer: typing.Optional[Literal["canvas", "svg"]] = None,
-        pixelRatio: typing.Optional[typing.Union[int, float, numbers.Number]] = None,
+        pixelRatio: typing.Optional[NumberType] = None,
         locale: typing.Optional[Literal["zh-CN", "en-US"]] = None,
         limitInPlot: typing.Optional[bool] = None,
         legend: typing.Optional[typing.Any] = None,
@@ -411,3 +419,5 @@ Keyword arguments:
                     'Required argument `' + k + '` was not specified.')
 
         super(AntdScatter, self).__init__(**args)
+
+setattr(AntdScatter, "__init__", _explicitize_args(AntdScatter.__init__))
