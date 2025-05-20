@@ -360,7 +360,10 @@ AntdDualAxes.propTypes = {
         /**
          * 涉及数据信息
          */
-        data: PropTypes.object,
+        data: PropTypes.oneOfType([
+            PropTypes.object,
+            PropTypes.array
+        ]),
     }),
 
     /**

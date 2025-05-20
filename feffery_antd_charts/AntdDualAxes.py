@@ -217,7 +217,7 @@ Keyword arguments:
     - timestamp (number; optional):
         事件时间戳.
 
-    - data (dict; optional):
+    - data (dict | list; optional):
         涉及数据信息.
 
 - downloadTrigger (string; default 'download-trigger'):
@@ -306,7 +306,7 @@ Keyword arguments:
         "RecentlyClickRecord",
             {
             "timestamp": NotRequired[NumberType],
-            "data": NotRequired[dict]
+            "data": NotRequired[typing.Union[dict, typing.Sequence]]
         }
     )
 
