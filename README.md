@@ -15,7 +15,7 @@
 
 简体中文 | [English](./README-en_US.md)
 
-`feffery-components`计划子项目，`Plotly Dash`第三方组件库，基于`Antd Charts`，将常见的各类数据可视化图表组件引入`Dash`的生态中🥳，最新稳定版本：`0.1.5`（2025-02-04）
+`feffery-components`计划子项目，`Plotly Dash`第三方组件库，基于`Antd Charts`，将常见的各类数据可视化图表组件引入`Dash`的生态中🥳，最新稳定版本：`0.1.6`（2025-05-20）
 
 ## Dash版本兼容性说明
 
