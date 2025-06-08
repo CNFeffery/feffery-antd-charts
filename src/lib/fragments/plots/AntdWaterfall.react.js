@@ -14,7 +14,8 @@ const preventUpdateProps = [
     'setProps',
     'component_loading',
     'recentlyTooltipChangeRecord',
-    'recentlyColumnClickRecord'
+    'recentlyColumnClickRecord',
+    'recentlySliderRange',
 ];
 
 /**
@@ -107,6 +108,7 @@ export default class AntdWaterfall extends Component {
             theme,
             interactions,
             state,
+            recentlySliderRange,
             setProps,
             component_loading
         } = this.props;
@@ -266,6 +268,25 @@ export default class AntdWaterfall extends Component {
                         }
                     })
                 });
+                // 监听缩略轴最新变化后的范围
+                plot.on('slider:valuechanged', (e) => {
+                    let sliderRangeStart = e.gEvent.delegateObject.slider.cfg.start;
+                    let sliderRangeEnd = e.gEvent.delegateObject.slider.cfg.end;
+                    if (
+                        recentlySliderRange?.range &&
+                        recentlySliderRange.range[0] === Number(sliderRangeStart.toFixed(2)) &&
+                        recentlySliderRange.range[1] === Number(sliderRangeEnd.toFixed(2))
+                    ) {
+                        return;
+                    }
+                    // 否则更新recentlySliderRange
+                    setProps({
+                        recentlySliderRange: {
+                            timestamp: (new Date()).valueOf(),
+                            range: [Number(sliderRangeStart.toFixed(2)), Number(sliderRangeEnd.toFixed(2))]
+                        }
+                    })
+                })
             }}
             {...config} />;
     }

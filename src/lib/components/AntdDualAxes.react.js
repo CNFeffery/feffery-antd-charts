@@ -367,6 +367,20 @@ AntdDualAxes.propTypes = {
     }),
 
     /**
+     * 事件监听属性，用于监听最近一次缩略轴范围变化事件
+     */
+    recentlySliderRange: PropTypes.exact({
+        /**
+         * 事件时间戳
+         */
+        timestamp: PropTypes.number,
+        /**
+         * 对应缩略轴范围
+         */
+        range: PropTypes.arrayOf(PropTypes.number)
+    }),
+
+    /**
      * 对当前组件的`downloadTrigger`值进行更新，可实现主动下载当前图表为`png`格式图片
      */
     downloadTrigger: PropTypes.string,

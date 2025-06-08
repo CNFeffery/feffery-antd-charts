@@ -15,7 +15,8 @@ const preventUpdateProps = [
     'component_loading',
     'recentlyTooltipChangeRecord',
     'recentlyColumnClickRecord',
-    'recentlyLegendInfo'
+    'recentlyLegendInfo',
+    'recentlySliderRange',
 ];
 
 /**
@@ -120,6 +121,7 @@ export default class AntdColumn extends Component {
             pattern,
             interactions,
             state,
+            recentlySliderRange,
             setProps,
             component_loading
         } = this.props;
@@ -327,6 +329,25 @@ export default class AntdColumn extends Component {
                         }
                     })
                 });
+                // 监听缩略轴最新变化后的范围
+                plot.on('slider:valuechanged', (e) => {
+                    let sliderRangeStart = e.gEvent.delegateObject.slider.cfg.start;
+                    let sliderRangeEnd = e.gEvent.delegateObject.slider.cfg.end;
+                    if (
+                        recentlySliderRange?.range &&
+                        recentlySliderRange.range[0] === Number(sliderRangeStart.toFixed(2)) &&
+                        recentlySliderRange.range[1] === Number(sliderRangeEnd.toFixed(2))
+                    ) {
+                        return;
+                    }
+                    // 否则更新recentlySliderRange
+                    setProps({
+                        recentlySliderRange: {
+                            timestamp: (new Date()).valueOf(),
+                            range: [Number(sliderRangeStart.toFixed(2)), Number(sliderRangeEnd.toFixed(2))]
+                        }
+                    })
+                })
             }}
             {...config} />;
     }
