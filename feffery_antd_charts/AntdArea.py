@@ -219,6 +219,17 @@ Keyword arguments:
     - items (list of dicts; optional):
         当前各图例项信息.
 
+- recentlySliderRange (dict; optional):
+    事件监听属性，用于监听最近一次缩略轴范围变化事件.
+
+    `recentlySliderRange` is a dict with keys:
+
+    - timestamp (number; optional):
+        事件时间戳.
+
+    - range (list of numbers; optional):
+        对应缩略轴范围.
+
 - downloadTrigger (string; default 'download-trigger'):
     对当前组件的`downloadTrigger`值进行更新，可实现主动下载当前图表为`png`格式图片.
 
@@ -327,6 +338,14 @@ Keyword arguments:
         }
     )
 
+    RecentlySliderRange = TypedDict(
+        "RecentlySliderRange",
+            {
+            "timestamp": NotRequired[NumberType],
+            "range": NotRequired[typing.Sequence[NumberType]]
+        }
+    )
+
 
     def __init__(
         self,
@@ -367,6 +386,7 @@ Keyword arguments:
         recentlyTooltipChangeRecord: typing.Optional["RecentlyTooltipChangeRecord"] = None,
         recentlyPointClickRecord: typing.Optional["RecentlyPointClickRecord"] = None,
         recentlyLegendInfo: typing.Optional["RecentlyLegendInfo"] = None,
+        recentlySliderRange: typing.Optional["RecentlySliderRange"] = None,
         downloadTrigger: typing.Optional[str] = None,
         theme: typing.Optional[typing.Any] = None,
         pattern: typing.Optional[typing.Any] = None,
@@ -374,9 +394,9 @@ Keyword arguments:
         state: typing.Optional[typing.Any] = None,
         **kwargs
     ):
-        self._prop_names = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'seriesField', 'isPercent', 'smooth', 'isStack', 'startOnZero', 'color', 'areaStyle', 'line', 'point', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'slider', 'animation', 'recentlyTooltipChangeRecord', 'recentlyPointClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'pattern', 'interactions', 'state']
+        self._prop_names = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'seriesField', 'isPercent', 'smooth', 'isStack', 'startOnZero', 'color', 'areaStyle', 'line', 'point', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'slider', 'animation', 'recentlyTooltipChangeRecord', 'recentlyPointClickRecord', 'recentlyLegendInfo', 'recentlySliderRange', 'downloadTrigger', 'theme', 'pattern', 'interactions', 'state']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'seriesField', 'isPercent', 'smooth', 'isStack', 'startOnZero', 'color', 'areaStyle', 'line', 'point', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'slider', 'animation', 'recentlyTooltipChangeRecord', 'recentlyPointClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'pattern', 'interactions', 'state']
+        self.available_properties = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'seriesField', 'isPercent', 'smooth', 'isStack', 'startOnZero', 'color', 'areaStyle', 'line', 'point', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'slider', 'animation', 'recentlyTooltipChangeRecord', 'recentlyPointClickRecord', 'recentlyLegendInfo', 'recentlySliderRange', 'downloadTrigger', 'theme', 'pattern', 'interactions', 'state']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()
