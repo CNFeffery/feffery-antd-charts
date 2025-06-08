@@ -15,7 +15,7 @@
 
 [简体中文](./README.md) | English
 
-A sub-project of the `feffery-components` plan, `Plotly Dash` third-party component library, based on `Antd Charts`, bringing common data visualization chart components into the `Dash` ecosystem 🥳, latest stable version: `0.1.6` (2025-05-20)
+A sub-project of the `feffery-components` plan, `Plotly Dash` third-party component library, based on `Antd Charts`, bringing common data visualization chart components into the `Dash` ecosystem 🥳, latest stable version: `0.1.7` (2025-06-08)
 
 ## Dash Version Compatibility
 
@@ -33,7 +33,7 @@ pip install feffery-antd-charts -U
 ## 2 Latest Pre-release Version Installation
 
 > [!NOTE]  
-> Latest pre-release version (2025-04-26): `0.2.0rc2`
+> Latest pre-release version (2025-06-08): `0.2.0rc3`
 
 ```bash
 pip install feffery-antd-charts --pre -U
