@@ -827,7 +827,19 @@ const tooltipBasePropTypes = PropTypes.oneOfType([
         /**
          * 是否合并展示当前数据点对应的所有数据
          */
-        shared: PropTypes.bool
+        shared: PropTypes.bool,
+        /**
+         * 信息框内容`javascript`格式化函数，函数返回值需要为`HTML`字符串
+         */
+        customContent: PropTypes.oneOfType([
+            PropTypes.shape({
+                /**
+                 * js函数体字符串
+                 */
+                func: PropTypes.string
+            }),
+            PropTypes.any
+        ]),
     })
 ])
 

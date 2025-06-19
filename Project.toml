@@ -2,7 +2,7 @@
 name = "FefferyAntdCharts"
 uuid = "1b08a953-4be3-4667-9a23-956c8d37c396"
 authors = ["CNFeffery <fefferypzy@gmail.com>"]
-version = "0.2.0-rc3"
+version = "0.2.0-rc4"
 
 [deps]
 Dash = "1b08a953-4be3-4667-9a23-3db579824955"

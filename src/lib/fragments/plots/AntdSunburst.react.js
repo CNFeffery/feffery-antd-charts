@@ -182,6 +182,10 @@ export default class AntdSunburst extends Component {
         if (tooltip?.formatter?.func) {
             config.tooltip.formatter = eval(tooltip.formatter.func)
         }
+        // 若tooltip.customContent具有自定义函数func属性
+        if (tooltip?.customContent?.func) {
+            config.tooltip.customContent = eval(tooltip.customContent.func)
+        }
         // 若tooltip.customItems具有自定义函数func属性
         if (tooltip?.customItems?.func) {
             config.tooltip.customItems = eval(tooltip.customItems.func)
