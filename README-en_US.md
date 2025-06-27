@@ -33,7 +33,7 @@ pip install feffery-antd-charts -U
 ## 2 Latest Pre-release Version Installation
 
 > [!NOTE]  
-> Latest pre-release version (2025-06-08): `0.2.0rc3`
+> Latest pre-release version (2025-06-27): `0.2.0rc4`
 
 ```bash
 pip install feffery-antd-charts --pre -U
