@@ -21,8 +21,8 @@ app.layout = html.Div(
                 ),
             ]
         ),
-        fact.AntdLine(
-            id='demo-line',
+        fact.AntdArea(
+            id='demo-area',
             data=[
                 {
                     'date': f'2020-0{i}',
@@ -41,10 +41,10 @@ app.layout = html.Div(
 
 
 @app.callback(
-    Output('demo-line', 'data'),
-    Output('demo-line', 'color'),
+    Output('demo-area', 'data'),
+    Output('demo-area', 'color'),
     Input('update-data', 'n_clicks'),
-    State('demo-line', 'color'),
+    State('demo-area', 'color'),
     prevent_initial_call=True,
 )
 def update_data(n_clicks, color):
@@ -65,7 +65,7 @@ def update_data(n_clicks, color):
 
 
 @app.callback(
-    Output('demo-line', 'downloadTrigger'),
+    Output('demo-area', 'downloadTrigger'),
     Input('download-chart', 'n_clicks'),
     prevent_initial_call=True,
 )

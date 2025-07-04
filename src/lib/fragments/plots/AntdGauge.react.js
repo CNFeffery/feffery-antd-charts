@@ -154,7 +154,6 @@ const name2indicator = new Map([
 
 // 定义不触发重绘的参数数组
 const preventUpdateProps = [
-    'setProps',
     'component_loading',
 ];
 
@@ -170,8 +169,8 @@ export default class AntdGauge extends Component {
 
     shouldComponentUpdate(nextProps) {
 
-        // 计算发生变化的参数名
-        const changedProps = Object.keys(difference(this.props, nextProps))
+        // 计算发生变化的参数名（排除setProps）
+        const changedProps = Object.keys(difference(this.props, nextProps)).filter(key => key !== 'setProps')
 
         // 若无变化的props，则不触发重绘
         if (changedProps.length === 0) {
@@ -184,8 +183,8 @@ export default class AntdGauge extends Component {
             preventUpdateProps
         )
 
-        // 若有交集，则不触发重绘
-        if (changedPreventUpdateProps.length !== 0) {
+        // 若changedPreventUpdateProps中所有prop都在preventUpdateProps中，则不触发重绘
+        if (changedProps.every(key => preventUpdateProps.includes(key))) {
             return false;
         } else {
             // 取得plot实例
