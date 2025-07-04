@@ -33,7 +33,7 @@ pip install feffery-antd-charts -U
 ## 2 最新预发布版本安装方式
 
 > [!NOTE]  
-> 最新预发布版本（2025-06-27）：`0.2.0rc4`
+> 最新预发布版本（2025-07-04）：`0.2.0rc5`
 
 ```bash
 pip install feffery-antd-charts --pre -U
