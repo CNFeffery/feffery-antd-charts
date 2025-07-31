@@ -30,6 +30,7 @@ const LazyAntdLine = React.lazy(() => import(/* webpackChunkName: "plots" */ '..
 const AntdLine = ({
     locale = 'zh-CN',
     downloadTrigger = 'download-trigger',
+    action = null,
     ...others
 }) => {
 
@@ -42,6 +43,7 @@ const AntdLine = ({
                     locale,
                     downloadTrigger,
                     component_loading,
+                    action,
                     ...others
                 }
             } />
@@ -363,6 +365,20 @@ AntdLine.propTypes = {
      * 配置状态样式相关参数，具体见在线文档相关说明
      */
     state: stateBasePropTypes,
+
+    /**
+     * 定义需要针对当前图表实例执行的动作，每次执行动作后此参数都会被重置为空值
+     */
+    action: PropTypes.shape({
+        /**
+         * 必填，动作类型，可选项有`'tooltip:show'`、`'tooltip:hide'`
+         */
+        type: PropTypes.oneOf(['tooltip:show', 'tooltip:hide']),
+        /**
+         * 针对`'tooltip:show'`型动作，定义`tooltip`显示位置计算所需的数据信息
+         */
+        tooltipPositionData: PropTypes.object
+    }),
 
     /**
      * Dash-assigned callback that should be called to report property changes
