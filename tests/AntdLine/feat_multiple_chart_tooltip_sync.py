@@ -11,7 +11,7 @@ if True:
 
 app = dash.Dash(__name__)
 
-app.layout = html.Div(
+app.layout = lambda: html.Div(
     [
         fact.AntdLine(
             id={'type': 'demo-line', 'index': i},
@@ -24,12 +24,12 @@ app.layout = html.Div(
             ],
             xField='date',
             yField='y',
-            height=100,
+            height=100 * random.randint(1, 2),
             xAxis=False if i < 5 else {},
             smooth=True,
             style=style(marginBottom=24),
         )
-        for i in range(6)
+        for i in range(4)
     ],
     style=style(padding=100),
 )
@@ -50,10 +50,13 @@ app.clientside_callback(
                 item.id,
                 {
                     action: (
-                        triggered_tooltip_info.position ?
+                        triggered_tooltip_info.data ?
                         {
                             type: 'tooltip:show',
-                            tooltipPosition: triggered_tooltip_info.position
+                            tooltipPositionData: {
+                                date: triggered_tooltip_info.data[0].date,
+                                y: triggered_tooltip_info.data[0].y
+                            }
                         } :
                         {
                             type: 'tooltip:hide'
