@@ -69,9 +69,9 @@ export default class AntdLine extends Component {
             ) {
                 // 执行图表动作
                 if (nextProps.action) {
-                    if (nextProps.action.type === 'tooltip:show' && nextProps.action.tooltipPositionData) {
+                    if (nextProps.action.type === 'tooltip:show' && nextProps.action.tooltipPosition) {
                         chart.chart.showTooltip(
-                            chart.chart.getXY(nextProps.action.tooltipPositionData)
+                            nextProps.action.tooltipPosition
                         )
                     } else if (nextProps.action.type === 'tooltip:hide') {
                         chart.chart.hideTooltip()
@@ -325,7 +325,12 @@ export default class AntdLine extends Component {
                         // 更新recentlyTooltipChangeRecord
                         recentlyTooltipChangeRecord = {
                             timestamp: (new Date()).valueOf(),
-                            data: e.data.items.map(item => item.data)
+                            data: e.data.items.map(item => item.data),
+                            // 画布像素坐标位置
+                            position: {
+                                x: e.data.x,
+                                y: e.data.y
+                            }
                         }
                         setProps({
                             recentlyTooltipChangeRecord: recentlyTooltipChangeRecord
@@ -338,7 +343,8 @@ export default class AntdLine extends Component {
                         // 更新recentlyTooltipChangeRecord
                         recentlyTooltipChangeRecord = {
                             timestamp: (new Date()).valueOf(),
-                            data: null
+                            data: null,
+                            position: null
                         }
                         setProps({
                             recentlyTooltipChangeRecord: recentlyTooltipChangeRecord

@@ -291,7 +291,7 @@ AntdLine.propTypes = {
     /**
      * 事件监听属性，用于监听最近一次信息框显示事件
      */
-    recentlyTooltipChangeRecord: PropTypes.exact({
+    recentlyTooltipChangeRecord: PropTypes.shape({
         /**
          * 事件时间戳
          */
@@ -299,7 +299,20 @@ AntdLine.propTypes = {
         /**
          * 涉及数据信息
          */
-        data: PropTypes.arrayOf(PropTypes.object)
+        data: PropTypes.arrayOf(PropTypes.object),
+        /**
+         * 事件对应画布像素坐标位置
+         */
+        position: PropTypes.shape({
+            /**
+             * 画布像素`x`坐标
+             */
+            x: PropTypes.number,
+            /**
+             * 画布像素`y`坐标
+             */
+            y: PropTypes.number
+        })
     }),
 
     /**
@@ -375,9 +388,18 @@ AntdLine.propTypes = {
          */
         type: PropTypes.oneOf(['tooltip:show', 'tooltip:hide']),
         /**
-         * 针对`'tooltip:show'`型动作，定义`tooltip`显示位置计算所需的数据信息
+         * 针对`'tooltip:show'`型动作，定义`tooltip`显示位置对应画布像素坐标
          */
-        tooltipPositionData: PropTypes.object
+        tooltipPosition: PropTypes.shape({
+            /**
+             * 画布像素`x`坐标
+             */
+            x: PropTypes.number,
+            /**
+             * 画布像素`y`坐标
+             */
+            y: PropTypes.number
+        })
     }),
 
     /**

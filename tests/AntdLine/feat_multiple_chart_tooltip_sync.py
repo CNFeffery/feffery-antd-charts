@@ -4,7 +4,7 @@ if True:
     sys.path.append('../../')
     import dash
     import random
-    from dash import html, set_props
+    from dash import html
     import feffery_antd_charts as fact
     from dash.dependencies import Input, ALL
     from feffery_dash_utils.style_utils import style
@@ -35,41 +35,44 @@ app.layout = html.Div(
 )
 
 
-@app.callback(
+app.clientside_callback(
+    # 同步多个折线图之间的tooltip显示
+    """
+() => {
+
+    // 获取本次回调触发来源
+    let triggered_tooltip_info = dash_clientside.callback_context.triggered[0].value
+
+    // 基于set_props()同步其余折线图tooltip显示/隐藏
+    for ( let item of dash_clientside.callback_context.inputs_list[0] ) {
+        if ( item.id.index !== dash_clientside.callback_context.triggered_id.index ) {
+            dash_clientside.set_props(
+                item.id,
+                {
+                    action: (
+                        triggered_tooltip_info.position ?
+                        {
+                            type: 'tooltip:show',
+                            tooltipPosition: triggered_tooltip_info.position
+                        } :
+                        {
+                            type: 'tooltip:hide'
+                        }
+                    )
+                }
+            )
+        }
+    }
+}
+""",
     Input(
         {
             'type': 'demo-line',
             'index': ALL,
         },
         'recentlyTooltipChangeRecord',
-    )
+    ),
 )
-def sync_tooltip(*args):
-    """同步多个折线图之间的tooltip显示，仅用作功能测试，实际应用建议更换为浏览器端回调实现"""
-
-    triggered_tooltip_info = dash.ctx.triggered[0]['value']
-
-    for item in dash.ctx.inputs_list[0]:
-        if (
-            item['id']['index']
-            != dash.ctx.triggered_id['index']
-        ):
-            set_props(
-                item['id'],
-                {
-                    'action': {
-                        'type': 'tooltip:show',
-                        'tooltipPositionData': triggered_tooltip_info[
-                            'data'
-                        ][0],
-                    }
-                    if triggered_tooltip_info['data']
-                    else {
-                        'type': 'tooltip:hide',
-                    },
-                },
-            )
-
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -172,6 +172,17 @@ Keyword arguments:
     - data (list of dicts; optional):
         涉及数据信息.
 
+    - position (dict; optional):
+        事件对应画布像素坐标位置.
+
+        `position` is a dict with keys:
+
+        - x (number; optional):
+            画布像素`x`坐标.
+
+        - y (number; optional):
+            画布像素`y`坐标.
+
 - recentlyPointClickRecord (dict; optional):
     事件监听属性，用于监听最近一次折点点击事件.
 
@@ -225,8 +236,16 @@ Keyword arguments:
     - type (a value equal to: 'tooltip:show', 'tooltip:hide'; optional):
         必填，动作类型，可选项有`'tooltip:show'`、`'tooltip:hide'`.
 
-    - tooltipPositionData (dict; optional):
-        针对`'tooltip:show'`型动作，定义`tooltip`显示位置计算所需的数据信息."""
+    - tooltipPosition (dict; optional):
+        针对`'tooltip:show'`型动作，定义`tooltip`显示位置对应画布像素坐标.
+
+        `tooltipPosition` is a dict with keys:
+
+        - x (number; optional):
+            画布像素`x`坐标.
+
+        - y (number; optional):
+            画布像素`y`坐标."""
     _children_props = []
     _base_nodes = ['children']
     _namespace = 'feffery_antd_charts'
@@ -275,11 +294,20 @@ Keyword arguments:
         }
     )
 
+    RecentlyTooltipChangeRecordPosition = TypedDict(
+        "RecentlyTooltipChangeRecordPosition",
+            {
+            "x": NotRequired[NumberType],
+            "y": NotRequired[NumberType]
+        }
+    )
+
     RecentlyTooltipChangeRecord = TypedDict(
         "RecentlyTooltipChangeRecord",
             {
             "timestamp": NotRequired[NumberType],
-            "data": NotRequired[typing.Sequence[dict]]
+            "data": NotRequired[typing.Sequence[dict]],
+            "position": NotRequired["RecentlyTooltipChangeRecordPosition"]
         }
     )
 
@@ -307,11 +335,19 @@ Keyword arguments:
         }
     )
 
+    ActionTooltipPosition = TypedDict(
+        "ActionTooltipPosition",
+            {
+            "x": NotRequired[NumberType],
+            "y": NotRequired[NumberType]
+        }
+    )
+
     Action = TypedDict(
         "Action",
             {
             "type": NotRequired[Literal["tooltip:show", "tooltip:hide"]],
-            "tooltipPositionData": NotRequired[dict]
+            "tooltipPosition": NotRequired["ActionTooltipPosition"]
         }
     )
 
