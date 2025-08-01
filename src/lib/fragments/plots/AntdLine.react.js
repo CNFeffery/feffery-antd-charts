@@ -332,6 +332,19 @@ export default class AntdLine extends Component {
                         })
                     }
                 });
+                plot.on('tooltip:hide', (e) => {
+                    // 仅在用户触发tooltip行为时进行更新
+                    if (this.chartContainerHovering.current) {
+                        // 更新recentlyTooltipChangeRecord
+                        recentlyTooltipChangeRecord = {
+                            timestamp: (new Date()).valueOf(),
+                            data: null
+                        }
+                        setProps({
+                            recentlyTooltipChangeRecord: recentlyTooltipChangeRecord
+                        })
+                    }
+                });
 
                 plot.on('element:click', (e) => {
                     // 当本次点击事件由折线上的固有折点触发时
