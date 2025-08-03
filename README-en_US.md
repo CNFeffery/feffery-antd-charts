@@ -15,7 +15,7 @@
 
 [简体中文](./README.md) | English
 
-A sub-project of the `feffery-components` plan, `Plotly Dash` third-party component library, based on `Antd Charts`, bringing common data visualization chart components into the `Dash` ecosystem 🥳, latest stable version: `0.2.0` (2025-07-23)
+A sub-project of the `feffery-components` plan, `Plotly Dash` third-party component library, based on `Antd Charts`, bringing common data visualization chart components into the `Dash` ecosystem 🥳, latest stable version: `0.2.1` (2025-08-03)
 
 ## Dash Version Compatibility
 
