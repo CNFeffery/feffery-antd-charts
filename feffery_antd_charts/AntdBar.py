@@ -254,7 +254,18 @@ Keyword arguments:
     配置交互功能相关参数，具体见在线文档相关说明.
 
 - state (optional):
-    配置状态样式相关参数，具体见在线文档相关说明."""
+    配置状态样式相关参数，具体见在线文档相关说明.
+
+- action (dict; optional):
+    定义需要针对当前图表实例执行的动作，每次执行动作后此参数都会被重置为空值.
+
+    `action` is a dict with keys:
+
+    - type (a value equal to: 'tooltip:show', 'tooltip:hide'; optional):
+        必填，动作类型，可选项有`'tooltip:show'`、`'tooltip:hide'`.
+
+    - tooltipPositionData (dict; optional):
+        针对`'tooltip:show'`型动作，定义`tooltip`显示位置计算所需的数据信息."""
     _children_props = []
     _base_nodes = ['children']
     _namespace = 'feffery_antd_charts'
@@ -344,6 +355,14 @@ Keyword arguments:
         }
     )
 
+    Action = TypedDict(
+        "Action",
+            {
+            "type": NotRequired[Literal["tooltip:show", "tooltip:hide"]],
+            "tooltipPositionData": NotRequired[dict]
+        }
+    )
+
 
     def __init__(
         self,
@@ -397,11 +416,12 @@ Keyword arguments:
         pattern: typing.Optional[typing.Any] = None,
         interactions: typing.Optional[typing.Any] = None,
         state: typing.Optional[typing.Any] = None,
+        action: typing.Optional["Action"] = None,
         **kwargs
     ):
-        self._prop_names = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'seriesField', 'groupField', 'isStack', 'isGroup', 'isRange', 'isPercent', 'color', 'intervalPadding', 'dodgePadding', 'minBarWidth', 'maxBarWidth', 'barStyle', 'barBackground', 'barWidthRatio', 'marginRatio', 'scrollbar', 'conversionTag', 'connectedArea', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'animation', 'recentlyTooltipChangeRecord', 'recentlyBarClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'pattern', 'interactions', 'state']
+        self._prop_names = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'seriesField', 'groupField', 'isStack', 'isGroup', 'isRange', 'isPercent', 'color', 'intervalPadding', 'dodgePadding', 'minBarWidth', 'maxBarWidth', 'barStyle', 'barBackground', 'barWidthRatio', 'marginRatio', 'scrollbar', 'conversionTag', 'connectedArea', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'animation', 'recentlyTooltipChangeRecord', 'recentlyBarClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'pattern', 'interactions', 'state', 'action']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'seriesField', 'groupField', 'isStack', 'isGroup', 'isRange', 'isPercent', 'color', 'intervalPadding', 'dodgePadding', 'minBarWidth', 'maxBarWidth', 'barStyle', 'barBackground', 'barWidthRatio', 'marginRatio', 'scrollbar', 'conversionTag', 'connectedArea', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'animation', 'recentlyTooltipChangeRecord', 'recentlyBarClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'pattern', 'interactions', 'state']
+        self.available_properties = ['id', 'key', 'className', 'style', 'data', 'meta', 'xField', 'yField', 'seriesField', 'groupField', 'isStack', 'isGroup', 'isRange', 'isPercent', 'color', 'intervalPadding', 'dodgePadding', 'minBarWidth', 'maxBarWidth', 'barStyle', 'barBackground', 'barWidthRatio', 'marginRatio', 'scrollbar', 'conversionTag', 'connectedArea', 'xAxis', 'yAxis', 'width', 'height', 'autoFit', 'padding', 'appendPadding', 'renderer', 'pixelRatio', 'locale', 'limitInPlot', 'legend', 'label', 'tooltip', 'annotations', 'animation', 'recentlyTooltipChangeRecord', 'recentlyBarClickRecord', 'recentlyLegendInfo', 'downloadTrigger', 'theme', 'pattern', 'interactions', 'state', 'action']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()
