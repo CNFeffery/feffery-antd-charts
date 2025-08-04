@@ -26,6 +26,7 @@ export default class AntdColumn extends Component {
     constructor(props) {
         super(props);
         this.chartRef = React.createRef();
+        this.chartContainerHovering = React.createRef();
     }
 
     shouldComponentUpdate(nextProps) {
@@ -58,6 +59,26 @@ export default class AntdColumn extends Component {
             ) {
                 // 动态调整数据
                 chart.changeData(nextProps.data)
+                return false;
+            }
+            // 检查是否仅有action参数发生更新
+            // 或除去action参数后其他变化的prop都在preventUpdateProps
+            if (
+                (changedProps.includes('action') && changedProps.length === 1) ||
+                (changedProps.includes('action') && changedPreventUpdateProps.length === changedProps.length - 1)
+            ) {
+                // 执行图表动作
+                if (nextProps.action) {
+                    if (nextProps.action.type === 'tooltip:show' && nextProps.action.tooltipPositionData) {
+                        chart.chart.showTooltip(
+                            chart.chart.getXY(nextProps.action.tooltipPositionData)
+                        )
+                    } else if (nextProps.action.type === 'tooltip:hide') {
+                        chart.chart.hideTooltip()
+                    }
+                }
+                // 重置action值
+                nextProps.setProps({ action: null })
                 return false;
             }
             // 检查是否仅有downloadTrigger参数发生更新
@@ -283,6 +304,14 @@ export default class AntdColumn extends Component {
             ref={this.chartRef}
             // 绑定常用事件
             onReady={(plot) => {
+                // 为图表容器添加鼠标移入状态监听功能
+                plot.container.addEventListener('mouseenter', () => {
+                    this.chartContainerHovering.current = true
+                })
+                plot.container.addEventListener('mouseleave', () => {
+                    this.chartContainerHovering.current = false
+                })
+
                 // 监听非数据要素区域点击事件
                 plot.on('plot:click', (e) => {
                     if (!e.data) {
@@ -297,16 +326,31 @@ export default class AntdColumn extends Component {
 
                 let recentlyTooltipChangeRecord;
                 // 辅助的tooltip渲染事件
-                plot.on('tooltip:change', (e) => {
-
-                    // 更新recentlyTooltipChangeRecord
-                    recentlyTooltipChangeRecord = {
-                        timestamp: (new Date()).valueOf(),
-                        data: e.data.items.map(item => item.data)
+                plot.on('tooltip:show', (e) => {
+                    // 仅在用户触发tooltip行为时进行更新
+                    if (this.chartContainerHovering.current) {
+                        // 更新recentlyTooltipChangeRecord
+                        recentlyTooltipChangeRecord = {
+                            timestamp: (new Date()).valueOf(),
+                            data: e.data.items.map(item => item.data)
+                        }
+                        setProps({
+                            recentlyTooltipChangeRecord: recentlyTooltipChangeRecord
+                        })
                     }
-                    setProps({
-                        recentlyTooltipChangeRecord: recentlyTooltipChangeRecord
-                    })
+                });
+                plot.on('tooltip:hide', (e) => {
+                    // 仅在用户触发tooltip行为时进行更新
+                    if (this.chartContainerHovering.current) {
+                        // 更新recentlyTooltipChangeRecord
+                        recentlyTooltipChangeRecord = {
+                            timestamp: (new Date()).valueOf(),
+                            data: null
+                        }
+                        setProps({
+                            recentlyTooltipChangeRecord: recentlyTooltipChangeRecord
+                        })
+                    }
                 });
 
                 plot.on('element:click', (e) => {
