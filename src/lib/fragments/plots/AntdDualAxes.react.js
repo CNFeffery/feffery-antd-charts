@@ -358,10 +358,31 @@ export default class AntdDualAxes extends Component {
                     });
 
                     plot.on('element:click', (e) => {
+                        const calculateDistance = (x1, y1, x2, y2) => {
+                            return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+                        };
+
+                        const findClosestDataPoint = (x, y, mappingData) => {
+                            if (!mappingData || mappingData.length === 0) return null;
+
+                            let closestItem = null;
+                            let minDistance = Infinity; // 初始设为极大值，确保第一个点能正确比较
+
+                            for (const item of mappingData) {
+                                const currentDistance = calculateDistance(x, y, item.x, item.y);
+                                if (currentDistance < minDistance) {
+                                    minDistance = currentDistance;
+                                    closestItem = item;
+                                }
+                            }
+
+                            return closestItem?._origin;
+                        };
+
                         setProps({
                             recentlyClickRecord: {
                                 timestamp: new Date().valueOf(),
-                                data: e.data.data,
+                                data: findClosestDataPoint(e.gEvent.x, e.gEvent.y, e.data.mappingData),
                             },
                         });
                     });
